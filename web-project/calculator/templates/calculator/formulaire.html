@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.12.4 %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.12.4 %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.12.4 %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create Stats - Calculator</title>
+</head>
+{% if darkmode == "yes" %}
+<body class="body_dark_mode">
+{% elif darkmode == "no" %}
+<body>
+{% endif %}
+<div class="main-container">
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-icon" id="sidebar-icon">
+            <div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
+            <div class="rightsidebarc" id="rscimg">
+                <svg id="svg-filter-sidebar"width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
+            </div>
+        </div>
+        <div class="traveling">
+            <div class="traveling-inline-div" onclick="location.href='/'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Home</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" id="svg-filter-home" data="\static\image\svg\uicommon-home.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/calculator/index/'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Stats</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\stats.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/menu'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Wiki</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\altar-hero-entrance.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/item'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Item</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\icon_stuff.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/skill-list'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Skill</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\random-ability.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/runes'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Runes</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\runes.svg" width="21" height="21" style="cursor: pointer;"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/archive'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Sheet</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\sheet.svg" width="21" height="21" style="cursor: pointer;"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/maze'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Maze</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\tower-entrance.svg" width="21" height="21" style="cursor: pointer;"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" id="switch_dark_mode">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Theme</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						{% if darkmode == "yes" %}<object data="\static\image\svg\moon.svg" type="image/png"  width="21" height="21" id="darkmodeSWITCH" style="cursor: pointer;"></object>{% elif darkmode == "no" %}<object data="\static\image\svg\sun.svg" type="image/png"  id="darkmodeSWITCH" width="21" height="21" style="cursor: pointer;"></object>{% endif %}
+					</div>
+				</div>
+        </div>
+    </div>
+    <main class="main-menu cmcath">
+        <header class="header-container">
+            <h2>{{ header_msg }}</h2>
+        </header>
+        <main class="main-form">
+            <div class="container-form">
+                {% if ingame_id == none %}
+                <form method="POST" action="/calculator/calc/">
+                {% else %}
+                <form method="POST" action="/calculator/updatecalc/{{id_token}}/">
+                {% endif %}
+                {% csrf_token %}
+                <script>
+                    document.cookie = " csrftoken= "+document.querySelector('[name=csrfmiddlewaretoken]').value + ";path=/";
+                </script>
+                <div class="form">
+                    <div class="ingame-name">
+                        {% if error_msg or value_error %}
+                            <div class="error_form">
+                                <i class="fa fa-exclamation-triangle" aria-hidden="true"> Error </i>
+                                <div class="id_error_msg">
+                                    {{ error_msg }}{{ value_error }}
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if ingame_id == none %}
+                            <b>Ingame Id :</b> <input type="text" value="{{ cookie_id }}" pattern="[0-9]{1}-[0-9]{6,}" name="ingame_id" required id="ingame_id" placeholder="1-00000000"><br>
+                            <b>Username :</b> <input type="text" value="{{ cookie_name }}" name="ingame_name" maxlength="30" required id="id_ingame_name"><br>
+                        {% else %}
+                            <b>Ingame ID :</b> <input type="text" name="ingame_id" required id="ingame_id" value="{{ ingame_id }}" readonly><br>
+                            <b>Username :</b> <input type="text" name="ingame_name" maxlength="30" required id="id_ingame_name" value="{{ ingame_name }}" readonly><br>
+                        {% endif %}
+                    </div>
+                    <div class="stuff container">
+                        <div class="form_stuff" translate="no">
+                            <b>Choose your heros :</b> {{  form_User.choosen_hero  }} <br>
+                            <b>Base attack :</b> {{  form_User.atk_base_stats_hero_choosen  }} <br>
+                            <b>Base Health :</b> {{  form_User.health_base_stats_hero_choosen  }} <br>
+                            <b>Brave Privileges :</b> {{  form_User.brave_privileges_level  }} <div class="privileges_help popup3" onclick="privilegesPopupFunction()"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:16px"></i>
+                                <div class="popuptext3" id="privileges_popup">
+                                    <img class="privileges_help_image" src="/static/image/formulaire-image/privileges_help.png" alt="privileges help">
+                                </div>
+                            </div><br>
+                            Weapon : {{  form_StuffTable.weapon_choosen  }} {{  form_StuffTable.weapon_rarity  }}{{  form_StuffTable.weapon_level  }}<br>
+                            Armor : {{  form_StuffTable.armor_choosen  }} {{  form_StuffTable.armor_rarity  }}{{  form_StuffTable.armor_level  }}<br>
+                            Ring 1 : {{  form_StuffTable.ring1_choosen  }} {{  form_StuffTable.ring1_rarity  }}{{  form_StuffTable.ring1_level  }}<br>
+                            Ring 2 : {{  form_StuffTable.ring2_choosen  }} {{  form_StuffTable.ring2_rarity  }}{{  form_StuffTable.ring2_level  }}<br>
+                            Pet 1 : {{  form_StuffTable.pet1_choosen  }} {{  form_StuffTable.pet1_rarity  }}{{  form_StuffTable.pet1_level  }}<br>
+                            Pet 2 : {{  form_StuffTable.pet2_choosen  }} {{  form_StuffTable.pet2_rarity  }}{{  form_StuffTable.pet2_level  }}<br>
+                            Bracelet : {{  form_StuffTable.bracelet_choosen  }} {{  form_StuffTable.bracelet_rarity  }}{{  form_StuffTable.bracelet_level  }}<br>
+                            Locket : {{  form_StuffTable.locket_choosen  }} {{  form_StuffTable.locket_rarity  }}{{  form_StuffTable.locket_level  }}<br>
+                            SpellBook : {{  form_StuffTable.book_choosen  }} {{  form_StuffTable.book_rarity  }}{{  form_StuffTable.book_level  }}<br>
+                        </div>
+                        <p style="overflow: hidden;">_____________________________</p><br>
+                        <div class="refine_form">
+                            <u><b>Refine Stats: </b></u>
+                            <div class="refine_help popup" onclick="refinePopupFunction()"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:16px"></i>
+                                <div class="popuptext" id="refine_popup">
+                                    <img class="refine_help_image" src="/static/image/formulaire-image/refine_help.png" alt="refine help">
+                                </div>
+                            </div><br>
+                            <u>Weapon</u> : {{ form_RefineTable.weapon_refine_atk }}{{ form_RefineTable.weapon_refine_basic_stats }}%<br>
+                            <u>Armor</u> : {{ form_RefineTable.armor_refine_hp }}{{ form_RefineTable.armor_refine_basic_stats }}%<br>
+                            <u>Ring 1</u> : {{ form_RefineTable.ring1_refine_atk }}{{ form_RefineTable.ring1_refine_basic_stats }}%<br>
+                            <u>Ring 2</u> : {{ form_RefineTable.ring2_refine_atk }}{{ form_RefineTable.ring2_refine_basic_stats }}%<br>
+                            <u>Bracelet</u> : {{ form_RefineTable.bracelet_refine_atk }}{{ form_RefineTable.bracelet_refine_basic_stats }}%<br>
+                            <u>Locket</u> : {{ form_RefineTable.locket_refine_hp }}{{ form_RefineTable.locket_refine_basic_stats }}%<br>
+                            <u>SpellBook</u> : {{ form_RefineTable.book_refine_hp }}{{ form_RefineTable.book_refine_basic_stats }}%<br>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="hero_form container" translate="no">
+                        <div class="container-hero">
+                            <img src="/static/image/hero_icon/icon_atreus.png" alt="atreus">
+                            <div class="atreus">
+                            <b>Level :</b> {{  form_HeroTable.atreus_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.atreus_star  }} <br>
+                            </div>
+                        </div>  
+                        <div class="container-hero">        
+                            <img src="/static/image/hero_icon/icon_urasil.png" alt="urasil">
+                            <div class="urasil">
+                                <b>Level :</b> {{  form_HeroTable.urasil_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.urasil_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_phoren.png" alt="phoren">
+                            <div class="phoren">
+                                <b>Level :</b> {{  form_HeroTable.phoren_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.phoren_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_taranis.png" alt="taranis">
+                            <div class="taranis">
+                                <b>Level :</b> {{  form_HeroTable.taranis_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.taranis_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_helix.png" alt="helix">
+                            <div class="helix">
+                                <b>Level :</b> {{  form_HeroTable.helix_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.helix_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_meowgik.png" alt="meowgik">
+                            <div class="meowgik">
+                                <b>Level :</b> {{  form_HeroTable.meowgik_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.meowgik_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_shari.png" alt="shari">
+                            <div class="shari">
+                                <b>Level :</b> {{  form_HeroTable.shari_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.shari_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_ayana.png" alt="ayana">
+                            <div class="ayana">
+                                <b>Level :</b> {{  form_HeroTable.ayana_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.ayana_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_onir.png" alt="onir">
+                            <div class="onir">
+                                <b>Level :</b> {{  form_HeroTable.onir_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.onir_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_rolla.png" alt="rolla">
+                            <div class="rolla">
+                                <b>Level :</b> {{  form_HeroTable.rolla_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.rolla_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_bonnie.png" alt="bonnie">
+                            <div class="bonnie">
+                                <b>Level :</b> {{  form_HeroTable.bonnie_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.bonnie_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_sylvan.png" alt="sylvan">
+                            <div class="sylvan">
+                                <b>Level :</b> {{  form_HeroTable.sylvan_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.sylvan_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_shade.png" alt="shade">
+                            <div class="shade">
+                                <b>Level :</b> {{  form_HeroTable.shade_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.shade_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_ophelia.png" alt="ophelia">
+                            <div class="ophelia">
+                                <b>Level :</b> {{  form_HeroTable.ophelia_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.ophelia_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_ryan.png" alt="ryan">
+                            <div class="ryan">
+                                <b>Level :</b> {{  form_HeroTable.ryan_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.ryan_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_lina.png" alt="lina">
+                            <div class="lina">
+                                <b>Level :</b> {{  form_HeroTable.lina_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.lina_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_aquea.png" alt="aquea">
+                            <div class="aquea">
+                                <b>Level :</b> {{  form_HeroTable.aquea_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.aquea_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_shingen.png" alt="shingen">
+                            <div class="shingen">
+                                <b>Level :</b> {{  form_HeroTable.shingen_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.shingen_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_gugu.png" alt="gugu">
+                            <div class="gugu">
+                                <b>Level :</b> {{  form_HeroTable.gugu_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.gugu_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_iris.png" alt="iris">
+                            <div class="iris">
+                                <b>Level :</b> {{  form_HeroTable.iris_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.iris_star  }} <br>
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_blazo.png" alt="blazo">
+                            <div class="blazo">
+                                <b>Level :</b> {{  form_HeroTable.blazo_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.blazo_star  }}
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_melinda.png" alt="melinda">
+                            <div class="melinda">
+                                <b>Level :</b> {{  form_HeroTable.melinda_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.melinda_star  }}
+                            </div>
+                        </div>
+                        <div class="container-hero">    
+                            <img src="/static/image/hero_icon/icon_elaine.png" alt="elaine">
+                            <div class="elaine">
+                                <b>Level :</b> {{  form_HeroTable.elaine_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.elaine_star  }}
+                            </div>
+                        </div>
+                    </div>
+                   <br>
+                    <div class="talent container">
+                        <img class="talent_image" src="/static/image/formulaire-image/image_talent.png" height="35%" width="35%">
+                        <div class="talent_form">
+                            <b>Strength (max 25) :</b> {{  form_TalentTable.strength_level }}
+                            <b>Power (max 25) :</b> {{  form_TalentTable.power_level }}
+                            <b>Recover (max 25) :</b> {{  form_TalentTable.recover_level  }}
+                            <b>Block (max 25) :</b> {{  form_TalentTable.block_level  }}
+                            <b>Iron Bulwark (max 25) :</b> {{  form_TalentTable.iron_bulwark_level  }}
+                            <b>Equipment (max 10) :</b> {{  form_TalentTable.enhanced_equipment_level  }}
+                            <b>Hero Powerup (max 10) :</b> {{  form_TalentTable.hero_power_up_level  }}
+                            <b>Runes Powerup (max 15) :</b> {{  form_TalentTable.runes_power_up_level  }}
+                        </div>
+                    </div>
+                    <div class="skin container">
+                        <div>
+                            <img class="skin_image" src="/static/image/formulaire-image/skin_screen.png"> 
+                        </div>
+                        <div class="skin_form">
+                        <b>Take a look in your game, and search for :</b><br>
+                            HP given from skin : {{ form_SkinTable.skin_health }}<br>
+                            Attack given from skin : {{ form_SkinTable.skin_attack }}<br>
+                        </div>
+                    </div>
+                    <div class="altar container">
+                        <div class="altar_form">
+                            <b>Equipment Altar level :</b> {{ form_AltarTable.stuff_altar_level }}<br>
+                            <b>Equipment Altar ascension :</b> {{ form_AltarTable.stuff_altar_ascension }}<br>
+                            <b>Hero Altar level :</b> {{ form_AltarTable.heros_altar_level }}<br>
+                            <b>Hero Altar ascension :</b> {{ form_AltarTable.heros_altar_ascension }}<br>
+                        </div>
+                        <div class="alter_image">
+                            <img src="/static/image/formulaire-image/altar_hero_pillar.png">
+                            <img src="/static/image/formulaire-image/altar_stuff_pillar.png"> 
+                        </div>
+                    </div>
+                    <div class="jewel container">
+                        <div class="jewel_form">
+                            <table class="weapon_jewel_table jewel_table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Weapon Jewels</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.weapon_jewel1_type }}</td>
+                                        <td>{{ form_JewelLevelTable.weapon_jewel1_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.weapon_jewel2_type }}</td>
+                                        <td>{{ form_JewelLevelTable.weapon_jewel2_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.weapon_jewel3_type }}</td>
+                                        <td>{{ form_JewelLevelTable.weapon_jewel3_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.weapon_jewel4_type }}</td>
+                                        <td>{{ form_JewelLevelTable.weapon_jewel4_level }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="armor_jewel_table jewel_table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Armor Jewels</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.armor_jewel1_type }}</td>
+                                        <td>{{ form_JewelLevelTable.armor_jewel1_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.armor_jewel2_type }}</td>
+                                        <td>{{ form_JewelLevelTable.armor_jewel2_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.armor_jewel3_type }}</td>
+                                        <td>{{ form_JewelLevelTable.armor_jewel3_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.armor_jewel4_type }}</td>
+                                        <td>{{ form_JewelLevelTable.armor_jewel4_level }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="ring1_jewel_table jewel_table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">1st Ring Jewels</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.ring1_jewel1_type }}</td>
+                                        <td>{{ form_JewelLevelTable.ring1_jewel1_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.ring1_jewel2_type }}</td>
+                                        <td>{{ form_JewelLevelTable.ring1_jewel2_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.ring1_jewel3_type }}</td>
+                                        <td>{{ form_JewelLevelTable.ring1_jewel3_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.ring1_jewel4_type }}</td>
+                                        <td>{{ form_JewelLevelTable.ring1_jewel4_level }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="ring2_jewel_table jewel_table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">2nd Ring Jewels</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.ring2_jewel1_type }}</td>
+                                        <td>{{ form_JewelLevelTable.ring2_jewel1_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.ring2_jewel2_type }}</td>
+                                        <td>{{ form_JewelLevelTable.ring2_jewel2_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.ring2_jewel3_type }}</td>
+                                        <td>{{ form_JewelLevelTable.ring2_jewel3_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.ring2_jewel4_type }}</td>
+                                        <td>{{ form_JewelLevelTable.ring2_jewel4_level }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="pet1_jewel_table jewel_table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">1st Pet Jewels</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.pet1_jewel1_type }}</td>
+                                        <td>{{ form_JewelLevelTable.pet1_jewel1_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.pet1_jewel2_type }}</td>
+                                        <td>{{ form_JewelLevelTable.pet1_jewel2_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.pet1_jewel3_type }}</td>
+                                        <td>{{ form_JewelLevelTable.pet1_jewel3_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.pet1_jewel4_type }}</td>
+                                        <td>{{ form_JewelLevelTable.pet1_jewel4_level }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="pet2_jewel_table jewel_table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">2nd Pet Jewels</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.pet2_jewel1_type }}</td>
+                                        <td>{{ form_JewelLevelTable.pet2_jewel1_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.pet2_jewel2_type }}</td>
+                                        <td>{{ form_JewelLevelTable.pet2_jewel2_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.pet2_jewel3_type }}</td>
+                                        <td>{{ form_JewelLevelTable.pet2_jewel3_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.pet2_jewel4_type }}</td>
+                                        <td>{{ form_JewelLevelTable.pet2_jewel4_level }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="bracelet_jewel_table jewel_table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Bracelet Jewels</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.bracelet_jewel1_type }}</td>
+                                        <td>{{ form_JewelLevelTable.bracelet_jewel1_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.bracelet_jewel2_type }}</td>
+                                        <td>{{ form_JewelLevelTable.bracelet_jewel2_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.bracelet_jewel3_type }}</td>
+                                        <td>{{ form_JewelLevelTable.bracelet_jewel3_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.bracelet_jewel4_type }}</td>
+                                        <td>{{ form_JewelLevelTable.bracelet_jewel4_level }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="locket_jewel_table jewel_table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Locket Jewels</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.locket_jewel1_type }}</td>
+                                        <td>{{ form_JewelLevelTable.locket_jewel1_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.locket_jewel2_type }}</td>
+                                        <td>{{ form_JewelLevelTable.locket_jewel2_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.locket_jewel3_type }}</td>
+                                        <td>{{ form_JewelLevelTable.locket_jewel3_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.locket_jewel4_type }}</td>
+                                        <td>{{ form_JewelLevelTable.locket_jewel4_level }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="book_jewel_table jewel_table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">SpellBook Jewels</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.book_jewel1_type }}</td>
+                                        <td>{{ form_JewelLevelTable.book_jewel1_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.book_jewel2_type }}</td>
+                                        <td>{{ form_JewelLevelTable.book_jewel2_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.book_jewel3_type }}</td>
+                                        <td>{{ form_JewelLevelTable.book_jewel3_level }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_JewelTypeTable.book_jewel4_type }}</td>
+                                        <td>{{ form_JewelLevelTable.book_jewel4_level }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="egg container" translate="no">
+                        <div class="egg_form">
+                            <b><img src="/static/image/monsters_icon/green_bat.png"></b>{{ form_EggTable.green_bat }}
+                            <b><img src="/static/image/monsters_icon/vase.png"></b>{{ form_EggTable.vase }}
+                            <b><img src="/static/image/monsters_icon/bomb_ghost.png"></b>{{ form_EggTable.bomb_ghost }}
+                            <b><img src="/static/image/monsters_icon/rock_puppet.png"></b>{{ form_EggTable.rock_puppet }}
+                            <b><img src="/static/image/monsters_icon/party_tree.png"></b>{{ form_EggTable.party_tree }}
+                            <b><img src="/static/image/monsters_icon/wolfhound.png"></b>{{ form_EggTable.wolfhound }}
+                            <b><img src="/static/image/monsters_icon/skeleton_archer.png"></b>{{ form_EggTable.skeleton_archer }}
+                            <b><img src="/static/image/monsters_icon/skeleton_soldier.png"></b>{{ form_EggTable.skeleton_soldier }}
+                            <b><img src="/static/image/monsters_icon/wasp.png"></b>{{ form_EggTable.wasp }}
+                            <b><img src="/static/image/monsters_icon/fire_mage.png"></b>{{ form_EggTable.fire_mage }}
+                            <b><img src="/static/image/monsters_icon/medusa.png"></b>{{ form_EggTable.medusa }}
+                            <b><img src="/static/image/monsters_icon/ice_mage.png"></b>{{ form_EggTable.ice_mage }}
+                            <b><img src="/static/image/monsters_icon/fire_lizard.png"></b>{{ form_EggTable.fire_lizard }}
+                            <b><img src="/static/image/monsters_icon/flame_ghost.png"></b>{{ form_EggTable.flame_ghost }}
+                            <b><img src="/static/image/monsters_icon/thorny_snake.png"></b>{{ form_EggTable.thorny_snake }}
+                            <b><img src="/static/image/monsters_icon/tornado_demon.png"></b>{{ form_EggTable.tornado_demon }}
+                            <b><img src="/static/image/monsters_icon/piranha.png"></b>{{ form_EggTable.piranha }}
+                            <b><img src="/static/image/monsters_icon/zombie.png"></b>{{ form_EggTable.zombie }}
+                            <b><img src="/static/image/monsters_icon/scarecrow.png"></b>{{ form_EggTable.scarecrow }}
+                            <b><img src="/static/image/monsters_icon/long_dragon.png"></b>{{ form_EggTable.long_dragon }}
+                            <b><img src="/static/image/monsters_icon/skull_wizard.png"></b>{{ form_EggTable.skull_wizard }}
+                            <b><img src="/static/image/monsters_icon/lava_golem.png"></b>{{ form_EggTable.lava_golem }}
+                            <b><img src="/static/image/monsters_icon/ice_golem.png"></b>{{ form_EggTable.ice_golem }}
+                            <b><img src="/static/image/monsters_icon/cactus.png"></b>{{ form_EggTable.cactus }}
+                            <b><img src="/static/image/monsters_icon/crazy_spider.png"></b>{{ form_EggTable.crazy_spider }}
+                            <b><img src="/static/image/monsters_icon/fire_element.png"></b>{{ form_EggTable.fire_element }}
+                            <b><img src="/static/image/monsters_icon/skeleton_swordsman.png"></b>{{ form_EggTable.skeleton_swordsman }}
+                            <b><img src="/static/image/monsters_icon/scythe_mage.png"></b>{{ form_EggTable.scythe_mage }}
+                            <b><img src="/static/image/monsters_icon/shadow_assassin.png"></b>{{ form_EggTable.shadow_assassin }}
+                            <b><img src="/static/image/monsters_icon/tornado_mage.png"></b>{{ form_EggTable.tornado_mage }}
+                            <b><img src="/static/image/monsters_icon/pea_shooter.png"></b>{{ form_EggTable.pea_shooter }}
+                            <b><img src="/static/image/monsters_icon/nether_puppet.png"></b>{{ form_EggTable.nether_puppet }}
+                            <b><img src="/static/image/monsters_icon/fallen_bat.png"></b>{{ form_EggTable.fallen_bat }}
+                            <b><img src="/static/image/monsters_icon/sandian.png"></b>{{ form_EggTable.sandian }}
+                            <b><img src="/static/image/monsters_icon/psionic_scarecrow.png"></b>{{ form_EggTable.psionic_scarecrow }}
+                            <b><img src="/static/image/monsters_icon/savage_spider.png"></b>{{ form_EggTable.savage_spider }}
+                            <b><img src="/static/image/monsters_icon/one_eyed_bat.png"></b>{{ form_EggTable.one_eyed_bat }}
+                            <b><img src="/static/image/monsters_icon/tundra_dragon.png"></b>{{ form_EggTable.tundra_dragon }}                        
+                            <b><img src="/static/image/monsters_icon/purple_phantom.png"></b>{{ form_EggTable.purple_phantom }}
+                            <b><img src="/static/image/monsters_icon/icefire_phantom.png"></b>{{ form_EggTable.icefire_phantom }}
+                            <b><img src="/static/image/monsters_icon/steel_dryad.png"></b>{{ form_EggTable.steel_dryad }}
+                            <b><img src="/static/image/monsters_icon/flaming_bug.png"></b>{{ form_EggTable.flaming_bug }}
+                            <b><img src="/static/image/monsters_icon/elite_archer.png"></b>{{ form_EggTable.elite_archer }}
+                            <b><img src="/static/image/monsters_icon/rolling_mushroom.png"></b>{{ form_EggTable.rolling_mushroom }}
+                            <b><img src="/static/image/monsters_icon/spitting_mushroom.png"></b>{{ form_EggTable.spitting_mushroom }}
+                            <b><img src="/static/image/monsters_icon/scarlet_mage.png"></b>{{ form_EggTable.scarlet_mage }}
+                            <b><img src="/static/image/monsters_icon/little_dragon.png"></b>{{ form_EggTable.little_dragon }}
+                            <b><img src="/static/image/monsters_icon/arch_leader.png"></b>{{ form_EggTable.arch_leader }}
+                            <b><img src="/static/image/monsters_icon/skeleton_king.png"></b>{{ form_EggTable.skeleton_king }}
+                            <b><img src="/static/image/monsters_icon/crimson_witch.png"></b>{{ form_EggTable.crimson_witch }}
+                            <b><img src="/static/image/monsters_icon/rage_golem.png"></b>{{ form_EggTable.rage_golem }}                        
+                            <b><img src="/static/image/monsters_icon/queen_bee.png"></b>{{ form_EggTable.queen_bee }}
+                            <b><img src="/static/image/monsters_icon/ice_worm.png"></b>{{ form_EggTable.ice_worm }}
+                            <b><img src="/static/image/monsters_icon/medusa_boss.png"></b>{{ form_EggTable.medusa_boss }}
+                            <b><img src="/static/image/monsters_icon/ice_demon.png"></b>{{ form_EggTable.ice_demon }}
+                            <b><img src="/static/image/monsters_icon/fire_demon.png"></b>{{ form_EggTable.fire_demon }}
+                            <b><img src="/static/image/monsters_icon/krab_boss.png"></b>{{ form_EggTable.krab_boss }}
+                            <b><img src="/static/image/monsters_icon/giant_owl.png"></b>{{ form_EggTable.giant_owl }}
+                            <b><img src="/static/image/monsters_icon/desert_goliath.png"></b>{{ form_EggTable.desert_goliath }}
+                        </div>
+                        <div class="egg_equipped" translate="no">
+                            1st egg = {{ form_EggEquippedTable.egg_equipped1 }}
+                            2nd egg = {{ form_EggEquippedTable.egg_equipped2 }}
+                            3rd egg = {{ form_EggEquippedTable.egg_equipped3 }}
+                            4th egg = {{ form_EggEquippedTable.egg_equipped4 }}
+                            5th egg = {{ form_EggEquippedTable.egg_equipped5 }}
+                        </div>
+                    </div>
+                    <div class="dragon container" translate="no">
+                        <div class="dragon_form">
+                            <b>Dragon 1 : </b>{{ form_DragonTable.dragon1_type }} {{ form_DragonTable.dragon1_rarity }} {{ form_DragonTable.dragon1_level }}<br>
+                            <b>Dragon 2 : </b>{{ form_DragonTable.dragon2_type }} {{ form_DragonTable.dragon2_rarity }} {{ form_DragonTable.dragon2_level }}<br>
+                            <b>Dragon 3 : </b>{{ form_DragonTable.dragon3_type }} {{ form_DragonTable.dragon3_rarity }} {{ form_DragonTable.dragon3_level }}<br>
+    
+                            <b>Only if you have equipped mythic dragon : </b><br>
+                            <u>Dragon 1</u><i> 4th passive skill level :</i> {{ form_DragonTable.dragon_1_boost_4_mythic }}<br>
+                            <u>Dragon 2</u><i> 4th passive skill level :</i> {{ form_DragonTable.dragon_2_boost_4_mythic }}<br>
+                            <u>Dragon 3</u><i> 4th passive skill level :</i> {{ form_DragonTable.dragon_3_boost_4_mythic }}<br>
+                        </div>
+                    </div>
+                    <div class="runes container" translate="no">
+                        <div class="reforge">
+                            <b><u>Reforge Runes :</u></b> 
+                            <div class="popup2" onclick="runesPopupFunction()"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:16px"></i>
+                                <div class="popuptext2" id="runes_popup">
+                                    <img src="/static/image/formulaire-image/reforge-screen.png">
+                                </div>
+                            </div>
+                            <br>
+                            <b>Reforge runes power : </b>{{ form_ReforgeTable.reforge_power }}<br>
+                            <b>Reforge runes saviour : </b>{{ form_ReforgeTable.reforge_saviour }}<br>
+                            <b>Reforge runes recovery : </b>{{ form_ReforgeTable.reforge_recovery }}<br>
+                            <b>Reforge runes courage : </b>{{ form_ReforgeTable.reforge_courage }}<br>
+                            <b>Reforge runes luck : </b>{{ form_ReforgeTable.reforge_luck }}<br><br>
+                        </div> 
+                        <div class="about" translate="yes">
+                            % number need dot . 
+                        </div>
+                        <div class="runes_form">
+                            <div class="power_runes">
+                                {{ form_RunesTable.power_attack_flat }} <br>
+                                {{ form_RunesTable.power_attack_var }}<i class="fa fa-percent"></i><br>
+                            </div>
+                            <div class="recovery_runes">
+                                {{ form_RunesTable.recovery_hp_flat }} <br>
+                            </div>
+                            <div class="saviour_runes">
+                                {{ form_RunesTable.saviour_hp_flat }} <br>
+                                {{ form_RunesTable.saviour_hp_var }}<i class="fa fa-percent"></i><br>
+                            </div>
+                            <div class="luck_runes">
+                                {{ form_RunesTable.luck_hp_flat }} <br>
+                                {{ form_RunesTable.luck_hp_var }}<i class="fa fa-percent"></i><br>
+                            </div>
+                            <div class="courage_runes">
+                                {{ form_RunesTable.courage_attack_flat }} <br>
+                                {{ form_RunesTable.courage_attack_var }}<i class="fa fa-percent"></i><br>
+                                {{ form_RunesTable.selected_hero_courage_attack_flat }} {{ form_RunesTable.courage_hero_attack_flat }} <br>
+                                {{ form_RunesTable.selected_hero_courage_attack_var }} {{ form_RunesTable.courage_hero_attack_var }}<i class="fa fa-percent"></i><br>
+                                {{ form_RunesTable.selected_hero_courage_hp_flat }} {{ form_RunesTable.courage_hero_hp_flat }} <br>
+                                {{ form_RunesTable.selected_hero_courage_hp_var }} {{ form_RunesTable.courage_hero_hp_var }}<i class="fa fa-percent"></i><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <input class="submit-input" type="submit" value="Submit"\>
+            </div>
+            </form>
+        </main>
+    </main>
+</div>
+<footer>
+    <div class="footer-content">
+        <div class="footer-about">
+            <img class="footer-img-icon" src="/static/image/archero_icon.png">
+            <div class="about-content">
+                <h2>Archero :</h2>
+                <div>Archero Update will be added with a certains delay</div>
+                <div class="contact-me">
+                    <div>If you encounter any bugs / anomaly please contact me on discord</div>
+                    <div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+                </div>
+            </div>
+        </div>
+        <div class="discord_link">
+            <h2>Discord Server:</h2> 
+            <a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMuthique's Server</li></a>
+            <a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+            <a href="https://discord.gg/cyjJ8jRrJT" target="_blank"><li> iPickMyBUTT's Server</li></a>
+            <a href="https://discord.gg/dMTxzRTeXA" target="_blank"><li> adaYTgaming's Server</li></a>
+        </div>
+        <div class="thanks">
+            <h2>Shout-out :</h2>
+            <div class="shout-out">SonHaon#1631, Ktaplouf#0507</div>
+            <div class="shout-out">Pew#6775, Deth#7087, Tigershark14#8188</div>
+            <div class="shout-out">Everyone who helped me getting data</div>
+        </div>
+    </div>
+</footer>
+</body>
+<script>
+    var refine_popup = document.getElementById('refine_popup')
+    var privileges_popup = document.getElementById('privileges_popup')
+    var runes_popup = document.getElementById('runes_popup')
+
+    function refinePopupFunction(){
+        refine_popup.classList.toggle('show')
+    }
+    window.addEventListener('click', ({target}) => {
+        if(!target.closest('.popup') && refine_popup.classList.contains('show')) refinePopupFunction()
+    })
+
+    function runesPopupFunction(){
+        runes_popup.classList.toggle('show')
+    }
+    window.addEventListener('click', ({target}) => {
+        if(!target.closest('.popup2') && runes_popup.classList.contains('show')) runesPopupFunction()
+    })
+
+    function privilegesPopupFunction(){
+        privileges_popup.classList.toggle('show')
+    }
+    window.addEventListener('click', ({target}) => {
+        if(!target.closest('.popup3') && privileges_popup.classList.contains('show')) privilegesPopupFunction()
+    })
+    const egg_equipped1 = document.querySelector('#id_egg_equipped1');
+    const egg_equipped2 = document.querySelector('#id_egg_equipped2');
+    const egg_equipped3 = document.querySelector('#id_egg_equipped3');
+    const egg_equipped4 = document.querySelector('#id_egg_equipped4');
+    const egg_equipped5 = document.querySelector('#id_egg_equipped5');
+    const url3 = "url('/static/image/monsters_icon/";
+
+
+    id_egg_equipped1.addEventListener('change',function() {
+    mob = this.value.toLowerCase().replaceAll(" ","_").replaceAll("-","_")
+    if(mob===""){
+        mob_src = url3.concat("none.png')");
+        document.querySelector(".egg_equipped1").style["background-image"] = mob_src;
+    }else{
+        mob_src = url3.concat(mob,".png')");
+        document.querySelector(".egg_equipped1").style["background-image"] = mob_src;
+    }})
+
+    id_egg_equipped2.addEventListener('change',function() {
+    mob = this.value.toLowerCase().replaceAll(" ","_").replaceAll("-","_")
+    if(mob===""){
+        mob_src = url3.concat("none.png')");
+        document.querySelector(".egg_equipped2").style["background-image"] = mob_src;
+    }else{
+        mob_src = url3.concat(mob,".png')");
+        document.querySelector(".egg_equipped2").style["background-image"] = mob_src;
+    }})
+
+    id_egg_equipped3.addEventListener('change',function() {
+    mob = this.value.toLowerCase().replaceAll(" ","_").replaceAll("-","_")
+    if(mob===""){
+        mob_src = url3.concat("none.png')");
+        document.querySelector(".egg_equipped3").style["background-image"] = mob_src;
+    }else{
+        mob_src = url3.concat(mob,".png')");
+        document.querySelector(".egg_equipped3").style["background-image"] = mob_src;
+    }})
+
+    id_egg_equipped4.addEventListener('change',function() {
+    mob = this.value.toLowerCase().replaceAll(" ","_").replaceAll("-","_")
+    if(mob===""){
+        mob_src = url3.concat("none.png')");
+        document.querySelector(".egg_equipped4").style["background-image"] = mob_src;
+    }else{
+        mob_src = url3.concat(mob,".png')");
+        document.querySelector(".egg_equipped4").style["background-image"] = mob_src;
+    }})
+
+    id_egg_equipped5.addEventListener('change',function() {
+    mob = this.value.toLowerCase().replaceAll(" ","_").replaceAll("-","_")
+    if(mob===""){
+        mob_src = url3.concat("none.png')");
+        document.querySelector(".egg_equipped5").style["background-image"] = mob_src;
+    }else{
+        mob_src = url3.concat(mob,".png')");
+        document.querySelector(".egg_equipped5").style["background-image"] = mob_src;
+    }})
+</script>
+<script>
+    var sidebarBtn = document.getElementById('sidebar-icon');
+	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
+		var sidebar = document.getElementById("sidebar")
+		sidebar.classList.toggle('sidebar-active')
+	})
+
+    var switchModeBtn = document.getElementById('switch_dark_mode');
+
+	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
+		var date = new Date()
+		var darkmodeSWITCH = document.getElementById('darkmodeSWITCH')
+		date.setTime(date.getTime() + (365*24*60*60*1000));
+		var body = document.body;
+		body.classList.toggle("body_dark_mode");
+		if(body.className == "body_dark_mode"){
+			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
+			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\moon.svg")
+		}else{
+			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\sun.svg")
+		}
+	})
+</script>
+</html>

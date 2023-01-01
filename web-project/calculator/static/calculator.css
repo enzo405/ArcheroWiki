@@ -1,0 +1,1006 @@
+@font-face {
+	font-family: 'Rubik';
+	src: url("/static/fonts/rubik.otf");
+}
+
+
+@media screen and (min-width : 1450px){ /* pour résolution supérieur à 1450px */
+	.jewel_form{
+		grid-template-columns: repeat(3,220px);
+		grid-gap: 40px;
+		display: grid;
+		margin: 10px 0 14px 7.5%;
+	}
+	.egg_form{
+		display: grid;
+		grid-template-columns: repeat(14, 55px);
+		text-align: center;
+	}
+	.hero_form{
+		display: grid;
+		grid-template-columns: repeat(4, 200px);
+	}
+}
+
+
+@media screen and (max-width : 1300px){ /* pour résolution inférieur à 1300px */
+	.runes_form{
+		grid-template-columns: repeat(2,256px);
+		display: grid;
+	}
+	.skin_form{
+		margin-left: 4px;
+	}
+	.image_stuff{
+		width: 350.7px;
+		height: 350.7px;
+		background-image: url(image/hero_background/atreus.png);
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	.talent{
+		flex-direction: column;
+	}
+	.talent_form{
+		display: grid;
+		grid-template-columns: repeat(2, 100px);
+		margin-top: 10px;
+		margin-left: 10px;
+		height: 215px;
+	}
+	.talent_image{
+		min-width: 195px;
+	}
+	.jewel_form{
+		grid-template-columns: repeat(2,200px);
+		grid-gap: 40px;
+		display: grid;
+		margin: 10px 0 14px 10%;
+	}
+	.egg_form{
+		display: grid;
+		grid-template-columns: repeat(10, 55px);
+		text-align: center;
+	}
+}
+
+
+@media screen and (min-width : 1300px){ /* pour résolution supérieur à 1300px */
+	.runes_form{
+		grid-template-columns: repeat(2,256px);
+		display: grid;
+	}
+	.image_stuff{
+		width: 350.7px;
+		height: 350.7px;
+		background-image: url(image/hero_background/atreus.png);
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	.skin_form{
+		margin-left: 10px;
+	}
+	.talent_image{
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	.egg_form{
+		display: grid;
+		grid-template-columns: repeat(12, 55px);
+		text-align: center;
+	}
+	.jewel_form{
+		grid-template-columns: repeat(2,220px);
+		grid-gap: 60px;
+		display: grid;
+		margin: 10px 0 14px 9%;
+	}
+}
+
+
+@media screen and (max-width : 1070px){ /* pour résolution inférieur à 1070 */
+	.skin{flex-direction: column;}
+	.hero_form{
+		display: grid;
+		grid-template-columns: repeat(2, 200px);
+	}
+
+	.jewel_form{
+		grid-template-columns: repeat(1,200px);
+		grid-gap: 50px;
+		margin: 10px 0 14px 7%;
+	}
+	.main-index{
+		margin-top: 10px;
+	}
+	.egg_form{
+		display: grid;
+		grid-template-columns: repeat(8, 48px);
+		text-align: center;
+	}
+}
+
+
+@media screen and (min-width : 1070px){ /* pour résolution supérieux à 1070px */	
+	.hero_form{
+		display: grid;
+		grid-template-columns: repeat(3, 200px);
+	}
+	.skin{flex-direction: row;}
+}
+
+
+@media screen and (min-width: 780px){ /* pour résolution inférieur à 780px */
+	.index-table th, .index-table td{
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+	}
+	table thead{
+		margin-bottom: 10px;
+	}
+	td:first-child{
+		width: 65px;
+	}
+	td:nth-child(2){
+		width: 65px;
+	}
+	td:nth-child(3){
+		width: 65px;
+	}
+}
+
+@media screen and (max-width: 780px){ /* pour résolution inférieur à 780px */
+	.owner-error, .value-error{
+		font-size: small;
+	}
+	.egg_form{
+		display: grid;
+		grid-template-columns: repeat(6, 55px);
+		text-align: center;
+	}
+	.skin_image{
+		width: 60%;
+	}
+	.skin_form input{
+		width: 50px;
+	}
+	.altar_form input{
+		width: 50px;
+	}
+	table thead{
+		margin-bottom: 10px;
+	}
+	td:first-child{
+		width: auto;
+	}
+	td:nth-child(2){
+		width: auto;
+	}
+	td:nth-child(3){
+		width: auto;
+	}
+}
+
+@media screen and (min-width : 614px){/* pour résolution supérieur à 614px */
+	.button-jewel{
+		position: relative;
+		width: 73px;
+		background-color: transparent;
+		left: 117px;
+		top: -100px;
+	}
+	.img-light{
+		position: relative;
+		background-color: transparent;
+		width: 205px;
+		left: 261px;
+		top: -37px;
+	}
+	.image-div-stuff{
+		margin-top: -280px;
+		max-height: 600px;
+		max-width: 550px;
+	}
+	.detail-stats{
+		margin-top: 280px;
+	}
+	.altar{
+		display: flex;
+		flex-direction: row;
+		gap: 20px;
+	}
+}
+
+@media screen and (max-width : 613px){/* pour résolution inférieur à 613px */
+	.runes_form{
+		grid-template-columns: repeat(1,256px);
+		display: grid;
+	}
+	.button-jewel{
+		display: none;
+	}
+	.button-dragon{
+		display: none;
+	}
+	.img-light1{
+		display: none;
+	}
+	.img-light2{
+		display: none;
+	}
+	.image-div-stuff{
+		max-height: 600px;
+		max-width: 550px;
+	}
+	.main-affiche{
+		margin-top: 12px;
+	}
+	.detail-stats{
+		margin-top: 10px;
+	}
+	.altar{
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+
+@media screen and (max-width : 500px){/* pour résolution inférieur à 500px */
+	body, .main-index{
+		width: 100%;
+	}
+}
+
+
+@media screen and (min-width : 415px){/* pour résolution supérieur à 400px */
+	.talent_form{
+		display: grid;
+		grid-template-columns: repeat(2, 210px);
+		height: 215px;
+	}
+	.egg_equipped{
+		margin-top: 20px;
+		margin-bottom: 20px;
+		display: grid;
+		grid-template-columns: repeat(2, 165px);
+		align-items: center;
+		justify-items: center;
+	}
+	.index-table th, .index-table td{
+		padding-left: 7px;
+		padding-right: 3px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+	}
+}
+
+
+@media screen and (max-width : 415px){/* pour résolution inférieur à 400px */
+	*{
+		font-size: small;
+	}
+	select, input{
+		width: auto;
+	}
+	.hero_form{
+		display: grid;
+		grid-template-columns: repeat(2,164px);
+	}
+	.talent_form{
+		display: grid;
+		grid-template-columns: repeat(2, 120px);
+		height: 215px;
+	}
+	.egg_form{
+		display: grid;
+		grid-template-columns: repeat(6, 48px);
+		text-align: center;
+	}
+	.egg_equipped{
+		margin-top: 20px;
+		margin-bottom: 20px;
+		display: grid;
+		grid-template-columns: repeat(2, 130px);
+		align-items: center;
+	}
+	.index-table th, .index-table td{
+		padding-left: 5px;
+		padding-right: 5px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+	}
+	.hero_row{
+		display: none;
+	}
+}
+
+@media screen and (max-width : 335px){/* pour résolution inférieur à 335px */
+	.hero_form{
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		align-items: center;
+	}
+	.egg_form{
+		display: grid;
+		grid-template-columns: repeat(4, 50px);
+		text-align: center;
+	}
+	.egg_equipped{
+		margin-top: 20px;
+		margin-bottom: 20px;
+		display: grid;
+		grid-template-columns: repeat(2, 95px);
+		align-items: center;
+	}
+}
+
+@media screen and (max-width : 300px){/* pour résolution inférieur à 335px */
+	.self_table_hp_row, .self_table_atk_row{
+		display: none;
+	}
+}
+
+*{margin:0;font-family: "Rubik";}
+
+body{
+	background-color: #e5e5f7;
+}
+.body_dark_mode{
+	background-color: #1c2429;
+}
+select, input{
+	background-color: #DFE8E3;
+	border-color: #9CB4B5;
+	border-radius: 5px;
+	border-style: solid;
+}
+.main-container{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+}
+main{
+	display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.main-form{
+	align-items: center;
+}
+
+/*       AFFICHE.HTML          */
+/*       AFFICHE.HTML          */
+/*       AFFICHE.HTML          */
+/*       AFFICHE.HTML          */
+/*       AFFICHE.HTML          */
+/*       AFFICHE.HTML          */
+/*       AFFICHE.HTML          */
+.main-affiche{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+.contain-image-stuff{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.image-stuff-result-container{
+	border-radius: 10px;
+	background-image: url(image/background/bg_stuff_affiche.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.body_dark_mode .image-stuff-result-container{
+	background-image: url(image/background/bg_stuff_affiche_dark.png);
+}
+.image-stuff-result{
+	height: 100%;
+	width: 100%;
+	border: solid;
+	border-width: 0;
+	border-radius: 10px;
+}
+.detail-stats{
+	background-color: #F8D48B;
+	border: solid 1px;
+	border-radius: 10px;
+	padding: 5px;
+	width: calc(100% - 20px);
+	max-width: 550px;
+}
+.body_dark_mode .detail-stats{
+	background-color: #103d98;
+	color: rgb(228, 228, 228);
+	border: solid 0px;
+}
+.input-detail #crit_rune_drag{
+	width: 50px;
+}
+/*       FORMULAIRE.HTML          */
+/*       FORMULAIRE.HTML          */
+/*       FORMULAIRE.HTML          */
+/*       FORMULAIRE.HTML          */
+/*       FORMULAIRE.HTML          */
+/*       FORMULAIRE.HTML          */
+/*       FORMULAIRE.HTML          */
+.stuff{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	text-align: left;
+}
+.refine_form{
+	margin-left: 10px;
+}
+.refine_form input{
+	width: 65px;
+}
+.form_stuff select{
+	width: 85px;
+	height: 25px; 
+}
+.form_stuff input{
+	max-width: 56px;
+	margin-left: 6px;
+}
+.form_stuff{
+	margin-left: 10px;
+	margin-top: 20px;
+	font-weight: bold;
+}
+.container-hero{
+	display: flex;
+}
+.atreus, .urasil, .phoren, .taranis, .helix, .meowgik, .shari, .ayana, .onir, .rolla, .bonnie, .sylvan, .shade, .ophelia, .ryan, .lina, .aquea, .shingen, .gugu, .iris, .blazo, .melinda{
+	width: 120px;
+	margin-left: 5px;
+}
+.talent{
+	display: flex;
+	margin-bottom: 10px;
+}
+.talent input{
+	width: 60px;
+}
+.skin{
+	display: flex;
+}
+.altar_img{
+	width: 50%;
+}
+.egg_form select{
+	border: none;
+	background-color: transparent;
+	width: 55px;
+}
+.popup {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	user-select: none;
+	font-size: 78%;
+	margin-right: 15px;
+}
+.popup .popuptext {
+	visibility: hidden;
+	width: 254px;
+	height: 200px;
+	background-color: white;
+	font-weight: bold;
+	font-size: medium;
+	color: black;
+	text-align: center;
+	border-radius: 6px;
+	border-color: black;
+	border-style: solid;
+	position: absolute;
+	z-index: 1;
+	bottom: -82px;
+	margin-left: 25px;
+}
+.popup .show {
+	visibility: visible;
+}
+.popup2 {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	user-select: none;
+	margin-right: 15px;
+}
+.popup2 .popuptext2 {
+	visibility: hidden;
+	width: 206px;
+	height: 250px;
+	background-color: white;
+	color: black;
+	text-align: center;
+	border-radius: 6px;
+	border-color: black;
+	border-style: solid;
+	position: absolute;
+	z-index: 1;
+	bottom: 30px;
+	margin-left: -128px;
+}
+.popup2 .show {
+	visibility: visible;
+}
+.popup3 {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	user-select: none;
+	margin-right: 15px;
+}
+.popup3 .popuptext3 {
+	visibility: hidden;
+	width: 190px;
+	height: 245px;
+	background-color: white;
+	border-radius: 6px;
+	border-color: black;
+	border-style: solid;
+	position: absolute;
+	z-index: 1;
+	top: -133px;
+	margin-left: 41px;
+}
+.popup3 .show {
+	visibility: visible;
+}
+.container{
+	border-style: solid 5px;
+	border-radius: 2px;
+	border-color: black;
+	padding: 10px 0px 10px 10px;
+	margin:  10px 10px 10px 10px;
+	background-color: #F8D48B;
+}
+.body_dark_mode .container{
+	background-color: #8750e1;
+}
+.power_runes{
+	background-image: url(image/runes/runes-power.png);
+	background-repeat: no-repeat;
+	height: 155px;
+}
+.saviour_runes{
+	background-image: url(image/runes/runes-saviour.png);
+	background-repeat: no-repeat;
+	height: 155px;
+}
+.recovery_runes{
+	background-image: url(image/runes/runes-recovery.png);
+	height: 155px;
+	background-repeat: no-repeat;
+}
+.courage_runes{
+	background-image: url(image/runes/runes-courage.png);
+	height: 177px;
+	background-repeat: no-repeat;
+}
+.luck_runes{
+	background-image: url(image/runes/runes-luck.png);
+	height: 155px;
+	background-repeat: no-repeat;
+}
+.runes input{
+	border: none;
+	background-color: blue;
+	color: white;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+.runes_form{
+	display: grid;
+}
+#id_power_attack_flat{
+	margin: 42px 0 0 68px;
+	width: 70px;
+}
+#id_power_attack_var{
+	margin: 25px 0 0 68px;
+	width: 65px;
+}
+#id_saviour_hp_flat{
+	margin: 42px 0 0 72px;
+	width: 65px;
+}
+#id_saviour_hp_var{
+	margin: 25px 0 0 72px;
+	width: 65px;
+}
+#id_recovery_hp_flat{
+	margin: 63px 0 0 71px;
+	width: 65px;
+}
+#id_luck_hp_flat{
+	margin: 42px 0 0 72px;
+	width: 65px;
+}
+#id_luck_hp_var{
+	margin: 4px 0 0 72px;
+	width: 65px;
+}
+#id_courage_attack_flat{
+	margin: 43px 0 0 66px;
+	width: 50px;
+}
+#id_courage_attack_var{
+	margin: 3px 0 0 66px;
+	width: 48px;
+}
+#id_courage_hero_attack_flat{
+	margin: 4px 0 0 73px;
+	width: 44px;
+}
+#id_courage_hero_attack_var{
+	margin: 3px 0 0 63px;
+	width: 44px;
+}
+#id_courage_hero_hp_flat{
+	margin: 3px 0 0 47px;
+	width: 44px;
+}
+#id_courage_hero_hp_var{
+	margin: 4px 0 0 45px;
+	width: 44px;
+}
+#id_selected_hero_courage_attack_flat,#id_selected_hero_courage_attack_var,#id_selected_hero_courage_hp_flat,#id_selected_hero_courage_hp_var{
+	margin-left: 2px;
+	width: 56px;
+}
+.submit-input{
+	margin-left: 45%;
+	color: #fff;
+    background-color: #007bff;
+    font-weight: 400;
+    white-space: nowrap;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+	margin-bottom: 10px;
+    text-align: center;
+	cursor: pointer;
+}
+.jewel_table{
+	padding: 25px 0 0 12px;
+}
+.body_dark_mode .jewel_table{
+	filter: drop-shadow(2px 4px 6px black);
+}
+.body_dark_mode .jewel_table th{
+	color: rgb(228, 228, 228);
+}
+.weapon_jewel_table{background-repeat: no-repeat;background-image: url(image/background/jewel_weapon_background.png);}
+.armor_jewel_table{background-repeat: no-repeat;background-image: url(image/background/jewel_armor_background.png);}
+.ring1_jewel_table, .ring2_jewel_table{background-repeat: no-repeat;background-image: url(image/background/jewel_ring_background.png);}
+.pet1_jewel_table, .pet2_jewel_table{background-repeat: no-repeat;background-image: url(image/background/jewel_pet_background.png);}
+.bracelet_jewel_table{background-repeat: no-repeat;background-image: url(image/background/jewel_bracelet_background.png);}
+.locket_jewel_table{background-repeat: no-repeat;background-image: url(image/background/jewel_locket_background.png);}
+.book_jewel_table{background-repeat: no-repeat;background-image: url(image/background/jewel_book_background.png);}
+.dragon_form input{
+	width: 40px;
+	text-align: center;
+}
+.ingame-name{
+	text-align: center;
+	font-size: 20px;
+	font-family: "Rubik";
+	margin-top: 15px;
+}
+.body_dark_mode .ingame-name{
+	color: rgb(228, 228, 228);
+}
+.owner-error, .value-error{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+input:invalid {
+	border: red solid 3px;
+}
+.fa-percent{
+	color: white;
+	position: relative;
+	left: -14px;
+	top: 1px;
+}
+.about{
+	padding: 10px 10px 10px 10px;
+    box-shadow: inset 0px 0px 20px 3px white;
+    background-color: #F8D48B;
+    color: black;
+    width: fit-content;
+	font-weight: bold;
+	border-style: none;
+	border-radius: 10px;
+}
+.body_dark_mode .about{
+	background-color: #8750e1;
+	box-shadow: inset 0px 0px 20px 3px aliceblue;
+}
+.error_data_missing{
+	display: flex;
+	flex-direction: row;
+	font-weight: bold;
+	font-size: medium;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+.error_form{
+	display: flex;
+	flex-direction: row;
+	font-weight: bold;
+	font-size: medium;
+	text-align: center;
+	margin-bottom: 10px;
+	justify-content: center;
+	align-items: center;
+}
+.fa-exclamation-triangle{
+	color: white;
+    min-height: 19px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: #FF5555;
+    border-radius: 10px 0 0 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 2px 10px 2px 10px;
+}
+.id_error_msg{
+	background-color: white;
+    color: #FF5555;
+    min-height: 19px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 0 10px 10px 0;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 2px 10px 2px 10px;
+}
+.owner-error-child{
+	padding: 10px 10px 10px 10px;
+    box-shadow: inset 0px 0px 20px 3px white;
+    background-color: #F8D48B;
+    color: black;
+	font-weight: bold;
+	margin-top: 10px;
+	border-style: none;
+	border-radius: 10px;
+	width: fit-content;
+}
+.jewel_form input{
+	width: 45px;
+}
+.refine_help_image{
+	width: 100%;
+	height: auto;
+}
+/*       INDEX.HTML          */
+/*       INDEX.HTML          */
+/*       INDEX.HTML          */
+/*       INDEX.HTML          */
+/*       INDEX.HTML          */
+/*       INDEX.HTML          */
+/*       INDEX.HTML          */
+.div_formulaire{
+	font-family: "Rubik";
+	font-weight: bold;
+	padding: 10px 20px 10px 20px;
+	background-color: #6CB4EE;
+    border-style: solid;
+    border-radius: 6px;
+    border-width: 1px;
+    text-align: center;
+}
+.div_formulaire a{
+	color: white;
+    text-decoration: none;
+}
+.body_dark_mode .div_formulaire{
+	background: radial-gradient(ellipse at top, #8750e1, #6539b2);
+}
+.body_dark_mode .div_formulaire a{
+	color: rgb(228, 228, 228);
+}
+.main-index{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	height: 100%;
+}
+.btn-table{
+	line-height: 1;
+	display: inline-block;
+	font-size: 0.9rem;
+	text-decoration: none;
+	border-radius: 5px;
+	color: black;
+	padding: 6px;
+	background-color: #F8D48B;
+	border: solid 1px;
+	cursor: pointer;
+}
+.body_dark_mode .btn-table{
+	background: #4a5162;
+	color: rgb(228, 228, 228);
+	border: solid 1px #1C1459;
+}
+.div-table-index{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+.index-table{
+	text-align: center;
+	align-items: center;
+	display: table;
+	box-sizing: border-box;
+	border-collapse: separate;
+	text-indent: initial;
+	border-spacing: 0px;
+	border-color:grey;
+}
+.overflow_index_table{
+	display: block;
+	flex-direction: column;
+}
+.table-content > tr:nth-child(2n+2) td {
+    background-color: #293541;
+}
+.body_dark_mode .table-content > tr td {
+	background-color: transparent;
+}
+.body_dark_mode .table-content > tr:nth-child(2n+2){
+	/* background-color: rgb(54, 57, 63); */
+	background-color: #36393f;
+}
+.body_dark_mode .table-content > tr:nth-child(2n+1){
+	/* background-color: rgb(70 74 82); */
+	background-color: #2f3136;
+}
+.table-header{
+	vertical-align: middle;
+    border-color: inherit;
+	display: table-header-group;
+}
+.table-header th{
+	text-align: left;
+	background-color: #202932;
+    color: #fff;
+    border: 1px solid #202932;
+}
+.body_dark_mode .table-header{
+	background-color: #8750e1;
+}
+.body_dark_mode .table-header th{
+	background-color: transparent;
+	color: rgb(228, 228, 228);
+}
+.index-table td{
+	text-align: left;
+	background-color: #2c3845;
+	border: solid 1px #28333f;
+}
+.table-content{
+	display: table-row-group;
+	height: 10px;
+	color: white;
+}
+.body_dark_mode .table-content{
+	color: rgb(228, 228, 228);
+}
+.index-table th:first-child{
+	border-radius: 10px 0 0 0;
+}
+.index-table th:last-child{
+	border-radius: 0 10px 0 0;
+}
+.index-table tr:last-child td:first-child{
+	border-radius: 0 0 0 10px;
+}
+.index-table tr:last-child td:last-child{
+	border-radius: 0 0 10px 0;
+}
+/*       ANIMATION          */
+/*       ANIMATION          */
+/*       ANIMATION          */
+/*       ANIMATION          */
+/*       ANIMATION          */
+/*       ANIMATION          */
+/*       ANIMATION          */
+.button-jewel{
+    position: relative;
+    background-color: transparent;
+	left: 118px;
+	top: 2px;
+}
+.button-dragon{
+    position: relative;
+    background-color: transparent;
+	left: 135px;
+	top: -93px;
+}
+.img-light1{
+	position: relative;
+	background-color: transparent;
+	width: 205px;
+	left: -210px;
+	top: 65px;
+}
+.img-light2{
+	position: relative;
+	background-color: transparent;
+	width: 205px;
+	left: 260px;
+	top: 55px;
+}
+.orb-jewel{
+	position: relative;
+	top: 200px;
+}
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+    from {
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rotating {
+    from {
+      -ms-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -ms-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  .rotating {
+    -webkit-animation: rotating 5s linear infinite;
+    -moz-animation: rotating 5s linear infinite;
+    -ms-animation: rotating 5s linear infinite;
+    -o-animation: rotating 5s linear infinite;
+    animation: rotating 5s linear infinite;
+	filter: blur(4px);
+  }
+
+.img-test{
+	position: relative;
+	width: 548px;
+}

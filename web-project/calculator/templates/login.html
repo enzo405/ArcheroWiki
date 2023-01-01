@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.12.4 %}">
+	<link rel="icon" type="image/ong" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="{% static 'img-01.png' %}" alt="IMG">
+				</div>
+				<div class="form-row">
+					<span class="login100-form-title">Login</span>
+					<div class="wrap-input100 validate-input">
+						<fieldset class="fieldset-input">
+							<legend>Username</legend>
+							<input id="username" type="text" placeholder="">
+						</fieldset>
+						<fieldset class="fieldset-input">
+							<legend>Ingame ID</legend>	
+							<input id="ingameid" type="text" placeholder="1-234567">
+						</fieldset>
+					</div>
+					<div class="container-login100-form-btn">
+						<input id="sumbit-btn" class="login100-form-btn" type="submit" value="Log in">
+						</div>
+						<div class="text-center p-t-136">
+							<a class="txt2" id="visitor">
+								Just visits as a Visitor
+								<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var submit_btn = document.getElementById('sumbit-btn');
+		var visitor= document.getElementById('visitor');
+		var re_check_id = /^[0-9](-)[0-9]{6,20}$/
+
+		/*DELETE IF VISITOR*/
+		document.cookie = 'visitor=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+
+		submit_btn.addEventListener('click', function(){
+			var username = document.getElementById("username").value;
+			var ingameid = document.getElementById("ingameid").value;
+			if(username != null && username.length >= 3 && ingameid.match(re_check_id) && username != "visitor"){
+				var date = new Date()
+				date.setTime(date.getTime() + (365*24*60*60*1000));
+				var usernamelower = username.toLowerCase()
+				document.cookie = usernamelower + "=" + ingameid + "; expires=" + date.toUTCString() + "; path=/";
+				window.location.href = "/"
+			}else if(username != null && username.length >= 3 && !ingameid.match(re_check_id)){
+				alert("Your id must fit this format: X-XXXXXXX")
+			}else if(username=="visitor"){
+				alert("You can't put this username")
+			}
+			var cookieArr = document.cookie
+			if (cookieArr.includes(" windowInnerHeight") && cookieArr.includes(" windowInnerWidth")){
+				return
+			}else {
+				document.cookie = "windowInnerHeight" + "=" + window.innerHeight +  "; path=/";
+				document.cookie = "windowInnerWidth" + "=" + window.innerWidth +  "; path=/";
+			}
+		})
+
+		visitor.addEventListener('click', function(){
+			var date = new Date()
+			date.setTime(date.getTime() + (365*24*60*60*1000));
+			document.cookie = "visitor" + "=" + "0-000000" + "; expires=" + date.toUTCString() + "; path=/";
+			window.location.href = "/calculator/index/"
+			})
+	</script>
+</body>
+</html>

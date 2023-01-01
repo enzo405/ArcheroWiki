@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% load static %}
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.12.4 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.12.4 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.12.4 %}">
+		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Welcome to Wiki - Maze</title>
+		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
+	</head>
+{% if darkmode == "yes" %}
+<body class="body_maze body_dark_mode">
+{% elif darkmode == "no" %}
+<body>
+{% endif %}
+	<div class="main-container">
+		<div class="sidebar" id="sidebar">
+			<div class="sidebar-icon" id="sidebar-icon">
+				<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
+				<div class="rightsidebarc" id="rscimg">
+					<svg id="svg-filter-sidebar"width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
+				</div>
+			</div>
+			<div class="traveling">
+				<div class="traveling-inline-div" onclick="location.href='/'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Home</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" id="svg-filter-home" data="\static\image\svg\uicommon-home.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/calculator/index/'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Stats</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\stats.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/menu'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Wiki</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\altar-hero-entrance.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/item'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Item</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\icon_stuff.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/skill-list'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Skill</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\random-ability.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/runes'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Runes</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\runes.svg" width="21" height="21" style="cursor: pointer;"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/archive'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Sheet</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\sheet.svg" width="21" height="21" style="cursor: pointer;"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/maze'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Maze</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\tower-entrance.svg" width="21" height="21" style="cursor: pointer;"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" id="switch_dark_mode">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Theme</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						{% if darkmode == "yes" %}<object data="\static\image\svg\moon.svg" type="image/png"  width="21" height="21" id="darkmodeSWITCH" style="cursor: pointer;"></object>{% elif darkmode == "no" %}<object data="\static\image\svg\sun.svg" type="image/png"  id="darkmodeSWITCH" width="21" height="21" style="cursor: pointer;"></object>{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="maze-container-main cmcath">
+			<header class="header-container">
+				<h2>{{ header_msg }}</h2>
+			</header>
+			<main class="maze-main" id="main">
+			</main>
+		</div>
+	</div>
+</body>
+
+<!--SCRIPT API MADE BY Tigershark14#8188 on discord-->
+<script>
+	var sidebarBtn = document.getElementById('sidebar-icon');
+	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
+		var sidebar = document.getElementById("sidebar")
+		sidebar.classList.toggle('sidebar-active')
+	})
+
+	let list = document.getElementById("main");
+
+	let author = document.createElement("p");
+	author.innerText = "Author: Tigershark14\nCreated: October 3rd, 2022"
+	list.appendChild(author);
+	let contents = document.createElement("h2");
+	contents.innerText  = "Contents"
+	list.appendChild(contents);
+	let contentsList = document.createElement("div");
+	list.appendChild(contentsList);
+	contentsList.id = "week-link"
+	let all_week_div = document.createElement("div");
+	all_week_div.id = "all_week_div"
+	list.appendChild(all_week_div)
+	let mainWeek = document.getElementById('all_week_div')
+	const maze_data_str = '{{ data_json }}'.replaceAll("&#x27","'").replaceAll("';",'"');
+	const maze = JSON.parse(maze_data_str)
+
+	let data = Object.values(maze.MazeLine).map((e)=>[e.ID, new Map(e.Line.replaceAll("a", "🟢").replaceAll("b", "🔵").replaceAll("c", "🟣").replaceAll("d", "🟠").replaceAll(",", " ").split("|").map(f => f.includes(";") ? f.split(";") : ["start", f] ))])
+
+	// first index is if it was in previous record, second is if it will display in this record.
+	let green = [true, true];
+	let blue = [true, true];
+	let purple = [true, true];
+	let gold = [false, false];
+
+	data.forEach((item)=>{
+		if(item[0]%1000 == 0) {
+			let dateConfig = maze.MazeConfig.filter(e => e.Line == item[0]);
+			let solution_content = document.createElement("div"); 
+			let linkToTop = document.createElement("a");
+			let linkToWeek = document.createElement("a");
+			let h2 = document.createElement("h2");
+			let dateList = document.createElement("div");
+			dateList.className = "dateListItem"
+
+			solution_content.id = "week_" + dateConfig[0].Line/1000;
+			solution_content.className = "weeks"
+			linkToTop.id = "linktotop-btn"
+
+			h2.innerText += "Week " + dateConfig[0].Line/1000;
+			linkToTop.innerText = "Go on top   "
+			h2.id = h2.innerText.replaceAll(" ", "_");
+			linkToWeek.innerText = h2.innerText;
+
+			linkToTop.href = "#top"
+			linkToWeek.href = "#" + h2.id;
+
+			solution_content.appendChild(linkToTop)
+			mainWeek.appendChild(solution_content)
+			contentsList.appendChild(linkToWeek);
+			solution_content.appendChild(h2);
+			solution_content.appendChild(dateList);
+
+			dateConfig.forEach(d=> {
+				let dateListItem = document.createElement("li");
+				dateListItem.innerText += " " + new Intl.DateTimeFormat('en-US', { timeZone: "UTC", dateStyle: "medium", timeStyle: "long" }).format(new Date(d.StartTime * 1000))
+				dateListItem.innerText += " - " + new Intl.DateTimeFormat('en-US', { timeZone: "UTC", dateStyle: "medium", timeStyle: "long" }).format(new Date(d.EndTime * 1000));
+
+				dateList.appendChild(dateListItem);
+			})
+		}
+
+		let dt = document.createElement("dt");
+		let parentDiv = document.getElementById("week_" + item[0].toString()[0])
+		dt.innerText += item[0]%1000;
+		parentDiv.appendChild(dt);
+
+		if(green[0] == true) green[1] = true;
+		else if(green[0] == false) green[1] = false;
+
+		if(blue[0] == true) blue[1] = true;
+		else if(blue[0] == false) blue[1] = false;
+
+		if(purple[0] == true) purple[1] = true;
+		else if(purple[0] == false) purple[1] = false;
+
+		if(gold[0] == true) gold[1] = true;
+		else if(gold[0] == false) gold[1] = false;
+
+		green[0] = false;
+		blue[0] = false;
+		purple[0] = false;
+		gold[0] = false;
+
+		item[1].forEach((value, key, map) => {
+			//console.log(key, green, blue, purple, gold)
+			if(key == "start" || (green[1] == true && key == "🟢") || (blue[1] == true && key == "🔵") || (purple[1] == true && key == "🟣") || (gold[1] == true && key == "🟠")) {
+			//console.log(key)
+			if(value.includes("🟢")) green[0] = true;
+			if(value.includes("🔵")) blue[0] = true;
+			if(value.includes("🟣")) purple[0] = true;
+			if(value.includes("🟠")) gold[0] = true;
+
+			let dd = document.createElement("dd");
+			dd.innerText = key + " ▶ " + value
+			parentDiv.appendChild(dd);
+			}})})
+</script>
+<script>
+	var switchModeBtn = document.getElementById('switch_dark_mode');
+
+	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
+		var date = new Date()
+		var darkmodeSWITCH = document.getElementById('darkmodeSWITCH')
+		date.setTime(date.getTime() + (365*24*60*60*1000));
+		var body = document.body;
+		body.classList.toggle("body_dark_mode");
+		if(body.className == "body_dark_mode"){
+			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
+			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\moon.svg")
+		}else{
+			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\sun.svg")
+		}
+	})
+</script>
+</html>

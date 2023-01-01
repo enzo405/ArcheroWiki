@@ -1,0 +1,207 @@
+@media screen and (max-width : 1070px){ /* pour résolution inférieur à 1070 */
+	.footer-content{
+		display: flex;
+		flex-direction: row;
+	}
+	footer{
+		padding: 16px 0px 12px 0px;
+	}
+	.footer-img-icon{
+		margin-left: 12px;
+		margin-right: 12px;
+		width: 100px;
+		text-align: center;
+	}
+	.footer-about{
+		font-size: small;
+	}
+	.discord_link{
+		font-size: small;
+	}
+	.thanks{
+		margin-left: 10px;
+		font-size: small;
+		color: #CCCCCC;
+	}
+}
+
+
+@media screen and (min-width : 1070px){ /* pour résolution supérieux à 1070px */	
+	footer{
+		padding: 16px 0px 12px 0px;
+	}
+	.footer-about{
+		padding-left: 10px;
+	}
+	.thanks{
+		margin-left: 16px;
+		font-size: small;
+		color: white;
+	}
+	.footer-content{
+		display: flex;
+		gap: 40px;
+		flex-direction: row;
+		font-size: small;
+	}
+	.footer-img-icon{
+		margin-left: 12px;
+		margin-right: 12px;
+		width: 100px;
+		text-align: center;
+	}
+}
+
+
+@media screen and (max-width: 780px){ /* pour résolution inférieur à 780px */
+	.footer-content{
+		display: flex;
+		flex-direction: row;
+	}
+	footer{
+		padding: 16px 0px 12px 0px;
+	}
+	.footer-img-icon{
+		justify-content: center;
+	}
+	.discord_link{
+		display: none;
+	}
+	.footer-about{
+		font-size: x-small;
+		margin-left: 10px;
+	}
+	.thanks{
+		margin-left: 10px;
+		font-size: x-small;
+		color: #CCCCCC;
+	}
+}
+
+
+@media screen and (min-width : 547px){/* pour résolution supérieur à 547px */
+	.footer-affiche{
+		margin-top: 10px;
+	}
+}
+
+@media screen and (max-width : 546px){/* pour résolution inférieur à 546px */
+	.footer-affiche{
+		margin-top: 20px;
+	}
+}
+
+@media screen and (max-width : 400px){/* pour résolution inférieur à 400px */
+	.footer-content{
+		display: flex;
+		flex-direction: column;
+		margin-left: 10px;
+	}
+	.footer-about, .thanks{
+		margin-left: 0px;
+	}
+	.about-content *{
+		font-size: small;
+	}
+	.footer-img-icon{
+		width: 25%;
+		border-radius: 10px;
+	}
+	.thanks{
+		display: none;
+	}
+}
+
+@media screen and (min-width : 250px){/* pour résolution inférieur à 400px */
+	.footer-about{
+		flex-direction: row;
+	}
+}
+
+
+@media screen and (max-width : 250px){/* pour résolution inférieur à 400px */
+	.footer-about{
+		flex-direction: column;
+		gap: 10px;
+	}
+	.footer-about:first-child{
+		align-items: start;
+	}
+	.thanks{
+		display: none;
+	}
+	footer h2{
+		display: none;
+	}
+	.footer-img-icon{
+		width: 30%;
+	}
+}
+
+.contact-me{
+	text-decoration: none;
+	color: black;
+}
+footer{
+	background-color: #263238;
+	width: 100%;
+	z-index: 999;
+}
+.thanks{
+	align-items: center;
+	list-style: none;
+	margin-left: 10px;
+}
+.discord_link a{
+	text-decoration: none;
+	list-style: none;
+}
+.discord_link li:hover:before{
+	color: #551A8B;
+}
+.discord_link li:before{
+	content: "\f392";
+	font-family: FontAwesome;
+	display: inline-block;
+}
+.me-discord-link{
+	text-decoration: none;
+	color: whitesmoke;
+}
+footer h1, footer h2{
+	color: white;
+}
+.body_dark_mode footer h1, .body_dark_mode footer h2, .body_dark_mode .me-discord-link{
+	color: #E4E4E4;
+}
+footer div, footer li{
+	color: #CCCCCC;
+}
+.footer-img-icon{
+	object-fit: contain;
+	border-radius: 10px;
+}
+.footer-about{
+	display: flex;
+	margin-right: 10px;
+}
+.footer-menu{
+	position: absolute;
+	bottom: 0px;
+}
+
+
+
+
+
+
+/* DARK THEME */
+.body_dark_mode .footer_dark_mode{
+    background-color: #1c2429;
+}
+.body_dark_mode .footer_dark_mode *{
+    color: #E4E4E4;
+}
+.footer-margin{
+	margin-top: 100px;
+}

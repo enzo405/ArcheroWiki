@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+	{% load static %}
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.12.4 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.12.4 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.12.4 %}">
+	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Welcome to Wiki - Calculator</title>
+	<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
+</head>
+{% if darkmode == "yes" %}
+<body class="body_dark_mode">
+{% elif darkmode == "no" %}
+<body>
+{% endif %}
+	<div class="main-container">
+		<div class="sidebar" id="sidebar">
+			<div class="sidebar-icon" id="sidebar-icon">
+				<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
+				<div class="rightsidebarc" id="rscimg">
+					<svg id="svg-filter-sidebar"width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
+				</div>
+			</div>
+			<div class="traveling">
+				<div class="traveling-inline-div" onclick="location.href='/'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Home</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a href="/" class="shcr"><object type="image/png" id="svg-filter-home" data="\static\image\svg\uicommon-home.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/calculator/index/'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Stats</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a href="/" class="shcr"><object type="image/png" data="\static\image\svg\stats.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/menu'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Wiki</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\altar-hero-entrance.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/item'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Item</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\icon_stuff.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/skill-list'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Skill</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\random-ability.svg" width="21" height="21"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/runes'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Runes</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\runes.svg" width="21" height="21" style="cursor: pointer;"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/archive'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Sheet</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a class="shcr"><object type="image/png" data="\static\image\svg\sheet.svg" width="21" height="21" style="cursor: pointer;"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" onclick="location.href='/wiki/maze'">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Maze</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						<a href="/" class="shcr"><object type="image/png" data="\static\image\svg\tower-entrance.svg" width="21" height="21" style="cursor: pointer;"></object></a>
+					</div>
+				</div>
+				<div class="traveling-inline-div" id="switch_dark_mode">
+					<div class="leftsidebarc traveling-left">
+						<div class="shcl">Theme</div>
+					</div>
+					<div class="rightsidebarc traveling-right">
+						{% if darkmode == "yes" %}<object data="\static\image\svg\moon.svg" type="image/png"  width="21" height="21" id="darkmodeSWITCH" style="cursor: pointer;"></object>{% elif darkmode == "no" %}<object data="\static\image\svg\sun.svg" type="image/png"  id="darkmodeSWITCH" width="21" height="21" style="cursor: pointer;"></object>{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<main class="main-menu cmcath">
+			<header class="header-container">
+				<h2>{{ header_msg }}</h2>
+			</header>
+			<div class="main-index">
+				{% if show_table == "no_profile" %}
+				<div class="div_formulaire">
+					<a href="/calculator/create/">Create profile</a>
+				</div>
+				{% endif %}
+				<div class="div-table-index">
+					{% if show_table == "yes" %}
+					<table class="index-table self-table">
+						<thead class="table-header">
+							<tr>
+								<th>Username</th>
+								<th class="self_table_atk_row">Attack</th>
+								<th class="self_table_hp_row">Hp</th>
+								<th>Show</th>
+								<th>Update</th>
+							</tr>
+						</thead>
+						<tbody class="table-content">
+						<tr>
+							<td>{{ self_ingame_name }}</td>
+							<td class="self_table_atk_row">{{ self_global_atk_save }}</td>
+							<td class="self_table_hp_row">{{ self_global_hp_save }}</td>
+							<td><a onclick='send_2Urltoken("{{ self_ingame_id }}")'><button class="btn-table">Show</button></a></td>
+							<td><a onclick='send_2UrltokenUpdate("{{ self_ingame_id }}")'><button class="btn-table">Update</button></a></td>
+						</tr>
+						</tbody>
+					</table>
+					{% elif show_table == "visitor" %}
+					<div class="div_formulaire">
+						<a href="/login">Log-in</a>
+					</div>
+					{% elif show_table == "no_profile" %}
+					{% endif %}
+					<table class="index-table overflow_index_table">
+						<thead class="table-header">
+							<tr>
+								<th>Username</th>
+								<th class="hero_row">Hero</th>
+								<th>Attack</th>
+								<th>Hp</th>
+								<th>Show</th>
+							</tr>
+						</thead>
+						<tbody class="table-content">
+						{% for l in listALL %}
+						<tr>
+							<td>{{ l.ingame_name }}</td>
+							<td class="hero_row">{{ l.choosen_hero }}</td>
+							<td>{{ l.global_atk_save }}</td>
+							<td>{{ l.global_hp_save }}</td>
+							<td><a onclick='send_2Urltoken("{{ l.ingame_id }}")'><button class="btn-table">Show</button></a></td>
+						</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+	</div>
+	<footer>
+		<div class="footer-content">
+			<div class="footer-about">
+				<img class="footer-img-icon" src="/static/image/archero_icon.png">
+				<div class="about-content">
+					<h2>Archero :</h2>
+					<div>Archero Update will be added with a certains delay</div>
+					<div class="contact-me">
+						<div>If you encounter any bugs / anomaly please contact me on discord</div>
+						<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+					</div>
+				</div>
+			</div>
+			<div class="discord_link">
+				<h2>Discord Server:</h2> 
+				<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMuthique's Server</li></a>
+				<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+				<a href="https://discord.gg/cyjJ8jRrJT" target="_blank"><li> iPickMyBUTT's Server</li></a>
+				<a href="https://discord.gg/dMTxzRTeXA" target="_blank"><li> adaYTgaming's Server</li></a>
+			</div>
+			<div class="thanks">
+				<h2>Shout-out :</h2>
+				<div class="shout-out">SonHaon#1631, Ktaplouf#0507</div>
+				<div class="shout-out">Pew#6775, Deth#7087, Tigershark14#8188</div>
+				<div class="shout-out">Everyone who helped me getting data</div>
+			</div>
+		</div>
+	</footer>
+</body>
+<script>
+	var sidebarBtn = document.getElementById('sidebar-icon');
+	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
+		var sidebar = document.getElementById("sidebar")
+		sidebar.classList.toggle('sidebar-active')
+	})
+	function checkCookie() {
+		var cookieArr = document.cookie.split(";")
+		var listPopKey = [' csrftoken',' windowInnerHeight',' windowInnerWidth',' modeDisplay','csrftoken','windowInnerHeight','windowInnerWidth','modeDisplay']
+		var emptyObj = {}
+		var result = listPopKey.forEach(key => {
+			cookieArr = cookieArr.filter(string => string.split("=")[0]!=key);
+			emptyObj = Object.assign(emptyObj, {"ingame_name":cookieArr});
+		});
+		if (emptyObj.ingame_name.length >= 1 && emptyObj.ingame_name != ""){
+			var cookie_values = document.cookie.split(";");
+			var cookie_value_username = cookie_values[0].split("=");
+		}else {
+			window.location.href = "/login/"
+			}
+		}
+	document.addEventListener('DOMContentLoaded', function(){checkCookie();},false)
+
+	function choose(choices) {
+		var index = Math.floor(Math.random() * choices.length);
+		return choices[index];
+	}
+
+	function send_2Urltoken(itoken){
+		var itoken2 = itoken.replace('-','');
+		var token_result = ''
+		var token_list_for_loop = itoken2.split("");
+		for(element of token_list_for_loop){
+			all_string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			for(y=12;y>0;y--){
+			element += choose(all_string)
+			}
+			var token_list = element.split("")
+			var shuffledArray = token_list.sort((a, b) => 0.5 - Math.random());
+			result_first_string = shuffledArray.join("")
+			token_result += result_first_string
+		}
+		window.location.href = "/calculator/show/" + token_result + "/"
+	}
+
+	function send_2UrltokenUpdate(itoken){
+	var itoken2 = itoken.replace('-','');
+	var token_result = ''
+	var token_list_for_loop = itoken2.split("");
+	for(element of token_list_for_loop){
+		all_string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		for(y=12;y>0;y--){
+		element += choose(all_string)
+		}
+		var token_list = element.split("")
+		var shuffledArray = token_list.sort((a, b) => 0.5 - Math.random());
+		result_first_string = shuffledArray.join("")
+		token_result += result_first_string
+	}
+	window.location.href = "/calculator/update/" + token_result + "/"
+	}
+</script>
+<script>
+	var switchModeBtn = document.getElementById('switch_dark_mode');
+
+	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
+		var date = new Date()
+		var darkmodeSWITCH = document.getElementById('darkmodeSWITCH')
+		date.setTime(date.getTime() + (365*24*60*60*1000));
+		var body = document.body;
+		body.classList.toggle("body_dark_mode");
+		if(body.className == "body_dark_mode"){
+			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
+			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\moon.svg")
+		}else{
+			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\sun.svg")
+		}
+	})
+</script>
+</html>
