@@ -394,24 +394,16 @@
 	display: flex;
 	justify-content: center;
 }
-.glyphs_explanation{
-	background: #36323854;
+.glyphs_explanation, .refinement_explanation{
     padding: 3px;
-	border-radius: 5px;
 }
 .body_dark_mode .quickraid p a{
 	color: ivory;
 }
-.body_dark_mode .glyphs_explanation{
-	/* background-color: rgb(47, 49, 54); */
-	background-color: transparent;
-	color: whitesmoke;
-	text-shadow: 0px 0px 3px orangered;
-}
-.body_dark_mode .altar_cost_content, .body_dark_mode .flex-box .egg_stats_content{
+.body_dark_mode .altar_cost_content, .body_dark_mode .flex-box .egg_stats_content, .body_dark_mode .hidden_stats_content, .body_dark_mode .glyphs_explanation, .body_dark_mode .refinement_explanation{
 	border-radius: 5px;
 	color: black;
-	background-color: #255e75;
+	background-color: #434b58;
 }
 .body_dark_mode .sec-half-altar{
 	padding-top: 6px;
@@ -420,7 +412,7 @@
 	color: #c58af9;
 	text-decoration: none;
 }
-.body_dark_mode .hidden_stats_content, .body_dark_mode .item_price_content, .body_dark_mode .weeks{
+.body_dark_mode .weeks{
 	color: white;
 }
 .body_dark_mode #week_1,.body_dark_mode #week_2,
@@ -519,19 +511,18 @@
 }
 .comming-soon{
 	position: absolute;
-	width: -webkit-fill-available;
+	width: 80%;
 	top: 34%;
 	font-size: xx-large;
 	font-weight: 900;
-	z-index: 999;
 	background-color: #ffff;
 	box-shadow: 2px 5px 36px 23px #000000;
 	display: flex;
+	flex-direction: column;
 	text-align: center;
 	justify-content: center;
 	padding: 10px;
 	border-radius: 4px;
-	margin: 0 10px 0 10px;
 }
 /* DARK THEME */
 .body_dark_mode{
@@ -710,4 +701,48 @@
 	text-transform: capitalize;
 	width: 100%;
 	font-weight: bold;
+}
+.get-back-ies{
+	color: darkblue;
+	cursor: pointer;
+}
+.msg-admin-ies{
+	color: black;
+	font-size: large;
+	font-style: italic;
+}
+.body_dark_mode .fa-info-circle{
+	color: white;
+}
+
+
+
+.popup {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	user-select: none;
+	font-size: 78%;
+	margin-right: 15px;
+}
+.popup_container {
+	visibility: hidden;
+	width: auto;
+	max-width: 450px;
+	height: auto;
+	background-color: white;
+	font-size: medium;
+	color: black;
+	text-align: center;
+	border-radius: 6px;
+	border-color: black;
+	border-style: solid;
+	position: absolute;
+	padding: 6px;
+	z-index: 1;
+	margin-bottom: 75px;
+	margin-left: 100px;
+}
+.show {
+	visibility: visible;
 }

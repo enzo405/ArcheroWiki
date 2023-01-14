@@ -37,13 +37,6 @@ brave_level_choice = (("1","1"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"
 
 
 
-#	nom = models.CharField(max_length=50, validators=[RegexValidator(r'^([A-Z]([a-z- ])+)+$')])
-#	star_stats1 = models.CharField(max_length=8, blank=True, validators=[RegexValidator(r'^([+-]([0-9-x]){1,4}\%?)?$')])
-#	stats3_10 = models.CharField(max_length=4 ,blank=True,default="-", validators=[RegexValidator(r'^(([0-9 -])+)?$')])
-#	chapterR = models.CharField(max_length=30 ,blank=True, validators=[RegexValidator(r'^(([0-9]{1,2})(( - )[0-9-A-Z]{1,2})*)?$')])
-
-
-
 class user(models.Model):
 	ingame_id = models.CharField(max_length=20,blank=False)
 	ingame_name = models.CharField(max_length=30,blank=False)
@@ -53,7 +46,7 @@ class user(models.Model):
 	brave_privileges_level = models.CharField(max_length=10, choices=brave_level_choice, default="1")
 	atk_base_stats_hero_choosen = models.BigIntegerField(default="100", validators=[MaxValueValidator(6000)])
 	health_base_stats_hero_choosen = models.BigIntegerField(default="400", validators=[MaxValueValidator(20000)])
-		
+
 	def __str__(self):
 		chaine = f"{self.ingame_name}'s stats ({self.ingame_id})"
 		return chaine
@@ -114,7 +107,12 @@ class stuff_table(models.Model):
 					}
 
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine
 
 class hero_table(models.Model):
@@ -194,7 +192,12 @@ class hero_table(models.Model):
 					'elaine_level': self.elaine_level, 'elaine_star': self.elaine_star,
 					}
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine
 
 
@@ -222,7 +225,12 @@ class talent_table(models.Model):
 					'runes_power_up_level': self.runes_power_up_level,
 					}
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine
 
 class skin_table(models.Model):
@@ -237,7 +245,12 @@ class skin_table(models.Model):
 					'skin_attack': self.skin_attack,
 					}
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine
 
 
@@ -258,7 +271,12 @@ class altar_table(models.Model):
 					'heros_altar_ascension': self.heros_altar_ascension,
 					}
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine
 
 
@@ -342,7 +360,12 @@ class jewel_type_table(models.Model):
 					'book_jewel4_type': self.book_jewel4_type,
 					}
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine
 
 
@@ -426,7 +449,12 @@ class jewel_level_table(models.Model):
 					'book_jewel4_level': self.book_jewel4_level,
 					}
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine
 
 
@@ -556,7 +584,12 @@ class egg_table(models.Model):
 				'desert_goliath': self.desert_goliath,
 				}
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine
 
 
@@ -578,7 +611,12 @@ class egg_equipped_table(models.Model):
 					'egg_equipped5': self.egg_equipped5,
 					}
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine
 
 
@@ -615,7 +653,12 @@ class dragon_table(models.Model):
 				'dragon_3_boost_4_mythic': self.dragon_3_boost_4_mythic,
 				}
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine
 
 
@@ -662,7 +705,12 @@ class runes_table(models.Model):
 					'selected_hero_courage_hp_var': self.selected_hero_courage_hp_var,
 					}
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine
 
 
@@ -685,7 +733,12 @@ class reforge_table(models.Model):
 					'reforge_luck': self.reforge_luck,
 					}
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine
 
 
@@ -725,7 +778,12 @@ class refine_table(models.Model):
 				'book_refine_basic_stats': self.book_refine_basic_stats,
 				}
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine
 
 
@@ -780,5 +838,10 @@ class dmg_calc_table(models.Model):
 			}
 
 	def __str__(self):
-		chaine = f"{self.ingame_id}"
+		try:
+			user_stats = user.objects.get(ingame_id=self.ingame_id)
+			chaine = f'{user_stats.ingame_name} | {self.ingame_id}'
+		except Exception as e:
+			print(e)
+			chaine = f"{self.ingame_id}"
 		return chaine

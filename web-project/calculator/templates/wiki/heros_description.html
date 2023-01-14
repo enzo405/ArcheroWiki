@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+	{% load static %}
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.13.4 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.13.4 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.13.4 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.13.4 %}">
+	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Welcome to Wiki</title>
+	<script id="itemdesc" type="application/json" src="/web-project/data.json"></script>
+	<style data-styled="active" data-styled-version="5.2.1"></style>
+	<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
+</head>
+{% if darkmode == "yes" %}
+<body class="body_dark_mode">
+{% elif darkmode == "no" %}
+<body>
+{% endif %}
+	<div class="main-container">
+		<div class="sidebar" id="sidebar">
+			<div class="sidebar-icon" id="sidebar-icon">
+				<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
+				<div class="rightsidebarc" id="rscimg">
+					<svg id="svg-filter-sidebar"width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
+				</div>
+			</div>
+			<div class="traveling" id="traveling">
+				<!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
+			</div>
+		</div>
+		<div class="container cmcath">
+			<header class="header-container">
+				<div class="header-container-1"></div>
+				<div class="header-container-2 header_msg"><h2>{{ header_msg }}</h2></div>
+				<div class="header-container-3 globe_header_icon">
+					<!-- <label for="lang"><i class="fa-solid fa-globe"></i></label>
+					<select name="lang" id="lang">
+						{% for language in lang %}
+						<option value="{{language}}">{{language}}</option>
+						{% endfor %}
+					</select> -->
+				</div>
+			</header>
+			<main class="main-description">
+				<div class="search-bar" id="search-bar">
+					<script>
+						function myFunction() {
+							var input, filter, ul, li, a, i, txtValue;
+							input = document.getElementById('myInput');
+							filter = input.value.toUpperCase();
+							ul = document.getElementById("myUL");
+							li = ul.getElementsByTagName('li');
+
+							for (i = 0; i < li.length; i++) {
+								a = li[i].getElementsByTagName("a")[0];
+								txtValue = a.textContent || a.innerText;
+								if (txtValue.toUpperCase().indexOf(filter) > -1) {
+									li[i].style.display = "";
+								} else {
+									li[i].style.display = "none";
+								}
+							}
+						}
+					</script>
+					<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for items..">
+					<ul id="myUL" style="display: none;">
+						<li value="Atreus"><a id="toggle-display-list" href="heros?Search=Atreus">Atreus</a></li>
+						<li value="Urasil"><a id="toggle-display-list" href="heros?Search=Urasil">Urasil</a></li>
+						<li value="Phoren"><a id="toggle-display-list" href="heros?Search=Phoren">Phoren</a></li>
+						<li value="Taranis"><a id="toggle-display-list" href="heros?Search=Taranis">Taranis</a></li>
+						<li value="Helix"><a id="toggle-display-list" href="heros?Search=Helix">Helix</a></li>
+						<li value="Meowgik"><a id="toggle-display-list" href="heros?Search=Meowgik">Meowgik</a></li>
+						<li value="Shari"><a id="toggle-display-list" href="heros?Search=Shari">Shari</a></li>
+						<li value="Ayana"><a id="toggle-display-list" href="heros?Search=Ayana">Ayana</a></li>
+						<li value="Onir"><a id="toggle-display-list" href="heros?Search=Onir">Onir</a></li>
+						<li value="Rolla"><a id="toggle-display-list" href="heros?Search=Rolla">Rolla</a></li>
+						<li value="Bonnie"><a id="toggle-display-list" href="heros?Search=Bonnie">Bonnie</a></li>
+						<li value="Sylvan"><a id="toggle-display-list" href="heros?Search=Sylvan">Sylvan</a></li>
+						<li value="Shade"><a id="toggle-display-list" href="heros?Search=Shade">Shade</a></li>
+						<li value="Ophelia"><a id="toggle-display-list" href="heros?Search=Ophelia">Ophelia</a></li>
+						<li value="Ryan"><a id="toggle-display-list" href="heros?Search=Ryan">Ryan</a></li>
+						<li value="Lina"><a id="toggle-display-list" href="heros?Search=Lina">Lina</a></li>
+						<li value="Aquea"><a id="toggle-display-list" href="heros?Search=Aquea">Aquea</a></li>
+						<li value="Shingen"><a id="toggle-display-list" href="heros?Search=Shingen">Shingen</a></li>
+						<li value="Gugu"><a id="toggle-display-list" href="heros?Search=Gugu">Gugu</a></li>
+						<li value="Iris"><a id="toggle-display-list" href="heros?Search=Iris">Iris</a></li>
+						<li value="Blazo"><a id="toggle-display-list" href="heros?Search=Blazo">Blazo</a></li>
+						<li value="Melinda"><a id="toggle-display-list" href="heros?Search=Melinda">Melinda</a></li>
+						<li value="Elaine"><a id="toggle-display-list" href="heros?Search=Elaine">Elaine</a></li>
+					</ul>
+				</div>
+				<div class="embed-container">
+					<div class="kn3fae-0 ezpxFx">
+						<div class="sgp62q-0 iuJdTu">
+							<a title="TigerShark's Bot">
+								<img src="/static/image/wiki-image/sylvanpfp3.png" alt="User avatar" class="sgp62q-1 dLWNvE">
+								<h1 class="sgp62q-2 hfwuZw">Sylvan</h1>
+								<span class="sgp62q-3 cTBPsI">BOT</span>
+								<span class="sc-1idsap7-0 dyOqmJ" id="date"></span>
+							</a>
+						</div>
+						<div class="kn3fae-2 eKjosW">
+							<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
+								<div class="sc-3qrykn-0 bdFBtt">
+									<span class="sc-3qrykn-1 bsDYtY">
+										<div class="sc-27l7o2-0 heOpKb" id="name_hero">Atreus</div>
+									</span>
+									<div class="sc-3qrykn-3 hXMbfy">
+										<div class="sc-27l7o2-0 heOpKb" id="hero_description">A rookie archer on his way to become an archer hero</div>
+									</div>
+									<div class="sc-3qrykn-4 hQKgZF">
+										<div class="rgqgux-0 dQAxvm">
+											<div class="rgqgux-1 dHYyKL">
+												<div class="sc-27l7o2-0 heOpKb" style="color: white;">
+													<strong>Stats</strong>
+												</div>
+											</div>
+											<div class="rgqgux-2 jFcAhO">
+												<div class="sc-27l7o2-0 heOpKb">
+													<div id="base_atk"> •  Base Attack: 150 [+8]</div>
+													<div id="base_hp"> •  Base MAX Hp: 600 [+25]</div><br>
+												</div>
+											</div>
+											<div class="rgqgux-1 dHYyKL">
+												<div class="sc-27l7o2-0 heOpKb" style="color: white;">
+													<strong>Attributes</strong>
+												</div>
+											</div>
+											<div class="rgqgux-2 jFcAhO">
+												<div class="sc-27l7o2-0 heOpKb">
+													<div id="lvl_stats">
+														 • Lvl 20: Max HP + 100 [All Heroes]<br>
+														 • Lvl 40: Damage to Ranged Units + 15%<br>
+														 • Lvl 60: Max HP + 4% [All Heroes]<br>
+														 • Lvl 80: Attack Speed + 5%<br>
+														 • Lvl 120: Projectile Resistance + 7% [All Heroes]
+													</div><br>
+												</div>
+											</div>
+											<div class="rgqgux-1 dHYyKL">
+												<div class="sc-27l7o2-0 heOpKb" style="color: white;">
+													<strong>Price</strong>
+												</div>
+											</div>
+											<div class="rgqgux-2 jFcAhO">
+												<div class="sc-27l7o2-0 heOpKb">
+													<div id="price">
+														Free
+													</div>
+												</div>
+											</div>
+											<div class="rgqgux-2 jFcAhO">
+												<div class="sc-27l7o2-0 heOpKb">
+													<div id="skill_details">
+														
+													</div>
+												</div>
+											</div>
+											<div class="rgqgux-2 jFcAhO">
+												<div class="sc-27l7o2-0 heOpKb">
+													<div id="skill">
+														Skill: Atreus does not have a unique ability
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="sc-3qrykn-6 fTOqMH">
+										<img src="/static/image/hero_icon/icon_atreus.png" alt="Thumbnail" class="sc-3qrykn-7 fUliQq" id="hero_image">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="kn3fae-2 eKjosW">
+							<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
+								<div class="sc-3qrykn-0 bdFBtt">
+									<div class="sc-3qrykn-4 hQKgZF">
+										<div class="rgqgux-0 dQAxvm">
+											<div class="rgqgux-2 jFcAhO">
+												<div class="sc-27l7o2-0 heOpKb">
+													<b>1 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
+													<div id="star_1">
+														Patrol Gold Earnings + 4%
+													</div><br>
+													<b>2 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
+													<div id="star_2">
+														Attack + 30 [All Heroes]
+													</div><br>
+													<b>3 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
+													<div id="star_3">
+														Skill - Growth: Acquire a new skill - Growth
+													</div><br>
+													<b>4 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
+													<div id="star_4">
+														Trait - Stubborn: When HP is lower than 20%, HP is restored for a while
+													</div><br>
+													<b>5 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
+													<div id="star_5">
+														Spirit - Upgrade: During Spirit's crit attack, Atreus's attack speed is increased for a while
+													</div><br>
+													<b>6 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
+													<div id="star_6">
+														Growth - Insight: Upgrade speed and Heart droprate increased
+													</div><br>
+													<b>7 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
+													<div id="star_7">
+														Max HP + 800 [All Heroes]
+													</div><br>
+													<b>8 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
+													<div id="star_8">
+														Max HP + 5% [All Heroes]
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<footer class="f-item-desc">
+		<div class="footer-content">
+			<div class="footer-about">
+				<img class="footer-img-icon" src="/static/image/archero_icon.png">
+				<div class="about-content">
+					<h2>Archero :</h2>
+					<div>Archero Update will be added with a certains delay</div>
+					<div class="contact-me">
+						<div>If you encounter any bugs / anomaly please contact me on discord</div>
+						<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+					</div>
+				</div>
+			</div>
+			<div class="discord_link">
+				<div class="container_dlink">
+					<h2>Community Link:</h2> 
+					<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMuthique's Server</li></a>
+					<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+				</div>
+				<div class="container_rlink">
+					<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
+				</div>
+				<div class="container_flink">
+					<a href="https://www.facebook.com/archerogame/" target="_blank"><li> Fb Archero</li></a>
+				</div>
+			</div>
+			<div class="thanks">
+				<h2>Shout-out :</h2>
+				<div class="shout-out">SonHaon, Ktaplouf, Pew, Deth</div>
+				<div class="shout-out">Lovii, Kaseiya, Lorenz, TigerShark14</div>
+				<div class="shout-out">Everyone who helped me getting data</div>
+			</div>
+		</div>
+	</footer>
+</body>
+<script type="module">
+	import sidebar from "/static/json/sidebar.json" assert {type: 'json'};
+
+	const traveling = document.getElementById("traveling")
+
+	for(const item of sidebar["sidebar"]){
+		const parentContainer = document.createElement("div")
+		const leftSidebar = document.createElement("div")
+		const childLeftSidebar = document.createElement("div")
+		const rightSidebar = document.createElement("div")
+		const childRightSidebar = document.createElement("a")
+		const svg = document.createElement("object")
+
+		traveling.appendChild(parentContainer)
+		parentContainer.appendChild(leftSidebar)
+		parentContainer.appendChild(rightSidebar)
+		leftSidebar.appendChild(childLeftSidebar)
+		rightSidebar.appendChild(childRightSidebar)
+		childRightSidebar.appendChild(svg)
+
+		parentContainer.className = item['container']['class']
+		parentContainer.addEventListener('click', function windowHref(){
+			window.location.href = item['container']['onclick']
+		})
+		leftSidebar.className = item['container']['childs_container']['leftsidebar']['self_class']
+		childLeftSidebar.className = item['container']['childs_container']['leftsidebar']['child_class']
+		childLeftSidebar.innerHTML = item['container']['childs_container']['leftsidebar']['child_content']
+		rightSidebar.className = item['container']['childs_container']['rightsidebar']['self_class']
+		childRightSidebar.className = item['container']['childs_container']['rightsidebar']['child_class']
+		svg.type = item['container']['childs_container']['rightsidebar']['child_content']['object_type']
+		svg.id = item['container']['childs_container']['rightsidebar']['child_content']['object_id']
+		svg.data = item['container']['childs_container']['rightsidebar']['child_content']['object_data']
+		svg.width = item['container']['childs_container']['rightsidebar']['child_content']['object_width']
+		svg.height = item['container']['childs_container']['rightsidebar']['child_content']['object_height']
+	}
+
+	const themeParentContainer = document.createElement("div")
+	const themeLeftSidebar = document.createElement("div")
+	const themeChildLeftSidebar = document.createElement("div")
+	const themeRightSidebar = document.createElement("div")
+	const themeSvg = document.createElement("object")
+
+	traveling.appendChild(themeParentContainer)
+	themeParentContainer.appendChild(themeLeftSidebar)
+	themeParentContainer.appendChild(themeRightSidebar)
+	themeLeftSidebar.appendChild(themeChildLeftSidebar)
+	themeRightSidebar.appendChild(themeSvg)
+
+	themeParentContainer.className = "traveling-inline-div"
+	themeParentContainer.id = "switch_dark_mode"
+	themeLeftSidebar.className = "leftsidebarc traveling-left"
+	themeChildLeftSidebar.className = "shcl"
+	themeChildLeftSidebar.innerHTML = "Theme"
+	themeRightSidebar.className = "rightsidebarc traveling-right"
+	themeSvg.type = "image/png"
+	themeSvg.id = "darkmodeSWITCH" 
+	themeSvg.width = "21"
+	themeSvg.height = "21"
+
+	var darkmode = "{{ darkmode }}"
+	if(darkmode == "yes"){
+		themeSvg.data = "\\static\\image\\svg\\moon.svg"
+	}else if(darkmode == "no"){
+		themeSvg.data = "\\static\\image\\svg\\sun.svg"
+	}
+	
+	var switchModeBtn = document.getElementById('switch_dark_mode');
+	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
+		var date = new Date()
+		var darkmodeSWITCH = document.getElementById('darkmodeSWITCH')
+		date.setTime(date.getTime() + (365*24*60*60*1000));
+		var body = document.body;
+		body.classList.toggle("body_dark_mode");
+		if(body.className == "body_dark_mode"){
+			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
+			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\moon.svg")
+		}else{
+			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\sun.svg")
+		}
+	})
+
+	var sidebarBtn = document.getElementById('sidebar-icon');
+	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
+		var sidebar = document.getElementById("sidebar")
+		sidebar.classList.toggle('sidebar-active')
+	})
+	
+	function cookieInitialize(){
+		document.cookie = "windowInnerHeight=" + window.innerHeight +  "; path=/";
+		document.cookie = "windowInnerWidth=" + window.innerWidth +  "; path=/";
+	}
+	cookieInitialize()
+
+	var mainDescription = document.getElementsByClassName('main-description')
+	var search_bar = document.getElementById('search-bar');
+	var ul_li = document.getElementById('myUL');
+	var item_li_a = document.querySelectorAll("#toggle-display-list");
+	var body = document.body;
+	var myInput = document.getElementById('myInput')
+
+	var n =  new Date();
+	var y = n.getFullYear();
+	var m = n.getMonth() + 1;
+	var d = n.getDate();
+	document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+
+	search_bar.addEventListener('click', function(){
+		var myInput = document.getElementById('myInput')
+		if(ul_li.style.display == "none"){
+			ul_li.style.display = "block"
+			myInput.value = ""
+		}else if(ul_li.style.display !== "none"){
+			ul_li.style.display = "none"
+		}
+	})
+
+	import json_heros from "/static/json/heros.json" assert {type: 'json'};
+	const heros_json = json_heros['heros']
+
+	var name_hero = document.getElementById('name_hero');
+	var hero_description = document.getElementById('hero_description');
+	var hero_image = document.getElementById('hero_image');
+	var base_atk = document.getElementById('base_atk');
+	var base_hp = document.getElementById('base_hp');
+	var attributes = document.getElementById('lvl_stats');
+	var price = document.getElementById('price');
+	var skill = document.getElementById('skill');
+	var skill_details = document.getElementById('skill_details');
+	var star_1 = document.getElementById('star_1');
+	var star_2 = document.getElementById('star_2');
+	var star_3 = document.getElementById('star_3');
+	var star_4 = document.getElementById('star_4');
+	var star_5 = document.getElementById('star_5');
+	var star_6 = document.getElementById('star_6');
+	var star_7 = document.getElementById('star_7');
+	var star_8 = document.getElementById('star_8');
+
+	item_li_a.forEach(
+		function(e){
+			e.addEventListener("click", function(){				
+				hero = e.textContent;
+
+				myInput.value = hero
+				name_hero.innerHTML = hero
+				hero_description.innerHTML = heros_json[hero]['description']
+				hero_image.src = "\\static\\image\\hero_icon\\icon_" + toString(hero).toLowerCase() + ".png"
+				base_atk.innerHTML = heros_json[hero]['base_atk']
+				base_hp.innerHTML = heros_json[hero]['base_hp']
+				attributes.innerHTML = heros_json[hero]['attributes']
+				price.innerHTML = heros_json[hero]['price']
+				skill.innerHTML = heros_json[hero]['skill']
+				skill_details.innerHTML = heros_json[hero]['skill_details']
+				star_1.innerHTML = heros_json[hero]['star_1']
+				star_2.innerHTML = heros_json[hero]['star_2']
+				star_3.innerHTML = heros_json[hero]['star_3']
+				star_4.innerHTML = heros_json[hero]['star_4']
+				star_5.innerHTML = heros_json[hero]['star_5']
+				star_6.innerHTML = heros_json[hero]['star_6']
+				star_7.innerHTML = heros_json[hero]['star_7']
+				star_8.innerHTML = heros_json[hero]['star_8'] 
+			})	
+		})
+	
+	try{
+		var url = window.location.href
+		var postSearch = url.split("?")
+		var postSearchParam = postSearch[1].split('=')[1];
+		var hero = postSearchParam.replaceAll("_"," ")
+		if(postSearch[1] != null){
+			myInput.value = hero
+			name_hero.innerHTML = hero
+			hero_description.innerHTML = heros_json[hero]['description']
+			hero_image.src = "\\static\\image\\hero_icon\\icon_" + hero.toLowerCase() + ".png"
+			base_atk.innerHTML =  "•  Base Attack: " + heros_json[hero]['base_atk']
+			base_hp.innerHTML = " •  Base MAX Hp: " + heros_json[hero]['base_hp']
+			attributes.innerHTML = heros_json[hero]['attributes']
+			price.innerHTML = heros_json[hero]['price']
+			skill.innerHTML = heros_json[hero]['skill']
+			skill_details.innerHTML = heros_json[hero]['skill_details']
+			star_1.innerHTML = heros_json[hero]['star_1']
+			star_2.innerHTML = heros_json[hero]['star_2']
+			star_3.innerHTML = heros_json[hero]['star_3']
+			star_4.innerHTML = heros_json[hero]['star_4']
+			star_5.innerHTML = heros_json[hero]['star_5']
+			star_6.innerHTML = heros_json[hero]['star_6']
+			star_7.innerHTML = heros_json[hero]['star_7']
+			star_8.innerHTML = heros_json[hero]['star_8'] 
+		}
+	}catch(error){
+		console.log(error)
+	}
+</script>
+</html>

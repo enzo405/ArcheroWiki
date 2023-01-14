@@ -6,9 +6,9 @@
 	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.12.4 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.12.4 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.12.4 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.13.4 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.13.4 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.13.4 %}">
 	<title>{{ name }} Stats - Wiki</title>
 </head>
 {% if darkmode == "yes" %}
@@ -24,91 +24,29 @@
 					<svg id="svg-filter-sidebar"width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
 				</div>
 			</div>
-			<div class="traveling">
-				<div class="traveling-inline-div" onclick="location.href='/'">
-					<div class="leftsidebarc traveling-left">
-						<div class="shcl">Home</div>
-					</div>
-					<div class="rightsidebarc traveling-right">
-						<a href="/" class="shcr"><object type="image/png" id="svg-filter-home" data="\static\image\svg\uicommon-home.svg" width="21" height="21"></object></a>
-					</div>
-				</div>
-				<div class="traveling-inline-div" onclick="location.href='/calculator/index/'">
-					<div class="leftsidebarc traveling-left">
-						<div class="shcl">Stats</div>
-					</div>
-					<div class="rightsidebarc traveling-right">
-						<a href="/" class="shcr"><object type="image/png" data="\static\image\svg\stats.svg" width="21" height="21"></object></a>
-					</div>
-				</div>
-				<div class="traveling-inline-div" onclick="location.href='/wiki/menu'">
-					<div class="leftsidebarc traveling-left">
-						<div class="shcl">Wiki</div>
-					</div>
-					<div class="rightsidebarc traveling-right">
-						<a class="shcr"><object type="image/png" data="\static\image\svg\altar-hero-entrance.svg" width="21" height="21"></object></a>
-					</div>
-				</div>
-				<div class="traveling-inline-div" onclick="location.href='/wiki/item'">
-					<div class="leftsidebarc traveling-left">
-						<div class="shcl">Item</div>
-					</div>
-					<div class="rightsidebarc traveling-right">
-						<a class="shcr"><object type="image/png" data="\static\image\svg\icon_stuff.svg" width="21" height="21"></object></a>
-					</div>
-				</div>
-				<div class="traveling-inline-div" onclick="location.href='/wiki/skill-list'">
-					<div class="leftsidebarc traveling-left">
-						<div class="shcl">Skill</div>
-					</div>
-					<div class="rightsidebarc traveling-right">
-						<a class="shcr"><object type="image/png" data="\static\image\svg\random-ability.svg" width="21" height="21"></object></a>
-					</div>
-				</div>
-				<div class="traveling-inline-div" onclick="location.href='/wiki/runes'">
-					<div class="leftsidebarc traveling-left">
-						<div class="shcl">Runes</div>
-					</div>
-					<div class="rightsidebarc traveling-right">
-						<a class="shcr"><object type="image/png" data="\static\image\svg\runes.svg" width="21" height="21" style="cursor: pointer;"></object></a>
-					</div>
-				</div>
-				<div class="traveling-inline-div" onclick="location.href='/wiki/archive'">
-					<div class="leftsidebarc traveling-left">
-						<div class="shcl">Sheet</div>
-					</div>
-					<div class="rightsidebarc traveling-right">
-						<a class="shcr"><object type="image/png" data="\static\image\svg\sheet.svg" width="21" height="21" style="cursor: pointer;"></object></a>
-					</div>
-				</div>
-				<div class="traveling-inline-div" onclick="location.href='/wiki/maze'">
-					<div class="leftsidebarc traveling-left">
-						<div class="shcl">Maze</div>
-					</div>
-					<div class="rightsidebarc traveling-right">
-						<a href="/" class="shcr"><object type="image/png" data="\static\image\svg\tower-entrance.svg" width="21" height="21" style="cursor: pointer;"></object></a>
-					</div>
-				</div>
-				<div class="traveling-inline-div" id="switch_dark_mode">
-					<div class="leftsidebarc traveling-left">
-						<div class="shcl">Theme</div>
-					</div>
-					<div class="rightsidebarc traveling-right">
-						{% if darkmode == "yes" %}<object data="\static\image\svg\moon.svg" type="image/png"  width="21" height="21" id="darkmodeSWITCH" style="cursor: pointer;"></object>{% elif darkmode == "no" %}<object data="\static\image\svg\sun.svg" type="image/png"  id="darkmodeSWITCH" width="21" height="21" style="cursor: pointer;"></object>{% endif %}
-					</div>
-				</div>
+			<div class="traveling" id="traveling">
+				<!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
 			</div>
 		</div>
 		<main class="main-menu cmcath">
 			<header class="header-container">
-				<h2>{{ header_msg }}</h2>
+				<div class="header-container-1"></div>
+				<div class="header-container-2 header_msg"><h2>{{ header_msg }}</h2></div>
+				<div class="header-container-3 globe_header_icon">
+					<!-- <label for="lang"><i class="fa-solid fa-globe"></i></label>
+					<select name="lang" id="lang">
+						{% for language in lang %}
+						<option value="{{language}}">{{language}}</option>
+						{% endfor %}
+					</select> -->
+				</div>
 			</header>
 			<main class="main-affiche">
 				{% if ValueError == "yes" %}
 					<div class="error_data_missing">
 						<i class="fa fa-exclamation-triangle" aria-hidden="true"> Error </i>
 						<div class="id_error_msg">
-							Missing Data : {{ missing_data }}⭐ please contact <a class="contact-me" href="https://discord.com/users/382930544385851392" style="z-index: 999;" target="_blank">me</a> if you own this
+							Missing Data : {{ missing_data }}⭐
 						</div>
 					</div>
 				{% endif %}
@@ -168,28 +106,28 @@
 				</div>
 			</div>
 			<div class="discord_link">
-				<h2>Discord Server:</h2> 
-				<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMuthique's Server</li></a>
-				<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
-				<a href="https://discord.gg/cyjJ8jRrJT" target="_blank"><li> iPickMyBUTT's Server</li></a>
-				<a href="https://discord.gg/dMTxzRTeXA" target="_blank"><li> adaYTgaming's Server</li></a>
+				<div class="container_dlink">
+					<h2>Community Link:</h2> 
+					<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMuthique's Server</li></a>
+					<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+				</div>
+				<div class="container_rlink">
+					<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
+				</div>
+				<div class="container_flink">
+					<a href="https://www.facebook.com/archerogame/" target="_blank"><li> Fb Archero</li></a>
+				</div>
 			</div>
 			<div class="thanks">
 				<h2>Shout-out :</h2>
-				<div class="shout-out">SonHaon#1631, Ktaplouf#0507</div>
-				<div class="shout-out">Pew#6775, Deth#7087, Tigershark14#8188</div>
+				<div class="shout-out">SonHaon, Ktaplouf, Pew, Deth</div>
+				<div class="shout-out">Lovii, Kaseiya, Lorenz, TigerShark14</div>
 				<div class="shout-out">Everyone who helped me getting data</div>
 			</div>
 		</div>
 	</footer>
 </body>
 <script>
-	var sidebarBtn = document.getElementById('sidebar-icon');
-	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
-		var sidebar = document.getElementById("sidebar")
-		sidebar.classList.toggle('sidebar-active')
-	})
-
 	var input_submit_crit = document.getElementById('calc'); 
 	input_submit_crit.addEventListener('click', function(){
 		var crit_input = document.getElementById('crit_rune_drag').value;
@@ -200,9 +138,73 @@
 			global_critic_chance.textContent = '{{ global_critic_damage }}'
 		}})
 </script>
-<script>
-	var switchModeBtn = document.getElementById('switch_dark_mode');
+<script type="module">
+	import sidebar from "/static/json/sidebar.json" assert {type: 'json'};
 
+	const traveling = document.getElementById("traveling")
+
+	for(const item of sidebar["sidebar"]){
+		const parentContainer = document.createElement("div")
+		const leftSidebar = document.createElement("div")
+		const childLeftSidebar = document.createElement("div")
+		const rightSidebar = document.createElement("div")
+		const childRightSidebar = document.createElement("a")
+		const svg = document.createElement("object")
+
+		traveling.appendChild(parentContainer)
+		parentContainer.appendChild(leftSidebar)
+		parentContainer.appendChild(rightSidebar)
+		leftSidebar.appendChild(childLeftSidebar)
+		rightSidebar.appendChild(childRightSidebar)
+		childRightSidebar.appendChild(svg)
+
+		parentContainer.className = item['container']['class']
+		parentContainer.addEventListener('click', function windowHref(){
+			window.location.href = item['container']['onclick']
+		})
+		leftSidebar.className = item['container']['childs_container']['leftsidebar']['self_class']
+		childLeftSidebar.className = item['container']['childs_container']['leftsidebar']['child_class']
+		childLeftSidebar.innerHTML = item['container']['childs_container']['leftsidebar']['child_content']
+		rightSidebar.className = item['container']['childs_container']['rightsidebar']['self_class']
+		childRightSidebar.className = item['container']['childs_container']['rightsidebar']['child_class']
+		svg.type = item['container']['childs_container']['rightsidebar']['child_content']['object_type']
+		svg.id = item['container']['childs_container']['rightsidebar']['child_content']['object_id']
+		svg.data = item['container']['childs_container']['rightsidebar']['child_content']['object_data']
+		svg.width = item['container']['childs_container']['rightsidebar']['child_content']['object_width']
+		svg.height = item['container']['childs_container']['rightsidebar']['child_content']['object_height']
+	}
+
+	const themeParentContainer = document.createElement("div")
+	const themeLeftSidebar = document.createElement("div")
+	const themeChildLeftSidebar = document.createElement("div")
+	const themeRightSidebar = document.createElement("div")
+	const themeSvg = document.createElement("object")
+
+	traveling.appendChild(themeParentContainer)
+	themeParentContainer.appendChild(themeLeftSidebar)
+	themeParentContainer.appendChild(themeRightSidebar)
+	themeLeftSidebar.appendChild(themeChildLeftSidebar)
+	themeRightSidebar.appendChild(themeSvg)
+
+	themeParentContainer.className = "traveling-inline-div"
+	themeParentContainer.id = "switch_dark_mode"
+	themeLeftSidebar.className = "leftsidebarc traveling-left"
+	themeChildLeftSidebar.className = "shcl"
+	themeChildLeftSidebar.innerHTML = "Theme"
+	themeRightSidebar.className = "rightsidebarc traveling-right"
+	themeSvg.type = "image/png"
+	themeSvg.id = "darkmodeSWITCH" 
+	themeSvg.width = "21"
+	themeSvg.height = "21"
+
+	var darkmode = "{{ darkmode }}"
+	if(darkmode == "yes"){
+		themeSvg.data = "\\static\\image\\svg\\moon.svg"
+	}else if(darkmode == "no"){
+		themeSvg.data = "\\static\\image\\svg\\sun.svg"
+	}
+	
+	var switchModeBtn = document.getElementById('switch_dark_mode');
 	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
 		var date = new Date()
 		var darkmodeSWITCH = document.getElementById('darkmodeSWITCH')
@@ -217,5 +219,17 @@
 			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\sun.svg")
 		}
 	})
+
+	var sidebarBtn = document.getElementById('sidebar-icon');
+	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
+		var sidebar = document.getElementById("sidebar")
+		sidebar.classList.toggle('sidebar-active')
+	})
+	
+	function cookieInitialize(){
+		document.cookie = "windowInnerHeight=" + window.innerHeight +  "; path=/";
+		document.cookie = "windowInnerWidth=" + window.innerWidth +  "; path=/";
+	}
+	cookieInitialize()
 </script>
 </html>

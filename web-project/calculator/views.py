@@ -9,6 +9,7 @@ import os
 from .function import *
 
 missing_data = []
+lang = ["English","Francais","Deutsch","Russian","Española"]
 
 def affiche_calc(request, iid):
 	global missing_data
@@ -42,7 +43,7 @@ def affiche_calc(request, iid):
 
 	valueError = "no"
 	try:
-			os.remove(f"calculator/static/image/stuff_save/stuff_{ingame_name}.png")
+		os.remove(f"calculator/static/image/stuff_save/stuff_{ingame_name}.png")
 	except:
 		pass
 ################################# REQUÊTE DES ENTRÉES DE L'USERS #######################################################
@@ -1069,6 +1070,7 @@ def affiche_calc(request, iid):
 		"darkmode": darkmode,
 		"header_msg": "Stats Calculator",
 		"missing_data" :mdmsg,
+		"lang":lang
 	}
 	dict_log_affiche1 = {
 		"ingame_id_user":iid_modified,
@@ -1080,6 +1082,7 @@ def affiche_calc(request, iid):
 		"index_ingame_id_cookie":"",
 	}
 	makeLog(request,dict_log_affiche1)
+	requestJson(request)
 	return render(request,'calculator/affiche.html',ctx)
 
 
@@ -1091,7 +1094,7 @@ def formulaire_calc(request):
 		darkmode = "no"
 
 	if request.method == "POST":
-		return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator"})
+		return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang})
 	else :
 		form_User = User()
 		form_StuffTable = StuffTable()
@@ -1145,7 +1148,8 @@ def formulaire_calc(request):
 			'cookie_id': cookie_request_id,
 			'cookie_name': cookie_request_name,
 			"darkmode": darkmode,
-			"header_msg": "Create Profile"
+			"header_msg": "Create Profile",
+			"lang":lang
 		}
 	return render(request,"calculator/formulaire.html",ctx)
 
@@ -1188,7 +1192,8 @@ def traitement_calc(request):
 		'form_RefineTable' :form_RefineTable,
 		"error_msg": "This ID is already used ! Please change it",
 		"darkmode": darkmode,
-		"header_msg": "Form Create Profile"
+		"header_msg": "Form Create Profile",
+		"lang":lang
 	}
 	list_user = list(models.user.objects.all())
 	list_user_ingame_id = []
@@ -1297,7 +1302,7 @@ def traitement_calc(request):
 			'form_HeroTable' :form_HeroTable,'form_TalentTable' :form_TalentTable,'form_SkinTable' :form_SkinTable,'form_AltarTable' :form_AltarTable,
 			'form_JewelTypeTable' :form_JewelTypeTable,'form_JewelLevelTable' :form_JewelLevelTable,'form_EggTable' :form_EggTable,
 			'form_EggEquippedTable' :form_EggEquippedTable,'form_DragonTable' :form_DragonTable,'form_RunesTable' :form_RunesTable,
-			'form_ReforgeTable' :form_ReforgeTable,'form_RefineTable' :form_RefineTable,"darkmode": darkmode, "header_msg": "Create Profile"})
+			'form_ReforgeTable' :form_ReforgeTable,'form_RefineTable' :form_RefineTable,"darkmode": darkmode, "header_msg": "Create Profile","lang":lang})
 
 
 def index_calc(request):
@@ -1342,12 +1347,12 @@ def index_calc(request):
 		self_global_hp_save = ""
 	user_liste = list(models.user.objects.all().order_by('-global_atk_save'))
 	notuserlist = ['0-000001','0-000002','0-000003','0-000004']
-	for i in user_liste:
-		i_id = i.ingame_id
-		if i_id in notuserlist:
-			user_liste.remove(i)
+	for i in notuserlist:
+		profile = models.user.objects.get(ingame_id=i)
+		user_liste.remove(profile)
 	makeLog(request, dict_log_index)
-	return render(request,"calculator/index.html",{"listALL": user_liste, "self_ingame_name":self_ingame_name,"self_global_atk_save":self_global_atk_save,"self_global_hp_save":self_global_hp_save, "self_ingame_id":self_ingame_id, "show_table": show_table,"darkmode": darkmode, "header_msg": "Stats Calculator"})
+	requestJson(request)
+	return render(request,"calculator/index.html",{"listALL": user_liste, "self_ingame_name":self_ingame_name,"self_global_atk_save":self_global_atk_save,"self_global_hp_save":self_global_hp_save, "self_ingame_id":self_ingame_id, "show_table": show_table,"darkmode": darkmode, "header_msg": "Stats Calculator","lang":lang})
 
 
 def update_calc(request, iid):
@@ -1374,16 +1379,13 @@ def update_calc(request, iid):
 	refine_table_stats = models.refine_table.objects.get(ingame_id=iid_modified)
 	user_id = user_stats.ingame_id
 	user_name = user_stats.ingame_name.lower()
-
 	cookie_value = checkCookie(request.COOKIES)
-
 	try:
 		ingame_name_cookie = list(cookie_value.keys())[0]
 		ingame_id_cookie = list(cookie_value.values())[0]
 	except:
 		ingame_name_cookie = ""
 		ingame_id_cookie = ""
-
 	dict_log_traitement = {
 			"ingame_id_user":iid_modified,
 			"ingame_name_user":user_name,
@@ -1429,7 +1431,8 @@ def update_calc(request, iid):
 			"ingame_name": username_unlowered,
 			"id_token": iid,
 			"darkmode": darkmode,
-			"header_msg": "Stats Calculator"
+			"header_msg": "Stats Calculator",
+			"lang":lang
 		}
 		try:
 			os.remove(f"calculator/static/image/stuff_save/stuff_{username_unlowered}.png")
@@ -1437,7 +1440,7 @@ def update_calc(request, iid):
 			pass
 		return render(request,'calculator/formulaire.html',ctx)
 	else:
-		return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode, "header_msg":"Stats Calculator"})
+		return HttpResponseRedirect("/calculator/index/")
 
 
 def updatetraitement_calc(request, iid):
@@ -1463,7 +1466,6 @@ def updatetraitement_calc(request, iid):
 	form_ReforgeTable = ReforgeTable(request.POST)
 	form_RefineTable = RefineTable(request.POST)
 	error_msg = ""
-
 	form_validation = all_formIsValid(form_User.is_valid(),form_StuffTable.is_valid(),form_HeroTable.is_valid(),form_TalentTable.is_valid(),form_SkinTable.is_valid(),form_AltarTable.is_valid(),form_JewelTypeTable.is_valid(),form_JewelLevelTable.is_valid(),form_EggTable.is_valid(),form_EggEquippedTable.is_valid(),form_DragonTable.is_valid(),form_RunesTable.is_valid(),form_ReforgeTable.is_valid(),form_RefineTable.is_valid())
 
 	list_user = list(models.user.objects.all())
@@ -1489,7 +1491,7 @@ def updatetraitement_calc(request, iid):
 		stats_RunesTable = form_RunesTable.save(commit=False) 
 		stats_ReforgeTable = form_ReforgeTable.save(commit=False) 
 		stats_RefineTable = form_RefineTable.save(commit=False)
-		
+
 		user_stats = models.user.objects.get(ingame_id=iid_modified)
 		stuff_table_stats = models.stuff_table.objects.get(ingame_id=iid_modified)
 		hero_table_stats = models.hero_table.objects.get(ingame_id=iid_modified)
@@ -1546,7 +1548,7 @@ def updatetraitement_calc(request, iid):
 		}
 		makeLog(request,dict_log_ut1)
 		token_pass_url = transform_token_id(user_stats.ingame_id)
-		return HttpResponseRedirect(f"/calculator/show/{token_pass_url}/", {"darkmode": darkmode})
+		return HttpResponseRedirect(f"/calculator/show/{token_pass_url}/")
 	else:
 		try:
 			stats_User = form_User.save(commit=False) 
@@ -1594,7 +1596,7 @@ def updatetraitement_calc(request, iid):
 			'form_HeroTable' :form_HeroTable,'form_TalentTable' :form_TalentTable,'form_SkinTable' :form_SkinTable,'form_AltarTable' :form_AltarTable,
 			'form_JewelTypeTable' :form_JewelTypeTable,'form_JewelLevelTable' :form_JewelLevelTable,'form_EggTable' :form_EggTable,
 			'form_EggEquippedTable' :form_EggEquippedTable,'form_DragonTable' :form_DragonTable,'form_RunesTable' :form_RunesTable,
-			'form_ReforgeTable' :form_ReforgeTable,'form_RefineTable' :form_RefineTable,"ingame_id":iid_modified, "id_token": iid, "value_error": value_error_msg,"darkmode": darkmode, "header_msg": "Stats Calculator"})
+			'form_ReforgeTable' :form_ReforgeTable,'form_RefineTable' :form_RefineTable,"ingame_id":iid_modified, "id_token": iid, "value_error": value_error_msg,"darkmode": darkmode, "header_msg": "Stats Calculator", "lang":lang})
 
 
 def delete_user(request, iid):
@@ -1611,34 +1613,13 @@ def delete_user(request, iid):
 	if request.user.is_authenticated:
 		iid_modified1 = ''.join(i for i in str(iid) if i.isdigit())
 		iid_modified = iid_modified1[0] + "-" + iid_modified1[1:-1] + iid_modified1[-1]
-		user_stats = models.user.objects.get(ingame_id=iid_modified)
-		stuff_table_stats = models.stuff_table.objects.get(ingame_id=iid_modified)
-		hero_table_stats = models.hero_table.objects.get(ingame_id=iid_modified)
-		talent_table_stats = models.talent_table.objects.get(ingame_id=iid_modified)
-		skin_table_stats = models.skin_table.objects.get(ingame_id=iid_modified)
-		altar_table_stats = models.altar_table.objects.get(ingame_id=iid_modified)
-		jewel_type_table_stats = models.jewel_type_table.objects.get(ingame_id=iid_modified)
-		jewel_level_table_stats = models.jewel_level_table.objects.get(ingame_id=iid_modified)
-		egg_table_stats = models.egg_table.objects.get(ingame_id=iid_modified)
-		egg_equipped_table_stats = models.egg_equipped_table.objects.get(ingame_id=iid_modified)
-		dragon_table_stats = models.dragon_table.objects.get(ingame_id=iid_modified)
-		runes_table_stats = models.runes_table.objects.get(ingame_id=iid_modified)
-		reforge_table_stats = models.reforge_table.objects.get(ingame_id=iid_modified)
-		refine_table_stats = models.refine_table.objects.get(ingame_id=iid_modified)
-		user_stats.delete()
-		stuff_table_stats.delete()
-		hero_table_stats.delete()
-		talent_table_stats.delete()
-		skin_table_stats.delete()
-		altar_table_stats.delete()
-		jewel_type_table_stats.delete()
-		jewel_level_table_stats.delete()
-		egg_table_stats.delete()
-		egg_equipped_table_stats.delete()
-		dragon_table_stats.delete()
-		runes_table_stats.delete()
-		reforge_table_stats.delete()
-		refine_table_stats.delete()
+		list_all_db = [models.user.objects,models.stuff_table.objects,models.hero_table.objects,models.talent_table.objects,models.skin_table.objects,models.altar_table.objects,models.jewel_type_table.objects,models.jewel_level_table.objects,models.egg_table.objects,models.egg_equipped_table.objects,models.dragon_table.objects,models.runes_table.objects,models.reforge_table.objects,models.refine_table.objects]
+		for i in list_all_db:
+			try:
+				user = i.get(ingame_id=iid_modified)
+				user.delete()
+			except:
+				pass
 	else:
 		pass
 	return HttpResponseRedirect(f"/calculator/index")

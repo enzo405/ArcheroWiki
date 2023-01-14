@@ -1,25 +1,31 @@
 {
     "ghseet":[
         {
+            "title":"Archero Medals (by KeithShade)",
+            "thumbnail":"https://images-ext-2.discordapp.net/external/ZsDT1l5orZpai68x5CiADPuP4kc96SjsCeuoj9tWPMc/https/lh4.googleusercontent.com/NWM-lnXoGJMGFZIAF3ekkQK-gzwLAI5Xmtz3LsvT9rN6bSz9DT8fUOiS6yDVRvAlcBu9sOT9lzViLA%3Dw1200-h630-p",
+            "description":"-List of the Medals of 4.8 update\n-Medal name\n-Trigger\n-Rarity\n-Enhancement",
+            "url":"https://docs.google.com/spreadsheets/d/1In0CS_bJsHR9xO7KDgEftXgogPxMYrW-20nlEp-s8WI"
+        },
+        {
             "title":"Archero Hatchery 4.7.1 (LanderZ, mrb, Shusaku, Abstrusity, LuhCaran)",
             "thumbnail":"https://images-ext-1.discordapp.net/external/Wr4YOONrx0-ZrldaKK6-ej3gnnFj4Be5seFuSk7Webo/https/lh6.googleusercontent.com/t6U7OU0W2oEP2ECobzUm8UJWLmG-oqunPtygosBafiCgNIbWotsVx9JIFQdGkmb37iMn9JE0-aBlFg%3Dw1200-h630-p",
             "description":"-List of available Monsters\n-Numbers of kills required to hatch or complete quests\n-Completed quest dialogue\n-Automated hatch timers\n-Where to find each Monster and which locations are recommended\n-Monster training bonuses and costs (still Work in Progress)",
             "url":"https://docs.google.com/spreadsheets/d/1p0xAb6ZrgwqhynromVXTqJSsfWlK1W8EDDt2HyvmRKE"
         },
         {
-            "title":"Relics",
+            "title":"Relics 4.7.5",
             "thumbnail":"https://images-ext-2.discordapp.net/external/-Uz7vgaHAmL8pV5TP0tsN3RQEXljKR__UwkC8ggld34/https/lh6.googleusercontent.com/4JXx6B6snH453Vv-toFLnMwKsiTEd11kBbwDQ87-mbkyd7iI9p6zWuW_nIOIWdCKeqMkrl1hOZC0oQ%3Dw1200-h630-p",
             "description":"This Google Sheet will be inventoring all the Relics Stats (4.7.1), you can help us collecting the stats by asking LuhCaran#9802 on discord\nBefore sending the form bellow, check in the Stats page we don't have your relics... GOOGLE FORM : https://forms.... ",
             "url":"https://docs.google.com/spreadsheets/d/1SWsyuI6PwYVHHeIpbHyGe3w6nS4C4d_QzlOPAyKh_2Y"
         },
         {
-            "title":"Archero Skin 4.7.1",
+            "title":"Archero Skin 4.8",
             "thumbnail":"https://images-ext-1.discordapp.net/external/2m6_dLBYX7gokkd_QjfWbwgulPgYLYBl00fH3UbiJgI/https/lh4.googleusercontent.com/J1thV7jB_Gg8hJSGGUBBbmXLpnN4tKOhudzTg_rti3uFvw7lEcQcljnKI_NwYQXQKJYYknCboGfDdQ%3Dw1200-h630-p",
             "description":"In here you will find all the Outfit / Skin / Coupon / Type / Bonus / Unit / Value that are in the game right now",
             "url":"https://docs.google.com/spreadsheets/d/1EcvyN2NGT3k8hDrIk14CsUmyILzMDOJidKKEDDB2dSU"
         },
         {
-            "title":"Archero QuickRaid Chart 4.4.1",
+            "title":"Archero QuickRaid Chart 4.8",
             "thumbnail":"https://images-ext-1.discordapp.net/external/O49IU7I7N0xrxgeEv4_olqJXCTCuzbP0o8MdDSvoNsI/https/lh4.googleusercontent.com/E-QN8HZJy2uCkSHmt9_Q-KQ2IXLUafedztTrXxtWsfqN_Z3CO9Vx3qoYO5UygUIjQIlYuvAQJq5cTw%3Dw1200-h630-p",
             "description":"Please don't change the formula, if you did it by accident just @ me on discord (LuhCaran#9802)\nMode,Heroic Mode\nN° de Chapitre / Chapter LVL,35",
             "url":"https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w"

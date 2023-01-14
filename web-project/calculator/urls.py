@@ -18,10 +18,11 @@ urlpatterns = [
     path('login/', views_wiki.login),
     path('wiki/menu', views_wiki.wiki_theorycrafting),
     path('wiki/item', views_wiki.item_description),
+    path('wiki/heros', views_wiki.heros_description),
     path('wiki/skill-list', views_wiki.skill_description),
-    path('wiki/runes', views_wiki.runes),
-    path('wiki/runes/calc/<str:iid>/', views_wiki.runesCalc_processing),
-    path('wiki/runes/<str:iid>/', views_wiki.runesCalc),
+    path('wiki/damage_calculator', views_wiki.damage),
+    path('wiki/damage_calculator/calc/<str:iid>/', views_wiki.dmgCalc_processing),
+    path('wiki/damage_calculator/<str:iid>/', views_wiki.damageCalc),
     path('wiki/archive/', views_wiki.ghssetGrid)
 ]
 

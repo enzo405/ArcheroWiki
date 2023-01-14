@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% load static %}
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.13.4 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.13.4 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.13.4 %}">
+		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{{ message }}</title>
+		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
+	</head>
+{% if darkmode == "yes" %}
+<body class="body_dark_mode">
+{% elif darkmode == "no" %}
+<body>
+{% endif %}
+<div class="main-container">
+	<div class="sidebar" id="sidebar">
+		<div class="sidebar-icon" id="sidebar-icon">
+			<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
+			<div class="rightsidebarc" id="rscimg">
+				<svg id="svg-filter-sidebar"width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
+			</div>
+		</div>
+		<div class="traveling" id="traveling">
+			<!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
+		</div>
+	</div>
+	<main class="main-menu cmcath">
+		<header class="header-container">
+			<div class="header-container-1"></div>
+			<div class="header-container-2 header_msg"><h2>{{ header_msg }}</h2></div>
+			<div class="header-container-3 globe_header_icon">
+				<!-- <label for="lang"><i class="fa-solid fa-globe"></i></label>
+				<select name="lang" id="lang">
+					{% for language in lang %}
+					<option value="{{language}}">{{language}}</option>
+					{% endfor %}
+				</select> -->
+			</div>
+		</header>
+		<div class="error-csrf-content">
+			<h1>(403)</h1>
+			<h3>You have this page because you're browser doesn't allow cookie, or you haven't load CSRF cookie</h3>
+			<h4>Go <a href='/calculator/create/'>here</a> if you want to load CSRF cookie</h4>
+		</div>
+	</main>
+</div>
+<footer class="footer-menu">
+	<div class="footer-content">
+		<div class="footer-about">
+			<img class="footer-img-icon" src="/static/image/archero_icon.png">
+			<div class="about-content">
+				<h2>Archero :</h2>
+				<div>Archero Update will be added with a certains delay</div>
+				<div class="contact-me">
+					<div>If you encounter any bugs / anomaly please contact me on discord</div>
+					<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+				</div>
+			</div>
+		</div>
+		<div class="discord_link">
+				<div class="container_dlink">
+					<h2>Community Link:</h2> 
+					<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMuthique's Server</li></a>
+					<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+				</div>
+				<div class="container_rlink">
+					<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
+				</div>
+				<div class="container_flink">
+					<a href="https://www.facebook.com/archerogame/" target="_blank"><li> Fb Archero</li></a>
+				</div>
+			</div>
+		<div class="thanks">
+			<h2>Shout-out :</h2>
+			<div class="shout-out">SonHaon#1631, Ktaplouf#0507</div>
+			<div class="shout-out">Pew#6775, Deth#7087, TigerShark14#8188</div>
+			<div class="shout-out">Everyone who helped me getting data</div>
+		</div>
+	</div>
+</footer>
+</body>
+<script>
+	var bodyHeight = window.innerHeight
+	document.body.style.height = bodyHeight + "px";
+</script>
+<script type="module">
+	import sidebar from "/static/json/sidebar.json" assert {type: 'json'};
+
+	const traveling = document.getElementById("traveling")
+
+	for(const item of sidebar["sidebar"]){
+		const parentContainer = document.createElement("div")
+		const leftSidebar = document.createElement("div")
+		const childLeftSidebar = document.createElement("div")
+		const rightSidebar = document.createElement("div")
+		const childRightSidebar = document.createElement("a")
+		const svg = document.createElement("object")
+
+		traveling.appendChild(parentContainer)
+		parentContainer.appendChild(leftSidebar)
+		parentContainer.appendChild(rightSidebar)
+		leftSidebar.appendChild(childLeftSidebar)
+		rightSidebar.appendChild(childRightSidebar)
+		childRightSidebar.appendChild(svg)
+
+		parentContainer.className = item['container']['class']
+		parentContainer.addEventListener('click', function windowHref(){
+			window.location.href = item['container']['onclick']
+		})
+		leftSidebar.className = item['container']['childs_container']['leftsidebar']['self_class']
+		childLeftSidebar.className = item['container']['childs_container']['leftsidebar']['child_class']
+		childLeftSidebar.innerHTML = item['container']['childs_container']['leftsidebar']['child_content']
+		rightSidebar.className = item['container']['childs_container']['rightsidebar']['self_class']
+		childRightSidebar.className = item['container']['childs_container']['rightsidebar']['child_class']
+		svg.type = item['container']['childs_container']['rightsidebar']['child_content']['object_type']
+		svg.id = item['container']['childs_container']['rightsidebar']['child_content']['object_id']
+		svg.data = item['container']['childs_container']['rightsidebar']['child_content']['object_data']
+		svg.width = item['container']['childs_container']['rightsidebar']['child_content']['object_width']
+		svg.height = item['container']['childs_container']['rightsidebar']['child_content']['object_height']
+	}
+
+	const themeParentContainer = document.createElement("div")
+	const themeLeftSidebar = document.createElement("div")
+	const themeChildLeftSidebar = document.createElement("div")
+	const themeRightSidebar = document.createElement("div")
+	const themeSvg = document.createElement("object")
+
+	traveling.appendChild(themeParentContainer)
+	themeParentContainer.appendChild(themeLeftSidebar)
+	themeParentContainer.appendChild(themeRightSidebar)
+	themeLeftSidebar.appendChild(themeChildLeftSidebar)
+	themeRightSidebar.appendChild(themeSvg)
+
+	themeParentContainer.className = "traveling-inline-div"
+	themeParentContainer.id = "switch_dark_mode"
+	themeLeftSidebar.className = "leftsidebarc traveling-left"
+	themeChildLeftSidebar.className = "shcl"
+	themeChildLeftSidebar.innerHTML = "Theme"
+	themeRightSidebar.className = "rightsidebarc traveling-right"
+	themeSvg.type = "image/png"
+	themeSvg.id = "darkmodeSWITCH" 
+	themeSvg.width = "21"
+	themeSvg.height = "21"
+
+	var darkmode = "{{ darkmode }}"
+	if(darkmode == "yes"){
+		themeSvg.data = "\\static\\image\\svg\\moon.svg"
+	}else if(darkmode == "no"){
+		themeSvg.data = "\\static\\image\\svg\\sun.svg"
+	}
+	
+	var switchModeBtn = document.getElementById('switch_dark_mode');
+	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
+		var date = new Date()
+		var darkmodeSWITCH = document.getElementById('darkmodeSWITCH')
+		date.setTime(date.getTime() + (365*24*60*60*1000));
+		var body = document.body;
+		body.classList.toggle("body_dark_mode");
+		if(body.className == "body_dark_mode"){
+			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
+			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\moon.svg")
+		}else{
+			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\sun.svg")
+		}
+	})
+
+	var sidebarBtn = document.getElementById('sidebar-icon');
+	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
+		var sidebar = document.getElementById("sidebar")
+		sidebar.classList.toggle('sidebar-active')
+	})
+	
+	function cookieInitialize(){
+		document.cookie = "windowInnerHeight=" + window.innerHeight +  "; path=/";
+		document.cookie = "windowInnerWidth=" + window.innerWidth +  "; path=/";
+	}
+	cookieInitialize()
+</script>
+</html>

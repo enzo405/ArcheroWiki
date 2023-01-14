@@ -8,14 +8,14 @@
 
 #kunzite = lvl11 / lvl12 / lvl13
 #ruby = lvl11 / lvl12 / lvl13
-#tourmaline = lvl7 / lvl11 / lvl12/ lvl13
+#tourmaline = lvl11 / lvl12/ lvl13
 #lapis = lvl11 / lvl12 / lvl13
 #emerald = lvl11 / lvl12 / lvl13
 #topaz = lvl11 / lvl12 / lvl13
 #amber = lvl11 / lvl12 / lvl13
 #amethyst = lvl8 / lvl9 / lvl11 / lvl12 / lvl13
 #calaite = lvl9 / lvl11 / lvl12 / lvl13
-# voideon : PE / ALE / mythic / 3rd stats
+# voideon : PE / mythic
 # swordian : PE / leg / mythic
 # dominus : 3rd stats
 
@@ -280,7 +280,7 @@ StatsRing =  {
 
     "dragon_ring_damage_type": "elite mobs dmg",
     "dragon_ring_resistance_type": "Projectile Resistance",
-    "dragon_ring_mythic_resistance_type": "ground units dmg reduced",
+    "dragon_ring_mythic_resistance_type": "humanoid units dmg",
     "dragon_ring_common_inc_damage": "3", "dragon_ring_common_base_damage": "30", "dragon_ring_common_hp" : "0", "dragon_ring_common_atk" : "0", "dragon_ring_common_evade" : "0", "dragon_ring_common_crit_chance" : "0", "dragon_ring_common_resistance" : "0", "dragon_ring_common_resistance_mythic" : "0", "dragon_ring_common_crit_damage" : "0",
     "dragon_ring_great_inc_damage": "4", "dragon_ring_great_base_damage": "35", "dragon_ring_great_hp" : "0", "dragon_ring_great_atk" : "0", "dragon_ring_great_evade" : "0", "dragon_ring_great_crit_chance" : "0", "dragon_ring_great_resistance" : "0", "dragon_ring_great_resistance_mythic" : "0", "dragon_ring_great_crit_damage" : "0",
     "dragon_ring_rare_inc_damage": "5", "dragon_ring_rare_base_damage": "42", "dragon_ring_rare_hp" : "0", "dragon_ring_rare_atk" : "0", "dragon_ring_rare_evade" : "0", "dragon_ring_rare_crit_chance" : "0", "dragon_ring_rare_resistance" : "12", "dragon_ring_rare_resistance_mythic" : "0", "dragon_ring_rare_crit_damage" : "0",
@@ -288,7 +288,7 @@ StatsRing =  {
     "dragon_ring_perfect_epic_inc_damage": "7", "dragon_ring_perfect_epic_base_damage": "70", "dragon_ring_perfect_epic_hp" : "0", "dragon_ring_perfect_epic_atk" : "0", "dragon_ring_perfect_epic_evade" : "0", "dragon_ring_perfect_epic_crit_chance" : "6", "dragon_ring_perfect_epic_resistance" : "12", "dragon_ring_perfect_epic_resistance_mythic" : "0", "dragon_ring_perfect_epic_crit_damage" : "0",
     "dragon_ring_legendary_inc_damage": "7", "dragon_ring_legendary_base_damage": "85", "dragon_ring_legendary_hp" : "0", "dragon_ring_legendary_atk" : "0", "dragon_ring_legendary_evade" : "0", "dragon_ring_legendary_crit_chance" : "6", "dragon_ring_legendary_resistance" : "12", "dragon_ring_legendary_resistance_mythic" : "0", "dragon_ring_legendary_crit_damage" : "0",
     "dragon_ring_ancient_legendary_inc_damage": "8", "dragon_ring_ancient_legendary_base_damage": "100", "dragon_ring_ancient_legendary_hp" : "0", "dragon_ring_ancient_legendary_atk" : "0", "dragon_ring_ancient_legendary_evade" : "0", "dragon_ring_ancient_legendary_crit_chance" : "6", "dragon_ring_ancient_legendary_resistance" : "12", "dragon_ring_ancient_legendary_resistance_mythic" : "0", "dragon_ring_ancient_legendary_crit_damage" : "0",
-    "dragon_ring_mythic_inc_damage": "9", "dragon_ring_mythic_base_damage": "120", "dragon_ring_mythic_hp" : "0", "dragon_ring_mythic_atk" : "0", "dragon_ring_mythic_evade" : "0", "dragon_ring_mythic_crit_chance" : "6", "dragon_ring_mythic_resistance" : "12", "dragon_ring_mythic_resistance_mythic" : "10", "dragon_ring_mythic_crit_damage" : "0",
+    "dragon_ring_mythic_inc_damage": "9", "dragon_ring_mythic_base_damage": "120", "dragon_ring_mythic_hp" : "0", "dragon_ring_mythic_atk" : "0", "dragon_ring_mythic_evade" : "0", "dragon_ring_mythic_crit_chance" : "6", "dragon_ring_mythic_resistance" : "12", "dragon_ring_mythic_resistance_mythic" : "15", "dragon_ring_mythic_crit_damage" : "0",
 
     "vilebat_ring_damage_type": "non-elite mobs dmg",
     "vilebat_ring_resistance_type": "none",
@@ -926,7 +926,7 @@ JewelStats = {
     "tourmaline_lvl4_bonus1": "160", #sure
     "tourmaline_lvl5_bonus1": "220", #sure
     "tourmaline_lvl6_bonus1": "280", #sure
-    "tourmaline_lvl7_bonus1": "360",
+    "tourmaline_lvl7_bonus1": "350", #sure
     "tourmaline_lvl8_bonus1": "440", #sure
     "tourmaline_lvl9_bonus1": "550", #sure
     "tourmaline_lvl10_bonus1": "690", #sure
@@ -939,7 +939,7 @@ JewelStats = {
     "tourmaline_lvl4_bonus2": "110", #sure
     "tourmaline_lvl5_bonus2": "150", #sure
     "tourmaline_lvl6_bonus2": "195", #sure
-    "tourmaline_lvl7_bonus2": "250",
+    "tourmaline_lvl7_bonus2": "240", #sure
     "tourmaline_lvl8_bonus2": "300", #sure
     "tourmaline_lvl9_bonus2": "380", #sure
     "tourmaline_lvl10_bonus2": "470", #sure
@@ -1378,16 +1378,16 @@ DragonStats =  {
 
     "voideon_bonus1" : "Max Hp",
     "voideon_bonus2" : "Attack",
-    "voideon_bonus3" : "",
+    "voideon_bonus3" : "Dodge",
     "voideon_stats_boost3" : "",
     "voideon_mythic_boost_inc" : ["1.2","8"],
     "voideon_great_base_1": "0", "voideon_great_base_2" : "0", "voideon_great_inc_1" : "0","voideon_great_inc_2" : "0",
     "voideon_rare_base_1": "0", "voideon_rare_base_2" : "0", "voideon_rare_inc_1" : "0","voideon_rare_inc_2" : "0",
     "voideon_epic_base_1": "3675", "voideon_epic_base_2" : "720", "voideon_epic_inc_1" : "80","voideon_epic_inc_2" : "13",
-    "voideon_perfect_epic_base_1": "00", "voideon_perfect_epic_base_2" : "00", "voideon_perfect_epic_inc_1" : "00","voideon_perfect_epic_inc_2" : "00",
+    "voideon_perfect_epic_base_1": "00", "voideon_perfect_epic_base_2" : "840", "voideon_perfect_epic_inc_1" : "00","voideon_perfect_epic_inc_2" : "00",
     "voideon_legendary_base_1": "4900", "voideon_legendary_base_2" : "960", "voideon_legendary_inc_1" : "95","voideon_legendary_inc_2" : "16",
-    "voideon_ancient_legendary_base_1": "00", "voideon_ancient_legendary_base_2" : "00", "voideon_ancient_legendary_inc_1" : "00","voideon_ancient_legendary_inc_2" : "00",
-    "voideon_mythic_base_1": "00", "voideon_mythic_base_2" : "00", "voideon_mythic_inc_1" : "00","voideon_mythic_inc_2" : "00",
+    "voideon_ancient_legendary_base_1": "5500", "voideon_ancient_legendary_base_2" : "1080", "voideon_ancient_legendary_inc_1" : "100","voideon_ancient_legendary_inc_2" : "17",
+    "voideon_mythic_base_1": "00", "voideon_mythic_base_2" : "1200", "voideon_mythic_inc_1" : "00","voideon_mythic_inc_2" : "18",
     }
 
 

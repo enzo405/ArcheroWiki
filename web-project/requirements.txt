@@ -1,4 +1,9 @@
 gunicorn==20.1.0
-psycopg2==2.9.3
-Django==4.0.7
+dj-static==0.0.6
+Django==4.1.2
 Pillow==9.2.0
+psycopg2==2.9.5
+static3==0.7.0
+discord==2.0.0
+discord-webhook==1.0.0
+discord.py==2.0.0

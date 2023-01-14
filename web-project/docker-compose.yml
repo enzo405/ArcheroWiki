@@ -1,33 +1,36 @@
-version: ######
+version: '3.9'
 
 services:
   db:
     image: ######
     container_name: ######
-    volumes:
+    restart: ######
+    volumes: 
       - ######:######
     environment:
-      - POSTGRES_NAME=######
-      - POSTGRES_DB=######
-      - POSTGRES_USER=######
-      - POSTGRES_PASSWORD=######
-      - POSTGRES_HOST=######
-      - POSTGRES_HOST_AUTH_METHOD=######
+      - ###### = ######
+      - ###### = ######
+      - ###### = ######
+      - ###### = ######
+      - ###### = ######
+      - ###### = ######
+      - ###### = ######
     networks:
       - ######
 
   web:
-    image: archero:v1.12.5
-    container_name: ##################
-    command: gunicorn app.wsgi:application --bind=0.0.0.0
+    image: ######
+    restart: ######
+    container_name: ######
+    command: ######
     environment:
-      - DEBUG_CONFIG = ######
-      - APP_VERSION = ######
-      - CSRF_FAILURE_VIEW = ######
-      - CSRF_USE_SESSION = ######
-      - CSRF_COOKIE_SECURE = ######
-      - CSRF_COOKIE_DOMAIN = ######
-      - CSRF_TRUSTED_ORIGINS = ######
+      - ###### = ######
+      - ###### = ######
+      - ###### = ######
+      - ###### = ######
+      - ###### = ######
+      - ###### = ######
+      - ###### = ######
     networks:
       - ######
       - ######
@@ -37,12 +40,16 @@ services:
       - ######
       - ######
       - ######
+    logging:
+      driver: ######
+      options:
+        fluentd-address: ######
 
-  volumes:
-    db:
+
+volumes:
+  db:
 
 networks:
   internal:
-    web:
-      external: true
-        ~
+  web:
+    external: ######

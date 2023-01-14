@@ -5,7 +5,7 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.12.4 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.13.4 %}">
 	<link rel="icon" type="image/ong" href="{% static 'favicon.ico' %}">
 </head>
 <body>
@@ -41,7 +41,8 @@
 			</div>
 		</div>
 	</div>
-	<script>
+</body>
+<script>
 		var submit_btn = document.getElementById('sumbit-btn');
 		var visitor= document.getElementById('visitor');
 		var re_check_id = /^[0-9](-)[0-9]{6,20}$/
@@ -77,7 +78,6 @@
 			date.setTime(date.getTime() + (365*24*60*60*1000));
 			document.cookie = "visitor" + "=" + "0-000000" + "; expires=" + date.toUTCString() + "; path=/";
 			window.location.href = "/calculator/index/"
-			})
-	</script>
-</body>
+		})
+</script>
 </html>

@@ -4,7 +4,7 @@ from PIL import Image
 from pathlib import Path
 import random as random
 import string
-
+from discord_webhook import DiscordWebhook, DiscordEmbed
 
 def makeLog(request, myLog):
 	dict_log = {
@@ -19,7 +19,6 @@ def makeLog(request, myLog):
 			"Host": f"{request.headers['Host']}",
 			"User-Agent": f"{request.headers['User-Agent']}",
 			"Cookie": f"{request.COOKIES}",
-			"LANG_HEADER": f"{request.headers['Accept-Language']}",
 			"AUTH":f"{request.user}: {request.user.is_authenticated}",
 		},
 		"myLog":{
@@ -149,10 +148,45 @@ def checkCookie(cookie_value):
 		try:
 			cookie_value.pop(i)
 		except:
-			a=1
+			pass
 	return cookie_value
 
 
 def checkDarkMode(cookie_value):
 	return cookie_value
 
+def userExist(json, user):
+	liste_username = []
+	for i in list(json['user']):
+		liste_username.append(i['username'])
+	if user in liste_username:
+		return False
+	else:
+		return True
+
+
+def requestJson(request):
+	with open('calculator/static/json/requetes.json', "r") as jsonFile:
+		request_json_file = json.load(jsonFile)
+	cookie = checkCookie(request.COOKIES)
+	try:
+		username = list(cookie)[0]
+		username_id = request.COOKIES[username]
+	except:
+		username = 'unknown'
+		username_id = "9-999999"
+	bool_func = userExist(request_json_file, username)
+	if bool_func == True:
+		data = {
+			"username":username,
+			"ingame_id":username_id,
+			"number_request":0
+		}
+		request_json_file['user'].append(data)
+	elif bool_func == False:
+		for i in request_json_file['user']:
+			if i['username'] == username:
+				i['number_request'] += 1
+
+	with open('calculator/static/json/requetes.json', "w") as jsonFile:
+		json.dump(request_json_file, jsonFile)

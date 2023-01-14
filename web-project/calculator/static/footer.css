@@ -156,13 +156,31 @@ footer{
 	text-decoration: none;
 	list-style: none;
 }
-.discord_link li:hover:before{
+.container_dlink li:hover:before{
 	color: #551A8B;
 }
-.discord_link li:before{
+.container_dlink li:before{
 	content: "\f392";
 	font-family: FontAwesome;
 	display: inline-block;
+}
+.container_rlink li:hover:before{
+	color: #551A8B;
+}
+.container_rlink li:before{
+	content: "\f1a1";
+	font-family: FontAwesome;
+	display: inline-block;
+    font-size: larger;
+}
+.container_flink li:hover:before{
+	color: #551A8B;
+}
+.container_flink li:before{
+	content: "\f39e";
+	font-family: FontAwesome;
+	display: inline-block;
+    font-size: larger;
 }
 .me-discord-link{
 	text-decoration: none;

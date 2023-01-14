@@ -1,18 +1,20 @@
+from .data import *
+from .forms import *
+from .function import *
+from .models import *
+from . import models
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from math import *
 from urllib.request import urlopen
+from discord_webhook import DiscordWebhook, DiscordEmbed
 import json
-from .models import *
 import os
-from .function import *
-from .forms import *
-from . import models
-from .data import *
-
+import sys
+import traceback
 
 app_version = os.environ.get('APP_VERSION')
-
+lang = ["English","Francais","Deutsch","Russian","Española"]
 
 def menu(request):
 	cookie_keys = checkDarkMode(request.COOKIES)
@@ -30,7 +32,8 @@ def menu(request):
 		"index_ingame_id_cookie":"",
 	}
 	makeLog(request,dict_log_menu)
-	return render(request, 'menu.html', {"darkmode": darkmode, "header_msg": "Menu Archero Wiki"})
+	requestJson(request)
+	return render(request, 'menu.html', {"darkmode": darkmode, "header_msg": "Menu Archero Wiki", 'lang':lang})
 
 def maze(request):
 	cookie_keys = checkDarkMode(request.COOKIES)
@@ -50,7 +53,8 @@ def maze(request):
 	makeLog(request,dict_log_maze)
 	with urlopen("https://config-archero.habby.mobi/data/config/MazeConfig.json") as url:
 		data_json = json.load(url)
-	return render(request, 'wiki/get_maze.html', {"data_json":data_json, "darkmode": darkmode, "header_msg": "maze"})
+	requestJson(request)
+	return render(request, 'wiki/get_maze.html', {"data_json":data_json, "darkmode": darkmode, "header_msg": "maze","lang":lang})
 
 
 def csrf_failure(request, reason=""):
@@ -69,7 +73,7 @@ def csrf_failure(request, reason=""):
 		darkmode = "yes"
 	else:
 		darkmode = "no"
-	return render(request,'csrf_failure.html', {"darkmode": darkmode, "header_msg": "CSRF FAILURE"})
+	return render(request,'base/csrf_failure.html', {"darkmode": darkmode, "header_msg": "CSRF FAILURE","lang":lang})
 
 
 def login(request):
@@ -83,11 +87,10 @@ def login(request):
 		"index_ingame_id_cookie":"",
 	}
 	makeLog(request,dict_log_login)
-	
 	cookie_value = checkCookie(request.COOKIES)
-
+	requestJson(request)
 	if len(cookie_value) >= 1 and "visitor" not in list(cookie_value.keys()):
-		return HttpResponseRedirect("/calculator/index")
+		return HttpResponseRedirect("/")
 	else:
 		return render(request, "login.html")
 
@@ -97,7 +100,8 @@ def wiki_theorycrafting(request):
 		darkmode = "yes"
 	else:
 		darkmode = "no"
-	return render(request, "wiki/theorycraft.html", {"darkmode": darkmode, "header_msg": "TheoryCrafting"})
+	requestJson(request)
+	return render(request, "wiki/theorycraft.html", {"darkmode": darkmode, "header_msg": "TheoryCrafting","lang":lang})
 
 def item_description(request):
 	cookie_keys = checkDarkMode(request.COOKIES)
@@ -105,7 +109,8 @@ def item_description(request):
 		darkmode = "yes"
 	else:
 		darkmode = "no"
-	return render(request, "wiki/item_description.html", {"darkmode": darkmode, "header_msg": "Item Description"})
+	requestJson(request)
+	return render(request, "wiki/item_description.html", {"darkmode": darkmode, "header_msg": "Item Description","lang":lang})
 
 def skill_description(request):
 	cookie_keys = checkDarkMode(request.COOKIES)
@@ -113,10 +118,19 @@ def skill_description(request):
 		darkmode = "yes"
 	else:
 		darkmode = "no"
-	return render(request, "wiki/skill_description.html", {"darkmode": darkmode, "header_msg": "Skill Description"})
+	requestJson(request)
+	return render(request, "wiki/skill_description.html", {"darkmode": darkmode, "header_msg": "Skill Description","lang":lang})
 
+def heros_description(request):
+	cookie_keys = checkDarkMode(request.COOKIES)
+	if "modeDisplay" in list(cookie_keys):
+		darkmode = "yes"
+	else:
+		darkmode = "no"
+	requestJson(request)
+	return render(request, "wiki/heros_description.html", {"darkmode": darkmode, "header_msg": "Heros Description","lang":lang})
 
-def runes(request):
+def damage(request):
 	cookie_keys = checkDarkMode(request.COOKIES)
 	if "modeDisplay" in list(cookie_keys):
 		darkmode = "yes"
@@ -135,10 +149,10 @@ def runes(request):
 	except:
 		user_stats = ""
 		selfHasProfil = "no"
-	return render(request, "wiki/runes.html", {"darkmode": darkmode, "header_msg": "Runes Help","selfHasProfil":selfHasProfil,"selfStats":user_stats})
+	return render(request, "wiki/damage.html", {"darkmode": darkmode, "header_msg": "Damage Help","selfHasProfil":selfHasProfil,"selfStats":user_stats,"lang":lang})
 
 
-def runesCalc_processing(request,iid):
+def dmgCalc_processing(request,iid):
 	iid_modified1 = ''.join(i for i in str(iid) if i.isdigit())
 	iid_modified = iid_modified1[0] + "-" + iid_modified1[1:-1] + iid_modified1[-1]
 	user_stats = models.user.objects.get(ingame_id=iid_modified)
@@ -925,7 +939,6 @@ def runesCalc_processing(request,iid):
 	hp_recovery_reforge = ReforgeSaviourRecoLuck(recovery_reforge_stats)
 	hp_luck_reforge = ReforgeSaviourRecoLuck(luck_reforge_stats)
 	courage_hero_attack_flat = CourageBoostHero(choosen_hero,runes_courage_hero_attack_flat)
-	print(courage_hero_attack_flat)
 	courage_hero_attack_var = float(CourageBoostHero(choosen_hero,runes_courage_hero_attack_var))/100
 	courage_hero_hp_flat = CourageBoostHero(choosen_hero,runes_courage_hero_hp_flat)
 	courage_hero_hp_var = float(CourageBoostHero(choosen_hero,runes_courage_hero_hp_var))/100
@@ -1185,7 +1198,6 @@ def runesCalc_processing(request,iid):
 				crit_dmg = global_critic_damage
 			)
 		except Exception as e:
-			print(e)
 			calc_user_dmg = dmg_calc_table(
 				ingame_id = user_stats.ingame_id,
 				hero_atk = hero_atk_step,
@@ -1209,13 +1221,12 @@ def runesCalc_processing(request,iid):
 				crit_dmg = global_critic_damage
 			)
 			calc_user_dmg.save()
-		return HttpResponseRedirect(f"/wiki/runes/{iid}/", {"darkmode": darkmode,"header_msg":"Stats Calculator"})
+		return HttpResponseRedirect(f"/wiki/damage_calculator/{iid}/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang})
 	else :
-		return HttpResponseRedirect("/wiki/runes/", {"darkmode": darkmode,"header_msg":"Runes Help"})
+		return HttpResponseRedirect("/wiki/damage_calculator/", {"darkmode": darkmode,"header_msg":"Damage Calculator","lang":lang})
 
 
-
-def runesCalc(request,iid):
+def damageCalc(request,iid):
 	cookie_keys = checkDarkMode(request.COOKIES)
 	if "modeDisplay" in list(cookie_keys):
 		darkmode = "yes"
@@ -1225,7 +1236,6 @@ def runesCalc(request,iid):
 	iid_modified1 = ''.join(i for i in str(iid) if i.isdigit())
 	iid_modified = iid_modified1[0] + "-" + iid_modified1[1:-1] + iid_modified1[-1]
 	calc_user_dmg = models.dmg_calc_table.objects.get(ingame_id=iid_modified)
-	
 	ctx = {
 		"ingame_id": calc_user_dmg.ingame_id,
 		"paramDmgTable": calc_user_dmg.hero_atk,
@@ -1248,9 +1258,11 @@ def runesCalc(request,iid):
 		"var_dmg_all": calc_user_dmg.var_dmg_all,
 		"crit_dmg": calc_user_dmg.crit_dmg,
 		'darkmode':darkmode,
-		"header_msg": "Runes Calc",
+		"header_msg": "Damage Calc",
+		"lang":lang
 	}
-	return render(request, "wiki/runes-calc.html", ctx)
+	requestJson(request)
+	return render(request, "wiki/dmg_calc.html", ctx)
 
 
 def ghssetGrid(request):
@@ -1262,5 +1274,49 @@ def ghssetGrid(request):
 	ctx = {
 		'darkmode':darkmode,
 		"header_msg": "Google Sheet Wiki",
+		"lang":lang
 	}
+	requestJson(request)
 	return render(request, "wiki/gsheet.html", ctx)
+
+
+def handler404(request, exception):
+	cookie_keys = checkDarkMode(request.COOKIES)
+	if "modeDisplay" in list(cookie_keys):
+		darkmode = "yes"
+	else:
+		darkmode = "no"
+	ctx = {
+		'darkmode':darkmode,
+		"header_msg":"Page Not Found",
+		"lang":lang
+	}
+	return render(request,'base/404.html', ctx, status=404)
+
+def handler500(request):
+	allfile = os.listdir('calculator/static/traceback_file/')
+	for file in allfile:
+		os.remove(f'calculator/static/traceback_file/{file}')
+	exc_info = list(sys.exc_info())
+	exc_output = list(traceback.format_exception(exc_info[1]))
+	cookieRequest = checkCookie(request.COOKIES)
+	try:
+		username = list(cookieRequest)[0]
+	except:
+		username = 'unknown'
+	with open(f'calculator/static/traceback_file/{username}.txt','a', encoding='utf-8') as exc_value:
+		for i in exc_output:
+			exc_value.write(i)
+	webhook = DiscordWebhook(url='$URLWEBHOOK', content="<@382930544385851392>", rate_limit_retry=True)
+	embed = DiscordEmbed(title='Error 500 - Internal Server Error', description='', color='963e3e')
+	embed.set_author(
+		name=username.capitalize(),
+		icon_url="https://stats.wiki-archero.com/static/image/favicon.png",
+	)
+	embed.add_embed_field(name='Request', value=f"{request.method} | {request.path}", inline=False)
+	embed.add_embed_field(name='Cookie', value=f"{request.COOKIES}", inline=False)
+	webhook.add_embed(embed)
+	with open(f'calculator/static/traceback_file/{username}.txt','r', encoding='utf-8') as f:
+		webhook.add_file(file=f.read(), filename=f'{username}.txt')
+	response = webhook.execute()
+	return render(request,'base/500.html', {"header_msg":"Internal Error Server", 'lang':lang},status=500)
