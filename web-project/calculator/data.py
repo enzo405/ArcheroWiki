@@ -6,18 +6,9 @@
 
 
 
-#kunzite = lvl11 / lvl12 / lvl13
-#ruby = lvl11 / lvl12 / lvl13
-#tourmaline = lvl11 / lvl12/ lvl13
-#lapis = lvl11 / lvl12 / lvl13
-#emerald = lvl11 / lvl12 / lvl13
-#topaz = lvl11 / lvl12 / lvl13
-#amber = lvl11 / lvl12 / lvl13
-#amethyst = lvl8 / lvl9 / lvl11 / lvl12 / lvl13
-#calaite = lvl9 / lvl11 / lvl12 / lvl13
-# voideon : PE / mythic
-# swordian : PE / leg / mythic
-# dominus : 3rd stats
+# tourmaline = lvl12
+# amber = lvl12
+# amethyst = lvl13
 
 
 StatsWeapon =  {
@@ -129,74 +120,74 @@ StatsWeapon =  {
 
 StatsArmor =  {
     "golden_chestplate_resistance_type": "damage resistance",
-    "golden_chestplate_common_inc_hp": "25", "golden_chestplate_common_base_hp": "200", "golden_chestplate_common_var_hp" : "0", "golden_chestplate_common_evade" : "0", "golden_chestplate_common_resistance" : "5",
-    "golden_chestplate_great_inc_hp": "30", "golden_chestplate_great_base_hp": "280", "golden_chestplate_great_var_hp" : "0", "golden_chestplate_great_evade" : "0", "golden_chestplate_great_resistance" : "5",
-    "golden_chestplate_rare_inc_hp": "35", "golden_chestplate_rare_base_hp": "360", "golden_chestplate_rare_var_hp" : "0", "golden_chestplate_rare_evade" : "0", "golden_chestplate_rare_resistance" : "5",
-    "golden_chestplate_epic_inc_hp": "40", "golden_chestplate_epic_base_hp": "480", "golden_chestplate_epic_var_hp" : "0", "golden_chestplate_epic_evade" : "0", "golden_chestplate_epic_resistance" : "5",
-    "golden_chestplate_perfect_epic_inc_hp": "50", "golden_chestplate_perfect_epic_base_hp": "600", "golden_chestplate_perfect_epic_var_hp" : "0", "golden_chestplate_perfect_epic_evade" : "0", "golden_chestplate_perfect_epic_resistance" : "5",
-    "golden_chestplate_legendary_inc_hp": "60", "golden_chestplate_legendary_base_hp": "800", "golden_chestplate_legendary_var_hp" : "0", "golden_chestplate_legendary_evade" : "0", "golden_chestplate_legendary_resistance" : "5",
-    "golden_chestplate_ancient_legendary_inc_hp": "70", "golden_chestplate_ancient_legendary_base_hp": "1000", "golden_chestplate_ancient_legendary_var_hp" : "0", "golden_chestplate_ancient_legendary_evade" : "0", "golden_chestplate_ancient_legendary_resistance" : "5",
-    "golden_chestplate_mythic_inc_hp": "80", "golden_chestplate_mythic_base_hp": "1200", "golden_chestplate_mythic_var_hp" : "0", "golden_chestplate_mythic_evade" : "0", "golden_chestplate_mythic_resistance" : "5",
+    "golden_chestplate_common_inc_hp": "25", "golden_chestplate_common_base_hp": "200", "golden_chestplate_common_var_hp" : "0", "golden_chestplate_common_dodge" : "0", "golden_chestplate_common_resistance" : "5",
+    "golden_chestplate_great_inc_hp": "30", "golden_chestplate_great_base_hp": "280", "golden_chestplate_great_var_hp" : "0", "golden_chestplate_great_dodge" : "0", "golden_chestplate_great_resistance" : "5",
+    "golden_chestplate_rare_inc_hp": "35", "golden_chestplate_rare_base_hp": "360", "golden_chestplate_rare_var_hp" : "0", "golden_chestplate_rare_dodge" : "0", "golden_chestplate_rare_resistance" : "5",
+    "golden_chestplate_epic_inc_hp": "40", "golden_chestplate_epic_base_hp": "480", "golden_chestplate_epic_var_hp" : "0", "golden_chestplate_epic_dodge" : "0", "golden_chestplate_epic_resistance" : "5",
+    "golden_chestplate_perfect_epic_inc_hp": "50", "golden_chestplate_perfect_epic_base_hp": "600", "golden_chestplate_perfect_epic_var_hp" : "0", "golden_chestplate_perfect_epic_dodge" : "0", "golden_chestplate_perfect_epic_resistance" : "5",
+    "golden_chestplate_legendary_inc_hp": "60", "golden_chestplate_legendary_base_hp": "800", "golden_chestplate_legendary_var_hp" : "0", "golden_chestplate_legendary_dodge" : "0", "golden_chestplate_legendary_resistance" : "5",
+    "golden_chestplate_ancient_legendary_inc_hp": "70", "golden_chestplate_ancient_legendary_base_hp": "1000", "golden_chestplate_ancient_legendary_var_hp" : "0", "golden_chestplate_ancient_legendary_dodge" : "0", "golden_chestplate_ancient_legendary_resistance" : "5",
+    "golden_chestplate_mythic_inc_hp": "80", "golden_chestplate_mythic_base_hp": "1200", "golden_chestplate_mythic_var_hp" : "0", "golden_chestplate_mythic_dodge" : "0", "golden_chestplate_mythic_resistance" : "5",
 
     "void_robe_resistance_type": "collision damage resistance",
-    "void_robe_common_inc_hp": "25", "void_robe_common_base_hp": "200", "void_robe_common_var_hp" : "0", "void_robe_common_evade" : "0", "void_robe_common_resistance" : "10",
-    "void_robe_great_inc_hp": "30", "void_robe_great_base_hp": "280", "void_robe_great_var_hp" : "0", "void_robe_great_evade" : "0", "void_robe_great_resistance" : "10",
-    "void_robe_rare_inc_hp": "35", "void_robe_rare_base_hp": "360", "void_robe_rare_var_hp" : "0", "void_robe_rare_evade" : "0", "void_robe_rare_resistance" : "10",
-    "void_robe_epic_inc_hp": "40", "void_robe_epic_base_hp": "480", "void_robe_epic_var_hp" : "0", "void_robe_epic_evade" : "0", "void_robe_epic_resistance" : "10",
-    "void_robe_perfect_epic_inc_hp": "50", "void_robe_perfect_epic_base_hp": "600", "void_robe_perfect_epic_var_hp" : "0", "void_robe_perfect_epic_evade" : "0", "void_robe_perfect_epic_resistance" : "10",
-    "void_robe_legendary_inc_hp": "60", "void_robe_legendary_base_hp": "800", "void_robe_legendary_var_hp" : "0", "void_robe_legendary_evade" : "0", "void_robe_legendary_resistance" : "10",
-    "void_robe_ancient_legendary_inc_hp": "70", "void_robe_ancient_legendary_base_hp": "1000", "void_robe_ancient_legendary_var_hp" : "0", "void_robe_ancient_legendary_evade" : "0", "void_robe_ancient_legendary_resistance" : "10",
-    "void_robe_mythic_inc_hp": "80", "void_robe_mythic_base_hp": "1200", "void_robe_mythic_var_hp" : "0", "void_robe_mythic_evade" : "0", "void_robe_mythic_resistance" : "10",
+    "void_robe_common_inc_hp": "25", "void_robe_common_base_hp": "200", "void_robe_common_var_hp" : "0", "void_robe_common_dodge" : "0", "void_robe_common_resistance" : "10",
+    "void_robe_great_inc_hp": "30", "void_robe_great_base_hp": "280", "void_robe_great_var_hp" : "0", "void_robe_great_dodge" : "0", "void_robe_great_resistance" : "10",
+    "void_robe_rare_inc_hp": "35", "void_robe_rare_base_hp": "360", "void_robe_rare_var_hp" : "0", "void_robe_rare_dodge" : "0", "void_robe_rare_resistance" : "10",
+    "void_robe_epic_inc_hp": "40", "void_robe_epic_base_hp": "480", "void_robe_epic_var_hp" : "0", "void_robe_epic_dodge" : "0", "void_robe_epic_resistance" : "10",
+    "void_robe_perfect_epic_inc_hp": "50", "void_robe_perfect_epic_base_hp": "600", "void_robe_perfect_epic_var_hp" : "0", "void_robe_perfect_epic_dodge" : "0", "void_robe_perfect_epic_resistance" : "10",
+    "void_robe_legendary_inc_hp": "60", "void_robe_legendary_base_hp": "800", "void_robe_legendary_var_hp" : "0", "void_robe_legendary_dodge" : "0", "void_robe_legendary_resistance" : "10",
+    "void_robe_ancient_legendary_inc_hp": "70", "void_robe_ancient_legendary_base_hp": "1000", "void_robe_ancient_legendary_var_hp" : "0", "void_robe_ancient_legendary_dodge" : "0", "void_robe_ancient_legendary_resistance" : "10",
+    "void_robe_mythic_inc_hp": "80", "void_robe_mythic_base_hp": "1200", "void_robe_mythic_var_hp" : "0", "void_robe_mythic_dodge" : "0", "void_robe_mythic_resistance" : "10",
 
     "phantom_cloak_resistance_type": "projectile damage resistance",
-    "phantom_cloak_common_inc_hp": "25", "phantom_cloak_common_base_hp": "200", "phantom_cloak_common_var_hp" : "0", "phantom_cloak_common_evade" : "0", "phantom_cloak_common_resistance" : "10",
-    "phantom_cloak_great_inc_hp": "30", "phantom_cloak_great_base_hp": "280", "phantom_cloak_great_var_hp" : "0", "phantom_cloak_great_evade" : "0", "phantom_cloak_great_resistance" : "10",
-    "phantom_cloak_rare_inc_hp": "35", "phantom_cloak_rare_base_hp": "360", "phantom_cloak_rare_var_hp" : "0", "phantom_cloak_rare_evade" : "0", "phantom_cloak_rare_resistance" : "10",
-    "phantom_cloak_epic_inc_hp": "40", "phantom_cloak_epic_base_hp": "480", "phantom_cloak_epic_var_hp" : "0", "phantom_cloak_epic_evade" : "0", "phantom_cloak_epic_resistance" : "10",
-    "phantom_cloak_perfect_epic_inc_hp": "50", "phantom_cloak_perfect_epic_base_hp": "600", "phantom_cloak_perfect_epic_var_hp" : "0", "phantom_cloak_perfect_epic_evade" : "0", "phantom_cloak_perfect_epic_resistance" : "10",
-    "phantom_cloak_legendary_inc_hp": "60", "phantom_cloak_legendary_base_hp": "800", "phantom_cloak_legendary_var_hp" : "0", "phantom_cloak_legendary_evade" : "0", "phantom_cloak_legendary_resistance" : "10",
-    "phantom_cloak_ancient_legendary_inc_hp": "70", "phantom_cloak_ancient_legendary_base_hp": "1000", "phantom_cloak_ancient_legendary_var_hp" : "0", "phantom_cloak_ancient_legendary_evade" : "0", "phantom_cloak_ancient_legendary_resistance" : "10",
-    "phantom_cloak_mythic_inc_hp": "80", "phantom_cloak_mythic_base_hp": "1200", "phantom_cloak_mythic_var_hp" : "0", "phantom_cloak_mythic_evade" : "0", "phantom_cloak_mythic_resistance" : "10",
+    "phantom_cloak_common_inc_hp": "25", "phantom_cloak_common_base_hp": "200", "phantom_cloak_common_var_hp" : "0", "phantom_cloak_common_dodge" : "0", "phantom_cloak_common_resistance" : "10",
+    "phantom_cloak_great_inc_hp": "30", "phantom_cloak_great_base_hp": "280", "phantom_cloak_great_var_hp" : "0", "phantom_cloak_great_dodge" : "0", "phantom_cloak_great_resistance" : "10",
+    "phantom_cloak_rare_inc_hp": "35", "phantom_cloak_rare_base_hp": "360", "phantom_cloak_rare_var_hp" : "0", "phantom_cloak_rare_dodge" : "0", "phantom_cloak_rare_resistance" : "10",
+    "phantom_cloak_epic_inc_hp": "40", "phantom_cloak_epic_base_hp": "480", "phantom_cloak_epic_var_hp" : "0", "phantom_cloak_epic_dodge" : "0", "phantom_cloak_epic_resistance" : "10",
+    "phantom_cloak_perfect_epic_inc_hp": "50", "phantom_cloak_perfect_epic_base_hp": "600", "phantom_cloak_perfect_epic_var_hp" : "0", "phantom_cloak_perfect_epic_dodge" : "0", "phantom_cloak_perfect_epic_resistance" : "10",
+    "phantom_cloak_legendary_inc_hp": "60", "phantom_cloak_legendary_base_hp": "800", "phantom_cloak_legendary_var_hp" : "0", "phantom_cloak_legendary_dodge" : "0", "phantom_cloak_legendary_resistance" : "10",
+    "phantom_cloak_ancient_legendary_inc_hp": "70", "phantom_cloak_ancient_legendary_base_hp": "1000", "phantom_cloak_ancient_legendary_var_hp" : "0", "phantom_cloak_ancient_legendary_dodge" : "0", "phantom_cloak_ancient_legendary_resistance" : "10",
+    "phantom_cloak_mythic_inc_hp": "80", "phantom_cloak_mythic_base_hp": "1200", "phantom_cloak_mythic_var_hp" : "0", "phantom_cloak_mythic_dodge" : "0", "phantom_cloak_mythic_resistance" : "10",
 
     "vest_of_dexterity_resistance_type": "none",
-    "vest_of_dexterity_common_inc_hp": "25", "vest_of_dexterity_common_base_hp": "200", "vest_of_dexterity_common_var_hp" : "0", "vest_of_dexterity_common_evade" : "7", "vest_of_dexterity_common_resistance" : "0",
-    "vest_of_dexterity_great_inc_hp": "30", "vest_of_dexterity_great_base_hp": "280", "vest_of_dexterity_great_var_hp" : "0", "vest_of_dexterity_great_evade" : "7", "vest_of_dexterity_great_resistance" : "0",
-    "vest_of_dexterity_rare_inc_hp": "35", "vest_of_dexterity_rare_base_hp": "360", "vest_of_dexterity_rare_var_hp" : "0", "vest_of_dexterity_rare_evade" : "7", "vest_of_dexterity_rare_resistance" : "0",
-    "vest_of_dexterity_epic_inc_hp": "40", "vest_of_dexterity_epic_base_hp": "480", "vest_of_dexterity_epic_var_hp" : "0", "vest_of_dexterity_epic_evade" : "7", "vest_of_dexterity_epic_resistance" : "0",
-    "vest_of_dexterity_perfect_epic_inc_hp": "50", "vest_of_dexterity_perfect_epic_base_hp": "600", "vest_of_dexterity_perfect_epic_var_hp" : "0", "vest_of_dexterity_perfect_epic_evade" : "7", "vest_of_dexterity_perfect_epic_resistance" : "0",
-    "vest_of_dexterity_legendary_inc_hp": "60", "vest_of_dexterity_legendary_base_hp": "800", "vest_of_dexterity_legendary_var_hp" : "0", "vest_of_dexterity_legendary_evade" : "7", "vest_of_dexterity_legendary_resistance" : "0",
-    "vest_of_dexterity_ancient_legendary_inc_hp": "70", "vest_of_dexterity_ancient_legendary_base_hp": "1000", "vest_of_dexterity_ancient_legendary_var_hp" : "0", "vest_of_dexterity_ancient_legendary_evade" : "7", "vest_of_dexterity_ancient_legendary_resistance" : "0",
-    "vest_of_dexterity_mythic_inc_hp": "80", "vest_of_dexterity_mythic_base_hp": "1200", "vest_of_dexterity_mythic_var_hp" : "0", "vest_of_dexterity_mythic_evade" : "7", "vest_of_dexterity_mythic_resistance" : "0",
+    "vest_of_dexterity_common_inc_hp": "25", "vest_of_dexterity_common_base_hp": "200", "vest_of_dexterity_common_var_hp" : "0", "vest_of_dexterity_common_dodge" : "7", "vest_of_dexterity_common_resistance" : "0",
+    "vest_of_dexterity_great_inc_hp": "30", "vest_of_dexterity_great_base_hp": "280", "vest_of_dexterity_great_var_hp" : "0", "vest_of_dexterity_great_dodge" : "7", "vest_of_dexterity_great_resistance" : "0",
+    "vest_of_dexterity_rare_inc_hp": "35", "vest_of_dexterity_rare_base_hp": "360", "vest_of_dexterity_rare_var_hp" : "0", "vest_of_dexterity_rare_dodge" : "7", "vest_of_dexterity_rare_resistance" : "0",
+    "vest_of_dexterity_epic_inc_hp": "40", "vest_of_dexterity_epic_base_hp": "480", "vest_of_dexterity_epic_var_hp" : "0", "vest_of_dexterity_epic_dodge" : "7", "vest_of_dexterity_epic_resistance" : "0",
+    "vest_of_dexterity_perfect_epic_inc_hp": "50", "vest_of_dexterity_perfect_epic_base_hp": "600", "vest_of_dexterity_perfect_epic_var_hp" : "0", "vest_of_dexterity_perfect_epic_dodge" : "7", "vest_of_dexterity_perfect_epic_resistance" : "0",
+    "vest_of_dexterity_legendary_inc_hp": "60", "vest_of_dexterity_legendary_base_hp": "800", "vest_of_dexterity_legendary_var_hp" : "0", "vest_of_dexterity_legendary_dodge" : "7", "vest_of_dexterity_legendary_resistance" : "0",
+    "vest_of_dexterity_ancient_legendary_inc_hp": "70", "vest_of_dexterity_ancient_legendary_base_hp": "1000", "vest_of_dexterity_ancient_legendary_var_hp" : "0", "vest_of_dexterity_ancient_legendary_dodge" : "7", "vest_of_dexterity_ancient_legendary_resistance" : "0",
+    "vest_of_dexterity_mythic_inc_hp": "80", "vest_of_dexterity_mythic_base_hp": "1200", "vest_of_dexterity_mythic_var_hp" : "0", "vest_of_dexterity_mythic_dodge" : "7", "vest_of_dexterity_mythic_resistance" : "0",
 
     "bright_robe_resistance_type": "front damage resistance",
-    "bright_robe_common_inc_hp": "28", "bright_robe_common_base_hp": "200", "bright_robe_common_var_hp" : "0", "bright_robe_common_evade" : "0", "bright_robe_common_resistance" : "12",
-    "bright_robe_great_inc_hp": "33", "bright_robe_great_base_hp": "280", "bright_robe_great_var_hp" : "0", "bright_robe_great_evade" : "0", "bright_robe_great_resistance" : "12",
-    "bright_robe_rare_inc_hp": "38", "bright_robe_rare_base_hp": "360", "bright_robe_rare_var_hp" : "0", "bright_robe_rare_evade" : "0", "bright_robe_rare_resistance" : "12",
-    "bright_robe_epic_inc_hp": "43", "bright_robe_epic_base_hp": "480", "bright_robe_epic_var_hp" : "0", "bright_robe_epic_evade" : "0", "bright_robe_epic_resistance" : "12",
-    "bright_robe_perfect_epic_inc_hp": "54", "bright_robe_perfect_epic_base_hp": "600", "bright_robe_perfect_epic_var_hp" : "0", "bright_robe_perfect_epic_evade" : "0", "bright_robe_perfect_epic_resistance" : "12",
-    "bright_robe_legendary_inc_hp": "64", "bright_robe_legendary_base_hp": "800", "bright_robe_legendary_var_hp" : "0", "bright_robe_legendary_evade" : "0", "bright_robe_legendary_resistance" : "12",
-    "bright_robe_ancient_legendary_inc_hp": "75", "bright_robe_ancient_legendary_base_hp": "1000", "bright_robe_ancient_legendary_var_hp" : "0", "bright_robe_ancient_legendary_evade" : "0", "bright_robe_ancient_legendary_resistance" : "12",
-    "bright_robe_mythic_inc_hp": "87", "bright_robe_mythic_base_hp": "1200", "bright_robe_mythic_var_hp" : "0", "bright_robe_mythic_evade" : "0", "bright_robe_mythic_resistance" : "12",
+    "bright_robe_common_inc_hp": "28", "bright_robe_common_base_hp": "200", "bright_robe_common_var_hp" : "0", "bright_robe_common_dodge" : "0", "bright_robe_common_resistance" : "12",
+    "bright_robe_great_inc_hp": "33", "bright_robe_great_base_hp": "280", "bright_robe_great_var_hp" : "0", "bright_robe_great_dodge" : "0", "bright_robe_great_resistance" : "12",
+    "bright_robe_rare_inc_hp": "38", "bright_robe_rare_base_hp": "360", "bright_robe_rare_var_hp" : "0", "bright_robe_rare_dodge" : "0", "bright_robe_rare_resistance" : "12",
+    "bright_robe_epic_inc_hp": "43", "bright_robe_epic_base_hp": "480", "bright_robe_epic_var_hp" : "0", "bright_robe_epic_dodge" : "0", "bright_robe_epic_resistance" : "12",
+    "bright_robe_perfect_epic_inc_hp": "54", "bright_robe_perfect_epic_base_hp": "600", "bright_robe_perfect_epic_var_hp" : "0", "bright_robe_perfect_epic_dodge" : "0", "bright_robe_perfect_epic_resistance" : "12",
+    "bright_robe_legendary_inc_hp": "64", "bright_robe_legendary_base_hp": "800", "bright_robe_legendary_var_hp" : "0", "bright_robe_legendary_dodge" : "0", "bright_robe_legendary_resistance" : "12",
+    "bright_robe_ancient_legendary_inc_hp": "75", "bright_robe_ancient_legendary_base_hp": "1000", "bright_robe_ancient_legendary_var_hp" : "0", "bright_robe_ancient_legendary_dodge" : "0", "bright_robe_ancient_legendary_resistance" : "12",
+    "bright_robe_mythic_inc_hp": "87", "bright_robe_mythic_base_hp": "1200", "bright_robe_mythic_var_hp" : "0", "bright_robe_mythic_dodge" : "0", "bright_robe_mythic_resistance" : "12",
 
     "shadow_robe_resistance_type": "rear damage resistance",
-    "shadow_robe_common_inc_hp": "28", "shadow_robe_common_base_hp": "200", "shadow_robe_common_var_hp" : "0", "shadow_robe_common_evade" : "0", "shadow_robe_common_resistance" : "22",
-    "shadow_robe_great_inc_hp": "33", "shadow_robe_great_base_hp": "280", "shadow_robe_great_var_hp" : "0", "shadow_robe_great_evade" : "0", "shadow_robe_great_resistance" : "22",
-    "shadow_robe_rare_inc_hp": "38", "shadow_robe_rare_base_hp": "360", "shadow_robe_rare_var_hp" : "0", "shadow_robe_rare_evade" : "0", "shadow_robe_rare_resistance" : "22",
-    "shadow_robe_epic_inc_hp": "43", "shadow_robe_epic_base_hp": "480", "shadow_robe_epic_var_hp" : "7", "shadow_robe_epic_evade" : "0", "shadow_robe_epic_resistance" : "22",
-    "shadow_robe_perfect_epic_inc_hp": "54", "shadow_robe_perfect_epic_base_hp": "600", "shadow_robe_perfect_epic_var_hp" : "7", "shadow_robe_perfect_epic_evade" : "0", "shadow_robe_perfect_epic_resistance" : "22",
-    "shadow_robe_legendary_inc_hp": "64", "shadow_robe_legendary_base_hp": "800", "shadow_robe_legendary_var_hp" : "7", "shadow_robe_legendary_evade" : "0", "shadow_robe_legendary_resistance" : "22",
-    "shadow_robe_ancient_legendary_inc_hp": "75", "shadow_robe_ancient_legendary_base_hp": "1000", "shadow_robe_ancient_legendary_var_hp" : "7", "shadow_robe_ancient_legendary_evade" : "0", "shadow_robe_ancient_legendary_resistance" : "22",
-    "shadow_robe_mythic_inc_hp": "87", "shadow_robe_mythic_base_hp": "1200", "shadow_robe_mythic_var_hp" : "7", "shadow_robe_mythic_evade" : "0", "shadow_robe_mythic_resistance" : "22",
+    "shadow_robe_common_inc_hp": "28", "shadow_robe_common_base_hp": "200", "shadow_robe_common_var_hp" : "0", "shadow_robe_common_dodge" : "0", "shadow_robe_common_resistance" : "22",
+    "shadow_robe_great_inc_hp": "33", "shadow_robe_great_base_hp": "280", "shadow_robe_great_var_hp" : "0", "shadow_robe_great_dodge" : "0", "shadow_robe_great_resistance" : "22",
+    "shadow_robe_rare_inc_hp": "38", "shadow_robe_rare_base_hp": "360", "shadow_robe_rare_var_hp" : "0", "shadow_robe_rare_dodge" : "0", "shadow_robe_rare_resistance" : "22",
+    "shadow_robe_epic_inc_hp": "43", "shadow_robe_epic_base_hp": "480", "shadow_robe_epic_var_hp" : "7", "shadow_robe_epic_dodge" : "0", "shadow_robe_epic_resistance" : "22",
+    "shadow_robe_perfect_epic_inc_hp": "54", "shadow_robe_perfect_epic_base_hp": "600", "shadow_robe_perfect_epic_var_hp" : "7", "shadow_robe_perfect_epic_dodge" : "0", "shadow_robe_perfect_epic_resistance" : "22",
+    "shadow_robe_legendary_inc_hp": "64", "shadow_robe_legendary_base_hp": "800", "shadow_robe_legendary_var_hp" : "7", "shadow_robe_legendary_dodge" : "0", "shadow_robe_legendary_resistance" : "22",
+    "shadow_robe_ancient_legendary_inc_hp": "75", "shadow_robe_ancient_legendary_base_hp": "1000", "shadow_robe_ancient_legendary_var_hp" : "7", "shadow_robe_ancient_legendary_dodge" : "0", "shadow_robe_ancient_legendary_resistance" : "22",
+    "shadow_robe_mythic_inc_hp": "87", "shadow_robe_mythic_base_hp": "1200", "shadow_robe_mythic_var_hp" : "7", "shadow_robe_mythic_dodge" : "0", "shadow_robe_mythic_resistance" : "22",
 
     "none_resistance_type": "none",
-    "none_common_inc_hp": "0", "none_common_base_hp": "0", "none_common_var_hp" : "0", "none_common_evade" : "0", "none_common_resistance" : "0",
-    "none_great_inc_hp": "0", "none_great_base_hp": "0", "none_great_var_hp" : "0", "none_great_evade" : "0", "none_great_resistance" : "0",
-    "none_rare_inc_hp": "0", "none_rare_base_hp": "0", "none_rare_var_hp" : "0", "none_rare_evade" : "0", "none_rare_resistance" : "0",
-    "none_epic_inc_hp": "0", "none_epic_base_hp": "0", "none_epic_var_hp" : "0", "none_epic_evade" : "0", "none_epic_resistance" : "0",
-    "none_perfect_epic_inc_hp": "0", "none_perfect_epic_base_hp": "0", "none_perfect_epic_var_hp" : "0", "none_perfect_epic_evade" : "0", "none_perfect_epic_resistance" : "0",
-    "none_legendary_inc_hp": "0", "none_legendary_base_hp": "0", "none_legendary_var_hp" : "0", "none_legendary_evade" : "0", "none_legendary_resistance" : "0",
-    "none_ancient_legendary_inc_hp": "0", "none_ancient_legendary_base_hp": "0", "none_ancient_legendary_var_hp" : "0", "none_ancient_legendary_evade" : "0", "none_ancient_legendary_resistance" : "0",
-    "none_mythic_inc_hp": "0", "none_mythic_base_hp": "0", "none_mythic_var_hp" : "0", "none_mythic_evade" : "0", "none_mythic_resistance" : "0",
+    "none_common_inc_hp": "0", "none_common_base_hp": "0", "none_common_var_hp" : "0", "none_common_dodge" : "0", "none_common_resistance" : "0",
+    "none_great_inc_hp": "0", "none_great_base_hp": "0", "none_great_var_hp" : "0", "none_great_dodge" : "0", "none_great_resistance" : "0",
+    "none_rare_inc_hp": "0", "none_rare_base_hp": "0", "none_rare_var_hp" : "0", "none_rare_dodge" : "0", "none_rare_resistance" : "0",
+    "none_epic_inc_hp": "0", "none_epic_base_hp": "0", "none_epic_var_hp" : "0", "none_epic_dodge" : "0", "none_epic_resistance" : "0",
+    "none_perfect_epic_inc_hp": "0", "none_perfect_epic_base_hp": "0", "none_perfect_epic_var_hp" : "0", "none_perfect_epic_dodge" : "0", "none_perfect_epic_resistance" : "0",
+    "none_legendary_inc_hp": "0", "none_legendary_base_hp": "0", "none_legendary_var_hp" : "0", "none_legendary_dodge" : "0", "none_legendary_resistance" : "0",
+    "none_ancient_legendary_inc_hp": "0", "none_ancient_legendary_base_hp": "0", "none_ancient_legendary_var_hp" : "0", "none_ancient_legendary_dodge" : "0", "none_ancient_legendary_resistance" : "0",
+    "none_mythic_inc_hp": "0", "none_mythic_base_hp": "0", "none_mythic_var_hp" : "0", "none_mythic_dodge" : "0", "none_mythic_resistance" : "0",
     }
 
 
@@ -209,110 +200,110 @@ StatsRing =  {
     "lion_ring_damage_type": "boss units dmg",
     "lion_ring_resistance_type": "none",
     "lion_ring_mythic_resistance_type": "boss units dmg reduced",
-    "lion_ring_common_inc_damage": "2", "lion_ring_common_base_damage": "25", "lion_ring_common_hp" : "0", "lion_ring_common_atk" : "0", "lion_ring_common_evade" : "0", "lion_ring_common_crit_chance" : "0", "lion_ring_common_resistance" : "0", "lion_ring_common_resistance_mythic" : "0", "lion_ring_common_crit_damage" : "0",
-    "lion_ring_great_inc_damage": "3", "lion_ring_great_base_damage": "30", "lion_ring_great_hp" : "0", "lion_ring_great_atk" : "0", "lion_ring_great_evade" : "0", "lion_ring_great_crit_chance" : "0", "lion_ring_great_resistance" : "0", "lion_ring_great_resistance_mythic" : "0", "lion_ring_great_crit_damage" : "0",
-    "lion_ring_rare_inc_damage": "4", "lion_ring_rare_base_damage": "40", "lion_ring_rare_hp" : "0", "lion_ring_rare_atk" : "0", "lion_ring_rare_evade" : "0", "lion_ring_rare_crit_chance" : "0", "lion_ring_rare_resistance" : "0", "lion_ring_rare_resistance_mythic" : "0", "lion_ring_rare_crit_damage" : "20",
-    "lion_ring_epic_inc_damage": "5", "lion_ring_epic_base_damage": "50", "lion_ring_epic_hp" : "0", "lion_ring_epic_atk" : "5", "lion_ring_epic_evade" : "0", "lion_ring_epic_crit_chance" : "0", "lion_ring_epic_resistance" : "0", "lion_ring_epic_resistance_mythic" : "0", "lion_ring_epic_crit_damage" : "20",
-    "lion_ring_perfect_epic_inc_damage": "5", "lion_ring_perfect_epic_base_damage": "60", "lion_ring_perfect_epic_hp" : "0", "lion_ring_perfect_epic_atk" : "5", "lion_ring_perfect_epic_evade" : "0", "lion_ring_perfect_epic_crit_chance" : "0", "lion_ring_perfect_epic_resistance" : "0", "lion_ring_perfect_epic_resistance_mythic" : "0", "lion_ring_perfect_epic_crit_damage" : "20",
-    "lion_ring_legendary_inc_damage": "6", "lion_ring_legendary_base_damage": "70", "lion_ring_legendary_hp" : "0", "lion_ring_legendary_atk" : "5", "lion_ring_legendary_evade" : "0", "lion_ring_legendary_crit_chance" : "0", "lion_ring_legendary_resistance" : "0", "lion_ring_legendary_resistance_mythic" : "0", "lion_ring_legendary_crit_damage" : "20",
-    "lion_ring_ancient_legendary_inc_damage": "7", "lion_ring_ancient_legendary_base_damage": "85", "lion_ring_ancient_legendary_hp" : "0", "lion_ring_ancient_legendary_atk" : "5", "lion_ring_ancient_legendary_evade" : "0", "lion_ring_ancient_legendary_crit_chance" : "0", "lion_ring_ancient_legendary_resistance" : "0", "lion_ring_ancient_legendary_resistance_mythic" : "0", "lion_ring_ancient_legendary_crit_damage" : "20",
-    "lion_ring_mythic_inc_damage": "8", "lion_ring_mythic_base_damage": "100", "lion_ring_mythic_hp" : "0", "lion_ring_mythic_atk" : "5", "lion_ring_mythic_evade" : "0", "lion_ring_mythic_crit_chance" : "0", "lion_ring_mythic_resistance" : "0", "lion_ring_mythic_resistance_mythic" : "5", "lion_ring_mythic_crit_damage" : "20",
+    "lion_ring_common_inc_damage": "2", "lion_ring_common_base_damage": "25", "lion_ring_common_hp" : "0", "lion_ring_common_atk" : "0", "lion_ring_common_dodge" : "0", "lion_ring_common_crit_chance" : "0", "lion_ring_common_resistance" : "0", "lion_ring_common_resistance_mythic" : "0", "lion_ring_common_crit_damage" : "0",
+    "lion_ring_great_inc_damage": "3", "lion_ring_great_base_damage": "30", "lion_ring_great_hp" : "0", "lion_ring_great_atk" : "0", "lion_ring_great_dodge" : "0", "lion_ring_great_crit_chance" : "0", "lion_ring_great_resistance" : "0", "lion_ring_great_resistance_mythic" : "0", "lion_ring_great_crit_damage" : "0",
+    "lion_ring_rare_inc_damage": "4", "lion_ring_rare_base_damage": "40", "lion_ring_rare_hp" : "0", "lion_ring_rare_atk" : "0", "lion_ring_rare_dodge" : "0", "lion_ring_rare_crit_chance" : "0", "lion_ring_rare_resistance" : "0", "lion_ring_rare_resistance_mythic" : "0", "lion_ring_rare_crit_damage" : "20",
+    "lion_ring_epic_inc_damage": "5", "lion_ring_epic_base_damage": "50", "lion_ring_epic_hp" : "0", "lion_ring_epic_atk" : "5", "lion_ring_epic_dodge" : "0", "lion_ring_epic_crit_chance" : "0", "lion_ring_epic_resistance" : "0", "lion_ring_epic_resistance_mythic" : "0", "lion_ring_epic_crit_damage" : "20",
+    "lion_ring_perfect_epic_inc_damage": "5", "lion_ring_perfect_epic_base_damage": "60", "lion_ring_perfect_epic_hp" : "0", "lion_ring_perfect_epic_atk" : "5", "lion_ring_perfect_epic_dodge" : "0", "lion_ring_perfect_epic_crit_chance" : "0", "lion_ring_perfect_epic_resistance" : "0", "lion_ring_perfect_epic_resistance_mythic" : "0", "lion_ring_perfect_epic_crit_damage" : "20",
+    "lion_ring_legendary_inc_damage": "6", "lion_ring_legendary_base_damage": "70", "lion_ring_legendary_hp" : "0", "lion_ring_legendary_atk" : "5", "lion_ring_legendary_dodge" : "0", "lion_ring_legendary_crit_chance" : "0", "lion_ring_legendary_resistance" : "0", "lion_ring_legendary_resistance_mythic" : "0", "lion_ring_legendary_crit_damage" : "20",
+    "lion_ring_ancient_legendary_inc_damage": "7", "lion_ring_ancient_legendary_base_damage": "85", "lion_ring_ancient_legendary_hp" : "0", "lion_ring_ancient_legendary_atk" : "5", "lion_ring_ancient_legendary_dodge" : "0", "lion_ring_ancient_legendary_crit_chance" : "0", "lion_ring_ancient_legendary_resistance" : "0", "lion_ring_ancient_legendary_resistance_mythic" : "0", "lion_ring_ancient_legendary_crit_damage" : "20",
+    "lion_ring_mythic_inc_damage": "8", "lion_ring_mythic_base_damage": "100", "lion_ring_mythic_hp" : "0", "lion_ring_mythic_atk" : "5", "lion_ring_mythic_dodge" : "0", "lion_ring_mythic_crit_chance" : "0", "lion_ring_mythic_resistance" : "0", "lion_ring_mythic_resistance_mythic" : "5", "lion_ring_mythic_crit_damage" : "20",
 
     "bull_ring_damage_type": "mobs units dmg",
     "bull_ring_resistance_type": "all damage resistance",
     "bull_ring_mythic_resistance_type": "mobs units dmg reduced",
-    "bull_ring_common_inc_damage": "2", "bull_ring_common_base_damage": "25", "bull_ring_common_hp" : "0", "bull_ring_common_atk" : "0", "bull_ring_common_evade" : "0", "bull_ring_common_crit_chance" : "0", "bull_ring_common_resistance" : "0", "bull_ring_common_resistance_mythic" : "0", "bull_ring_common_crit_damage" : "0",
-    "bull_ring_great_inc_damage": "3", "bull_ring_great_base_damage": "30", "bull_ring_great_hp" : "0", "bull_ring_great_atk" : "0", "bull_ring_great_evade" : "0", "bull_ring_great_crit_chance" : "0", "bull_ring_great_resistance" : "0", "bull_ring_great_resistance_mythic" : "0", "bull_ring_great_crit_damage" : "0",
-    "bull_ring_rare_inc_damage": "4", "bull_ring_rare_base_damage": "40", "bull_ring_rare_hp" : "0", "bull_ring_rare_atk" : "0", "bull_ring_rare_evade" : "0", "bull_ring_rare_crit_chance" : "0", "bull_ring_rare_resistance" : "10", "bull_ring_rare_resistance_mythic" : "0", "bull_ring_rare_crit_damage" : "0",
-    "bull_ring_epic_inc_damage": "5", "bull_ring_epic_base_damage": "50", "bull_ring_epic_hp" : "0", "bull_ring_epic_atk" : "0", "bull_ring_epic_evade" : "0", "bull_ring_epic_crit_chance" : "0", "bull_ring_epic_resistance" : "10", "bull_ring_epic_resistance_mythic" : "0", "bull_ring_epic_crit_damage" : "0",
-    "bull_ring_perfect_epic_inc_damage": "5", "bull_ring_perfect_epic_base_damage": "60", "bull_ring_perfect_epic_hp" : "0", "bull_ring_perfect_epic_atk" : "0", "bull_ring_perfect_epic_evade" : "0", "bull_ring_perfect_epic_crit_chance" : "0", "bull_ring_perfect_epic_resistance" : "10", "bull_ring_perfect_epic_resistance_mythic" : "0", "bull_ring_perfect_epic_crit_damage" : "0",
-    "bull_ring_legendary_inc_damage": "6", "bull_ring_legendary_base_damage": "70", "bull_ring_legendary_hp" : "0", "bull_ring_legendary_atk" : "0", "bull_ring_legendary_evade" : "0", "bull_ring_legendary_crit_chance" : "0", "bull_ring_legendary_resistance" : "10", "bull_ring_legendary_resistance_mythic" : "0", "bull_ring_legendary_crit_damage" : "0",
-    "bull_ring_ancient_legendary_inc_damage": "7", "bull_ring_ancient_legendary_base_damage": "85", "bull_ring_ancient_legendary_hp" : "0", "bull_ring_ancient_legendary_atk" : "0", "bull_ring_ancient_legendary_evade" : "0", "bull_ring_ancient_legendary_crit_chance" : "0", "bull_ring_ancient_legendary_resistance" : "10", "bull_ring_ancient_legendary_resistance_mythic" : "0", "bull_ring_ancient_legendary_crit_damage" : "0",
-    "bull_ring_mythic_inc_damage": "8", "bull_ring_mythic_base_damage": "100", "bull_ring_mythic_hp" : "0", "bull_ring_mythic_atk" : "0", "bull_ring_mythic_evade" : "0", "bull_ring_mythic_crit_chance" : "0", "bull_ring_mythic_resistance" : "10", "bull_ring_mythic_resistance_mythic" : "5", "bull_ring_mythic_crit_damage" : "0",
+    "bull_ring_common_inc_damage": "2", "bull_ring_common_base_damage": "25", "bull_ring_common_hp" : "0", "bull_ring_common_atk" : "0", "bull_ring_common_dodge" : "0", "bull_ring_common_crit_chance" : "0", "bull_ring_common_resistance" : "0", "bull_ring_common_resistance_mythic" : "0", "bull_ring_common_crit_damage" : "0",
+    "bull_ring_great_inc_damage": "3", "bull_ring_great_base_damage": "30", "bull_ring_great_hp" : "0", "bull_ring_great_atk" : "0", "bull_ring_great_dodge" : "0", "bull_ring_great_crit_chance" : "0", "bull_ring_great_resistance" : "0", "bull_ring_great_resistance_mythic" : "0", "bull_ring_great_crit_damage" : "0",
+    "bull_ring_rare_inc_damage": "4", "bull_ring_rare_base_damage": "40", "bull_ring_rare_hp" : "0", "bull_ring_rare_atk" : "0", "bull_ring_rare_dodge" : "0", "bull_ring_rare_crit_chance" : "0", "bull_ring_rare_resistance" : "10", "bull_ring_rare_resistance_mythic" : "0", "bull_ring_rare_crit_damage" : "0",
+    "bull_ring_epic_inc_damage": "5", "bull_ring_epic_base_damage": "50", "bull_ring_epic_hp" : "0", "bull_ring_epic_atk" : "0", "bull_ring_epic_dodge" : "0", "bull_ring_epic_crit_chance" : "0", "bull_ring_epic_resistance" : "10", "bull_ring_epic_resistance_mythic" : "0", "bull_ring_epic_crit_damage" : "0",
+    "bull_ring_perfect_epic_inc_damage": "5", "bull_ring_perfect_epic_base_damage": "60", "bull_ring_perfect_epic_hp" : "0", "bull_ring_perfect_epic_atk" : "0", "bull_ring_perfect_epic_dodge" : "0", "bull_ring_perfect_epic_crit_chance" : "0", "bull_ring_perfect_epic_resistance" : "10", "bull_ring_perfect_epic_resistance_mythic" : "0", "bull_ring_perfect_epic_crit_damage" : "0",
+    "bull_ring_legendary_inc_damage": "6", "bull_ring_legendary_base_damage": "70", "bull_ring_legendary_hp" : "0", "bull_ring_legendary_atk" : "0", "bull_ring_legendary_dodge" : "0", "bull_ring_legendary_crit_chance" : "0", "bull_ring_legendary_resistance" : "10", "bull_ring_legendary_resistance_mythic" : "0", "bull_ring_legendary_crit_damage" : "0",
+    "bull_ring_ancient_legendary_inc_damage": "7", "bull_ring_ancient_legendary_base_damage": "85", "bull_ring_ancient_legendary_hp" : "0", "bull_ring_ancient_legendary_atk" : "0", "bull_ring_ancient_legendary_dodge" : "0", "bull_ring_ancient_legendary_crit_chance" : "0", "bull_ring_ancient_legendary_resistance" : "10", "bull_ring_ancient_legendary_resistance_mythic" : "0", "bull_ring_ancient_legendary_crit_damage" : "0",
+    "bull_ring_mythic_inc_damage": "8", "bull_ring_mythic_base_damage": "100", "bull_ring_mythic_hp" : "0", "bull_ring_mythic_atk" : "0", "bull_ring_mythic_dodge" : "0", "bull_ring_mythic_crit_chance" : "0", "bull_ring_mythic_resistance" : "10", "bull_ring_mythic_resistance_mythic" : "5", "bull_ring_mythic_crit_damage" : "0",
    
     "serpent_ring_damage_type": "ranged units dmg",
     "serpent_ring_resistance_type": "none",
     "serpent_ring_mythic_resistance_type": "ranged units dmg reduced",
-    "serpent_ring_common_inc_damage": "2", "serpent_ring_common_base_damage": "20", "serpent_ring_common_hp" : "0", "serpent_ring_common_atk" : "0", "serpent_ring_common_evade" : "0", "serpent_ring_common_crit_chance" : "0", "serpent_ring_common_resistance" : "0", "serpent_ring_common_resistance_mythic" : "0", "serpent_ring_common_crit_damage" : "0",
-    "serpent_ring_great_inc_damage": "3", "serpent_ring_great_base_damage": "25", "serpent_ring_great_hp" : "0", "serpent_ring_great_atk" : "0", "serpent_ring_great_evade" : "0", "serpent_ring_great_crit_chance" : "0", "serpent_ring_great_resistance" : "0", "serpent_ring_great_resistance_mythic" : "0", "serpent_ring_great_crit_damage" : "0",
-    "serpent_ring_rare_inc_damage": "3", "serpent_ring_rare_base_damage": "30", "serpent_ring_rare_hp" : "0", "serpent_ring_rare_atk" : "0", "serpent_ring_rare_evade" : "0", "serpent_ring_rare_crit_chance" : "0", "serpent_ring_rare_resistance" : "0", "serpent_ring_rare_resistance_mythic" : "0", "serpent_ring_rare_crit_damage" : "0",
-    "serpent_ring_epic_inc_damage": "4", "serpent_ring_epic_base_damage": "40", "serpent_ring_epic_hp" : "0", "serpent_ring_epic_atk" : "0", "serpent_ring_epic_evade" : "0", "serpent_ring_epic_crit_chance" : "0", "serpent_ring_epic_resistance" : "0", "serpent_ring_epic_resistance_mythic" : "0", "serpent_ring_epic_crit_damage" : "0",
-    "serpent_ring_perfect_epic_inc_damage": "4", "serpent_ring_perfect_epic_base_damage": "50", "serpent_ring_perfect_epic_hp" : "0", "serpent_ring_perfect_epic_atk" : "0", "serpent_ring_perfect_epic_evade" : "0", "serpent_ring_perfect_epic_crit_chance" : "0", "serpent_ring_perfect_epic_resistance" : "0", "serpent_ring_perfect_epic_resistance_mythic" : "0", "serpent_ring_perfect_epic_crit_damage" : "0",
-    "serpent_ring_legendary_inc_damage": "5", "serpent_ring_legendary_base_damage": "60", "serpent_ring_legendary_hp" : "0", "serpent_ring_legendary_atk" : "0", "serpent_ring_legendary_evade" : "0", "serpent_ring_legendary_crit_chance" : "0", "serpent_ring_legendary_resistance" : "0", "serpent_ring_legendary_resistance_mythic" : "0", "serpent_ring_legendary_crit_damage" : "0",
-    "serpent_ring_ancient_legendary_inc_damage": "6", "serpent_ring_ancient_legendary_base_damage": "70", "serpent_ring_ancient_legendary_hp" : "0", "serpent_ring_ancient_legendary_atk" : "0", "serpent_ring_ancient_legendary_evade" : "0", "serpent_ring_ancient_legendary_crit_chance" : "0", "serpent_ring_ancient_legendary_resistance" : "0", "serpent_ring_ancient_legendary_resistance_mythic" : "0", "serpent_ring_ancient_legendary_crit_damage" : "0",
-    "serpent_ring_mythic_inc_damage": "9", "serpent_ring_mythic_base_damage": "80", "serpent_ring_mythic_hp" : "0", "serpent_ring_mythic_atk" : "0", "serpent_ring_mythic_evade" : "0", "serpent_ring_mythic_crit_chance" : "0", "serpent_ring_mythic_resistance" : "0", "serpent_ring_mythic_resistance_mythic" : "7", "serpent_ring_mythic_crit_damage" : "0",
+    "serpent_ring_common_inc_damage": "2", "serpent_ring_common_base_damage": "20", "serpent_ring_common_hp" : "0", "serpent_ring_common_atk" : "0", "serpent_ring_common_dodge" : "0", "serpent_ring_common_crit_chance" : "0", "serpent_ring_common_resistance" : "0", "serpent_ring_common_resistance_mythic" : "0", "serpent_ring_common_crit_damage" : "0",
+    "serpent_ring_great_inc_damage": "3", "serpent_ring_great_base_damage": "25", "serpent_ring_great_hp" : "0", "serpent_ring_great_atk" : "0", "serpent_ring_great_dodge" : "0", "serpent_ring_great_crit_chance" : "0", "serpent_ring_great_resistance" : "0", "serpent_ring_great_resistance_mythic" : "0", "serpent_ring_great_crit_damage" : "0",
+    "serpent_ring_rare_inc_damage": "3", "serpent_ring_rare_base_damage": "30", "serpent_ring_rare_hp" : "0", "serpent_ring_rare_atk" : "0", "serpent_ring_rare_dodge" : "0", "serpent_ring_rare_crit_chance" : "0", "serpent_ring_rare_resistance" : "0", "serpent_ring_rare_resistance_mythic" : "0", "serpent_ring_rare_crit_damage" : "0",
+    "serpent_ring_epic_inc_damage": "4", "serpent_ring_epic_base_damage": "40", "serpent_ring_epic_hp" : "0", "serpent_ring_epic_atk" : "0", "serpent_ring_epic_dodge" : "0", "serpent_ring_epic_crit_chance" : "0", "serpent_ring_epic_resistance" : "0", "serpent_ring_epic_resistance_mythic" : "0", "serpent_ring_epic_crit_damage" : "0",
+    "serpent_ring_perfect_epic_inc_damage": "4", "serpent_ring_perfect_epic_base_damage": "50", "serpent_ring_perfect_epic_hp" : "0", "serpent_ring_perfect_epic_atk" : "0", "serpent_ring_perfect_epic_dodge" : "0", "serpent_ring_perfect_epic_crit_chance" : "0", "serpent_ring_perfect_epic_resistance" : "0", "serpent_ring_perfect_epic_resistance_mythic" : "0", "serpent_ring_perfect_epic_crit_damage" : "0",
+    "serpent_ring_legendary_inc_damage": "5", "serpent_ring_legendary_base_damage": "60", "serpent_ring_legendary_hp" : "0", "serpent_ring_legendary_atk" : "0", "serpent_ring_legendary_dodge" : "0", "serpent_ring_legendary_crit_chance" : "0", "serpent_ring_legendary_resistance" : "0", "serpent_ring_legendary_resistance_mythic" : "0", "serpent_ring_legendary_crit_damage" : "0",
+    "serpent_ring_ancient_legendary_inc_damage": "6", "serpent_ring_ancient_legendary_base_damage": "70", "serpent_ring_ancient_legendary_hp" : "0", "serpent_ring_ancient_legendary_atk" : "0", "serpent_ring_ancient_legendary_dodge" : "0", "serpent_ring_ancient_legendary_crit_chance" : "0", "serpent_ring_ancient_legendary_resistance" : "0", "serpent_ring_ancient_legendary_resistance_mythic" : "0", "serpent_ring_ancient_legendary_crit_damage" : "0",
+    "serpent_ring_mythic_inc_damage": "9", "serpent_ring_mythic_base_damage": "80", "serpent_ring_mythic_hp" : "0", "serpent_ring_mythic_atk" : "0", "serpent_ring_mythic_dodge" : "0", "serpent_ring_mythic_crit_chance" : "0", "serpent_ring_mythic_resistance" : "0", "serpent_ring_mythic_resistance_mythic" : "7", "serpent_ring_mythic_crit_damage" : "0",
 
     "wolf_ring_damage_type": "melee units dmg",
     "wolf_ring_resistance_type": "none",
     "wolf_ring_mythic_resistance_type": "melee units dmg reduced",
-    "wolf_ring_common_inc_damage": "2", "wolf_ring_common_base_damage": "20", "wolf_ring_common_hp" : "0", "wolf_ring_common_atk" : "0", "wolf_ring_common_evade" : "0", "wolf_ring_common_crit_chance" : "0", "wolf_ring_common_resistance" : "0", "wolf_ring_common_resistance_mythic" : "0", "wolf_ring_common_crit_damage" : "0",
-    "wolf_ring_great_inc_damage": "3", "wolf_ring_great_base_damage": "25", "wolf_ring_great_hp" : "0", "wolf_ring_great_atk" : "0", "wolf_ring_great_evade" : "0", "wolf_ring_great_crit_chance" : "0", "wolf_ring_great_resistance" : "0", "wolf_ring_great_resistance_mythic" : "0", "wolf_ring_great_crit_damage" : "0",
-    "wolf_ring_rare_inc_damage": "3", "wolf_ring_rare_base_damage": "30", "wolf_ring_rare_hp" : "0", "wolf_ring_rare_atk" : "0", "wolf_ring_rare_evade" : "0", "wolf_ring_rare_crit_chance" : "0", "wolf_ring_rare_resistance" : "0", "wolf_ring_rare_resistance_mythic" : "0", "wolf_ring_rare_crit_damage" : "0",
-    "wolf_ring_epic_inc_damage": "4", "wolf_ring_epic_base_damage": "40", "wolf_ring_epic_hp" : "0", "wolf_ring_epic_atk" : "0", "wolf_ring_epic_evade" : "0", "wolf_ring_epic_crit_chance" : "0", "wolf_ring_epic_resistance" : "0", "wolf_ring_epic_resistance_mythic" : "0", "wolf_ring_epic_crit_damage" : "0",
-    "wolf_ring_perfect_epic_inc_damage": "4", "wolf_ring_perfect_epic_base_damage": "50", "wolf_ring_perfect_epic_hp" : "0", "wolf_ring_perfect_epic_atk" : "0", "wolf_ring_perfect_epic_evade" : "0", "wolf_ring_perfect_epic_crit_chance" : "0", "wolf_ring_perfect_epic_resistance" : "0", "wolf_ring_perfect_epic_resistance_mythic" : "0", "wolf_ring_perfect_epic_crit_damage" : "0",
-    "wolf_ring_legendary_inc_damage": "5", "wolf_ring_legendary_base_damage": "60", "wolf_ring_legendary_hp" : "0", "wolf_ring_legendary_atk" : "0", "wolf_ring_legendary_evade" : "0", "wolf_ring_legendary_crit_chance" : "0", "wolf_ring_legendary_resistance" : "0", "wolf_ring_legendary_resistance_mythic" : "0", "wolf_ring_legendary_crit_damage" : "0",
-    "wolf_ring_ancient_legendary_inc_damage": "6", "wolf_ring_ancient_legendary_base_damage": "70", "wolf_ring_ancient_legendary_hp" : "0", "wolf_ring_ancient_legendary_atk" : "0", "wolf_ring_ancient_legendary_evade" : "0", "wolf_ring_ancient_legendary_crit_chance" : "0", "wolf_ring_ancient_legendary_resistance" : "0", "wolf_ring_ancient_legendary_resistance_mythic" : "0", "wolf_ring_ancient_legendary_crit_damage" : "0",
-    "wolf_ring_mythic_inc_damage": "9", "wolf_ring_mythic_base_damage": "80", "wolf_ring_mythic_hp" : "0", "wolf_ring_mythic_atk" : "0", "wolf_ring_mythic_evade" : "0", "wolf_ring_mythic_crit_chance" : "0", "wolf_ring_mythic_resistance" : "0", "wolf_ring_mythic_resistance_mythic" : "7", "wolf_ring_mythic_crit_damage" : "0",
+    "wolf_ring_common_inc_damage": "2", "wolf_ring_common_base_damage": "20", "wolf_ring_common_hp" : "0", "wolf_ring_common_atk" : "0", "wolf_ring_common_dodge" : "0", "wolf_ring_common_crit_chance" : "0", "wolf_ring_common_resistance" : "0", "wolf_ring_common_resistance_mythic" : "0", "wolf_ring_common_crit_damage" : "0",
+    "wolf_ring_great_inc_damage": "3", "wolf_ring_great_base_damage": "25", "wolf_ring_great_hp" : "0", "wolf_ring_great_atk" : "0", "wolf_ring_great_dodge" : "0", "wolf_ring_great_crit_chance" : "0", "wolf_ring_great_resistance" : "0", "wolf_ring_great_resistance_mythic" : "0", "wolf_ring_great_crit_damage" : "0",
+    "wolf_ring_rare_inc_damage": "3", "wolf_ring_rare_base_damage": "30", "wolf_ring_rare_hp" : "0", "wolf_ring_rare_atk" : "0", "wolf_ring_rare_dodge" : "0", "wolf_ring_rare_crit_chance" : "5", "wolf_ring_rare_resistance" : "0", "wolf_ring_rare_resistance_mythic" : "0", "wolf_ring_rare_crit_damage" : "0",
+    "wolf_ring_epic_inc_damage": "4", "wolf_ring_epic_base_damage": "40", "wolf_ring_epic_hp" : "0", "wolf_ring_epic_atk" : "0", "wolf_ring_epic_dodge" : "0", "wolf_ring_epic_crit_chance" : "5", "wolf_ring_epic_resistance" : "0", "wolf_ring_epic_resistance_mythic" : "0", "wolf_ring_epic_crit_damage" : "0",
+    "wolf_ring_perfect_epic_inc_damage": "4", "wolf_ring_perfect_epic_base_damage": "50", "wolf_ring_perfect_epic_hp" : "0", "wolf_ring_perfect_epic_atk" : "0", "wolf_ring_perfect_epic_dodge" : "0", "wolf_ring_perfect_epic_crit_chance" : "5", "wolf_ring_perfect_epic_resistance" : "0", "wolf_ring_perfect_epic_resistance_mythic" : "0", "wolf_ring_perfect_epic_crit_damage" : "0",
+    "wolf_ring_legendary_inc_damage": "5", "wolf_ring_legendary_base_damage": "60", "wolf_ring_legendary_hp" : "0", "wolf_ring_legendary_atk" : "0", "wolf_ring_legendary_dodge" : "0", "wolf_ring_legendary_crit_chance" : "5", "wolf_ring_legendary_resistance" : "0", "wolf_ring_legendary_resistance_mythic" : "0", "wolf_ring_legendary_crit_damage" : "0",
+    "wolf_ring_ancient_legendary_inc_damage": "6", "wolf_ring_ancient_legendary_base_damage": "70", "wolf_ring_ancient_legendary_hp" : "0", "wolf_ring_ancient_legendary_atk" : "0", "wolf_ring_ancient_legendary_dodge" : "0", "wolf_ring_ancient_legendary_crit_chance" : "5", "wolf_ring_ancient_legendary_resistance" : "0", "wolf_ring_ancient_legendary_resistance_mythic" : "0", "wolf_ring_ancient_legendary_crit_damage" : "0",
+    "wolf_ring_mythic_inc_damage": "9", "wolf_ring_mythic_base_damage": "80", "wolf_ring_mythic_hp" : "0", "wolf_ring_mythic_atk" : "0", "wolf_ring_mythic_dodge" : "0", "wolf_ring_mythic_crit_chance" : "5", "wolf_ring_mythic_resistance" : "0", "wolf_ring_mythic_resistance_mythic" : "7", "wolf_ring_mythic_crit_damage" : "0",
 
     "falcon_ring_damage_type": "airborne units dmg",
     "falcon_ring_resistance_type": "none",
     "falcon_ring_mythic_resistance_type": "airborne units dmg reduced",
-    "falcon_ring_common_inc_damage": "2", "falcon_ring_common_base_damage": "20", "falcon_ring_common_hp" : "0", "falcon_ring_common_atk" : "0", "falcon_ring_common_evade" : "0", "falcon_ring_common_crit_chance" : "0", "falcon_ring_common_resistance" : "0", "falcon_ring_common_resistance_mythic" : "0", "falcon_ring_common_crit_damage" : "0",
-    "falcon_ring_great_inc_damage": "3", "falcon_ring_great_base_damage": "25", "falcon_ring_great_hp" : "0", "falcon_ring_great_atk" : "0", "falcon_ring_great_evade" : "0", "falcon_ring_great_crit_chance" : "0", "falcon_ring_great_resistance" : "0", "falcon_ring_great_resistance_mythic" : "0", "falcon_ring_great_crit_damage" : "0",
-    "falcon_ring_rare_inc_damage": "3", "falcon_ring_rare_base_damage": "30", "falcon_ring_rare_hp" : "0", "falcon_ring_rare_atk" : "0", "falcon_ring_rare_evade" : "0", "falcon_ring_rare_crit_chance" : "0", "falcon_ring_rare_resistance" : "0", "falcon_ring_rare_resistance_mythic" : "0", "falcon_ring_rare_crit_damage" : "0",
-    "falcon_ring_epic_inc_damage": "4", "falcon_ring_epic_base_damage": "40", "falcon_ring_epic_hp" : "0", "falcon_ring_epic_atk" : "0", "falcon_ring_epic_evade" : "0", "falcon_ring_epic_crit_chance" : "0", "falcon_ring_epic_resistance" : "0", "falcon_ring_epic_resistance_mythic" : "0", "falcon_ring_epic_crit_damage" : "0",
-    "falcon_ring_perfect_epic_inc_damage": "4", "falcon_ring_perfect_epic_base_damage": "50", "falcon_ring_perfect_epic_hp" : "0", "falcon_ring_perfect_epic_atk" : "0", "falcon_ring_perfect_epic_evade" : "0", "falcon_ring_perfect_epic_crit_chance" : "0", "falcon_ring_perfect_epic_resistance" : "0", "falcon_ring_perfect_epic_resistance_mythic" : "0", "falcon_ring_perfect_epic_crit_damage" : "0",
-    "falcon_ring_legendary_inc_damage": "5", "falcon_ring_legendary_base_damage": "60", "falcon_ring_legendary_hp" : "0", "falcon_ring_legendary_atk" : "0", "falcon_ring_legendary_evade" : "0", "falcon_ring_legendary_crit_chance" : "0", "falcon_ring_legendary_resistance" : "0", "falcon_ring_legendary_resistance_mythic" : "0", "falcon_ring_legendary_crit_damage" : "0",
-    "falcon_ring_ancient_legendary_inc_damage": "6", "falcon_ring_ancient_legendary_base_damage": "70", "falcon_ring_ancient_legendary_hp" : "0", "falcon_ring_ancient_legendary_atk" : "0", "falcon_ring_ancient_legendary_evade" : "0", "falcon_ring_ancient_legendary_crit_chance" : "0", "falcon_ring_ancient_legendary_resistance" : "0", "falcon_ring_ancient_legendary_resistance_mythic" : "0", "falcon_ring_ancient_legendary_crit_damage" : "0",
-    "falcon_ring_mythic_inc_damage": "9", "falcon_ring_mythic_base_damage": "80", "falcon_ring_mythic_hp" : "0", "falcon_ring_mythic_atk" : "0", "falcon_ring_mythic_evade" : "0", "falcon_ring_mythic_crit_chance" : "0", "falcon_ring_mythic_resistance" : "0", "falcon_ring_mythic_resistance_mythic" : "7", "falcon_ring_mythic_crit_damage" : "0",
+    "falcon_ring_common_inc_damage": "2", "falcon_ring_common_base_damage": "20", "falcon_ring_common_hp" : "0", "falcon_ring_common_atk" : "0", "falcon_ring_common_dodge" : "0", "falcon_ring_common_crit_chance" : "0", "falcon_ring_common_resistance" : "0", "falcon_ring_common_resistance_mythic" : "0", "falcon_ring_common_crit_damage" : "0",
+    "falcon_ring_great_inc_damage": "3", "falcon_ring_great_base_damage": "25", "falcon_ring_great_hp" : "0", "falcon_ring_great_atk" : "0", "falcon_ring_great_dodge" : "0", "falcon_ring_great_crit_chance" : "0", "falcon_ring_great_resistance" : "0", "falcon_ring_great_resistance_mythic" : "0", "falcon_ring_great_crit_damage" : "0",
+    "falcon_ring_rare_inc_damage": "3", "falcon_ring_rare_base_damage": "30", "falcon_ring_rare_hp" : "0", "falcon_ring_rare_atk" : "0", "falcon_ring_rare_dodge" : "0", "falcon_ring_rare_crit_chance" : "0", "falcon_ring_rare_resistance" : "0", "falcon_ring_rare_resistance_mythic" : "0", "falcon_ring_rare_crit_damage" : "0",
+    "falcon_ring_epic_inc_damage": "4", "falcon_ring_epic_base_damage": "40", "falcon_ring_epic_hp" : "0", "falcon_ring_epic_atk" : "0", "falcon_ring_epic_dodge" : "0", "falcon_ring_epic_crit_chance" : "0", "falcon_ring_epic_resistance" : "0", "falcon_ring_epic_resistance_mythic" : "0", "falcon_ring_epic_crit_damage" : "0",
+    "falcon_ring_perfect_epic_inc_damage": "4", "falcon_ring_perfect_epic_base_damage": "50", "falcon_ring_perfect_epic_hp" : "0", "falcon_ring_perfect_epic_atk" : "0", "falcon_ring_perfect_epic_dodge" : "0", "falcon_ring_perfect_epic_crit_chance" : "0", "falcon_ring_perfect_epic_resistance" : "0", "falcon_ring_perfect_epic_resistance_mythic" : "0", "falcon_ring_perfect_epic_crit_damage" : "0",
+    "falcon_ring_legendary_inc_damage": "5", "falcon_ring_legendary_base_damage": "60", "falcon_ring_legendary_hp" : "0", "falcon_ring_legendary_atk" : "0", "falcon_ring_legendary_dodge" : "0", "falcon_ring_legendary_crit_chance" : "0", "falcon_ring_legendary_resistance" : "0", "falcon_ring_legendary_resistance_mythic" : "0", "falcon_ring_legendary_crit_damage" : "0",
+    "falcon_ring_ancient_legendary_inc_damage": "6", "falcon_ring_ancient_legendary_base_damage": "70", "falcon_ring_ancient_legendary_hp" : "0", "falcon_ring_ancient_legendary_atk" : "0", "falcon_ring_ancient_legendary_dodge" : "0", "falcon_ring_ancient_legendary_crit_chance" : "0", "falcon_ring_ancient_legendary_resistance" : "0", "falcon_ring_ancient_legendary_resistance_mythic" : "0", "falcon_ring_ancient_legendary_crit_damage" : "0",
+    "falcon_ring_mythic_inc_damage": "9", "falcon_ring_mythic_base_damage": "80", "falcon_ring_mythic_hp" : "0", "falcon_ring_mythic_atk" : "0", "falcon_ring_mythic_dodge" : "0", "falcon_ring_mythic_crit_chance" : "0", "falcon_ring_mythic_resistance" : "0", "falcon_ring_mythic_resistance_mythic" : "7", "falcon_ring_mythic_crit_damage" : "0",
 
     "bear_ring_damage_type": "ground units dmg",
     "bear_ring_resistance_type": "none",
     "bear_ring_mythic_resistance_type": "ground units dmg reduced",
-    "bear_ring_common_inc_damage": "2", "bear_ring_common_base_damage": "20", "bear_ring_common_hp" : "0", "bear_ring_common_atk" : "0", "bear_ring_common_evade" : "0", "bear_ring_common_crit_chance" : "0", "bear_ring_common_resistance" : "0", "bear_ring_common_resistance_mythic" : "0", "bear_ring_common_crit_damage" : "0",
-    "bear_ring_great_inc_damage": "3", "bear_ring_great_base_damage": "25", "bear_ring_great_hp" : "0", "bear_ring_great_atk" : "0", "bear_ring_great_evade" : "0", "bear_ring_great_crit_chance" : "0", "bear_ring_great_resistance" : "0", "bear_ring_great_resistance_mythic" : "0", "bear_ring_great_crit_damage" : "0",
-    "bear_ring_rare_inc_damage": "3", "bear_ring_rare_base_damage": "30", "bear_ring_rare_hp" : "5", "bear_ring_rare_atk" : "0", "bear_ring_rare_evade" : "0", "bear_ring_rare_crit_chance" : "0", "bear_ring_rare_resistance" : "0", "bear_ring_rare_resistance_mythic" : "0", "bear_ring_rare_crit_damage" : "0",
-    "bear_ring_epic_inc_damage": "4", "bear_ring_epic_base_damage": "40", "bear_ring_epic_hp" : "5", "bear_ring_epic_atk" : "0", "bear_ring_epic_evade" : "0", "bear_ring_epic_crit_chance" : "0", "bear_ring_epic_resistance" : "0", "bear_ring_epic_resistance_mythic" : "0", "bear_ring_epic_crit_damage" : "0",
-    "bear_ring_perfect_epic_inc_damage": "4", "bear_ring_perfect_epic_base_damage": "50", "bear_ring_perfect_epic_hp" : "5", "bear_ring_perfect_epic_atk" : "0", "bear_ring_perfect_epic_evade" : "0", "bear_ring_perfect_epic_crit_chance" : "0", "bear_ring_perfect_epic_resistance" : "0", "bear_ring_perfect_epic_resistance_mythic" : "0", "bear_ring_perfect_epic_crit_damage" : "0",
-    "bear_ring_legendary_inc_damage": "5", "bear_ring_legendary_base_damage": "60", "bear_ring_legendary_hp" : "5", "bear_ring_legendary_atk" : "0", "bear_ring_legendary_evade" : "0", "bear_ring_legendary_crit_chance" : "0", "bear_ring_legendary_resistance" : "0", "bear_ring_legendary_resistance_mythic" : "0", "bear_ring_legendary_crit_damage" : "0",
-    "bear_ring_ancient_legendary_inc_damage": "6", "bear_ring_ancient_legendary_base_damage": "70", "bear_ring_ancient_legendary_hp" : "5", "bear_ring_ancient_legendary_atk" : "0", "bear_ring_ancient_legendary_evade" : "0", "bear_ring_ancient_legendary_crit_chance" : "0", "bear_ring_ancient_legendary_resistance" : "0", "bear_ring_ancient_legendary_resistance_mythic" : "0", "bear_ring_ancient_legendary_crit_damage" : "0",
-    "bear_ring_mythic_inc_damage": "9", "bear_ring_mythic_base_damage": "80", "bear_ring_mythic_hp" : "5", "bear_ring_mythic_atk" : "0", "bear_ring_mythic_evade" : "0", "bear_ring_mythic_crit_chance" : "0", "bear_ring_mythic_resistance" : "0", "bear_ring_mythic_resistance_mythic" : "7", "bear_ring_mythic_crit_damage" : "0",
+    "bear_ring_common_inc_damage": "2", "bear_ring_common_base_damage": "20", "bear_ring_common_hp" : "0", "bear_ring_common_atk" : "0", "bear_ring_common_dodge" : "0", "bear_ring_common_crit_chance" : "0", "bear_ring_common_resistance" : "0", "bear_ring_common_resistance_mythic" : "0", "bear_ring_common_crit_damage" : "0",
+    "bear_ring_great_inc_damage": "3", "bear_ring_great_base_damage": "25", "bear_ring_great_hp" : "0", "bear_ring_great_atk" : "0", "bear_ring_great_dodge" : "0", "bear_ring_great_crit_chance" : "0", "bear_ring_great_resistance" : "0", "bear_ring_great_resistance_mythic" : "0", "bear_ring_great_crit_damage" : "0",
+    "bear_ring_rare_inc_damage": "3", "bear_ring_rare_base_damage": "30", "bear_ring_rare_hp" : "5", "bear_ring_rare_atk" : "0", "bear_ring_rare_dodge" : "0", "bear_ring_rare_crit_chance" : "0", "bear_ring_rare_resistance" : "0", "bear_ring_rare_resistance_mythic" : "0", "bear_ring_rare_crit_damage" : "0",
+    "bear_ring_epic_inc_damage": "4", "bear_ring_epic_base_damage": "40", "bear_ring_epic_hp" : "5", "bear_ring_epic_atk" : "0", "bear_ring_epic_dodge" : "0", "bear_ring_epic_crit_chance" : "0", "bear_ring_epic_resistance" : "0", "bear_ring_epic_resistance_mythic" : "0", "bear_ring_epic_crit_damage" : "0",
+    "bear_ring_perfect_epic_inc_damage": "4", "bear_ring_perfect_epic_base_damage": "50", "bear_ring_perfect_epic_hp" : "5", "bear_ring_perfect_epic_atk" : "0", "bear_ring_perfect_epic_dodge" : "0", "bear_ring_perfect_epic_crit_chance" : "0", "bear_ring_perfect_epic_resistance" : "0", "bear_ring_perfect_epic_resistance_mythic" : "0", "bear_ring_perfect_epic_crit_damage" : "0",
+    "bear_ring_legendary_inc_damage": "5", "bear_ring_legendary_base_damage": "60", "bear_ring_legendary_hp" : "5", "bear_ring_legendary_atk" : "0", "bear_ring_legendary_dodge" : "0", "bear_ring_legendary_crit_chance" : "0", "bear_ring_legendary_resistance" : "0", "bear_ring_legendary_resistance_mythic" : "0", "bear_ring_legendary_crit_damage" : "0",
+    "bear_ring_ancient_legendary_inc_damage": "6", "bear_ring_ancient_legendary_base_damage": "70", "bear_ring_ancient_legendary_hp" : "5", "bear_ring_ancient_legendary_atk" : "0", "bear_ring_ancient_legendary_dodge" : "0", "bear_ring_ancient_legendary_crit_chance" : "0", "bear_ring_ancient_legendary_resistance" : "0", "bear_ring_ancient_legendary_resistance_mythic" : "0", "bear_ring_ancient_legendary_crit_damage" : "0",
+    "bear_ring_mythic_inc_damage": "9", "bear_ring_mythic_base_damage": "80", "bear_ring_mythic_hp" : "5", "bear_ring_mythic_atk" : "0", "bear_ring_mythic_dodge" : "0", "bear_ring_mythic_crit_chance" : "0", "bear_ring_mythic_resistance" : "0", "bear_ring_mythic_resistance_mythic" : "7", "bear_ring_mythic_crit_damage" : "0",
 
     "dragon_ring_damage_type": "elite mobs dmg",
     "dragon_ring_resistance_type": "Projectile Resistance",
     "dragon_ring_mythic_resistance_type": "humanoid units dmg",
-    "dragon_ring_common_inc_damage": "3", "dragon_ring_common_base_damage": "30", "dragon_ring_common_hp" : "0", "dragon_ring_common_atk" : "0", "dragon_ring_common_evade" : "0", "dragon_ring_common_crit_chance" : "0", "dragon_ring_common_resistance" : "0", "dragon_ring_common_resistance_mythic" : "0", "dragon_ring_common_crit_damage" : "0",
-    "dragon_ring_great_inc_damage": "4", "dragon_ring_great_base_damage": "35", "dragon_ring_great_hp" : "0", "dragon_ring_great_atk" : "0", "dragon_ring_great_evade" : "0", "dragon_ring_great_crit_chance" : "0", "dragon_ring_great_resistance" : "0", "dragon_ring_great_resistance_mythic" : "0", "dragon_ring_great_crit_damage" : "0",
-    "dragon_ring_rare_inc_damage": "5", "dragon_ring_rare_base_damage": "42", "dragon_ring_rare_hp" : "0", "dragon_ring_rare_atk" : "0", "dragon_ring_rare_evade" : "0", "dragon_ring_rare_crit_chance" : "0", "dragon_ring_rare_resistance" : "12", "dragon_ring_rare_resistance_mythic" : "0", "dragon_ring_rare_crit_damage" : "0",
-    "dragon_ring_epic_inc_damage": "6", "dragon_ring_epic_base_damage": "60", "dragon_ring_epic_hp" : "0", "dragon_ring_epic_atk" : "0", "dragon_ring_epic_evade" : "0", "dragon_ring_epic_crit_chance" : "6", "dragon_ring_epic_resistance" : "12", "dragon_ring_epic_resistance_mythic" : "0", "dragon_ring_epic_crit_damage" : "0",
-    "dragon_ring_perfect_epic_inc_damage": "7", "dragon_ring_perfect_epic_base_damage": "70", "dragon_ring_perfect_epic_hp" : "0", "dragon_ring_perfect_epic_atk" : "0", "dragon_ring_perfect_epic_evade" : "0", "dragon_ring_perfect_epic_crit_chance" : "6", "dragon_ring_perfect_epic_resistance" : "12", "dragon_ring_perfect_epic_resistance_mythic" : "0", "dragon_ring_perfect_epic_crit_damage" : "0",
-    "dragon_ring_legendary_inc_damage": "7", "dragon_ring_legendary_base_damage": "85", "dragon_ring_legendary_hp" : "0", "dragon_ring_legendary_atk" : "0", "dragon_ring_legendary_evade" : "0", "dragon_ring_legendary_crit_chance" : "6", "dragon_ring_legendary_resistance" : "12", "dragon_ring_legendary_resistance_mythic" : "0", "dragon_ring_legendary_crit_damage" : "0",
-    "dragon_ring_ancient_legendary_inc_damage": "8", "dragon_ring_ancient_legendary_base_damage": "100", "dragon_ring_ancient_legendary_hp" : "0", "dragon_ring_ancient_legendary_atk" : "0", "dragon_ring_ancient_legendary_evade" : "0", "dragon_ring_ancient_legendary_crit_chance" : "6", "dragon_ring_ancient_legendary_resistance" : "12", "dragon_ring_ancient_legendary_resistance_mythic" : "0", "dragon_ring_ancient_legendary_crit_damage" : "0",
-    "dragon_ring_mythic_inc_damage": "9", "dragon_ring_mythic_base_damage": "120", "dragon_ring_mythic_hp" : "0", "dragon_ring_mythic_atk" : "0", "dragon_ring_mythic_evade" : "0", "dragon_ring_mythic_crit_chance" : "6", "dragon_ring_mythic_resistance" : "12", "dragon_ring_mythic_resistance_mythic" : "15", "dragon_ring_mythic_crit_damage" : "0",
+    "dragon_ring_common_inc_damage": "3", "dragon_ring_common_base_damage": "30", "dragon_ring_common_hp" : "0", "dragon_ring_common_atk" : "0", "dragon_ring_common_dodge" : "0", "dragon_ring_common_crit_chance" : "0", "dragon_ring_common_resistance" : "0", "dragon_ring_common_resistance_mythic" : "0", "dragon_ring_common_crit_damage" : "0",
+    "dragon_ring_great_inc_damage": "4", "dragon_ring_great_base_damage": "35", "dragon_ring_great_hp" : "0", "dragon_ring_great_atk" : "0", "dragon_ring_great_dodge" : "0", "dragon_ring_great_crit_chance" : "0", "dragon_ring_great_resistance" : "0", "dragon_ring_great_resistance_mythic" : "0", "dragon_ring_great_crit_damage" : "0",
+    "dragon_ring_rare_inc_damage": "5", "dragon_ring_rare_base_damage": "42", "dragon_ring_rare_hp" : "0", "dragon_ring_rare_atk" : "0", "dragon_ring_rare_dodge" : "0", "dragon_ring_rare_crit_chance" : "0", "dragon_ring_rare_resistance" : "12", "dragon_ring_rare_resistance_mythic" : "0", "dragon_ring_rare_crit_damage" : "0",
+    "dragon_ring_epic_inc_damage": "6", "dragon_ring_epic_base_damage": "60", "dragon_ring_epic_hp" : "0", "dragon_ring_epic_atk" : "0", "dragon_ring_epic_dodge" : "0", "dragon_ring_epic_crit_chance" : "6", "dragon_ring_epic_resistance" : "12", "dragon_ring_epic_resistance_mythic" : "0", "dragon_ring_epic_crit_damage" : "0",
+    "dragon_ring_perfect_epic_inc_damage": "7", "dragon_ring_perfect_epic_base_damage": "70", "dragon_ring_perfect_epic_hp" : "0", "dragon_ring_perfect_epic_atk" : "0", "dragon_ring_perfect_epic_dodge" : "0", "dragon_ring_perfect_epic_crit_chance" : "6", "dragon_ring_perfect_epic_resistance" : "12", "dragon_ring_perfect_epic_resistance_mythic" : "0", "dragon_ring_perfect_epic_crit_damage" : "0",
+    "dragon_ring_legendary_inc_damage": "7", "dragon_ring_legendary_base_damage": "85", "dragon_ring_legendary_hp" : "0", "dragon_ring_legendary_atk" : "0", "dragon_ring_legendary_dodge" : "0", "dragon_ring_legendary_crit_chance" : "6", "dragon_ring_legendary_resistance" : "12", "dragon_ring_legendary_resistance_mythic" : "0", "dragon_ring_legendary_crit_damage" : "0",
+    "dragon_ring_ancient_legendary_inc_damage": "8", "dragon_ring_ancient_legendary_base_damage": "100", "dragon_ring_ancient_legendary_hp" : "0", "dragon_ring_ancient_legendary_atk" : "0", "dragon_ring_ancient_legendary_dodge" : "0", "dragon_ring_ancient_legendary_crit_chance" : "6", "dragon_ring_ancient_legendary_resistance" : "12", "dragon_ring_ancient_legendary_resistance_mythic" : "0", "dragon_ring_ancient_legendary_crit_damage" : "0",
+    "dragon_ring_mythic_inc_damage": "9", "dragon_ring_mythic_base_damage": "120", "dragon_ring_mythic_hp" : "0", "dragon_ring_mythic_atk" : "0", "dragon_ring_mythic_dodge" : "0", "dragon_ring_mythic_crit_chance" : "6", "dragon_ring_mythic_resistance" : "12", "dragon_ring_mythic_resistance_mythic" : "15", "dragon_ring_mythic_crit_damage" : "0",
 
     "vilebat_ring_damage_type": "non-elite mobs dmg",
     "vilebat_ring_resistance_type": "none",
     "vilebat_ring_mythic_resistance_type": "colision dmg reduced",
-    "vilebat_ring_common_inc_damage": "3", "vilebat_ring_common_base_damage": "30", "vilebat_ring_common_hp" : "0", "vilebat_ring_common_atk" : "0", "vilebat_ring_common_evade" : "0", "vilebat_ring_common_crit_chance" : "0", "vilebat_ring_common_resistance" : "0", "vilebat_ring_common_resistance_mythic" : "0", "vilebat_ring_common_crit_damage" : "0",
-    "vilebat_ring_great_inc_damage": "4", "vilebat_ring_great_base_damage": "35", "vilebat_ring_great_hp" : "0", "vilebat_ring_great_atk" : "0", "vilebat_ring_great_evade" : "0", "vilebat_ring_great_crit_chance" : "0", "vilebat_ring_great_resistance" : "0", "vilebat_ring_great_resistance_mythic" : "0", "vilebat_ring_great_crit_damage" : "0",
-    "vilebat_ring_rare_inc_damage": "5", "vilebat_ring_rare_base_damage": "42", "vilebat_ring_rare_hp" : "0", "vilebat_ring_rare_atk" : "0", "vilebat_ring_rare_evade" : "0", "vilebat_ring_rare_crit_chance" : "0", "vilebat_ring_rare_resistance" : "0", "vilebat_ring_rare_resistance_mythic" : "0", "vilebat_ring_rare_crit_damage" : "0",
-    "vilebat_ring_epic_inc_damage": "6", "vilebat_ring_epic_base_damage": "60", "vilebat_ring_epic_hp" : "0", "vilebat_ring_epic_atk" : "0", "vilebat_ring_epic_evade" : "0", "vilebat_ring_epic_crit_chance" : "0", "vilebat_ring_epic_resistance" : "0", "vilebat_ring_epic_resistance_mythic" : "0", "vilebat_ring_epic_crit_damage" : "0",
-    "vilebat_ring_perfect_epic_inc_damage": "7", "vilebat_ring_perfect_epic_base_damage": "70", "vilebat_ring_perfect_epic_hp" : "0", "vilebat_ring_perfect_epic_atk" : "0", "vilebat_ring_perfect_epic_evade" : "0", "vilebat_ring_perfect_epic_crit_chance" : "0", "vilebat_ring_perfect_epic_resistance" : "0", "vilebat_ring_perfect_epic_resistance_mythic" : "0", "vilebat_ring_perfect_epic_crit_damage" : "0",
-    "vilebat_ring_legendary_inc_damage": "7", "vilebat_ring_legendary_base_damage": "85", "vilebat_ring_legendary_hp" : "0", "vilebat_ring_legendary_atk" : "0", "vilebat_ring_legendary_evade" : "0", "vilebat_ring_legendary_crit_chance" : "0", "vilebat_ring_legendary_resistance" : "0", "vilebat_ring_legendary_resistance_mythic" : "0", "vilebat_ring_legendary_crit_damage" : "0",
-    "vilebat_ring_ancient_legendary_inc_damage": "8", "vilebat_ring_ancient_legendary_base_damage": "100", "vilebat_ring_ancient_legendary_hp" : "0", "vilebat_ring_ancient_legendary_atk" : "0", "vilebat_ring_ancient_legendary_evade" : "0", "vilebat_ring_ancient_legendary_crit_chance" : "0", "vilebat_ring_ancient_legendary_resistance" : "0", "vilebat_ring_ancient_legendary_resistance_mythic" : "0", "vilebat_ring_ancient_legendary_crit_damage" : "0",
-    "vilebat_ring_mythic_inc_damage": "9", "vilebat_ring_mythic_base_damage": "120", "vilebat_ring_mythic_hp" : "0", "vilebat_ring_mythic_atk" : "0", "vilebat_ring_mythic_evade" : "0", "vilebat_ring_mythic_crit_chance" : "0", "vilebat_ring_mythic_resistance" : "0", "vilebat_ring_mythic_resistance_mythic" : "12", "vilebat_ring_mythic_crit_damage" : "0",
+    "vilebat_ring_common_inc_damage": "3", "vilebat_ring_common_base_damage": "30", "vilebat_ring_common_hp" : "0", "vilebat_ring_common_atk" : "0", "vilebat_ring_common_dodge" : "0", "vilebat_ring_common_crit_chance" : "0", "vilebat_ring_common_resistance" : "0", "vilebat_ring_common_resistance_mythic" : "0", "vilebat_ring_common_crit_damage" : "0",
+    "vilebat_ring_great_inc_damage": "4", "vilebat_ring_great_base_damage": "35", "vilebat_ring_great_hp" : "0", "vilebat_ring_great_atk" : "0", "vilebat_ring_great_dodge" : "0", "vilebat_ring_great_crit_chance" : "0", "vilebat_ring_great_resistance" : "0", "vilebat_ring_great_resistance_mythic" : "0", "vilebat_ring_great_crit_damage" : "0",
+    "vilebat_ring_rare_inc_damage": "5", "vilebat_ring_rare_base_damage": "42", "vilebat_ring_rare_hp" : "0", "vilebat_ring_rare_atk" : "0", "vilebat_ring_rare_dodge" : "0", "vilebat_ring_rare_crit_chance" : "0", "vilebat_ring_rare_resistance" : "0", "vilebat_ring_rare_resistance_mythic" : "0", "vilebat_ring_rare_crit_damage" : "0",
+    "vilebat_ring_epic_inc_damage": "6", "vilebat_ring_epic_base_damage": "60", "vilebat_ring_epic_hp" : "0", "vilebat_ring_epic_atk" : "0", "vilebat_ring_epic_dodge" : "0", "vilebat_ring_epic_crit_chance" : "0", "vilebat_ring_epic_resistance" : "0", "vilebat_ring_epic_resistance_mythic" : "0", "vilebat_ring_epic_crit_damage" : "0",
+    "vilebat_ring_perfect_epic_inc_damage": "7", "vilebat_ring_perfect_epic_base_damage": "70", "vilebat_ring_perfect_epic_hp" : "0", "vilebat_ring_perfect_epic_atk" : "0", "vilebat_ring_perfect_epic_dodge" : "0", "vilebat_ring_perfect_epic_crit_chance" : "0", "vilebat_ring_perfect_epic_resistance" : "0", "vilebat_ring_perfect_epic_resistance_mythic" : "0", "vilebat_ring_perfect_epic_crit_damage" : "0",
+    "vilebat_ring_legendary_inc_damage": "7", "vilebat_ring_legendary_base_damage": "85", "vilebat_ring_legendary_hp" : "0", "vilebat_ring_legendary_atk" : "0", "vilebat_ring_legendary_dodge" : "0", "vilebat_ring_legendary_crit_chance" : "0", "vilebat_ring_legendary_resistance" : "0", "vilebat_ring_legendary_resistance_mythic" : "0", "vilebat_ring_legendary_crit_damage" : "0",
+    "vilebat_ring_ancient_legendary_inc_damage": "8", "vilebat_ring_ancient_legendary_base_damage": "100", "vilebat_ring_ancient_legendary_hp" : "0", "vilebat_ring_ancient_legendary_atk" : "0", "vilebat_ring_ancient_legendary_dodge" : "0", "vilebat_ring_ancient_legendary_crit_chance" : "0", "vilebat_ring_ancient_legendary_resistance" : "0", "vilebat_ring_ancient_legendary_resistance_mythic" : "0", "vilebat_ring_ancient_legendary_crit_damage" : "0",
+    "vilebat_ring_mythic_inc_damage": "9", "vilebat_ring_mythic_base_damage": "120", "vilebat_ring_mythic_hp" : "0", "vilebat_ring_mythic_atk" : "0", "vilebat_ring_mythic_dodge" : "0", "vilebat_ring_mythic_crit_chance" : "0", "vilebat_ring_mythic_resistance" : "0", "vilebat_ring_mythic_resistance_mythic" : "12", "vilebat_ring_mythic_crit_damage" : "0",
 
     "none_damage_type": "0",
     "none_resistance_type": "0",
     "none_mythic_resistance_type": "0",
-    "none_common_inc_damage": "0", "none_common_base_damage": "0", "none_common_hp" : "0", "none_common_atk" : "0", "none_common_evade" : "0", "none_common_crit_chance" : "0", "none_common_resistance" : "0", "none_common_resistance_mythic" : "0", "none_common_crit_damage" : "0",
-    "none_great_inc_damage": "0", "none_great_base_damage": "0", "none_great_hp" : "0", "none_great_atk" : "0", "none_great_evade" : "0", "none_great_crit_chance" : "0", "none_great_resistance" : "0", "none_great_resistance_mythic" : "0", "none_great_crit_damage" : "0",
-    "none_rare_inc_damage": "0", "none_rare_base_damage": "0", "none_rare_hp" : "0", "none_rare_atk" : "0", "none_rare_evade" : "0", "none_rare_crit_chance" : "0", "none_rare_resistance" : "0", "none_rare_resistance_mythic" : "0", "none_rare_crit_damage" : "0",
-    "none_epic_inc_damage": "0", "none_epic_base_damage": "0", "none_epic_hp" : "0", "none_epic_atk" : "0", "none_epic_evade" : "0", "none_epic_crit_chance" : "0", "none_epic_resistance" : "0", "none_epic_resistance_mythic" : "0", "none_epic_crit_damage" : "0",
-    "none_perfect_epic_inc_damage": "0", "none_perfect_epic_base_damage": "0", "none_perfect_epic_hp" : "0", "none_perfect_epic_atk" : "0", "none_perfect_epic_evade" : "0", "none_perfect_epic_crit_chance" : "0", "none_perfect_epic_resistance" : "0", "none_perfect_epic_resistance_mythic" : "0", "none_perfect_epic_crit_damage" : "0",
-    "none_legendary_inc_damage": "0", "none_legendary_base_damage": "0", "none_legendary_hp" : "0", "none_legendary_atk" : "0", "none_legendary_evade" : "0", "none_legendary_crit_chance" : "0", "none_legendary_resistance" : "0", "none_legendary_resistance_mythic" : "0", "none_legendary_crit_damage" : "0",
-    "none_ancient_legendary_inc_damage": "0", "none_ancient_legendary_base_damage": "0", "none_ancient_legendary_hp" : "0", "none_ancient_legendary_atk" : "0", "none_ancient_legendary_evade" : "0", "none_ancient_legendary_crit_chance" : "0", "none_ancient_legendary_resistance" : "0", "none_ancient_legendary_resistance_mythic" : "0", "none_ancient_legendary_crit_damage" : "0",
-    "none_mythic_inc_damage": "0", "none_mythic_base_damage": "0", "none_mythic_hp" : "0", "none_mythic_atk" : "0", "none_mythic_evade" : "0", "none_mythic_crit_chance" : "0", "none_mythic_resistance" : "0", "none_mythic_resistance_mythic" : "0", "none_mythic_crit_damage" : "0",
+    "none_common_inc_damage": "0", "none_common_base_damage": "0", "none_common_hp" : "0", "none_common_atk" : "0", "none_common_dodge" : "0", "none_common_crit_chance" : "0", "none_common_resistance" : "0", "none_common_resistance_mythic" : "0", "none_common_crit_damage" : "0",
+    "none_great_inc_damage": "0", "none_great_base_damage": "0", "none_great_hp" : "0", "none_great_atk" : "0", "none_great_dodge" : "0", "none_great_crit_chance" : "0", "none_great_resistance" : "0", "none_great_resistance_mythic" : "0", "none_great_crit_damage" : "0",
+    "none_rare_inc_damage": "0", "none_rare_base_damage": "0", "none_rare_hp" : "0", "none_rare_atk" : "0", "none_rare_dodge" : "0", "none_rare_crit_chance" : "0", "none_rare_resistance" : "0", "none_rare_resistance_mythic" : "0", "none_rare_crit_damage" : "0",
+    "none_epic_inc_damage": "0", "none_epic_base_damage": "0", "none_epic_hp" : "0", "none_epic_atk" : "0", "none_epic_dodge" : "0", "none_epic_crit_chance" : "0", "none_epic_resistance" : "0", "none_epic_resistance_mythic" : "0", "none_epic_crit_damage" : "0",
+    "none_perfect_epic_inc_damage": "0", "none_perfect_epic_base_damage": "0", "none_perfect_epic_hp" : "0", "none_perfect_epic_atk" : "0", "none_perfect_epic_dodge" : "0", "none_perfect_epic_crit_chance" : "0", "none_perfect_epic_resistance" : "0", "none_perfect_epic_resistance_mythic" : "0", "none_perfect_epic_crit_damage" : "0",
+    "none_legendary_inc_damage": "0", "none_legendary_base_damage": "0", "none_legendary_hp" : "0", "none_legendary_atk" : "0", "none_legendary_dodge" : "0", "none_legendary_crit_chance" : "0", "none_legendary_resistance" : "0", "none_legendary_resistance_mythic" : "0", "none_legendary_crit_damage" : "0",
+    "none_ancient_legendary_inc_damage": "0", "none_ancient_legendary_base_damage": "0", "none_ancient_legendary_hp" : "0", "none_ancient_legendary_atk" : "0", "none_ancient_legendary_dodge" : "0", "none_ancient_legendary_crit_chance" : "0", "none_ancient_legendary_resistance" : "0", "none_ancient_legendary_resistance_mythic" : "0", "none_ancient_legendary_crit_damage" : "0",
+    "none_mythic_inc_damage": "0", "none_mythic_base_damage": "0", "none_mythic_hp" : "0", "none_mythic_atk" : "0", "none_mythic_dodge" : "0", "none_mythic_crit_chance" : "0", "none_mythic_resistance" : "0", "none_mythic_resistance_mythic" : "0", "none_mythic_crit_damage" : "0",
     }
 
 
@@ -420,84 +411,84 @@ StatsBracelet =  {
 
 StatsLocket =  {
     "angel_locket_resistance_type": "none",
-    "angel_locket_common_inc_hp": "15", "angel_locket_common_base_hp": "120", "angel_locket_common_evade" : "0", "angel_locket_common_resistance" : "0", "angel_locket_common_var_hp" : "0",
-    "angel_locket_great_inc_hp": "18", "angel_locket_great_base_hp": "170", "angel_locket_great_evade" : "0", "angel_locket_great_resistance" : "0", "angel_locket_great_var_hp" : "0",
-    "angel_locket_rare_inc_hp": "20", "angel_locket_rare_base_hp": "220", "angel_locket_rare_evade" : "0", "angel_locket_rare_resistance" : "0", "angel_locket_rare_var_hp" : "0",
-    "angel_locket_epic_inc_hp": "25", "angel_locket_epic_base_hp": "290", "angel_locket_epic_evade" : "0", "angel_locket_epic_resistance" : "0", "angel_locket_epic_var_hp" : "0",
-    "angel_locket_perfect_epic_inc_hp": "30", "angel_locket_perfect_epic_base_hp": "360", "angel_locket_perfect_epic_evade" : "0", "angel_locket_perfect_epic_resistance" : "0", "angel_locket_perfect_epic_var_hp" : "0",
-    "angel_locket_legendary_inc_hp": "35", "angel_locket_legendary_base_hp": "480", "angel_locket_legendary_evade" : "0", "angel_locket_legendary_resistance" : "0", "angel_locket_legendary_var_hp" : "0",
-    "angel_locket_ancient_legendary_inc_hp": "40", "angel_locket_ancient_legendary_base_hp": "600", "angel_locket_ancient_legendary_evade" : "0", "angel_locket_ancient_legendary_resistance" : "0", "angel_locket_ancient_legendary_var_hp" : "0",
-    "angel_locket_mythic_inc_hp": "45", "angel_locket_mythic_base_hp": "720", "angel_locket_mythic_evade" : "0", "angel_locket_mythic_resistance" : "0", "angel_locket_mythic_var_hp" : "0",
+    "angel_locket_common_inc_hp": "15", "angel_locket_common_base_hp": "120", "angel_locket_common_dodge" : "0", "angel_locket_common_resistance" : "0", "angel_locket_common_var_hp" : "0",
+    "angel_locket_great_inc_hp": "18", "angel_locket_great_base_hp": "170", "angel_locket_great_dodge" : "0", "angel_locket_great_resistance" : "0", "angel_locket_great_var_hp" : "0",
+    "angel_locket_rare_inc_hp": "20", "angel_locket_rare_base_hp": "220", "angel_locket_rare_dodge" : "0", "angel_locket_rare_resistance" : "0", "angel_locket_rare_var_hp" : "0",
+    "angel_locket_epic_inc_hp": "25", "angel_locket_epic_base_hp": "290", "angel_locket_epic_dodge" : "0", "angel_locket_epic_resistance" : "0", "angel_locket_epic_var_hp" : "0",
+    "angel_locket_perfect_epic_inc_hp": "30", "angel_locket_perfect_epic_base_hp": "360", "angel_locket_perfect_epic_dodge" : "0", "angel_locket_perfect_epic_resistance" : "0", "angel_locket_perfect_epic_var_hp" : "0",
+    "angel_locket_legendary_inc_hp": "35", "angel_locket_legendary_base_hp": "480", "angel_locket_legendary_dodge" : "0", "angel_locket_legendary_resistance" : "0", "angel_locket_legendary_var_hp" : "0",
+    "angel_locket_ancient_legendary_inc_hp": "40", "angel_locket_ancient_legendary_base_hp": "600", "angel_locket_ancient_legendary_dodge" : "0", "angel_locket_ancient_legendary_resistance" : "0", "angel_locket_ancient_legendary_var_hp" : "0",
+    "angel_locket_mythic_inc_hp": "45", "angel_locket_mythic_base_hp": "720", "angel_locket_mythic_dodge" : "0", "angel_locket_mythic_resistance" : "0", "angel_locket_mythic_var_hp" : "0",
 
     "counterattack_locket_resistance_type": "none",
-    "counterattack_locket_common_inc_hp": "19", "counterattack_locket_common_base_hp": "145", "counterattack_locket_common_evade" : "0", "counterattack_locket_common_resistance" : "0", "counterattack_locket_common_var_hp" : "0",
-    "counterattack_locket_great_inc_hp": "23", "counterattack_locket_great_base_hp": "205", "counterattack_locket_great_evade" : "0", "counterattack_locket_great_resistance" : "0", "counterattack_locket_great_var_hp" : "0",
-    "counterattack_locket_rare_inc_hp": "26", "counterattack_locket_rare_base_hp": "265", "counterattack_locket_rare_evade" : "0", "counterattack_locket_rare_resistance" : "0", "counterattack_locket_rare_var_hp" : "0",
-    "counterattack_locket_epic_inc_hp": "32", "counterattack_locket_epic_base_hp": "350", "counterattack_locket_epic_evade" : "0", "counterattack_locket_epic_resistance" : "0", "counterattack_locket_epic_var_hp" : "0",
-    "counterattack_locket_perfect_epic_inc_hp": "40", "counterattack_locket_perfect_epic_base_hp": "430", "counterattack_locket_perfect_epic_evade" : "0", "counterattack_locket_perfect_epic_resistance" : "0", "counterattack_locket_perfect_epic_var_hp" : "0",
-    "counterattack_locket_legendary_inc_hp": "45", "counterattack_locket_legendary_base_hp": "575", "counterattack_locket_legendary_evade" : "0", "counterattack_locket_legendary_resistance" : "0", "counterattack_locket_legendary_var_hp" : "4",
-    "counterattack_locket_ancient_legendary_inc_hp": "52", "counterattack_locket_ancient_legendary_base_hp": "720", "counterattack_locket_ancient_legendary_evade" : "0", "counterattack_locket_ancient_legendary_resistance" : "0", "counterattack_locket_ancient_legendary_var_hp" : "4",
-    "counterattack_locket_mythic_inc_hp": "60", "counterattack_locket_mythic_base_hp": "865", "counterattack_locket_mythic_evade" : "0", "counterattack_locket_mythic_resistance" : "0", "counterattack_locket_mythic_var_hp" : "4",
+    "counterattack_locket_common_inc_hp": "19", "counterattack_locket_common_base_hp": "145", "counterattack_locket_common_dodge" : "0", "counterattack_locket_common_resistance" : "0", "counterattack_locket_common_var_hp" : "0",
+    "counterattack_locket_great_inc_hp": "23", "counterattack_locket_great_base_hp": "205", "counterattack_locket_great_dodge" : "0", "counterattack_locket_great_resistance" : "0", "counterattack_locket_great_var_hp" : "0",
+    "counterattack_locket_rare_inc_hp": "26", "counterattack_locket_rare_base_hp": "265", "counterattack_locket_rare_dodge" : "0", "counterattack_locket_rare_resistance" : "0", "counterattack_locket_rare_var_hp" : "0",
+    "counterattack_locket_epic_inc_hp": "32", "counterattack_locket_epic_base_hp": "350", "counterattack_locket_epic_dodge" : "0", "counterattack_locket_epic_resistance" : "0", "counterattack_locket_epic_var_hp" : "0",
+    "counterattack_locket_perfect_epic_inc_hp": "40", "counterattack_locket_perfect_epic_base_hp": "430", "counterattack_locket_perfect_epic_dodge" : "0", "counterattack_locket_perfect_epic_resistance" : "0", "counterattack_locket_perfect_epic_var_hp" : "0",
+    "counterattack_locket_legendary_inc_hp": "45", "counterattack_locket_legendary_base_hp": "575", "counterattack_locket_legendary_dodge" : "0", "counterattack_locket_legendary_resistance" : "0", "counterattack_locket_legendary_var_hp" : "4",
+    "counterattack_locket_ancient_legendary_inc_hp": "52", "counterattack_locket_ancient_legendary_base_hp": "720", "counterattack_locket_ancient_legendary_dodge" : "0", "counterattack_locket_ancient_legendary_resistance" : "0", "counterattack_locket_ancient_legendary_var_hp" : "4",
+    "counterattack_locket_mythic_inc_hp": "60", "counterattack_locket_mythic_base_hp": "865", "counterattack_locket_mythic_dodge" : "0", "counterattack_locket_mythic_resistance" : "0", "counterattack_locket_mythic_var_hp" : "4",
 
     "agile_locket_resistance_type": "none",
-    "agile_locket_common_inc_hp": "15", "agile_locket_common_base_hp": "120", "agile_locket_common_evade" : "0", "agile_locket_common_resistance" : "0", "agile_locket_common_var_hp" : "0",
-    "agile_locket_great_inc_hp": "18", "agile_locket_great_base_hp": "170", "agile_locket_great_evade" : "0", "agile_locket_great_resistance" : "0", "agile_locket_great_var_hp" : "0",
-    "agile_locket_rare_inc_hp": "20", "agile_locket_rare_base_hp": "220", "agile_locket_rare_evade" : "0", "agile_locket_rare_resistance" : "0", "agile_locket_rare_var_hp" : "0",
-    "agile_locket_epic_inc_hp": "25", "agile_locket_epic_base_hp": "290", "agile_locket_epic_evade" : "0", "agile_locket_epic_resistance" : "0", "agile_locket_epic_var_hp" : "0",
-    "agile_locket_perfect_epic_inc_hp": "30", "agile_locket_perfect_epic_base_hp": "360", "agile_locket_perfect_epic_evade" : "0", "agile_locket_perfect_epic_resistance" : "0", "agile_locket_perfect_epic_var_hp" : "0",
-    "agile_locket_legendary_inc_hp": "35", "agile_locket_legendary_base_hp": "480", "agile_locket_legendary_evade" : "0", "agile_locket_legendary_resistance" : "0", "agile_locket_legendary_var_hp" : "0",
-    "agile_locket_ancient_legendary_inc_hp": "40", "agile_locket_ancient_legendary_base_hp": "600", "agile_locket_ancient_legendary_evade" : "0", "agile_locket_ancient_legendary_resistance" : "0", "agile_locket_ancient_legendary_var_hp" : "0",
-    "agile_locket_mythic_inc_hp": "45", "agile_locket_mythic_base_hp": "720", "agile_locket_mythic_evade" : "6", "agile_locket_mythic_resistance" : "0", "agile_locket_mythic_var_hp" : "0",
+    "agile_locket_common_inc_hp": "15", "agile_locket_common_base_hp": "120", "agile_locket_common_dodge" : "0", "agile_locket_common_resistance" : "0", "agile_locket_common_var_hp" : "0",
+    "agile_locket_great_inc_hp": "18", "agile_locket_great_base_hp": "170", "agile_locket_great_dodge" : "0", "agile_locket_great_resistance" : "0", "agile_locket_great_var_hp" : "0",
+    "agile_locket_rare_inc_hp": "20", "agile_locket_rare_base_hp": "220", "agile_locket_rare_dodge" : "0", "agile_locket_rare_resistance" : "0", "agile_locket_rare_var_hp" : "0",
+    "agile_locket_epic_inc_hp": "25", "agile_locket_epic_base_hp": "290", "agile_locket_epic_dodge" : "0", "agile_locket_epic_resistance" : "0", "agile_locket_epic_var_hp" : "0",
+    "agile_locket_perfect_epic_inc_hp": "30", "agile_locket_perfect_epic_base_hp": "360", "agile_locket_perfect_epic_dodge" : "0", "agile_locket_perfect_epic_resistance" : "0", "agile_locket_perfect_epic_var_hp" : "0",
+    "agile_locket_legendary_inc_hp": "35", "agile_locket_legendary_base_hp": "480", "agile_locket_legendary_dodge" : "0", "agile_locket_legendary_resistance" : "0", "agile_locket_legendary_var_hp" : "0",
+    "agile_locket_ancient_legendary_inc_hp": "40", "agile_locket_ancient_legendary_base_hp": "600", "agile_locket_ancient_legendary_dodge" : "0", "agile_locket_ancient_legendary_resistance" : "0", "agile_locket_ancient_legendary_var_hp" : "0",
+    "agile_locket_mythic_inc_hp": "45", "agile_locket_mythic_base_hp": "720", "agile_locket_mythic_dodge" : "6", "agile_locket_mythic_resistance" : "0", "agile_locket_mythic_var_hp" : "0",
 
     "iron_locket_resistance_type": "none",
-    "iron_locket_common_inc_hp": "15", "iron_locket_common_base_hp": "120", "iron_locket_common_evade" : "0", "iron_locket_common_resistance" : "0", "iron_locket_common_var_hp" : "0",
-    "iron_locket_great_inc_hp": "18", "iron_locket_great_base_hp": "170", "iron_locket_great_evade" : "0", "iron_locket_great_resistance" : "0", "iron_locket_great_var_hp" : "0",
-    "iron_locket_rare_inc_hp": "20", "iron_locket_rare_base_hp": "220", "iron_locket_rare_evade" : "0", "iron_locket_rare_resistance" : "0", "iron_locket_rare_var_hp" : "0",
-    "iron_locket_epic_inc_hp": "25", "iron_locket_epic_base_hp": "290", "iron_locket_epic_evade" : "0", "iron_locket_epic_resistance" : "0", "iron_locket_epic_var_hp" : "0",
-    "iron_locket_perfect_epic_inc_hp": "30", "iron_locket_perfect_epic_base_hp": "360", "iron_locket_perfect_epic_evade" : "0", "iron_locket_perfect_epic_resistance" : "0", "iron_locket_perfect_epic_var_hp" : "0",
-    "iron_locket_legendary_inc_hp": "35", "iron_locket_legendary_base_hp": "480", "iron_locket_legendary_evade" : "0", "iron_locket_legendary_resistance" : "0", "iron_locket_legendary_var_hp" : "0",
-    "iron_locket_ancient_legendary_inc_hp": "40", "iron_locket_ancient_legendary_base_hp": "600", "iron_locket_ancient_legendary_evade" : "0", "iron_locket_ancient_legendary_resistance" : "0", "iron_locket_ancient_legendary_var_hp" : "0",
-    "iron_locket_mythic_inc_hp": "45", "iron_locket_mythic_base_hp": "720", "iron_locket_mythic_evade" : "0", "iron_locket_mythic_resistance" : "0", "iron_locket_mythic_var_hp" : "0",
+    "iron_locket_common_inc_hp": "15", "iron_locket_common_base_hp": "120", "iron_locket_common_dodge" : "0", "iron_locket_common_resistance" : "0", "iron_locket_common_var_hp" : "0",
+    "iron_locket_great_inc_hp": "18", "iron_locket_great_base_hp": "170", "iron_locket_great_dodge" : "0", "iron_locket_great_resistance" : "0", "iron_locket_great_var_hp" : "0",
+    "iron_locket_rare_inc_hp": "20", "iron_locket_rare_base_hp": "220", "iron_locket_rare_dodge" : "0", "iron_locket_rare_resistance" : "0", "iron_locket_rare_var_hp" : "0",
+    "iron_locket_epic_inc_hp": "25", "iron_locket_epic_base_hp": "290", "iron_locket_epic_dodge" : "0", "iron_locket_epic_resistance" : "0", "iron_locket_epic_var_hp" : "0",
+    "iron_locket_perfect_epic_inc_hp": "30", "iron_locket_perfect_epic_base_hp": "360", "iron_locket_perfect_epic_dodge" : "0", "iron_locket_perfect_epic_resistance" : "0", "iron_locket_perfect_epic_var_hp" : "0",
+    "iron_locket_legendary_inc_hp": "35", "iron_locket_legendary_base_hp": "480", "iron_locket_legendary_dodge" : "0", "iron_locket_legendary_resistance" : "0", "iron_locket_legendary_var_hp" : "0",
+    "iron_locket_ancient_legendary_inc_hp": "40", "iron_locket_ancient_legendary_base_hp": "600", "iron_locket_ancient_legendary_dodge" : "0", "iron_locket_ancient_legendary_resistance" : "0", "iron_locket_ancient_legendary_var_hp" : "0",
+    "iron_locket_mythic_inc_hp": "45", "iron_locket_mythic_base_hp": "720", "iron_locket_mythic_dodge" : "0", "iron_locket_mythic_resistance" : "0", "iron_locket_mythic_var_hp" : "0",
 
     "bulletproof_locket_resistance_type": "projectile resistance",
-    "bulletproof_locket_common_inc_hp": "15", "bulletproof_locket_common_base_hp": "120", "bulletproof_locket_common_evade" : "0", "bulletproof_locket_common_resistance" : "0", "bulletproof_locket_common_var_hp" : "0",
-    "bulletproof_locket_great_inc_hp": "18", "bulletproof_locket_great_base_hp": "170", "bulletproof_locket_great_evade" : "0", "bulletproof_locket_great_resistance" : "0", "bulletproof_locket_great_var_hp" : "0",
-    "bulletproof_locket_rare_inc_hp": "20", "bulletproof_locket_rare_base_hp": "220", "bulletproof_locket_rare_evade" : "0", "bulletproof_locket_rare_resistance" : "0", "bulletproof_locket_rare_var_hp" : "0",
-    "bulletproof_locket_epic_inc_hp": "25", "bulletproof_locket_epic_base_hp": "290", "bulletproof_locket_epic_evade" : "0", "bulletproof_locket_epic_resistance" : "0", "bulletproof_locket_epic_var_hp" : "0",
-    "bulletproof_locket_perfect_epic_inc_hp": "30", "bulletproof_locket_perfect_epic_base_hp": "360", "bulletproof_locket_perfect_epic_evade" : "0", "bulletproof_locket_perfect_epic_resistance" : "0", "bulletproof_locket_perfect_epic_var_hp" : "0",
-    "bulletproof_locket_legendary_inc_hp": "35", "bulletproof_locket_legendary_base_hp": "480", "bulletproof_locket_legendary_evade" : "0", "bulletproof_locket_legendary_resistance" : "0", "bulletproof_locket_legendary_var_hp" : "0",
-    "bulletproof_locket_ancient_legendary_inc_hp": "40", "bulletproof_locket_ancient_legendary_base_hp": "600", "bulletproof_locket_ancient_legendary_evade" : "0", "bulletproof_locket_ancient_legendary_resistance" : "0", "bulletproof_locket_ancient_legendary_var_hp" : "0",
-    "bulletproof_locket_mythic_inc_hp": "45", "bulletproof_locket_mythic_base_hp": "720", "bulletproof_locket_mythic_evade" : "0", "bulletproof_locket_mythic_resistance" : "8", "bulletproof_locket_mythic_var_hp" : "0",
+    "bulletproof_locket_common_inc_hp": "15", "bulletproof_locket_common_base_hp": "120", "bulletproof_locket_common_dodge" : "0", "bulletproof_locket_common_resistance" : "0", "bulletproof_locket_common_var_hp" : "0",
+    "bulletproof_locket_great_inc_hp": "18", "bulletproof_locket_great_base_hp": "170", "bulletproof_locket_great_dodge" : "0", "bulletproof_locket_great_resistance" : "0", "bulletproof_locket_great_var_hp" : "0",
+    "bulletproof_locket_rare_inc_hp": "20", "bulletproof_locket_rare_base_hp": "220", "bulletproof_locket_rare_dodge" : "0", "bulletproof_locket_rare_resistance" : "0", "bulletproof_locket_rare_var_hp" : "0",
+    "bulletproof_locket_epic_inc_hp": "25", "bulletproof_locket_epic_base_hp": "290", "bulletproof_locket_epic_dodge" : "0", "bulletproof_locket_epic_resistance" : "0", "bulletproof_locket_epic_var_hp" : "0",
+    "bulletproof_locket_perfect_epic_inc_hp": "30", "bulletproof_locket_perfect_epic_base_hp": "360", "bulletproof_locket_perfect_epic_dodge" : "0", "bulletproof_locket_perfect_epic_resistance" : "0", "bulletproof_locket_perfect_epic_var_hp" : "0",
+    "bulletproof_locket_legendary_inc_hp": "35", "bulletproof_locket_legendary_base_hp": "480", "bulletproof_locket_legendary_dodge" : "0", "bulletproof_locket_legendary_resistance" : "0", "bulletproof_locket_legendary_var_hp" : "0",
+    "bulletproof_locket_ancient_legendary_inc_hp": "40", "bulletproof_locket_ancient_legendary_base_hp": "600", "bulletproof_locket_ancient_legendary_dodge" : "0", "bulletproof_locket_ancient_legendary_resistance" : "0", "bulletproof_locket_ancient_legendary_var_hp" : "0",
+    "bulletproof_locket_mythic_inc_hp": "45", "bulletproof_locket_mythic_base_hp": "720", "bulletproof_locket_mythic_dodge" : "0", "bulletproof_locket_mythic_resistance" : "8", "bulletproof_locket_mythic_var_hp" : "0",
 
     "piercer_locket_resistance_type": "none",
-    "piercer_locket_common_inc_hp": "16", "piercer_locket_common_base_hp": "120", "piercer_locket_common_evade" : "0", "piercer_locket_common_resistance" : "0", "piercer_locket_common_var_hp" : "0",
-    "piercer_locket_great_inc_hp": "19", "piercer_locket_great_base_hp": "170", "piercer_locket_great_evade" : "0", "piercer_locket_great_resistance" : "0", "piercer_locket_great_var_hp" : "0",
-    "piercer_locket_rare_inc_hp": "22", "piercer_locket_rare_base_hp": "220", "piercer_locket_rare_evade" : "0", "piercer_locket_rare_resistance" : "0", "piercer_locket_rare_var_hp" : "0",
-    "piercer_locket_epic_inc_hp": "27", "piercer_locket_epic_base_hp": "290", "piercer_locket_epic_evade" : "0", "piercer_locket_epic_resistance" : "0", "piercer_locket_epic_var_hp" : "0",
-    "piercer_locket_perfect_epic_inc_hp": "33", "piercer_locket_perfect_epic_base_hp": "360", "piercer_locket_perfect_epic_evade" : "0", "piercer_locket_perfect_epic_resistance" : "0", "piercer_locket_perfect_epic_var_hp" : "0",
-    "piercer_locket_legendary_inc_hp": "38", "piercer_locket_legendary_base_hp": "480", "piercer_locket_legendary_evade" : "0", "piercer_locket_legendary_resistance" : "0", "piercer_locket_legendary_var_hp" : "0",
-    "piercer_locket_ancient_legendary_inc_hp": "44", "piercer_locket_ancient_legendary_base_hp": "600", "piercer_locket_ancient_legendary_evade" : "0", "piercer_locket_ancient_legendary_resistance" : "0", "piercer_locket_ancient_legendary_var_hp" : "0",
-    "piercer_locket_mythic_inc_hp": "50", "piercer_locket_mythic_base_hp": "720", "piercer_locket_mythic_evade" : "0", "piercer_locket_mythic_resistance" : "0", "piercer_locket_mythic_var_hp" : "0",
+    "piercer_locket_common_inc_hp": "16", "piercer_locket_common_base_hp": "120", "piercer_locket_common_dodge" : "0", "piercer_locket_common_resistance" : "0", "piercer_locket_common_var_hp" : "0",
+    "piercer_locket_great_inc_hp": "19", "piercer_locket_great_base_hp": "170", "piercer_locket_great_dodge" : "0", "piercer_locket_great_resistance" : "0", "piercer_locket_great_var_hp" : "0",
+    "piercer_locket_rare_inc_hp": "22", "piercer_locket_rare_base_hp": "220", "piercer_locket_rare_dodge" : "0", "piercer_locket_rare_resistance" : "0", "piercer_locket_rare_var_hp" : "0",
+    "piercer_locket_epic_inc_hp": "27", "piercer_locket_epic_base_hp": "290", "piercer_locket_epic_dodge" : "0", "piercer_locket_epic_resistance" : "0", "piercer_locket_epic_var_hp" : "0",
+    "piercer_locket_perfect_epic_inc_hp": "33", "piercer_locket_perfect_epic_base_hp": "360", "piercer_locket_perfect_epic_dodge" : "0", "piercer_locket_perfect_epic_resistance" : "0", "piercer_locket_perfect_epic_var_hp" : "0",
+    "piercer_locket_legendary_inc_hp": "38", "piercer_locket_legendary_base_hp": "480", "piercer_locket_legendary_dodge" : "0", "piercer_locket_legendary_resistance" : "0", "piercer_locket_legendary_var_hp" : "0",
+    "piercer_locket_ancient_legendary_inc_hp": "44", "piercer_locket_ancient_legendary_base_hp": "600", "piercer_locket_ancient_legendary_dodge" : "0", "piercer_locket_ancient_legendary_resistance" : "0", "piercer_locket_ancient_legendary_var_hp" : "0",
+    "piercer_locket_mythic_inc_hp": "50", "piercer_locket_mythic_base_hp": "720", "piercer_locket_mythic_dodge" : "0", "piercer_locket_mythic_resistance" : "0", "piercer_locket_mythic_var_hp" : "0",
 
     "bloodthirsty_locket_resistance_type": "none",
-    "bloodthirsty_locket_common_inc_hp": "16", "bloodthirsty_locket_common_base_hp": "120", "bloodthirsty_locket_common_evade" : "0", "bloodthirsty_locket_common_resistance" : "0", "bloodthirsty_locket_common_var_hp" : "0",
-    "bloodthirsty_locket_great_inc_hp": "19", "bloodthirsty_locket_great_base_hp": "170", "bloodthirsty_locket_great_evade" : "0", "bloodthirsty_locket_great_resistance" : "0", "bloodthirsty_locket_great_var_hp" : "0",
-    "bloodthirsty_locket_rare_inc_hp": "22", "bloodthirsty_locket_rare_base_hp": "220", "bloodthirsty_locket_rare_evade" : "0", "bloodthirsty_locket_rare_resistance" : "0", "bloodthirsty_locket_rare_var_hp" : "0",
-    "bloodthirsty_locket_epic_inc_hp": "27", "bloodthirsty_locket_epic_base_hp": "290", "bloodthirsty_locket_epic_evade" : "0", "bloodthirsty_locket_epic_resistance" : "0", "bloodthirsty_locket_epic_var_hp" : "0",
-    "bloodthirsty_locket_perfect_epic_inc_hp": "33", "bloodthirsty_locket_perfect_epic_base_hp": "360", "bloodthirsty_locket_perfect_epic_evade" : "0", "bloodthirsty_locket_perfect_epic_resistance" : "0", "bloodthirsty_locket_perfect_epic_var_hp" : "0",
-    "bloodthirsty_locket_legendary_inc_hp": "38", "bloodthirsty_locket_legendary_base_hp": "480", "bloodthirsty_locket_legendary_evade" : "0", "bloodthirsty_locket_legendary_resistance" : "0", "bloodthirsty_locket_legendary_var_hp" : "0",
-    "bloodthirsty_locket_ancient_legendary_inc_hp": "44", "bloodthirsty_locket_ancient_legendary_base_hp": "600", "bloodthirsty_locket_ancient_legendary_evade" : "0", "bloodthirsty_locket_ancient_legendary_resistance" : "0", "bloodthirsty_locket_ancient_legendary_var_hp" : "0",
-    "bloodthirsty_locket_mythic_inc_hp": "50", "bloodthirsty_locket_mythic_base_hp": "720", "bloodthirsty_locket_mythic_evade" : "0", "bloodthirsty_locket_mythic_resistance" : "0", "bloodthirsty_locket_mythic_var_hp" : "0",
+    "bloodthirsty_locket_common_inc_hp": "16", "bloodthirsty_locket_common_base_hp": "120", "bloodthirsty_locket_common_dodge" : "0", "bloodthirsty_locket_common_resistance" : "0", "bloodthirsty_locket_common_var_hp" : "0",
+    "bloodthirsty_locket_great_inc_hp": "19", "bloodthirsty_locket_great_base_hp": "170", "bloodthirsty_locket_great_dodge" : "0", "bloodthirsty_locket_great_resistance" : "0", "bloodthirsty_locket_great_var_hp" : "0",
+    "bloodthirsty_locket_rare_inc_hp": "22", "bloodthirsty_locket_rare_base_hp": "220", "bloodthirsty_locket_rare_dodge" : "0", "bloodthirsty_locket_rare_resistance" : "0", "bloodthirsty_locket_rare_var_hp" : "0",
+    "bloodthirsty_locket_epic_inc_hp": "27", "bloodthirsty_locket_epic_base_hp": "290", "bloodthirsty_locket_epic_dodge" : "0", "bloodthirsty_locket_epic_resistance" : "0", "bloodthirsty_locket_epic_var_hp" : "0",
+    "bloodthirsty_locket_perfect_epic_inc_hp": "33", "bloodthirsty_locket_perfect_epic_base_hp": "360", "bloodthirsty_locket_perfect_epic_dodge" : "0", "bloodthirsty_locket_perfect_epic_resistance" : "0", "bloodthirsty_locket_perfect_epic_var_hp" : "0",
+    "bloodthirsty_locket_legendary_inc_hp": "38", "bloodthirsty_locket_legendary_base_hp": "480", "bloodthirsty_locket_legendary_dodge" : "0", "bloodthirsty_locket_legendary_resistance" : "0", "bloodthirsty_locket_legendary_var_hp" : "0",
+    "bloodthirsty_locket_ancient_legendary_inc_hp": "44", "bloodthirsty_locket_ancient_legendary_base_hp": "600", "bloodthirsty_locket_ancient_legendary_dodge" : "0", "bloodthirsty_locket_ancient_legendary_resistance" : "0", "bloodthirsty_locket_ancient_legendary_var_hp" : "0",
+    "bloodthirsty_locket_mythic_inc_hp": "50", "bloodthirsty_locket_mythic_base_hp": "720", "bloodthirsty_locket_mythic_dodge" : "0", "bloodthirsty_locket_mythic_resistance" : "0", "bloodthirsty_locket_mythic_var_hp" : "0",
 
     "none_resistance_type": "none",
-    "none_common_inc_hp": "0", "none_common_base_hp": "0", "none_common_evade" : "0", "none_common_resistance" : "0", "none_common_var_hp" : "0",
-    "none_great_inc_hp": "0", "none_great_base_hp": "0", "none_great_evade" : "0", "none_great_resistance" : "0", "none_great_var_hp" : "0",
-    "none_rare_inc_hp": "0", "none_rare_base_hp": "0", "none_rare_evade" : "0", "none_rare_resistance" : "0", "none_rare_var_hp" : "0",
-    "none_epic_inc_hp": "0", "none_epic_base_hp": "0", "none_epic_evade" : "0", "none_epic_resistance" : "0", "none_epic_var_hp" : "0",
-    "none_perfect_epic_inc_hp": "0", "none_perfect_epic_base_hp": "0", "none_perfect_epic_evade" : "0", "none_perfect_epic_resistance" : "0", "none_perfect_epic_var_hp" : "0",
-    "none_legendary_inc_hp": "0", "none_legendary_base_hp": "0", "none_legendary_evade" : "0", "none_legendary_resistance" : "0", "none_legendary_var_hp" : "0",
-    "none_ancient_legendary_inc_hp": "0", "none_ancient_legendary_base_hp": "0", "none_ancient_legendary_evade" : "0", "none_ancient_legendary_resistance" : "0", "none_ancient_legendary_var_hp" : "0",
-    "none_mythic_inc_hp": "0", "none_mythic_base_hp": "0", "none_mythic_evade" : "0", "none_mythic_resistance" : "0", "none_mythic_var_hp" : "0",
+    "none_common_inc_hp": "0", "none_common_base_hp": "0", "none_common_dodge" : "0", "none_common_resistance" : "0", "none_common_var_hp" : "0",
+    "none_great_inc_hp": "0", "none_great_base_hp": "0", "none_great_dodge" : "0", "none_great_resistance" : "0", "none_great_var_hp" : "0",
+    "none_rare_inc_hp": "0", "none_rare_base_hp": "0", "none_rare_dodge" : "0", "none_rare_resistance" : "0", "none_rare_var_hp" : "0",
+    "none_epic_inc_hp": "0", "none_epic_base_hp": "0", "none_epic_dodge" : "0", "none_epic_resistance" : "0", "none_epic_var_hp" : "0",
+    "none_perfect_epic_inc_hp": "0", "none_perfect_epic_base_hp": "0", "none_perfect_epic_dodge" : "0", "none_perfect_epic_resistance" : "0", "none_perfect_epic_var_hp" : "0",
+    "none_legendary_inc_hp": "0", "none_legendary_base_hp": "0", "none_legendary_dodge" : "0", "none_legendary_resistance" : "0", "none_legendary_var_hp" : "0",
+    "none_ancient_legendary_inc_hp": "0", "none_ancient_legendary_base_hp": "0", "none_ancient_legendary_dodge" : "0", "none_ancient_legendary_resistance" : "0", "none_ancient_legendary_var_hp" : "0",
+    "none_mythic_inc_hp": "0", "none_mythic_base_hp": "0", "none_mythic_dodge" : "0", "none_mythic_resistance" : "0", "none_mythic_var_hp" : "0",
     }
 
 
@@ -694,6 +685,9 @@ HerosStats = {
 
     "elaine_star_0": [0,0,0],"elaine_star_2": [360,0,0],"elaine_star_7": [360,2000,0],"elaine_star_8": [360,2000,9],
     "elaine_0": [0,0,0,0,0],"elaine_20": [120,0,0,0,0],"elaine_40": [120,5,0,0,0],"elaine_60": [120,5,7,0,0],"elaine_80": [120,5,7,7,0],"elaine_120": [120,5,7,7,9],
+    
+    "bobo_star_0": [0,0,0],"bobo_star_2": [240,0,0],"bobo_star_7": [240,1800,0],"bobo_star_8": [240,1800,5],
+    "bobo_0": [0,0,0,0,0],"bobo_20": [150,0,0,0,0],"bobo_40": [150,5,0,0,0],"bobo_60": [150,5,5,0,0],"bobo_80": [150,5,5,20,0],"bobo_120": [150,5,5,20,6],
     }
 
 
@@ -876,9 +870,9 @@ JewelStats = {
     "kunzite_lvl8_bonus1": "350", #sure
     "kunzite_lvl9_bonus1": "440", #sure
     "kunzite_lvl10_bonus1": "550", #sure
-    "kunzite_lvl11_bonus1": "660",
-    "kunzite_lvl12_bonus1": "770",
-    "kunzite_lvl13_bonus1": "880",
+    "kunzite_lvl11_bonus1": "690", #sure
+    "kunzite_lvl12_bonus1": "830", #sure
+    "kunzite_lvl13_bonus1": "1000", #sure
     "kunzite_lvl1_bonus2": "15", #sure
     "kunzite_lvl2_bonus2": "25", #sure
     "kunzite_lvl3_bonus2": "40", #sure
@@ -889,9 +883,23 @@ JewelStats = {
     "kunzite_lvl8_bonus2": "175", #sure
     "kunzite_lvl9_bonus2": "220", #sure
     "kunzite_lvl10_bonus2": "275", #sure
-    "kunzite_lvl11_bonus2": "340",
-    "kunzite_lvl12_bonus2": "400",
-    "kunzite_lvl13_bonus2": "450",
+    "kunzite_lvl11_bonus2": "345", #sure
+    "kunzite_lvl12_bonus2": "415", #sure
+    "kunzite_lvl13_bonus2": "500", #sure
+    "kunzite_lvl1_bonus3": "none", #sure
+    "kunzite_lvl2_bonus3": "none", #sure
+    "kunzite_lvl3_bonus3": "none", #sure
+    "kunzite_lvl4_bonus3": "none", #sure
+    "kunzite_lvl5_bonus3": "none", #sure
+    "kunzite_lvl6_bonus3": "none", #sure
+    "kunzite_lvl7_bonus3": "none", #sure
+    "kunzite_lvl8_bonus3": "none", #sure
+    "kunzite_lvl9_bonus3": "none", #sure
+    "kunzite_lvl10_bonus3": "none", #sure
+    "kunzite_lvl11_bonus3": "none", #sure
+    "kunzite_lvl12_bonus3": "none", #sure
+    "kunzite_lvl13_bonus3": "none", #sure
+    "kunzite_special_bonus": "1", #sure
 
     "ruby_lvl1_bonus1": "30", #sure
     "ruby_lvl2_bonus1": "50", #sure
@@ -903,9 +911,9 @@ JewelStats = {
     "ruby_lvl8_bonus1": "350", #sure
     "ruby_lvl9_bonus1": "440", #sure
     "ruby_lvl10_bonus1": "550", #sure
-    "ruby_lvl11_bonus1": "660",
-    "ruby_lvl12_bonus1": "770",
-    "ruby_lvl13_bonus1": "880",
+    "ruby_lvl11_bonus1": "690", #sure
+    "ruby_lvl12_bonus1": "830", #sure
+    "ruby_lvl13_bonus1": "1000", #sure
     "ruby_lvl1_bonus2": "15", #sure
     "ruby_lvl2_bonus2": "25", #sure
     "ruby_lvl3_bonus2": "40", #sure
@@ -916,9 +924,23 @@ JewelStats = {
     "ruby_lvl8_bonus2": "175", #sure
     "ruby_lvl9_bonus2": "220", #sure
     "ruby_lvl10_bonus2": "275", #sure
-    "ruby_lvl11_bonus2": "340",
-    "ruby_lvl12_bonus2": "400",
-    "ruby_lvl13_bonus2": "450",
+    "ruby_lvl11_bonus2": "345", #sure
+    "ruby_lvl12_bonus2": "415", #sure
+    "ruby_lvl13_bonus2": "500", #sure
+    "ruby_lvl1_bonus3": "none", #sure
+    "ruby_lvl2_bonus3": "none", #sure
+    "ruby_lvl3_bonus3": "none", #sure
+    "ruby_lvl4_bonus3": "none", #sure
+    "ruby_lvl5_bonus3": "none", #sure
+    "ruby_lvl6_bonus3": "none", #sure
+    "ruby_lvl7_bonus3": "none", #sure
+    "ruby_lvl8_bonus3": "none", #sure
+    "ruby_lvl9_bonus3": "none", #sure
+    "ruby_lvl10_bonus3": "none", #sure
+    "ruby_lvl11_bonus3": "none", #sure
+    "ruby_lvl12_bonus3": "none", #sure
+    "ruby_lvl13_bonus3": "none", #sure
+    "ruby_special_bonus": "1", #sure
 
     "tourmaline_lvl1_bonus1": "50", #sure
     "tourmaline_lvl2_bonus1": "80", #sure
@@ -930,9 +952,9 @@ JewelStats = {
     "tourmaline_lvl8_bonus1": "440", #sure
     "tourmaline_lvl9_bonus1": "550", #sure
     "tourmaline_lvl10_bonus1": "690", #sure
-    "tourmaline_lvl11_bonus1": "740",
-    "tourmaline_lvl12_bonus1": "820",
-    "tourmaline_lvl13_bonus1": "900",
+    "tourmaline_lvl11_bonus1": "830", #sure
+    "tourmaline_lvl12_bonus1": "1020",
+    "tourmaline_lvl13_bonus1": "1200", #sure
     "tourmaline_lvl1_bonus2": "35", #sure
     "tourmaline_lvl2_bonus2": "55", #sure
     "tourmaline_lvl3_bonus2": "85", #sure
@@ -943,9 +965,23 @@ JewelStats = {
     "tourmaline_lvl8_bonus2": "300", #sure
     "tourmaline_lvl9_bonus2": "380", #sure
     "tourmaline_lvl10_bonus2": "470", #sure
-    "tourmaline_lvl11_bonus2": "560",
-    "tourmaline_lvl12_bonus2": "640",
-    "tourmaline_lvl13_bonus2": "730",
+    "tourmaline_lvl11_bonus2": "580", #sure
+    "tourmaline_lvl12_bonus2": "660",
+    "tourmaline_lvl13_bonus2": "800", #sure
+    "tourmaline_lvl1_bonus3": "0.3", #sure
+    "tourmaline_lvl2_bonus3": "0.5", #sure
+    "tourmaline_lvl3_bonus3": "0.5", #sure
+    "tourmaline_lvl4_bonus3": "0.75", #sure
+    "tourmaline_lvl5_bonus3": "0.8", #sure
+    "tourmaline_lvl6_bonus3": "1.0", #sure
+    "tourmaline_lvl7_bonus3": "1.0", #sure
+    "tourmaline_lvl8_bonus3": "1.0", #sure
+    "tourmaline_lvl9_bonus3": "1.2", #sure
+    "tourmaline_lvl10_bonus3": "1.2", #sure
+    "tourmaline_lvl11_bonus3": "1.25", #sure
+    "tourmaline_lvl12_bonus3": "1.3",
+    "tourmaline_lvl13_bonus3": "1.35", #sure
+    "tourmaline_special_bonus": "1", #sure
 
     "lapis_lvl1_bonus1": "120", #sure
     "lapis_lvl2_bonus1": "200", #sure
@@ -957,9 +993,9 @@ JewelStats = {
     "lapis_lvl8_bonus1": "1400", #sure
     "lapis_lvl9_bonus1": "1750", #sure
     "lapis_lvl10_bonus1": "2200", #sure
-    "lapis_lvl11_bonus1": "2600",
-    "lapis_lvl12_bonus1": "3000",
-    "lapis_lvl13_bonus1": "3400",
+    "lapis_lvl11_bonus1": "2700", #sure
+    "lapis_lvl12_bonus1": "3300", #sure
+    "lapis_lvl13_bonus1": "3960", #sure
     "lapis_lvl1_bonus2": "30", #sure
     "lapis_lvl2_bonus2": "50", #sure
     "lapis_lvl3_bonus2": "80", #sure
@@ -970,9 +1006,23 @@ JewelStats = {
     "lapis_lvl8_bonus2": "280", #sure
     "lapis_lvl9_bonus2": "350", #sure
     "lapis_lvl10_bonus2": "440", #sure
-    "lapis_lvl11_bonus2": "500",
-    "lapis_lvl12_bonus2": "580",
-    "lapis_lvl13_bonus2": "640",
+    "lapis_lvl11_bonus2": "550", #sure
+    "lapis_lvl12_bonus2": "660", #sure
+    "lapis_lvl13_bonus2": "790", #sure
+    "lapis_lvl1_bonus3": "none", #sure
+    "lapis_lvl2_bonus3": "none", #sure
+    "lapis_lvl3_bonus3": "none", #sure
+    "lapis_lvl4_bonus3": "none", #sure
+    "lapis_lvl5_bonus3": "none", #sure
+    "lapis_lvl6_bonus3": "none", #sure
+    "lapis_lvl7_bonus3": "none", #sure
+    "lapis_lvl8_bonus3": "none", #sure
+    "lapis_lvl9_bonus3": "none", #sure
+    "lapis_lvl10_bonus3": "none", #sure
+    "lapis_lvl11_bonus3": "none", #sure
+    "lapis_lvl12_bonus3": "none", #sure
+    "lapis_lvl13_bonus3": "none", #sure
+    "lapis_special_bonus": "3.0", #sure
 
     "emerald_lvl1_bonus1": "120", #sure
     "emerald_lvl2_bonus1": "200", #sure
@@ -984,9 +1034,9 @@ JewelStats = {
     "emerald_lvl8_bonus1": "1400", #sure
     "emerald_lvl9_bonus1": "1750", #sure
     "emerald_lvl10_bonus1": "2200", #sure
-    "emerald_lvl11_bonus1": "2600",
-    "emerald_lvl12_bonus1": "3000",
-    "emerald_lvl13_bonus1": "3400",
+    "emerald_lvl11_bonus1": "2750", #sure
+    "emerald_lvl12_bonus1": "3300", #sure
+    "emerald_lvl13_bonus1": "3960", #sure
     "emerald_lvl1_bonus2": "1", #sure
     "emerald_lvl2_bonus2": "2", #sure
     "emerald_lvl3_bonus2": "2", #sure
@@ -997,9 +1047,23 @@ JewelStats = {
     "emerald_lvl8_bonus2": "6", #sure
     "emerald_lvl9_bonus2": "7", #sure
     "emerald_lvl10_bonus2": "8", #sure
-    "emerald_lvl11_bonus2": "9",
-    "emerald_lvl12_bonus2": "10",
-    "emerald_lvl13_bonus2": "11",
+    "emerald_lvl11_bonus2": "9", #sure
+    "emerald_lvl12_bonus2": "10", #sure
+    "emerald_lvl13_bonus2": "11", #sure
+    "emerald_lvl1_bonus3": "none", #sure
+    "emerald_lvl2_bonus3": "none", #sure
+    "emerald_lvl3_bonus3": "none", #sure
+    "emerald_lvl4_bonus3": "none", #sure
+    "emerald_lvl5_bonus3": "none", #sure
+    "emerald_lvl6_bonus3": "none", #sure
+    "emerald_lvl7_bonus3": "none", #sure
+    "emerald_lvl8_bonus3": "none", #sure
+    "emerald_lvl9_bonus3": "none", #sure
+    "emerald_lvl10_bonus3": "none", #sure
+    "emerald_lvl11_bonus3": "none", #sure
+    "emerald_lvl12_bonus3": "none", #sure
+    "emerald_lvl13_bonus3": "none", #sure
+    "emerald_special_bonus": "4", #sure
 
     "topaz_lvl1_bonus1": "15", #sure
     "topaz_lvl2_bonus1": "30", #sure
@@ -1011,9 +1075,9 @@ JewelStats = {
     "topaz_lvl8_bonus1": "195", #sure
     "topaz_lvl9_bonus1": "245", #sure
     "topaz_lvl10_bonus1": "305", #sure
-    "topaz_lvl11_bonus1": "340",
-    "topaz_lvl12_bonus1": "380",
-    "topaz_lvl13_bonus1": "420",
+    "topaz_lvl11_bonus1": "365", #sure
+    "topaz_lvl12_bonus1": "435", #sure
+    "topaz_lvl13_bonus1": "520", #sure
     "topaz_lvl1_bonus2": "1", #sure
     "topaz_lvl2_bonus2": "2", #sure
     "topaz_lvl3_bonus2": "2", #sure
@@ -1024,9 +1088,23 @@ JewelStats = {
     "topaz_lvl8_bonus2": "5", #sure
     "topaz_lvl9_bonus2": "5", #sure
     "topaz_lvl10_bonus2": "5", #sure
-    "topaz_lvl11_bonus2": "6",
-    "topaz_lvl12_bonus2": "6",
-    "topaz_lvl13_bonus2": "7",
+    "topaz_lvl11_bonus2": "5", #sure
+    "topaz_lvl12_bonus2": "6", #sure
+    "topaz_lvl13_bonus2": "6", #sure
+    "topaz_lvl1_bonus3": "none", #sure
+    "topaz_lvl2_bonus3": "none", #sure
+    "topaz_lvl3_bonus3": "none", #sure
+    "topaz_lvl4_bonus3": "none", #sure
+    "topaz_lvl5_bonus3": "none", #sure
+    "topaz_lvl6_bonus3": "none", #sure
+    "topaz_lvl7_bonus3": "none", #sure
+    "topaz_lvl8_bonus3": "none", #sure
+    "topaz_lvl9_bonus3": "none", #sure
+    "topaz_lvl10_bonus3": "none", #sure
+    "topaz_lvl11_bonus3": "none", #sure
+    "topaz_lvl12_bonus3": "none", #sure
+    "topaz_lvl13_bonus3": "none", #sure
+    "topaz_special_bonus": "2.5", #sure
 
     "amber_lvl1_bonus1": "15", #sure
     "amber_lvl2_bonus1": "25", #sure
@@ -1038,9 +1116,9 @@ JewelStats = {
     "amber_lvl8_bonus1": "175", #sure
     "amber_lvl9_bonus1": "220", #sure
     "amber_lvl10_bonus1": "275", #sure
-    "amber_lvl11_bonus1": "310",
-    "amber_lvl12_bonus1": "350",
-    "amber_lvl13_bonus1": "400",
+    "amber_lvl11_bonus1": "330", #sure
+    "amber_lvl12_bonus1": "420",
+    "amber_lvl13_bonus1": "520", #sure
     "amber_lvl1_bonus2": "1", #sure
     "amber_lvl2_bonus2": "2", #sure
     "amber_lvl3_bonus2": "2", #sure
@@ -1051,9 +1129,23 @@ JewelStats = {
     "amber_lvl8_bonus2": "5", #sure
     "amber_lvl9_bonus2": "5", #sure
     "amber_lvl10_bonus2": "6", #sure
-    "amber_lvl11_bonus2": "6",
+    "amber_lvl11_bonus2": "6", #sure
     "amber_lvl12_bonus2": "7",
-    "amber_lvl13_bonus2": "8",
+    "amber_lvl13_bonus2": "7.5", #sure
+    "amber_lvl1_bonus3": "none", #sure
+    "amber_lvl2_bonus3": "none", #sure
+    "amber_lvl3_bonus3": "none", #sure
+    "amber_lvl4_bonus3": "none", #sure
+    "amber_lvl5_bonus3": "none", #sure
+    "amber_lvl6_bonus3": "none", #sure
+    "amber_lvl7_bonus3": "none", #sure
+    "amber_lvl8_bonus3": "none", #sure
+    "amber_lvl9_bonus3": "none", #sure
+    "amber_lvl10_bonus3": "none", #sure
+    "amber_lvl11_bonus3": "none", #sure
+    "amber_lvl12_bonus3": "none",
+    "amber_lvl13_bonus3": "none", #sure
+    "amber_special_bonus": "4.0", #sure
 
     "amethyst_lvl1_bonus1": "18", #sure
     "amethyst_lvl2_bonus1": "35", #sure
@@ -1062,12 +1154,12 @@ JewelStats = {
     "amethyst_lvl5_bonus1": "100", #sure
     "amethyst_lvl6_bonus1": "135", #sure
     "amethyst_lvl7_bonus1": "175", #sure
-    "amethyst_lvl8_bonus1": "235",
-    "amethyst_lvl9_bonus1": "280",
+    "amethyst_lvl8_bonus1": "220", #sure
+    "amethyst_lvl9_bonus1": "275", #sure
     "amethyst_lvl10_bonus1": "350", #sure
-    "amethyst_lvl11_bonus1": "390",
-    "amethyst_lvl12_bonus1": "440",
-    "amethyst_lvl13_bonus1": "500",
+    "amethyst_lvl11_bonus1": "430", #sure
+    "amethyst_lvl12_bonus1": "540", #sure
+    "amethyst_lvl13_bonus1": "640",
     "amethyst_lvl1_bonus2": "1", #sure
     "amethyst_lvl2_bonus2": "2", #sure
     "amethyst_lvl3_bonus2": "2", #sure
@@ -1075,12 +1167,26 @@ JewelStats = {
     "amethyst_lvl5_bonus2": "3", #sure
     "amethyst_lvl6_bonus2": "4", #sure
     "amethyst_lvl7_bonus2": "4", #sure
-    "amethyst_lvl8_bonus2": "5",
-    "amethyst_lvl9_bonus2": "5",
+    "amethyst_lvl8_bonus2": "5", #sure
+    "amethyst_lvl9_bonus2": "5", #sure
     "amethyst_lvl10_bonus2": "6", #sure
-    "amethyst_lvl11_bonus2": "6",
-    "amethyst_lvl12_bonus2": "7",
+    "amethyst_lvl11_bonus2": "6", #sure
+    "amethyst_lvl12_bonus2": "7", #sure
     "amethyst_lvl13_bonus2": "8",
+    "amethyst_lvl1_bonus3": "0.3", #sure
+    "amethyst_lvl2_bonus3": "0.5", #sure
+    "amethyst_lvl3_bonus3": "0.5", #sure
+    "amethyst_lvl4_bonus3": "0.75", #sure
+    "amethyst_lvl5_bonus3": "1.0", #sure
+    "amethyst_lvl6_bonus3": "1.5", #sure
+    "amethyst_lvl7_bonus3": "1.5", #sure
+    "amethyst_lvl8_bonus3": "1.5", #sure
+    "amethyst_lvl9_bonus3": "2.0", #sure
+    "amethyst_lvl10_bonus3": "2.0", #sure
+    "amethyst_lvl11_bonus3": "2.0", #sure
+    "amethyst_lvl12_bonus3": "2.0", #sure
+    "amethyst_lvl13_bonus3": "2.5",
+    "amethyst_special_bonus": "0",
 
     "calaite_lvl1_bonus1": "135", #sure
     "calaite_lvl2_bonus1": "230", #sure
@@ -1090,11 +1196,11 @@ JewelStats = {
     "calaite_lvl6_bonus1": "1000", #sure
     "calaite_lvl7_bonus1": "1250", #sure
     "calaite_lvl8_bonus1": "1600", #sure
-    "calaite_lvl9_bonus1": "2100",
+    "calaite_lvl9_bonus1": "2000", #sure
     "calaite_lvl10_bonus1": "2500", #sure
-    "calaite_lvl11_bonus1": "3000",
-    "calaite_lvl12_bonus1": "3500",
-    "calaite_lvl13_bonus1": "4000",
+    "calaite_lvl11_bonus1": "3000", #sure
+    "calaite_lvl12_bonus1": "3600", #sure
+    "calaite_lvl13_bonus1": "4320", #sure
     "calaite_lvl1_bonus2": "5", #sure
     "calaite_lvl2_bonus2": "10", #sure
     "calaite_lvl3_bonus2": "15", #sure
@@ -1103,11 +1209,25 @@ JewelStats = {
     "calaite_lvl6_bonus2": "30", #sure
     "calaite_lvl7_bonus2": "35", #sure
     "calaite_lvl8_bonus2": "40", #sure
-    "calaite_lvl9_bonus2": "45",
+    "calaite_lvl9_bonus2": "45", #sure
     "calaite_lvl10_bonus2": "50", #sure
-    "calaite_lvl11_bonus2": "55",
-    "calaite_lvl12_bonus2": "55",
-    "calaite_lvl13_bonus2": "60",
+    "calaite_lvl11_bonus2": "55", #sure
+    "calaite_lvl12_bonus2": "60", #sure
+    "calaite_lvl13_bonus2": "65", #sure
+    "calaite_lvl1_bonus3": "none", #sure
+    "calaite_lvl2_bonus3": "none", #sure
+    "calaite_lvl3_bonus3": "none", #sure
+    "calaite_lvl4_bonus3": "none", #sure
+    "calaite_lvl5_bonus3": "none", #sure
+    "calaite_lvl6_bonus3": "none", #sure
+    "calaite_lvl7_bonus3": "none", #sure
+    "calaite_lvl8_bonus3": "none", #sure
+    "calaite_lvl9_bonus3": "none", #sure
+    "calaite_lvl10_bonus3": "none", #sure
+    "calaite_lvl11_bonus3": "none", #sure
+    "calaite_lvl12_bonus3": "none", #sure
+    "calaite_lvl13_bonus3": "none", #sure
+    "calaite_special_bonus": "3.0", #sure
     }
 
 
@@ -1234,8 +1354,8 @@ DragonStats =  {
     "shadex_legendary_base_1": "505", "shadex_legendary_base_2" : "2000", "shadex_legendary_inc_1" : "9","shadex_legendary_inc_2" : "40",
     "shadex_ancient_legendary_base_1": "575", "shadex_ancient_legendary_base_2" : "2250", "shadex_ancient_legendary_inc_1" : "10","shadex_ancient_legendary_inc_2" : "44",
     "shadex_mythic_base_1": "697", "shadex_mythic_base_2" : "2500", "shadex_mythic_inc_1" : "11","shadex_mythic_inc_2" : "52",
-## shadex mythic https://media.discordapp.net/attachments/1045343971565654016/1045371986475495444/BC051CF1-177F-4A09-A55B-5380816ABCC3.jpg
 
+    
     "jadeon_bonus1" : "Max Hp",
     "jadeon_bonus2" : "Attack",
     "jadeon_bonus3" : "Mana Points Recovery effect",
@@ -1252,8 +1372,8 @@ DragonStats =  {
 
     "dominus_bonus1" : "Attack",
     "dominus_bonus2" : "Damage To Ground Units",
-    "dominus_bonus3" : "",
-    "dominus_stats_boost3" : "",
+    "dominus_bonus3" : "Mp Strength",
+    "dominus_stats_boost3" : "0.1",
     "dominus_mythic_boost_inc" : ["0.6","4"],
     "dominus_great_base_1": "240", "dominus_great_base_2" : "0", "dominus_great_inc_1" : "5","dominus_great_inc_2" : "0",
     "dominus_rare_base_1": "285", "dominus_rare_base_2" : "450", "dominus_rare_inc_1" : "7","dominus_rare_inc_2" : "7",
@@ -1342,10 +1462,10 @@ DragonStats =  {
     "swordian_great_base_1": "0", "swordian_great_base_2" : "0", "swordian_great_inc_1" : "0","swordian_great_inc_2" : "0",
     "swordian_rare_base_1": "660", "swordian_rare_base_2" : "1425", "swordian_rare_inc_1" : "12","swordian_rare_inc_2" : "33",
     "swordian_epic_base_1": "780", "swordian_epic_base_2" : "1710", "swordian_epic_inc_1" : "14","swordian_epic_inc_2" : "36",
-    "swordian_perfect_epic_base_1": "00", "swordian_perfect_epic_base_2" : "00", "swordian_perfect_epic_inc_1" : "00","swordian_perfect_epic_inc_2" : "00",
-    "swordian_legendary_base_1": "00", "swordian_legendary_base_2" : "00", "swordian_legendary_inc_1" : "00","swordian_legendary_inc_2" : "00",
+    "swordian_perfect_epic_base_1": "910", "swordian_perfect_epic_base_2" : "1995", "swordian_perfect_epic_inc_1" : "15","swordian_perfect_epic_inc_2" : "40",
+    "swordian_legendary_base_1": "1050", "swordian_legendary_base_2" : "2280", "swordian_legendary_inc_1" : "16","swordian_legendary_inc_2" : "45",
     "swordian_ancient_legendary_base_1": "1225", "swordian_ancient_legendary_base_2" : "2565", "swordian_ancient_legendary_inc_1" : "17","swordian_ancient_legendary_inc_2" : "46",
-    "swordian_mythic_base_1": "00", "swordian_mythic_base_2" : "00", "swordian_mythic_inc_1" : "19","swordian_mythic_inc_2" : "50",
+    "swordian_mythic_base_1": "1355", "swordian_mythic_base_2" : "2850", "swordian_mythic_inc_1" : "19","swordian_mythic_inc_2" : "50",
 
 
     "necrogon_bonus1" : "Attack",
@@ -1373,21 +1493,21 @@ DragonStats =  {
     "starrite_perfect_epic_base_1": "3500", "starrite_perfect_epic_base_2" : "1050", "starrite_perfect_epic_inc_1" : "72","starrite_perfect_epic_inc_2" : "18",
     "starrite_legendary_base_1": "4000", "starrite_legendary_base_2" : "1200", "starrite_legendary_inc_1" : "76","starrite_legendary_inc_2" : "20",
     "starrite_ancient_legendary_base_1": "4500", "starrite_ancient_legendary_base_2" : "1350", "starrite_ancient_legendary_inc_1" : "80","starrite_ancient_legendary_inc_2" : "21",
-    "starrite_mythic_base_1": "5000", "starrite_mythic_base_2" : "140", "starrite_mythic_inc_1" : "84","starrite_mythic_inc_2" : "22",
+    "starrite_mythic_base_1": "5000", "starrite_mythic_base_2" : "1400", "starrite_mythic_inc_1" : "84","starrite_mythic_inc_2" : "22",
 
 
     "voideon_bonus1" : "Max Hp",
     "voideon_bonus2" : "Attack",
     "voideon_bonus3" : "Dodge",
-    "voideon_stats_boost3" : "",
+    "voideon_stats_boost3" : "0.9",
     "voideon_mythic_boost_inc" : ["1.2","8"],
     "voideon_great_base_1": "0", "voideon_great_base_2" : "0", "voideon_great_inc_1" : "0","voideon_great_inc_2" : "0",
     "voideon_rare_base_1": "0", "voideon_rare_base_2" : "0", "voideon_rare_inc_1" : "0","voideon_rare_inc_2" : "0",
     "voideon_epic_base_1": "3675", "voideon_epic_base_2" : "720", "voideon_epic_inc_1" : "80","voideon_epic_inc_2" : "13",
-    "voideon_perfect_epic_base_1": "00", "voideon_perfect_epic_base_2" : "840", "voideon_perfect_epic_inc_1" : "00","voideon_perfect_epic_inc_2" : "00",
+    "voideon_perfect_epic_base_1": "4285", "voideon_perfect_epic_base_2" : "840", "voideon_perfect_epic_inc_1" : "90","voideon_perfect_epic_inc_2" : "15",
     "voideon_legendary_base_1": "4900", "voideon_legendary_base_2" : "960", "voideon_legendary_inc_1" : "95","voideon_legendary_inc_2" : "16",
     "voideon_ancient_legendary_base_1": "5500", "voideon_ancient_legendary_base_2" : "1080", "voideon_ancient_legendary_inc_1" : "100","voideon_ancient_legendary_inc_2" : "17",
-    "voideon_mythic_base_1": "00", "voideon_mythic_base_2" : "1200", "voideon_mythic_inc_1" : "00","voideon_mythic_inc_2" : "18",
+    "voideon_mythic_base_1": "6120", "voideon_mythic_base_2" : "1200", "voideon_mythic_inc_1" : "113","voideon_mythic_inc_2" : "19",
     }
 
 
@@ -1399,65 +1519,73 @@ DragonStats =  {
 
 
 MobsStats = {
-    "green_bat_stats_type" : ["Attack","none","none"],"green_bat_0" : [25,0,0],"green_bat_1" : [35,0,0], "green_bat_2" : [50,0,0], "green_bat_3" : [65,0,0],"green_bat_4" : [80,0,0],"green_bat_5" : [100,0,0],"green_bat_6" : [120,0,0],"green_bat_7" : [150,0,0], "green_bat_8" : [180,0,0],"green_bat_9" : [210,0,0],"green_bat_10" : [250,0,0],"green_bat_11" : [300,0,0],"green_bat_12" : [310,0,0],"green_bat_13" : [320,0,0],"green_bat_14" : [330,0,0],"green_bat_15" : [340,0,0],"green_bat_16" : [390,0,0],"green_bat_17" : [400,0,0],"green_bat_18" : [410,0,0],"green_bat_19" : [420,0,0],"green_bat_20" : [435,0,0],
-    "vase_stats_type" : ["Max Hp","none","none"],"vase_0" : [100,0,0],"vase_1" : [150,0,0], "vase_2" : [200,0,0], "vase_3" : [260,0,0],"vase_4" : [320,0,0],"vase_5" : [400,0,0],"vase_6" : [480,0,0],"vase_7" : [600,0,0], "vase_8" : [720,0,0],"vase_9" : [840,0,0],"vase_10" : [1000,0,0],"vase_11" : [1200,0,0],"vase_12" : [1240,0,0],"vase_13" : [1280,0,0],"vase_14" : [1320,0,0],"vase_15" : [1360,0,0],"vase_16" : ["vase_16",0,0],"vase_17" : ["vase_17",0,0],"vase_18" : ["vase_18",0,0],"vase_19" : ["vase_19",0,0],"vase_20" : ["vase_20",0,0],
-    "bomb_ghost_stats_type" : ["Damage To Ground Units","none","none"],"bomb_ghost_0" : [35,0,0],"bomb_ghost_1" : [50,0,0], "bomb_ghost_2" : [75,0,0], "bomb_ghost_3" : [100,0,0],"bomb_ghost_4" : [125,0,0],"bomb_ghost_5" : [150,0,0],"bomb_ghost_6" : [180,0,0],"bomb_ghost_7" : [220,0,0], "bomb_ghost_8" : [260,0,0],"bomb_ghost_9" : [310,0,0],"bomb_ghost_10" : [370,0,0],"bomb_ghost_11" : [445,0,0],"bomb_ghost_12" : [460,0,0],"bomb_ghost_13" : [475,0,0],"bomb_ghost_14" : [490,0,0],"bomb_ghost_15" : [515,0,0],"bomb_ghost_16" : ["bomb_ghost_16",0,0],"bomb_ghost_17" : ["bomb_ghost_17",0,0],"bomb_ghost_18" : ["bomb_ghost_18",0,0],"bomb_ghost_19" : ["bomb_ghost_19",0,0],"bomb_ghost_20" : ["bomb_ghost_20",0,0],
-	"rock_puppet_stats_type" : ["Max Hp","none","none"],"rock_puppet_0" : [100,0,0],"rock_puppet_1" : [150,0,0], "rock_puppet_2" : [200,0,0], "rock_puppet_3" : [260,0,0],"rock_puppet_4" : [320,0,0],"rock_puppet_5" : [400,0,0],"rock_puppet_6" : [480,0,0],"rock_puppet_7" : [600,0,0], "rock_puppet_8" : [720,0,0],"rock_puppet_9" : [840,0,0],"rock_puppet_10" : [1000,0,0],"rock_puppet_11" : [1200,0,0],"rock_puppet_12" : [1240,0,0],"rock_puppet_13" : [1280,0,0],"rock_puppet_14" : [1320,0,0],"rock_puppet_15" : [1360,0,0],"rock_puppet_16" : ["rock_puppet_16",0,0],"rock_puppet_17" : ["rock_puppet_17",0,0],"rock_puppet_18" : ["rock_puppet_18",0,0],"rock_puppet_19" : ["rock_puppet_19",0,0],"rock_puppet_20" : ["rock_puppet_20",0,0],
-    "party_tree_stats_type" : ["Collision Damage Resistance","none","none"],"party_tree_0" : [25,0,0],"party_tree_1" : [35,0,0], "party_tree_2" : [50,0,0], "party_tree_3" : [65,0,0],"party_tree_4" : [80,0,0],"party_tree_5" : [100,0,0],"party_tree_6" : [120,0,0],"party_tree_7" : [150,0,0], "party_tree_8" : [180,0,0],"party_tree_9" : [210,0,0],"party_tree_10" : [250,0,0],"party_tree_11" : [300,0,0],"party_tree_12" : [310,0,0],"party_tree_13" : [320,0,0],"party_tree_14" : [330,0,0],"party_tree_15" : [340,0,0],"party_tree_16" : [390,0,0],"party_tree_17" : [400,0,0],"party_tree_18" : [410,0,0],"party_tree_19" : [420,0,0],"party_tree_20" : [435,0,0],
-	"wolfhound_stats_type" : ["Damage To Melee Units","none","none"],"wolfhound_0" : [45,0,0],"wolfhound_1" : [65,0,0], "wolfhound_2" : [97,0,0], "wolfhound_3" : [130,0,0],"wolfhound_4" : [162,0,0],"wolfhound_5" : [195,0,0],"wolfhound_6" : [234,0,0],"wolfhound_7" : [286,0,0], "wolfhound_8" : [338,0,0],"wolfhound_9" : [403,0,0],"wolfhound_10" : [450,0,0],"wolfhound_11" : ["wolfhound_11",0,0],"wolfhound_12" : ["wolfhound_12",0,0],"wolfhound_13" : ["wolfhound_13",0,0],"wolfhound_14" : ["wolfhound_14",0,0],"wolfhound_15" : ["wolfhound_15",0,0],"wolfhound_16" : ["wolfhound_16",0,0],"wolfhound_17" : ["wolfhound_17",0,0],"wolfhound_18" : ["wolfhound_18",0,0],"wolfhound_19" : ["wolfhound_19",0,0],"wolfhound_20" : ["wolfhound_20",0,0],
-	"skeleton_archer_stats_type" : ["Damage To Ranged Units","none","none"],"skeleton_archer_0" : [45,0,0],"skeleton_archer_1" : [65,0,0], "skeleton_archer_2" : [97,0,0], "skeleton_archer_3" : [130,0,0],"skeleton_archer_4" : [162,0,0],"skeleton_archer_5" : [195,0,0],"skeleton_archer_6" : [234,0,0],"skeleton_archer_7" : [286,0,0], "skeleton_archer_8" : [338,0,0],"skeleton_archer_9" : [403,0,0],"skeleton_archer_10" : [450,0,0],"skeleton_archer_11" : ["skeleton_archer_11",0,0],"skeleton_archer_12" : ["skeleton_archer_12",0,0],"skeleton_archer_13" : ["skeleton_archer_13",0,0],"skeleton_archer_14" : ["skeleton_archer_14",0,0],"skeleton_archer_15" : ["skeleton_archer_15",0,0],"skeleton_archer_16" : ["skeleton_archer_16",0,0],"skeleton_archer_17" : ["skeleton_archer_17",0,0],"skeleton_archer_18" : ["skeleton_archer_18",0,0],"skeleton_archer_19" : ["skeleton_archer_19",0,0],"skeleton_archer_20" : ["skeleton_archer_20",0,0],
-	"skeleton_soldier_stats_type" : ["Damage To Melee Units","none","none"],"skeleton_soldier_0" : [45,0,0],"skeleton_soldier_1" : [65,0,0], "skeleton_soldier_2" : [97,0,0], "skeleton_soldier_3" : [130,0,0],"skeleton_soldier_4" : [162,0,0],"skeleton_soldier_5" : [195,0,0],"skeleton_soldier_6" : [234,0,0],"skeleton_soldier_7" : [286,0,0], "skeleton_soldier_8" : [338,0,0],"skeleton_soldier_9" : [403,0,0],"skeleton_soldier_10" : [450,0,0],"skeleton_soldier_11" : ["skeleton_soldier_11",0,0],"skeleton_soldier_12" : ["skeleton_soldier_12",0,0],"skeleton_soldier_13" : ["skeleton_soldier_13",0,0],"skeleton_soldier_14" : ["skeleton_soldier_14",0,0],"skeleton_soldier_15" : ["skeleton_soldier_15",0,0],"skeleton_soldier_16" : ["skeleton_soldier_16",0,0],"skeleton_soldier_17" : ["skeleton_soldier_17",0,0],"skeleton_soldier_18" : ["skeleton_soldier_18",0,0],"skeleton_soldier_19" : ["skeleton_soldier_19",0,0],"skeleton_soldier_20" : ["skeleton_soldier_20",0,0],
-	"wasp_stats_type" : ["Projectile Resistance","none","none"],"wasp_0" : [32,0,0],"wasp_1" : [45,0,0], "wasp_2" : [65,0,0], "wasp_3" : [84,0,0],"wasp_4" : [104,0,0],"wasp_5" : [130,0,0],"wasp_6" : [156,0,0],"wasp_7" : [195,0,0], "wasp_8" : [234,0,0],"wasp_9" : [273,0,0],"wasp_10" : [325,0,0],"wasp_11" : [390,0,0],"wasp_12" : [400,0,0],"wasp_13" : [410,0,0],"wasp_14" : [420,0,0],"wasp_15" : [435,0,0],"wasp_16" : [500,0,0],"wasp_17" : [515,0,0],"wasp_18" : [530,0,0],"wasp_19" : [545,0,0],"wasp_20" : [560,0,0],
-    "fire_mage_stats_type" : ["Attack","none","none"],"fire_mage_0" : [32,0,0],"fire_mage_1" : [45,0,0], "fire_mage_2" : [65,0,0], "fire_mage_3" : [84,0,0],"fire_mage_4" : [104,0,0],"fire_mage_5" : [130,0,0],"fire_mage_6" : [156,0,0],"fire_mage_7" : [195,0,0], "fire_mage_8" : [234,0,0],"fire_mage_9" : [273,0,0],"fire_mage_10" : [325,0,0],"fire_mage_11" : [390,0,0],"fire_mage_12" : [400,0,0],"fire_mage_13" : [410,0,0],"fire_mage_14" : [420,0,0],"fire_mage_15" : [435,0,0],"fire_mage_16" : [500,0,0],"fire_mage_17" : [515,0,0],"fire_mage_18" : [530,0,0],"fire_mage_19" : [545,0,0],"fire_mage_20" : [560,0,0],
-	"medusa_stats_type" : ["Attack","Damage To Ground Units","none"],"medusa_0" : [37,0,0],"medusa_1" : [52,0,0], "medusa_2" : [75,0,0], "medusa_3" : [97,0,0],"medusa_4" : [120,0,0],"medusa_5" : [150,150,0],"medusa_6" : [180,180,0],"medusa_7" : [225,220,0], "medusa_8" : [270,260,0],"medusa_9" : [315,310,0],"medusa_10" : [375,370,0],"medusa_11" : [450,445,0],"medusa_12" : [465,460,0],"medusa_13" : [480,475,0],"medusa_14" : [495,490,0],"medusa_15" : [510,515,0],"medusa_16" : [585,": ",0],"medusa_17" : [605,": ",0],"medusa_18" : [625,": ",0],"medusa_19" : [645,": ",0],"medusa_20" : [665,": ",0],
-	"ice_mage_stats_type" : ["Damage To Ranged Units","Critic Damage","none"],"ice_mage_0" : [52,0,0],"ice_mage_1" : [75,0,0], "ice_mage_2" : [112,0,0], "ice_mage_3" : [150,0,0],"ice_mage_4" : [187,0,0],"ice_mage_5" : [225,15,0],"ice_mage_6" : [270,18,0],"ice_mage_7" : [330,21,0], "ice_mage_8" : [390,24,0],"ice_mage_9" : [465,27,0],"ice_mage_10" : [555,30,0],"ice_mage_11" : [665,36,0],"ice_mage_12" : ["ice_mage_12",37,0],"ice_mage_13" : ["ice_mage_13",38,0],"ice_mage_14" : ["ice_mage_14",39,0],"ice_mage_15" : ["ice_mage_15",40,0],"ice_mage_16" : ["ice_mage_16",46,0],"ice_mage_17" : ["ice_mage_17",47,0],"ice_mage_18" : ["ice_mage_18",48,0],"ice_mage_19" : ["ice_mage_19",49,0],"ice_mage_20" : ["ice_mage_20",50,0],
-	"fire_lizard_stats_type" : ["Max Hp","none","none"],"fire_lizard_0" : [130,0,0],"fire_lizard_1" : [195,0,0], "fire_lizard_2" : [260,0,0], "fire_lizard_3" : [338,0,0],"fire_lizard_4" : [416,0,0],"fire_lizard_5" : [520,0,0],"fire_lizard_6" : [624,0,0],"fire_lizard_7" : [780,0,0], "fire_lizard_8" : [936,0,0],"fire_lizard_9" : [1092,0,0],"fire_lizard_10" : [1300,0,0],"fire_lizard_11" : ["fire_lizard_11",0,0],"fire_lizard_12" : ["fire_lizard_12",0,0],"fire_lizard_13" : ["fire_lizard_13",0,0],"fire_lizard_14" : ["fire_lizard_14",0,0],"fire_lizard_15" : ["fire_lizard_15",0,0],"fire_lizard_16" : ["fire_lizard_16",0,0],"fire_lizard_17" : ["fire_lizard_17",0,0],"fire_lizard_18" : ["fire_lizard_18",0,0],"fire_lizard_19" : ["fire_lizard_19",0,0],"fire_lizard_20" : ["fire_lizard_20",0,0],
-	"flame_ghost_stats_type" : ["Attack","Critic Damage","Collision Damage Resistance"],"flame_ghost_0" : [37,0,0],"flame_ghost_1" : [52,0,0], "flame_ghost_2" : [75,0,0], "flame_ghost_3" : [97,0,0],"flame_ghost_4" : [120,0,0],"flame_ghost_5" : [150,15,0],"flame_ghost_6" : [180,18,0],"flame_ghost_7" : [225,21,0], "flame_ghost_8" : [270,24,0],"flame_ghost_9" : [315,27,0],"flame_ghost_10" : [375,30,0],"flame_ghost_11" : [450,36,50],"flame_ghost_12" : [465,37,52],"flame_ghost_13" : [480,38,54],"flame_ghost_14" : [495,39,56],"flame_ghost_15" : [510,40,58],"flame_ghost_16" : [585,46,67],"flame_ghost_17" : [605,47,69],"flame_ghost_18" : [625,48,71],"flame_ghost_19" : [645,49,73],"flame_ghost_20" : [665,50,75],
-	"thorny_snake_stats_type" : ["Damage To Melee Units","none","none"],"thorny_snake_0" : [45,0,0],"thorny_snake_1" : [65,0,0], "thorny_snake_2" : [97,0,0], "thorny_snake_3" : [130,0,0],"thorny_snake_4" : [162,0,0],"thorny_snake_5" : [195,0,0],"thorny_snake_6" : [234,0,0],"thorny_snake_7" : [286,0,0], "thorny_snake_8" : [338,0,0],"thorny_snake_9" : [403,0,0],"thorny_snake_10" : [450,0,0],"thorny_snake_11" : ["thorny_snake_11",0,0],"thorny_snake_12" : ["thorny_snake_12",0,0],"thorny_snake_13" : ["thorny_snake_13",0,0],"thorny_snake_14" : ["thorny_snake_14",0,0],"thorny_snake_15" : ["thorny_snake_15",0,0],"thorny_snake_16" : ["thorny_snake_16",0,0],"thorny_snake_17" : ["thorny_snake_17",0,0],"thorny_snake_18" : ["thorny_snake_18",0,0],"thorny_snake_19" : ["thorny_snake_19",0,0],"thorny_snake_20" : ["thorny_snake_20",0,0],
-	"tornado_demon_stats_type" : ["Attack","Damage To Airborne Units","none"],"tornado_demon_0" : [37,0,0],"tornado_demon_1" : [52,0,0], "tornado_demon_2" : [75,0,0], "tornado_demon_3" : [97,0,0],"tornado_demon_4" : [120,0,0],"tornado_demon_5" : [150,150,0],"tornado_demon_6" : [180,180,0],"tornado_demon_7" : [225,220,0], "tornado_demon_8" : [270,260,0],"tornado_demon_9" : [315,310,0],"tornado_demon_10" : [375,370,0],"tornado_demon_11" : [450,445,0],"tornado_demon_12" : [465,460,0],"tornado_demon_13" : [480,475,0],"tornado_demon_14" : [495,490,0],"tornado_demon_15" : [510,515,0],"tornado_demon_16" : [585,": ",0],"tornado_demon_17" : [605,": ",0],"tornado_demon_18" : [625,": ",0],"tornado_demon_19" : [645,": ",0],"tornado_demon_20" : [665,": ",0],
-    "piranha_stats_type" : ["Attack","none","none"],"piranha_0" : [25,0,0],"piranha_1" : [35,0,0], "piranha_2" : [50,0,0], "piranha_3" : [65,0,0],"piranha_4" : [80,0,0],"piranha_5" : [100,0,0],"piranha_6" : [120,0,0],"piranha_7" : [150,0,0], "piranha_8" : [180,0,0],"piranha_9" : [210,0,0],"piranha_10" : [250,0,0],"piranha_11" : [300,0,0],"piranha_12" : [310,0,0],"piranha_13" : [320,0,0],"piranha_14" : [330,0,0],"piranha_15" : [340,0,0],"piranha_16" : [390,0,0],"piranha_17" : [400,0,0],"piranha_18" : [410,0,0],"piranha_19" : [420,0,0],"piranha_20" : [435,0,0],
-	"zombie_stats_type" : ["Rear Damage Resistance","none","none"],"zombie_0" : [30,0,0],"zombie_1" : [45,0,0], "zombie_2" : [60,0,0], "zombie_3" : [80,0,0],"zombie_4" : [100,0,0],"zombie_5" : [120,0,0],"zombie_6" : [150,0,0],"zombie_7" : [180,0,0], "zombie_8" : [210,0,0],"zombie_9" : [250,0,0],"zombie_10" : [300,0,0],"zombie_11" : [310,0,0],"zombie_12" : [320,0,0],"zombie_13" : [330,0,0],"zombie_14" : [340,0,0],"zombie_15" : [390,0,0],"zombie_16" : [400,0,0],"zombie_17" : [410,0,0],"zombie_18" : [420,0,0],"zombie_19" : [435,0,0],"zombie_20" : [450,0,0],
-	"scarecrow_stats_type" : ["Max Hp","none","none"],"scarecrow_0" : [130,0,0],"scarecrow_1" : [195,0,0], "scarecrow_2" : [260,0,0], "scarecrow_3" : [338,0,0],"scarecrow_4" : [416,0,0],"scarecrow_5" : [520,0,0],"scarecrow_6" : [624,0,0],"scarecrow_7" : [780,0,0], "scarecrow_8" : [936,0,0],"scarecrow_9" : [1092,0,0],"scarecrow_10" : [1300,0,0],"scarecrow_11" : ["scarecrow_11",0,0],"scarecrow_12" : ["scarecrow_12",0,0],"scarecrow_13" : ["scarecrow_13",0,0],"scarecrow_14" : ["scarecrow_14",0,0],"scarecrow_15" : ["scarecrow_15",0,0],"scarecrow_16" : ["scarecrow_16",0,0],"scarecrow_17" : ["scarecrow_17",0,0],"scarecrow_18" : ["scarecrow_18",0,0],"scarecrow_19" : ["scarecrow_19",0,0],"scarecrow_20" : ["scarecrow_20",0,0],
-	"long_dragon_stats_type" : ["Projectile Resistance","none","none"],"long_dragon_0" : [32,0,0],"long_dragon_1" : [45,0,0], "long_dragon_2" : [65,0,0], "long_dragon_3" : [84,0,0],"long_dragon_4" : [104,0,0],"long_dragon_5" : [130,0,0],"long_dragon_6" : [156,0,0],"long_dragon_7" : [195,0,0], "long_dragon_8" : [234,0,0],"long_dragon_9" : [273,0,0],"long_dragon_10" : [325,0,0],"long_dragon_11" : [390,0,0],"long_dragon_12" : [400,0,0],"long_dragon_13" : [410,0,0],"long_dragon_14" : [420,0,0],"long_dragon_15" : [435,0,0],"long_dragon_16" : [500,0,0],"long_dragon_17" : [515,0,0],"long_dragon_18" : [530,0,0],"long_dragon_19" : [545,0,0],"long_dragon_20" : [560,0,0],
-	"skull_wizard_stats_type" : ["Attack","Critic Damage","Front Damage Resistance"],"skull_wizard_0" : [37,0,0],"skull_wizard_1" : [52,0,0], "skull_wizard_2" : [75,0,0], "skull_wizard_3" : [97,0,0],"skull_wizard_4" : [120,0,0],"skull_wizard_5" : [150,15,0],"skull_wizard_6" : [180,18,0],"skull_wizard_7" : [225,21,0], "skull_wizard_8" : [270,24,0],"skull_wizard_9" : [315,27,0],"skull_wizard_10" : [375,30,0],"skull_wizard_11" : [450,36,50],"skull_wizard_12" : [465,37,52],"skull_wizard_13" : [480,38,54],"skull_wizard_14" : [495,39,56],"skull_wizard_15" : [510,40,58],"skull_wizard_16" : [585,46,67],"skull_wizard_17" : [605,47,69],"skull_wizard_18" : [625,48,71],"skull_wizard_19" : [645,49,73],"skull_wizard_20" : [665,50,75],
-	"lava_golem_stats_type" : ["Max Hp","Collision Damage Resistance","none"],"lava_golem_0" : [150,0,0],"lava_golem_1" : [225,0,0], "lava_golem_2" : [300,0,0], "lava_golem_3" : [390,0,0],"lava_golem_4" : [480,0,0],"lava_golem_5" : [600,100,0],"lava_golem_6" : [720,120,0],"lava_golem_7" : [900,150,0], "lava_golem_8" : [1080,180,0],"lava_golem_9" : [1260,210,0],"lava_golem_10" : [1500,250,0],"lava_golem_11" : [1800,300,0],"lava_golem_12" : [1800,310,0],"lava_golem_13" : [1850,320,0],"lava_golem_14" : [1900,330,0],"lava_golem_15" : [2000,340,0],"lava_golem_16" : ["lava_golem_16",390,0],"lava_golem_17" : ["lava_golem_17",400,0],"lava_golem_18" : ["lava_golem_18",410,0],"lava_golem_19" : ["lava_golem_19",420,0],"lava_golem_20" : ["lava_golem_20",435,0],
-	"cactus_stats_type" : ["Max Hp","Attack","none"],"cactus_0" : [150,0,0],"cactus_1" : [225,0,0], "cactus_2" : [300,0,0], "cactus_3" : [390,0,0],"cactus_4" : [480,0,0],"cactus_5" : [600,100,0],"cactus_6" : [720,120,0],"cactus_7" : [900,150,0], "cactus_8" : [1080,180,0],"cactus_9" : [1260,210,0],"cactus_10" : [1500,250,0],"cactus_11" : [1800,300,0],"cactus_12" : [1800,310,0],"cactus_13" : [1850,320,0],"cactus_14" : [1900,330,0],"cactus_15" : [2000,340,0],"cactus_16" : ["cactus_16",390,0],"cactus_17" : ["cactus_17",400,0],"cactus_18" : ["cactus_18",410,0],"cactus_19" : ["cactus_19",420,0],"cactus_20" : ["cactus_20",435,0],
-	"ice_golem_stats_type" : ["Max Hp","Front Damage Resistance","none"],"ice_golem_0" : [150,0,0],"ice_golem_1" : [225,0,0], "ice_golem_2" : [300,0,0], "ice_golem_3" : [390,0,0],"ice_golem_4" : [480,0,0],"ice_golem_5" : [600,100,0],"ice_golem_6" : [720,120,0],"ice_golem_7" : [900,150,0], "ice_golem_8" : [1080,180,0],"ice_golem_9" : [1260,210,0],"ice_golem_10" : [1500,250,0],"ice_golem_11" : [1800,300,0],"ice_golem_12" : [1800,310,0],"ice_golem_13" : [1850,320,0],"ice_golem_14" : [1900,330,0],"ice_golem_15" : [2000,340,0],"ice_golem_16" : ["ice_golem_16",390,0],"ice_golem_17" : ["ice_golem_17",400,0],"ice_golem_18" : ["ice_golem_18",410,0],"ice_golem_19" : ["ice_golem_19",420,0],"ice_golem_20" : ["ice_golem_20",435,0],
-	"crazy_spider_stats_type" : ["Damage To Ground Units","none","none"],"crazy_spider_0" : [45,0,0],"crazy_spider_1" : [65,0,0], "crazy_spider_2" : [97,0,0], "crazy_spider_3" : [130,0,0],"crazy_spider_4" : [162,0,0],"crazy_spider_5" : [195,0,0],"crazy_spider_6" : [234,0,0],"crazy_spider_7" : [286,0,0], "crazy_spider_8" : [338,0,0],"crazy_spider_9" : [403,0,0],"crazy_spider_10" : [450,0,0],"crazy_spider_11" : ["crazy_spider_11",0,0],"crazy_spider_12" : ["crazy_spider_12",0,0],"crazy_spider_13" : ["crazy_spider_13",0,0],"crazy_spider_14" : ["crazy_spider_14",0,0],"crazy_spider_15" : ["crazy_spider_15",0,0],"crazy_spider_16" : ["crazy_spider_16",0,0],"crazy_spider_17" : ["crazy_spider_17",0,0],"crazy_spider_18" : ["crazy_spider_18",0,0],"crazy_spider_19" : ["crazy_spider_19",0,0],"crazy_spider_20" : ["crazy_spider_20",0,0],
-	"fire_element_stats_type" : ["Attack","Damage To Airborne Units","none"],"fire_element_0" : [37,0,0],"fire_element_1" : [52,0,0], "fire_element_2" : [75,0,0], "fire_element_3" : [97,0,0],"fire_element_4" : [120,0,0],"fire_element_5" : [150,150,0],"fire_element_6" : [180,180,0],"fire_element_7" : [225,220,0], "fire_element_8" : [270,260,0],"fire_element_9" : [315,310,0],"fire_element_10" : [375,370,0],"fire_element_11" : [450,445,0],"fire_element_12" : [465,460,0],"fire_element_13" : [480,475,0],"fire_element_14" : [495,490,0],"fire_element_15" : [510,515,0],"fire_element_16" : [585,": ",0],"fire_element_17" : [605,": ",0],"fire_element_18" : [625,": ",0],"fire_element_19" : [645,": ",0],"fire_element_20" : [665,": ",0],
-	"skeleton_swordsman_stats_type" : ["Damage To Melee Units","none","none"],"skeleton_swordsman_0" : [45,0,0],"skeleton_swordsman_1" : [65,0,0], "skeleton_swordsman_2" : [97,0,0], "skeleton_swordsman_3" : [130,0,0],"skeleton_swordsman_4" : [162,0,0],"skeleton_swordsman_5" : [195,0,0],"skeleton_swordsman_6" : [234,0,0],"skeleton_swordsman_7" : [286,0,0], "skeleton_swordsman_8" : [338,0,0],"skeleton_swordsman_9" : [403,0,0],"skeleton_swordsman_10" : [450,0,0],"skeleton_swordsman_11" : ["skeleton_swordsman_11",0,0],"skeleton_swordsman_12" : ["skeleton_swordsman_12",0,0],"skeleton_swordsman_13" : ["skeleton_swordsman_13",0,0],"skeleton_swordsman_14" : ["skeleton_swordsman_14",0,0],"skeleton_swordsman_15" : ["skeleton_swordsman_15",0,0],"skeleton_swordsman_16" : ["skeleton_swordsman_16",0,0],"skeleton_swordsman_17" : ["skeleton_swordsman_17",0,0],"skeleton_swordsman_18" : ["skeleton_swordsman_18",0,0],"skeleton_swordsman_19" : ["skeleton_swordsman_19",0,0],"skeleton_swordsman_20" : ["skeleton_swordsman_20",0,0],
-	"scythe_mage_stats_type" : ["Attack","Damage To Ranged Units","none"],"scythe_mage_0" : [37,0,0],"scythe_mage_1" : [52,0,0], "scythe_mage_2" : [75,0,0], "scythe_mage_3" : [97,0,0],"scythe_mage_4" : [120,0,0],"scythe_mage_5" : [150,150,0],"scythe_mage_6" : [180,180,0],"scythe_mage_7" : [225,220,0], "scythe_mage_8" : [270,260,0],"scythe_mage_9" : [315,310,0],"scythe_mage_10" : [375,370,0],"scythe_mage_11" : [450,445,0],"scythe_mage_12" : [465,460,0],"scythe_mage_13" : [480,475,0],"scythe_mage_14" : [495,490,0],"scythe_mage_15" : [510,515,0],"scythe_mage_16" : [585,": ",0],"scythe_mage_17" : [605,": ",0],"scythe_mage_18" : [625,": ",0],"scythe_mage_19" : [645,": ",0],"scythe_mage_20" : [665,": ",0],
-	"pea_shooter_stats_type" : ["Attack","Damage To Airborne Units","none"],"pea_shooter_0" : [37,0,0],"pea_shooter_1" : [52,0,0], "pea_shooter_2" : [75,0,0], "pea_shooter_3" : [97,0,0],"pea_shooter_4" : [120,0,0],"pea_shooter_5" : [150,150,0],"pea_shooter_6" : [180,180,0],"pea_shooter_7" : [225,220,0], "pea_shooter_8" : [270,260,0],"pea_shooter_9" : [315,310,0],"pea_shooter_10" : [375,370,0],"pea_shooter_11" : [450,445,0],"pea_shooter_12" : [465,460,0],"pea_shooter_13" : [480,475,0],"pea_shooter_14" : [495,490,0],"pea_shooter_15" : [510,515,0],"pea_shooter_16" : [585,": ",0],"pea_shooter_17" : [605,": ",0],"pea_shooter_18" : [625,": ",0],"pea_shooter_19" : [645,": ",0],"pea_shooter_20" : [665,": ",0],
-	"shadow_assassin_stats_type" : ["Attack","Rear Damage Resistance","none"],"shadow_assassin_0" : [37,0,0],"shadow_assassin_1" : [52,0,0], "shadow_assassin_2" : [75,0,0], "shadow_assassin_3" : [97,0,0],"shadow_assassin_4" : [120,0,0],"shadow_assassin_5" : [150,120,0],"shadow_assassin_6" : [180,150,0],"shadow_assassin_7" : [225,180,0], "shadow_assassin_8" : [270,210,0],"shadow_assassin_9" : [315,250,0],"shadow_assassin_10" : [375,300,0],"shadow_assassin_11" : [450,310,0],"shadow_assassin_12" : [465,320,0],"shadow_assassin_13" : [480,330,0],"shadow_assassin_14" : [495,340,0],"shadow_assassin_15" : [510,390,0],"shadow_assassin_16" : [585,400,0],"shadow_assassin_17" : [605,410,0],"shadow_assassin_18" : [625,420,0],"shadow_assassin_19" : [645,435,0],"shadow_assassin_20" : [665,450,0],
-	"tornado_mage_stats_type" : ["Damage To Ground Units","none","none"],"tornado_mage_0" : [45,0,0],"tornado_mage_1" : [65,0,0], "tornado_mage_2" : [97,0,0], "tornado_mage_3" : [130,0,0],"tornado_mage_4" : [162,0,0],"tornado_mage_5" : [195,0,0],"tornado_mage_6" : [234,0,0],"tornado_mage_7" : [286,0,0], "tornado_mage_8" : [338,0,0],"tornado_mage_9" : [403,0,0],"tornado_mage_10" : [450,0,0],"tornado_mage_11" : ["tornado_mage_11",0,0],"tornado_mage_12" : ["tornado_mage_12",0,0],"tornado_mage_13" : ["tornado_mage_13",0,0],"tornado_mage_14" : ["tornado_mage_14",0,0],"tornado_mage_15" : ["tornado_mage_15",0,0],"tornado_mage_16" : ["tornado_mage_16",0,0],"tornado_mage_17" : ["tornado_mage_17",0,0],"tornado_mage_18" : ["tornado_mage_18",0,0],"tornado_mage_19" : ["tornado_mage_19",0,0],"tornado_mage_20" : ["tornado_mage_20",0,0],
-	"spitting_mushroom_stats_type" : ["Max Hp","Projectile Resistance","none"],"spitting_mushroom_0" : [150,0,0],"spitting_mushroom_1" : [225,0,0], "spitting_mushroom_2" : [300,0,0], "spitting_mushroom_3" : [390,0,0],"spitting_mushroom_4" : [480,0,0],"spitting_mushroom_5" : [600,100,0],"spitting_mushroom_6" : [720,120,0],"spitting_mushroom_7" : [900,150,0], "spitting_mushroom_8" : [1080,180,0],"spitting_mushroom_9" : [1260,210,0],"spitting_mushroom_10" : [1500,250,0],"spitting_mushroom_11" : [1800,300,0],"spitting_mushroom_12" : [1800,310,0],"spitting_mushroom_13" : [1850,320,0],"spitting_mushroom_14" : [1900,330,0],"spitting_mushroom_15" : [2000,340,0],"spitting_mushroom_16" : ["spitting_mushroom_16",390,0],"spitting_mushroom_17" : ["spitting_mushroom_17",400,0],"spitting_mushroom_18" : ["spitting_mushroom_18",410,0],"spitting_mushroom_19" : ["spitting_mushroom_19",420,0],"spitting_mushroom_20" : ["spitting_mushroom_20",435,0],
-	"rolling_mushroom_stats_type" : ["Max Hp","Rear Damage Resistance","none"],"rolling_mushroom_0" : [150,0,0],"rolling_mushroom_1" : [225,0,0], "rolling_mushroom_2" : [300,0,0], "rolling_mushroom_3" : [390,0,0],"rolling_mushroom_4" : [480,0,0],"rolling_mushroom_5" : [600,120,0],"rolling_mushroom_6" : [720,150,0],"rolling_mushroom_7" : [900,180,0], "rolling_mushroom_8" : [1080,210,0],"rolling_mushroom_9" : [1260,250,0],"rolling_mushroom_10" : [1500,300,0],"rolling_mushroom_11" : [1800,310,0],"rolling_mushroom_12" : [1800,320,0],"rolling_mushroom_13" : [1850,330,0],"rolling_mushroom_14" : [1900,340,0],"rolling_mushroom_15" : [2000,390,0],"rolling_mushroom_16" : ["rolling_mushroom_16",400,0],"rolling_mushroom_17" : ["rolling_mushroom_17",410,0],"rolling_mushroom_18" : ["rolling_mushroom_18",420,0],"rolling_mushroom_19" : ["rolling_mushroom_19",435,0],"rolling_mushroom_20" : ["rolling_mushroom_20",450,0],
-	"fallen_bat_stats_type" : ["Max Hp","Critic Damage","none"],"fallen_bat_0" : [150,0,0],"fallen_bat_1" : [225,0,0], "fallen_bat_2" : [300,0,0], "fallen_bat_3" : [390,0,0],"fallen_bat_4" : [480,0,0],"fallen_bat_5" : [600,15,0],"fallen_bat_6" : [720,18,0],"fallen_bat_7" : [900,21,0], "fallen_bat_8" : [1080,24,0],"fallen_bat_9" : [1260,27,0],"fallen_bat_10" : [1500,30,0],"fallen_bat_11" : [1800,36,0],"fallen_bat_12" : [1800,37,0],"fallen_bat_13" : [1850,38,0],"fallen_bat_14" : [1900,39,0],"fallen_bat_15" : [2000,40,0],"fallen_bat_16" : ["fallen_bat_16",46,0],"fallen_bat_17" : ["fallen_bat_17",47,0],"fallen_bat_18" : ["fallen_bat_18",48,0],"fallen_bat_19" : ["fallen_bat_19",49,0],"fallen_bat_20" : ["fallen_bat_20",50,0],
-	"one_eyed_bat_stats_type" : ["Attack","Damage To Airborne Units","none"],"one_eyed_bat_0" : [37,0,0],"one_eyed_bat_1" : [52,0,0], "one_eyed_bat_2" : [75,0,0], "one_eyed_bat_3" : [97,0,0],"one_eyed_bat_4" : [120,0,0],"one_eyed_bat_5" : [150,150,0],"one_eyed_bat_6" : [180,180,0],"one_eyed_bat_7" : [225,220,0], "one_eyed_bat_8" : [270,260,0],"one_eyed_bat_9" : [315,310,0],"one_eyed_bat_10" : [375,370,0],"one_eyed_bat_11" : [450,445,0],"one_eyed_bat_12" : [465,460,0],"one_eyed_bat_13" : [480,475,0],"one_eyed_bat_14" : [495,490,0],"one_eyed_bat_15" : [510,515,0],"one_eyed_bat_16" : [585,"one_eyed_bat_16",0],"one_eyed_bat_17" : [605,"one_eyed_bat_17",0],"one_eyed_bat_18" : [625,"one_eyed_bat_18",0],"one_eyed_bat_19" : [645,"one_eyed_bat_19",0],"one_eyed_bat_20" : [665,"one_eyed_bat_20",0],
-    "scarlet_mage_stats_type" : ["Critic Damage","Damage To Ranged Units","Attack"],"scarlet_mage_0" : [7,0,0],"scarlet_mage_1" : [10,0,0], "scarlet_mage_2" : [13,0,0], "scarlet_mage_3" : [16,0,0],"scarlet_mage_4" : [19,0,0],"scarlet_mage_5" : [22,100,0],"scarlet_mage_6" : [27,120,0],"scarlet_mage_7" : [31,150,0], "scarlet_mage_8" : [36,180,0],"scarlet_mage_9" : [40,210,0],"scarlet_mage_10" : [45,250,0],"scarlet_mage_11" : [48,300,75],"scarlet_mage_12" : [49,310,77],"scarlet_mage_13" : [50,320,79],"scarlet_mage_14" : [52,330,81],"scarlet_mage_15" : [54,340,83],"scarlet_mage_16" : [62,390,95],"scarlet_mage_17" : [64,400,98],"scarlet_mage_18" : [66,410,101],"scarlet_mage_19" : [68,420,104],"scarlet_mage_20" : [70,435,107],
-	"icefire_phantom_stats_type" : ["Attack","Damage To Melee Units","none"],"icefire_phantom_0" : [37,0,0],"icefire_phantom_1" : [52,0,0], "icefire_phantom_2" : [75,0,0], "icefire_phantom_3" : [97,0,0],"icefire_phantom_4" : [120,0,0],"icefire_phantom_5" : [150,150,0],"icefire_phantom_6" : [180,180,0],"icefire_phantom_7" : [225,220,0], "icefire_phantom_8" : [270,260,0],"icefire_phantom_9" : [315,310,0],"icefire_phantom_10" : [375,370,0],"icefire_phantom_11" : [450,445,0],"icefire_phantom_12" : [465,460,0],"icefire_phantom_13" : [480,475,0],"icefire_phantom_14" : [495,490,0],"icefire_phantom_15" : [510,515,0],"icefire_phantom_16" : [585,"icefire_phantom_16",0],"icefire_phantom_17" : [605,"icefire_phantom_17",0],"icefire_phantom_18" : [625,"icefire_phantom_18",0],"icefire_phantom_19" : [645,"icefire_phantom_19",0],"icefire_phantom_20" : [665,"icefire_phantom_20",0],
-	"purple_phantom_stats_type" : ["Attack","Damage To Ranged Units","none"],"purple_phantom_0" : [37,0,0],"purple_phantom_1" : [52,0,0], "purple_phantom_2" : [75,0,0], "purple_phantom_3" : [97,0,0],"purple_phantom_4" : [120,0,0],"purple_phantom_5" : [150,150,0],"purple_phantom_6" : [180,180,0],"purple_phantom_7" : [225,220,0], "purple_phantom_8" : [270,260,0],"purple_phantom_9" : [315,310,0],"purple_phantom_10" : [375,370,0],"purple_phantom_11" : [450,445,0],"purple_phantom_12" : [465,460,0],"purple_phantom_13" : [480,475,0],"purple_phantom_14" : [495,490,0],"purple_phantom_15" : [510,515,0],"purple_phantom_16" : [585,"purple_phantom_16",0],"purple_phantom_17" : [605,"purple_phantom_17",0],"purple_phantom_18" : [625,"purple_phantom_18",0],"purple_phantom_19" : [645,"purple_phantom_19",0],"purple_phantom_20" : [665,"purple_phantom_20",0],
-	"tundra_dragon_stats_type" : ["Projectile Resistance","Damage To Ranged Units","none"],"tundra_dragon_0" : [37,0,0],"tundra_dragon_1" : [52,0,0], "tundra_dragon_2" : [75,0,0], "tundra_dragon_3" : [97,0,0],"tundra_dragon_4" : [120,0,0],"tundra_dragon_5" : [150,150,0],"tundra_dragon_6" : [180,180,0],"tundra_dragon_7" : [225,220,0], "tundra_dragon_8" : [270,260,0],"tundra_dragon_9" : [315,310,0],"tundra_dragon_10" : [375,370,0],"tundra_dragon_11" : [450,445,0],"tundra_dragon_12" : [465,460,0],"tundra_dragon_13" : [480,475,0],"tundra_dragon_14" : [495,490,0],"tundra_dragon_15" : [510,515,0],"tundra_dragon_16" : [585,"tundra_dragon_16",0],"tundra_dragon_17" : [605,"tundra_dragon_17",0],"tundra_dragon_18" : [625,"tundra_dragon_18",0],"tundra_dragon_19" : [645,"tundra_dragon_19",0],"tundra_dragon_20" : [665,"tundra_dragon_20",0],
-	"sandian_stats_type" : ["Rear Damage Resistance","Damage To Ground Units","none"],"sandian_0" : [45,0,0],"sandian_1" : [65,0,0], "sandian_2" : [97,0,0], "sandian_3" : [130,0,0],"sandian_4" : [162,0,0],"sandian_5" : [195,150,0],"sandian_6" : [234,180,0],"sandian_7" : [286,220,0], "sandian_8" : [338,260,0],"sandian_9" : [403,310,0],"sandian_10" : [450,370,0],"sandian_11" : ["sandian_11",445,0],"sandian_12" : ["sandian_12",460,0],"sandian_13" : ["sandian_13",475,0],"sandian_14" : ["sandian_14",490,0],"sandian_15" : ["sandian_15",515,0],"sandian_16" : ["sandian_16","sandian_16",0],"sandian_17" : ["sandian_17","sandian_17",0],"sandian_18" : ["sandian_18","sandian_18",0],"sandian_19" : ["sandian_19","sandian_19",0],"sandian_20" : ["sandian_20","sandian_20",0],
-	"nether_puppet_stats_type" : ["Max Hp","Projectile Resistance","none"],"nether_puppet_0" : [150,0,0],"nether_puppet_1" : [225,0,0], "nether_puppet_2" : [300,0,0], "nether_puppet_3" : [390,0,0],"nether_puppet_4" : [480,0,0],"nether_puppet_5" : [600,100,0],"nether_puppet_6" : [720,120,0],"nether_puppet_7" : [900,150,0], "nether_puppet_8" : [1080,180,0],"nether_puppet_9" : [1260,210,0],"nether_puppet_10" : [1500,250,0],"nether_puppet_11" : [1800,300,0],"nether_puppet_12" : [1800,310,0],"nether_puppet_13" : [1850,320,0],"nether_puppet_14" : [1900,330,0],"nether_puppet_15" : [2000,340,0],"nether_puppet_16" : ["nether_puppet_16",390,0],"nether_puppet_17" : ["nether_puppet_17",400,0],"nether_puppet_18" : ["nether_puppet_18",410,0],"nether_puppet_19" : ["nether_puppet_19",420,0],"nether_puppet_20" : ["nether_puppet_20",435,0],
-	"psionic_scarecrow_stats_type" : ["Max Hp","Damage To Ranged Units","none"],"psionic_scarecrow_0" : [150,0,0],"psionic_scarecrow_1" : [225,0,0], "psionic_scarecrow_2" : [300,0,0], "psionic_scarecrow_3" : [390,0,0],"psionic_scarecrow_4" : [480,0,0],"psionic_scarecrow_5" : [600,150,0],"psionic_scarecrow_6" : [720,180,0],"psionic_scarecrow_7" : [900,220,0], "psionic_scarecrow_8" : [1080,260,0],"psionic_scarecrow_9" : [1260,310,0],"psionic_scarecrow_10" : [1500,370,0],"psionic_scarecrow_11" : [1800,445,0],"psionic_scarecrow_12" : [1800,460,0],"psionic_scarecrow_13" : [1850,475,0],"psionic_scarecrow_14" : [1900,490,0],"psionic_scarecrow_15" : [2000,515,0],"psionic_scarecrow_16" : ["psionic_scarecrow_16","psionic_scarecrow_16",0],"psionic_scarecrow_17" : ["psionic_scarecrow_17","psionic_scarecrow_17",0],"psionic_scarecrow_18" : ["psionic_scarecrow_18","psionic_scarecrow_18",0],"psionic_scarecrow_19" : ["psionic_scarecrow_19","psionic_scarecrow_19",0],"psionic_scarecrow_20" : ["psionic_scarecrow_20","psionic_scarecrow_20",0],
-	"steel_dryad_stats_type" : ["Collision Damage Resistance","Front Damage Resistance","none"],"steel_dryad_0" : [37,0,0],"steel_dryad_1" : [52,0,0], "steel_dryad_2" : [75,0,0], "steel_dryad_3" : [97,0,0],"steel_dryad_4" : [120,0,0],"steel_dryad_5" : [150,100,0],"steel_dryad_6" : [180,120,0],"steel_dryad_7" : [225,150,0], "steel_dryad_8" : [270,180,0],"steel_dryad_9" : [315,210,0],"steel_dryad_10" : [375,250,0],"steel_dryad_11" : [450,300,0],"steel_dryad_12" : [465,310,0],"steel_dryad_13" : [480,320,0],"steel_dryad_14" : [495,330,0],"steel_dryad_15" : [510,340,0],"steel_dryad_16" : [585,390,0],"steel_dryad_17" : [605,400,0],"steel_dryad_18" : [625,410,0],"steel_dryad_19" : [645,420,0],"steel_dryad_20" : [665,435,0],
-	"savage_spider_stats_type" : ["Damage To Ground Units","Damage To Melee Units","none"],"savage_spider_0" : [52,0,0],"savage_spider_1" : [75,0,0], "savage_spider_2" : [112,0,0], "savage_spider_3" : [150,0,0],"savage_spider_4" : [187,0,0],"savage_spider_5" : [225,150,0],"savage_spider_6" : [270,180,0],"savage_spider_7" : [330,220,0], "savage_spider_8" : [390,260,0],"savage_spider_9" : [465,310,0],"savage_spider_10" : [555,370,0],"savage_spider_11" : [665,445,0],"savage_spider_12" : ["savage_spider_12",460,0],"savage_spider_13" : ["savage_spider_13",475,0],"savage_spider_14" : ["savage_spider_14",490,0],"savage_spider_15" : ["savage_spider_15",515,0],"savage_spider_16" : ["savage_spider_16","savage_spider_16",0],"savage_spider_17" : ["savage_spider_17","savage_spider_17",0],"savage_spider_18" : ["savage_spider_18","savage_spider_18",0],"savage_spider_19" : ["savage_spider_19","savage_spider_19",0],"savage_spider_20" : ["savage_spider_20","savage_spider_20",0],
-	"flaming_bug_stats_type" : ["Attack","Damage To Ground Units","none"],"flaming_bug_0" : [37,0,0],"flaming_bug_1" : [52,0,0], "flaming_bug_2" : [75,0,0], "flaming_bug_3" : [97,0,0],"flaming_bug_4" : [120,0,0],"flaming_bug_5" : [150,150,0],"flaming_bug_6" : [180,180,0],"flaming_bug_7" : [225,220,0], "flaming_bug_8" : [270,260,0],"flaming_bug_9" : [315,310,0],"flaming_bug_10" : [375,370,0],"flaming_bug_11" : [450,445,0],"flaming_bug_12" : [465,460,0],"flaming_bug_13" : [480,475,0],"flaming_bug_14" : [495,490,0],"flaming_bug_15" : [510,515,0],"flaming_bug_16" : [585,"flaming_bug_16",0],"flaming_bug_17" : [605,"flaming_bug_17",0],"flaming_bug_18" : [625,"flaming_bug_18",0],"flaming_bug_19" : [645,"flaming_bug_19",0],"flaming_bug_20" : [665,"flaming_bug_20",0],
-	"elite_archer_stats_type" : ["Attack","Damage To Airborne Units","none"],"elite_archer_0" : [37,0,0],"elite_archer_1" : [52,0,0], "elite_archer_2" : [75,0,0], "elite_archer_3" : [97,0,0],"elite_archer_4" : [120,0,0],"elite_archer_5" : [150,150,0],"elite_archer_6" : [180,180,0],"elite_archer_7" : [225,220,0], "elite_archer_8" : [270,260,0],"elite_archer_9" : [315,310,0],"elite_archer_10" : [375,370,0],"elite_archer_11" : [450,445,0],"elite_archer_12" : [465,460,0],"elite_archer_13" : [480,475,0],"elite_archer_14" : [495,490,0],"elite_archer_15" : [510,515,0],"elite_archer_16" : [585,"elite_archer_16",0],"elite_archer_17" : [605,"elite_archer_17",0],"elite_archer_18" : [625,"elite_archer_18",0],"elite_archer_19" : [645,"elite_archer_19",0],"elite_archer_20" : [665,"elite_archer_20",0],
-	"little_dragon_stats_type" : ["Max Hp","Damage To Airborne Units","none"],"little_dragon_0" : [150,0,0],"little_dragon_1" : [225,0,0], "little_dragon_2" : [300,0,0], "little_dragon_3" : [390,0,0],"little_dragon_4" : [480,0,0],"little_dragon_5" : [600,150,0],"little_dragon_6" : [720,180,0],"little_dragon_7" : [900,220,0], "little_dragon_8" : [1080,260,0],"little_dragon_9" : [1260,310,0],"little_dragon_10" : [1500,370,0],"little_dragon_11" : [1800,445,0],"little_dragon_12" : [1800,460,0],"little_dragon_13" : [1850,475,0],"little_dragon_14" : [1900,490,0],"little_dragon_15" : [2000,515,0],
-	"arch_leader_stats_type" : ["Damage To Ranged Units","Rear Damage Resistance","none"],"arch_leader_0" : [61,39,0],"arch_leader_1" : [87,58,0], "arch_leader_2" : [131,78,0], "arch_leader_3" : [175,104,0],"arch_leader_4" : [218,130,0],"arch_leader_5" : [262,156,0],"arch_leader_6" : [315,195,0],"arch_leader_7" : [385,234,0], "arch_leader_8" : [455,273,0],"arch_leader_9" : [542,325,0],"arch_leader_10" : [647,390,0],"arch_leader_11" : [775,470,0],"arch_leader_12" : [800,485,0],"arch_leader_13" : [825,500,0],"arch_leader_14" : [850,515,0],"arch_leader_15" : [875,530,0],
-	"skeleton_king_stats_type" : ["Max Hp","Collision Damage Resistance","Damage To Bosses"],"skeleton_king_0" : [200,37,0],"skeleton_king_1" : [300,52,0], "skeleton_king_2" : [400,75,0], "skeleton_king_3" : [520,97,0],"skeleton_king_4" : [640,120,0],"skeleton_king_5" : [800,150,200],"skeleton_king_6" : [960,180,240],"skeleton_king_7" : [1200,225,300], "skeleton_king_8" : [1440,270,360],"skeleton_king_9" : [1680,315,420],"skeleton_king_10" : [2000,375,500],"skeleton_king_11" : [2400,450,600],"skeleton_king_12" : [2450,465,620],"skeleton_king_13" : [2500,480,640],"skeleton_king_14" : [2600,495,660],"skeleton_king_15" : [2700,510,680],
-	"ice_demon_stats_type" : ["Max Hp","Attack","Damage To Bosses"],"ice_demon_0" : [200,37,0],"ice_demon_1" : [300,52,0], "ice_demon_2" : [400,75,0], "ice_demon_3" : [520,97,0],"ice_demon_4" : [640,120,0],"ice_demon_5" : [800,150,200],"ice_demon_6" : [960,180,240],"ice_demon_7" : [1200,225,300], "ice_demon_8" : [1440,270,360],"ice_demon_9" : [1680,315,420],"ice_demon_10" : [2000,375,500],"ice_demon_11" : [2400,450,600],"ice_demon_12" : [2450,465,620],"ice_demon_13" : [2500,480,640],"ice_demon_14" : [2600,495,660],"ice_demon_15" : [2700,510,680],
-    "crimson_witch_stats_type" : ["Attack","Front Damage Resistance","none"],"crimson_witch_0" : [43,32,0],"crimson_witch_1" : [61,45,0], "crimson_witch_2" : [87,65,0], "crimson_witch_3" : [113,84,0],"crimson_witch_4" : [140,104,0],"crimson_witch_5" : [175,130,0],"crimson_witch_6" : [210,156,0],"crimson_witch_7" : [262,195,0], "crimson_witch_8" : [315,234,0],"crimson_witch_9" : [367,273,0],"crimson_witch_10" : [437,325,0],"crimson_witch_11" : [525,390,0],"crimson_witch_12" : [540,400,0],"crimson_witch_13" : [555,410,0],"crimson_witch_14" : [570,420,0],"crimson_witch_15" : [585,435,0],
-	"rage_golem_stats_type" : ["Max Hp","Collision Damage Resistance","none"],"rage_golem_0" : [150,0,0],"rage_golem_1" : [225,0,0], "rage_golem_2" : [300,0,0], "rage_golem_3" : [390,0,0],"rage_golem_4" : [480,0,0],"rage_golem_5" : [600,100,0],"rage_golem_6" : [720,120,0],"rage_golem_7" : [900,150,0], "rage_golem_8" : [1080,180,0],"rage_golem_9" : [1260,210,0],"rage_golem_10" : [1500,250,0],"rage_golem_11" : [1800,300,0],"rage_golem_12" : [1800,310,0],"rage_golem_13" : [1850,320,0],"rage_golem_14" : [1900,330,0],"rage_golem_15" : [2000,340,0],
-	"queen_bee_stats_type" : ["Max Hp","Projectile Resistance","none"],"queen_bee_0" : [175,32,0],"queen_bee_1" : [262,45,0], "queen_bee_2" : [350,65,0], "queen_bee_3" : [455,84,0],"queen_bee_4" : [560,104,0],"queen_bee_5" : [700,130,0],"queen_bee_6" : [840,156,0],"queen_bee_7" : [1050,195,0], "queen_bee_8" : [1260,234,0],"queen_bee_9" : [1470,273,0],"queen_bee_10" : [1750,325,0],"queen_bee_11" : [2100,390,0],"queen_bee_12" : [2150,400,0],"queen_bee_13" : [2200,410,0],"queen_bee_14" : [2250,420,0],"queen_bee_15" : [2300,435,0],
-	"ice_worm_stats_type" : ["Attack","Projectile Resistance","Damage To Mobs"],"ice_worm_0" : [50,37,0],"ice_worm_1" : [70,52,0], "ice_worm_2" : [100,75,0], "ice_worm_3" : [130,97,0],"ice_worm_4" : [160,120,0],"ice_worm_5" : [200,150,120],"ice_worm_6" : [240,180,150],"ice_worm_7" : [300,225,180], "ice_worm_8" : [360,270,210],"ice_worm_9" : [420,315,250],"ice_worm_10" : [500,375,300],"ice_worm_11" : [600,450,360],"ice_worm_12" : [620,465,370],"ice_worm_13" : [640,480,380],"ice_worm_14" : [660,495,390],"ice_worm_15" : [680,510,400],
-	"medusa_boss_stats_type" : ["Max Hp","Attack","none"],"medusa_boss_0" : [175,32,0],"medusa_boss_1" : [262,45,0], "medusa_boss_2" : [350,65,0], "medusa_boss_3" : [455,84,0],"medusa_boss_4" : [560,104,0],"medusa_boss_5" : [700,130,0],"medusa_boss_6" : [840,156,0],"medusa_boss_7" : [1050,195,0], "medusa_boss_8" : [1260,234,0],"medusa_boss_9" : [1470,273,0],"medusa_boss_10" : [1750,325,0],"medusa_boss_11" : [2100,390,0],"medusa_boss_12" : [2150,400,0],"medusa_boss_13" : [2200,410,0],"medusa_boss_14" : [2250,420,0],"medusa_boss_15" : ["medusa_boss_15",435,0],  #2300 en premier pour le lvl15
-    "giant_owl_stats_type" : ["Damage To Mobs","Damage To Airborne Units","Attack"],"giant_owl_0" : [60,52,0],"giant_owl_1" : [90,75,0], "giant_owl_2" : [120,112,0], "giant_owl_3" : [160,150,0],"giant_owl_4" : [200,180,0],"giant_owl_5" : [240,225,100],"giant_owl_6" : [300,270,120],"giant_owl_7" : [360,330,150], "giant_owl_8" : [420,390,180],"giant_owl_9" : [500,465,210],"giant_owl_10" : [600,555,250],"giant_owl_11" : [720,665,300],"giant_owl_12" : [740,685,310],"giant_owl_13" : [760,705,320],"giant_owl_14" : [785,725,330],"giant_owl_15" : ["giant_owl_15","giant_owl_15",340],
-	"fire_demon_stats_type" : ["Critic Damage","Projectile Resistance","Damage To Bosses"],"fire_demon_0" : [8,32,0],"fire_demon_1" : [12,45,0], "fire_demon_2" : [15,65,0], "fire_demon_3" : [19,84,0],"fire_demon_4" : [22,104,0],"fire_demon_5" : [26,130,0],"fire_demon_6" : [31,156,0],"fire_demon_7" : [36,195,0], "fire_demon_8" : [42,234,0],"fire_demon_9" : [47,273,0],"fire_demon_10" : [52,325,0],"fire_demon_11" : [62,390,100],"fire_demon_12" : [64,400,105],"fire_demon_13" : [66,410,110],"fire_demon_14" : [68,420,115],"fire_demon_15" : [70,435,120],
-	"krab_boss_stats_type" : ["Rear Damage Resistance","Front Damage Resistance","none"],"krab_boss_0" : [52,32,0],"krab_boss_1" : [78,45,0], "krab_boss_2" : [105,65,0], "krab_boss_3" : [140,84,0],"krab_boss_4" : [175,104,0],"krab_boss_5" : [210,130,0],"krab_boss_6" : [262,156,0],"krab_boss_7" : [315,195,0], "krab_boss_8" : [367,234,0],"krab_boss_9" : [437,273,0],"krab_boss_10" : [525,325,0],"krab_boss_11" : [630,390,0],"krab_boss_12" : [650,400,0],"krab_boss_13" : [670,410,0],"krab_boss_14" : [690,420,0],"krab_boss_15" : [710,435,0],
-    "desert_goliath_stats_type" : ["Damage To Ground Units","Damage To Bosses","Attack"],"desert_goliath_0" : [70,75,0],"desert_goliath_1" : [100,105,0], "desert_goliath_2" : [150,150,0], "desert_goliath_3" : [200,195,0],"desert_goliath_4" : [250,240,0],"desert_goliath_5" : [300,300,120],"desert_goliath_6" : [360,360,150],"desert_goliath_7" : [440,450,180], "desert_goliath_8" : [520,540,210],"desert_goliath_9" : [620,630,210],"desert_goliath_10" : [740,750,250],"desert_goliath_11" : [890,900,300],"desert_goliath_12" : [915,925,310],"desert_goliath_13" : [940,955,320],"desert_goliath_14" : [970,985,330],"desert_goliath_15" : [1000,1015,340],
+    "bomb_ghost_stats_type" : ["Damage To Ground Units","none","none"], "bomb_ghost_boost_1":[35,50,75,100,125,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "bomb_ghost_boost_2":[], "bomb_ghost_boost_3":[],
+    "green_bat_stats_type" : ["Attack","none","none"], "green_bat_boost_1":[25,35,50,65,80,100,120,150,180,210,250,300,310,320,330,340,390,400,410,420,435], "green_bat_boost_2":[], "green_bat_boost_3":[],
+    "party_tree_stats_type" : ["Collision Damage Resistance","none","none"], "party_tree_boost_1":[25,35,50,65,80,100,120,150,180,210,250,300,310,320,330,340,390,400,410,420,435], "party_tree_boost_2":[], "party_tree_boost_3":[],
+    "piranha_stats_type" : ["Attack","none","none"], "piranha_boost_1":[25,35,50,65,80,100,120,150,180,210,250,300,310,320,330,340,390,400,410,420,435], "piranha_boost_2":[], "piranha_boost_3":[],
+    "rock_puppet_stats_type" : ["Max Hp","none","none"], "rock_puppet_boost_1":[100,150,200,260,320,400,480,600,720,840,1000,1200,1240,1280,1320,1360,"@","@","@","@","@"], "rock_puppet_boost_2":[], "rock_puppet_boost_3":[],
+    "vase_stats_type" : ["Max Hp","none","none"], "vase_boost_1":[100,150,200,260,320,400,480,600,720,840,1000,1200,1240,1280,1320,1360,"@","@","@","@","@"], "vase_boost_2":[], "vase_boost_3":[],
+	"zombie_stats_type" : ["Rear Damage Resistance","none","none"], "zombie_boost_1":[30,45,60,80,100,120,150,180,210,250,300,310,320,330,340,390,400,410,420,435,450], "zombie_boost_2":[], "zombie_boost_3":[],
+	"crazy_spider_stats_type" : ["Damage To Ground Units","none","none"], "crazy_spider_boost_1":[45,65,97,130,162,195,234,286,338,403,450,"@","@","@","@","@","@","@","@","@","@"], "crazy_spider_boost_2":[], "crazy_spider_boost_3":[],
+	"fire_lizard_stats_type" : ["Max Hp","none","none"], "fire_lizard_boost_1":[130,195,260,338,416,520,624,780,936,1092,1300,"@","@","@","@","@","@","@","@","@","@"], "fire_lizard_boost_2":[], "fire_lizard_boost_3":[],
+    "fire_mage_stats_type" : ["Attack","none","none"], "fire_mage_boost_1":[32,45,65,84,104,130,156,195,234,273,325,390,400,410,420,435,500,515,530,545,560], "fire_mage_boost_2":[], "fire_mage_boost_3":[],
+	"long_dragon_stats_type" : ["Projectile Resistance","none","none"], "long_dragon_boost_1":[32,45,65,84,104,130,156,195,234,273,325,390,400,410,420,435,500,515,530,545,560], "long_dragon_boost_2":[], "long_dragon_boost_3":[],
+	"scarecrow_stats_type" : ["Max Hp","none","none"], "scarecrow_boost_1":[130,195,260,338,416,520,624,780,936,1092,1300,"@","@","@","@","@","@","@","@","@","@"], "scarecrow_boost_2":[], "scarecrow_boost_3":[],
+	"skeleton_archer_stats_type" : ["Damage To Ranged Units","none","none"], "skeleton_archer_boost_1":[45,65,97,130,162,195,234,286,338,403,450,"@","@","@","@","@","@","@","@","@","@"], "skeleton_archer_boost_2":[], "skeleton_archer_boost_3":[],
+	"skeleton_soldier_stats_type" : ["Damage To Melee Units","none","none"], "skeleton_soldier_boost_1":[45,65,97,130,162,195,234,286,338,403,450,"@","@","@","@","@","@","@","@","@","@"], "skeleton_soldier_boost_2":[], "skeleton_soldier_boost_3":[],
+	"skeleton_swordsman_stats_type" : ["Damage To Melee Units","none","none"], "skeleton_swordsman_boost_1":[45,65,97,130,162,195,234,286,338,403,450,"@","@","@","@","@","@","@","@","@","@"], "skeleton_swordsman_boost_2":[], "skeleton_swordsman_boost_3":[],
+	"thorny_snake_stats_type" : ["Damage To Melee Units","none","none"], "thorny_snake_boost_1":[45,65,97,130,162,195,234,286,338,403,450,"@","@","@","@","@","@","@","@","@","@"], "thorny_snake_boost_2":[], "thorny_snake_boost_3":[],
+	"tornado_demon_stats_type" : ["Attack","Damage To Airborne Units","none"], "tornado_demon_boost_1":[45,65,97,130,162,195,234,286,338,403,450,"@","@","@","@","@","@","@","@","@","@"], "tornado_demon_boost_2":[], "tornado_demon_boost_3":[],
+	"wasp_stats_type" : ["Projectile Resistance","none","none"], "wasp_boost_1":[32,45,65,84,104,130,156,195,234,273,325,390,400,410,420,435,500,515,530,545,560], "wasp_boost_2":[], "wasp_boost_3":[],
+	"wolfhound_stats_type" : ["Damage To Melee Units","none","none"], "wolfhound_boost_1":[45,65,97,130,162,195,234,286,338,403,450,"@","@","@","@","@","@","@","@","@","@"], "wolfhound_boost_2":[], "wolfhound_boost_3":[],
+	"cactus_stats_type" : ["Max Hp","Attack","none"], "cactus_boost_1":[150,225,300,390,480,600,720,900,1080,1260,1500,1800,1850,1900,1950,2000,"@","@","@","@","@"], "cactus_boost_2":[0,0,0,0,0,100,120,150,180,210,250,300,310,320,330,340,390,400,410,420,435], "cactus_boost_3":[],
+	"fire_element_stats_type" : ["Attack","Damage To Airborne Units","none"], "fire_element_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "fire_element_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "fire_element_boost_3":[],
+	"flame_ghost_stats_type" : ["Attack","Critic Damage","Collision Damage Resistance"], "flame_ghost_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "flame_ghost_boost_2":[0,0,0,0,0,15,18,21,24,27,30,36,37,38,39,40,46,47,48,49,50], "flame_ghost_boost_3":[0,0,0,0,0,0,0,0,0,0,0,50,52,54,56,58,67,69,71,73,75],
+	"ice_golem_stats_type" : ["Max Hp","Front Damage Resistance","none"], "ice_golem_boost_1":[150,225,300,390,480,600,720,900,1080,1260,1500,1800,1850,1900,1950,2000,"@","@","@","@","@"], "ice_golem_boost_2":[0,0,0,0,0,100,120,150,180,210,250,300,310,320,330,340,390,400,410,420,435], "ice_golem_boost_3":[],
+	"ice_mage_stats_type" : ["Damage To Ranged Units","Critic Damage","none"], "ice_mage_boost_1":[52,75,112,150,187,225,270,330,390,465,555,665,"@","@","@","@","@","@","@","@","@"], "ice_mage_boost_2":[0,0,0,0,0,15,18,21,24,27,30,36,37,38,39,40,46,47,48,49,50], "ice_mage_boost_3":[],
+	"lava_golem_stats_type" : ["Max Hp","Collision Damage Resistance","none"], "lava_golem_boost_1":[150,225,300,390,480,600,720,900,1080,1260,1500,1800,1850,1900,1950,2000,"@","@","@","@","@"], "lava_golem_boost_2":[0,0,0,0,0,100,120,150,180,210,250,300,310,320,330,340,390,400,410,420,435], "lava_golem_boost_3":[],
+	"medusa_stats_type" : ["Attack","Damage To Ground Units","none"], "medusa_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "medusa_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "medusa_boost_3":[],
+	"pea_shooter_stats_type" : ["Attack","Damage To Airborne Units","none"], "pea_shooter_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "pea_shooter_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "pea_shooter_boost_3":[],
+	"shadow_assassin_stats_type" : ["Attack","Rear Damage Resistance","none"], "shadow_assassin_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "shadow_assassin_boost_2":[0,0,0,0,0,120,150,180,210,250,300,"@","@","@","@","@","@","@","@","@","@"], "shadow_assassin_boost_3":[],
+	"scythe_mage_stats_type" : ["Attack","Damage To Ranged Units","none"], "scythe_mage_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "scythe_mage_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "scythe_mage_boost_3":[],
+	"skull_wizard_stats_type" : ["Attack","Critic Damage","Front Damage Resistance"], "skull_wizard_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "skull_wizard_boost_2":[0,0,0,0,0,15,18,21,24,27,30,36,37,38,39,40,46,47,48,49,50], "skull_wizard_boost_3":[0,0,0,0,0,0,0,0,0,0,0,50,52,54,56,58,67,69,71,73,75],
+	"tornado_mage_stats_type" : ["Damage To Ground Units","none","none"], "tornado_mage_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "tornado_mage_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "tornado_mage_boost_3":[],
+	"fallen_bat_stats_type" : ["Max Hp","Critic Damage","none"], "fallen_bat_boost_1":[150,225,300,390,480,600,720,900,1080,1260,1500,1800,1850,1900,1950,2000,"@","@","@","@","@"], "fallen_bat_boost_2":[0,0,0,0,0,15,18,21,24,27,30,36,37,38,39,40,46,47,48,49,50], "fallen_bat_boost_3":[],
+	"nether_puppet_stats_type" : ["Max Hp","Projectile Resistance","none"], "nether_puppet_boost_1":[150,225,300,390,480,600,720,900,1080,1260,1500,1800,1850,1900,1950,2000,"@","@","@","@","@"], "nether_puppet_boost_2":[0,0,0,0,0,100,120,150,180,210,250,300,310,320,330,340,390,400,410,420,435], "nether_puppet_boost_3":[],
+	"sandian_stats_type" : ["Rear Damage Resistance","Damage To Ground Units","none"], "sandian_boost_1":[45,65,97,130,162,195,234,286,338,403,450,"@","@","@","@","@","@","@","@","@","@"], "sandian_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "sandian_boost_3":[],
+	"savage_spider_stats_type" : ["Damage To Ground Units","Damage To Melee Units","none"], "savage_spider_boost_1":[52,75,112,150,187,225,270,330,390,465,555,665,"@","@","@","@","@","@","@","@","@"], "savage_spider_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "savage_spider_boost_3":[],
+	"flaming_bug_stats_type" : ["Attack","Damage To Ground Units","none"], "flaming_bug_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "flaming_bug_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "flaming_bug_boost_3":[],
+    "one_eyed_bat_stats_type" : ["Attack","Damage To Airborne Units","none"], "one_eyed_bat_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "one_eyed_bat_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "one_eyed_bat_boost_3":[],
+	"psionic_scarecrow_stats_type" : ["Max Hp","Damage To Ranged Units","none"], "psionic_scarecrow_boost_1":[150,225,300,390,480,600,720,900,1080,1260,1500,1800,1850,1900,1950,2000,"@","@","@","@","@"], "psionic_scarecrow_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "psionic_scarecrow_boost_3":[],
+	"spitting_mushroom_stats_type" : ["Max Hp","Projectile Resistance","none"], "spitting_mushroom_boost_1":[150,225,300,390,480,600,720,900,1080,1260,1500,1800,1850,1900,1950,2000,"@","@","@","@","@"], "spitting_mushroom_boost_2":[0,0,0,0,0,100,120,150,180,210,250,300,310,320,330,340,390,400,410,420,435], "spitting_mushroom_boost_3":[],
+	"steel_dryad_stats_type" : ["Collision Damage Resistance","Front Damage Resistance","none"], "steel_dryad_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "steel_dryad_boost_2":[0,0,0,0,0,100,120,150,180,210,250,300,310,320,330,340,390,400,410,420,435], "steel_dryad_boost_3":[],
+    "elite_archer_stats_type" : ["Attack","Damage To Airborne Units","none"], "elite_archer_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "elite_archer_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "elite_archer_boost_3":[],
+	"icefire_phantom_stats_type" : ["Attack","Damage To Melee Units","none"], "icefire_phantom_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "icefire_phantom_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "icefire_phantom_boost_3":[],
+	"purple_phantom_stats_type" : ["Attack","Damage To Ranged Units","none"], "purple_phantom_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "purple_phantom_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "purple_phantom_boost_3":[],
+	"rolling_mushroom_stats_type" : ["Max Hp","Rear Damage Resistance","none"], "rolling_mushroom_boost_1":[150,225,300,390,480,600,720,900,1080,1260,1500,1800,1850,1900,1950,2000,"@","@","@","@","@"], "rolling_mushroom_boost_2":[0,0,0,0,0,120,150,180,210,250,300,"@","@","@","@","@","@","@","@","@","@"], "rolling_mushroom_boost_3":[],
+    "scarlet_mage_stats_type" : ["Critic Damage","Damage To Ranged Units","Attack"], "scarlet_mage_boost_1":[7,10,13,16,19,22,27,31,36,40,45,48,49,50,52,54,62,64,66,68,70], "scarlet_mage_boost_2":[0,0,0,0,0,100,120,150,180,210,250,300,310,320,330,340,390,400,410,420,435], "scarlet_mage_boost_3":[0,0,0,0,0,0,0,0,0,0,0,75,77,79,81,83,95,98,101,104,107],
+	"tundra_dragon_stats_type" : ["Projectile Resistance","Damage To Ranged Units","none"], "tundra_dragon_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "tundra_dragon_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "tundra_dragon_boost_3":[],
+    "shark_bro_stats_type" : ["Attack","Damage To Bosses","none"], "shark_bro_boost_1":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510,585,605,625,645,665], "shark_bro_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "shark_bro_boost_3":[],
+    "crimson_zombie_stats_type" : ["Damage To Ground Units","Projectile Resistance","none"], "crimson_zombie_boost_1":[35,50,75,100,125,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "crimson_zombie_boost_2":[0,0,0,0,0,100,120,150,180,210,250,300,310,320,330,340,390,400,410,420,435], "crimson_zombie_boost_3":[],
+    "fat_bat_stats_type" : ["Max Hp","Collision Damage Resistance","Poison Damage"], "fat_bat_boost_1":[160,235,"@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@","@"], "fat_bat_boost_2":[0,0,0,0,0,100,120,150,180,210,250,300,310,320,330,340,390,400,410,420,435], "fat_bat_boost_3":[0,0,0,0,0,0,0,0,0,0,0,5,"@","@","@","@","@","@","@","@","@"],
+    "plainswolf_stats_type" : ["Max Hp","Damage To Normal Units","Damage To Melee Units"], "plainswolf_boost_1":[150,225,300,390,480,600,720,900,1080,1260,1500,1800,1850,1900,1950,2000,"@","@","@","@","@"], "plainswolf_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515,"@","@","@","@","@"], "plainswolf_boost_3":[0,0,0,0,0,0,0,0,0,0,0,75,"@","@","@","@","@","@","@","@","@"],
+	"little_dragon_stats_type" : ["Max Hp","Damage To Airborne Units","none"], "little_dragon_boost_1":[150,225,300,390,480,600,720,900,1080,1260,1500,1800,1850,1900,1950,2000], "little_dragon_boost_2":[0,0,0,0,0,150,180,220,260,310,370,445,460,475,490,515], "little_dragon_boost_3":[],
+	"rage_golem_stats_type" : ["Max Hp","Collision Damage Resistance","none"], "rage_golem_boost_1":[150,225,300,390,480,600,720,900,1080,1260,1500,1800,1850,1910,1970,2030], "rage_golem_boost_2":[0,0,0,0,0,100,120,150,180,210,250,300,310,320,330,340], "rage_golem_boost_3":[],
+	"arch_leader_stats_type" : ["Damage To Ranged Units","Rear Damage Resistance","none"], "arch_leader_boost_1":[61,87,131,175,218,262,315,385,455,542,647,775,800,825,850,875], "arch_leader_boost_2":[39,58,78,104,130,156,195,234,273,325,390,470,485,500,515,530], "arch_leader_boost_3":[],
+    "crimson_witch_stats_type" : ["Attack","Front Damage Resistance","none"], "crimson_witch_boost_1":[43,61,87,113,140,175,210,262,315,367,437,525,540,555,570,585], "crimson_witch_boost_2":[32,45,65,84,104,130,156,195,234,273,325,390,400,410,420,435], "crimson_witch_boost_3":[],
+	"medusa_boss_stats_type" : ["Max Hp","Attack","none"], "medusa_boss_boost_1":[175,262,350,455,560,700,840,1050,1260,1470,1750,2100,2150,2200,2250,2300], "medusa_boss_boost_2":[32,45,65,84,104,130,156,195,234,273,325,390,400,410,420,435], "medusa_boss_boost_3":[],
+	"queen_bee_stats_type" : ["Max Hp","Projectile Resistance","none"], "queen_bee_boost_1":[175,262,350,455,560,700,840,1050,1260,1470,1750,2100,2150,2200,2250,2300], "queen_bee_boost_2":[32,45,65,84,104,130,156,195,234,273,325,390,400,410,420,435], "queen_bee_boost_3":[],
+	"fire_demon_stats_type" : ["Critic Damage","Projectile Resistance","Damage To Bosses"], "fire_demon_boost_1":[8,12,15,19,22,26,31,36,42,47,52,62,64,66,68,70], "fire_demon_boost_2":[32,45,65,84,104,130,156,195,234,273,325,390,400,410,420,435], "fire_demon_boost_3":[0,0,0,0,0,0,0,0,0,0,0,100,105,110,115,120],
+	"krab_boss_stats_type" : ["Rear Damage Resistance","Front Damage Resistance","none"], "krab_boss_boost_1":[52,78,105,140,175,210,262,315,367,437,525,630,650,670,690,710], "krab_boss_boost_2":[32,45,65,84,104,130,156,195,234,273,325,390,400,410,420,435], "krab_boss_boost_3":[],
+	"ice_worm_stats_type" : ["Attack","Projectile Resistance","Damage To Mobs"], "ice_worm_boost_1":[50,70,100,130,160,200,240,300,360,420,500,600,620,640,660,680], "ice_worm_boost_2":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510], "ice_worm_boost_3":[0,0,0,0,0,120,150,180,210,250,300,360,370,380,390,400],
+	"skeleton_king_stats_type" : ["Max Hp","Collision Damage Resistance","Damage To Bosses"], "skeleton_king_boost_1":[200,300,400,520,640,800,960,1200,1440,1680,2000,2400,2450,2500,2600,2700], "skeleton_king_boost_2":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510], "skeleton_king_boost_3":[0,0,0,0,0,200,240,300,360,420,500,600,620,640,660,680],
+    "desert_goliath_stats_type" : ["Damage To Ground Units","Damage To Bosses","Attack"], "desert_goliath_boost_1":[70,100,150,200,250,300,360,440,520,620,740,890,915,940,970,1000], "desert_goliath_boost_2":[75,105,150,195,240,300,360,450,540,630,750,900,925,955,985,1015], "desert_goliath_boost_3":[0,0,0,0,0,120,150,180,210,210,250,300,310,320,330,340],
+    "giant_owl_stats_type" : ["Damage To Mobs","Damage To Airborne Units","Attack"], "giant_owl_boost_1":[60,90,120,160,200,240,300,360,420,500,600,720,740,760,785,810], "giant_owl_boost_2":[52,75,112,150,180,225,270,330,390,465,555,665,685,705,725,745], "giant_owl_boost_3":[0,0,0,0,0,100,120,150,180,210,250,300,310,320,330,340],
+	"ice_demon_stats_type" : ["Max Hp","Attack","Damage To Bosses"], "ice_demon_boost_1":[200,300,400,520,640,800,960,1200,1440,1680,2000,2400,2450,2500,2600,2700], "ice_demon_boost_2":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510], "ice_demon_boost_3":[0,0,0,0,0,200,240,300,360,420,500,600,620,640,660,680],
+    "scythe_pharoah_stats_type" : ["Attack","Front Damage Resistance","Damage To Human"], "scythe_pharoah_boost_1":[55,75,"@","@","@","@","@","@","@","@","@","@","@","@","@","@"], "scythe_pharoah_boost_2":[37,52,75,97,120,150,180,225,270,315,375,450,465,480,495,510], "scythe_pharoah_boost_3":[0,0,0,0,0,200,"@","@","@","@","@","@","@","@","@","@"],
+    "infernal_demon_stats_type" : ["Damage To Bosses","Flame Damage","Max Hp"], "infernal_demon_boost_1":[60,90,120,160,200,240,300,360,420,500,600,720,740,760,785,810], "infernal_demon_boost_2":[5,7,10,"@","@","@","@","@","@","@","@","@","@","@","@","@"], "infernal_demon_boost_3":[0,0,0,0,0,0,150,"@","@","@","@","@","@","@","@","@"],
+    "sinister_touch_stats_type" : ["Max Hp","Projectile Resistance","Blue Heart Recovery Effect"], "sinister_touch_boost_1":[150,225,300,390,480,600,720,900,1080,1260,1500,1800,1850,1910,1970,2030], "sinister_touch_boost_2":[32,45,65,84,104,130,156,195,234,273,325,390,400,410,420,435], "sinister_touch_boost_3":[0,0,0,0,0,5,"@","@","@","@","@","@","@","@","@","@"],
+    "fireworm_queen_stats_type" : ["Damage To Mobs","Projectile Resistance","none"], "fireworm_queen_boost_1":[60,90,120,160,200,240,300,360,420,500,600,720,740,760,785,810], "fireworm_queen_boost_2":[0,0,0,0,0,100,"@","@","@","@","@","@","@","@","@","@"], "fireworm_queen_boost_3":[],
 }
 
 
@@ -1472,7 +1600,7 @@ PassivMobsStats1 = {
     "green_bat_5" : [5,0,0,0], "green_bat_10" : [5,20,0,0], "green_bat_13" : [5,20,5,0],"green_bat_17" : [5,20,5,120],
     "vase_5" : [5,0,0,0], "vase_10" : [5,80,0,0], "vase_13" : [5,80,5,0],"vase_17" : [5,80,5,0],    #manque le 17*
     "bomb_ghost_5" : [5,0,0,0], "bomb_ghost_10" : [5,20,0,0], "bomb_ghost_13" : [5,20,5,0],"bomb_ghost_17" : [5,20,5,0],    #manque le 17*
-	"rock_puppet_5" : [5,0,0,0], "rock_puppet_10" : [5,80,0,0], "rock_puppet_13" : [5,0,5,0],"rock_puppet_17" : [5,0,5,0],    #manque le 17*
+    "rock_puppet_5" : [5,0,0,0], "rock_puppet_10" : [5,80,0,0], "rock_puppet_13" : [5,0,5,0],"rock_puppet_17" : [5,0,5,0],    #manque le 17*
     "party_tree_5" : [5,0,0,0], "party_tree_10" : [5,80,0,0], "party_tree_13" : [5,0,5,0],"party_tree_17" : [5,0,5,0],    #manque le 17*
     "piranha_5" : [5,0,0,0], "piranha_10" : [5,20,0,0], "piranha_13" : [5,0,5,0],"piranha_17" : [5,0,5,0],    #manque le 17*
 	"zombie_5" : [5,0,0,0], "zombie_10" : [5,80,0,0], "zombie_13" : [5,0,5,0],"zombie_17" : [5,0,5,0],    #manque le 17*
@@ -1525,8 +1653,12 @@ PassivMobsStats2 = {
 	"steel_dryad_4" : [5,0,0,0,0], "steel_dryad_7" : [5,120,0,0,0], "steel_dryad_10" : [5,120,15,0,0],"steel_dryad_13" : [5,120,15,5,0],"steel_dryad_17" : [5,120,15,5,0],
 	"savage_spider_4" : [5,0,0,0,0], "savage_spider_7" : [5,30,0,0,0], "savage_spider_10" : [5,30,15,0,0],"savage_spider_13" : [5,30,15,5,0],"savage_spider_17" : [5,30,15,5,0],
 	"flaming_bug_4" : [5,0,0,0,0], "flaming_bug_7" : [5,30,0,0,0], "flaming_bug_10" : [5,30,15,0,0],"flaming_bug_13" : [5,30,15,5,0],"flaming_bug_17" : [5,30,15,5,0],
+    "shark_bro_4" : [5,0,0,0,0], "shark_bro_7" : [5,70,0,0,0], "shark_bro_10" : [5,70,15,0,0],"shark_bro_13" : [5,70,15,0,0],"shark_bro_17" : [5,70,15,0,0],
+    "fat_bat_4" : [5,0,0,0,0], "fat_bat_7" : [5,70,0,0,0], "fat_bat_10" : [5,70,15,0,0],"fat_bat_13" : [5,70,15,0,0],"fat_bat_17" : [5,70,15,0,0],
+    "crimson_zombie_4" : [5,0,0,0,0], "crimson_zombie_7" : [5,120,0,0,0], "crimson_zombie_10" : [5,120,15,0,0],"crimson_zombie_13" : [5,120,15,0,0],"crimson_zombie_17" : [5,120,15,0,0],
+    "plainswolf_4" : [5,0,0,0,0], "plainswolf_7" : [5,30,0,0,0], "plainswolf_10" : [5,30,15,0,0],"plainswolf_13" : [5,30,15,0,0],"plainswolf_17" : [5,30,15,0,0],
 	"elite_archer_4" : [5,0,0,0,0], "elite_archer_7" : [5,30,0,0,0], "elite_archer_10" : [5,30,15,0,0],"elite_archer_13" : [5,30,15,5,0],"elite_archer_17" : [5,30,15,5,0],
-	"little_dragon_4" : [5,0,0,0,0], "little_dragon_7" : [5,120,0,0,0], "little_dragon_10" : [5,120,15,0,0],"little_dragon_13" : [5,120,15,5,0],"little_dragon_17" : [5,120,15,5,0],
+    "little_dragon_4" : [5,0,0,0,0], "little_dragon_7" : [5,120,0,0,0], "little_dragon_10" : [5,120,15,0,0],"little_dragon_13" : [5,120,15,5,0],"little_dragon_17" : [5,120,15,5,0],
 	"rage_golem_4" : [5,0,0,0,0], "rage_golem_7" : [5,120,0,0,0], "rage_golem_10" : [5,120,15,0,0],"rage_golem_13" : [5,120,15,5,0],"rage_golem_17" : [5,120,15,5,0],
 }
 
@@ -1550,6 +1682,11 @@ PassivMobsStats3 = {
 	"ice_demon_3" : [30,0,0,0,0], "ice_demon_6" : [30,2,0,0,0], "ice_demon_8" : [30,2,5,0,0],"ice_demon_10" : [30,2,5,3,0],"ice_demon_13" : [30,2,5,3,5],
 	"krab_boss_3" : [50,0,0,0,0], "krab_boss_6" : [50,150,0,0,0], "krab_boss_8" : [50,150,5,0,0],"krab_boss_10" : [50,150,5,2,0],"krab_boss_13" : [50,150,5,2,5],
     "desert_goliath_3" : [30,0,0,0,0], "desert_goliath_6" : [30,2,0,0,0], "desert_goliath_8" : [30,2,5,0,0],"desert_goliath_10" : [30,2,5,3,0],"desert_goliath_13" : [30,2,5,3,5],
+#valeur fausse à changer
+    "scythe_pharoah_3" : [50,0,0,0,0], "scythe_pharoah_6" : [50,25,0,0,0], "scythe_pharoah_8" : [50,25,5,0,0],"scythe_pharoah_10" : [50,25,5,2,0],"scythe_pharoah_13" : [50,25,5,2,0],
+    "infernal_demon_3" : [30,0,0,0,0], "infernal_demon_6" : [30,1,0,0,0], "infernal_demon_8" : [30,1,5,0,0],"infernal_demon_10" : [30,1,5,3,0],"infernal_demon_13" : [30,1,5,3,0],
+    "sinister_touch_3" : [50,0,0,0,0], "sinister_touch_6" : [50,2,0,0,0], "sinister_touch_8" : [50,2,5,0,0],"sinister_touch_10" : [50,2,5,2,0],"sinister_touch_13" : [50,2,5,2,0],
+    "fireworm_queen_3" : [20,0,0,0,0], "fireworm_queen_6" : [20,100,0,0,0], "fireworm_queen_8" : [20,100,5,0,0],"fireworm_queen_10" : [20,100,5,2,0],"fireworm_queen_13" : [20,100,5,2,0],
 }
 
 
@@ -1562,404 +1699,404 @@ PassivMobsStats3 = {
 # JSSSA  -->  Jewel Special Slot Stats Activated
 BravePrivileges = {
 	"level1" : {
-        "Attack Flat":"30",
-        "Hp Flat":"120",
-        "Hp Var":"0",
-        "Attack Var":"0",
-        "Ring JSSSA":"0",
-        "Spirit JSSSA":"0",
-        "Attack Speed":"0",
-        "Armor JSSSA":"0",
-        "Critic Rate":"0",
-        "Bracelet JSSSA":"0",
-        "Locket JSSSA":"0",
-        "Weapon JSSSA":"0",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":40,
+        "Hp Flat":150,
+        "Hp Var":0,
+        "Attack Var":0,
+        "Ring JSSSA":0,
+        "Spirit JSSSA":0,
+        "Attack Speed":0,
+        "Armor JSSSA":0,
+        "Critic Rate":0,
+        "Bracelet JSSSA":0,
+        "Locket JSSSA":0,
+        "Weapon JSSSA":0,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level2" : {
-        "Attack Flat":"45",
-        "Hp Flat":"120",
-        "Hp Var":"0",
-        "Attack Var":"0",
-        "Ring JSSSA":"0",
-        "Spirit JSSSA":"0",
-        "Attack Speed":"0",
-        "Armor JSSSA":"0",
-        "Critic Rate":"0",
-        "Bracelet JSSSA":"0",
-        "Locket JSSSA":"0",
-        "Weapon JSSSA":"0",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":60,
+        "Hp Flat":150,
+        "Hp Var":0,
+        "Attack Var":0,
+        "Ring JSSSA":0,
+        "Spirit JSSSA":0,
+        "Attack Speed":0,
+        "Armor JSSSA":0,
+        "Critic Rate":0,
+        "Bracelet JSSSA":0,
+        "Locket JSSSA":0,
+        "Weapon JSSSA":0,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level3" : {
-        "Attack Flat":"60",
-        "Hp Flat":"240",
-        "Hp Var":"0",
-        "Attack Var":"0",
-        "Ring JSSSA":"0",
-        "Spirit JSSSA":"0",
-        "Attack Speed":"0",
-        "Armor JSSSA":"0",
-        "Critic Rate":"0",
-        "Bracelet JSSSA":"0",
-        "Locket JSSSA":"0",
-        "Weapon JSSSA":"0",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":80,
+        "Hp Flat":300,
+        "Hp Var":0,
+        "Attack Var":0,
+        "Ring JSSSA":0,
+        "Spirit JSSSA":0,
+        "Attack Speed":0,
+        "Armor JSSSA":0,
+        "Critic Rate":0,
+        "Bracelet JSSSA":0,
+        "Locket JSSSA":0,
+        "Weapon JSSSA":0,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level4" : {
-        "Attack Flat":"80",
-        "Hp Flat":"240",
-        "Hp Var":"0",
-        "Attack Var":"0",
-        "Ring JSSSA":"0",
-        "Spirit JSSSA":"0",
-        "Attack Speed":"0",
-        "Armor JSSSA":"0",
-        "Critic Rate":"0",
-        "Bracelet JSSSA":"0",
-        "Locket JSSSA":"0",
-        "Weapon JSSSA":"0",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":100,
+        "Hp Flat":300,
+        "Hp Var":0,
+        "Attack Var":0,
+        "Ring JSSSA":0,
+        "Spirit JSSSA":0,
+        "Attack Speed":0,
+        "Armor JSSSA":0,
+        "Critic Rate":0,
+        "Bracelet JSSSA":0,
+        "Locket JSSSA":0,
+        "Weapon JSSSA":0,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level5" : {
-        "Attack Flat":"100",
-        "Hp Flat":"400",
-        "Hp Var":"0",
-        "Attack Var":"0",
-        "Ring JSSSA":"0",
-        "Spirit JSSSA":"0",
-        "Attack Speed":"0",
-        "Armor JSSSA":"0",
-        "Critic Rate":"0",
-        "Bracelet JSSSA":"0",
-        "Locket JSSSA":"0",
-        "Weapon JSSSA":"0",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":120,
+        "Hp Flat":450,
+        "Hp Var":0,
+        "Attack Var":0,
+        "Ring JSSSA":0,
+        "Spirit JSSSA":0,
+        "Attack Speed":0,
+        "Armor JSSSA":0,
+        "Critic Rate":0,
+        "Bracelet JSSSA":0,
+        "Locket JSSSA":0,
+        "Weapon JSSSA":0,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level6" : {
-        "Attack Flat":"130",
-        "Hp Flat":"400",
-        "Hp Var":"0",
-        "Attack Var":"0",
-        "Ring JSSSA":"0",
-        "Spirit JSSSA":"0",
-        "Attack Speed":"0",
-        "Armor JSSSA":"0",
-        "Critic Rate":"0",
-        "Bracelet JSSSA":"0",
-        "Locket JSSSA":"0",
-        "Weapon JSSSA":"0",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":150,
+        "Hp Flat":450,
+        "Hp Var":0,
+        "Attack Var":0,
+        "Ring JSSSA":0,
+        "Spirit JSSSA":0,
+        "Attack Speed":0,
+        "Armor JSSSA":0,
+        "Critic Rate":0,
+        "Bracelet JSSSA":0,
+        "Locket JSSSA":0,
+        "Weapon JSSSA":0,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level7" : {
-        "Attack Flat":"160",
-        "Hp Flat":"640",
-        "Hp Var":"3",
-        "Attack Var":"0",
-        "Ring JSSSA":"0",
-        "Spirit JSSSA":"0",
-        "Attack Speed":"0",
-        "Armor JSSSA":"0",
-        "Critic Rate":"0",
-        "Bracelet JSSSA":"0",
-        "Locket JSSSA":"0",
-        "Weapon JSSSA":"0",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":180,
+        "Hp Flat":650,
+        "Hp Var":3,
+        "Attack Var":0,
+        "Ring JSSSA":0,
+        "Spirit JSSSA":0,
+        "Attack Speed":0,
+        "Armor JSSSA":0,
+        "Critic Rate":0,
+        "Bracelet JSSSA":0,
+        "Locket JSSSA":0,
+        "Weapon JSSSA":0,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level8" : {
-        "Attack Flat":"200",
-        "Hp Flat":"640",
-        "Hp Var":"5",
-        "Attack Var":"0",
-        "Ring JSSSA":"0",
-        "Spirit JSSSA":"0",
-        "Attack Speed":"0",
-        "Armor JSSSA":"0",
-        "Critic Rate":"0",
-        "Bracelet JSSSA":"0",
-        "Locket JSSSA":"0",
-        "Weapon JSSSA":"0",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":210,
+        "Hp Flat":650,
+        "Hp Var":5,
+        "Attack Var":0,
+        "Ring JSSSA":0,
+        "Spirit JSSSA":0,
+        "Attack Speed":0,
+        "Armor JSSSA":0,
+        "Critic Rate":0,
+        "Bracelet JSSSA":0,
+        "Locket JSSSA":0,
+        "Weapon JSSSA":0,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level9" : {
-        "Attack Flat":"240",
-        "Hp Flat":"900",
-        "Hp Var":"8",
-        "Attack Var":"3",
-        "Ring JSSSA":"1",
-        "Spirit JSSSA":"0",
-        "Attack Speed":"0",
-        "Armor JSSSA":"0",
-        "Critic Rate":"0",
-        "Bracelet JSSSA":"0",
-        "Locket JSSSA":"0",
-        "Weapon JSSSA":"0",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":240,
+        "Hp Flat":900,
+        "Hp Var":8,
+        "Attack Var":3,
+        "Ring JSSSA":1,
+        "Spirit JSSSA":0,
+        "Attack Speed":0,
+        "Armor JSSSA":0,
+        "Critic Rate":0,
+        "Bracelet JSSSA":0,
+        "Locket JSSSA":0,
+        "Weapon JSSSA":0,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level10" : {
-        "Attack Flat":"300",
-        "Hp Flat":"1050",
-        "Hp Var":"8",
-        "Attack Var":"5",
-        "Ring JSSSA":"1",
-        "Spirit JSSSA":"1",
-        "Attack Speed":"0",
-        "Armor JSSSA":"0",
-        "Critic Rate":"0",
-        "Bracelet JSSSA":"0",
-        "Locket JSSSA":"0",
-        "Weapon JSSSA":"0",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":300,
+        "Hp Flat":1050,
+        "Hp Var":8,
+        "Attack Var":5,
+        "Ring JSSSA":1,
+        "Spirit JSSSA":1,
+        "Attack Speed":0,
+        "Armor JSSSA":0,
+        "Critic Rate":0,
+        "Bracelet JSSSA":0,
+        "Locket JSSSA":0,
+        "Weapon JSSSA":0,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level11" : {
-        "Attack Flat":"350",
-        "Hp Flat":"1200",
-        "Hp Var":"8",
-        "Attack Var":"5",
-        "Ring JSSSA":"1",
-        "Spirit JSSSA":"1",
-        "Attack Speed":"2",
-        "Armor JSSSA":"1",
-        "Critic Rate":"0",
-        "Bracelet JSSSA":"0",
-        "Locket JSSSA":"0",
-        "Weapon JSSSA":"0",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":350,
+        "Hp Flat":1200,
+        "Hp Var":8,
+        "Attack Var":5,
+        "Ring JSSSA":1,
+        "Spirit JSSSA":1,
+        "Attack Speed":2,
+        "Armor JSSSA":1,
+        "Critic Rate":0,
+        "Bracelet JSSSA":0,
+        "Locket JSSSA":0,
+        "Weapon JSSSA":0,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level12" : {
-        "Attack Flat":"400",
-        "Hp Flat":"1350",
-        "Hp Var":"10",
-        "Attack Var":"8",
-        "Ring JSSSA":"1",
-        "Spirit JSSSA":"1",
-        "Attack Speed":"2",
-        "Armor JSSSA":"1",
-        "Critic Rate":"3",
-        "Bracelet JSSSA":"1",
-        "Locket JSSSA":"0",
-        "Weapon JSSSA":"0",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":400,
+        "Hp Flat":1350,
+        "Hp Var":10,
+        "Attack Var":8,
+        "Ring JSSSA":1,
+        "Spirit JSSSA":1,
+        "Attack Speed":2,
+        "Armor JSSSA":1,
+        "Critic Rate":3,
+        "Bracelet JSSSA":1,
+        "Locket JSSSA":0,
+        "Weapon JSSSA":0,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level13" : {
-        "Attack Flat":"400",
-        "Hp Flat":"1350",
-        "Hp Var":"10",
-        "Attack Var":"8",
-        "Ring JSSSA":"1",
-        "Spirit JSSSA":"2",
-        "Attack Speed":"3",
-        "Armor JSSSA":"1",
-        "Critic Rate":"3",
-        "Bracelet JSSSA":"1",
-        "Locket JSSSA":"1",
-        "Weapon JSSSA":"0",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":400,
+        "Hp Flat":1350,
+        "Hp Var":10,
+        "Attack Var":8,
+        "Ring JSSSA":1,
+        "Spirit JSSSA":2,
+        "Attack Speed":3,
+        "Armor JSSSA":1,
+        "Critic Rate":3,
+        "Bracelet JSSSA":1,
+        "Locket JSSSA":1,
+        "Weapon JSSSA":0,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level14" : {
-        "Attack Flat":"400",
-        "Hp Flat":"1350",
-        "Hp Var":"10",
-        "Attack Var":"8",
-        "Ring JSSSA":"2",
-        "Spirit JSSSA":"2",
-        "Attack Speed":"3",
-        "Armor JSSSA":"1",
-        "Critic Rate":"5",
-        "Bracelet JSSSA":"1",
-        "Locket JSSSA":"1",
-        "Weapon JSSSA":"1",
-        "Spellbook JSSSA":"0",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":400,
+        "Hp Flat":1350,
+        "Hp Var":10,
+        "Attack Var":8,
+        "Ring JSSSA":2,
+        "Spirit JSSSA":2,
+        "Attack Speed":3,
+        "Armor JSSSA":1,
+        "Critic Rate":5,
+        "Bracelet JSSSA":1,
+        "Locket JSSSA":1,
+        "Weapon JSSSA":1,
+        "Spellbook JSSSA":0,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level15" : {
-        "Attack Flat":"400",
-        "Hp Flat":"1350",
-        "Hp Var":"12",
-        "Attack Var":"10",
-        "Ring JSSSA":"2",
-        "Spirit JSSSA":"2",
-        "Attack Speed":"4",
-        "Armor JSSSA":"2",
-        "Critic Rate":"5",
-        "Bracelet JSSSA":"1",
-        "Locket JSSSA":"1",
-        "Weapon JSSSA":"1",
-        "Spellbook JSSSA":"1",
-        "Summoned Creature Damage":"0",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":400,
+        "Hp Flat":1350,
+        "Hp Var":12,
+        "Attack Var":10,
+        "Ring JSSSA":2,
+        "Spirit JSSSA":2,
+        "Attack Speed":4,
+        "Armor JSSSA":2,
+        "Critic Rate":5,
+        "Bracelet JSSSA":1,
+        "Locket JSSSA":1,
+        "Weapon JSSSA":1,
+        "Spellbook JSSSA":1,
+        "Summoned Creature Damage":0,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level16" : {
-        "Attack Flat":"400",
-        "Hp Flat":"1350",
-        "Hp Var":"12",
-        "Attack Var":"10",
-        "Ring JSSSA":"2",
-        "Spirit JSSSA":"2",
-        "Attack Speed":"4",
-        "Armor JSSSA":"2",
-        "Critic Rate":"8",
-        "Bracelet JSSSA":"1",
-        "Locket JSSSA":"2",
-        "Weapon JSSSA":"1",
-        "Spellbook JSSSA":"1",
-        "Summoned Creature Damage":"15",
-        "Elemental Damage":"0",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":400,
+        "Hp Flat":1350,
+        "Hp Var":12,
+        "Attack Var":10,
+        "Ring JSSSA":2,
+        "Spirit JSSSA":2,
+        "Attack Speed":4,
+        "Armor JSSSA":2,
+        "Critic Rate":8,
+        "Bracelet JSSSA":1,
+        "Locket JSSSA":2,
+        "Weapon JSSSA":1,
+        "Spellbook JSSSA":1,
+        "Summoned Creature Damage":15,
+        "Elemental Damage":0,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level17" : {
-        "Attack Flat":"400",
-        "Hp Flat":"1350",
-        "Hp Var":"12",
-        "Attack Var":"10",
-        "Ring JSSSA":"2",
-        "Spirit JSSSA":"2",
-        "Attack Speed":"5",
-        "Armor JSSSA":"2",
-        "Critic Rate":"8",
-        "Bracelet JSSSA":"2",
-        "Locket JSSSA":"2",
-        "Weapon JSSSA":"2",
-        "Spellbook JSSSA":"2",
-        "Summoned Creature Damage":"25",
-        "Elemental Damage":"15",
-        "Healing Effect of Red Heart":"0",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":400,
+        "Hp Flat":1350,
+        "Hp Var":12,
+        "Attack Var":10,
+        "Ring JSSSA":2,
+        "Spirit JSSSA":2,
+        "Attack Speed":5,
+        "Armor JSSSA":2,
+        "Critic Rate":8,
+        "Bracelet JSSSA":2,
+        "Locket JSSSA":2,
+        "Weapon JSSSA":2,
+        "Spellbook JSSSA":2,
+        "Summoned Creature Damage":25,
+        "Elemental Damage":15,
+        "Healing Effect of Red Heart":0,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level18" : {
-        "Attack Flat":"400",
-        "Hp Flat":"1350",
-        "Hp Var":"15",
-        "Attack Var":"10",
-        "Ring JSSSA":"3",
-        "Spirit JSSSA":"3",
-        "Attack Speed":"5",
-        "Armor JSSSA":"3",
-        "Critic Rate":"10",
-        "Bracelet JSSSA":"2",
-        "Locket JSSSA":"2",
-        "Weapon JSSSA":"2",
-        "Spellbook JSSSA":"2",
-        "Summoned Creature Damage":"25",
-        "Elemental Damage":"25",
-        "Healing Effect of Red Heart":"10",
-        "Elemental Resistance":"0",
-        "Dodge":"0"
+        "Attack Flat":400,
+        "Hp Flat":1350,
+        "Hp Var":15,
+        "Attack Var":10,
+        "Ring JSSSA":3,
+        "Spirit JSSSA":3,
+        "Attack Speed":5,
+        "Armor JSSSA":3,
+        "Critic Rate":10,
+        "Bracelet JSSSA":2,
+        "Locket JSSSA":2,
+        "Weapon JSSSA":2,
+        "Spellbook JSSSA":2,
+        "Summoned Creature Damage":25,
+        "Elemental Damage":25,
+        "Healing Effect of Red Heart":10,
+        "Elemental Resistance":0,
+        "Dodge":0
     },
 	"level19" : {
-        "Attack Flat":"400",
-        "Hp Flat":"1350",
-        "Hp Var":"15",
-        "Attack Var":"12",
-        "Ring JSSSA":"3",
-        "Spirit JSSSA":"3",
-        "Attack Speed":"6",
-        "Armor JSSSA":"3",
-        "Critic Rate":"10",
-        "Bracelet JSSSA":"3",
-        "Locket JSSSA":"3",
-        "Weapon JSSSA":"2",
-        "Spellbook JSSSA":"2",
-        "Summoned Creature Damage":"35",
-        "Elemental Damage":"25",
-        "Healing Effect of Red Heart":"20",
-        "Elemental Resistance":"10",
-        "Dodge":"0"
+        "Attack Flat":400,
+        "Hp Flat":1350,
+        "Hp Var":15,
+        "Attack Var":12,
+        "Ring JSSSA":3,
+        "Spirit JSSSA":3,
+        "Attack Speed":6,
+        "Armor JSSSA":3,
+        "Critic Rate":10,
+        "Bracelet JSSSA":3,
+        "Locket JSSSA":3,
+        "Weapon JSSSA":2,
+        "Spellbook JSSSA":2,
+        "Summoned Creature Damage":35,
+        "Elemental Damage":25,
+        "Healing Effect of Red Heart":20,
+        "Elemental Resistance":10,
+        "Dodge":0
     },
 	"level20" : {
-        "Attack Flat":"400",
-        "Hp Flat":"1350",
-        "Hp Var":"15",
-        "Attack Var":"12",
-        "Ring JSSSA":"3",
-        "Spirit JSSSA":"3",
-        "Attack Speed":"7",
-        "Armor JSSSA":"3",
-        "Critic Rate":"10",
-        "Bracelet JSSSA":"3",
-        "Locket JSSSA":"3",
-        "Weapon JSSSA":"3",
-        "Spellbook JSSSA":"3",
-        "Summoned Creature Damage":"35",
-        "Elemental Damage":"35",
-        "Healing Effect of Red Heart":"30",
-        "Elemental Resistance":"20",
-        "Dodge":"10"
+        "Attack Flat":400,
+        "Hp Flat":1350,
+        "Hp Var":15,
+        "Attack Var":12,
+        "Ring JSSSA":3,
+        "Spirit JSSSA":3,
+        "Attack Speed":7,
+        "Armor JSSSA":3,
+        "Critic Rate":10,
+        "Bracelet JSSSA":3,
+        "Locket JSSSA":3,
+        "Weapon JSSSA":3,
+        "Spellbook JSSSA":3,
+        "Summoned Creature Damage":35,
+        "Elemental Damage":35,
+        "Healing Effect of Red Heart":30,
+        "Elemental Resistance":20,
+        "Dodge":10
     }
 }
 
@@ -1979,3 +2116,382 @@ WeaponHiddenStats = {
     "mini_atreus_dmg_multiplier": 1.25,
     "none_dmg_multiplier": 1.0,
     }
+
+
+
+
+MedalsStats = {
+    "stats_cutting_your_teeth":120,
+    "type_cutting_your_teeth":"Hp",
+	"stats_minor_achiever":600,
+	"type_minor_achiever":"Hp",
+	"stats_daring_brave_1":250,
+	"type_daring_brave_1":"Hp",
+	"stats_fashon_icon_1":300,
+	"type_fashon_icon_1":"Hp",
+	"stats_unrivaled":0,
+	"type_unrivaled":"Gain Crit Rate",
+	"stats_supreme_champion":2,
+	"type_supreme_champion":"Attack%",
+	"stats_preeminent_master":2,
+	"type_preeminent_master":"Hp%",
+	"stats_bright_victor":400,
+	"type_bright_victor":"Attack",
+	"stats_unstoppable":1,
+	"type_unstoppable":"Hp%",
+	"stats_stark_challenge":200,
+	"type_stark_challenge":"Hp",
+	"stats_assisiduous":85,
+	"type_assisiduous":"Attack",
+	"stats_resolute_will":2,
+	"type_resolute_will":"Attack%",
+	"stats_lavish_wealth":1,
+	"type_lavish_wealth":"Hp%",
+	"stats_miner_supremo":100,
+	"type_miner_supremo":"Attack",
+	"stats_miner_master":0,
+	"type_miner_master":"Gain Attack Speed",
+	"stats_maze_victor":150,
+	"type_maze_victor":"Hp",
+	"stats_maze_master":1,
+	"type_maze_master":"Hp%",
+	"stats_undefeated":5,
+	"type_undefeated":"Damage to Heroes",
+	"stats_indomitable":1,
+	"type_indomitable":"Attack%",
+	"stats_reliable":200,
+	"type_reliable":"Hp",
+	"stats_amateur_hour":70,
+	"type_amateur_hour":"Attack",
+	"stats_deft_skill":7,
+	"type_deft_skill":"Coins From Battle",
+	"stats_flaunting_display":5,
+	"type_flaunting_display":"XP Gain",
+	"stats_worthy_warrior_1":5,
+	"type_worthy_warrior_1":"Hero Base Enhanced",
+	"stats_worthy_warrior_2":2,
+	"type_worthy_warrior_2":"Hp%",
+	"stats_worthy_warrior_3":0,
+	"type_worthy_warrior_3":"Gain Dodge Rate",
+	"stats_decked_out_1":4,
+	"type_decked_out_1":"Enhance Equipment",
+	"stats_decked_out_2":0,
+	"type_decked_out_2":"Gain Projectile Damage",
+	"stats_daring_brave_2":300,
+	"type_daring_brave_2":"Attack",
+	"stats_fashion_icon_2":400,
+	"type_fashion_icon_2":"Attack",
+	"stats_fashion_icon_3":1,
+	"type_fashion_icon_3":"Hp%",
+    }
+
+
+
+
+RelicLabel = {
+    "wraith_mask_1": "attack",
+    "wraith_mask_2": "",
+    "wraith_mask_3": "attack",
+    "clown_mask_1": "damage_melee_units",
+    "clown_mask_2": "damage_humanoid_enemies_var",
+    "clown_mask_3": "attack",
+    "princess_teddy_bear_1": "hp",
+    "princess_teddy_bear_2": "hp",
+    "belt_of_might_1": "",
+    "belt_of_might_2": "hp_var",
+    "belt_of_might_3": "hp",
+    "beastmaster_whistle_1": "hp",
+    "beastmaster_whistle_2": "damage_ground_units_var",
+    "beastmaster_whistle_3": "hp",
+    "archmage_robe_1": "",
+    "archmage_robe_2": "elemental_damage_var",
+    "archmage_robe_3": "hp",
+    "shimmering_gem_1": "",
+    "shimmering_gem_2": "enhance_equipment_var",
+    "bloom_of_eternity_1": "hp",
+    "bloom_of_eternity_2": "hp",
+    "challenger_headband_1": "attack",
+    "challenger_headband_2": "attack_var",
+    "jade_gobelet_1": "",
+    "jade_gobelet_2": "hp",
+    "veteran_plate_1": "hp",
+    "veteran_plate_2": "",
+    "dragonscale_1": "hp",
+    "dragonscale_2": "",
+    "dragonscale_3": "hp",
+    "dragon_tooth_1": "attack",
+    "dragon_tooth_2": "attack",
+    "scholar_telescope_1": "damage_ranged_units",
+    "pirate_shank_1": "attack",
+    "pirate_shank_2": "damage_mobs_var",
+    "giant_greatsword_1": "attack",
+    "giant_greatsword_2": "damage_bosses_var",
+    "giant_greatsword_3": "attack",
+    "healing_potion_1": "hp",
+    "whirlwind_mauler_1": "damage_melee_units",
+    "whirlwind_mauler_2": "attack",
+    "special_lance_1": "damage_ground_units",
+    "special_lance_2": "damage_ground_units_var",
+    "special_lance_3": "attack",
+    "precision_slingshot_1": "damage_airborne_units",
+    "precision_slingshot_2": "damage_airborne_units_var",
+    "supreme_trinity_alpha_1": "attack",
+    "supreme_trinity_alpha_2": "damage_mobs",
+    "supreme_trinity_alpha_3": "attack",
+    "golden_apple_1": "hp",
+    "golden_apple_2": "",
+    "golden_apple_3": "hp",
+    "ancient_stele_1": "attack",
+    "ancient_stele_2": "damage_bosses_var",
+    "ancient_stele_3": "attack_var",
+    "ancient_stele_4": "attack",
+    "philosopher_stone_1": "",
+    "philosopher_stone_2": "",
+    "philosopher_stone_3": "enhance_equipment_var",
+    "philosopher_stone_4": "hp",
+    "dragon_heart_1": "hp",
+    "dragon_heart_2": "",
+    "dragon_heart_3": "hp",
+    "spectral_duality_1": "damage_mobs",
+    "spectral_duality_2": "damage_airborne_units",
+    "spectral_duality_3": "attack",
+    "mystic_emblem_1": "hp",
+    "mystic_emblem_2": "",
+    "mystic_emblem_3": "hero_base_stats_increased_var",
+    "immortal_brooch_1": "",
+    "immortal_brooch_2": "",
+    "immortal_brooch_3": "hp_var",
+    "golden_statue_1": "hp",
+    "golden_statue_2": "",
+    "golden_statue_3": "hp",
+    "smilling_mask_1": "attack",
+    "smilling_mask_2": "damage_ranged_units",
+    "smilling_mask_3": "",
+    "unmerciful_mask_1": "attack",
+    "unmerciful_mask_2": "damage_melee_units",
+    "unmerciful_mask_3": "",
+    "unmerciful_mask_4": "attack",
+    "holy_water_1": "damage_mobs",
+    "holy_water_2": "damage_ground_units",
+    "holy_water_3": "",
+    "holy_water_4": "hp",
+    "book_of_the_dead_1": "attack",
+    "book_of_the_dead_2": "damage_bosses",
+    "book_of_the_dead_3": "damage_undead_var",
+    "book_of_the_dead_4": "attack",
+    "psionist_treasure_1": "damage_melee_units",
+    "psionist_treasure_2": "damage_mobs",
+    "book_of_archery_1": "damage_ranged_units",
+    "book_of_archery_2": "damage_airborne_units",
+    "book_of_archery_3": "weapon_ranged_damage_var",
+    "book_of_archery_4": "attack",
+    "book_of_bravery_1": "attack",
+    "book_of_bravery_2": "damage_ground_units",
+    "book_of_bravery_3": "weapon_melee_damage_var",
+    "book_of_bravery_4": "attack",
+    "angelic_heart_1": "hp",
+    "angelic_heart_2": "hp",
+    "devil_whisper_1": "hp",
+    "devil_whisper_2": "",
+    "devil_whisper_3": "hp",
+    "stone_of_wisdom_1": "",
+    "empyrean_mirror_1": "hp",
+    "empyrean_mirror_2": "",
+    "empyrean_mirror_3": "hp",
+    "fabled_archer_arrow_1": "attack",
+    "fabled_archer_arrow_2": "damage_mobs",
+    "fabled_archer_arrow_3": "attack_var",
+    "shiny_gemmed_belt_1": "",
+    "shiny_gemmed_belt_2": "",
+    "mythril_flux_mail_1": "hp",
+    "mythril_flux_mail_2": "",
+    "mythril_flux_mail_3": "",
+    "mythril_flux_mail_4": "hp_var",
+    "stealth_boots_1": "",
+    "stealth_boots_2": "",
+    "stealth_boots_3": "dodge",
+    "stealth_boots_4": "hp",
+    "assassin_dagger_1": "attack",
+    "assassin_dagger_2": "damage_mobs",
+    "assassin_dagger_3": "damage_heroes_var",
+    "assassin_dagger_4": "attack",
+    "gold_bunny_1": "hp",
+    "gold_bunny_2": "",
+    "gold_bunny_3": "attack_var",
+    "genesis_staff_1": "",
+    "genesis_staff_2": "",
+    "genesis_staff_3": "",
+    "bloodstained_sword_1": "attack",
+    "bloodstained_sword_2": "damage_mobs",
+    "bloodstained_sword_3": "weapon_melee_damage_var",
+    "bloodstained_sword_4": "attack_var",
+    "bloodstained_sword_5": "attack_var",
+    "starcluster_rage_1": "damage_bosses",
+    "starcluster_rage_2": "damage_ranged_units",
+    "starcluster_rage_3": "",
+    "starcluster_rage_4": "weapon_ranged_damage_var",
+    "starcluster_rage_5": "attack_var",
+    "elven_king_cape_1": "damage_mobs",
+    "elven_king_cape_2": "damage_bosses",
+    "elven_king_cape_3": "crit_chance_var",
+    "elven_king_cape_4": "attack_var",
+    "elven_king_cape_5": "attack",
+    "spear_of_yggdrasil_1": "attack",
+    "spear_of_yggdrasil_2": "damage_melee_units",
+    "spear_of_yggdrasil_3": "attack_var",
+    "spear_of_yggdrasil_4": "",
+    "spear_of_yggdrasil_5": "attack",
+    "dragon_gem_1": "attack",
+    "dragon_gem_2": "damage_airborne_units",
+    "dragon_gem_3": "attack_var",
+    "dragon_gem_4": "attack",
+    "life_crown_1": "hp",
+    "life_crown_2": "",
+    "life_crown_3": "hp_var",
+    "life_crown_4": "hp",
+    "sand_of_time_1": "hp",
+    "sand_of_time_2": "",
+    "sand_of_time_3": "hp_var",
+    "sand_of_time_4": "hp_var",
+    "first_lightning_1": "attack",
+    "first_lightning_2": "damage_airborne_units",
+    "first_lightning_3": "elemental_damage_var",
+    "oracle_quill_1": "",
+    "oracle_quill_2": "",
+    "oracle_quill_3": "dodge",
+    "oracle_quill_4": "hp_var",
+    "bloodthirsty_grail_1": "hp",
+    "bloodthirsty_grail_2": "",
+    "bloodthirsty_grail_3": "hp_var",
+    "bloodthirsty_grail_4": "hp",
+    "healing_grail_1": "hp",
+    "healing_grail_2": "hp_var",
+    "healing_grail_3": "hp",
+    "cupids_necklace_1": "attack",
+    "cupids_necklace_2": "damage_mobs",
+    "cupids_necklace_3": "attack_jewel_base",
+    "cupids_necklace_4": "attack_var",
+    }
+
+
+
+
+
+
+
+
+
+	# dragons_skills['Damage dealt to undead']
+
+SkillPassivBonusDragon = {
+    "none" : {
+        "skill_2":{
+            "line_1_txt":"", "line_1_value":0, "line_1_inc": 0,
+            "line_5_txt":"", "line_5_value":0, "line_5_inc": 0,
+            "line_10_txt":"", "line_10_value":0, "line_10_inc": 0
+        },
+    },
+    "glacion" : {
+        "skill_2":{
+            "line_1_txt":"Ice Armor Appearance Rate", "line_1_value":10.0, "line_1_inc": 5.0,
+            "line_5_txt":"Ice Damage", "line_5_value":50.0, "line_5_inc": 0,
+            "line_10_txt":"Increases projectile damage reduction", "line_10_value":0, "line_10_inc": 0
+        },
+    },
+
+    "shadex" : {
+        "skill_2":{
+            "line_1_txt":"Dark Damage", "line_1_value":10, "line_1_inc": 12,
+            "line_5_txt":"Attack's inflinct dark damage when HP is lower", "line_5_value":0, "line_5_inc": 0,
+            "line_10_txt":"Hero's attack ...", "line_10_value":0, "line_10_inc": 0
+        },
+    },
+
+    "jadeon" : {
+        "skill_2":{
+            "line_1_txt":"Heart Healing", "line_1_value":5, "line_1_inc": 2,
+            "line_5_txt":"Heart Drop rate", "line_5_value":20, "line_5_inc": 0,
+            "line_10_txt":"Angel room has chance to heal for x3 hp", "line_10_value":0, "line_10_inc": 0
+        },
+    },
+
+    "dominus" : {
+        "skill_2":{
+            "line_1_txt":"Damage vs Melee Units", "line_1_value":3, "line_1_inc": 0.7,
+            "line_5_txt":"Increases damage dealt by mobs", "line_5_value":0, "line_5_inc": 0,
+            "line_10_txt":"Reduces collision damage taken", "line_10_value":0, "line_10_inc": 0
+        },
+    },
+
+    "infernox" : {
+        "skill_2":{
+            "line_1_txt":"Fire Damage", "line_1_value":10, "line_1_inc": 10,
+            "line_5_txt":"Increases Fire Damage duration", "line_5_value":0, "line_5_inc": 0,
+            "line_10_txt":"Attack takes fire damage when hero receives damage", "line_10_value":0, "line_10_inc": 0
+        }
+    },
+
+    "stormra" : {
+        "skill_2":{
+            "line_1_txt":"Blue Heart Drop Rate", "line_1_value":7, "line_1_inc": 2,
+            "line_5_txt":"Lightning Damage", "line_5_value":25, "line_5_inc": 0,
+            "line_10_txt":"Max MP", "line_10_value":7, "line_10_inc": 0
+        }
+    },
+
+    "noxion" : {
+        "skill_2":{
+            "line_1_txt":"Magic cost reduced", "line_1_value":4.2, "line_1_inc": 0.8,
+            "line_5_txt":"Poison Damage increased", "line_5_value":0, "line_5_inc": 0,
+            "line_10_txt":"When spell cost exceeds 30% MP, 30% cost", "line_10_value":0, "line_10_inc": 0
+        }
+    },
+
+    "geogon" : {
+        "skill_2":{
+            "line_1_txt":"Ironwall stats", "line_1_value":4, "line_1_inc": 1,
+            "line_5_txt":"Heartdop", "line_5_value":10, "line_5_inc": 0,
+            "line_10_txt":"Increases melee damage when receiving collision", "line_10_value":0, "line_10_inc": 0
+        }
+    },
+
+    "ferron" : {
+        "skill_2":{
+            "line_1_txt":"Crit Damage", "line_1_value":13, "line_1_inc": 3,
+            "line_5_txt":"Blue Heart drop rate", "line_5_value":15, "line_5_inc": 0,
+            "line_10_txt":"HP converted to MP", "line_10_value":10, "line_10_inc": 0
+        }
+    },
+
+    "swordian" : {
+        "skill_2":{
+            "line_1_txt":"Damage VS melee units", "line_1_value":4, "line_1_inc": 0.8,
+            "line_5_txt":"All physical projectile damage increased while moving", "line_5_value":0, "line_5_inc": 0,
+            "line_10_txt":"Frontal damage reduction increased while stationnary", "line_10_value":0, "line_10_inc": 0
+        }
+    },
+
+    "necrogon" : {
+        "skill_2":{
+            "line_1_txt":"Projectile damage reduced", "line_1_value":4, "line_1_inc": 0.8,
+            "line_5_txt":"Damage dealt to undead", "line_5_value":20, "line_5_inc": 0,
+            "line_10_txt":"Undead enemy damage reduction", "line_10_value":15, "line_10_inc": 0
+        }
+    },
+
+    "starrite" : {
+        "skill_2":{
+            "line_1_txt":"Free Magic Cast Rate", "line_1_value":6, "line_1_inc": 1,
+            "line_5_txt":"Magic cast speed", "line_5_value":20, "line_5_inc": 0,
+            "line_10_txt":"Meteor-related damage greatly increased", "line_10_value":0, "line_10_inc": 0
+        }
+    },
+
+    "voideon" : {
+        "skill_2":{
+            "line_1_txt":"Dodge rate", "line_1_value":3, "line_1_inc": 1,
+            "line_5_txt":"Greatly increases dodge rate 1s after dodging", "line_5_value":0, "line_5_inc": 0,
+            "line_10_txt":"Twists space for a chance to reflect enemy projectiles, dealing damage to them", "line_10_value":0, "line_10_inc": 0
+        }
+    }
+}

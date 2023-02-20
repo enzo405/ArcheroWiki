@@ -5,36 +5,65 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.13.4 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.18.2 %}">
 	<link rel="icon" type="image/ong" href="{% static 'favicon.ico' %}">
+	<script src="{% static 'main.js' %}"></script>
 </head>
+{% if darkmode == "yes" %}
+<body class="body_dark_mode">
+{% elif darkmode == "no" %}
 <body>
+{% endif %}
+<noscript>
+	<div id="no-script-message">
+		<p>Please enable JavaScript to use this website.</p>
+	</div>
+</noscript>
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="{% static 'img-01.png' %}" alt="IMG">
 				</div>
-				<div class="form-row">
+				<div class="form-row" id="form-row">
+					<div id="errorBox" class="error-box" style="display: none;">
+						<div class="container-error">
+							<span class="close_span_error">&times;</span>
+							<div id="error_msg"></div>
+						</div>
+					</div>
 					<span class="login100-form-title">Login</span>
 					<div class="wrap-input100 validate-input">
 						<fieldset class="fieldset-input">
 							<legend>Username</legend>
 							<input id="username" type="text" placeholder="">
 						</fieldset>
+						<ul>
+							<li class="list-info-login">Avoid space and special character for your username</li>
+						</ul><br>
 						<fieldset class="fieldset-input">
 							<legend>Ingame ID</legend>	
 							<input id="ingameid" type="text" placeholder="1-234567">
 						</fieldset>
 					</div>
 					<div class="container-login100-form-btn">
-						<input id="sumbit-btn" class="login100-form-btn" type="submit" value="Log in">
-						</div>
-						<div class="text-center p-t-136">
-							<a class="txt2" id="visitor">
-								Just visits as a Visitor
-								<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-							</a>
+						<input id="submit-btn" class="login100-form-btn" type="submit" value="Log in">
+					</div>
+					<div class="text-center p-t-136">
+						<a class="txt2" id="visitor">
+							Just visits as a Visitor
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+				<div id="confirmationBox" class="confirmation-box" style="display: none;">
+					<div class="container-confirmation">
+						<span class="close_span_confirmation">&times;</span>
+						<p>Please check one last time that you have entered the correct ID, this will affect the creation of your profile.</p>
+						<p>Do you still want to confirm ?</p>
+						<div class="container-action">
+							<button id="confirm">Yes</button>
+							<button id="cancel">No</button>
 						</div>
 					</div>
 				</div>
@@ -43,41 +72,98 @@
 	</div>
 </body>
 <script>
-		var submit_btn = document.getElementById('sumbit-btn');
-		var visitor= document.getElementById('visitor');
-		var re_check_id = /^[0-9](-)[0-9]{6,20}$/
+	var span = document.getElementsByClassName("close_span_error")[0];
+	var span2 = document.getElementsByClassName("close_span_confirmation")[0];
+	var no_action = document.getElementById('cancel');
 
-		/*DELETE IF VISITOR*/
-		document.cookie = 'visitor=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	var objClosableBtn = {
+		1:[span,'errorBox'],
+		2:[span2,'confirmationBox'],
+		3:[no_action,'confirmationBox'],
+	}
+	for(const element in objClosableBtn){
+		objClosableBtn[element][0].onclick = function(){
+			var remove = document.getElementById(objClosableBtn[element][1])
+			remove.style.display = "none"
+		}
+	}
+</script>
+<script>
+	/* SCRIPT has been refactored by chatGPT */
+	const submitBtn = document.getElementById('submit-btn');
+	const confirmBox = document.getElementById('confirmationBox');
+	const confirmBtn = document.getElementById('confirm');
+	const cancelBtn = document.getElementById('cancel');
+	const usernameInput = document.getElementById('username');
+	const ingameIdInput = document.getElementById('ingameid');
+	const errorBox = document.getElementById('errorBox');
+	const errorContent = document.getElementById('error_msg');
+	const formRow = document.getElementById('form-row');
+	const ingameIdRegex = /^[0-9]{1}-[0-9]{6,12}$/;
+	formRow.style.pointerEvents = 'auto';
 
-		submit_btn.addEventListener('click', function(){
-			var username = document.getElementById("username").value;
-			var ingameid = document.getElementById("ingameid").value;
-			if(username != null && username.length >= 3 && ingameid.match(re_check_id) && username != "visitor"){
-				var date = new Date()
-				date.setTime(date.getTime() + (365*24*60*60*1000));
-				var usernamelower = username.toLowerCase()
-				document.cookie = usernamelower + "=" + ingameid + "; expires=" + date.toUTCString() + "; path=/";
-				window.location.href = "/"
-			}else if(username != null && username.length >= 3 && !ingameid.match(re_check_id)){
-				alert("Your id must fit this format: X-XXXXXXX")
-			}else if(username=="visitor"){
-				alert("You can't put this username")
+	submitBtn.addEventListener('click', () => {
+		const username = usernameInput.value.trim();
+		const ingameId = ingameIdInput.value.trim();
+		const errors = {
+			username: '',
+			ingameId: '',
+		};
+
+		if (!username) {
+			errors.username = 'Username field cannot be empty';
+		} else if (username.length < 3 || username.length > 20) {
+			errors.username = 'Username must be between 3 and 20 characters long';
+		} else if (username === 'visitor') {
+			errors.username = 'You cannot use this username';
+		}
+
+		if (!ingameId) {
+			errors.ingameId = 'Ingame ID field cannot be empty';
+		} else if (!ingameId.match(ingameIdRegex)) {
+			errors.ingameId = 'Your id must fit this format: X-XXXXXXX';
+		} else if (ingameId.length > 11) {
+			errors.ingameId = 'Your id must be minimum 11 number';
+		}
+
+		if (errors.username || errors.ingameId) {
+			errorContent.innerText = `${errors.username}\n${errors.ingameId}`;
+			errorBox.style.display = 'block';
+			return;
+		}
+
+		async function submitLogin() {
+			console.log("Bonjour");
+			return new Promise((resolve) => {
+				confirmBtn.addEventListener('click', () => {
+					resolve('yes');
+				});
+				cancelBtn.addEventListener('click', () => {
+					resolve('no');
+				});
+			});
+		}
+		confirmBox.style.display = 'block';
+		submitLogin().then((result) => {
+			formRow.style.pointerEvents = 'none';
+			if (result === 'yes') {
+				const date = new Date();
+				date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+				const usernameLower = username.toLowerCase();
+				window.location.href = `/login/processing/${usernameLower}/${ingameId}/`;
+			} else if (result === 'no') {
+				formRow.style.pointerEvents = 'auto';
 			}
-			var cookieArr = document.cookie
-			if (cookieArr.includes(" windowInnerHeight") && cookieArr.includes(" windowInnerWidth")){
-				return
-			}else {
-				document.cookie = "windowInnerHeight" + "=" + window.innerHeight +  "; path=/";
-				document.cookie = "windowInnerWidth" + "=" + window.innerWidth +  "; path=/";
-			}
-		})
-
-		visitor.addEventListener('click', function(){
-			var date = new Date()
-			date.setTime(date.getTime() + (365*24*60*60*1000));
-			document.cookie = "visitor" + "=" + "0-000000" + "; expires=" + date.toUTCString() + "; path=/";
-			window.location.href = "/calculator/index/"
-		})
+		});
+	});
+</script>
+<script>
+	var visitor= document.getElementById('visitor');
+	document.cookie = 'visitor=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	visitor.addEventListener('click', function(){
+		var date = new Date()
+		date.setTime(date.getTime() + (365*24*60*60*1000));
+		window.location.href = `/login/processing/visitor/0-000000/`;
+	})
 </script>
 </html>

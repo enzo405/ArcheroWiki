@@ -3,25 +3,31 @@
 <head>
 	{% load static %}
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.13.4 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.13.4 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.13.4 %}">
-	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.18.2 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
+	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome to Wiki - Calculator</title>
 	<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
+	<script src="{% static 'main.js' %}"></script>
 </head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
 {% elif darkmode == "no" %}
 <body>
 {% endif %}
+<noscript>
+	<div id="no-script-message">
+		<p>Please enable JavaScript to use this website.</p>
+	  </div>
+</noscript>
 	<div class="main-container">
-		<div class="sidebar" id="sidebar">
+		<div class="sidebar sidebar-open sidebar-position-f" id="sidebar">
 			<div class="sidebar-icon" id="sidebar-icon">
 				<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
 				<div class="rightsidebarc" id="rscimg">
-					<svg id="svg-filter-sidebar"width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
+					<svg id="svg-filter-sidebar" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
 				</div>
 			</div>
 			<div class="traveling" id="traveling">
@@ -61,11 +67,11 @@
 						</thead>
 						<tbody class="table-content">
 						<tr>
-							<td>{{ self_ingame_name }}</td>
-							<td class="self_table_atk_row">{{ self_global_atk_save }}</td>
-							<td class="self_table_hp_row">{{ self_global_hp_save }}</td>
-							<td><a onclick='send_2Urltoken("{{ self_ingame_id }}")'><button class="btn-table">Show</button></a></td>
-							<td><a onclick='send_2UrltokenUpdate("{{ self_ingame_id }}")'><button class="btn-table">Update</button></a></td>
+							<td id="td-table-stats-index">{{ self_ingame_name }}</td>
+							<td id="td-table-stats-index" class="self_table_atk_row">{{ self_global_atk_save }}</td>
+							<td id="td-table-stats-index" class="self_table_hp_row">{{ self_global_hp_save }}</td>
+							<td id="td-table-stats-index"><a href='/calculator/show/{{ self_public_id }}/'><button class="btn-table">Show</button></a></td>
+							<td id="td-table-stats-index"><a href='/calculator/update/{{ self_public_id }}/'><button class="btn-table">Update</button></a></td>
 						</tr>
 						</tbody>
 					</table>
@@ -73,147 +79,94 @@
 					<div class="div_formulaire">
 						<a href="/login">Log-in</a>
 					</div>
+					<p class="msg-index-no-profile">If you already have a profile, please contact me on <a href="https://discord.com/users/382930544385851392" target="_blank">Discord</a> or <a href="https://www.reddit.com/user/LuhCaran101" target="_blank">Reddit</a></p>
 					{% elif show_table == "no_profile" %}
+					<p class="msg-index-no-profile">If you already have a profile, please contact me on <a href="https://discord.com/users/382930544385851392" target="_blank">Discord</a> or <a href="https://www.reddit.com/user/LuhCaran101" target="_blank">Reddit</a></p>
 					{% endif %}
-					<table class="index-table overflow_index_table">
-						<thead class="table-header">
-							<tr>
-								<th>Username</th>
-								<th class="hero_row">Hero</th>
-								<th>Attack</th>
-								<th>Hp</th>
-								<th>Show</th>
+					<div class="container_table_all">
+						<table id="index-table" class="index-table overflow_index_table">
+							<thead class="table-header">
+								<tr>
+									<th>Username</th>
+									<th class="hero_row">Hero</th>
+									<th class="table_atk_row">Attack</th>
+									<th class="table_hp_row">Hp</th>
+									<th>Show</th>
+								</tr>
+							</thead>
+							<tbody class="table-content">
+							{% for l in listALL %}
+							<tr id="{{ l.ingame_name }}">
+								<td id="td-table-stats-index">{{ l.ingame_name }}</td>
+								<td id="td-table-stats-index" class="hero_row">{{ l.choosen_hero }}</td>
+								<td id="td-table-stats-index" class="table_atk_row">{{ l.global_atk_save }}</td>
+								<td id="td-table-stats-index" class="table_hp_row">{{ l.global_hp_save }}</td>
+								<td id="td-table-stats-index"><a href='/calculator/show/{{ l.public_id }}/'><button class="btn-table">Show</button></a></td>
 							</tr>
-						</thead>
-						<tbody class="table-content">
-						{% for l in listALL %}
-						<tr>
-							<td>{{ l.ingame_name }}</td>
-							<td class="hero_row">{{ l.choosen_hero }}</td>
-							<td>{{ l.global_atk_save }}</td>
-							<td>{{ l.global_hp_save }}</td>
-							<td><a onclick='send_2Urltoken("{{ l.ingame_id }}")'><button class="btn-table">Show</button></a></td>
-						</tr>
-						{% endfor %}
-						</tbody>
-					</table>
+							{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					<div id="pagination"></div>
 				</div>
 			</div>
 		</main>
-	</div>
-	<footer>
-		<div class="footer-content">
-			<div class="footer-about">
-				<img class="footer-img-icon" src="/static/image/archero_icon.png">
-				<div class="about-content">
-					<h2>Archero :</h2>
-					<div>Archero Update will be added with a certains delay</div>
-					<div class="contact-me">
-						<div>If you encounter any bugs / anomaly please contact me on discord</div>
-						<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+		<footer>
+			<div class="footer-content">
+				<div class="footer-about">
+					<img class="footer-img-icon" src="/static/image/archero_icon.png" alt="image game icon">
+					<div class="about-content">
+						<h2>Archero :</h2>
+						<div>Archero Update will be added with a certains delay</div>
+						<div class="contact-me">
+							<div>If you encounter any bugs / anomaly please contact me on discord</div>
+							<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="discord_link">
-				<div class="container_dlink">
-					<h2>Community Link:</h2> 
-					<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMuthique's Server</li></a>
-					<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+				<div class="discord_link">
+					<div class="container_dlink">
+						<h2>Community Link:</h2> 
+						<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMutique's Server</li></a>
+						<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+					</div>
+					<div class="container_rlink">
+						<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
+					</div>
+					<div class="container_flink">
+						<a href="https://www.facebook.com/archerogame/" target="_blank"><li> FB Archero</li></a>
+					</div>
 				</div>
-				<div class="container_rlink">
-					<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
-				</div>
-				<div class="container_flink">
-					<a href="https://www.facebook.com/archerogame/" target="_blank"><li> Fb Archero</li></a>
-				</div>
-			</div>
-			<div class="thanks">
-				<h2>Shout-out :</h2>
-				<div class="shout-out">SonHaon, Ktaplouf, Pew, Deth</div>
-				<div class="shout-out">Lovii, Kaseiya, Lorenz, TigerShark14</div>
+				<div class="thanks">
+					<h2>Shout-out :</h2>
+				<div class="shout-out">SonHaon, Deth, TigerShark14</div>
+				<div class="shout-out">Ktaplouf, Pew, Lorenz, RedsMeName</div>
 				<div class="shout-out">Everyone who helped me getting data</div>
+				</div>
 			</div>
-		</div>
-	</footer>
+		</footer>
+	</div>
 </body>
 <script>
-	function checkCookie() {
-		var cookieArr = document.cookie.split(";")
-		var listPopKey = [' csrftoken',' windowInnerHeight',' windowInnerWidth',' modeDisplay','csrftoken','windowInnerHeight','windowInnerWidth','modeDisplay']
-		var emptyObj = {}
-		var result = listPopKey.forEach(key => {
-			cookieArr = cookieArr.filter(string => string.split("=")[0]!=key);
-			emptyObj = Object.assign(emptyObj, {"ingame_name":cookieArr});
-		});
-		if (emptyObj.ingame_name.length >= 1 && emptyObj.ingame_name != ""){
-			var cookie_values = document.cookie.split(";");
-			var cookie_value_username = cookie_values[0].split("=");
-		}else {
-			window.location.href = "/login/"
-			}
-		}
-	document.addEventListener('DOMContentLoaded', function(){checkCookie();},false)
-
-	function choose(choices) {
-		var index = Math.floor(Math.random() * choices.length);
-		return choices[index];
-	}
-
-	function send_2Urltoken(itoken){
-		var itoken2 = itoken.replace('-','');
-		var token_result = ''
-		var token_list_for_loop = itoken2.split("");
-		for(element of token_list_for_loop){
-			all_string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-			for(y=12;y>0;y--){
-			element += choose(all_string)
-			}
-			var token_list = element.split("")
-			var shuffledArray = token_list.sort((a, b) => 0.5 - Math.random());
-			result_first_string = shuffledArray.join("")
-			token_result += result_first_string
-		}
-		window.location.href = "/calculator/show/" + token_result + "/"
-	}
-
-	function send_2UrltokenUpdate(itoken){
-	var itoken2 = itoken.replace('-','');
-	var token_result = ''
-	var token_list_for_loop = itoken2.split("");
-	for(element of token_list_for_loop){
-		all_string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		for(y=12;y>0;y--){
-		element += choose(all_string)
-		}
-		var token_list = element.split("")
-		var shuffledArray = token_list.sort((a, b) => 0.5 - Math.random());
-		result_first_string = shuffledArray.join("")
-		token_result += result_first_string
-	}
-	window.location.href = "/calculator/update/" + token_result + "/"
-	}
-</script>
-<script type="module">
-	import sidebar from "/static/json/sidebar.json" assert {type: 'json'};
-
 	const traveling = document.getElementById("traveling")
 
-	for(const item of sidebar["sidebar"]){
+	for(const item of sidebar){
 		const parentContainer = document.createElement("div")
 		const leftSidebar = document.createElement("div")
 		const childLeftSidebar = document.createElement("div")
 		const rightSidebar = document.createElement("div")
 		const childRightSidebar = document.createElement("a")
-		const svg = document.createElement("object")
+		const image = document.createElement("img")
 
 		traveling.appendChild(parentContainer)
 		parentContainer.appendChild(leftSidebar)
 		parentContainer.appendChild(rightSidebar)
 		leftSidebar.appendChild(childLeftSidebar)
 		rightSidebar.appendChild(childRightSidebar)
-		childRightSidebar.appendChild(svg)
+		childRightSidebar.appendChild(image)
 
 		parentContainer.className = item['container']['class']
+        parentContainer.id = item['container']['_name'] + "-sidebar-image"
 		parentContainer.addEventListener('click', function windowHref(){
 			window.location.href = item['container']['onclick']
 		})
@@ -222,24 +175,23 @@
 		childLeftSidebar.innerHTML = item['container']['childs_container']['leftsidebar']['child_content']
 		rightSidebar.className = item['container']['childs_container']['rightsidebar']['self_class']
 		childRightSidebar.className = item['container']['childs_container']['rightsidebar']['child_class']
-		svg.type = item['container']['childs_container']['rightsidebar']['child_content']['object_type']
-		svg.id = item['container']['childs_container']['rightsidebar']['child_content']['object_id']
-		svg.data = item['container']['childs_container']['rightsidebar']['child_content']['object_data']
-		svg.width = item['container']['childs_container']['rightsidebar']['child_content']['object_width']
-		svg.height = item['container']['childs_container']['rightsidebar']['child_content']['object_height']
+		image.id = item['container']['childs_container']['rightsidebar']['child_content']['image_id']
+		image.src = item['container']['childs_container']['rightsidebar']['child_content']['image_src']
+		image.width = item['container']['childs_container']['rightsidebar']['child_content']['image_width']
+		image.height = item['container']['childs_container']['rightsidebar']['child_content']['image_height']
 	}
 
 	const themeParentContainer = document.createElement("div")
 	const themeLeftSidebar = document.createElement("div")
 	const themeChildLeftSidebar = document.createElement("div")
 	const themeRightSidebar = document.createElement("div")
-	const themeSvg = document.createElement("object")
+	const themeImg = document.createElement("img")
 
 	traveling.appendChild(themeParentContainer)
 	themeParentContainer.appendChild(themeLeftSidebar)
 	themeParentContainer.appendChild(themeRightSidebar)
 	themeLeftSidebar.appendChild(themeChildLeftSidebar)
-	themeRightSidebar.appendChild(themeSvg)
+	themeRightSidebar.appendChild(themeImg)
 
 	themeParentContainer.className = "traveling-inline-div"
 	themeParentContainer.id = "switch_dark_mode"
@@ -247,16 +199,15 @@
 	themeChildLeftSidebar.className = "shcl"
 	themeChildLeftSidebar.innerHTML = "Theme"
 	themeRightSidebar.className = "rightsidebarc traveling-right"
-	themeSvg.type = "image/png"
-	themeSvg.id = "darkmodeSWITCH" 
-	themeSvg.width = "21"
-	themeSvg.height = "21"
+	themeImg.id = "darkmodeSWITCH" 
+	themeImg.width = "21"
+	themeImg.height = "21"
 
 	var darkmode = "{{ darkmode }}"
 	if(darkmode == "yes"){
-		themeSvg.data = "\\static\\image\\svg\\moon.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\moon.png"
 	}else if(darkmode == "no"){
-		themeSvg.data = "\\static\\image\\svg\\sun.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\sun.png"
 	}
 	
 	var switchModeBtn = document.getElementById('switch_dark_mode');
@@ -268,10 +219,10 @@
 		body.classList.toggle("body_dark_mode");
 		if(body.className == "body_dark_mode"){
 			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\moon.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\moon.png"
 		}else{
 			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\sun.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\sun.png"
 		}
 	})
 
@@ -279,12 +230,49 @@
 	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
 		var sidebar = document.getElementById("sidebar")
 		sidebar.classList.toggle('sidebar-active')
+        sidebar.classList.toggle('sidebar-open')
 	})
-	
-	function cookieInitialize(){
-		document.cookie = "windowInnerHeight=" + window.innerHeight +  "; path=/";
-		document.cookie = "windowInnerWidth=" + window.innerWidth +  "; path=/";
+</script>
+<script>
+	const self_inline_div_traveling = document.getElementById('Stats-sidebar-image')
+	self_inline_div_traveling.classList.add('bg-traveling') 
+</script>
+<script>
+	// SCRIPT MADE BY CHAT GPT (because to lazy :weary:)
+	const table = document.querySelector("#index-table tbody");
+	const rows = table.rows;
+	const rowsPerPage = 18;
+	const numPages = Math.ceil(rows.length / rowsPerPage);
+	const pagination = document.querySelector("#pagination");
+
+	for (let i = 0; i < numPages; i++) {
+	const pageButton = document.createElement("button");
+	pageButton.textContent = i + 1;
+	pageButton.addEventListener("click", function () {
+		showPage(i);
+	});
+	pagination.appendChild(pageButton);
 	}
-	cookieInitialize()
+
+	function showPage(pageNum) {
+	for (let i = 0; i < rows.length; i++) {
+		rows[i].style.display = "none";
+	}
+	for (let i = pageNum * rowsPerPage; i < (pageNum + 1) * rowsPerPage; i++) {
+		if (i < rows.length) {
+		rows[i].style.display = "table-row";
+		}
+	}
+	}
+
+	showPage(0);
+	pagination.firstChild.classList.add("active");
+
+	pagination.addEventListener("click", function (event) {
+  	if (event.target.tagName === "BUTTON") {
+		const activeButton = pagination.querySelector("button.active");
+		activeButton.classList.remove("active");
+		event.target.classList.add("active");
+	}});
 </script>
 </html>

@@ -3,31 +3,37 @@
 	<head>
 		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.13.4 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.13.4 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.13.4 %}">
-		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.18.2 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
+		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Welcome to Wiki</title>
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
+		<script src="{% static 'main.js' %}"></script>
 	</head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
 {% elif darkmode == "no" %}
 <body>
 {% endif %}
-	<div class="main-container">
-		<div class="sidebar" id="sidebar">
-			<div class="sidebar-icon" id="sidebar-icon">
-				<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
-				<div class="rightsidebarc" id="rscimg">
-					<svg id="svg-filter-sidebar"width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
-				</div>
-			</div>
-			<div class="traveling" id="traveling">
-				<!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
+<noscript>
+	<div id="no-script-message">
+		<p>Please enable JavaScript to use this website.</p>
+	</div>
+</noscript>
+	<div class="sidebar sidebar-open sidebar-position-f" id="sidebar">
+		<div class="sidebar-icon" id="sidebar-icon">
+			<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
+			<div class="rightsidebarc" id="rscimg">
+				<svg id="svg-filter-sidebar" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
 			</div>
 		</div>
+		<div class="traveling" id="traveling">
+			<!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
+		</div>
+	</div>
+	<div class="main-container">
 		<main class="main-menu cmcath">
 			<header class="header-container">
 				<div class="header-container-1"></div>
@@ -78,20 +84,18 @@
 			</div>
 			<div class="ingame_damage_result" id="ingame_damage_result">
 				<div class="btn-generate-damage" onclick="generateDamage()">Generate Damage</div>
-				<div class="btn-generate-damage" onclick="generateDamageWithEggBonus()">+5% Damage on Mobs</div>
 				<table class="table-damage-result">
 					<tr>
 						<th colspan="1" class="table-outrow popup" onclick="damagePopupFunction()"><i class="fa fa-info-circle" aria-hidden="true"></i></th>
 							<div class="popup_container" id="damage_popup">
 								• The damage shown are with your actual runes<br>
 								• Generate Damage show the damage with the runes input above<br> 
-								• '+5% Damage On Mobs' add the 5% damage that reffers to the passiv egg stats
 							</div>
 						<th colspan="2" class="distance-type-th">Melee</th>
 						<th colspan="2" class="distance-type-th">Range</th>
 					</tr>
 					<tr>
-						<th class="table-outrow"></th>
+						<th class="table-outrow"><div class="btn-reset" onclick="reset()">Reset</div></th>
 						<th class="damage-type-th">Normal Dmg</th>
 						<th class="damage-type-th">Critical Dmg</th>
 						<th class="damage-type-th">Normal Dmg</th>
@@ -99,93 +103,97 @@
 					</tr>
 					<tr>
 						<td class="mobs-type-td">Ground Mobs</td>
-						<td class="td-value-damage" id="damageMeleeNormalGroundM"></td>
-						<td class="td-value-damage" id="damageMeleeCriticGroundM"></td>
-						<td class="td-value-damage" id="damageRangeNormalGroundM"></td>
-						<td class="td-value-damage" id="damageRangeCriticGroundM"></td>
+						<td class="td-value-damage" id="damageMeleeNormalGroundM">{{ mob_ground_melee_damage.0 }}</td>
+						<td class="td-value-damage" id="damageMeleeCriticGroundM">{{ mob_ground_melee_damage.1 }}</td>
+						<td class="td-value-damage" id="damageRangeNormalGroundM">{{ mob_ground_range_damage.0 }}</td>
+						<td class="td-value-damage" id="damageRangeCriticGroundM">{{ mob_ground_range_damage.1 }}</td>
 					</tr>
 					<tr>
 						<td class="mobs-type-td">Airborne Mobs</td>
-						<td class="td-value-damage" id="damageMeleeNormalAirborneM"></td>
-						<td class="td-value-damage" id="damageMeleeCriticAirborneM"></td>
-						<td class="td-value-damage" id="damageRangeNormalAirborneM"></td>
-						<td class="td-value-damage" id="damageRangeCriticAirborneM"></td>
+						<td class="td-value-damage" id="damageMeleeNormalAirborneM">{{ mob_airborne_melee_damage.0 }}</td>
+						<td class="td-value-damage" id="damageMeleeCriticAirborneM">{{ mob_airborne_melee_damage.1 }}</td>
+						<td class="td-value-damage" id="damageRangeNormalAirborneM">{{ mob_airborne_range_damage.0 }}</td>
+						<td class="td-value-damage" id="damageRangeCriticAirborneM">{{ mob_airborne_range_damage.1 }}</td>
 					</tr>
 					<tr>
 						<td class="mobs-type-td">Ground Boss</td>
-						<td class="td-value-damage" id="damageMeleeNormalGroundB"></td>
-						<td class="td-value-damage" id="damageMeleeCriticGroundB"></td>
-						<td class="td-value-damage" id="damageRangeNormalGroundB"></td>
-						<td class="td-value-damage" id="damageRangeCriticGroundB"></td>
+						<td class="td-value-damage" id="damageMeleeNormalGroundB">{{ boss_ground_melee_damage.0 }}</td>
+						<td class="td-value-damage" id="damageMeleeCriticGroundB">{{ boss_ground_melee_damage.1 }}</td>
+						<td class="td-value-damage" id="damageRangeNormalGroundB">{{ boss_ground_range_damage.0 }}</td>
+						<td class="td-value-damage" id="damageRangeCriticGroundB">{{ boss_ground_range_damage.1 }}</td>
 					</tr>
 					<tr>
 						<td class="mobs-type-td">Airborne Boss</td>
-						<td class="td-value-damage" id="damageMeleeNormalAirborneB"></td>
-						<td class="td-value-damage" id="damageMeleeCriticAirborneB"></td>
-						<td class="td-value-damage" id="damageRangeNormalAirborneB"></td>
-						<td class="td-value-damage" id="damageRangeCriticAirborneB"></td>
+						<td class="td-value-damage" id="damageMeleeNormalAirborneB">{{ boss_airborne_melee_damage.0 }}</td>
+						<td class="td-value-damage" id="damageMeleeCriticAirborneB">{{ boss_airborne_melee_damage.1 }}</td>
+						<td class="td-value-damage" id="damageRangeNormalAirborneB">{{ boss_airborne_range_damage.0 }}</td>
+						<td class="td-value-damage" id="damageRangeCriticAirborneB">{{ boss_airborne_range_damage.1 }}</td>
 					</tr>
 				</table><br>
-				<div class="averageDamage">Your average Damage is : <b id="averageDamage"></b></div>
+				<div class="averageDamage">
+					This is average damage with:
+					<li><b id="critdmg">{{ crit_dmg }}</b>% of Critical Damage</li>
+					<li><b id="critrate">{{ crit_rate }}</b>% chance of Critical Hit</li>
+					Your average Damage is : <b id="averageDamage">{{ averageDamage }}</b>
+				</div>
 			</div>
 		</main>
-	</div>
-	<footer class="footer-margin">
-		<div class="footer-content">
-			<div class="footer-about">
-				<img class="footer-img-icon" src="/static/image/archero_icon.png">
-				<div class="about-content">
-					<h2>Archero :</h2>
-					<div>Archero Update will be added with a certains delay</div>
-					<div class="contact-me">
-						<div>If you encounter any bugs / anomaly please contact me on discord</div>
-						<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+		<footer style="margin-top: 150px;">
+			<div class="footer-content">
+				<div class="footer-about">
+					<img class="footer-img-icon" src="/static/image/archero_icon.png" alt="image game icon">
+					<div class="about-content">
+						<h2>Archero :</h2>
+						<div>Archero Update will be added with a certains delay</div>
+						<div class="contact-me">
+							<div>If you encounter any bugs / anomaly please contact me on discord</div>
+							<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="discord_link">
-				<div class="container_dlink">
-					<h2>Community Link:</h2> 
-					<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMuthique's Server</li></a>
-					<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+				<div class="discord_link">
+					<div class="container_dlink">
+						<h2>Community Link:</h2> 
+						<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMutique's Server</li></a>
+						<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+					</div>
+					<div class="container_rlink">
+						<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
+					</div>
+					<div class="container_flink">
+						<a href="https://www.facebook.com/archerogame/" target="_blank"><li> FB Archero</li></a>
+					</div>
 				</div>
-				<div class="container_rlink">
-					<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
-				</div>
-				<div class="container_flink">
-					<a href="https://www.facebook.com/archerogame/" target="_blank"><li> Fb Archero</li></a>
-				</div>
-			</div>
-			<div class="thanks">
-				<h2>Shout-out :</h2>
-				<div class="shout-out">SonHaon, Ktaplouf, Pew, Deth</div>
-				<div class="shout-out">Lovii, Kaseiya, Lorenz, TigerShark14</div>
+				<div class="thanks">
+					<h2>Shout-out :</h2>
+				<div class="shout-out">SonHaon, Deth, TigerShark14</div>
+				<div class="shout-out">Ktaplouf, Pew, Lorenz, RedsMeName</div>
 				<div class="shout-out">Everyone who helped me getting data</div>
+				</div>
 			</div>
-		</div>
-	</footer>
+		</footer>
+	</div>
 </body>
-<script type="module">
-	import sidebar from "/static/json/sidebar.json" assert {type: 'json'};
-
+<script>
 	const traveling = document.getElementById("traveling")
 
-	for(const item of sidebar["sidebar"]){
+	for(const item of sidebar){
 		const parentContainer = document.createElement("div")
 		const leftSidebar = document.createElement("div")
 		const childLeftSidebar = document.createElement("div")
 		const rightSidebar = document.createElement("div")
 		const childRightSidebar = document.createElement("a")
-		const svg = document.createElement("object")
+		const image = document.createElement("img")
 
 		traveling.appendChild(parentContainer)
 		parentContainer.appendChild(leftSidebar)
 		parentContainer.appendChild(rightSidebar)
 		leftSidebar.appendChild(childLeftSidebar)
 		rightSidebar.appendChild(childRightSidebar)
-		childRightSidebar.appendChild(svg)
+		childRightSidebar.appendChild(image)
 
 		parentContainer.className = item['container']['class']
+		parentContainer.id = item['container']['_name'] + "-sidebar-image"
 		parentContainer.addEventListener('click', function windowHref(){
 			window.location.href = item['container']['onclick']
 		})
@@ -194,24 +202,23 @@
 		childLeftSidebar.innerHTML = item['container']['childs_container']['leftsidebar']['child_content']
 		rightSidebar.className = item['container']['childs_container']['rightsidebar']['self_class']
 		childRightSidebar.className = item['container']['childs_container']['rightsidebar']['child_class']
-		svg.type = item['container']['childs_container']['rightsidebar']['child_content']['object_type']
-		svg.id = item['container']['childs_container']['rightsidebar']['child_content']['object_id']
-		svg.data = item['container']['childs_container']['rightsidebar']['child_content']['object_data']
-		svg.width = item['container']['childs_container']['rightsidebar']['child_content']['object_width']
-		svg.height = item['container']['childs_container']['rightsidebar']['child_content']['object_height']
+		image.id = item['container']['childs_container']['rightsidebar']['child_content']['image_id']
+		image.src = item['container']['childs_container']['rightsidebar']['child_content']['image_src']
+		image.width = item['container']['childs_container']['rightsidebar']['child_content']['image_width']
+		image.height = item['container']['childs_container']['rightsidebar']['child_content']['image_height']
 	}
 
 	const themeParentContainer = document.createElement("div")
 	const themeLeftSidebar = document.createElement("div")
 	const themeChildLeftSidebar = document.createElement("div")
 	const themeRightSidebar = document.createElement("div")
-	const themeSvg = document.createElement("object")
+	const themeImg = document.createElement("img")
 
 	traveling.appendChild(themeParentContainer)
 	themeParentContainer.appendChild(themeLeftSidebar)
 	themeParentContainer.appendChild(themeRightSidebar)
 	themeLeftSidebar.appendChild(themeChildLeftSidebar)
-	themeRightSidebar.appendChild(themeSvg)
+	themeRightSidebar.appendChild(themeImg)
 
 	themeParentContainer.className = "traveling-inline-div"
 	themeParentContainer.id = "switch_dark_mode"
@@ -219,18 +226,17 @@
 	themeChildLeftSidebar.className = "shcl"
 	themeChildLeftSidebar.innerHTML = "Theme"
 	themeRightSidebar.className = "rightsidebarc traveling-right"
-	themeSvg.type = "image/png"
-	themeSvg.id = "darkmodeSWITCH" 
-	themeSvg.width = "21"
-	themeSvg.height = "21"
+	themeImg.id = "darkmodeSWITCH" 
+	themeImg.width = "21"
+	themeImg.height = "21"
 
 	var darkmode = "{{ darkmode }}"
 	if(darkmode == "yes"){
-		themeSvg.data = "\\static\\image\\svg\\moon.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\moon.png"
 	}else if(darkmode == "no"){
-		themeSvg.data = "\\static\\image\\svg\\sun.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\sun.png"
 	}
-	
+
 	var switchModeBtn = document.getElementById('switch_dark_mode');
 	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
 		var date = new Date()
@@ -240,10 +246,10 @@
 		body.classList.toggle("body_dark_mode");
 		if(body.className == "body_dark_mode"){
 			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\moon.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\moon.png"
 		}else{
 			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\sun.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\sun.png"
 		}
 	})
 
@@ -251,15 +257,9 @@
 	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
 		var sidebar = document.getElementById("sidebar")
 		sidebar.classList.toggle('sidebar-active')
+        sidebar.classList.toggle('sidebar-open')
 	})
-	
-	function cookieInitialize(){
-		document.cookie = "windowInnerHeight=" + window.innerHeight +  "; path=/";
-		document.cookie = "windowInnerWidth=" + window.innerWidth +  "; path=/";
-	}
-	cookieInitialize()
-</script>
-<script>
+
 	var damage_popup = document.getElementById('damage_popup')
 	function damagePopupFunction(){
 		damage_popup.classList.toggle('show')
@@ -267,8 +267,12 @@
 	window.addEventListener('click', ({target}) => {
 		if(!target.closest('.popup') && damage_popup.classList.contains('show')) damagePopupFunction()
 	})
-
-	function calculationDamage(GAtype, RMtype, MBtype,speMobEgg) {
+</script>
+<script>
+	const averageDamageContainer = document.getElementById('averageDamage')
+	const critdmgElement = document.getElementById('critdmg')
+	const critrateElement = document.getElementById('critrate')
+	function calculationDamage(GAtype, RMtype, MBtype) {
 		if(GAtype == "ground"){
 			var typeUnitGAF = "{{flat_dmg_vs_ground}}";
 			var typeUnitGAV = "{{var_dmg_vs_ground}}";
@@ -295,69 +299,53 @@
 		var MBvar = parseFloat(typeUnitMBV/100) + parseFloat(1)
 		var allDMGvar = parseFloat("{{var_dmg_all}}"/100) + parseFloat(1)
 		var weaponDmgMult = parseFloat("{{weapon_coeff}}")
-		if(speMobEgg == 0){
-			var dmgResult = HeroFlat * GaMrVar * MBvar * allDMGvar * weaponDmgMult
-		}else if(speMobEgg == 5){
-			var dmgResult = HeroFlat * GaMrVar * MBvar * allDMGvar * weaponDmgMult * 1.05
-		}
+		var dmgResult = HeroFlat * GaMrVar * MBvar * allDMGvar * weaponDmgMult
 		return Math.round(dmgResult)
 	}
 
-	var damageMeleeNormalGroundM = document.getElementById('damageMeleeNormalGroundM')
-	var damageMeleeCriticGroundM = document.getElementById('damageMeleeCriticGroundM')
-	var damageMeleeNormalGroundB = document.getElementById('damageMeleeNormalGroundB')
-	var damageMeleeCriticGroundB = document.getElementById('damageMeleeCriticGroundB')
-	var damageMeleeNormalAirborneM = document.getElementById('damageMeleeNormalAirborneM')
-	var damageMeleeCriticAirborneM = document.getElementById('damageMeleeCriticAirborneM')
-	var damageMeleeNormalAirborneB = document.getElementById('damageMeleeNormalAirborneB')
-	var damageMeleeCriticAirborneB = document.getElementById('damageMeleeCriticAirborneB')
-	var damageRangeNormalGroundM = document.getElementById('damageRangeNormalGroundM')
-	var damageRangeCriticGroundM = document.getElementById('damageRangeCriticGroundM')
-	var damageRangeNormalGroundB = document.getElementById('damageRangeNormalGroundB')
-	var damageRangeCriticGroundB = document.getElementById('damageRangeCriticGroundB')
-	var damageRangeNormalAirborneM = document.getElementById('damageRangeNormalAirborneM')
-	var damageRangeCriticAirborneM = document.getElementById('damageRangeCriticAirborneM')
-	var damageRangeNormalAirborneB = document.getElementById('damageRangeNormalAirborneB')
-	var damageRangeCriticAirborneB = document.getElementById('damageRangeCriticAirborneB')
-	var averageDamageContainer = document.getElementById('averageDamage');
-
-	damageMeleeNormalGroundM.innerHTML = calculationDamage("ground","melee","mobs",0);
-	damageMeleeCriticGroundM.innerHTML = Math.round(parseInt(damageMeleeNormalGroundM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-	damageMeleeNormalGroundB.innerHTML = calculationDamage("ground","melee","boss",0);;
-	damageMeleeCriticGroundB.innerHTML = Math.round(parseInt(damageMeleeNormalGroundB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-	damageMeleeNormalAirborneM.innerHTML = calculationDamage("airborne","melee","mobs",0);;
-	damageMeleeCriticAirborneM.innerHTML = Math.round(parseInt(damageMeleeNormalAirborneM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-	damageMeleeNormalAirborneB.innerHTML = calculationDamage("airborne","melee","boss",0);;
-	damageMeleeCriticAirborneB.innerHTML = Math.round(parseInt(damageMeleeNormalAirborneB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-	damageRangeNormalGroundM.innerHTML = calculationDamage("ground","range","mobs",0);;
-	damageRangeCriticGroundM.innerHTML = Math.round(parseInt(damageRangeNormalGroundM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-	damageRangeNormalGroundB.innerHTML = calculationDamage("ground","range","boss",0);;
-	damageRangeCriticGroundB.innerHTML = Math.round(parseInt(damageRangeNormalGroundB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-	damageRangeNormalAirborneM.innerHTML = calculationDamage("airborne","range","mobs",0);;
-	damageRangeCriticAirborneM.innerHTML = Math.round(parseInt(damageRangeNormalAirborneM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-	damageRangeNormalAirborneB.innerHTML = calculationDamage("airborne","range","boss",0);;
-	damageRangeCriticAirborneB.innerHTML = Math.round(parseInt(damageRangeNormalAirborneB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-
+	function reset(){
+		damageMeleeNormalGroundM.innerHTML = calculationDamage("ground","melee","mobs");
+		damageMeleeCriticGroundM.innerHTML = Math.round(parseInt(damageMeleeNormalGroundM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
+		damageMeleeNormalGroundB.innerHTML = calculationDamage("ground","melee","boss");
+		damageMeleeCriticGroundB.innerHTML = Math.round(parseInt(damageMeleeNormalGroundB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
+		damageMeleeNormalAirborneM.innerHTML = calculationDamage("airborne","melee","mobs");
+		damageMeleeCriticAirborneM.innerHTML = Math.round(parseInt(damageMeleeNormalAirborneM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
+		damageMeleeNormalAirborneB.innerHTML = calculationDamage("airborne","melee","boss");
+		damageMeleeCriticAirborneB.innerHTML = Math.round(parseInt(damageMeleeNormalAirborneB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
+		damageRangeNormalGroundM.innerHTML = calculationDamage("ground","range","mobs");;
+		damageRangeCriticGroundM.innerHTML = Math.round(parseInt(damageRangeNormalGroundM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
+		damageRangeNormalGroundB.innerHTML = calculationDamage("ground","range","boss");;
+		damageRangeCriticGroundB.innerHTML = Math.round(parseInt(damageRangeNormalGroundB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
+		damageRangeNormalAirborneM.innerHTML = calculationDamage("airborne","range","mobs");
+		damageRangeCriticAirborneM.innerHTML = Math.round(parseInt(damageRangeNormalAirborneM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
+		damageRangeNormalAirborneB.innerHTML = calculationDamage("airborne","range","boss");
+		damageRangeCriticAirborneB.innerHTML = Math.round(parseInt(damageRangeNormalAirborneB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
+		critdmgElement.innerHTML = "{{ crit_dmg }}"
+		critrateElement.innerHTML = "{{ crit_rate }}"
+		averageDamageContainer.innerHTML = "{{ averageDamage }}"
+	}
 
 	function generateDamage(){
+		var inputRuneContainer = document.getElementsByClassName('runes_input');
 		var listHeroStepAtk = eval("{{paramDmgTable}}")
+		var param_runes_display = eval("{{ param_runes_display }}");
 		var inputRune = {
 			'Attack (Power)':0,
 			'Attack% (Power)':0,
 			'Attack (Courage)':0,
 			'Attack% (Courage)':0,
 			'Damage To Airborne Units':0,
-			'Damage To Airborne Units%':0,
+			'Damage To Airborne Units%':0.0,
 			'Damage To Ground Units':0,
-			'Damage To Ground Units%':0,
+			'Damage To Ground Units%':0.0,
 			'Damage To Melee Units':0,
-			'Damage To Melee Units%':0,
+			'Damage To Melee Units%':0.0,
 			'Damage To Ranged Units':0,
-			'Damage To Ranged Units%':0,
+			'Damage To Ranged Units%':0.0,
 			'Damage To Bosses':0,
-			'Damage To Bosses%':0,
+			'Damage To Bosses%':0.0,
 			'Damage To Mobs':0,
-			'Damage To Mobs%':0,
+			'Damage To Mobs%':0.0,
 			'All Damage Increased':0,
 			'All Damage Increased%':0,
 			'Attack Speed':0,
@@ -365,8 +353,8 @@
 			'Crit Damage':0,
 			'Level-Up to increase Damage in Battle':0,
 			'none':0,
-			"hero attack courage flat":0,
-			"hero attack courage var":0,
+			"Hero Base ATK":0,
+			"Hero Base ATK%":0,
 
 			[document.getElementById('firstSelect').value]:document.getElementById('firstInput').value,
 			[document.getElementById('secondSelect').value]: document.getElementById('secondInput').value,
@@ -374,29 +362,52 @@
 			[document.getElementById('fourthSelect').value]: document.getElementById('fourthInput').value,
 			[document.getElementById('fifthSelect').value]: document.getElementById('fifthInput').value,
 		}
-		var coeff1_atk = parseFloat(inputRune['Attack% (Courage)'])/100 + parseFloat(inputRune['Attack% (Power)'])/100 + parseFloat(listHeroStepAtk[2])/100
-		var cumul_all_bonus_passif_atk = listHeroStepAtk[1] + parseInt(inputRune['Attack (Courage)']) + parseInt(inputRune['Attack (Power)'])
-		var hero_base_modified_stats_atk = (parseInt(listHeroStepAtk[3]) - parseInt(inputRune['hero attack courage flat'])) * (inputRune['hero attack courage var'] + parseFloat(listHeroStepAtk[4]) + 1) + parseInt(inputRune['hero attack courage flat'])
-		var global_stats_atk_flat = parseInt(Math.floor(hero_base_modified_stats_atk)) + parseInt(cumul_all_bonus_passif_atk) + parseInt(listHeroStepAtk[5])
+		if(inputRuneContainer[0].id == "power"){
+			var atk_power_flat = inputRune['Attack (Power)']
+			var atk_courage_flat = param_runes_display[2]
+			var atk_power_var = inputRune['Attack% (Power)']
+			var atk_courage_var = param_runes_display[3]
+			var courage_hero_atk_flat = param_runes_display[4]
+			var courage_hero_atk_var = param_runes_display[5]
+		}else if(inputRuneContainer[0].id == "courage"){
+			var atk_power_flat = param_runes_display[0]
+			var atk_courage_flat = inputRune['Attack (Courage)']
+			var atk_power_var = param_runes_display[1]
+			var atk_courage_var = inputRune['Attack% (Courage)']
+			var courage_hero_atk_flat = inputRune['Hero Base ATK']
+			var courage_hero_atk_var = inputRune['Hero Base ATK%']
+		}
+		var coeff1_atk = parseFloat(atk_courage_var)/100 + parseFloat(atk_power_var)/100 + parseFloat(listHeroStepAtk[2])/100
+		var cumul_all_bonus_passiv_atk = Math.round(listHeroStepAtk[1] + parseInt(atk_courage_flat) + parseInt(atk_power_flat))
+		var hero_base_modified_stats_atk = Math.round((parseInt(listHeroStepAtk[3]) - parseInt(courage_hero_atk_flat)) * (parseFloat(courage_hero_atk_var)/100 + parseFloat(listHeroStepAtk[4]) + 1) + parseInt(courage_hero_atk_flat))
+		var global_stats_atk_flat = Math.round(parseInt(Math.floor(hero_base_modified_stats_atk)) + parseInt(cumul_all_bonus_passiv_atk) + parseInt(listHeroStepAtk[5]))
 		var hero_atk = global_stats_atk_flat + (global_stats_atk_flat*parseFloat(coeff1_atk)) + (global_stats_atk_flat*parseFloat(listHeroStepAtk[6])) + (global_stats_atk_flat*parseFloat(listHeroStepAtk[7])) + listHeroStepAtk[8] + listHeroStepAtk[9]
 		var weapon_coeff = parseFloat("{{weapon_coeff}}")
-		var crit_dmg = (200 + parseFloat(inputRune['Crit Damage']))
+		if(parseFloat(inputRune['Crit Damage']) == 0){
+			var crit_dmg = "{{ crit_dmg }}"
+		}else{
+			var crit_dmg = (parseInt("{{ crit_dmg }}") + parseFloat(inputRune['Crit Damage']))
+		}
+		if(parseFloat(inputRune['Crit Chance']) == 0){
+			var crit_rate = "{{ crit_rate }}"
+		}else{
+			var crit_rate = (parseInt("{{ crit_rate }}") + parseFloat(inputRune['Crit Chance']))
+		}
 
-		var airborne_dmg_flat = inputRune['Damage To Airborne Units'] + parseInt("{{ flat_dmg_vs_airborne }}");
-		var airborne_dmg_var = inputRune['Damage To Airborne Units%'] + parseInt("{{ var_dmg_vs_airborne }}");
-		var ground_dmg_flat = inputRune['Damage To Ground Units'] + parseInt("{{ flat_dmg_vs_ground }}");
-		var ground_dmg_var = inputRune['Damage To Ground Units%'] + parseInt("{{ var_dmg_vs_ground }}");
-		var melee_dmg_flat = inputRune['Damage To Melee Units'] + parseInt("{{ flat_dmg_vs_melee }}");
-		var melee_dmg_var = inputRune['Damage To Melee Units%'] + parseInt("{{ var_dmg_vs_melee }}");
-		var ranged_dmg_flat = inputRune['Damage To Ranged Units'] + parseInt("{{ flat_dmg_vs_range }}");
-		var ranged_dmg_var = inputRune['Damage To Ranged Units%'] + parseInt("{{ var_dmg_vs_range }}");
-		var bosses_dmg_flat = inputRune['Damage To Bosses'] + parseInt("{{ flat_dmg_vs_boss }}");
-		var bosses_dmg_var = inputRune['Damage To Bosses%'] + parseInt("{{ var_dmg_vs_boss }}");
-		var mobs_dmg_flat = inputRune['Damage To Mobs'] + parseInt("{{ flat_dmg_vs_mobs }}");
-		var mobs_dmg_var = inputRune['Damage To Mobs%'] + parseInt("{{ var_dmg_vs_mobs }}");
-		var all_dmg_flat = inputRune['All Damage Increased'] + parseInt("{{ flat_dmg_all }}");
-		var all_dmg_var = inputRune['All Damage Increased%'];
-		
+		var airborne_dmg_flat = parseInt(inputRune['Damage To Airborne Units']) + parseInt("{{ flat_dmg_vs_airborne }}");
+		var airborne_dmg_var = parseFloat(inputRune['Damage To Airborne Units%']) + parseFloat("{{ var_dmg_vs_airborne }}");
+		var ground_dmg_flat = parseInt(inputRune['Damage To Ground Units']) + parseInt("{{ flat_dmg_vs_ground }}");
+		var ground_dmg_var = parseFloat(inputRune['Damage To Ground Units%']) + parseFloat("{{ var_dmg_vs_ground }}");
+		var melee_dmg_flat = parseInt(inputRune['Damage To Melee Units']) + parseInt("{{ flat_dmg_vs_melee }}");
+		var melee_dmg_var = parseFloat(inputRune['Damage To Melee Units%']) + parseFloat("{{ var_dmg_vs_melee }}");
+		var ranged_dmg_flat = parseInt(inputRune['Damage To Ranged Units']) + parseInt("{{ flat_dmg_vs_range }}");
+		var ranged_dmg_var = parseFloat(inputRune['Damage To Ranged Units%']) + parseFloat("{{ var_dmg_vs_range }}");
+		var bosses_dmg_flat = parseInt(inputRune['Damage To Bosses']) + parseInt("{{ flat_dmg_vs_boss }}");
+		var bosses_dmg_var = parseFloat(inputRune['Damage To Bosses%']) + parseFloat("{{ var_dmg_vs_boss }}");
+		var mobs_dmg_flat = parseInt(inputRune['Damage To Mobs']) + parseInt("{{ flat_dmg_vs_mobs }}");
+		var mobs_dmg_var = parseFloat(inputRune['Damage To Mobs%']) + parseFloat("{{ var_dmg_vs_mobs }}");
+		var all_dmg_flat = parseInt(inputRune['All Damage Increased']) + parseInt("{{ flat_dmg_all }}");
+		var all_dmg_var = parseFloat(inputRune['All Damage Increased%']);
 		damageMeleeNormalGroundM.innerHTML = Math.round((parseInt(hero_atk) + parseInt(ground_dmg_flat) + parseInt(mobs_dmg_flat) + parseInt(melee_dmg_flat) + parseInt(all_dmg_flat))*(parseFloat(melee_dmg_var/100) + parseFloat(ground_dmg_var/100) + parseFloat(1))*(parseFloat(mobs_dmg_var/100) + parseFloat(1))*(parseFloat(all_dmg_var/100) + parseFloat(1))*(parseFloat(weapon_coeff)))
 		damageMeleeCriticGroundM.innerHTML = Math.round(parseInt(damageMeleeNormalGroundM.innerHTML) * (crit_dmg/100))
 		damageMeleeNormalGroundB.innerHTML = Math.round((parseInt(hero_atk) + parseInt(ground_dmg_flat) + parseInt(bosses_dmg_flat) + parseInt(melee_dmg_flat) + parseInt(all_dmg_flat))*(parseFloat(melee_dmg_var/100) + parseFloat(ground_dmg_var/100) + parseFloat(1))*(parseFloat(bosses_dmg_var/100) + parseFloat(1))*(parseFloat(all_dmg_var/100) + parseFloat(1))*(parseFloat(weapon_coeff)))
@@ -413,79 +424,40 @@
 		damageRangeCriticAirborneM.innerHTML = Math.round(parseInt(damageRangeNormalAirborneM.innerHTML) * (crit_dmg/100))
 		damageRangeNormalAirborneB.innerHTML = Math.round((parseInt(hero_atk) + parseInt(airborne_dmg_flat) + parseInt(bosses_dmg_flat) + parseInt(ranged_dmg_flat) + parseInt(all_dmg_flat))*(parseFloat(ranged_dmg_var/100) + parseFloat(airborne_dmg_var/100) + parseFloat(1))*(parseFloat(bosses_dmg_var/100) + parseFloat(1))*(parseFloat(all_dmg_var/100) + parseFloat(1))*(parseFloat(weapon_coeff)))
 		damageRangeCriticAirborneB.innerHTML = Math.round(parseInt(damageRangeNormalAirborneB.innerHTML) * (crit_dmg/100))
-
-		averageDamageContainer.innerHTML = Math.round((parseInt(damageMeleeNormalGroundM.innerHTML) + parseInt(damageMeleeCriticGroundM.innerHTML) + parseInt(damageMeleeNormalGroundB.innerHTML) + parseInt(damageMeleeCriticGroundB.innerHTML) + parseInt(damageMeleeNormalAirborneM.innerHTML) + parseInt(damageMeleeCriticAirborneM.innerHTML) + parseInt(damageMeleeNormalAirborneB.innerHTML) + parseInt(damageMeleeCriticAirborneB.innerHTML) + parseInt(damageRangeNormalGroundM.innerHTML) + parseInt(damageRangeCriticGroundM.innerHTML) + parseInt(damageRangeNormalGroundB.innerHTML) + parseInt(damageRangeCriticGroundB.innerHTML) + parseInt(damageRangeNormalAirborneM.innerHTML) + parseInt(damageRangeCriticAirborneM.innerHTML) + parseInt(damageRangeNormalAirborneB.innerHTML) + parseInt(damageRangeCriticAirborneB.innerHTML))/16)
-	}
-	
-	averageDamageContainer.innerHTML = Math.round((parseInt(damageMeleeNormalGroundM.innerHTML) + parseInt(damageMeleeCriticGroundM.innerHTML) + parseInt(damageMeleeNormalGroundB.innerHTML) + parseInt(damageMeleeCriticGroundB.innerHTML) + parseInt(damageMeleeNormalAirborneM.innerHTML) + parseInt(damageMeleeCriticAirborneM.innerHTML) + parseInt(damageMeleeNormalAirborneB.innerHTML) + parseInt(damageMeleeCriticAirborneB.innerHTML) + parseInt(damageRangeNormalGroundM.innerHTML) + parseInt(damageRangeCriticGroundM.innerHTML) + parseInt(damageRangeNormalGroundB.innerHTML) + parseInt(damageRangeCriticGroundB.innerHTML) + parseInt(damageRangeNormalAirborneM.innerHTML) + parseInt(damageRangeCriticAirborneM.innerHTML) + parseInt(damageRangeNormalAirborneB.innerHTML) + parseInt(damageRangeCriticAirborneB.innerHTML))/16)
-
-
-	function generateDamageWithEggBonus() {
-		var damageMeleeNormalGroundM = document.getElementById('damageMeleeNormalGroundM')
-		var damageMeleeCriticGroundM = document.getElementById('damageMeleeCriticGroundM')
-		var damageMeleeNormalGroundB = document.getElementById('damageMeleeNormalGroundB')
-		var damageMeleeCriticGroundB = document.getElementById('damageMeleeCriticGroundB')
-		var damageMeleeNormalAirborneM = document.getElementById('damageMeleeNormalAirborneM')
-		var damageMeleeCriticAirborneM = document.getElementById('damageMeleeCriticAirborneM')
-		var damageMeleeNormalAirborneB = document.getElementById('damageMeleeNormalAirborneB')
-		var damageMeleeCriticAirborneB = document.getElementById('damageMeleeCriticAirborneB')
-		var damageRangeNormalGroundM = document.getElementById('damageRangeNormalGroundM')
-		var damageRangeCriticGroundM = document.getElementById('damageRangeCriticGroundM')
-		var damageRangeNormalGroundB = document.getElementById('damageRangeNormalGroundB')
-		var damageRangeCriticGroundB = document.getElementById('damageRangeCriticGroundB')
-		var damageRangeNormalAirborneM = document.getElementById('damageRangeNormalAirborneM')
-		var damageRangeCriticAirborneM = document.getElementById('damageRangeCriticAirborneM')
-		var damageRangeNormalAirborneB = document.getElementById('damageRangeNormalAirborneB')
-		var damageRangeCriticAirborneB = document.getElementById('damageRangeCriticAirborneB')
-
-		if(damageMeleeNormalGroundM.innerHTML != calculationDamage("ground","melee","mobs",0)){
-			damageMeleeNormalGroundM.innerHTML = calculationDamage("ground","melee","mobs",0);
-			damageMeleeCriticGroundM.innerHTML = Math.round(parseInt(damageMeleeNormalGroundM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageMeleeNormalGroundB.innerHTML = calculationDamage("ground","melee","boss",0);
-			damageMeleeCriticGroundB.innerHTML = Math.round(parseInt(damageMeleeNormalGroundB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageMeleeNormalAirborneM.innerHTML = calculationDamage("airborne","melee","mobs",0);
-			damageMeleeCriticAirborneM.innerHTML = Math.round(parseInt(damageMeleeNormalAirborneM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageMeleeNormalAirborneB.innerHTML = calculationDamage("airborne","melee","boss",0);
-			damageMeleeCriticAirborneB.innerHTML = Math.round(parseInt(damageMeleeNormalAirborneB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageRangeNormalGroundM.innerHTML = calculationDamage("ground","range","mobs",0);
-			damageRangeCriticGroundM.innerHTML = Math.round(parseInt(damageRangeNormalGroundM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageRangeNormalGroundB.innerHTML = calculationDamage("ground","range","boss",0);
-			damageRangeCriticGroundB.innerHTML = Math.round(parseInt(damageRangeNormalGroundB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageRangeNormalAirborneM.innerHTML = calculationDamage("airborne","range","mobs",0);
-			damageRangeCriticAirborneM.innerHTML = Math.round(parseInt(damageRangeNormalAirborneM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageRangeNormalAirborneB.innerHTML = calculationDamage("airborne","range","boss",0);
-			damageRangeCriticAirborneB.innerHTML = Math.round(parseInt(damageRangeNormalAirborneB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-		}else{
-			damageMeleeNormalGroundM.innerHTML = calculationDamage("ground","melee","mobs",5);
-			damageMeleeCriticGroundM.innerHTML = Math.round(parseInt(damageMeleeNormalGroundM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageMeleeNormalGroundB.innerHTML = calculationDamage("ground","melee","boss",5);
-			damageMeleeCriticGroundB.innerHTML = Math.round(parseInt(damageMeleeNormalGroundB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageMeleeNormalAirborneM.innerHTML = calculationDamage("airborne","melee","mobs",5);
-			damageMeleeCriticAirborneM.innerHTML = Math.round(parseInt(damageMeleeNormalAirborneM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageMeleeNormalAirborneB.innerHTML = calculationDamage("airborne","melee","boss",5);
-			damageMeleeCriticAirborneB.innerHTML = Math.round(parseInt(damageMeleeNormalAirborneB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageRangeNormalGroundM.innerHTML = calculationDamage("ground","range","mobs",5);
-			damageRangeCriticGroundM.innerHTML = Math.round(parseInt(damageRangeNormalGroundM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageRangeNormalGroundB.innerHTML = calculationDamage("ground","range","boss",5);
-			damageRangeCriticGroundB.innerHTML = Math.round(parseInt(damageRangeNormalGroundB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageRangeNormalAirborneM.innerHTML = calculationDamage("airborne","range","mobs",5);
-			damageRangeCriticAirborneM.innerHTML = Math.round(parseInt(damageRangeNormalAirborneM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-			damageRangeNormalAirborneB.innerHTML = calculationDamage("airborne","range","boss",5);
-			damageRangeCriticAirborneB.innerHTML = Math.round(parseInt(damageRangeNormalAirborneB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100))
-		}
+		
+		var averageDamage =  Math.round((parseInt(damageMeleeNormalGroundM.innerHTML) + parseInt(damageMeleeNormalGroundB.innerHTML) + parseInt(damageMeleeNormalAirborneM.innerHTML) + parseInt(damageMeleeNormalAirborneB.innerHTML) + parseInt(damageRangeNormalGroundM.innerHTML) + parseInt(damageRangeNormalGroundB.innerHTML) + parseInt(damageRangeNormalAirborneM.innerHTML) + parseInt(damageRangeNormalAirborneB.innerHTML))/8)
+		averageDamageContainer.innerHTML = Math.round(averageDamage * (1 + (crit_rate/100) * (crit_dmg/100 - 1)))
+		critdmgElement.innerHTML = crit_dmg
+		critrateElement.innerHTML = crit_rate
 	}
 </script>
 <script>
 	var powerRunesLines = ['','Attack (Power)','Attack% (Power)', 'Damage To Airborne Units', 'Damage To Airborne Units%', 'Damage To Ground Units', 'Damage To Ground Units%', 'Damage To Melee Units', 'Damage To Melee Units%', 'Damage To Ranged Units', 'Damage To Ranged Units%', 'Damage To Bosses', 'Damage To Bosses%', 'Damage To Mobs', 'Damage To Mobs%', 'All Damage Increased%', 'Attack Speed', 'Crit Chance', 'Crit Damage', 'Level-Up to increase Damage in Battle']
-	var firstLinePower = 'Attack (Power)'
-	var courageRunesLines = ['','Attack (Courage)','Attack% (Courage)','Current Hero base ATK','Current Hero base ATK %','Current Hero base HP','Current Hero base HP %','other ...']
-	var firstLineCourage = 'Attack (Courage)'
+	var courageRunesLines = ['','Attack (Courage)','Attack% (Courage)','Hero base ATK','Hero base ATK %','other ...']
 
 	function runesClicked(runesType) {
-		var allSelect = document.getElementsByClassName('runes-line')
-		var runesLine = Object.values(allSelect)
-		var firstSelect = document.getElementById('firstSelect')
+		var allSelect = document.getElementsByClassName('runes-line');
+		var inputRuneContainer = document.getElementsByClassName('runes_input');
+		var runesLine = Object.values(allSelect);
+		var firstSelect = document.getElementById('firstSelect');
+		var secondSelect = document.getElementById('secondSelect');
+		var thirdSelect = document.getElementById('thirdSelect');
+		var fourthSelect = document.getElementById('fourthSelect');
+		var fifthSelect = document.getElementById('fifthSelect');
+		var firstInput = document.getElementById('firstInput');
+		var secondInput = document.getElementById('secondInput');
+		var thirdInput = document.getElementById('thirdInput');
+		var fourthInput = document.getElementById('fourthInput');
+		var fifthInput = document.getElementById('fifthInput');
+		firstInput.value = '';
+		secondInput.value = '';
+		thirdInput.value = '';
+		fourthInput.value = '';
+		fifthInput.value = '';
+		var param_runes_display = eval("{{ param_runes_display }}");
+		// [power_attack_flat,power_attack_var,courage_attack_flat,courage_attack_var,courage_hero_attack_flat,courage_hero_attack_var]
 		if(runesType === "power"){
+			inputRuneContainer[0].id = 'power'
 			runesLine.forEach(select => {
 				while (select.hasChildNodes()) {
 					select.removeChild(select.firstChild);
@@ -501,8 +473,12 @@
 					});
 				}
 			});
-			firstSelect.value = firstLinePower
+			firstSelect.value = 'Attack (Power)'
+			secondSelect.value = 'Attack% (Power)'
+			firstInput.value = param_runes_display[0]
+			secondInput.value = param_runes_display[1]
 		} else if(runesType === "courage"){
+			inputRuneContainer[0].id = 'courage'
 			runesLine.forEach(select => {
 				while (select.hasChildNodes()) {
 					select.removeChild(select.firstChild);
@@ -518,8 +494,19 @@
 					});
 				}
 			});
-			firstSelect.value = firstLineCourage
+			firstSelect.value = 'Attack (Courage)'
+			secondSelect.value = 'Attack% (Courage)'
+			thirdSelect.value = 'Hero base ATK'
+			fourthSelect.value = 'Hero base ATK %'
+			firstInput.value = param_runes_display[2]
+			secondInput.value = param_runes_display[3]
+			thirdInput.value = param_runes_display[4]
+			fourthInput.value = param_runes_display[5]
 		}
 	}
+</script>
+<script>
+	const self_inline_div_traveling = document.getElementById('Damage-sidebar-image')
+	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
 </html>

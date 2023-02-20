@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.13.4 %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.13.4 %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.13.4 %}">
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-    <script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+	{% load static %}
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.18.2 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
+	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
+	<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
+	<script src="{% static 'main.js' %}"></script>
+	<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create Stats - Calculator</title>
+	<title>Create Stats - Calculator</title>
 </head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
 {% elif darkmode == "no" %}
 <body>
 {% endif %}
+<noscript>
+	<div id="no-script-message">
+		<p>Please enable JavaScript to use this website.</p>
+	</div>
+</noscript>
+<div class="sidebar sidebar-open sidebar-position-f" id="sidebar">
+	<div class="sidebar-icon" id="sidebar-icon">
+		<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
+		<div class="rightsidebarc" id="rscimg">
+			<svg id="svg-filter-sidebar" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
+		</div>
+	</div>
+	<div class="traveling" id="traveling">
+		<!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
+	</div>
+</div>
 <div class="main-container">
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-icon" id="sidebar-icon">
-            <div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
-            <div class="rightsidebarc" id="rscimg">
-                <svg id="svg-filter-sidebar"width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
-            </div>
-        </div>
-        <div class="traveling" id="traveling">
-            <!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
-        </div>
-    </div>
-    <main class="main-menu cmcath">
-        <header class="header-container">
+	<main class="main-menu cmcath">
+		<header class="header-container">
 				<div class="header-container-1"></div>
 				<div class="header-container-2 header_msg"><h2>{{ header_msg }}</h2></div>
 				<div class="header-container-3 globe_header_icon">
@@ -42,751 +48,2115 @@
 					</select> -->
 				</div>
 			</header>
-        <main class="main-form">
-            <div class="container-form">
-                {% if ingame_id == none %}
-                <form method="POST" action="/calculator/calc/">
-                {% else %}
-                <form method="POST" action="/calculator/updatecalc/{{id_token}}/">
-                {% endif %}
-                {% csrf_token %}
-                <script>
-                    document.cookie = " csrftoken= "+document.querySelector('[name=csrfmiddlewaretoken]').value + ";path=/";
-                </script>
-                <div class="form">
-                    <div class="ingame-name">
-                        {% if error_msg or value_error %}
-                            <div class="error_form">
-                                <i class="fa fa-exclamation-triangle" aria-hidden="true"> Error </i>
-                                <div class="id_error_msg">
-                                    {{ error_msg }}{{ value_error }}
-                                </div>
-                            </div>
-                        {% endif %}
-                        {% if ingame_id == none %}
-                            <b>Ingame Id :</b> <input type="text" value="{{ cookie_id }}" pattern="[0-9]{1}-[0-9]{6,}" name="ingame_id" required id="ingame_id" placeholder="1-00000000"><br>
-                            <b>Username :</b> <input type="text" value="{{ cookie_name }}" name="ingame_name" maxlength="30" required id="id_ingame_name"><br>
-                        {% else %}
-                            <b>Ingame ID :</b> <input type="text" name="ingame_id" required id="ingame_id" value="{{ ingame_id }}" readonly><br>
-                            <b>Username :</b> <input type="text" name="ingame_name" maxlength="30" required id="id_ingame_name" value="{{ ingame_name }}" readonly><br>
-                        {% endif %}
-                    </div>
-                    <div class="stuff container">
-                        <div class="form_stuff" translate="no">
-                            <b>Choose your heros :</b> {{  form_User.choosen_hero  }} <br>
-                            <b>Base attack :</b> {{  form_User.atk_base_stats_hero_choosen  }} <br>
-                            <b>Base Health :</b> {{  form_User.health_base_stats_hero_choosen  }} <br>
-                            <b>Brave Privileges :</b> {{  form_User.brave_privileges_level  }} <div class="privileges_help popup3" onclick="privilegesPopupFunction()"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:16px"></i>
-                                <div class="popuptext3" id="privileges_popup">
-                                    <img class="privileges_help_image" src="/static/image/formulaire-image/privileges_help.png" alt="privileges help">
-                                </div>
-                            </div><br>
-                            Weapon : {{  form_StuffTable.weapon_choosen  }} {{  form_StuffTable.weapon_rarity  }}{{  form_StuffTable.weapon_level  }}<br>
-                            Armor : {{  form_StuffTable.armor_choosen  }} {{  form_StuffTable.armor_rarity  }}{{  form_StuffTable.armor_level  }}<br>
-                            Ring 1 : {{  form_StuffTable.ring1_choosen  }} {{  form_StuffTable.ring1_rarity  }}{{  form_StuffTable.ring1_level  }}<br>
-                            Ring 2 : {{  form_StuffTable.ring2_choosen  }} {{  form_StuffTable.ring2_rarity  }}{{  form_StuffTable.ring2_level  }}<br>
-                            Pet 1 : {{  form_StuffTable.pet1_choosen  }} {{  form_StuffTable.pet1_rarity  }}{{  form_StuffTable.pet1_level  }}<br>
-                            Pet 2 : {{  form_StuffTable.pet2_choosen  }} {{  form_StuffTable.pet2_rarity  }}{{  form_StuffTable.pet2_level  }}<br>
-                            Bracelet : {{  form_StuffTable.bracelet_choosen  }} {{  form_StuffTable.bracelet_rarity  }}{{  form_StuffTable.bracelet_level  }}<br>
-                            Locket : {{  form_StuffTable.locket_choosen  }} {{  form_StuffTable.locket_rarity  }}{{  form_StuffTable.locket_level  }}<br>
-                            SpellBook : {{  form_StuffTable.book_choosen  }} {{  form_StuffTable.book_rarity  }}{{  form_StuffTable.book_level  }}<br>
-                        </div>
-                        <p style="overflow: hidden;">_____________________________</p><br>
-                        <div class="refine_form">
-                            <u><b>Refine Stats: </b></u>
-                            <div class="refine_help popup" onclick="refinePopupFunction()"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:16px"></i>
-                                <div class="popuptext" id="refine_popup">
-                                    <img class="refine_help_image" src="/static/image/formulaire-image/refine_help.png" alt="refine help">
-                                </div>
-                            </div><br>
-                            <u>Weapon</u> : {{ form_RefineTable.weapon_refine_atk }}{{ form_RefineTable.weapon_refine_basic_stats }}%<br>
-                            <u>Armor</u> : {{ form_RefineTable.armor_refine_hp }}{{ form_RefineTable.armor_refine_basic_stats }}%<br>
-                            <u>Ring 1</u> : {{ form_RefineTable.ring1_refine_atk }}{{ form_RefineTable.ring1_refine_basic_stats }}%<br>
-                            <u>Ring 2</u> : {{ form_RefineTable.ring2_refine_atk }}{{ form_RefineTable.ring2_refine_basic_stats }}%<br>
-                            <u>Bracelet</u> : {{ form_RefineTable.bracelet_refine_atk }}{{ form_RefineTable.bracelet_refine_basic_stats }}%<br>
-                            <u>Locket</u> : {{ form_RefineTable.locket_refine_hp }}{{ form_RefineTable.locket_refine_basic_stats }}%<br>
-                            <u>SpellBook</u> : {{ form_RefineTable.book_refine_hp }}{{ form_RefineTable.book_refine_basic_stats }}%<br>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="hero_form container" translate="no">
-                        <div class="container-hero">
-                            <img src="/static/image/hero_icon/icon_atreus.png" width="51px" height="54px" alt="atreus">
-                            <div class="atreus">
-                            <b>Level :</b> {{  form_HeroTable.atreus_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.atreus_star  }} <br>
-                            </div>
-                        </div>  
-                        <div class="container-hero">        
-                            <img src="/static/image/hero_icon/icon_urasil.png" width="51px" height="54px" alt="urasil">
-                            <div class="urasil">
-                                <b>Level :</b> {{  form_HeroTable.urasil_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.urasil_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_phoren.png" width="51px" height="54px" alt="phoren">
-                            <div class="phoren">
-                                <b>Level :</b> {{  form_HeroTable.phoren_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.phoren_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_taranis.png" width="51px" height="54px" alt="taranis">
-                            <div class="taranis">
-                                <b>Level :</b> {{  form_HeroTable.taranis_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.taranis_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_helix.png" width="51px" height="54px" alt="helix">
-                            <div class="helix">
-                                <b>Level :</b> {{  form_HeroTable.helix_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.helix_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_meowgik.png" width="51px" height="54px" alt="meowgik">
-                            <div class="meowgik">
-                                <b>Level :</b> {{  form_HeroTable.meowgik_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.meowgik_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_shari.png" width="51px" height="54px" alt="shari">
-                            <div class="shari">
-                                <b>Level :</b> {{  form_HeroTable.shari_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.shari_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_ayana.png" width="51px" height="54px" alt="ayana">
-                            <div class="ayana">
-                                <b>Level :</b> {{  form_HeroTable.ayana_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.ayana_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_onir.png" width="51px" height="54px" alt="onir">
-                            <div class="onir">
-                                <b>Level :</b> {{  form_HeroTable.onir_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.onir_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_rolla.png" width="51px" height="54px" alt="rolla">
-                            <div class="rolla">
-                                <b>Level :</b> {{  form_HeroTable.rolla_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.rolla_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_bonnie.png" width="51px" height="54px" alt="bonnie">
-                            <div class="bonnie">
-                                <b>Level :</b> {{  form_HeroTable.bonnie_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.bonnie_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_sylvan.png" width="51px" height="54px" alt="sylvan">
-                            <div class="sylvan">
-                                <b>Level :</b> {{  form_HeroTable.sylvan_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.sylvan_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_shade.png" width="51px" height="54px" alt="shade">
-                            <div class="shade">
-                                <b>Level :</b> {{  form_HeroTable.shade_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.shade_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_ophelia.png" width="51px" height="54px" alt="ophelia">
-                            <div class="ophelia">
-                                <b>Level :</b> {{  form_HeroTable.ophelia_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.ophelia_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_ryan.png" width="51px" height="54px" alt="ryan">
-                            <div class="ryan">
-                                <b>Level :</b> {{  form_HeroTable.ryan_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.ryan_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_lina.png" width="51px" height="54px" alt="lina">
-                            <div class="lina">
-                                <b>Level :</b> {{  form_HeroTable.lina_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.lina_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_aquea.png" width="51px" height="54px" alt="aquea">
-                            <div class="aquea">
-                                <b>Level :</b> {{  form_HeroTable.aquea_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.aquea_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_shingen.png" width="51px" height="54px" alt="shingen">
-                            <div class="shingen">
-                                <b>Level :</b> {{  form_HeroTable.shingen_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.shingen_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_gugu.png" width="51px" height="54px" alt="gugu">
-                            <div class="gugu">
-                                <b>Level :</b> {{  form_HeroTable.gugu_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.gugu_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_iris.png" width="51px" height="54px" alt="iris">
-                            <div class="iris">
-                                <b>Level :</b> {{  form_HeroTable.iris_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.iris_star  }} <br>
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_blazo.png" width="51px" height="54px" alt="blazo">
-                            <div class="blazo">
-                                <b>Level :</b> {{  form_HeroTable.blazo_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.blazo_star  }}
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_melinda.png" width="51px" height="54px" alt="melinda">
-                            <div class="melinda">
-                                <b>Level :</b> {{  form_HeroTable.melinda_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.melinda_star  }}
-                            </div>
-                        </div>
-                        <div class="container-hero">    
-                            <img src="/static/image/hero_icon/icon_elaine.png" width="51px" height="54px" alt="elaine">
-                            <div class="elaine">
-                                <b>Level :</b> {{  form_HeroTable.elaine_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.elaine_star  }}
-                            </div>
-                        </div>
-                    </div>
-                   <br>
-                    <div class="talent container">
-                        <img class="talent_image" src="/static/image/formulaire-image/image_talent.png" height="35%" width="35%">
-                        <div class="talent_form">
-                            <b>Strength (max 25) :</b> {{  form_TalentTable.strength_level }}
-                            <b>Power (max 25) :</b> {{  form_TalentTable.power_level }}
-                            <b>Recover (max 25) :</b> {{  form_TalentTable.recover_level  }}
-                            <b>Block (max 25) :</b> {{  form_TalentTable.block_level  }}
-                            <b>Iron Bulwark (max 25) :</b> {{  form_TalentTable.iron_bulwark_level  }}
-                            <b>Equipment (max 10) :</b> {{  form_TalentTable.enhanced_equipment_level  }}
-                            <b>Hero Powerup (max 10) :</b> {{  form_TalentTable.hero_power_up_level  }}
-                            <b>Runes Powerup (max 15) :</b> {{  form_TalentTable.runes_power_up_level  }}
-                        </div>
-                    </div>
-                    <div class="skin container">
-                        <div>
-                            <img class="skin_image" src="/static/image/formulaire-image/skin_screen.png"> 
-                        </div>
-                        <div class="skin_form">
-                        <b>Take a look in your game, and search for :</b><br>
-                            HP given from skin : {{ form_SkinTable.skin_health }}<br>
-                            Attack given from skin : {{ form_SkinTable.skin_attack }}<br>
-                        </div>
-                    </div>
-                    <div class="altar container">
-                        <div class="altar_form">
-                            <b>Equipment Altar level :</b> {{ form_AltarTable.stuff_altar_level }}<br>
-                            <b>Equipment Altar ascension :</b> {{ form_AltarTable.stuff_altar_ascension }}<br>
-                            <b>Hero Altar level :</b> {{ form_AltarTable.heros_altar_level }}<br>
-                            <b>Hero Altar ascension :</b> {{ form_AltarTable.heros_altar_ascension }}<br>
-                        </div>
-                        <div class="alter_image">
-                            <img src="/static/image/formulaire-image/altar_hero_pillar.png">
-                            <img src="/static/image/formulaire-image/altar_stuff_pillar.png"> 
-                        </div>
-                    </div>
-                    <div class="jewel container">
-                        <div class="jewel_form">
-                            <table class="weapon_jewel_table jewel_table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">Weapon Jewels</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.weapon_jewel1_type }}</td>
-                                        <td>{{ form_JewelLevelTable.weapon_jewel1_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.weapon_jewel2_type }}</td>
-                                        <td>{{ form_JewelLevelTable.weapon_jewel2_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.weapon_jewel3_type }}</td>
-                                        <td>{{ form_JewelLevelTable.weapon_jewel3_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.weapon_jewel4_type }}</td>
-                                        <td>{{ form_JewelLevelTable.weapon_jewel4_level }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="armor_jewel_table jewel_table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">Armor Jewels</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.armor_jewel1_type }}</td>
-                                        <td>{{ form_JewelLevelTable.armor_jewel1_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.armor_jewel2_type }}</td>
-                                        <td>{{ form_JewelLevelTable.armor_jewel2_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.armor_jewel3_type }}</td>
-                                        <td>{{ form_JewelLevelTable.armor_jewel3_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.armor_jewel4_type }}</td>
-                                        <td>{{ form_JewelLevelTable.armor_jewel4_level }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="ring1_jewel_table jewel_table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">1st Ring Jewels</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.ring1_jewel1_type }}</td>
-                                        <td>{{ form_JewelLevelTable.ring1_jewel1_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.ring1_jewel2_type }}</td>
-                                        <td>{{ form_JewelLevelTable.ring1_jewel2_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.ring1_jewel3_type }}</td>
-                                        <td>{{ form_JewelLevelTable.ring1_jewel3_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.ring1_jewel4_type }}</td>
-                                        <td>{{ form_JewelLevelTable.ring1_jewel4_level }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="ring2_jewel_table jewel_table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">2nd Ring Jewels</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.ring2_jewel1_type }}</td>
-                                        <td>{{ form_JewelLevelTable.ring2_jewel1_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.ring2_jewel2_type }}</td>
-                                        <td>{{ form_JewelLevelTable.ring2_jewel2_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.ring2_jewel3_type }}</td>
-                                        <td>{{ form_JewelLevelTable.ring2_jewel3_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.ring2_jewel4_type }}</td>
-                                        <td>{{ form_JewelLevelTable.ring2_jewel4_level }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="pet1_jewel_table jewel_table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">1st Pet Jewels</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.pet1_jewel1_type }}</td>
-                                        <td>{{ form_JewelLevelTable.pet1_jewel1_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.pet1_jewel2_type }}</td>
-                                        <td>{{ form_JewelLevelTable.pet1_jewel2_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.pet1_jewel3_type }}</td>
-                                        <td>{{ form_JewelLevelTable.pet1_jewel3_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.pet1_jewel4_type }}</td>
-                                        <td>{{ form_JewelLevelTable.pet1_jewel4_level }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="pet2_jewel_table jewel_table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">2nd Pet Jewels</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.pet2_jewel1_type }}</td>
-                                        <td>{{ form_JewelLevelTable.pet2_jewel1_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.pet2_jewel2_type }}</td>
-                                        <td>{{ form_JewelLevelTable.pet2_jewel2_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.pet2_jewel3_type }}</td>
-                                        <td>{{ form_JewelLevelTable.pet2_jewel3_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.pet2_jewel4_type }}</td>
-                                        <td>{{ form_JewelLevelTable.pet2_jewel4_level }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="bracelet_jewel_table jewel_table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">Bracelet Jewels</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.bracelet_jewel1_type }}</td>
-                                        <td>{{ form_JewelLevelTable.bracelet_jewel1_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.bracelet_jewel2_type }}</td>
-                                        <td>{{ form_JewelLevelTable.bracelet_jewel2_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.bracelet_jewel3_type }}</td>
-                                        <td>{{ form_JewelLevelTable.bracelet_jewel3_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.bracelet_jewel4_type }}</td>
-                                        <td>{{ form_JewelLevelTable.bracelet_jewel4_level }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="locket_jewel_table jewel_table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">Locket Jewels</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.locket_jewel1_type }}</td>
-                                        <td>{{ form_JewelLevelTable.locket_jewel1_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.locket_jewel2_type }}</td>
-                                        <td>{{ form_JewelLevelTable.locket_jewel2_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.locket_jewel3_type }}</td>
-                                        <td>{{ form_JewelLevelTable.locket_jewel3_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.locket_jewel4_type }}</td>
-                                        <td>{{ form_JewelLevelTable.locket_jewel4_level }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="book_jewel_table jewel_table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">SpellBook Jewels</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.book_jewel1_type }}</td>
-                                        <td>{{ form_JewelLevelTable.book_jewel1_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.book_jewel2_type }}</td>
-                                        <td>{{ form_JewelLevelTable.book_jewel2_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.book_jewel3_type }}</td>
-                                        <td>{{ form_JewelLevelTable.book_jewel3_level }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ form_JewelTypeTable.book_jewel4_type }}</td>
-                                        <td>{{ form_JewelLevelTable.book_jewel4_level }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="egg container" translate="no">
-                        <div class="egg_form">
-                            <b><img src="/static/image/monsters_icon/green_bat.png"></b>{{ form_EggTable.green_bat }}
-                            <b><img src="/static/image/monsters_icon/vase.png"></b>{{ form_EggTable.vase }}
-                            <b><img src="/static/image/monsters_icon/bomb_ghost.png"></b>{{ form_EggTable.bomb_ghost }}
-                            <b><img src="/static/image/monsters_icon/rock_puppet.png"></b>{{ form_EggTable.rock_puppet }}
-                            <b><img src="/static/image/monsters_icon/party_tree.png"></b>{{ form_EggTable.party_tree }}
-                            <b><img src="/static/image/monsters_icon/wolfhound.png"></b>{{ form_EggTable.wolfhound }}
-                            <b><img src="/static/image/monsters_icon/skeleton_archer.png"></b>{{ form_EggTable.skeleton_archer }}
-                            <b><img src="/static/image/monsters_icon/skeleton_soldier.png"></b>{{ form_EggTable.skeleton_soldier }}
-                            <b><img src="/static/image/monsters_icon/wasp.png"></b>{{ form_EggTable.wasp }}
-                            <b><img src="/static/image/monsters_icon/fire_mage.png"></b>{{ form_EggTable.fire_mage }}
-                            <b><img src="/static/image/monsters_icon/medusa.png"></b>{{ form_EggTable.medusa }}
-                            <b><img src="/static/image/monsters_icon/ice_mage.png"></b>{{ form_EggTable.ice_mage }}
-                            <b><img src="/static/image/monsters_icon/fire_lizard.png"></b>{{ form_EggTable.fire_lizard }}
-                            <b><img src="/static/image/monsters_icon/flame_ghost.png"></b>{{ form_EggTable.flame_ghost }}
-                            <b><img src="/static/image/monsters_icon/thorny_snake.png"></b>{{ form_EggTable.thorny_snake }}
-                            <b><img src="/static/image/monsters_icon/tornado_demon.png"></b>{{ form_EggTable.tornado_demon }}
-                            <b><img src="/static/image/monsters_icon/piranha.png"></b>{{ form_EggTable.piranha }}
-                            <b><img src="/static/image/monsters_icon/zombie.png"></b>{{ form_EggTable.zombie }}
-                            <b><img src="/static/image/monsters_icon/scarecrow.png"></b>{{ form_EggTable.scarecrow }}
-                            <b><img src="/static/image/monsters_icon/long_dragon.png"></b>{{ form_EggTable.long_dragon }}
-                            <b><img src="/static/image/monsters_icon/skull_wizard.png"></b>{{ form_EggTable.skull_wizard }}
-                            <b><img src="/static/image/monsters_icon/lava_golem.png"></b>{{ form_EggTable.lava_golem }}
-                            <b><img src="/static/image/monsters_icon/ice_golem.png"></b>{{ form_EggTable.ice_golem }}
-                            <b><img src="/static/image/monsters_icon/cactus.png"></b>{{ form_EggTable.cactus }}
-                            <b><img src="/static/image/monsters_icon/crazy_spider.png"></b>{{ form_EggTable.crazy_spider }}
-                            <b><img src="/static/image/monsters_icon/fire_element.png"></b>{{ form_EggTable.fire_element }}
-                            <b><img src="/static/image/monsters_icon/skeleton_swordsman.png"></b>{{ form_EggTable.skeleton_swordsman }}
-                            <b><img src="/static/image/monsters_icon/scythe_mage.png"></b>{{ form_EggTable.scythe_mage }}
-                            <b><img src="/static/image/monsters_icon/shadow_assassin.png"></b>{{ form_EggTable.shadow_assassin }}
-                            <b><img src="/static/image/monsters_icon/tornado_mage.png"></b>{{ form_EggTable.tornado_mage }}
-                            <b><img src="/static/image/monsters_icon/pea_shooter.png"></b>{{ form_EggTable.pea_shooter }}
-                            <b><img src="/static/image/monsters_icon/nether_puppet.png"></b>{{ form_EggTable.nether_puppet }}
-                            <b><img src="/static/image/monsters_icon/fallen_bat.png"></b>{{ form_EggTable.fallen_bat }}
-                            <b><img src="/static/image/monsters_icon/sandian.png"></b>{{ form_EggTable.sandian }}
-                            <b><img src="/static/image/monsters_icon/psionic_scarecrow.png"></b>{{ form_EggTable.psionic_scarecrow }}
-                            <b><img src="/static/image/monsters_icon/savage_spider.png"></b>{{ form_EggTable.savage_spider }}
-                            <b><img src="/static/image/monsters_icon/one_eyed_bat.png"></b>{{ form_EggTable.one_eyed_bat }}
-                            <b><img src="/static/image/monsters_icon/tundra_dragon.png"></b>{{ form_EggTable.tundra_dragon }}                        
-                            <b><img src="/static/image/monsters_icon/purple_phantom.png"></b>{{ form_EggTable.purple_phantom }}
-                            <b><img src="/static/image/monsters_icon/icefire_phantom.png"></b>{{ form_EggTable.icefire_phantom }}
-                            <b><img src="/static/image/monsters_icon/steel_dryad.png"></b>{{ form_EggTable.steel_dryad }}
-                            <b><img src="/static/image/monsters_icon/flaming_bug.png"></b>{{ form_EggTable.flaming_bug }}
-                            <b><img src="/static/image/monsters_icon/elite_archer.png"></b>{{ form_EggTable.elite_archer }}
-                            <b><img src="/static/image/monsters_icon/rolling_mushroom.png"></b>{{ form_EggTable.rolling_mushroom }}
-                            <b><img src="/static/image/monsters_icon/spitting_mushroom.png"></b>{{ form_EggTable.spitting_mushroom }}
-                            <b><img src="/static/image/monsters_icon/scarlet_mage.png"></b>{{ form_EggTable.scarlet_mage }}
-                            <b><img src="/static/image/monsters_icon/little_dragon.png"></b>{{ form_EggTable.little_dragon }}
-                            <b><img src="/static/image/monsters_icon/arch_leader.png"></b>{{ form_EggTable.arch_leader }}
-                            <b><img src="/static/image/monsters_icon/skeleton_king.png"></b>{{ form_EggTable.skeleton_king }}
-                            <b><img src="/static/image/monsters_icon/crimson_witch.png"></b>{{ form_EggTable.crimson_witch }}
-                            <b><img src="/static/image/monsters_icon/rage_golem.png"></b>{{ form_EggTable.rage_golem }}                        
-                            <b><img src="/static/image/monsters_icon/queen_bee.png"></b>{{ form_EggTable.queen_bee }}
-                            <b><img src="/static/image/monsters_icon/ice_worm.png"></b>{{ form_EggTable.ice_worm }}
-                            <b><img src="/static/image/monsters_icon/medusa_boss.png"></b>{{ form_EggTable.medusa_boss }}
-                            <b><img src="/static/image/monsters_icon/ice_demon.png"></b>{{ form_EggTable.ice_demon }}
-                            <b><img src="/static/image/monsters_icon/fire_demon.png"></b>{{ form_EggTable.fire_demon }}
-                            <b><img src="/static/image/monsters_icon/krab_boss.png"></b>{{ form_EggTable.krab_boss }}
-                            <b><img src="/static/image/monsters_icon/giant_owl.png"></b>{{ form_EggTable.giant_owl }}
-                            <b><img src="/static/image/monsters_icon/desert_goliath.png"></b>{{ form_EggTable.desert_goliath }}
-                        </div>
-                        <div class="egg_equipped" translate="no">
-                            1st egg = {{ form_EggEquippedTable.egg_equipped1 }}
-                            2nd egg = {{ form_EggEquippedTable.egg_equipped2 }}
-                            3rd egg = {{ form_EggEquippedTable.egg_equipped3 }}
-                            4th egg = {{ form_EggEquippedTable.egg_equipped4 }}
-                            5th egg = {{ form_EggEquippedTable.egg_equipped5 }}
-                        </div>
-                    </div>
-                    <div class="dragon container" translate="no">
-                        <div class="dragon_form">
-                            <b>Dragon 1 : </b>{{ form_DragonTable.dragon1_type }} {{ form_DragonTable.dragon1_rarity }} {{ form_DragonTable.dragon1_level }}<br>
-                            <b>Dragon 2 : </b>{{ form_DragonTable.dragon2_type }} {{ form_DragonTable.dragon2_rarity }} {{ form_DragonTable.dragon2_level }}<br>
-                            <b>Dragon 3 : </b>{{ form_DragonTable.dragon3_type }} {{ form_DragonTable.dragon3_rarity }} {{ form_DragonTable.dragon3_level }}<br>
-    
-                            <b>Only if you have equipped mythic dragon : </b><br>
-                            <u>Dragon 1</u><i> 4th passive skill level :</i> {{ form_DragonTable.dragon_1_boost_4_mythic }}<br>
-                            <u>Dragon 2</u><i> 4th passive skill level :</i> {{ form_DragonTable.dragon_2_boost_4_mythic }}<br>
-                            <u>Dragon 3</u><i> 4th passive skill level :</i> {{ form_DragonTable.dragon_3_boost_4_mythic }}<br>
-                        </div>
-                    </div>
-                    <div class="runes container" translate="no">
-                        <div class="reforge">
-                            <b><u>Reforge Runes :</u></b> 
-                            <div class="popup2" onclick="runesPopupFunction()"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:16px"></i>
-                                <div class="popuptext2" id="runes_popup">
-                                    <img src="/static/image/formulaire-image/reforge-screen.png">
-                                </div>
-                            </div>
-                            <br>
-                            <b>Reforge runes power : </b>{{ form_ReforgeTable.reforge_power }}<br>
-                            <b>Reforge runes saviour : </b>{{ form_ReforgeTable.reforge_saviour }}<br>
-                            <b>Reforge runes recovery : </b>{{ form_ReforgeTable.reforge_recovery }}<br>
-                            <b>Reforge runes courage : </b>{{ form_ReforgeTable.reforge_courage }}<br>
-                            <b>Reforge runes luck : </b>{{ form_ReforgeTable.reforge_luck }}<br><br>
-                        </div> 
-                        <div class="about" translate="yes">
-                            % number need dot . 
-                        </div>
-                        <div class="runes_form">
-                            <div class="power_runes">
-                                {{ form_RunesTable.power_attack_flat }} <br>
-                                {{ form_RunesTable.power_attack_var }}<i class="fa fa-percent"></i><br>
-                            </div>
-                            <div class="recovery_runes">
-                                {{ form_RunesTable.recovery_hp_flat }} <br>
-                            </div>
-                            <div class="saviour_runes">
-                                {{ form_RunesTable.saviour_hp_flat }} <br>
-                                {{ form_RunesTable.saviour_hp_var }}<i class="fa fa-percent"></i><br>
-                            </div>
-                            <div class="luck_runes">
-                                {{ form_RunesTable.luck_hp_flat }} <br>
-                                {{ form_RunesTable.luck_hp_var }}<i class="fa fa-percent"></i><br>
-                            </div>
-                            <div class="courage_runes">
-                                {{ form_RunesTable.courage_attack_flat }} <br>
-                                {{ form_RunesTable.courage_attack_var }}<i class="fa fa-percent"></i><br>
-                                {{ form_RunesTable.selected_hero_courage_attack_flat }} {{ form_RunesTable.courage_hero_attack_flat }} <br>
-                                {{ form_RunesTable.selected_hero_courage_attack_var }} {{ form_RunesTable.courage_hero_attack_var }}<i class="fa fa-percent"></i><br>
-                                {{ form_RunesTable.selected_hero_courage_hp_flat }} {{ form_RunesTable.courage_hero_hp_flat }} <br>
-                                {{ form_RunesTable.selected_hero_courage_hp_var }} {{ form_RunesTable.courage_hero_hp_var }}<i class="fa fa-percent"></i><br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <input class="submit-input" type="submit" value="Submit"\>
-            </div>
-            </form>
-        </main>
-    </main>
-</div>
-<footer>
-    <div class="footer-content">
-        <div class="footer-about">
-            <img class="footer-img-icon" src="/static/image/archero_icon.png">
-            <div class="about-content">
-                <h2>Archero :</h2>
-                <div>Archero Update will be added with a certains delay</div>
-                <div class="contact-me">
-                    <div>If you encounter any bugs / anomaly please contact me on discord</div>
-                    <div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
-                </div>
-            </div>
-        </div>
-        <div class="discord_link">
-				<div class="container_dlink">
-					<h2>Community Link:</h2> 
-					<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMuthique's Server</li></a>
-					<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+		<main class="main-form">
+			<div class="container-form">
+				{% if ingame_id == none %}
+				<form method="POST" action="/calculator/calc/">
+				{% else %}
+				<form method="POST" action="/calculator/updatecalc/{{id_token}}/">
+				{% endif %}
+				{% csrf_token %}
+				<script>
+					document.cookie = " csrftoken= "+document.querySelector('[name=csrfmiddlewaretoken]').value + ";path=/";
+				</script>
+				<div class="form">
+					<div class="ingame-name">
+						{% if error_msg or value_error %}
+							<div class="error_form">
+								<i class="fa fa-exclamation-triangle" aria-hidden="true"> Error </i>
+								<div class="id_error_msg">
+									{{ error_msg }}{{ value_error }}
+								</div>
+							</div>
+						{% endif %}
+						{% if ingame_id == none %}
+							<b>Ingame Id :</b> <input type="text" value="{{ cookie_id }}" pattern="[0-9]{1}-[0-9]{6,}" name="ingame_id" required id="ingame_id" placeholder="1-00000000" readonly><br>
+							<b>Username :</b> <input type="text" value="{{ cookie_name }}" name="ingame_name" maxlength="30" required id="id_ingame_name" readonly><br>
+						{% else %}
+							<b>Ingame ID :</b> <input type="text" name="ingame_id" required id="ingame_id" value="{{ ingame_id }}" readonly><br>
+							<b>Username :</b> <input type="text" name="ingame_name" maxlength="30" required id="id_ingame_name" value="{{ ingame_name }}" readonly><br>
+						{% endif %}
+					</div>
+					<div class="stuff container">
+						<div class="form_stuff" translate="no">
+							<b>Choose your hero :</b> {{  form_User.choosen_hero  }} <br>
+							<b>Base attack :</b> {{  form_User.atk_base_stats_hero_choosen  }} <br>
+							<b>Base Health :</b> {{  form_User.health_base_stats_hero_choosen  }} <br>
+							<b>Brave Privileges :</b> {{  form_User.brave_privileges_level  }} <div class="privileges_help popup3" onclick="privilegesPopupFunction()"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:16px"></i>
+								<div class="popuptext3" id="privileges_popup">
+									<img class="privileges_help_image" src="/static/image/formulaire-image/privileges_help.png" alt="privileges help">
+								</div>
+							</div><br>
+							Weapon : {{  form_StuffTable.weapon_choosen  }} {{  form_StuffTable.weapon_rarity  }}{{  form_StuffTable.weapon_level  }}<br>
+							Armor : {{  form_StuffTable.armor_choosen  }} {{  form_StuffTable.armor_rarity  }}{{  form_StuffTable.armor_level  }}<br>
+							Ring 1 : {{  form_StuffTable.ring1_choosen  }} {{  form_StuffTable.ring1_rarity  }}{{  form_StuffTable.ring1_level  }}<br>
+							Ring 2 : {{  form_StuffTable.ring2_choosen  }} {{  form_StuffTable.ring2_rarity  }}{{  form_StuffTable.ring2_level  }}<br>
+							Pet 1 : {{  form_StuffTable.pet1_choosen  }} {{  form_StuffTable.pet1_rarity  }}{{  form_StuffTable.pet1_level  }}<br>
+							Pet 2 : {{  form_StuffTable.pet2_choosen  }} {{  form_StuffTable.pet2_rarity  }}{{  form_StuffTable.pet2_level  }}<br>
+							Bracelet : {{  form_StuffTable.bracelet_choosen  }} {{  form_StuffTable.bracelet_rarity  }}{{  form_StuffTable.bracelet_level  }}<br>
+							Locket : {{  form_StuffTable.locket_choosen  }} {{  form_StuffTable.locket_rarity  }}{{  form_StuffTable.locket_level  }}<br>
+							SpellBook : {{  form_StuffTable.book_choosen  }} {{  form_StuffTable.book_rarity  }}{{  form_StuffTable.book_level  }}<br>
+						</div>
+						<p style="overflow: hidden;">_____________________________</p><br>
+						<div class="refine_form">
+							<u><b>Refine Stats: </b></u>
+							<div class="refine_help popup" onclick="refinePopupFunction()"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:16px"></i>
+								<div class="popuptext" id="refine_popup">
+									<img class="refine_help_image" src="/static/image/formulaire-image/refine_help.png" alt="refine help">
+								</div>
+							</div><br>
+							<u>Weapon</u> : {{ form_RefineTable.weapon_refine_atk }}{{ form_RefineTable.weapon_refine_basic_stats }}%<br>
+							<u>Armor</u> : {{ form_RefineTable.armor_refine_hp }}{{ form_RefineTable.armor_refine_basic_stats }}%<br>
+							<u>Ring 1</u> : {{ form_RefineTable.ring1_refine_atk }}{{ form_RefineTable.ring1_refine_basic_stats }}%<br>
+							<u>Ring 2</u> : {{ form_RefineTable.ring2_refine_atk }}{{ form_RefineTable.ring2_refine_basic_stats }}%<br>
+							<u>Bracelet</u> : {{ form_RefineTable.bracelet_refine_atk }}{{ form_RefineTable.bracelet_refine_basic_stats }}%<br>
+							<u>Locket</u> : {{ form_RefineTable.locket_refine_hp }}{{ form_RefineTable.locket_refine_basic_stats }}%<br>
+							<u>SpellBook</u> : {{ form_RefineTable.book_refine_hp }}{{ form_RefineTable.book_refine_basic_stats }}%<br>
+						</div>
+						<p style="overflow: hidden;">_____________________________</p><br>
+						<div class="medals_form" translate="no">
+							<u><b>Medals: </b></u><br>
+							<em>(Click on the Medals you own)</em>
+							<div class="medals_container" id="medals_container">
+								<img src="/static/image/medals/Medal1001.png" class="medals_img" alt="medals_01" id="medals_01">
+								<img src="/static/image/medals/Medal1002.png" class="medals_img" alt="medals_02" id="medals_02">
+								<img src="/static/image/medals/Medal1003.png" class="medals_img" alt="medals_03" id="medals_03">
+								<img src="/static/image/medals/Medal1004.png" class="medals_img" alt="medals_04" id="medals_04">
+								<img src="/static/image/medals/Medal1005.png" class="medals_img" alt="medals_05" id="medals_05">
+								<img src="/static/image/medals/Medal1006.png" class="medals_img" alt="medals_06" id="medals_06">
+								<!-- <img src="/static/image/medals/Medal1007.png" class="medals_img" alt="medals_07" id="medals_07"> -->
+								<img src="/static/image/medals/Medal1008.png" class="medals_img" alt="medals_08" id="medals_08">
+								<img src="/static/image/medals/Medal1009.png" class="medals_img" alt="medals_09" id="medals_09">
+								<img src="/static/image/medals/Medal1010.png" class="medals_img" alt="medals_10" id="medals_10">
+								<img src="/static/image/medals/Medal2001.png" class="medals_img" alt="medals_11" id="medals_11">
+								<img src="/static/image/medals/Medal2002.png" class="medals_img" alt="medals_12" id="medals_12">
+								<img src="/static/image/medals/Medal2003.png" class="medals_img" alt="medals_13" id="medals_13">
+								<img src="/static/image/medals/Medal2004.png" class="medals_img" alt="medals_14" id="medals_14">
+								<img src="/static/image/medals/Medal2005.png" class="medals_img" alt="medals_15" id="medals_15">
+								<img src="/static/image/medals/Medal2006.png" class="medals_img" alt="medals_16" id="medals_16">
+								<img src="/static/image/medals/Medal2007.png" class="medals_img" alt="medals_17" id="medals_17">
+								<img src="/static/image/medals/Medal2008.png" class="medals_img" alt="medals_18" id="medals_18">
+								<img src="/static/image/medals/Medal2009.png" class="medals_img" alt="medals_19" id="medals_19">
+								<img src="/static/image/medals/Medal2010.png" class="medals_img" alt="medals_20" id="medals_20">
+								<img src="/static/image/medals/Medal2011.png" class="medals_img" alt="medals_21" id="medals_21">
+								<img src="/static/image/medals/Medal2012.png" class="medals_img" alt="medals_22" id="medals_22">
+								<img src="/static/image/medals/Medal3001.png" class="medals_img" alt="medals_23" id="medals_23">
+								<img src="/static/image/medals/Medal3002.png" class="medals_img" alt="medals_24" id="medals_24">
+								<img src="/static/image/medals/Medal3003.png" class="medals_img" alt="medals_25" id="medals_25">
+								<img src="/static/image/medals/Medal3004.png" class="medals_img" alt="medals_26" id="medals_26">
+								<img src="/static/image/medals/Medal3005.png" class="medals_img" alt="medals_27" id="medals_27">
+								<img src="/static/image/medals/Medal3006.png" class="medals_img" alt="medals_28" id="medals_28">
+								<img src="/static/image/medals/Medal3007.png" class="medals_img" alt="medals_29" id="medals_29">
+								<img src="/static/image/medals/Medal3008.png" class="medals_img" alt="medals_30" id="medals_30">
+								<img src="/static/image/medals/Medal3009.png" class="medals_img" alt="medals_31" id="medals_31">
+								<img src="/static/image/medals/Medal3010.png" class="medals_img" alt="medals_32" id="medals_32">
+							</div>
+						</div>
+					</div>
+					<div class="hero_form container" translate="no">
+						<div class="container-hero">
+							<img src="/static/image/hero_icon/icon_atreus.png" width="52px" height="52px" alt="atreus">
+							<div class="atreus">
+							<b>Level :</b> {{  form_HeroTable.atreus_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.atreus_star  }} <br>
+							</div>
+						</div>  
+						<div class="container-hero">        
+							<img src="/static/image/hero_icon/icon_urasil.png" width="52px" height="52px" alt="urasil">
+							<div class="urasil">
+								<b>Level :</b> {{  form_HeroTable.urasil_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.urasil_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_phoren.png" width="52px" height="52px" alt="phoren">
+							<div class="phoren">
+								<b>Level :</b> {{  form_HeroTable.phoren_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.phoren_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_taranis.png" width="52px" height="52px" alt="taranis">
+							<div class="taranis">
+								<b>Level :</b> {{  form_HeroTable.taranis_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.taranis_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_helix.png" width="52px" height="52px" alt="helix">
+							<div class="helix">
+								<b>Level :</b> {{  form_HeroTable.helix_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.helix_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_meowgik.png" width="52px" height="52px" alt="meowgik">
+							<div class="meowgik">
+								<b>Level :</b> {{  form_HeroTable.meowgik_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.meowgik_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_shari.png" width="52px" height="52px" alt="shari">
+							<div class="shari">
+								<b>Level :</b> {{  form_HeroTable.shari_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.shari_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_ayana.png" width="52px" height="52px" alt="ayana">
+							<div class="ayana">
+								<b>Level :</b> {{  form_HeroTable.ayana_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.ayana_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_onir.png" width="52px" height="52px" alt="onir">
+							<div class="onir">
+								<b>Level :</b> {{  form_HeroTable.onir_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.onir_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_rolla.png" width="52px" height="52px" alt="rolla">
+							<div class="rolla">
+								<b>Level :</b> {{  form_HeroTable.rolla_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.rolla_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_bonnie.png" width="52px" height="52px" alt="bonnie">
+							<div class="bonnie">
+								<b>Level :</b> {{  form_HeroTable.bonnie_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.bonnie_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_sylvan.png" width="52px" height="52px" alt="sylvan">
+							<div class="sylvan">
+								<b>Level :</b> {{  form_HeroTable.sylvan_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.sylvan_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_shade.png" width="52px" height="52px" alt="shade">
+							<div class="shade">
+								<b>Level :</b> {{  form_HeroTable.shade_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.shade_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_ophelia.png" width="52px" height="52px" alt="ophelia">
+							<div class="ophelia">
+								<b>Level :</b> {{  form_HeroTable.ophelia_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.ophelia_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_ryan.png" width="52px" height="52px" alt="ryan">
+							<div class="ryan">
+								<b>Level :</b> {{  form_HeroTable.ryan_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.ryan_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_lina.png" width="52px" height="52px" alt="lina">
+							<div class="lina">
+								<b>Level :</b> {{  form_HeroTable.lina_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.lina_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_aquea.png" width="52px" height="52px" alt="aquea">
+							<div class="aquea">
+								<b>Level :</b> {{  form_HeroTable.aquea_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.aquea_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_shingen.png" width="52px" height="52px" alt="shingen">
+							<div class="shingen">
+								<b>Level :</b> {{  form_HeroTable.shingen_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.shingen_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_gugu.png" width="52px" height="52px" alt="gugu">
+							<div class="gugu">
+								<b>Level :</b> {{  form_HeroTable.gugu_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.gugu_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_iris.png" width="52px" height="52px" alt="iris">
+							<div class="iris">
+								<b>Level :</b> {{  form_HeroTable.iris_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.iris_star  }} <br>
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_blazo.png" width="52px" height="52px" alt="blazo">
+							<div class="blazo">
+								<b>Level :</b> {{  form_HeroTable.blazo_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.blazo_star  }}
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_melinda.png" width="52px" height="52px" alt="melinda">
+							<div class="melinda">
+								<b>Level :</b> {{  form_HeroTable.melinda_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.melinda_star  }}
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_elaine.png" width="52px" height="52px" alt="elaine">
+							<div class="elaine">
+								<b>Level :</b> {{  form_HeroTable.elaine_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.elaine_star  }}
+							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_bobo.png" width="52px" height="52px" alt="bobo">
+							<div class="bobo">
+								<b>Level :</b> {{  form_HeroTable.bobo_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.bobo_star  }}
+							</div>
+						</div>
+					</div>
+					<div class="talent container">
+						<div class="talent_form">
+							<b>Strength (max 25) :</b> {{  form_TalentTable.strength_level }}
+							<b>Power (max 25) :</b> {{  form_TalentTable.power_level }}
+							<b>Recover (max 25) :</b> {{  form_TalentTable.recover_level  }}
+							<b>Block (max 25) :</b> {{  form_TalentTable.block_level  }}
+							<b>Iron Bulwark (max 25) :</b> {{  form_TalentTable.iron_bulwark_level  }}
+							<b>Equipment (max 10) :</b> {{  form_TalentTable.enhanced_equipment_level  }}
+							<b>Hero Powerup (max 10) :</b> {{  form_TalentTable.hero_power_up_level  }}
+							<b>Runes Powerup (max 15) :</b> {{  form_TalentTable.runes_power_up_level  }}
+						</div>
+					</div>
+					<div class="skin container">
+						<div>
+							<img class="skin_image" src="/static/image/formulaire-image/skin_screen.png"> 
+						</div>
+						<div class="skin_form">
+						<b>Take a look in your game, and search for :</b><br>
+							HP given from skin : {{ form_SkinTable.skin_health }}<br>
+							Attack given from skin : {{ form_SkinTable.skin_attack }}<br>
+						</div>
+					</div>
+					<div class="altar container">
+						<div class="altar_form">
+							<b>Equipment Altar level :</b> {{ form_AltarTable.stuff_altar_level }}<br>
+							<b>Equipment Altar ascension :</b> {{ form_AltarTable.stuff_altar_ascension }}<br>
+							<b>Hero Altar level :</b> {{ form_AltarTable.heros_altar_level }}<br>
+							<b>Hero Altar ascension :</b> {{ form_AltarTable.heros_altar_ascension }}<br>
+						</div>
+					</div>
+					<div class="jewel container">
+						<div class="jewel_form">
+							<table class="weapon_jewel_table jewel_table">
+								<thead>
+									<tr>
+										<th colspan="2">Weapon Jewels</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{{ form_JewelTypeTable.weapon_jewel1_type }}</td>
+										<td>{{ form_JewelLevelTable.weapon_jewel1_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.weapon_jewel2_type }}</td>
+										<td>{{ form_JewelLevelTable.weapon_jewel2_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.weapon_jewel3_type }}</td>
+										<td>{{ form_JewelLevelTable.weapon_jewel3_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.weapon_jewel4_type }}</td>
+										<td>{{ form_JewelLevelTable.weapon_jewel4_level }}</td>
+									</tr>
+									<!-- <tr class="globallvj">
+										<th colspan="2">Jewel overall Lv:<p id="jewel_W"></p></th>
+									</tr> -->
+								</tbody>
+							</table>
+							<table class="armor_jewel_table jewel_table">
+								<thead>
+									<tr>
+										<th colspan="2">Armor Jewels</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{{ form_JewelTypeTable.armor_jewel1_type }}</td>
+										<td>{{ form_JewelLevelTable.armor_jewel1_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.armor_jewel2_type }}</td>
+										<td>{{ form_JewelLevelTable.armor_jewel2_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.armor_jewel3_type }}</td>
+										<td>{{ form_JewelLevelTable.armor_jewel3_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.armor_jewel4_type }}</td>
+										<td>{{ form_JewelLevelTable.armor_jewel4_level }}</td>
+									</tr>
+									<!-- <tr class="globallvj">
+										<th colspan="2">Jewel overall Lv:<p id="jewel_A"></p></th>
+									</tr> -->
+								</tbody>
+							</table>
+							<table class="ring1_jewel_table jewel_table">
+								<thead>
+									<tr>
+										<th colspan="2">1st Ring Jewels</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{{ form_JewelTypeTable.ring1_jewel1_type }}</td>
+										<td>{{ form_JewelLevelTable.ring1_jewel1_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.ring1_jewel2_type }}</td>
+										<td>{{ form_JewelLevelTable.ring1_jewel2_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.ring1_jewel3_type }}</td>
+										<td>{{ form_JewelLevelTable.ring1_jewel3_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.ring1_jewel4_type }}</td>
+										<td>{{ form_JewelLevelTable.ring1_jewel4_level }}</td>
+									</tr>
+									<!-- <tr class="globallvj">
+										<th colspan="2">Jewel overall Lv:<p id="jewel_R1"></p></th>
+									</tr> -->
+								</tbody>
+							</table>
+							<table class="ring2_jewel_table jewel_table">
+								<thead>
+									<tr>
+										<th colspan="2">2nd Ring Jewels</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{{ form_JewelTypeTable.ring2_jewel1_type }}</td>
+										<td>{{ form_JewelLevelTable.ring2_jewel1_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.ring2_jewel2_type }}</td>
+										<td>{{ form_JewelLevelTable.ring2_jewel2_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.ring2_jewel3_type }}</td>
+										<td>{{ form_JewelLevelTable.ring2_jewel3_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.ring2_jewel4_type }}</td>
+										<td>{{ form_JewelLevelTable.ring2_jewel4_level }}</td>
+									</tr>
+									<!-- <tr class="globallvj">
+										<th colspan="2">Jewel overall Lv:<p id="jewel_R2"></p></th>
+									</tr> -->
+								</tbody>
+							</table>
+							<table class="pet1_jewel_table jewel_table">
+								<thead>
+									<tr>
+										<th colspan="2">1st Pet Jewels</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{{ form_JewelTypeTable.pet1_jewel1_type }}</td>
+										<td>{{ form_JewelLevelTable.pet1_jewel1_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.pet1_jewel2_type }}</td>
+										<td>{{ form_JewelLevelTable.pet1_jewel2_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.pet1_jewel3_type }}</td>
+										<td>{{ form_JewelLevelTable.pet1_jewel3_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.pet1_jewel4_type }}</td>
+										<td>{{ form_JewelLevelTable.pet1_jewel4_level }}</td>
+									</tr>
+									<!-- <tr class="globallvj">
+										<th colspan="2">Jewel overall Lv:<p id="jewel_P1"></p></th>
+									</tr> -->
+								</tbody>
+							</table>
+							<table class="pet2_jewel_table jewel_table">
+								<thead>
+									<tr>
+										<th colspan="2">2nd Pet Jewels</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{{ form_JewelTypeTable.pet2_jewel1_type }}</td>
+										<td>{{ form_JewelLevelTable.pet2_jewel1_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.pet2_jewel2_type }}</td>
+										<td>{{ form_JewelLevelTable.pet2_jewel2_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.pet2_jewel3_type }}</td>
+										<td>{{ form_JewelLevelTable.pet2_jewel3_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.pet2_jewel4_type }}</td>
+										<td>{{ form_JewelLevelTable.pet2_jewel4_level }}</td>
+									</tr>
+									<!-- <tr class="globallvj">
+										<th colspan="2">Jewel overall Lv:<p id="jewel_P2"></p></th>
+									</tr> -->
+								</tbody>
+							</table>
+							<table class="bracelet_jewel_table jewel_table">
+								<thead>
+									<tr>
+										<th colspan="2">Bracelet Jewels</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{{ form_JewelTypeTable.bracelet_jewel1_type }}</td>
+										<td>{{ form_JewelLevelTable.bracelet_jewel1_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.bracelet_jewel2_type }}</td>
+										<td>{{ form_JewelLevelTable.bracelet_jewel2_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.bracelet_jewel3_type }}</td>
+										<td>{{ form_JewelLevelTable.bracelet_jewel3_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.bracelet_jewel4_type }}</td>
+										<td>{{ form_JewelLevelTable.bracelet_jewel4_level }}</td>
+									</tr>
+									<!-- <tr class="globallvj">
+										<th colspan="2">Jewel overall Lv:<p id="jewel_B"></p></th>
+									</tr> -->
+								</tbody>
+							</table>
+							<table class="locket_jewel_table jewel_table">
+								<thead>
+									<tr>
+										<th colspan="2">Locket Jewels</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{{ form_JewelTypeTable.locket_jewel1_type }}</td>
+										<td>{{ form_JewelLevelTable.locket_jewel1_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.locket_jewel2_type }}</td>
+										<td>{{ form_JewelLevelTable.locket_jewel2_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.locket_jewel3_type }}</td>
+										<td>{{ form_JewelLevelTable.locket_jewel3_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.locket_jewel4_type }}</td>
+										<td>{{ form_JewelLevelTable.locket_jewel4_level }}</td>
+									</tr>
+									<!-- <tr class="globallvj">
+										<th colspan="2">Jewel overall Lv:<p id="jewel_L"></p></th>
+									</tr> -->
+								</tbody>
+							</table>
+							<table class="book_jewel_table jewel_table">
+								<thead>
+									<tr>
+										<th colspan="2">SpellBook Jewels</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{{ form_JewelTypeTable.book_jewel1_type }}</td>
+										<td>{{ form_JewelLevelTable.book_jewel1_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.book_jewel2_type }}</td>
+										<td>{{ form_JewelLevelTable.book_jewel2_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.book_jewel3_type }}</td>
+										<td>{{ form_JewelLevelTable.book_jewel3_level }}</td>
+									</tr>
+									<tr>
+										<td>{{ form_JewelTypeTable.book_jewel4_type }}</td>
+										<td>{{ form_JewelLevelTable.book_jewel4_level }}</td>
+									</tr>
+									<!-- <tr class="globallvj">
+										<th colspan="2">Jewel overall Lv:<p id="jewel_S"></p></th>
+									</tr> -->
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="egg container" translate="no">
+						<div class="egg_form">
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/green_bat.png"></b>{{ form_EggTable.green_bat }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/vase.png"></b>{{ form_EggTable.vase }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/bomb_ghost.png"></b>{{ form_EggTable.bomb_ghost }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/rock_puppet.png"></b>{{ form_EggTable.rock_puppet }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/party_tree.png"></b>{{ form_EggTable.party_tree }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/wolfhound.png"></b>{{ form_EggTable.wolfhound }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/skeleton_archer.png"></b>{{ form_EggTable.skeleton_archer }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/skeleton_soldier.png"></b>{{ form_EggTable.skeleton_soldier }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/wasp.png"></b>{{ form_EggTable.wasp }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/fire_mage.png"></b>{{ form_EggTable.fire_mage }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/medusa.png"></b>{{ form_EggTable.medusa }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/ice_mage.png"></b>{{ form_EggTable.ice_mage }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/fire_lizard.png"></b>{{ form_EggTable.fire_lizard }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/flame_ghost.png"></b>{{ form_EggTable.flame_ghost }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/thorny_snake.png"></b>{{ form_EggTable.thorny_snake }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/tornado_demon.png"></b>{{ form_EggTable.tornado_demon }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/piranha.png"></b>{{ form_EggTable.piranha }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/zombie.png"></b>{{ form_EggTable.zombie }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/scarecrow.png"></b>{{ form_EggTable.scarecrow }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/long_dragon.png"></b>{{ form_EggTable.long_dragon }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/skull_wizard.png"></b>{{ form_EggTable.skull_wizard }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/lava_golem.png"></b>{{ form_EggTable.lava_golem }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/ice_golem.png"></b>{{ form_EggTable.ice_golem }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/cactus.png"></b>{{ form_EggTable.cactus }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/crazy_spider.png"></b>{{ form_EggTable.crazy_spider }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/fire_element.png"></b>{{ form_EggTable.fire_element }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/skeleton_swordsman.png"></b>{{ form_EggTable.skeleton_swordsman }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/scythe_mage.png"></b>{{ form_EggTable.scythe_mage }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/shadow_assassin.png"></b>{{ form_EggTable.shadow_assassin }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/tornado_mage.png"></b>{{ form_EggTable.tornado_mage }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/pea_shooter.png"></b>{{ form_EggTable.pea_shooter }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/nether_puppet.png"></b>{{ form_EggTable.nether_puppet }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/fallen_bat.png"></b>{{ form_EggTable.fallen_bat }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/sandian.png"></b>{{ form_EggTable.sandian }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/psionic_scarecrow.png"></b>{{ form_EggTable.psionic_scarecrow }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/savage_spider.png"></b>{{ form_EggTable.savage_spider }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/one_eyed_bat.png"></b>{{ form_EggTable.one_eyed_bat }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/tundra_dragon.png"></b>{{ form_EggTable.tundra_dragon }}</div>                        
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/purple_phantom.png"></b>{{ form_EggTable.purple_phantom }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/icefire_phantom.png"></b>{{ form_EggTable.icefire_phantom }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/steel_dryad.png"></b>{{ form_EggTable.steel_dryad }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/flaming_bug.png"></b>{{ form_EggTable.flaming_bug }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/elite_archer.png"></b>{{ form_EggTable.elite_archer }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/rolling_mushroom.png"></b>{{ form_EggTable.rolling_mushroom }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/spitting_mushroom.png"></b>{{ form_EggTable.spitting_mushroom }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/scarlet_mage.png"></b>{{ form_EggTable.scarlet_mage }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/crimson_zombie.png"></b>{{ form_EggTable.crimson_zombie }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/fat_bat.png"></b>{{ form_EggTable.fat_bat }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/plainswolf.png"></b>{{ form_EggTable.plainswolf }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/shark_bro.png"></b>{{ form_EggTable.shark_bro }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/little_dragon.png"></b>{{ form_EggTable.little_dragon }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/arch_leader.png"></b>{{ form_EggTable.arch_leader }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/skeleton_king.png"></b>{{ form_EggTable.skeleton_king }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/crimson_witch.png"></b>{{ form_EggTable.crimson_witch }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/rage_golem.png"></b>{{ form_EggTable.rage_golem }}</div>                        
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/queen_bee.png"></b>{{ form_EggTable.queen_bee }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/ice_worm.png"></b>{{ form_EggTable.ice_worm }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/medusa_boss.png"></b>{{ form_EggTable.medusa_boss }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/ice_demon.png"></b>{{ form_EggTable.ice_demon }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/fire_demon.png"></b>{{ form_EggTable.fire_demon }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/krab_boss.png"></b>{{ form_EggTable.krab_boss }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/giant_owl.png"></b>{{ form_EggTable.giant_owl }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/desert_goliath.png"></b>{{ form_EggTable.desert_goliath }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/sinister_touch.png"></b>{{ form_EggTable.sinister_touch }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/scythe_pharoah.png"></b>{{ form_EggTable.scythe_pharoah }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/fireworm_queen.png"></b>{{ form_EggTable.fireworm_queen }}</div>
+							<div class="container_egg"><b><img class="monster_munch_icon" src="/static/image/monsters_icon/infernal_demon.png"></b>{{ form_EggTable.infernal_demon }}</div>
+						</div>
+						<div class="egg_equipped" translate="no">
+							1st egg = {{ form_EggEquippedTable.egg_equipped1 }}
+							2nd egg = {{ form_EggEquippedTable.egg_equipped2 }}
+							3rd egg = {{ form_EggEquippedTable.egg_equipped3 }}
+							4th egg = {{ form_EggEquippedTable.egg_equipped4 }}
+							5th egg = {{ form_EggEquippedTable.egg_equipped5 }}
+						</div>
+					</div>
+					<div class="dragon container" translate="no">
+						<div class="dragon_choice">
+							<b>Dragon 1 : </b>{{ form_DragonTable.dragon1_type }}<br>
+							<b>Dragon 2 : </b>{{ form_DragonTable.dragon2_type }}<br>
+							<b>Dragon 3 : </b>{{ form_DragonTable.dragon3_type }}<br>
+						</div>
+						<div class="dragon_form">
+							<fieldset class="dragon_box dragon_1_container">
+								<legend id="legend_dragon1_type">{{form_dragon_1}} <img id="image_dragon1_type" src="/static/image/formulaire-image/{{ form_dragon_1 }}.png" height="25px"></legend>
+								<span class="dragon_content">Rarity : {{ form_DragonTable.dragon1_rarity }}</span>
+								<span class="dragon_content">Level : {{ form_DragonTable.dragon1_level }}</span>
+								<span class="dragon_content">Skill 1 level : {{ form_DragonTable.dragon_1_boost_1 }}</span>
+								<span class="dragon_content">Skill 2 level : {{ form_DragonTable.dragon_1_boost_2 }}</span>
+								<span class="dragon_content">Skill 3 level : {{ form_DragonTable.dragon_1_boost_3 }}</span>
+								<span class="dragon_content">Skill 4 level : {{ form_DragonTable.dragon_1_boost_4 }}</span>
+							</fieldset>
+							<fieldset class="dragon_box dragon_2_container">
+								<legend id="legend_dragon2_type">{{form_dragon_2}} <img id="image_dragon2_type" src="/static/image/formulaire-image/{{ form_dragon_2 }}.png" height="25px"></legend>
+								<span class="dragon_content">Rarity : {{ form_DragonTable.dragon2_rarity }}</span>
+								<span class="dragon_content">Level : {{ form_DragonTable.dragon2_level }}</span>
+								<span class="dragon_content">Skill 1 level : {{ form_DragonTable.dragon_2_boost_1 }}</span>
+								<span class="dragon_content">Skill 2 level : {{ form_DragonTable.dragon_2_boost_2 }}</span>
+								<span class="dragon_content">Skill 3 level : {{ form_DragonTable.dragon_2_boost_3 }}</span>
+								<span class="dragon_content">Skill 4 level : {{ form_DragonTable.dragon_2_boost_4 }}</span>
+							</fieldset>
+							<fieldset class="dragon_box dragon_3_container">
+								<legend id="legend_dragon3_type">{{form_dragon_3}} <img id="image_dragon3_type" src="/static/image/formulaire-image/{{ form_dragon_3 }}.png" height="25px"></legend>
+								<span class="dragon_content">Rarity : {{ form_DragonTable.dragon3_rarity }}</span>
+								<span class="dragon_content">Level : {{ form_DragonTable.dragon3_level }}</span>
+								<span class="dragon_content">Skill 1 level : {{ form_DragonTable.dragon_3_boost_1 }}</span>
+								<span class="dragon_content">Skill 2 level : {{ form_DragonTable.dragon_3_boost_2 }}</span>
+								<span class="dragon_content">Skill 3 level : {{ form_DragonTable.dragon_3_boost_3 }}</span>
+								<span class="dragon_content">Skill 4 level : {{ form_DragonTable.dragon_3_boost_4 }}</span>
+							</fieldset>
+						</div>
+					</div>
+					<div class="runes container" translate="no">
+						<div class="reforge">
+							<b><u>Reforge Runes :</u></b> 
+							<div class="popup2" onclick="runesPopupFunction()"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:16px"></i>
+								<div class="popuptext2" id="runes_popup">
+									<img src="/static/image/formulaire-image/reforge-screen.png">
+								</div>
+							</div>
+							<br>
+							<b>Reforge runes power : </b>{{ form_ReforgeTable.reforge_power }}<br>
+							<b>Reforge runes saviour : </b>{{ form_ReforgeTable.reforge_saviour }}<br>
+							<b>Reforge runes recovery : </b>{{ form_ReforgeTable.reforge_recovery }}<br>
+							<b>Reforge runes courage : </b>{{ form_ReforgeTable.reforge_courage }}<br>
+							<b>Reforge runes luck : </b>{{ form_ReforgeTable.reforge_luck }}<br><br>
+						</div>
+						<div class="runes_form">
+							<fieldset class="power_rune container_rune">
+								<legend class="legend_rune_container">Power <img width="20px" height="20px" src="/static/image/wiki-image/rune_101.png"></legend>
+								<div class="rune_line">Attack: {{ form_RunesTable.power_attack_flat }}</div>
+								<div class="rune_line">Attack %: {{ form_RunesTable.power_attack_var }}<i class="fa fa-percent"></i></div>
+								<div class="rune_line">{{ form_RunesTable.power_line_2 }}{{ form_RunesTable.value_power_line_2 }}</div>
+								<div class="rune_line">{{ form_RunesTable.power_line_3 }}{{ form_RunesTable.value_power_line_3 }}</div>
+								<div class="rune_line">{{ form_RunesTable.power_line_4 }}{{ form_RunesTable.value_power_line_4 }}</div>
+								<div class="rune_line">{{ form_RunesTable.power_line_5 }}{{ form_RunesTable.value_power_line_5 }}</div>
+							</fieldset>
+							<fieldset class="saviour_rune container_rune">
+								<legend class="legend_rune_container">Saviour <img width="20px" height="20px" src="/static/image/wiki-image/rune_102.png"></legend>
+								<div class="rune_line">Hp: {{ form_RunesTable.saviour_hp_flat }} </div>
+								<div class="rune_line">Hp %: {{ form_RunesTable.saviour_hp_var }}<i class="fa fa-percent"></i></div>
+								<div class="rune_line">{{ form_RunesTable.saviour_line_2 }}{{ form_RunesTable.value_saviour_line_2 }}</div>
+								<div class="rune_line">{{ form_RunesTable.saviour_line_3 }}{{ form_RunesTable.value_saviour_line_3 }}</div>
+								<div class="rune_line">{{ form_RunesTable.saviour_line_4 }}{{ form_RunesTable.value_saviour_line_4 }}</div>
+								<div class="rune_line">{{ form_RunesTable.saviour_line_5 }}{{ form_RunesTable.value_saviour_line_5 }}</div>
+							</fieldset>
+							<fieldset class="recovery_rune container_rune">
+								<legend class="legend_rune_container"> Recovery <img width="20px" height="20px" src="/static/image/wiki-image/rune_103.png"></legend>
+								<div class="rune_line">Hp: {{ form_RunesTable.recovery_hp_flat }} </div>
+								<div class="rune_line">{{ form_RunesTable.recovery_line_2 }}{{ form_RunesTable.value_recovery_line_2 }}</div>
+								<div class="rune_line">{{ form_RunesTable.recovery_line_3 }}{{ form_RunesTable.value_recovery_line_3 }}</div>
+								<div class="rune_line">{{ form_RunesTable.recovery_line_4 }}{{ form_RunesTable.value_recovery_line_4 }}</div>
+								<div class="rune_line">{{ form_RunesTable.recovery_line_5 }}{{ form_RunesTable.value_recovery_line_5 }}</div>
+							</fieldset>
+							<fieldset class="luck_rune container_rune">
+								<legend class="legend_rune_container">Luck <img width="20px" height="20px" src="/static/image/wiki-image/rune_105.png"></legend>
+								<div class="rune_line">Hp: {{ form_RunesTable.luck_hp_flat }}</div>
+								<div class="rune_line">Hp %: {{ form_RunesTable.luck_hp_var }}<i class="fa fa-percent"></i></div>
+								<div class="rune_line">{{ form_RunesTable.luck_line_2 }}{{ form_RunesTable.value_luck_line_2 }}</div>
+								<div class="rune_line">{{ form_RunesTable.luck_line_3 }}{{ form_RunesTable.value_luck_line_3 }}</div>
+								<div class="rune_line">{{ form_RunesTable.luck_line_4 }}{{ form_RunesTable.value_luck_line_4 }}</div>
+								<div class="rune_line">{{ form_RunesTable.luck_line_5 }}{{ form_RunesTable.value_luck_line_5 }}</div>
+							</fieldset>
+							<fieldset class="courage_rune container_rune">
+								<legend class="legend_rune_container">Courage <img width="20px" height="20px" src="/static/image/wiki-image/rune_104.png"></legend>
+								<div class="rune_line">Attack: {{ form_RunesTable.courage_attack_flat }}</div>
+								<div class="rune_line">Attack %: {{ form_RunesTable.courage_attack_var }}<i class="fa fa-percent"></i></div>
+								<div class="rune_line">Hero Attack: {{ form_RunesTable.selected_hero_courage_attack_flat }}{{ form_RunesTable.courage_hero_attack_flat }}</div>
+								<div class="rune_line">Hero Attack %: {{ form_RunesTable.selected_hero_courage_attack_var }}{{ form_RunesTable.courage_hero_attack_var }}<i class="fa fa-percent"></i></div>
+								<div class="rune_line">Hero Hp: {{ form_RunesTable.selected_hero_courage_hp_flat }}{{ form_RunesTable.courage_hero_hp_flat }}</div>
+								<div class="rune_line">Hero Hp %: {{ form_RunesTable.selected_hero_courage_hp_var }}{{ form_RunesTable.courage_hero_hp_var }}<i class="fa fa-percent"></i></div>
+								<div class="rune_line">{{ form_RunesTable.courage_line_2 }}{{ form_RunesTable.value_courage_line_2 }}</div>
+								<div class="rune_line">{{ form_RunesTable.courage_line_3 }}{{ form_RunesTable.value_courage_line_3 }}</div>
+								<div class="rune_line">{{ form_RunesTable.courage_line_4 }}{{ form_RunesTable.value_courage_line_4 }}</div>
+								<div class="rune_line">{{ form_RunesTable.courage_line_5 }}{{ form_RunesTable.value_courage_line_5 }}</div>
+							</fieldset>
+						</div>
+					</div>
+					<script>
+						function boxHelpRelic(id){
+							var showbox = document.getElementById(id+"_showbox");
+							var helpbox = document.getElementById(id+"_helpbox");
+							if(showbox.style.display == "block"){
+								showbox.style.display = "none"
+								helpbox.style.display = "block"
+							}else if(showbox.style.display == "none"){
+								showbox.style.display = "block"
+								helpbox.style.display = "none"
+							}
+						}
+
+						function closeboxHelpRelic(id){
+							var showboxOpen = document.getElementById(id+"_showbox");
+							var helpboxClose = document.getElementById(id+"_helpbox");
+							helpboxClose.style.display = "none";
+							showboxOpen.style.display = "block";
+						}
+					</script>
+					<div class="relics_form container">
+						<div class="tutorial_relics">
+							<u><b>Relics: </b></u><br>
+							<li>To see in wich order you need to put the value, please click on the <i class="fa fa-question-circle" aria-hidden="true"></i> icon.</li>
+							<li>For Exclusive Effect put the boost it gives, not the number of time you got the effective boost</li>
+							<li>For number with a percentage (3.0%) you need to put a dot instead of a coma</li>
+						</div>
+						<div class="relics_form_container">
+							<div class="container-relics">
+								<div id="wraith_mask_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/wraith_mask.png" style="max-width: 51px; max-height: 54px;" alt="wraith_mask">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="wraith_mask" value="{{ form_RelicsTable.wraith_mask.value }}" required id="id_wraith_mask" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('wraith_mask');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="wraith_mask_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('wraith_mask')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Wraith Mask :</b></u><br><br>
+										<p>Attack<br>Blue Heart Drop Rate %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="clown_mask_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/clown_mask.png" style="max-width: 51px; max-height: 54px;" alt="clown_mask">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="clown_mask" value="{{ form_RelicsTable.clown_mask.value }}" required id="id_clown_mask" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('clown_mask');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="clown_mask_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('clown_mask')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Clown Mask :</b></u><br><br>
+										<p>Damage To Melee<br>Damage to Humanoid %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="princess_teddy_bear_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/princess_teddy_bear.png" style="max-width: 51px; max-height: 54px;" alt="princess_teddy_bear">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="10" name="princess_teddy_bear" value="{{ form_RelicsTable.princess_teddy_bear.value }}" required id="id_princess_teddy_bear" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('princess_teddy_bear');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="princess_teddy_bear_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('princess_teddy_bear')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Princess Teddy Bear :</b></u><br><br>
+										<p>Max Hp<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="belt_of_might_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/belt_of_might.png" style="max-width: 51px; max-height: 54px;" alt="belt_of_might">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="belt_of_might" value="{{ form_RelicsTable.belt_of_might.value }}" required id="id_belt_of_might" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('belt_of_might');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="belt_of_might_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('belt_of_might')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Belt of Might :</b></u><br><br>
+										<p>Projectile Resistance<br>Max Hp %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="beastmaster_whistle_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/beastmaster_whistle.png" style="max-width: 51px; max-height: 54px;" alt="beastmaster_whistle">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="beastmaster_whistle" value="{{ form_RelicsTable.beastmaster_whistle.value }}" required id="id_beastmaster_whistle" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('beastmaster_whistle');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="beastmaster_whistle_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('beastmaster_whistle')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Beastmaster Whistle :</b></u><br><br>
+										<p>Max Hp<br>Damage to Ground %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="archmage_robe_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/archmage_robe.png" style="max-width: 51px; max-height: 54px;" alt="archmage_robe">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="archmage_robe" value="{{ form_RelicsTable.archmage_robe.value }}" required id="id_archmage_robe" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('archmage_robe');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="archmage_robe_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('archmage_robe')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Archmage Robe :</b></u><br><br>
+										<p>Rear Damage Resistance<br>Elemental Damage %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="shimmering_gem_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/shimmering_gem.png" style="max-width: 51px; max-height: 54px;" alt="shimmering_gem">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="10" name="shimmering_gem" value="{{ form_RelicsTable.shimmering_gem.value }}" required id="id_shimmering_gem" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('shimmering_gem');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="shimmering_gem_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('shimmering_gem')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Shimmering Gem :</b></u><br><br>
+										<p>Projectile Resistance<br>Enhance Equipment %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="bloom_of_eternity_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/bloom_of_eternity.png" style="max-width: 51px; max-height: 54px;" alt="bloom_of_eternity">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="10" name="bloom_of_eternity" value="{{ form_RelicsTable.bloom_of_eternity.value }}" required id="id_bloom_of_eternity" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('bloom_of_eternity');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="bloom_of_eternity_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('bloom_of_eternity')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Bloom of Eternity :</b></u><br><br>
+										<p>Max Hp<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="challenger_headband_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/challenger_headband.png" style="max-width: 51px; max-height: 54px;" alt="challenger_headband">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="10" name="challenger_headband" value="{{ form_RelicsTable.challenger_headband.value }}" required id="id_challenger_headband" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('challenger_headband');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="challenger_headband_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('challenger_headband')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Challenger Headband :</b></u><br><br>
+										<p>Attack<br>Attack %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="jade_gobelet_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/jade_gobelet.png" style="max-width: 51px; max-height: 54px;" alt="jade_gobelet">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="10" name="jade_gobelet" value="{{ form_RelicsTable.jade_gobelet.value }}" required id="id_jade_gobelet" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('jade_gobelet');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="jade_gobelet_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('jade_gobelet')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Jade Gobelet :</b></u><br><br>
+										<p>Front Damage Resistance<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="veteran_plate_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/veteran_plate.png" style="max-width: 51px; max-height: 54px;" alt="veteran_plate">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="10" name="veteran_plate" value="{{ form_RelicsTable.veteran_plate.value }}" required id="id_veteran_plate" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('veteran_plate');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="veteran_plate_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('veteran_plate')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Veteran Plate :</b></u><br><br>
+										<p>Max Hp<br>Rear Damage Resistance %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="dragonscale_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/dragonscale.png" style="max-width: 51px; max-height: 54px;" alt="dragonscale">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="dragonscale" value="{{ form_RelicsTable.dragonscale.value }}" required id="id_dragonscale" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('dragonscale');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="dragonscale_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('dragonscale')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Dragonscale :</b></u><br><br>
+										<p>Max Hp<br>Front Damage Resistance %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="dragon_tooth_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/dragon_tooth.png" style="max-width: 51px; max-height: 54px;" alt="dragon_tooth">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="10" name="dragon_tooth" value="{{ form_RelicsTable.dragon_tooth.value }}" required id="id_dragon_tooth" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('dragon_tooth');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="dragon_tooth_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('dragon_tooth')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Dragon Tooth :</b></u><br><br>
+										<p>Attack<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="scholar_telescope_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/scholar_telescope.png" style="max-width: 51px; max-height: 54px;" alt="scholar_telescope">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="5" name="scholar_telescope" value="{{ form_RelicsTable.scholar_telescope.value }}" required id="id_scholar_telescope" pattern="^([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('scholar_telescope');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="scholar_telescope_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('scholar_telescope')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Scholar Telescope :</b></u><br><br>
+										<p>Damage to Ranged</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="pirate_shank_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/pirate_shank.png" style="max-width: 51px; max-height: 54px;" alt="pirate_shank">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="10" name="pirate_shank" value="{{ form_RelicsTable.pirate_shank.value }}" required id="id_pirate_shank" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('pirate_shank');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="pirate_shank_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('pirate_shank')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Pirate Shank :</b></u><br><br>
+										<p>Attack<br>Damage to Mobs %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="giant_greatsword_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/giant_greatsword.png" style="max-width: 51px; max-height: 54px;" alt="giant_greatsword">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="giant_greatsword" value="{{ form_RelicsTable.giant_greatsword.value }}" required id="id_giant_greatsword" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('giant_greatsword');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="giant_greatsword_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('giant_greatsword')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Giant Greatsword :</b></u><br><br>
+										<p>Attack<br>Damage to Bosses %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="healing_potion_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/healing_potion.png" style="max-width: 51px; max-height: 54px;" alt="healing_potion">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="5" name="healing_potion" value="{{ form_RelicsTable.healing_potion.value }}" required id="id_healing_potion" pattern="^([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('healing_potion');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="healing_potion_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('healing_potion')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Healing Potion :</b></u><br><br>
+										<p>Max Hp</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="whirlwind_mauler_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/whirlwind_mauler.png" style="max-width: 51px; max-height: 54px;" alt="whirlwind_mauler">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="10" name="whirlwind_mauler" value="{{ form_RelicsTable.whirlwind_mauler.value }}" required id="id_whirlwind_mauler" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('whirlwind_mauler');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="whirlwind_mauler_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('whirlwind_mauler')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Whirlwind Mauler :</b></u><br><br>
+										<p>Damage to Melee<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="special_lance_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/special_lance.png" style="max-width: 51px; max-height: 54px;" alt="special_lance">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="special_lance" value="{{ form_RelicsTable.special_lance.value }}" required id="id_special_lance" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('special_lance');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="special_lance_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('special_lance')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Special Lance :</b></u><br><br>
+										<p>Damage to Ground<br>Damage to Ground %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="precision_slingshot_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/precision_slingshot.png" style="max-width: 51px; max-height: 54px;" alt="precision_slingshot">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="10" name="precision_slingshot" value="{{ form_RelicsTable.precision_slingshot.value }}" required id="id_precision_slingshot" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('precision_slingshot');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="precision_slingshot_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('precision_slingshot')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Precision Slingshot :</b></u><br><br>
+										<p>Damage to Airborne<br>Damage to Airborne %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="supreme_trinity_alpha_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/supreme_trinity_alpha.png" style="max-width: 51px; max-height: 54px;" alt="supreme_trinity_alpha">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="supreme_trinity_alpha" value="{{ form_RelicsTable.supreme_trinity_alpha.value }}" required id="id_supreme_trinity_alpha" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('supreme_trinity_alpha');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="supreme_trinity_alpha_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('supreme_trinity_alpha')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Supreme Trinity Alpha :</b></u><br><br>
+										<p>Attack<br>Damage to Mobs<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="golden_apple_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/golden_apple.png" style="max-width: 51px; max-height: 54px;" alt="golden_apple">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="golden_apple" value="{{ form_RelicsTable.golden_apple.value }}" required id="id_golden_apple" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('golden_apple');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="golden_apple_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('golden_apple')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Golden Apple :</b></u><br><br>
+										<p>Max Hp<br>Damage to Elite enemies %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="ancient_stele_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/ancient_stele.png" style="max-width: 51px; max-height: 54px;" alt="ancient_stele">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="ancient_stele" value="{{ form_RelicsTable.ancient_stele.value }}" required id="id_ancient_stele" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('ancient_stele');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="ancient_stele_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('ancient_stele')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Ancient Stele :</b></u><br><br>
+										<p>Attack<br>Damage to Boss %<br>Attack %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="philosopher_stone_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/philosopher_stone.png" style="max-width: 51px; max-height: 54px;" alt="philosopher_stone">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="philosopher_stone" value="{{ form_RelicsTable.philosopher_stone.value }}" required id="id_philosopher_stone" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('philosopher_stone');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="philosopher_stone_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('philosopher_stone')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Philosopher Stone :</b></u><br><br>
+										<p>Projectile Resistance<br>Rear Damage Resistance<br>Enhance Equipment %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="dragon_heart_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/dragon_heart.png" style="max-width: 51px; max-height: 54px;" alt="dragon_heart">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="dragon_heart" value="{{ form_RelicsTable.dragon_heart.value }}" required id="id_dragon_heart" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('dragon_heart');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="dragon_heart_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('dragon_heart')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Dragon Heart :</b></u><br><br>
+										<p>Max Hp<br>Projectile Resistance<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="spectral_duality_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/spectral_duality.png" style="max-width: 51px; max-height: 54px;" alt="spectral_duality">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="spectral_duality" value="{{ form_RelicsTable.spectral_duality.value }}" required id="id_spectral_duality" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('spectral_duality');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="spectral_duality_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('spectral_duality')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Spectral Duality :</b></u><br><br>
+										<p>Damage to Mobs<br>Damage to Airborne<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="mystic_emblem_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/mystic_emblem.png" style="max-width: 51px; max-height: 54px;" alt="mystic_emblem">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="mystic_emblem" value="{{ form_RelicsTable.mystic_emblem.value }}" required id="id_mystic_emblem" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('mystic_emblem');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="mystic_emblem_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('mystic_emblem')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Mystic Emblem :</b></u><br><br>
+										<p>Max Hp<br>Projectile Resistance<br>Hero base stats increased %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="immortal_brooch_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/immortal_brooch.png" style="max-width: 51px; max-height: 54px;" alt="immortal_brooch">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="immortal_brooch" value="{{ form_RelicsTable.immortal_brooch.value }}" required id="id_immortal_brooch" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('immortal_brooch');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="immortal_brooch_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('immortal_brooch')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Immortal Brooch :</b></u><br><br>
+										<p>Rear Damage Resistance<br>Collision Damage Resistance<br>Max Hp %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="golden_statue_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/golden_statue.png" style="max-width: 51px; max-height: 54px;" alt="golden_statue">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="golden_statue" value="{{ form_RelicsTable.golden_statue.value }}" required id="id_golden_statue" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('golden_statue');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="golden_statue_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('golden_statue')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Golden Statue :</b></u><br><br>
+										<p>Max Hp<br>Front Damage Resistance<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="smilling_mask_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/smilling_mask.png" style="max-width: 51px; max-height: 54px;" alt="smilling_mask">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="smilling_mask" value="{{ form_RelicsTable.smilling_mask.value }}" required id="id_smilling_mask" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('smilling_mask');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="smilling_mask_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('smilling_mask')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Smilling Mask :</b></u><br><br>
+										<p>Attack<br>Damage to Ranged<br>Attack increases ... %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="unmerciful_mask_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/unmerciful_mask.png" style="max-width: 51px; max-height: 54px;" alt="unmerciful_mask">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="unmerciful_mask" value="{{ form_RelicsTable.unmerciful_mask.value }}" required id="id_unmerciful_mask" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('unmerciful_mask');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="unmerciful_mask_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('unmerciful_mask')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Unmerciful Mask :</b></u><br><br>
+										<p>Attack<br>Damage to Melee<br>Attack increases ... %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="holy_water_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/holy_water.png" style="max-width: 51px; max-height: 54px;" alt="holy_water">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="holy_water" value="{{ form_RelicsTable.holy_water.value }}" required id="id_holy_water" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('holy_water');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="holy_water_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('holy_water')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Holy Water :</b></u><br><br>
+										<p>Damage to Mobs<br>Damage to Ground<br>Attack increases ... %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="book_of_the_dead_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/book_of_the_dead.png" style="max-width: 51px; max-height: 54px;" alt="book_of_the_dead">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="book_of_the_dead" value="{{ form_RelicsTable.book_of_the_dead.value }}" required id="id_book_of_the_dead" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('book_of_the_dead');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="book_of_the_dead_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('book_of_the_dead')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Book of the Dead :</b></u><br><br>
+										<p>Attack<br>Damage to Boss %<br>Damage to undead %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>								
+							</div>
+							<div class="container-relics">
+								<div id="psionist_treasure_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/psionist_treasure.png" style="max-width: 51px; max-height: 54px;" alt="psionist_treasure">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="10" name="psionist_treasure" value="{{ form_RelicsTable.psionist_treasure.value }}" required id="id_psionist_treasure" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('psionist_treasure');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="psionist_treasure_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('psionist_treasure')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Psionist Treasure :</b></u><br><br>
+										<p>Damage to Melee<br>Damage to Mobs</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="book_of_archery_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/book_of_archery.png" style="max-width: 51px; max-height: 54px;" alt="book_of_archery">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="book_of_archery" value="{{ form_RelicsTable.book_of_archery.value }}" required id="id_book_of_archery" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('book_of_archery');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="book_of_archery_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('book_of_archery')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Book of Archery :</b></u><br><br>
+										<p>Damage to Ranged<br>Damage to Airborne<br>Weapon Ranged Damage %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="book_of_bravery_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/book_of_bravery.png" style="max-width: 51px; max-height: 54px;" alt="book_of_bravery">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="book_of_bravery" value="{{ form_RelicsTable.book_of_bravery.value }}" required id="id_book_of_bravery" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('book_of_bravery');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="book_of_bravery_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('book_of_bravery')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Book of Bravery :</b></u><br><br>
+										<p>Attack<br>Damage to Ground<br>Weaon Melee Damage %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="angelic_heart_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/angelic_heart.png" style="max-width: 51px; max-height: 54px;" alt="angelic_heart">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="10" name="angelic_heart" value="{{ form_RelicsTable.angelic_heart.value }}" required id="id_angelic_heart" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('angelic_heart');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="angelic_heart_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('angelic_heart')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Angelic Heart :</b></u><br><br>
+										<p>Max Hp<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="devil_whisper_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/devil_whisper.png" style="max-width: 51px; max-height: 54px;" alt="devil_whisper">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="devil_whisper" value="{{ form_RelicsTable.devil_whisper.value }}" required id="id_devil_whisper" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('devil_whisper');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="devil_whisper_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('devil_whisper')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Devil Whisper :</b></u><br><br>
+										<p>Max Hp<br>Projectile Resistance<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="stone_of_wisdom_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/stone_of_wisdom.png" style="max-width: 51px; max-height: 54px;" alt="stone_of_wisdom">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="5" name="stone_of_wisdom" value="{{ form_RelicsTable.stone_of_wisdom.value }}" required id="id_stone_of_wisdom" pattern="^([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('stone_of_wisdom');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="stone_of_wisdom_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('stone_of_wisdom')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Stone of Wisdom :</b></u><br><br>
+										<p>Collision Damage Resistance</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="empyrean_mirror_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/empyrean_mirror.png" style="max-width: 51px; max-height: 54px;" alt="empyrean_mirror">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="empyrean_mirror" value="{{ form_RelicsTable.empyrean_mirror.value }}" required id="id_empyrean_mirror" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('empyrean_mirror');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="empyrean_mirror_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('empyrean_mirror')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Empyrean Mirror :</b></u><br><br>
+										<p>Max Hp<br>Rear Damage Resistance<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>	
+							</div>
+							<div class="container-relics">
+								<div id="fabled_archer_arrow_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/fabled_archer_arrow.png" style="max-width: 51px; max-height: 54px;" alt="fabled_archer_arrow">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="fabled_archer_arrow" value="{{ form_RelicsTable.fabled_archer_arrow.value }}" required id="id_fabled_archer_arrow" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('fabled_archer_arrow');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="fabled_archer_arrow_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('fabled_archer_arrow')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Fabled Archer Arrow :</b></u><br><br>
+										<p>Attack<br>Damage to Mobs<br>Effective %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="shiny_gemmed_belt_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/shiny_gemmed_belt.png" style="max-width: 51px; max-height: 54px;" alt="shiny_gemmed_belt">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="10" name="shiny_gemmed_belt" value="{{ form_RelicsTable.shiny_gemmed_belt.value }}" required id="id_shiny_gemmed_belt" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('shiny_gemmed_belt');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="shiny_gemmed_belt_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('shiny_gemmed_belt')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Shiny Gemmed Belt :</b></u><br><br>
+										<p>Front Damage Resistance<br>Attack increases %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="mythril_flux_mail_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/mythril_flux_mail.png" style="max-width: 51px; max-height: 54px;" alt="mythril_flux_mail">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="mythril_flux_mail" value="{{ form_RelicsTable.mythril_flux_mail.value }}" required id="id_mythril_flux_mail" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('mythril_flux_mail');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="mythril_flux_mail_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('mythril_flux_mail')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Mythril Flux Mail :</b></u><br><br>
+										<p>Max Hp<br>Projectile Resistance<br>Damage Resistance %<br>Effective %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="stealth_boots_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/stealth_boots.png" style="max-width: 51px; max-height: 54px;" alt="stealth_boots">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="stealth_boots" value="{{ form_RelicsTable.stealth_boots.value }}" required id="id_stealth_boots" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('stealth_boots');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="stealth_boots_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('stealth_boots')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Stealth Boots :</b></u><br><br>
+										<p>Projectile Resistance<br>Rear Damage Resistance<br>Dodge %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="assassin_dagger_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/assassin_dagger.png" style="max-width: 51px; max-height: 54px;" alt="assassin_dagger">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="assassin_dagger" value="{{ form_RelicsTable.assassin_dagger.value }}" required id="id_assassin_dagger" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('assassin_dagger');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="assassin_dagger_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('assassin_dagger')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Assassin Dagger :</b></u><br><br>
+										<p>Attack<br>Damage To Mobs<br>Damage To Heroes %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="gold_bunny_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/gold_bunny.png" style="max-width: 51px; max-height: 54px;" alt="gold_bunny">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="gold_bunny" value="{{ form_RelicsTable.gold_bunny.value }}" required id="id_gold_bunny" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('gold_bunny');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="gold_bunny_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('gold_bunny')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Gold Bunny :</b></u><br><br>
+										<p>Max Hp<br>Front Damage Resistance<br>Attack %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="genesis_staff_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/genesis_staff.png" style="max-width: 51px; max-height: 54px;" alt="genesis_staff">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="genesis_staff" value="{{ form_RelicsTable.genesis_staff.value }}" required id="id_genesis_staff" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('genesis_staff');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="genesis_staff_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('genesis_staff')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Genesis Staff :</b></u><br><br>
+										<p>Rear Damage Resistance<br>Collision Damage Resistance %<br>Boss Damage Resistance %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="bloodstained_sword_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/bloodstained_sword.png" style="max-width: 51px; max-height: 54px;" alt="bloodstained_sword">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="25" name="bloodstained_sword" value="{{ form_RelicsTable.bloodstained_sword.value }}" required id="id_bloodstained_sword" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('bloodstained_sword');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="bloodstained_sword_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('bloodstained_sword')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Bloodstained Sword :</b></u><br><br>
+										<p>Attack<br>Damage To Mobs<br>Weapon Melee Damage %<br>Attack %<br>Effective %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="starcluster_rage_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/starcluster_rage.png" style="max-width: 51px; max-height: 54px;" alt="starcluster_rage">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="25" name="starcluster_rage" value="{{ form_RelicsTable.starcluster_rage.value }}" required id="id_starcluster_rage" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('starcluster_rage');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="starcluster_rage_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('starcluster_rage')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Starcluster Rage :</b></u><br><br>
+										<p>Damage To Bosses<br>Damage To Ranged Units<br>Attack Speed %<br>Weapon Ranged Damage %<br>Effective %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="elven_king_cape_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/elven_king_cape.png" style="max-width: 51px; max-height: 54px;" alt="elven_king_cape">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="25" name="elven_king_cape" value="{{ form_RelicsTable.elven_king_cape.value }}" required id="id_elven_king_cape" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('elven_king_cape');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="elven_king_cape_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('elven_king_cape')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Elven King Cape :</b></u><br><br>
+										<p>Damage To Mobs<br>Damage to Ranged Unit<br>Crit Chance %<br>Attack %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="spear_of_yggdrasil_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/spear_of_yggdrasil.png" style="max-width: 51px; max-height: 54px;" alt="spear_of_yggdrasil">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="25" name="spear_of_yggdrasil" value="{{ form_RelicsTable.spear_of_yggdrasil.value }}" required id="id_spear_of_yggdrasil" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('spear_of_yggdrasil');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="spear_of_yggdrasil_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('spear_of_yggdrasil')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Spear of Yggdrasil :</b></u><br><br>
+										<p>Attack<br>Damage to Melee Units<br>Attack %<br>Attack Speed %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="dragon_gem_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/dragon_gem.png" style="max-width: 51px; max-height: 54px;" alt="dragon_gem">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="dragon_gem" value="{{ form_RelicsTable.dragon_gem.value }}" required id="id_dragon_gem" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('dragon_gem');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="dragon_gem_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('dragon_gem')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Dragon Gem :</b></u><br><br>
+										<p>Attack<br>Damage to Airborne<br>Attack %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="life_crown_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/life_crown.png" style="max-width: 51px; max-height: 54px;" alt="life_crown">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="life_crown" value="{{ form_RelicsTable.life_crown.value }}" required id="id_life_crown" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('life_crown');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="life_crown_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('life_crown')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Life Crown :</b></u><br><br>
+										<p>Max Hp<br>Projectile Resistance<br>Max Hp %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="sand_of_time_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/sand_of_time.png" style="max-width: 51px; max-height: 54px;" alt="sand_of_time">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="sand_of_time" value="{{ form_RelicsTable.sand_of_time.value }}" required id="id_sand_of_time" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('sand_of_time');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="sand_of_time_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('sand_of_time')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Sand of Time :</b></u><br><br>
+										<p>Max Hp<br>Front Damage Resistance<br>Max Hp %<br>Effective %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="first_lightning_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/first_lightning.png" style="max-width: 51px; max-height: 54px;" alt="first_lightning">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="first_lightning" value="{{ form_RelicsTable.first_lightning.value }}" required id="id_first_lightning" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('first_lightning');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="first_lightning_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('first_lightning')">&times;</div>
+									<div class="helpcontent">
+										<u><b>First Lightning :</b></u><br><br>
+										<p>Attack<br>Damage to Airborne<br>Elemental Damage %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="oracle_quill_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/oracle_quill.png" style="max-width: 51px; max-height: 54px;" alt="oracle_quill">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="oracle_quill" value="{{ form_RelicsTable.oracle_quill.value }}" required id="id_oracle_quill" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('oracle_quill');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="oracle_quill_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('oracle_quill')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Oracle Quill :</b></u><br><br>
+										<p>Front Damage Resistance<br>Collision Damage Resistance<br>Dodge %<br>Effective %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="bloodthirsty_grail_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/bloodthirsty_grail.png" style="max-width: 51px; max-height: 54px;" alt="bloodthirsty_grail">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="20" name="bloodthirsty_grail" value="{{ form_RelicsTable.bloodthirsty_grail.value }}" required id="id_bloodthirsty_grail" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('bloodthirsty_grail');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="bloodthirsty_grail_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('bloodthirsty_grail')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Bloodthirsty Grail :</b></u><br><br>
+										<p>Max Hp<br>Projectile Resistance<br>Max Hp %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="healing_grail_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/healing_grail.png" style="max-width: 51px; max-height: 54px;" alt="healing_grail">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="healing_grail" value="{{ form_RelicsTable.healing_grail.value }}" required id="id_healing_grail" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('healing_grail');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="healing_grail_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('healing_grail')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Healing Grail :</b></u><br><br>
+										<p>Max Hp<br>Max Hp %<br>Effective</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+							<div class="container-relics">
+								<div id="cupids_necklace_showbox" style="display: block;">
+									<div class="header-relic-card">
+										<img src="/static/image/relics_img/cupids_necklace.png" style="max-width: 51px; max-height: 54px;" alt="cupids_necklace">
+									</div>
+									<div class="container_boost">
+										<input type="text" maxlength="15" name="cupids_necklace" value="{{ form_RelicsTable.cupids_necklace.value }}" required id="id_cupids_necklace" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
+										<div class="info_box_relic_input_help" onclick="boxHelpRelic('cupids_necklace');">
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div id="cupids_necklace_helpbox" class="boxHelpRelic" style="display: none;">
+									<div class="header-close" onclick="closeboxHelpRelic('cupids_necklace')">&times;</div>
+									<div class="helpcontent">
+										<u><b>Healing Grail :</b></u><br><br>
+										<p>Attack<br>Damage to Mobs<br>Attack Jewel Base Stats<br>Attack %</p>
+										<input readonly value="<boost1>-<boost2>,etc">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="medal_input_container" class="auto_input_container" style="display: none; opacity: 0;">
+						{{ form_MedalTable.medals_01 }}
+						{{ form_MedalTable.medals_02 }}
+						{{ form_MedalTable.medals_03 }}
+						{{ form_MedalTable.medals_04 }}
+						{{ form_MedalTable.medals_05 }}
+						{{ form_MedalTable.medals_06 }}
+						{{ form_MedalTable.medals_08 }}
+						{{ form_MedalTable.medals_09 }}
+						{{ form_MedalTable.medals_10 }}
+						{{ form_MedalTable.medals_11 }}
+						{{ form_MedalTable.medals_12 }}
+						{{ form_MedalTable.medals_13 }}
+						{{ form_MedalTable.medals_14 }}
+						{{ form_MedalTable.medals_15 }}
+						{{ form_MedalTable.medals_16 }}
+						{{ form_MedalTable.medals_17 }}
+						{{ form_MedalTable.medals_18 }}
+						{{ form_MedalTable.medals_19 }}
+						{{ form_MedalTable.medals_20 }}
+						{{ form_MedalTable.medals_21 }}
+						{{ form_MedalTable.medals_22 }}
+						{{ form_MedalTable.medals_23 }}
+						{{ form_MedalTable.medals_24 }}
+						{{ form_MedalTable.medals_25 }}
+						{{ form_MedalTable.medals_26 }}
+						{{ form_MedalTable.medals_27 }}
+						{{ form_MedalTable.medals_28 }}
+						{{ form_MedalTable.medals_29 }}
+						{{ form_MedalTable.medals_30 }}
+						{{ form_MedalTable.medals_31 }}
+						{{ form_MedalTable.medals_32 }}
+					</div>
+					<div class="public_id_hiden">
+					{% if ingame_id == none %}
+						<input type="number" name="public_id" value="{{ pbid }}" min="-9223372036854775808" max="9223372036854775807" required="" id="id_public_id">
+					{% else %}
+						<input type="number" name="public_id" value="{{ public_id }}" min="-9223372036854775808" max="9223372036854775807" required="" id="id_public_id" readonly>
+					{% endif %}
+					</div>
 				</div>
-				<div class="container_rlink">
-					<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
-				</div>
-				<div class="container_flink">
-					<a href="https://www.facebook.com/archerogame/" target="_blank"><li> Fb Archero</li></a>
+				<br>
+				<input class="submit-input" type="submit" value="Submit"\>
+			</div>
+			</form>
+		</main>
+	</main>
+	<footer>
+		<div class="footer-content">
+			<div class="footer-about">
+				<img class="footer-img-icon" src="/static/image/archero_icon.png" alt="image game icon">
+				<div class="about-content">
+					<h2>Archero :</h2>
+					<div>Archero Update will be added with a certains delay</div>
+					<div class="contact-me">
+						<div>If you encounter any bugs / anomaly please contact me on discord</div>
+						<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+					</div>
 				</div>
 			</div>
-        <div class="thanks">
-            <h2>Shout-out :</h2>
-            <div class="shout-out">SonHaon#1631, Ktaplouf#0507</div>
-            <div class="shout-out">Pew#6775, Deth#7087, TigerShark14#8188</div>
-            <div class="shout-out">Everyone who helped me getting data</div>
-        </div>
-    </div>
-</footer>
+			<div class="discord_link">
+					<div class="container_dlink">
+						<h2>Community Link:</h2> 
+						<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMutique's Server</li></a>
+						<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+					</div>
+					<div class="container_rlink">
+						<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
+					</div>
+					<div class="container_flink">
+						<a href="https://www.facebook.com/archerogame/" target="_blank"><li> FB Archero</li></a>
+					</div>
+				</div>
+			<div class="thanks">
+				<h2>Shout-out :</h2>
+				<div class="shout-out">SonHaon, Deth, TigerShark14</div>
+				<div class="shout-out">Ktaplouf, Pew, Lorenz, RedsMeName</div>
+				<div class="shout-out">Everyone who helped me getting data</div>
+			</div>
+		</div>
+	</footer>
+</div>
 </body>
 <script>
-    var refine_popup = document.getElementById('refine_popup')
-    var privileges_popup = document.getElementById('privileges_popup')
-    var runes_popup = document.getElementById('runes_popup')
+	var refine_popup = document.getElementById('refine_popup')
+	var privileges_popup = document.getElementById('privileges_popup')
+	var runes_popup = document.getElementById('runes_popup')
 
-    function refinePopupFunction(){
-        refine_popup.classList.toggle('show')
-    }
-    window.addEventListener('click', ({target}) => {
-        if(!target.closest('.popup') && refine_popup.classList.contains('show')) refinePopupFunction()
-    })
-
-    function runesPopupFunction(){
-        runes_popup.classList.toggle('show')
-    }
-    window.addEventListener('click', ({target}) => {
-        if(!target.closest('.popup2') && runes_popup.classList.contains('show')) runesPopupFunction()
-    })
-
-    function privilegesPopupFunction(){
-        privileges_popup.classList.toggle('show')
-    }
-    window.addEventListener('click', ({target}) => {
-        if(!target.closest('.popup3') && privileges_popup.classList.contains('show')) privilegesPopupFunction()
-    })
-    const egg_equipped1 = document.querySelector('#id_egg_equipped1');
-    const egg_equipped2 = document.querySelector('#id_egg_equipped2');
-    const egg_equipped3 = document.querySelector('#id_egg_equipped3');
-    const egg_equipped4 = document.querySelector('#id_egg_equipped4');
-    const egg_equipped5 = document.querySelector('#id_egg_equipped5');
-    const url3 = "url('/static/image/monsters_icon/";
-
-
-    id_egg_equipped1.addEventListener('change',function() {
-    mob = this.value.toLowerCase().replaceAll(" ","_").replaceAll("-","_")
-    if(mob===""){
-        mob_src = url3.concat("none.png')");
-        document.querySelector(".egg_equipped1").style["background-image"] = mob_src;
-    }else{
-        mob_src = url3.concat(mob,".png')");
-        document.querySelector(".egg_equipped1").style["background-image"] = mob_src;
-    }})
-
-    id_egg_equipped2.addEventListener('change',function() {
-    mob = this.value.toLowerCase().replaceAll(" ","_").replaceAll("-","_")
-    if(mob===""){
-        mob_src = url3.concat("none.png')");
-        document.querySelector(".egg_equipped2").style["background-image"] = mob_src;
-    }else{
-        mob_src = url3.concat(mob,".png')");
-        document.querySelector(".egg_equipped2").style["background-image"] = mob_src;
-    }})
-
-    id_egg_equipped3.addEventListener('change',function() {
-    mob = this.value.toLowerCase().replaceAll(" ","_").replaceAll("-","_")
-    if(mob===""){
-        mob_src = url3.concat("none.png')");
-        document.querySelector(".egg_equipped3").style["background-image"] = mob_src;
-    }else{
-        mob_src = url3.concat(mob,".png')");
-        document.querySelector(".egg_equipped3").style["background-image"] = mob_src;
-    }})
-
-    id_egg_equipped4.addEventListener('change',function() {
-    mob = this.value.toLowerCase().replaceAll(" ","_").replaceAll("-","_")
-    if(mob===""){
-        mob_src = url3.concat("none.png')");
-        document.querySelector(".egg_equipped4").style["background-image"] = mob_src;
-    }else{
-        mob_src = url3.concat(mob,".png')");
-        document.querySelector(".egg_equipped4").style["background-image"] = mob_src;
-    }})
-
-    id_egg_equipped5.addEventListener('change',function() {
-    mob = this.value.toLowerCase().replaceAll(" ","_").replaceAll("-","_")
-    if(mob===""){
-        mob_src = url3.concat("none.png')");
-        document.querySelector(".egg_equipped5").style["background-image"] = mob_src;
-    }else{
-        mob_src = url3.concat(mob,".png')");
-        document.querySelector(".egg_equipped5").style["background-image"] = mob_src;
-    }})
+	function refinePopupFunction(){
+		refine_popup.classList.toggle('show')
+	}
+	function runesPopupFunction(){
+		runes_popup.classList.toggle('show')
+	}
+	function privilegesPopupFunction(){
+		privileges_popup.classList.toggle('show')
+	}
+	window.addEventListener('click', ({target}) => {
+		if(!target.closest('.popup2') && runes_popup.classList.contains('show')) runesPopupFunction()
+		if(!target.closest('.popup') && refine_popup.classList.contains('show')) refinePopupFunction()
+		if(!target.closest('.popup3') && privileges_popup.classList.contains('show')) privilegesPopupFunction()
+	})	
 </script>
-<script type="module">
-	import sidebar from "/static/json/sidebar.json" assert {type: 'json'};
-
+<script>
 	const traveling = document.getElementById("traveling")
 
-	for(const item of sidebar["sidebar"]){
+	for(const item of sidebar){
 		const parentContainer = document.createElement("div")
 		const leftSidebar = document.createElement("div")
 		const childLeftSidebar = document.createElement("div")
 		const rightSidebar = document.createElement("div")
 		const childRightSidebar = document.createElement("a")
-		const svg = document.createElement("object")
+		const image = document.createElement("img")
 
 		traveling.appendChild(parentContainer)
 		parentContainer.appendChild(leftSidebar)
 		parentContainer.appendChild(rightSidebar)
 		leftSidebar.appendChild(childLeftSidebar)
 		rightSidebar.appendChild(childRightSidebar)
-		childRightSidebar.appendChild(svg)
+		childRightSidebar.appendChild(image)
 
 		parentContainer.className = item['container']['class']
+        parentContainer.id = item['container']['_name'] + "-sidebar-image"
 		parentContainer.addEventListener('click', function windowHref(){
 			window.location.href = item['container']['onclick']
 		})
@@ -795,24 +2165,23 @@
 		childLeftSidebar.innerHTML = item['container']['childs_container']['leftsidebar']['child_content']
 		rightSidebar.className = item['container']['childs_container']['rightsidebar']['self_class']
 		childRightSidebar.className = item['container']['childs_container']['rightsidebar']['child_class']
-		svg.type = item['container']['childs_container']['rightsidebar']['child_content']['object_type']
-		svg.id = item['container']['childs_container']['rightsidebar']['child_content']['object_id']
-		svg.data = item['container']['childs_container']['rightsidebar']['child_content']['object_data']
-		svg.width = item['container']['childs_container']['rightsidebar']['child_content']['object_width']
-		svg.height = item['container']['childs_container']['rightsidebar']['child_content']['object_height']
+		image.id = item['container']['childs_container']['rightsidebar']['child_content']['image_id']
+		image.src = item['container']['childs_container']['rightsidebar']['child_content']['image_src']
+		image.width = item['container']['childs_container']['rightsidebar']['child_content']['image_width']
+		image.height = item['container']['childs_container']['rightsidebar']['child_content']['image_height']
 	}
 
 	const themeParentContainer = document.createElement("div")
 	const themeLeftSidebar = document.createElement("div")
 	const themeChildLeftSidebar = document.createElement("div")
 	const themeRightSidebar = document.createElement("div")
-	const themeSvg = document.createElement("object")
+	const themeImg = document.createElement("img")
 
 	traveling.appendChild(themeParentContainer)
 	themeParentContainer.appendChild(themeLeftSidebar)
 	themeParentContainer.appendChild(themeRightSidebar)
 	themeLeftSidebar.appendChild(themeChildLeftSidebar)
-	themeRightSidebar.appendChild(themeSvg)
+	themeRightSidebar.appendChild(themeImg)
 
 	themeParentContainer.className = "traveling-inline-div"
 	themeParentContainer.id = "switch_dark_mode"
@@ -820,16 +2189,15 @@
 	themeChildLeftSidebar.className = "shcl"
 	themeChildLeftSidebar.innerHTML = "Theme"
 	themeRightSidebar.className = "rightsidebarc traveling-right"
-	themeSvg.type = "image/png"
-	themeSvg.id = "darkmodeSWITCH" 
-	themeSvg.width = "21"
-	themeSvg.height = "21"
+	themeImg.id = "darkmodeSWITCH" 
+	themeImg.width = "21"
+	themeImg.height = "21"
 
 	var darkmode = "{{ darkmode }}"
 	if(darkmode == "yes"){
-		themeSvg.data = "\\static\\image\\svg\\moon.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\moon.png"
 	}else if(darkmode == "no"){
-		themeSvg.data = "\\static\\image\\svg\\sun.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\sun.png"
 	}
 	
 	var switchModeBtn = document.getElementById('switch_dark_mode');
@@ -841,10 +2209,10 @@
 		body.classList.toggle("body_dark_mode");
 		if(body.className == "body_dark_mode"){
 			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\moon.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\moon.png"
 		}else{
 			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\sun.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\sun.png"
 		}
 	})
 
@@ -852,12 +2220,64 @@
 	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
 		var sidebar = document.getElementById("sidebar")
 		sidebar.classList.toggle('sidebar-active')
+        sidebar.classList.toggle('sidebar-open')
 	})
-	
-	function cookieInitialize(){
-		document.cookie = "windowInnerHeight=" + window.innerHeight +  "; path=/";
-		document.cookie = "windowInnerWidth=" + window.innerWidth +  "; path=/";
+</script>
+<script>
+	var medals = document.getElementById("medals_container");
+	var medals_childs = Object.values(medals.children);
+	medals_childs.forEach(element => {
+		var value = element.id
+		element.addEventListener('click', function toggleClass(){
+			var medals_input = document.getElementById("medal_input_container");
+			var medals_input_children = Object.values(medals_input.children);
+			var medals_input_element = document.getElementById(`id_${value}`);
+			if(element.className == "medals_img"){
+				element.className = 'medals_img_active';
+				medals_input_element.checked = true
+			}else{
+				element.className = 'medals_img';
+				medals_input_element.checked = false
+			}
+		})
+	});
+</script>
+<script>
+	var medals_input = document.getElementById("medal_input_container");
+	var medals_input_children = Object.values(medals_input.children);
+	medals_input_children.forEach(element => {
+		var id_image_medal = element.id.replace('id_','')
+		var medal_image = document.getElementById(`${id_image_medal}`)
+		if(element.checked == true){
+			medal_image.className = 'medals_img_active';
+		}else if(element.checked == false){
+			medal_image.className = 'medals_img';
+		}
+	})
+</script>
+<script>
+	const self_inline_div_traveling = document.getElementById('Stats-sidebar-image')
+	self_inline_div_traveling.classList.add('bg-traveling') 
+</script>
+<script>
+	function changeDragon(item){
+		var new_dragon = item.value
+		var legend_id = item.id.replaceAll('id','legend')
+		var image_id = item.id.replaceAll('id','image')
+		var legend = document.getElementById(legend_id)
+		legend.innerHTML = `${new_dragon} <img id="image_dragon3_type" src="/static/image/formulaire-image/${new_dragon}.png" height="25px">`
 	}
-	cookieInitialize()
+	var id_dragon1_type = document.getElementById('id_dragon1_type')
+	var id_dragon2_type = document.getElementById('id_dragon2_type')
+	var id_dragon3_type = document.getElementById('id_dragon3_type')
+	id_dragon1_type.onchange = function() {
+		changeDragon(id_dragon1_type);
+	}
+	id_dragon2_type.onchange = function() {
+		changeDragon(id_dragon2_type);
+	}
+	id_dragon3_type.onchange = function() {
+		changeDragon(id_dragon3_type);
+	}
 </script>
 </html>

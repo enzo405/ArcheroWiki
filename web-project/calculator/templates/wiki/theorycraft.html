@@ -3,32 +3,38 @@
 <head>
 	{% load static %}
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.13.4 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.13.4 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.13.4 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.13.4 %}">
-	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.18.2 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.18.2 %}">
+	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome to Wiki</title>
 	<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
+	<script src="{% static 'main.js' %}"></script>
 </head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
 {% elif darkmode == "no" %}
 <body>
 {% endif %}
-	<div class="main-container">
-		<div class="sidebar" id="sidebar">
-			<div class="sidebar-icon" id="sidebar-icon">
-				<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
-				<div class="rightsidebarc" id="rscimg">
-					<svg id="svg-filter-sidebar"width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
-				</div>
-			</div>
-			<div class="traveling" id="traveling">
-				<!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
+<noscript>
+	<div id="no-script-message">
+		<p>Please enable JavaScript to use this website.</p>
+	</div>
+</noscript>
+	<div class="sidebar sidebar-open sidebar-position-f" id="sidebar">
+		<div class="sidebar-icon" id="sidebar-icon">
+			<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
+			<div class="rightsidebarc" id="rscimg">
+				<svg id="svg-filter-sidebar" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
 			</div>
 		</div>
+		<div class="traveling" id="traveling">
+			<!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
+		</div>
+	</div>
+	<div class="main-container">
 		<main class="main-flexbox cmcath">
 			<header class="header-container">
 				<div class="header-container-1"></div>
@@ -51,6 +57,12 @@
 						</div>
 					</div>
 					<div class="container-btn-flexbox" style="width: 100%;">
+						<button type="button" class="collapsible fusion" id='fusion_dragon'>fusion dragon<a onclick="copyLink(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+						<div class="fusion content">
+							<img src="/static/image/wiki-image/Dragon-Rarity-Guide.png" style="width: 100%;max-width: 700px;" class="fusion_dragon_img">
+						</div>
+					</div>
+					<div class="container-btn-flexbox" style="width: 100%;">
 						<button id="tierlist_item_1" type="button" class="collapsible tierlist">tierlist item normal<a onclick="copyLink(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
 						<div class="tierlist content">
 							<img src="/static/image/wiki-image/General-Tier-List_1.png" class="tierlist_img">
@@ -59,7 +71,13 @@
 					<div class="container-btn-flexbox" style="width: 100%;">
 						<button id="tierlist_item_2" type="button" class="collapsible tierlist">tierlist item mythic<a onclick="copyLink(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
 						<div class="tierlist content">
-							<img src="/static/image/wiki-image/Mythic-Tier-List_1.png" class="tierlist_img_myt">
+							<img src="/static/image/wiki-image/Mythic-Tier-List2023.png" class="tierlist_img_myt">
+						</div>
+					</div>
+					<div class="container-btn-flexbox" style="width: 100%;">
+						<button id="faq" type="button" class="collapsible faq-container">Frequently Asked Questions<a onclick="copyLink(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+						<div class="faq content">
+							Here is the link to a full post of <a href="https://www.reddit.com/r/Archero/wiki/faq/" target="_blank">Frequently Asked Questions</a>
 						</div>
 					</div>
 					<div class="container-btn-flexbox" style="width: 100%;">
@@ -228,7 +246,7 @@
 						<button id="glyphs" type="button" class="collapsible glyphs">glyphs<a onclick="copyLink(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
 						<div class="glyphs content">
 							<div class="glyphs_explanation">
-								<b><u>Glyphs:</u></b><br>
+								<b><u>Glyphs:</u></b><em><a href="https://www.reddit.com/r/Archero/wiki/refinement_guide/" target="_blank">(reddit guide)</a></em><br>
 								<u>There is 2 type of glyphs :</u><br>
 								• Base Glyphs (without rank) ---> <object type="image/png" data="\static\image\svg\base-glyphs.svg" width="21" height="21"></object> <br>
 								• Special Glyphs (rank A / S) ---> <object type="image/png" data="\static\image\svg\special-glyph.svg" width="21" height="21"></object> <br> 
@@ -250,7 +268,7 @@
 						<button id="refinement" type="button" class="collapsible refinement">refinements<a onclick="copyLink(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
 						<div class="refinement content">
 							<div class="refinement_explanation">
-								<b><u>Refine:</u></b><br>
+								<b><u>Refine:</u></b><em><a href="https://www.reddit.com/r/Archero/wiki/refinement_guide/" target="_blank">(reddit guide)</a></em><br>
 								<u>There are 4 Glyph slots.</u><br>
 								How to unlock them:<br>
 								<ul>
@@ -285,7 +303,7 @@
 						<button id="quickraid" type="button" class="collapsible quickraid">quickraid<a onclick="copyLink(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
 						<div class="quickraid content">
 							<p><a href="https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w" target="_blank">Google Sheets Quickraid Drop</a></p>
-							<img src="/static/image/wiki-image/qr_chart2.png" class="qr-chart-img" alt="quickraid drop">
+							<img src="/static/image/wiki-image/qr_chart.png" class="qr-chart-img" alt="quickraid drop">
 						</div>
 					</div>
 					<div class="container-btn-flexbox" style="width: 100%;">
@@ -363,48 +381,47 @@
 							•  SpellBook => SpellBook can gain energy from Hearts<br><br>
 
 							<u>Comments :</u><br>
-							•  Weapon => Gives permanent Multishot instead (bug)<br>
 							•  Pets n°1 & Pets n°2 => Works only for the pet attack.<br>
 						</div>
 					</div>
 				</div>
 			</div>
 		</main>
-	</div>
-	<footer class="footer-margin">
-		<div class="footer-content">
-			<div class="footer-about">
-				<img class="footer-img-icon" src="/static/image/archero_icon.png">
-				<div class="about-content">
-					<h2>Archero :</h2>
-					<div>Archero Update will be added with a certains delay</div>
-					<div class="contact-me">
-						<div>If you encounter any bugs / anomaly please contact me on discord</div>
-						<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+		<footer class="footer-margin">
+			<div class="footer-content">
+				<div class="footer-about">
+					<img class="footer-img-icon" src="/static/image/archero_icon.png" alt="image game icon">
+					<div class="about-content">
+						<h2>Archero :</h2>
+						<div>Archero Update will be added with a certains delay</div>
+						<div class="contact-me">
+							<div>If you encounter any bugs / anomaly please contact me on discord</div>
+							<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="discord_link">
-				<div class="container_dlink">
-					<h2>Community Link:</h2> 
-					<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMuthique's Server</li></a>
-					<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+				<div class="discord_link">
+					<div class="container_dlink">
+						<h2>Community Link:</h2> 
+						<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMutique's Server</li></a>
+						<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+					</div>
+					<div class="container_rlink">
+						<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
+					</div>
+					<div class="container_flink">
+						<a href="https://www.facebook.com/archerogame/" target="_blank"><li> FB Archero</li></a>
+					</div>
 				</div>
-				<div class="container_rlink">
-					<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
-				</div>
-				<div class="container_flink">
-					<a href="https://www.facebook.com/archerogame/" target="_blank"><li> Fb Archero</li></a>
+				<div class="thanks">
+					<h2>Shout-out :</h2>
+					<div class="shout-out">SonHaon, Deth, TigerShark14</div>
+					<div class="shout-out">Ktaplouf, Pew, Lorenz, RedsMeName</div>
+					<div class="shout-out">Everyone who helped me getting data</div>
 				</div>
 			</div>
-			<div class="thanks">
-				<h2>Shout-out :</h2>
-				<div class="shout-out">SonHaon, TigerShark14, Deth</div>
-				<div class="shout-out">Lovii, Kaseiya, Lorenz, Ktaplouf</div>
-				<div class="shout-out">Everyone who helped me getting data</div>
-			</div>
-		</div>
-	</footer>
+		</footer>
+	</div>
 </body>
 <script>
 	n =  new Date();
@@ -444,27 +461,26 @@
 		});
 	}
 </script>
-<script type="module">
-	import sidebar from "/static/json/sidebar.json" assert {type: 'json'};
-
+<script>
 	const traveling = document.getElementById("traveling")
 
-	for(const item of sidebar["sidebar"]){
+	for(const item of sidebar){
 		const parentContainer = document.createElement("div")
 		const leftSidebar = document.createElement("div")
 		const childLeftSidebar = document.createElement("div")
 		const rightSidebar = document.createElement("div")
 		const childRightSidebar = document.createElement("a")
-		const svg = document.createElement("object")
+		const image = document.createElement("img")
 
 		traveling.appendChild(parentContainer)
 		parentContainer.appendChild(leftSidebar)
 		parentContainer.appendChild(rightSidebar)
 		leftSidebar.appendChild(childLeftSidebar)
 		rightSidebar.appendChild(childRightSidebar)
-		childRightSidebar.appendChild(svg)
+		childRightSidebar.appendChild(image)
 
 		parentContainer.className = item['container']['class']
+		parentContainer.id = item['container']['_name'] + "-sidebar-image"
 		parentContainer.addEventListener('click', function windowHref(){
 			window.location.href = item['container']['onclick']
 		})
@@ -473,24 +489,23 @@
 		childLeftSidebar.innerHTML = item['container']['childs_container']['leftsidebar']['child_content']
 		rightSidebar.className = item['container']['childs_container']['rightsidebar']['self_class']
 		childRightSidebar.className = item['container']['childs_container']['rightsidebar']['child_class']
-		svg.type = item['container']['childs_container']['rightsidebar']['child_content']['object_type']
-		svg.id = item['container']['childs_container']['rightsidebar']['child_content']['object_id']
-		svg.data = item['container']['childs_container']['rightsidebar']['child_content']['object_data']
-		svg.width = item['container']['childs_container']['rightsidebar']['child_content']['object_width']
-		svg.height = item['container']['childs_container']['rightsidebar']['child_content']['object_height']
+		image.id = item['container']['childs_container']['rightsidebar']['child_content']['image_id']
+		image.src = item['container']['childs_container']['rightsidebar']['child_content']['image_src']
+		image.width = item['container']['childs_container']['rightsidebar']['child_content']['image_width']
+		image.height = item['container']['childs_container']['rightsidebar']['child_content']['image_height']
 	}
 
 	const themeParentContainer = document.createElement("div")
 	const themeLeftSidebar = document.createElement("div")
 	const themeChildLeftSidebar = document.createElement("div")
 	const themeRightSidebar = document.createElement("div")
-	const themeSvg = document.createElement("object")
+	const themeImg = document.createElement("img")
 
 	traveling.appendChild(themeParentContainer)
 	themeParentContainer.appendChild(themeLeftSidebar)
 	themeParentContainer.appendChild(themeRightSidebar)
 	themeLeftSidebar.appendChild(themeChildLeftSidebar)
-	themeRightSidebar.appendChild(themeSvg)
+	themeRightSidebar.appendChild(themeImg)
 
 	themeParentContainer.className = "traveling-inline-div"
 	themeParentContainer.id = "switch_dark_mode"
@@ -498,18 +513,17 @@
 	themeChildLeftSidebar.className = "shcl"
 	themeChildLeftSidebar.innerHTML = "Theme"
 	themeRightSidebar.className = "rightsidebarc traveling-right"
-	themeSvg.type = "image/png"
-	themeSvg.id = "darkmodeSWITCH" 
-	themeSvg.width = "21"
-	themeSvg.height = "21"
+	themeImg.id = "darkmodeSWITCH" 
+	themeImg.width = "21"
+	themeImg.height = "21"
 
 	var darkmode = "{{ darkmode }}"
 	if(darkmode == "yes"){
-		themeSvg.data = "\\static\\image\\svg\\moon.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\moon.png"
 	}else if(darkmode == "no"){
-		themeSvg.data = "\\static\\image\\svg\\sun.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\sun.png"
 	}
-	
+
 	var switchModeBtn = document.getElementById('switch_dark_mode');
 	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
 		var date = new Date()
@@ -519,10 +533,10 @@
 		body.classList.toggle("body_dark_mode");
 		if(body.className == "body_dark_mode"){
 			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\moon.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\moon.png"
 		}else{
 			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\sun.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\sun.png"
 		}
 	})
 
@@ -530,17 +544,14 @@
 	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
 		var sidebar = document.getElementById("sidebar")
 		sidebar.classList.toggle('sidebar-active')
+		sidebar.classList.toggle('sidebar-open')		
 	})
-	
-	function cookieInitialize(){
-		document.cookie = "windowInnerHeight=" + window.innerHeight +  "; path=/";
-		document.cookie = "windowInnerWidth=" + window.innerWidth +  "; path=/";
-	}
-	cookieInitialize()
 </script>
 <script>
 	urlDict = {
 		"fusion_item": 'fusion_item',
+		"fusion_dragon": 'fusion_dragon',
+		"fusion_dragon2": 'fusion_dragon2',
 		"tierlist_item_1": 'tierlist_item_1',
 		"tierlist_item_2": 'tierlist_item_2',
 		"gems_spending_guide": 'gems_spending_guide',
@@ -568,8 +579,13 @@
 	navigateUrl()
 
 	function copyLink(element){
-		linkCopied = window.location.href + "?Search=" + element.parentElement.id
+		var url = window.location.href.split('?Search')[0]
+		linkCopied = url + "?Search=" + element.parentElement.id
 		navigator.clipboard.writeText(linkCopied)
 	}
+</script>
+<script>
+	const self_inline_div_traveling = document.getElementById('Wiki-sidebar-image')
+	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
 </html>

@@ -194,7 +194,7 @@
 .main-container{
 	width: 100%;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	height: 100%;
 }
 /*################  MAZE.HTML  ##################*/
@@ -205,9 +205,6 @@
 /*################  MAZE.HTML  ##################*/
 .body_maze{
 	height: 100%;
-}
-.maze-container-main{
-	width: 100%;
 }
 .maze-main{
     text-align: center;
@@ -283,7 +280,6 @@
 .main-menu{
 	display: flex;
     flex-direction: column;
-	width: 100%;
 }
 .select-href{
 	user-select: none;
@@ -295,11 +291,13 @@
 }
 .div-onclick-menu{
 	cursor: pointer;
-	background-color: #6CB4EE;
+	background-color: #3686c7;
 	border-radius: 6px;
 	text-align: center;
 	color: white;
 	margin-top: 10px;
+	border: solid 0px;
+	text-decoration: none;
 }
 .div-onclick-menu:hover{
 	z-index: 1;
@@ -322,7 +320,6 @@
 .main-flexbox{
 	display: flex;
 	flex-direction: column;
-	width: 100%;
 }
 .flex-box{
 	margin-top: 20px;
@@ -400,17 +397,13 @@
 .body_dark_mode .quickraid p a{
 	color: ivory;
 }
-.body_dark_mode .altar_cost_content, .body_dark_mode .flex-box .egg_stats_content, .body_dark_mode .hidden_stats_content, .body_dark_mode .glyphs_explanation, .body_dark_mode .refinement_explanation{
+.body_dark_mode .altar_cost_content, .body_dark_mode .flex-box .egg_stats_content, .body_dark_mode .hidden_stats_content, .body_dark_mode .glyphs_explanation, .body_dark_mode .refinement_explanation, .body_dark_mode .faq{
 	border-radius: 5px;
-	color: black;
+	color: #e7e3e0;
 	background-color: #434b58;
 }
 .body_dark_mode .sec-half-altar{
 	padding-top: 6px;
-}
-.body_dark_mode .flex-box .egg_stats_content a{
-	color: #c58af9;
-	text-decoration: none;
 }
 .body_dark_mode .weeks{
 	color: white;
@@ -451,6 +444,9 @@
     padding-left: 3px;
     border-radius: 11px;
 }
+.body_dark_mode .xtoxresult, .body_dark_mode .xtox{
+	color: black;
+}
 .qr-chart-img{
 	max-height: 600px;
 }
@@ -459,6 +455,12 @@
 	margin-top: 25px;
 	margin-bottom: 25px;
 	width: 100%;
+}
+.searchbar-container{
+	width: 100%;
+	display: flex;
+	text-align: center;
+	justify-content: center;
 }
 .search-bar{
 	width: 100%;
@@ -496,8 +498,17 @@
 	text-decoration: none;
 	color: black; 
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
+	gap: 6px;
 	align-items: center;
+}
+.searchbar-ul-hero li a{
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.searchbar-ul-skill li a{
+	flex-direction: column;
 }
 #myUL li a:hover{
 	background-color: #eee;
@@ -594,10 +605,28 @@
 	cursor: pointer;
 	width: auto;
 }
-.body_dark_mode .btn-generate-damage{
+.btn-reset{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: #fff;
+	background-color: #007bff;
+	font-weight: 400;
+	user-select: none;
+	border: 1px solid transparent;
+	padding: 0.4rem 1rem ;
+	font-size: 0.75rem;
+	border-radius: 0.3rem;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	text-align: center;
+	cursor: pointer;
+	width: auto;
+}
+.body_dark_mode .btn-generate-damage, .body_dark_mode .btn-reset{
 	background: #314149;
 }
-.body_dark_mode .btn-generate-damage:hover{
+.body_dark_mode .btn-generate-damage:hover, .body_dark_mode .btn-reset:hover{
 	background: #859ebc;
 }
 .runes-choice{
@@ -606,7 +635,6 @@
 	flex-direction: row;
     justify-content: center;
 }
-
 .saviour, .recovery, .luck{
 	filter: brightness(0.4);
 	cursor: not-allowed;
@@ -682,6 +710,9 @@
 	border-radius: 10px;
 	height: max-content;
 }
+.gsheet-content{
+	overflow: hidden;
+}
 .gsheet-upper-content{
 	display: flex;
 	flex-direction: row;
@@ -714,7 +745,9 @@
 .body_dark_mode .fa-info-circle{
 	color: white;
 }
-
+.body_dark_mode .averageDamage{
+	color: #fff;
+}
 
 
 .popup {
@@ -745,4 +778,165 @@
 }
 .show {
 	visibility: visible;
+}
+.footer-wiki{
+	bottom: 0;
+}
+.select-cost{
+	margin-top: 20px;
+}
+.select-cost select {
+	appearance: none;
+	margin: 0;
+	width: 100%;
+	font-family: inherit;
+	outline: none;
+	min-width: 15ch;
+	max-width: 30ch;
+	border: 1px solid #777;
+	border-radius: 0.25em;
+	padding: 0.25em 0.5em;
+	font-size: 1.25rem;
+	cursor: pointer;
+	line-height: 1.1;
+	background-color: #fff;
+}
+.select {
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  position: relative;
+}
+select, select::after {
+    grid-area: select;
+}
+select:not(.select--multiple)::after {
+    content: "";
+    justify-self: end;
+    width: 0.8em;
+    height: 0.5em;
+    background-color: #777;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+label {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+.input-cost{
+	margin-top: 20px;
+}
+.cost_input_container{
+	display: flex;
+	flex-direction: row;
+}
+.cost_input{
+	margin: 0;
+	width: 50%;
+	min-width: 50px;
+	max-width: 100px;
+	font-family: inherit;
+	outline: none;
+	border: 1px solid #777;
+	border-radius: 0.20em;
+	padding: 0.20em 0.4em;
+	font-size: 1rem;
+	background-color: #fff;
+}
+.submit_container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin-top: 2px;
+}
+.submit-input{
+	color: #fff;
+    background-color: #007bff;
+    font-weight: 400;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.85rem;
+    border-radius: 0.25rem;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.input-cost input:invalid, .input-cost .err{
+	border: red solid 2px;
+}
+.field_value2{
+	display: flex;
+}
+.body_dark_mode .cost_type{
+	color: #fff;
+}
+.body_dark_mode .input-cost{
+	color: #fff;
+}
+.tutorial{
+	margin: 20px 20% 20px 20%;
+	padding: 4px;
+	border: solid 0px black;
+	border-radius: 10px;
+	background-color: #6CB4EE;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+}
+.body_dark_mode .tutorial{
+	background-color: #777;
+}
+.body_dark_mode .content a{
+	text-decoration: none;
+	color: #c58af9;
+}
+.body_dark_mode .category-cost{
+	color: white;
+}
+.news{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+.news-title{
+	display: flex;
+	border-top: 1px black solid;
+	font-size: 0.82em;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-weight: 600;
+}
+.body_dark_mode .news-title{
+	color: #f5f5f5bf;
+}
+.news-container{
+	text-decoration: none;
+	width: min-content;
+    height: 60px;
+    padding: 0;
+	margin-top: 10px;
+	background: none;
+	cursor: auto;
+}
+.news-container:hover{
+	transform: none;
+}
+.body_dark_mode .news-container{
+	background: none;
+}
+.image-feedback{
+	height: 60px;
+}
+.news-container a{
+	text-decoration: none;
+	color: #ffffff;
+	position: relative;
+	bottom: 51px;
+}
+.news-container-content{
+	justify-content: center;
+    display: flex;
 }

@@ -34,8 +34,6 @@ services:
     networks:
       - ######
       - ######
-    depends_on:
-      - ######
     labels:
       - ######
       - ######

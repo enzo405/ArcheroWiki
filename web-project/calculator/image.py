@@ -210,14 +210,15 @@ heros={
     "Sylvan":Path("calculator/static/image/heros/Sylvan.png"),
     "Shade":Path("calculator/static/image/heros/Shade.png"),
     "Ryan":Path("calculator/static/image/heros/Ryan.png"),
-    "Lina":Path("calculator/static/image/heros/lina.png"),
+    "Lina":Path("calculator/static/image/heros/Lina.png"),
     "Aquea":Path("calculator/static/image/heros/Aquea.png"),
     "Shingen":Path("calculator/static/image/heros/Shingen.png"),
     "Gugu":Path("calculator/static/image/heros/Gugu.png"),
     "Iris":Path("calculator/static/image/heros/Iris.png"),
     "Blazo":Path("calculator/static/image/heros/Blazo.png"),
     "Melinda":Path("calculator/static/image/heros/Melinda.png"),
-    "Elaine":Path("calculator/static/image/heros/Elaine.png")
+    "Elaine":Path("calculator/static/image/heros/Elaine.png"),
+    "Bobo":Path("calculator/static/image/heros/Bobo.png")
 }
 
 jewel = {

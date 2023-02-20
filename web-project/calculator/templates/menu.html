@@ -3,33 +3,67 @@
 	<head>
 		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.13.4 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.13.4 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.13.4 %}">
-		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.18.2 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
+		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Welcome to Wiki</title>
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-		<script src="{% static 'traduction.js' %}"></script>
+		<script src="{% static 'main.js' %}"></script>
+		<meta name="description" content="Here you will find everything you need to know about Archero">
+		<meta property="og:url" content="https://stats.wiki-archero.com/">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Welcome to Wiki Archero">
+		<meta property="og:description" content="Here you will find everything you need to know about Archero">
+		<meta property="og:image" content="https://stats.wiki-archero.com/static/image/archero_icon.png">
 	</head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
 {% elif darkmode == "no" %}
 <body>
 {% endif %}
-	<div class="main-container">
-		<div class="sidebar" id="sidebar">
-			<div class="sidebar-icon" id="sidebar-icon">
-				<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
-				<div class="rightsidebarc" id="rscimg">
-					<svg id="svg-filter-sidebar"width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
-				</div>
-			</div>
-			<div class="traveling" id="traveling">
-				<!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
+<noscript>
+	<div id="no-script-message">
+		<p>Please enable JavaScript to use this website.</p>
+	</div>
+</noscript>
+	<div class="sidebar sidebar-open sidebar-position-f" id="sidebar">
+		<div class="sidebar-icon" id="sidebar-icon">
+			<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
+			<div class="rightsidebarc" id="rscimg">
+				<svg id="svg-filter-sidebar" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
 			</div>
 		</div>
-		<main id="main-menu" class="main-menu cmcath">
+		<div class="traveling" id="traveling">
+			<!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
+		</div>
+	</div>
+	<div class="main-container">
+		{% if messages %}
+			<div id="messages">
+				{% for message in messages %}
+					<div{% if message.tags %} class="{{ message.tags }}-messages"{% endif %} id="messages-tags">
+						{{ message }}
+						<div class="close_span_message">&times;</div>
+					</div>
+				{% endfor %}
+			</div>
+			<script>
+				window.onload = function() {
+					setTimeout(function() {
+						var popup = document.getElementById("messages");
+						popup.style.opacity = "0";
+					}, 5000);
+				};
+				var span = document.getElementsByClassName("close_span_message")[0];
+				span.onclick = function(){
+					var messages = document.getElementById("messages")
+					messages.style.display = "none"
+				}
+			</script>
+		{% endif %}
+		<main class="main-menu cmcath">
 			<header class="header-container">
 				<div class="header-container-1"></div>
 				<div class="header-container-2 header_msg"><h2>{{ header_msg }}</h2></div>
@@ -43,73 +77,84 @@
 				</div>
 			</header>
 			<div class="select-href">
-				<div class="div-onclick-menu calc-index" onclick="location.href='/calculator/index'">Stats</div>
-				<div class="div-onclick-menu wiki-tc" onclick="location.href='/wiki/menu'">Wiki</div>
-				<div class="div-onclick-menu wiki-item" onclick="location.href='/wiki/item'">Item</div>
-				<div class="div-onclick-menu wiki-skill" onclick="location.href='/wiki/skill-list'">Skill</div>
-				<div class="div-onclick-menu wiki-heros" onclick="location.href='/wiki/heros'">Heros</div>
-				<div class="div-onclick-menu wiki-skill" onclick="location.href='/wiki/damage_calculator'">Damage Calculator</div>
-				<div class="div-onclick-menu wiki-maze" onclick="location.href='/wiki/archive'">Sheet</div>
-				<div class="div-onclick-menu wiki-maze" onclick="location.href='/wiki/maze'">Maze Soluce</div>
+				<a href="/calculator/index" class="div-onclick-menu calc-index">Stats</a>
+				<a href="/wiki/menu" class="div-onclick-menu wiki-tc">Wiki</a>
+				<a href="/wiki/item" class="div-onclick-menu wiki-item">Item</a>
+				<a href="/wiki/skill-list" class="div-onclick-menu wiki-skill">Skill</a>
+				<a href="/wiki/heroes" class="div-onclick-menu wiki-heros">Heroes</a>
+				<a href="/wiki/damage-calculator" class="div-onclick-menu wiki-skill">Damage Calculator</a>
+				<a href="/wiki/upgrade" class="div-onclick-menu wiki-cost">Upgrade Cost</a>
+				<a href="/wiki/archive" class="div-onclick-menu wiki-maze">Google Sheet</a>
+				<a href="/wiki/promo-code" class="div-onclick-menu promo-code">Promo Codes</a>
+				<a href="/wiki/maze" class="div-onclick-menu wiki-maze">Maze Soluce</a>
+			</div>
+			<div class="news">
+				<div class="news-title">
+					Make a Feedback to help improve the wiki
+				</div>
+				<div class="news-container div-onclick-menu">
+					<img src="/static/image/wiki-image/ButtonSmall_Green.png" class="image-feedback">
+					<a href="https://forms.gle/YcHNZsPjFRnh4GKZ6" target="_blank" class="feedback">FeedBack</a>
+				</div>
 			</div>
 		</main>
-	</div>
-	<footer id="menuf" class="footer-margin">
-		<div class="footer-content">
-			<div class="footer-about">
-				<img class="footer-img-icon" src="/static/image/archero_icon.png">
-				<div class="about-content">
-					<h2>Archero :</h2>
-					<div>Archero Update will be added with a certains delay</div>
-					<div class="contact-me">
-						<div>If you encounter any bugs / anomaly please contact me on discord</div>
-						<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+		<footer style="margin-top: 130px;">
+			<div class="footer-content">
+				<div class="footer-about">
+					<img class="footer-img-icon" src="/static/image/archero_icon.png" alt="image game icon">
+					<div class="about-content">
+						<h2>Archero :</h2>
+						<div>Archero Update will be added with a certains delay</div>
+						<div class="contact-me">
+							<div>If you encounter any bugs / anomaly please contact me on discord</div>
+							<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="discord_link">
-				<div class="container_dlink">
-					<h2>Community Link:</h2> 
-					<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMuthique's Server</li></a>
-					<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+				<div class="discord_link">
+					<div class="container_dlink">
+						<h2>Community Link:</h2> 
+						<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMutique's Server</li></a>
+						<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+					</div>
+					<div class="container_rlink">
+						<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
+					</div>
+					<div class="container_flink">
+						<a href="https://www.facebook.com/archerogame/" target="_blank"><li> FB Archero</li></a>
+					</div>
 				</div>
-				<div class="container_rlink">
-					<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
-				</div>
-				<div class="container_flink">
-					<a href="https://www.facebook.com/archerogame/" target="_blank"><li> Fb Archero</li></a>
+				<div class="thanks">
+					<h2>Shout-out :</h2>
+					<div class="shout-out">SonHaon, Deth, TigerShark14</div>
+					<div class="shout-out">Ktaplouf, Pew, Lorenz, RedsMeName</div>
+					<div class="shout-out">Everyone who helped me getting data</div>
 				</div>
 			</div>
-			<div class="thanks">
-				<h2>Shout-out :</h2>
-				<div class="shout-out">SonHaon, Ktaplouf, Pew, Deth</div>
-				<div class="shout-out">Lovii, Kaseiya, Lorenz, TigerShark14</div>
-				<div class="shout-out">Everyone who helped me getting data</div>
-			</div>
-		</div>
-	</footer>
+		</footer>
+	</div>
+    <a href="habby-secret/" target="_blank" style="position: absolute;bottom: 0;right: 0;width: 10px;height: 10px;cursor: pointer;z-index: 150;"></a>
 </body>
-<script type="module">
-	import sidebar from "/static/json/sidebar.json" assert {type: 'json'};
-
+<script>
 	const traveling = document.getElementById("traveling")
 
-	for(const item of sidebar["sidebar"]){
+	for(const item of sidebar){
 		const parentContainer = document.createElement("div")
 		const leftSidebar = document.createElement("div")
 		const childLeftSidebar = document.createElement("div")
 		const rightSidebar = document.createElement("div")
 		const childRightSidebar = document.createElement("a")
-		const svg = document.createElement("object")
+		const image = document.createElement("img")
 
 		traveling.appendChild(parentContainer)
 		parentContainer.appendChild(leftSidebar)
 		parentContainer.appendChild(rightSidebar)
 		leftSidebar.appendChild(childLeftSidebar)
 		rightSidebar.appendChild(childRightSidebar)
-		childRightSidebar.appendChild(svg)
+		childRightSidebar.appendChild(image)
 
 		parentContainer.className = item['container']['class']
+        parentContainer.id = item['container']['_name'] + "-sidebar-image"
 		parentContainer.addEventListener('click', function windowHref(){
 			window.location.href = item['container']['onclick']
 		})
@@ -118,24 +163,23 @@
 		childLeftSidebar.innerHTML = item['container']['childs_container']['leftsidebar']['child_content']
 		rightSidebar.className = item['container']['childs_container']['rightsidebar']['self_class']
 		childRightSidebar.className = item['container']['childs_container']['rightsidebar']['child_class']
-		svg.type = item['container']['childs_container']['rightsidebar']['child_content']['object_type']
-		svg.id = item['container']['childs_container']['rightsidebar']['child_content']['object_id']
-		svg.data = item['container']['childs_container']['rightsidebar']['child_content']['object_data']
-		svg.width = item['container']['childs_container']['rightsidebar']['child_content']['object_width']
-		svg.height = item['container']['childs_container']['rightsidebar']['child_content']['object_height']
+		image.id = item['container']['childs_container']['rightsidebar']['child_content']['image_id']
+		image.src = item['container']['childs_container']['rightsidebar']['child_content']['image_src']
+		image.width = item['container']['childs_container']['rightsidebar']['child_content']['image_width']
+		image.height = item['container']['childs_container']['rightsidebar']['child_content']['image_height']
 	}
 
 	const themeParentContainer = document.createElement("div")
 	const themeLeftSidebar = document.createElement("div")
 	const themeChildLeftSidebar = document.createElement("div")
 	const themeRightSidebar = document.createElement("div")
-	const themeSvg = document.createElement("object")
+	const themeImg = document.createElement("img")
 
 	traveling.appendChild(themeParentContainer)
 	themeParentContainer.appendChild(themeLeftSidebar)
 	themeParentContainer.appendChild(themeRightSidebar)
 	themeLeftSidebar.appendChild(themeChildLeftSidebar)
-	themeRightSidebar.appendChild(themeSvg)
+	themeRightSidebar.appendChild(themeImg)
 
 	themeParentContainer.className = "traveling-inline-div"
 	themeParentContainer.id = "switch_dark_mode"
@@ -143,16 +187,15 @@
 	themeChildLeftSidebar.className = "shcl"
 	themeChildLeftSidebar.innerHTML = "Theme"
 	themeRightSidebar.className = "rightsidebarc traveling-right"
-	themeSvg.type = "image/png"
-	themeSvg.id = "darkmodeSWITCH" 
-	themeSvg.width = "21"
-	themeSvg.height = "21"
+	themeImg.id = "darkmodeSWITCH" 
+	themeImg.width = "21"
+	themeImg.height = "21"
 
 	var darkmode = "{{ darkmode }}"
 	if(darkmode == "yes"){
-		themeSvg.data = "\\static\\image\\svg\\moon.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\moon.png"
 	}else if(darkmode == "no"){
-		themeSvg.data = "\\static\\image\\svg\\sun.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\sun.png"
 	}
 	
 	var switchModeBtn = document.getElementById('switch_dark_mode');
@@ -164,10 +207,10 @@
 		body.classList.toggle("body_dark_mode");
 		if(body.className == "body_dark_mode"){
 			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\moon.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\moon.png"
 		}else{
 			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\sun.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\sun.png"
 		}
 	})
 
@@ -175,19 +218,11 @@
 	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
 		var sidebar = document.getElementById("sidebar")
 		sidebar.classList.toggle('sidebar-active')
+        sidebar.classList.toggle('sidebar-open')		
 	})
-	
-	function cookieInitialize(){
-		document.cookie = "windowInnerHeight=" + window.innerHeight +  "; path=/";
-		document.cookie = "windowInnerWidth=" + window.innerWidth +  "; path=/";
-	}
-	cookieInitialize()
 </script>
 <script>
-	const footerMenu = document.getElementById('menuf')
-	const mainMenu = document.getElementById('main-menu')
-	marginTopFooter =  window.innerHeight - mainMenu.offsetHeight - footerMenu.offsetHeight - 18
-	console.log(marginTopFooter)
-	footerMenu.style.marginTop = marginTopFooter+"px"
+	const self_inline_div_traveling = document.getElementById('Menu-sidebar-image')
+	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
 </html>

@@ -3,32 +3,38 @@
 	<head>
 		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.13.4 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.13.4 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.13.4 %}">
-		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.18.2 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
+		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<script src="gsheet_data.json" defer type="application/json"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Welcome to Wiki</title>
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
+        <script src="{% static 'main.js' %}"></script>
 	</head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
 {% elif darkmode == "no" %}
 <body>
 {% endif %}
-	<div class="main-container">
-		<div class="sidebar" id="sidebar">
-			<div class="sidebar-icon" id="sidebar-icon">
-				<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
-				<div class="rightsidebarc" id="rscimg">
-					<svg id="svg-filter-sidebar"width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
-				</div>
-			</div>
-			<div class="traveling" id="traveling">
-				<!-- SIDEBAR CONTENT INJECTED WITH JAVASCRIPT -->
+<noscript>
+	<div id="no-script-message">
+		<p>Please enable JavaScript to use this website.</p>
+	</div>
+</noscript>
+	<div class="sidebar sidebar-open sidebar-position-f" id="sidebar">
+		<div class="sidebar-icon" id="sidebar-icon">
+			<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
+			<div class="rightsidebarc" id="rscimg">
+				<svg id="svg-filter-sidebar" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
 			</div>
 		</div>
+		<div class="traveling" id="traveling">
+			<!-- SIDEBAR CONTENT INJECTED WITH JAVASCRIPT -->
+		</div>
+	</div>
+	<div class="main-container">
 		<main class="main-menu cmcath">
 			<header class="header-container">
 				<div class="header-container-1"></div>
@@ -46,50 +52,123 @@
                 
 			</div>
 		</main>
-	</div>
-	<footer class="footer-margin">
-		<div class="footer-content">
-			<div class="footer-about">
-				<img class="footer-img-icon" src="/static/image/archero_icon.png">
-				<div class="about-content">
-					<h2>Archero :</h2>
-					<div>Archero Update will be added with a certains delay</div>
-					<div class="contact-me">
-						<div>If you encounter any bugs / anomaly please contact me on discord</div>
-						<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+		<footer class="footer-margin">
+			<div class="footer-content">
+				<div class="footer-about">
+					<img class="footer-img-icon" src="/static/image/archero_icon.png" alt="image game icon">
+					<div class="about-content">
+						<h2>Archero :</h2>
+						<div>Archero Update will be added with a certains delay</div>
+						<div class="contact-me">
+							<div>If you encounter any bugs / anomaly please contact me on discord</div>
+							<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="discord_link">
-				<div class="container_dlink">
-					<h2>Community Link:</h2> 
-					<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMuthique's Server</li></a>
-					<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+				<div class="discord_link">
+					<div class="container_dlink">
+						<h2>Community Link:</h2> 
+						<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMutique's Server</li></a>
+						<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+					</div>
+					<div class="container_rlink">
+						<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
+					</div>
+					<div class="container_flink">
+						<a href="https://www.facebook.com/archerogame/" target="_blank"><li> FB Archero</li></a>
+					</div>
 				</div>
-				<div class="container_rlink">
-					<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
-				</div>
-				<div class="container_flink">
-					<a href="https://www.facebook.com/archerogame/" target="_blank"><li> Fb Archero</li></a>
-				</div>
-			</div>
-			<div class="thanks">
-				<h2>Shout-out :</h2>
-				<div class="shout-out">SonHaon, Ktaplouf, Pew, Deth</div>
-				<div class="shout-out">Lovii, Kaseiya, Lorenz, TigerShark14</div>
+				<div class="thanks">
+					<h2>Shout-out :</h2>
+				<div class="shout-out">SonHaon, Deth, TigerShark14</div>
+				<div class="shout-out">Ktaplouf, Pew, Lorenz, RedsMeName</div>
 				<div class="shout-out">Everyone who helped me getting data</div>
+				</div>
 			</div>
-		</div>
-	</footer>
+		</footer>
+	</div>
 </body>
-<script type="module">
-	import gsheet from "/static/json/gsheet_data.json" assert {type: 'json'};
+<script>
+	var gsheet = [
+        {
+            "title":"Archero Medals (by KeithShade)",
+            "thumbnail":"https://images-ext-2.discordapp.net/external/ZsDT1l5orZpai68x5CiADPuP4kc96SjsCeuoj9tWPMc/https/lh4.googleusercontent.com/NWM-lnXoGJMGFZIAF3ekkQK-gzwLAI5Xmtz3LsvT9rN6bSz9DT8fUOiS6yDVRvAlcBu9sOT9lzViLA%3Dw1200-h630-p",
+            "description":"-List of the Medals of 4.8 update\n-Medal name\n-Trigger\n-Rarity\n-Enhancement",
+            "url":"https://docs.google.com/spreadsheets/d/1In0CS_bJsHR9xO7KDgEftXgogPxMYrW-20nlEp-s8WI"
+        },
+        {
+            "title":"Archero Hatchery 4.9.0 (LanderZ, mrb, Shusaku, Abstrusity, LuhCaran)",
+            "thumbnail":"https://images-ext-1.discordapp.net/external/Wr4YOONrx0-ZrldaKK6-ej3gnnFj4Be5seFuSk7Webo/https/lh6.googleusercontent.com/t6U7OU0W2oEP2ECobzUm8UJWLmG-oqunPtygosBafiCgNIbWotsVx9JIFQdGkmb37iMn9JE0-aBlFg%3Dw1200-h630-p",
+            "description":"-List of available Monsters\n-Numbers of kills required to hatch or complete quests\n-Completed quest dialogue\n-Automated hatch timers\n-Where to find each Monster and which locations are recommended\n-Monster training bonuses and costs (still Work in Progress)",
+            "url":"https://docs.google.com/spreadsheets/d/1p0xAb6ZrgwqhynromVXTqJSsfWlK1W8EDDt2HyvmRKE"
+        },
+        {
+            "title":"Relics 4.8.3 (LuhCaran, Hollmanovec, RedsMeName)",
+            "thumbnail":"https://images-ext-2.discordapp.net/external/-Uz7vgaHAmL8pV5TP0tsN3RQEXljKR__UwkC8ggld34/https/lh6.googleusercontent.com/4JXx6B6snH453Vv-toFLnMwKsiTEd11kBbwDQ87-mbkyd7iI9p6zWuW_nIOIWdCKeqMkrl1hOZC0oQ%3Dw1200-h630-p",
+            "description":"This Google Sheet is inventoring all the Relics Stats (4.8.4). Name of Relics,Base Effect,Advance Effect,Exclusive Effect,Effective Exclusive Effect,Resonance Effect",
+            "url":"https://docs.google.com/spreadsheets/d/1SWsyuI6PwYVHHeIpbHyGe3w6nS4C4d_QzlOPAyKh_2Y"
+        },
+        {
+            "title":"Jewels Stats (LuhCaran on 4.9.0)",
+            "thumbnail":"https://images-ext-2.discordapp.net/external/qvZ57PWuTO0Zq9NcFueJZ7fMZqFR-Xu4B5zxOt9BkLU/https/lh4.googleusercontent.com/pps5MNL0e1UjKyt5UKbeTyjTmD5U4stUPMXTUlaDCOcWaEtmTurONg9Y9iTSbbQsvVt-TgExWaw2EA%3Dw1200-h630-p",
+            "description":"This Google Sheet will be inventoring all the Jewel Stats (4.8.4), you can help us collecting the stats by asking LuhCaran#9802 on discord\nName,Kunzite,Ruby,Tourmaline,Emerald,Lapis,Calaite,Amber,Topaz,Amethyst",
+            "url":"https://docs.google.com/spreadsheets/d/1h81qU9p1H6TkeyPrZlRzh2U6W28x3S2q2pOrVeusw94"
+        },
+        {
+            "title":"Archero Skin 4.9",
+            "thumbnail":"https://images-ext-1.discordapp.net/external/2m6_dLBYX7gokkd_QjfWbwgulPgYLYBl00fH3UbiJgI/https/lh4.googleusercontent.com/J1thV7jB_Gg8hJSGGUBBbmXLpnN4tKOhudzTg_rti3uFvw7lEcQcljnKI_NwYQXQKJYYknCboGfDdQ%3Dw1200-h630-p",
+            "description":"In here you will find all the Outfit / Skin / Coupon / Type / Bonus / Unit / Value that are in the game right now",
+            "url":"https://docs.google.com/spreadsheets/d/1EcvyN2NGT3k8hDrIk14CsUmyILzMDOJidKKEDDB2dSU"
+        },
+        {
+            "title":"Archero QuickRaid Chart 4.9",
+            "thumbnail":"https://images-ext-1.discordapp.net/external/O49IU7I7N0xrxgeEv4_olqJXCTCuzbP0o8MdDSvoNsI/https/lh4.googleusercontent.com/E-QN8HZJy2uCkSHmt9_Q-KQ2IXLUafedztTrXxtWsfqN_Z3CO9Vx3qoYO5UygUIjQIlYuvAQJq5cTw%3Dw1200-h630-p",
+            "description":"Please don't change the formula, if you did it by accident just @ me on discord (LuhCaran#9802)\nMode,Heroic Mode\nN° de Chapitre / Chapter LVL,35",
+            "url":"https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w"
+        },
+        {
+            "title":"Archero Damage Calculator (u/raytheblue)",
+            "thumbnail":"https://images-ext-1.discordapp.net/external/Tn91MQaYwILZoP4sgFgb0LvCvQQx4Zz5CvqdaLpYSos/https/lh5.googleusercontent.com/j8pbCp_DWmtcBd4eUppd8Iw4B9U6m8ID0nHvxERjhMjckFNhFyCPxCnMDPHten5nkId9c785-8smHw%3Dw1200-h630-p",
+            "description":"Damage Calculator by u/raytheblue - Version 4.8.2 updated 17 January 2023 (RELIC WORK IN PROGRESS)\nInstructions\nMake a copy of this to input your own data. File > Make a copy\n<- Key in data here\n< - White cells are calculated by formula\n<- Take note of these rows when checking ...",
+            "url":"https://docs.google.com/spreadsheets/d/1-xLV4JSE71lI9W3SbXn9G_BNganA9VkzbnC5FmH3DaA/edit#gid=1701079449"
+        },
+        {
+            "title":"Archero Dragon Statues Abilities",
+            "thumbnail":"https://images-ext-2.discordapp.net/external/fkzJepRKpWrthq96krfQ8p2dhO090DJXyQ9WeWCliEM/https/lh3.googleusercontent.com/uyA_RxDbcP1bUYq8M-jYf-8LSk5XYLSIyE8udfavG_XHYOKF0hgoUNBkPwGXTi6nrTKkGyDzXYTOVg%3Dw1200-h630-p",
+            "description":"This chart shows all the abilities of each dragon\nMagestone,MP cost,Stats (epic rarity start up number),Ancient Legendary stats,Epic skills ,Perfect Epic,Legendary,Mythic\nGlacion,A,Ice,Defense,Mid,Rear Dmg Resit 300(+6)/Max HP 1500(+32),Healing effect of hearts +20%,Icy Breath ...",
+            "url":"https://docs.google.com/spreadsheets/d/1Sl6_e7Iyu8cmcQTgoGK0SITdDOonjrPzGS-X3P0eQjA"
+        },
+        {
+            "title":"Archero - Dragon Statues",
+            "thumbnail":"https://images-ext-2.discordapp.net/external/AccfaoPsbN10zENGhYENIzgPNl7MOfp6cwg8xFnC2bs/https/lh6.googleusercontent.com/GLeFmoEr2flz378z-wM6QrpH6lAU_TvA2yjsyG4hPebNrQaoUV14n0_vwP4ZTknjvaTa-1YEAXTCvQ%3Dw1200-h630-p",
+            "description":"How to use\nSelect Dragon name, rarity and level using coloured cells below\nFigures pull through Data tab - please let me know if there are any errors (4-13-20 on discord)\nNote: If table shows all zeroes, I don't have any data for this dragon at this rarity - you can help by sending me a s...",
+            "url":"https://docs.google.com/spreadsheets/d/10wp79kS7-eLptmo6tiOXEk4zS9w-2VB5R8KJ9j0cJ8E"
+        },
+        {
+            "title":"Archero Glyphs (pelmens#9812)",
+            "thumbnail":"https://images-ext-1.discordapp.net/external/13k54r0tWfjKogpCB0UlEXZsbssP1gyGPCPvjBbtsbg/https/lh5.googleusercontent.com/NzRlN2dNJbshgumbnKzYPpaxsm0zQpD1mimzMRcki3DY5hCn6Py9yX1bAOVP8z4fIvphdSD0-S0Rew%3Dw1200-h630-p",
+            "description":"Rare,Epic,Epic+1,Epic+2,PE,PE+1,PE+2,PE+3,L,L+1,L+2,L+3,AL\nS,All glyphs,Attack,-,200,310,400,490,580,670,970\nStrike - Rip and Tear,Upon 8 consecutive hits, inflict bleed for x seconds,-,3s,4s\nMovement - Crit,After moving, crit chance increased,-,5%,6%,7%\nSlaughter - Assault,Upon killing 1...",
+            "url":"https://docs.google.com/spreadsheets/d/1Z0bGaCJ8EuKZQSqeW8q1eS5bWl_5z6E237-JAuf9pFk"
+        },
+        {
+            "title":"Runes Effect (Chaos)",
+            "thumbnail":"https://images-ext-2.discordapp.net/external/TTjY-t704t-k3Hm9EDO1k8cTLzhfvoe_LTANNVEEJEk/https/lh3.googleusercontent.com/Sp8ouH5BX7skeBQa-Kq6NuKSBES9euh9rKxfjV6X-AUfxCo-CR2Zb6txry5ZydslPT68gF-b3qh6OA%3Dw1200-h630-p",
+            "description":"Power,Saviour,Recovery (Level 40),Courage (Level 60),Luck (Level 80)\nSlot 1,Atk + X,Max HP + X,Healing effect of red heart + X,Atk + X,Max HP + X\nSlot 2,Crit damage + %,Projectile resistance + X,Diagonal arrows chance increased + %,Atreus base HP + X,All sword skills damage + X\nDamage to ...",
+            "url":"https://docs.google.com/spreadsheets/d/1Y2C0yY-Ht5XDEYcA85XSnM51G8bguFIWE8LL7AMCVc0"
+        },
+        {
+            "title":"Archero Evolution (LanderZ)",
+            "thumbnail":"https://images-ext-2.discordapp.net/external/OohKn7EI8dFn2uigdC4FlebSrx-7M5TqEXvUrQd0Guo/https/lh5.googleusercontent.com/_tmOT-weBwZ-hbMq_1GZxMT7ADTjF2L_6MBzUbmcP1dy7JaSURZqJnKwmas891kJWZk%3Dw1200-h630-p",
+            "description":"Archero Compilation Document\n-Put together and compiled by LanderZ\n-Assistance in gathering this data comes from dozens of amazing sources, including Kang Greenstrider, Abstrusity, Player99 and far, far too many to list all of them. Without your help, this would not be possi...",
+            "url":"https://docs.google.com/spreadsheets/d/1HkQweiilqoxMN61CugBrITqGZtQZVleO"
+        }
+    ]
 
 	const container = document.getElementById("grid-gsheet-archive")
 	while(container.firstChild) {
 		container.firstChild.remove()
 	}
-	for(const item of gsheet["ghseet"]){
+	for(const item of gsheet){
 		const gsheetContainer = document.createElement("div")
 		const lowerContent = document.createElement("div")
 		const upperContent = document.createElement("div")
@@ -121,27 +200,26 @@
 		content.innerText = item['description']
 	}
 </script>
-<script type="module">
-	import sidebar from "/static/json/sidebar.json" assert {type: 'json'};
-
+<script>
 	const traveling = document.getElementById("traveling")
 
-	for(const item of sidebar["sidebar"]){
+	for(const item of sidebar){
 		const parentContainer = document.createElement("div")
 		const leftSidebar = document.createElement("div")
 		const childLeftSidebar = document.createElement("div")
 		const rightSidebar = document.createElement("div")
 		const childRightSidebar = document.createElement("a")
-		const svg = document.createElement("object")
+		const image = document.createElement("img")
 
 		traveling.appendChild(parentContainer)
 		parentContainer.appendChild(leftSidebar)
 		parentContainer.appendChild(rightSidebar)
 		leftSidebar.appendChild(childLeftSidebar)
 		rightSidebar.appendChild(childRightSidebar)
-		childRightSidebar.appendChild(svg)
+		childRightSidebar.appendChild(image)
 
 		parentContainer.className = item['container']['class']
+		parentContainer.id = item['container']['_name'] + "-sidebar-image"
 		parentContainer.addEventListener('click', function windowHref(){
 			window.location.href = item['container']['onclick']
 		})
@@ -150,24 +228,23 @@
 		childLeftSidebar.innerHTML = item['container']['childs_container']['leftsidebar']['child_content']
 		rightSidebar.className = item['container']['childs_container']['rightsidebar']['self_class']
 		childRightSidebar.className = item['container']['childs_container']['rightsidebar']['child_class']
-		svg.type = item['container']['childs_container']['rightsidebar']['child_content']['object_type']
-		svg.id = item['container']['childs_container']['rightsidebar']['child_content']['object_id']
-		svg.data = item['container']['childs_container']['rightsidebar']['child_content']['object_data']
-		svg.width = item['container']['childs_container']['rightsidebar']['child_content']['object_width']
-		svg.height = item['container']['childs_container']['rightsidebar']['child_content']['object_height']
+		image.id = item['container']['childs_container']['rightsidebar']['child_content']['image_id']
+		image.src = item['container']['childs_container']['rightsidebar']['child_content']['image_src']
+		image.width = item['container']['childs_container']['rightsidebar']['child_content']['image_width']
+		image.height = item['container']['childs_container']['rightsidebar']['child_content']['image_height']
 	}
 
 	const themeParentContainer = document.createElement("div")
 	const themeLeftSidebar = document.createElement("div")
 	const themeChildLeftSidebar = document.createElement("div")
 	const themeRightSidebar = document.createElement("div")
-	const themeSvg = document.createElement("object")
+	const themeImg = document.createElement("img")
 
 	traveling.appendChild(themeParentContainer)
 	themeParentContainer.appendChild(themeLeftSidebar)
 	themeParentContainer.appendChild(themeRightSidebar)
 	themeLeftSidebar.appendChild(themeChildLeftSidebar)
-	themeRightSidebar.appendChild(themeSvg)
+	themeRightSidebar.appendChild(themeImg)
 
 	themeParentContainer.className = "traveling-inline-div"
 	themeParentContainer.id = "switch_dark_mode"
@@ -175,18 +252,17 @@
 	themeChildLeftSidebar.className = "shcl"
 	themeChildLeftSidebar.innerHTML = "Theme"
 	themeRightSidebar.className = "rightsidebarc traveling-right"
-	themeSvg.type = "image/png"
-	themeSvg.id = "darkmodeSWITCH" 
-	themeSvg.width = "21"
-	themeSvg.height = "21"
+	themeImg.id = "darkmodeSWITCH" 
+	themeImg.width = "21"
+	themeImg.height = "21"
 
 	var darkmode = "{{ darkmode }}"
 	if(darkmode == "yes"){
-		themeSvg.data = "\\static\\image\\svg\\moon.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\moon.png"
 	}else if(darkmode == "no"){
-		themeSvg.data = "\\static\\image\\svg\\sun.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\sun.png"
 	}
-	
+
 	var switchModeBtn = document.getElementById('switch_dark_mode');
 	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
 		var date = new Date()
@@ -196,10 +272,10 @@
 		body.classList.toggle("body_dark_mode");
 		if(body.className == "body_dark_mode"){
 			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\moon.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\moon.png"
 		}else{
 			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\sun.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\sun.png"
 		}
 	})
 
@@ -207,12 +283,11 @@
 	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
 		var sidebar = document.getElementById("sidebar")
 		sidebar.classList.toggle('sidebar-active')
+        sidebar.classList.toggle('sidebar-open')
 	})
-	
-	function cookieInitialize(){
-		document.cookie = "windowInnerHeight=" + window.innerHeight +  "; path=/";
-		document.cookie = "windowInnerWidth=" + window.innerWidth +  "; path=/";
-	}
-	cookieInitialize()
+</script>
+<script>
+	const self_inline_div_traveling = document.getElementById('Sheet-sidebar-image')
+	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
 </html>

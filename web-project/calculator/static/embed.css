@@ -1,4 +1,4 @@
-@media screen and (max-width : 420px){ /* pour résolution inf à 420px */
+@media screen and (max-width : 400px){ /* pour résolution inf à 420px */
 	.container *{
         font-size: small;
     }
@@ -38,7 +38,6 @@
     flex-direction: column;
     overflow: hidden;
     height: 100%;
-    width: 100%;
     min-height: 650px;
 }
 
@@ -152,7 +151,6 @@
 .bdFBtt {
     padding: 0.5em 1em 1em 0.75em;
     display: inline-grid;
-    grid-template-columns: auto min-content;
     grid-template-rows: auto;
 }
 
@@ -173,6 +171,23 @@
     min-width: 0px;
     margin: 8px 0px 0px;
     grid-column: 1 / 2;
+}
+
+.khpRBf {
+    min-width: 0px;
+    margin: 8px 0px 0px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    grid-area: auto / 1 / auto / 3;
+}
+
+.frwlEK {
+    font-size: 0.75em;
+    font-weight: 500;
+    color: rgb(220, 221, 222);
+    line-height: 1em;
+    white-space: break-spaces;
 }
 
 .hXMbfy > .sc-27l7o2-0 {
@@ -209,6 +224,8 @@
 
 .jFcAhO {
     min-width: 0px;
+    display: flex;
+    flex-direction: row;
 }
 
 .jFcAhO > .sc-27l7o2-0 {
@@ -232,4 +249,39 @@
     max-width: 80px;
     max-height: 80px;
     border-radius: 4px;
+}
+
+.costfield{
+    width: -webkit-fill-available;
+}
+
+.promocode_title{
+    color: #2096f4;
+    text-decoration: underline;
+}
+.reward_text{
+    display: flex;
+}
+
+.expire_field{
+    color: white;
+    margin-bottom: 10px;
+}
+.h5-archero-habby{
+    color: #2096f4;
+}
+.reward_page_pic{
+    border: 0px solid;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+#price{
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+.content-embed-star b{
+    display: flex;
+    gap: 4px;
+    align-items: center;
 }

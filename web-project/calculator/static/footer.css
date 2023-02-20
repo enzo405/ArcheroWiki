@@ -79,18 +79,6 @@
 }
 
 
-@media screen and (min-width : 547px){/* pour résolution supérieur à 547px */
-	.footer-affiche{
-		margin-top: 10px;
-	}
-}
-
-@media screen and (max-width : 546px){/* pour résolution inférieur à 546px */
-	.footer-affiche{
-		margin-top: 20px;
-	}
-}
-
 @media screen and (max-width : 400px){/* pour résolution inférieur à 400px */
 	.footer-content{
 		display: flex;
@@ -145,7 +133,7 @@
 footer{
 	background-color: #263238;
 	width: 100%;
-	z-index: 999;
+	z-index: 100;
 }
 .thanks{
 	align-items: center;
@@ -209,10 +197,6 @@ footer div, footer li{
 }
 
 
-
-
-
-
 /* DARK THEME */
 .body_dark_mode .footer_dark_mode{
     background-color: #1c2429;
@@ -220,6 +204,10 @@ footer div, footer li{
 .body_dark_mode .footer_dark_mode *{
     color: #E4E4E4;
 }
+.sticky_footer{
+	position: fixed;
+    bottom: 0;
+}
 .footer-margin{
-	margin-top: 100px;
+	margin-top: 240px;
 }

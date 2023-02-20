@@ -3,31 +3,37 @@
 	<head>
 		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.13.4 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.13.4 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.13.4 %}">
-		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.18.2 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
+		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Welcome to Wiki - Maze</title>
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
+        <script src="{% static 'main.js' %}"></script>
 	</head>
 {% if darkmode == "yes" %}
 <body class="body_maze body_dark_mode">
 {% elif darkmode == "no" %}
 <body>
 {% endif %}
-	<div class="main-container">
-		<div class="sidebar" id="sidebar">
-			<div class="sidebar-icon" id="sidebar-icon">
-				<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
-				<div class="rightsidebarc" id="rscimg">
-					<svg id="svg-filter-sidebar"width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
-				</div>
-			</div>
-			<div class="traveling" id="traveling">
-				<!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
+<noscript>
+	<div id="no-script-message">
+		<p>Please enable JavaScript to use this website.</p>
+	</div>
+</noscript>
+	<div class="sidebar sidebar-open sidebar-position-f" id="sidebar">
+		<div class="sidebar-icon" id="sidebar-icon">
+			<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
+			<div class="rightsidebarc" id="rscimg">
+				<svg id="svg-filter-sidebar" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
 			</div>
 		</div>
+		<div class="traveling" id="traveling">
+			<!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
+		</div>
+	</div>
+	<div class="main-container">
 		<div class="maze-container-main cmcath">
 			<header class="header-container">
 				<div class="header-container-1"></div>
@@ -41,32 +47,38 @@
 					</select> -->
 				</div>
 			</header>
+            <div class="tutorial">
+                <b>Here is how you should read the Solution :</b><br>
+                For example In week 1, if you chose green portal in stage 0<br>
+                You will have green and purple as an option in stage 1.<br>
+                If you chose green in stage 1, you'll have purple and blue in stage 2 etc...<br><br>
+                You Can also take a look at this : <a href="https://www.reddit.com/r/Archero/comments/xwbxrp/ancient_maze_new_full_optimised_map/" target="_blank">Optimized Maze Map</a>
+            </div>
 			<main class="maze-main" id="main">
 			</main>
 		</div>
 	</div>
 </body>
-<script type="module">
-	import sidebar from "/static/json/sidebar.json" assert {type: 'json'};
-
+<script>
 	const traveling = document.getElementById("traveling")
 
-	for(const item of sidebar["sidebar"]){
+	for(const item of sidebar){
 		const parentContainer = document.createElement("div")
 		const leftSidebar = document.createElement("div")
 		const childLeftSidebar = document.createElement("div")
 		const rightSidebar = document.createElement("div")
 		const childRightSidebar = document.createElement("a")
-		const svg = document.createElement("object")
+		const image = document.createElement("img")
 
 		traveling.appendChild(parentContainer)
 		parentContainer.appendChild(leftSidebar)
 		parentContainer.appendChild(rightSidebar)
 		leftSidebar.appendChild(childLeftSidebar)
 		rightSidebar.appendChild(childRightSidebar)
-		childRightSidebar.appendChild(svg)
+		childRightSidebar.appendChild(image)
 
 		parentContainer.className = item['container']['class']
+		parentContainer.id = item['container']['_name'] + "-sidebar-image"
 		parentContainer.addEventListener('click', function windowHref(){
 			window.location.href = item['container']['onclick']
 		})
@@ -75,24 +87,23 @@
 		childLeftSidebar.innerHTML = item['container']['childs_container']['leftsidebar']['child_content']
 		rightSidebar.className = item['container']['childs_container']['rightsidebar']['self_class']
 		childRightSidebar.className = item['container']['childs_container']['rightsidebar']['child_class']
-		svg.type = item['container']['childs_container']['rightsidebar']['child_content']['object_type']
-		svg.id = item['container']['childs_container']['rightsidebar']['child_content']['object_id']
-		svg.data = item['container']['childs_container']['rightsidebar']['child_content']['object_data']
-		svg.width = item['container']['childs_container']['rightsidebar']['child_content']['object_width']
-		svg.height = item['container']['childs_container']['rightsidebar']['child_content']['object_height']
+		image.id = item['container']['childs_container']['rightsidebar']['child_content']['image_id']
+		image.src = item['container']['childs_container']['rightsidebar']['child_content']['image_src']
+		image.width = item['container']['childs_container']['rightsidebar']['child_content']['image_width']
+		image.height = item['container']['childs_container']['rightsidebar']['child_content']['image_height']
 	}
 
 	const themeParentContainer = document.createElement("div")
 	const themeLeftSidebar = document.createElement("div")
 	const themeChildLeftSidebar = document.createElement("div")
 	const themeRightSidebar = document.createElement("div")
-	const themeSvg = document.createElement("object")
+	const themeImg = document.createElement("img")
 
 	traveling.appendChild(themeParentContainer)
 	themeParentContainer.appendChild(themeLeftSidebar)
 	themeParentContainer.appendChild(themeRightSidebar)
 	themeLeftSidebar.appendChild(themeChildLeftSidebar)
-	themeRightSidebar.appendChild(themeSvg)
+	themeRightSidebar.appendChild(themeImg)
 
 	themeParentContainer.className = "traveling-inline-div"
 	themeParentContainer.id = "switch_dark_mode"
@@ -100,18 +111,17 @@
 	themeChildLeftSidebar.className = "shcl"
 	themeChildLeftSidebar.innerHTML = "Theme"
 	themeRightSidebar.className = "rightsidebarc traveling-right"
-	themeSvg.type = "image/png"
-	themeSvg.id = "darkmodeSWITCH" 
-	themeSvg.width = "21"
-	themeSvg.height = "21"
+	themeImg.id = "darkmodeSWITCH" 
+	themeImg.width = "21"
+	themeImg.height = "21"
 
 	var darkmode = "{{ darkmode }}"
 	if(darkmode == "yes"){
-		themeSvg.data = "\\static\\image\\svg\\moon.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\moon.png"
 	}else if(darkmode == "no"){
-		themeSvg.data = "\\static\\image\\svg\\sun.svg"
+		themeImg.src = "\\static\\image\\img-sidebar\\sun.png"
 	}
-	
+
 	var switchModeBtn = document.getElementById('switch_dark_mode');
 	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
 		var date = new Date()
@@ -121,10 +131,10 @@
 		body.classList.toggle("body_dark_mode");
 		if(body.className == "body_dark_mode"){
 			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\moon.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\moon.png"
 		}else{
 			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			darkmodeSWITCH.setAttribute("data","\\static\\image\\svg\\sun.svg")
+			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\sun.png"
 		}
 	})
 
@@ -132,13 +142,8 @@
 	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
 		var sidebar = document.getElementById("sidebar")
 		sidebar.classList.toggle('sidebar-active')
+        sidebar.classList.toggle('sidebar-open')
 	})
-	
-	function cookieInitialize(){
-		document.cookie = "windowInnerHeight=" + window.innerHeight +  "; path=/";
-		document.cookie = "windowInnerWidth=" + window.innerWidth +  "; path=/";
-	}
-	cookieInitialize()
 </script>
 <!--SCRIPT API MADE BY TigerShark14#8188 on discord-->
 <script>
@@ -183,7 +188,7 @@
 			linkToTop.id = "linktotop-btn"
 
 			h2.innerText += "Week " + dateConfig[0].Line/1000;
-			linkToTop.innerText = "Go on top   "
+			linkToTop.innerText = "To the top   "
 			h2.id = h2.innerText.replaceAll(" ", "_");
 			linkToWeek.innerText = h2.innerText;
 
@@ -237,8 +242,13 @@
 			if(value.includes("🟠")) gold[0] = true;
 
 			let dd = document.createElement("dd");
+            dd.id = "L" + item[0] 
 			dd.innerText = key + " ▶ " + value
 			parentDiv.appendChild(dd);
 			}})})
+</script>
+<script>
+	const self_inline_div_traveling = document.getElementById('Maze-sidebar-image')
+	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
 </html>
