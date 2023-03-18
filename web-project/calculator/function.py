@@ -1,16 +1,21 @@
 from datetime import datetime
-import json
 from PIL import Image
 from pathlib import Path
-import random as random
-import string
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from .data import *
 from difflib import SequenceMatcher
-import time
 from . import models
+import http.cookies
+import random as random
+import json
+import string
+import time
+import re
+import urllib.parse
 
 
+WEBHOOK_URL = "https://discord.com/api/webhooks/#########/#############################################"
+WEBHOOK_URL2 = "https://discord.com/api/webhooks/#########/#############################################"
 # def makeLog(request, myLog):
 # 	dict_log = {
 # 		"dateLog": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
@@ -72,14 +77,14 @@ def resize_book(img):
 	return img.resize((250,250))
 
 
-def all_formIsValid(valid_User, valid_StuffTable, valid_HeroTable, valid_TalentTable, valid_SkinTable, valid_AltarTable, valid_JewelTypeTable, valid_JewelLevelTable, valid_EggTable, valid_EggEquippedTable, valid_DragonTable, valid_RunesTable, valid_ReforgeTable, valid_RefineTable, valid_MedalTable, valid_RelicTable):
-	if valid_User and valid_StuffTable and valid_HeroTable and valid_TalentTable and valid_SkinTable and valid_AltarTable and valid_JewelTypeTable and valid_JewelLevelTable and valid_EggTable and valid_EggEquippedTable and valid_DragonTable and valid_RunesTable and valid_ReforgeTable and valid_RefineTable and valid_MedalTable and valid_RelicTable:
+def all_formIsValid(valid_User, valid_StuffTable, valid_HeroTable, valid_TalentTable, valid_SkinTable, valid_AltarTable, valid_JewelTypeTable, valid_JewelLevelTable, valid_EggTable, valid_EggEquippedTable, valid_DragonTable, valid_RunesTable, valid_ReforgeTable, valid_RefineTable, valid_MedalTable, valid_RelicTable, valid_WeaponSkinTable):
+	if valid_User and valid_StuffTable and valid_HeroTable and valid_TalentTable and valid_SkinTable and valid_AltarTable and valid_JewelTypeTable and valid_JewelLevelTable and valid_EggTable and valid_EggEquippedTable and valid_DragonTable and valid_RunesTable and valid_ReforgeTable and valid_RefineTable and valid_MedalTable and valid_RelicTable and valid_WeaponSkinTable:
 		return True
 	else:
 		return False
 
-def findFormError(valid_User, valid_StuffTable, valid_HeroTable, valid_TalentTable, valid_SkinTable, valid_AltarTable, valid_JewelTypeTable, valid_JewelLevelTable, valid_EggTable, valid_EggEquippedTable, valid_DragonTable, valid_RunesTable, valid_ReforgeTable, valid_RefineTable, valid_MedalTable, valid_RelicTable):
-	listform = [valid_User, valid_StuffTable, valid_HeroTable, valid_TalentTable, valid_SkinTable, valid_AltarTable, valid_JewelTypeTable, valid_JewelLevelTable, valid_EggTable, valid_EggEquippedTable, valid_DragonTable, valid_RunesTable, valid_ReforgeTable, valid_RefineTable,valid_MedalTable,valid_RelicTable]
+def findFormError(valid_User, valid_StuffTable, valid_HeroTable, valid_TalentTable, valid_SkinTable, valid_AltarTable, valid_JewelTypeTable, valid_JewelLevelTable, valid_EggTable, valid_EggEquippedTable, valid_DragonTable, valid_RunesTable, valid_ReforgeTable, valid_RefineTable, valid_MedalTable, valid_RelicTable, valid_SkinWeaponTable):
+	listform = [valid_User, valid_StuffTable, valid_HeroTable, valid_TalentTable, valid_SkinTable, valid_AltarTable, valid_JewelTypeTable, valid_JewelLevelTable, valid_EggTable, valid_EggEquippedTable, valid_DragonTable, valid_RunesTable, valid_ReforgeTable, valid_RefineTable,valid_MedalTable,valid_RelicTable,valid_SkinWeaponTable]
 	for i in listform:
 		if i != "":
 			form_error = i.errors.items()
@@ -162,64 +167,19 @@ def relics_Stats(list_relic):
 				stats.update({search_data:new_value})
 		return stats
 
-def calculDamage(ingame_id):
-	user_stats = models.user.objects.get(ingame_id=ingame_id)
-	calc_user_dmg = models.dmg_calc_table.objects.get(ingame_id=ingame_id)
-	crit_dmg = int(calc_user_dmg.crit_dmg)/100
-	mob_ground_melee = round((int(user_stats.global_atk_save) + int(calc_user_dmg.flat_dmg_vs_ground) + int(calc_user_dmg.flat_dmg_vs_mobs) + int(calc_user_dmg.flat_dmg_vs_melee) + int(calc_user_dmg.flat_dmg_all))*(float(calc_user_dmg.var_dmg_vs_melee/100) + float(calc_user_dmg.var_dmg_vs_ground/100) + float(1))*(float(calc_user_dmg.var_dmg_vs_mobs/100) + float(1))*(float(calc_user_dmg.var_dmg_all/100) + float(1))*(float(calc_user_dmg.weapon_coeff)))
-	mob_ground_range = round((int(user_stats.global_atk_save) + int(calc_user_dmg.flat_dmg_vs_ground) + int(calc_user_dmg.flat_dmg_vs_mobs) + int(calc_user_dmg.flat_dmg_vs_range) + int(calc_user_dmg.flat_dmg_all))*(float(calc_user_dmg.var_dmg_vs_range/100) + float(calc_user_dmg.var_dmg_vs_ground/100) + float(1))*(float(calc_user_dmg.var_dmg_vs_mobs/100) + float(1))*(float(calc_user_dmg.var_dmg_all/100) + float(1))*(float(calc_user_dmg.weapon_coeff)))
-	mob_airborne_melee = round((int(user_stats.global_atk_save) + int(calc_user_dmg.flat_dmg_vs_airborne) + int(calc_user_dmg.flat_dmg_vs_mobs) + int(calc_user_dmg.flat_dmg_vs_melee) + int(calc_user_dmg.flat_dmg_all))*(float(calc_user_dmg.var_dmg_vs_melee/100) + float(calc_user_dmg.var_dmg_vs_airborne/100) + float(1))*(float(calc_user_dmg.var_dmg_vs_mobs/100) + float(1))*(float(calc_user_dmg.var_dmg_all/100) + float(1))*(float(calc_user_dmg.weapon_coeff)))
-	mob_airborne_range = round((int(user_stats.global_atk_save) + int(calc_user_dmg.flat_dmg_vs_airborne) + int(calc_user_dmg.flat_dmg_vs_mobs) + int(calc_user_dmg.flat_dmg_vs_range) + int(calc_user_dmg.flat_dmg_all))*(float(calc_user_dmg.var_dmg_vs_range/100) + float(calc_user_dmg.var_dmg_vs_airborne/100) + float(1))*(float(calc_user_dmg.var_dmg_vs_mobs/100) + float(1))*(float(calc_user_dmg.var_dmg_all/100) + float(1))*(float(calc_user_dmg.weapon_coeff)))
-	boss_ground_melee = round((int(user_stats.global_atk_save) + int(calc_user_dmg.flat_dmg_vs_ground) + int(calc_user_dmg.flat_dmg_vs_boss) + int(calc_user_dmg.flat_dmg_vs_melee) + int(calc_user_dmg.flat_dmg_all))*(float(calc_user_dmg.var_dmg_vs_melee/100) + float(calc_user_dmg.var_dmg_vs_ground/100) + float(1))*(float(calc_user_dmg.var_dmg_vs_boss/100) + float(1))*(float(calc_user_dmg.var_dmg_all/100) + float(1))*(float(calc_user_dmg.weapon_coeff)))
-	boss_ground_range = round((int(user_stats.global_atk_save) + int(calc_user_dmg.flat_dmg_vs_ground) + int(calc_user_dmg.flat_dmg_vs_boss) + int(calc_user_dmg.flat_dmg_vs_range) + int(calc_user_dmg.flat_dmg_all))*(float(calc_user_dmg.var_dmg_vs_range/100) + float(calc_user_dmg.var_dmg_vs_ground/100) + float(1))*(float(calc_user_dmg.var_dmg_vs_boss/100) + float(1))*(float(calc_user_dmg.var_dmg_all/100) + float(1))*(float(calc_user_dmg.weapon_coeff)))
-	boss_airborne_melee = round((int(user_stats.global_atk_save) + int(calc_user_dmg.flat_dmg_vs_airborne) + int(calc_user_dmg.flat_dmg_vs_boss) + int(calc_user_dmg.flat_dmg_vs_melee) + int(calc_user_dmg.flat_dmg_all))*(float(calc_user_dmg.var_dmg_vs_melee/100) + float(calc_user_dmg.var_dmg_vs_airborne/100) + float(1))*(float(calc_user_dmg.var_dmg_vs_boss/100) + float(1))*(float(calc_user_dmg.var_dmg_all/100) + float(1))*(float(calc_user_dmg.weapon_coeff)))
-	boss_airborne_range = round((int(user_stats.global_atk_save) + int(calc_user_dmg.flat_dmg_vs_airborne) + int(calc_user_dmg.flat_dmg_vs_boss) + int(calc_user_dmg.flat_dmg_vs_range) + int(calc_user_dmg.flat_dmg_all))*(float(calc_user_dmg.var_dmg_vs_range/100) + float(calc_user_dmg.var_dmg_vs_airborne/100) + float(1))*(float(calc_user_dmg.var_dmg_vs_boss/100) + float(1))*(float(calc_user_dmg.var_dmg_all/100) + float(1))*(float(calc_user_dmg.weapon_coeff)))
-	
-	mob_ground_melee_damage = [mob_ground_melee,int(mob_ground_melee*crit_dmg)]
-	mob_ground_range_damage = [mob_ground_range,int(mob_ground_range*crit_dmg)]
-	mob_airborne_melee_damage = [mob_airborne_melee,int(mob_airborne_melee*crit_dmg)]
-	mob_airborne_range_damage = [mob_airborne_range,int(mob_airborne_range*crit_dmg)]
-	boss_ground_melee_damage = [boss_ground_melee,int(boss_ground_melee*crit_dmg)]
-	boss_ground_range_damage = [boss_ground_range,int(boss_ground_range*crit_dmg)]
-	boss_airborne_melee_damage = [boss_airborne_melee,int(boss_airborne_melee*crit_dmg)]
-	boss_airborne_range_damage = [boss_airborne_range,int(boss_airborne_range*crit_dmg)]
-	averageDamage = round(
-		int(mob_ground_melee_damage[0])+
-		int(mob_ground_range_damage[0])+
-		int(mob_airborne_melee_damage[0])+
-		int(mob_airborne_range_damage[0])+
-		int(boss_ground_melee_damage[0])+
-		int(boss_ground_range_damage[0])+
-		int(boss_airborne_melee_damage[0])+
-		int(boss_airborne_range_damage[0])
-	)/8
-	averageDamageAll = round(averageDamage * (1 + (calc_user_dmg.crit_rate/100) * (crit_dmg - 1)))
-	return {
-		"averageDamageAll": averageDamageAll,
-		"mob_ground_melee_damage": [mob_ground_melee,int(mob_ground_melee*crit_dmg)],
-		"mob_ground_range_damage": [mob_ground_range,int(mob_ground_range*crit_dmg)],
-		"mob_airborne_melee_damage": [mob_airborne_melee,int(mob_airborne_melee*crit_dmg)],
-		"mob_airborne_range_damage": [mob_airborne_range,int(mob_airborne_range*crit_dmg)],
-		"boss_ground_melee_damage": [boss_ground_melee,int(boss_ground_melee*crit_dmg)],
-		"boss_ground_range_damage": [boss_ground_range,int(boss_ground_range*crit_dmg)],
-		"boss_airborne_melee_damage": [boss_airborne_melee,int(boss_airborne_melee*crit_dmg)],
-		"boss_airborne_range_damage": [boss_airborne_range,int(boss_airborne_range*crit_dmg)],
-	}
 
 ################################# FONCTION RESTE #######################################################
 
-def checkCookie(cookie_value):
-	cookiePopList = ['csrftoken','sessionid','windowInnerWidth','windowInnerHeight', 'modeDisplay']
+def checkCookie(cookie_value:dict):
+	requestCookie = cookie_value.copy()
+	cookiePopList = ['csrftoken','sessionid','windowInnerWidth','windowInnerHeight', 'modeDisplay', 'messages']
 	for i in cookiePopList:
 		try:
-			cookie_value.pop(i)
+			requestCookie.pop(i)
 		except:
 			pass
-	return cookie_value
+	return requestCookie
 
-
-def checkDarkMode(cookie_value):
-	return cookie_value
 
 def userExist(json, user):
 	liste_username = []
@@ -270,7 +230,82 @@ def create_unique_id():
 	unique_id = str(time.time()).replace('.','')
 	return unique_id
 
+def checkUsernameCredentials(username_raw,id_raw):
+	pattern = re.compile(r'^\d{1}-\d{6,12}$')    # Compile un motif de regex pour les identifiants de jeu valides
+	decoded_bytes = urllib.parse.unquote(username_raw).encode('utf-8') # Décode le nom d'utilisateur brut en octets et encode la chaîne de caractères décodée en octets
+	ingame_name = decoded_bytes.decode('utf-8') # Remplace tous les caractères illégaux par "*" après avoir converti la chaîne de bytes en une chaîne de caractères en utf-8
+	ingame_id = urllib.parse.unquote(id_raw)   # Décode l'identifiant de jeu brut
+	if (len(ingame_name) >= 3 and len(ingame_name) < 15 and re.fullmatch(pattern, ingame_id) and ingame_id != "" and ingame_id != None and all(c.isdigit() or c == '-' for c in ingame_id)):
+		return True, ingame_name, ingame_id
+	else:
+		return False, ingame_name, ingame_id
+
+def checkIllegalKey(string:str):
+	for i in string:
+		try:
+			cookies = http.cookies.SimpleCookie()
+			cookies[str(i)] = 'check'  # Cette ligne provoque une CookieError
+		except http.cookies.CookieError:
+			return i
+	return string
 
 def send_webhook(msg):
-	wh = DiscordWebhook(url='WEBHOOK_URL', content=msg, rate_limit_retry=True)
-	response = wh.execute()
+	wh = DiscordWebhook(url=WEBHOOK_URL, content=msg, rate_limit_retry=True)
+	wh.execute()
+
+def send_embed(author_name,title_embed,description_embed,field_name,field_value,e_color, request, ping_me:bool):
+	if ping_me:
+		content_msg = "<@382930544385851392>"
+	else:
+		content_msg = ""
+	webhook = DiscordWebhook(url=WEBHOOK_URL, content=content_msg, rate_limit_retry=True, allowed_mentions={"users": ["382930544385851392"]})
+	embed = DiscordEmbed(title=str(title_embed), description=str(description_embed), color=e_color)
+	embed.set_author(
+		name=str(author_name),
+		icon_url="https://stats.wiki-archero.com/static/image/favicon.png",
+	)
+	embed.add_embed_field(name=str(field_name), value=str(field_value), inline=False)
+	embed.set_footer(text=f'{request.COOKIES}', icon_url='')
+	webhook.add_embed(embed)
+	webhook.execute()
+
+
+def checkTheme_Request(request):
+	requestJson(request)
+	if "modeDisplay" in list(request.COOKIES):
+		return "yes"
+	else:
+		return "no"	
+
+def calculatePrice(lvl1, lvl2, type, rank=None):
+	if type == "talents":
+		talent_cost_gold = DataPrice['talent']['gold']
+		return talent_cost_gold[lvl2] - talent_cost_gold[lvl1]
+	elif type == "items":
+		item_cost_gold = DataPrice['item']['gold']
+		item_cost_scroll = DataPrice['item']['scroll']
+		return [item_cost_gold[lvl2] - item_cost_gold[lvl1], item_cost_scroll[lvl2] - item_cost_scroll[lvl1]]
+	elif type == "heroes":
+		heros_cost_gold = DataPrice['hero']['gold']
+		heros_cost_sapphire = DataPrice['hero']['sapphire']
+		return [heros_cost_gold[lvl2] - heros_cost_gold[lvl1], heros_cost_sapphire[lvl2] - heros_cost_sapphire[lvl1]]
+	elif type == "dragons":
+		dragon_cost_gold = DataPrice['dragon']['gold']
+		dragon_cost_magestone = DataPrice['dragon']['magestone']
+		result = [dragon_cost_gold[lvl2] - dragon_cost_gold[lvl1], dragon_cost_magestone[lvl2] - dragon_cost_magestone[lvl1]]
+		if rank == "A":
+			return [result[0],result[1]]
+		elif rank == "S":
+			return [int(result[0])*1.5,int(result[1])*1.5]
+		elif rank == "SS":
+			return [int(result[0])*2,int(result[1])*2]
+	elif type == "relics":
+		relics_cost_gold = DataPrice['relics']['gold']
+		relics_cost_starlight = DataPrice['relics']['starlight']
+		result = [relics_cost_gold[lvl2] - relics_cost_gold[lvl1], relics_cost_starlight[lvl2] - relics_cost_starlight[lvl1]]
+		if rank == "A":
+			return [result[0],result[1]]
+		elif rank == "S":
+			return [int(result[0])*1.5,int(result[1])*1.5]
+		elif rank == "SS":
+			return [int(result[0])*2,int(result[1])*2]

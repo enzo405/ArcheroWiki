@@ -6,16 +6,17 @@
 	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.18.2 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
-    <script src="{% static 'main.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.3.1">
+	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.3.1">
+	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.3.1">
+    <script src="{% static 'main.js' %}?version=1.3.1"></script>
 	<title>{{ name }} Stats - Wiki</title>
+	<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.1">
 	<meta name="description" content="{{ name }} Stats - Wiki">
 	<meta property="og:url" content="https://stats.wiki-archero.com/calculator/show/{{pbid}}/">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="{{ name }} Stats - Archero Wiki">
-	<meta property="og:description" content="{{ name }} : {{global_stats_atk}} Attack / {{global_stats_hp}} Hp - Visits this website to learn more about the game Archero">
+	<meta property="og:description" content="{{ name }} : {{global_stats_atk}} Attack / {{global_stats_hp}} Hp">
 	<meta property="og:image" content="https://stats.wiki-archero.com/static/image/stuff_save/stuff_{{ name }}.png">
 </head>
 {% if darkmode == "yes" %}
@@ -94,7 +95,7 @@
 							<img class="button-dragon" src="/static/image/stuff_save/dragon_save/dragon_{{ stats.ingame_name }}.png">
 						</div>
 						<div class="image-stuff-result-container">
-							<img class="image-stuff-result" src="/static/image/stuff_save/stuff_{{ stats.ingame_name }}.png">
+							<img class="image-stuff-result" src="{% static 'image/stuff_save/stuff_'|add:stats.ingame_name|add:'.png' %}?version=1.3.1">
 							<div class="image-stuff-result-bg"></div>
 						</div>
 					</div>
@@ -227,7 +228,7 @@
 	<footer>
 		<div class="footer-content">
 			<div class="footer-about">
-				<img class="footer-img-icon" src="/static/image/archero_icon.png" alt="image game icon">
+				<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.3.1" alt="image game icon">
 				<div class="about-content">
 					<h2>Archero :</h2>
 					<div>Archero Update will be added with a certains delay</div>

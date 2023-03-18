@@ -3,15 +3,31 @@
 <head>
 	{% load static %}
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.18.2 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.18.2 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.1">
+	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.3.1">
+	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.3.1">
+	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.3.1">
 	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Welcome to Wiki</title>
+	<title>Archero - Wiki</title>
 	<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-	<script src="{% static 'main.js' %}"></script>
+	<script src="{% static 'main.js' %}?version=1.3.1"></script>
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+	{% if content != "" %}
+		<meta property="og:title" content="**{{ content.eTitle|safe }}**">
+		<meta property="og:url" content="https://stats.wiki-archero.com/wiki/upgrade">
+		<meta property="og:description" content="{{ content.eDescription }}<br>
+		{{ content.currency1.0 }} {{ content.eField1 }} <:Gold:671294722462973953> <br>
+		{{ content.currency2.0 }} {{ content.eField2 }}">
+		<meta property="og:image" content="{{ content.eImage }}">
+	{% else %}
+		<meta property="og:title" content="Archero - Upgrade Cost">
+		<meta property="og:url" content="https://stats.wiki-archero.com/wiki/upgrade">
+		<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.1">
+	{% endif %}
 </head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
@@ -23,6 +39,14 @@
 		<p>Please enable JavaScript to use this website.</p>
 	</div>
 </noscript>
+	{% if messages %}
+		{% for message in messages %}
+			<script>
+				var stringElement = '<div{% if message.tags %} class="{{ message.tags }}-messages"{% endif %}>{{ message }}</div>'
+				createModale(stringElement)
+			</script>
+		{% endfor %}
+	{% endif %}
 	<div class="sidebar sidebar-open sidebar-position-a" id="sidebar">
 		<div class="sidebar-icon" id="sidebar-icon">
 			<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
@@ -56,40 +80,70 @@
 							<option value="items">Items</option>
 							<option value="heroes">Heroes</option>
 							<option value="talents">Talents</option>
-							<!-- <option value="dragons">Dragons</option> -->
-							<!-- <option value="altar">Altar</option> -->
-							<!-- <option value="relics">Relics</option> -->
+							<option value="dragons">Dragons</option>
+							<option value="relics">Relics</option>
 						</select>
+						<script>
+							var costType = "{{ cost_type }}"; // assuming "cost_type" is the header parameter name
+							var dropdown = document.getElementById("cost_type");
+							for (var i = 0; i < dropdown.options.length; i++) {
+								if (dropdown.options[i].value === costType) {
+									dropdown.options[i].selected = true;
+									break;
+								}
+							}
+						</script>
 					</div>
 				</div>
 				<div class="input-cost">
 					Insert the level (from x to y)
 					<div class="cost_input_container">
-						<input id="level1" class="cost_input" type="number" max="119" placeholder="level 1" required>
-						<input id="level2" class="cost_input" type="number" max="120" placeholder="level 2" required>
+						{% if content != "" %}
+						<input id="level1" class="cost_input" type="number" value="{{ lvl1 }}" placeholder="level 100" required>
+						<input id="level2" class="cost_input" type="number" value="{{ lvl2 }}" placeholder="level 2" required>
+						{% else %}
+						<input id="level1" class="cost_input" type="number" placeholder="level 1" required>
+						<input id="level2" class="cost_input" type="number" placeholder="level 2" required>
+						{% endif %}
 					</div>
+					<fieldset class="rank_input" id="rank_container" style="display: none;">
+						<legend id="title_legend"></legend>
+						<div class="fieldset_container">
+							<input type="radio" id="a_rank" name="rank" value="a" style="display: none;">
+							<label class="label_fieldset" for="a_rank"><img src="" id="img_rank_input1" width="30" height="30"></label>
+						</div>
+						<div class="fieldset_container">
+							<input type="radio" id="s_rank" name="rank" value="s" style="display: none;">
+							<label class="label_fieldset" for="s_rank"><img src="" id="img_rank_input2" width="30" height="30"></label>
+						</div>
+						<div class="fieldset_container">
+							<input type="radio" id="ss_rank" name="rank" value="ss" style="display: none;">
+							<label class="label_fieldset" for="ss_rank"><img src="" id="img_rank_input3" width="30" height="30"></label>
+						</div>
+					</fieldset>
+					<script>
+						var allInputRank = document.querySelectorAll('input[name="rank"][type="radio"]')
+						allInputRank.forEach(e => {
+							if(e.value == "{{ rank }}".toLowerCase()){
+								return e.checked = true
+							}
+						});
+					</script>
 					<div class="submit_container">
 						<input type="submit" class="submit-input" id="submit_input">
 					</div>
 				</div>
-				<div class="upgrade_cost_e">
-					<div class="kn3fae-0 ezpxFx">
-						<div class="sgp62q-0 iuJdTu">
-							<a title="TigerShark's Bot">
-								<img src="/static/image/wiki-image/sylvanpfp3.png" alt="User avatar" class="sgp62q-1 dLWNvE">
-								<h1 class="sgp62q-2 hfwuZw">Sylvan</h1>
-								<span class="sgp62q-3 cTBPsI">BOT</span>
-								<span class="sc-1idsap7-0 dyOqmJ" id="date"></span>
-							</a>
-						</div>
+				{% if content != "" %}
+				<div class="upgrade_cost_e" id="upgrade_cost_e">
+					<div class="kn3fae-0 upcted">
 						<div class="kn3fae-2 eKjosW">
 							<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(255, 200, 0);">
 								<div class="sc-3qrykn-0 bdFBtt">
 									<span class="sc-3qrykn-1 bsDYtY">
-										<div class="sc-27l7o2-0 heOpKb" id="e_title">Equipment Upgrade Cost</div>
+										<div class="sc-27l7o2-0 heOpKb" id="e_title">{{ content.eTitle|safe }}</div>
 									</span>
 									<div class="sc-3qrykn-3 hXMbfy">
-										<div class="sc-27l7o2-0 heOpKb" id="e_description">To upgrade equipment from level 0 to 1</div>
+										<div class="sc-27l7o2-0 heOpKb" id="e_description">{{ content.eDescription|safe }}</div>
 									</div>
 									<div class="sc-3qrykn-4 hQKgZF">
 										<div class="rgqgux-0 dQAxvm">
@@ -100,28 +154,37 @@
 											</div>
 											<div class="rgqgux-2 jFcAhO">
 												<div id="e_field1" class="sc-27l7o2-0 heOpKb costfield">
-													<b>Gold:</b><br><div class="field_value2"><div class="price1" id="price1">200</div> <object type="image/png" data="\static\image\svg\gold.svg" width="18" height="18"></object></div>
+													<b>{{ content.currency1.0 }}</b><br>
+													<div class="field_value2">
+														<div class="price1" id="price1">{{ content.eField1|safe }}</div>
+														<object type="image/png" data="\static\image\svg\{{ content.currency1.1 }}.svg" width="18" height="18"></object>
+													</div>
 												</div>
 												<div id="e_field2" class="sc-27l7o2-0 heOpKb costfield">
-													<b>Scrolls:</b><br><div class="field_value2"><div class="price2" id="price2">1</div> <object type="image/png" data="\static\image\svg\scroll.svg" width="18" height="18"></object></div>
+													<b>{{ content.currency2.0 }}</b><br>
+													<div class="field_value2">
+														<div class="price2" id="price2">{{ content.eField2|safe }}</div>
+														<object type="image/png" data="/static/image/svg/{{ content.currency2.1 }}.svg" width="18" height="18"></object>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="sc-3qrykn-6 fTOqMH">
-										<img src="/static/image/wiki-image/Cost_Item.png" alt="Thumbnail" id="e_image" class="sc-3qrykn-7 fUliQq">
+										<img src="{{ content.eImage }}" alt="Thumbnail" id="e_image" class="sc-3qrykn-7 fUliQq">
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				{% endif %}
 			</div>
 		</main>
-		<footer class="footer-wiki" style="position: absolute;">
+		<footer>
 			<div class="footer-content">
 				<div class="footer-about">
-					<img class="footer-img-icon" src="/static/image/archero_icon.png" alt="image game icon">
+					<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.3.1" alt="image game icon">
 					<div class="about-content">
 						<h2>Archero :</h2>
 						<div>Archero Update will be added with a certains delay</div>
@@ -154,42 +217,6 @@
 		</footer>
 	</div>
 </body>
-<script>
-	n =  new Date();
-	y = n.getFullYear();
-	m = n.getMonth() + 1;
-	d = n.getDate();
-	document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
-
-	function toggleContent(content) {
-		if (content.style.maxHeight) {
-			content.style.maxHeight = null;
-		} else {
-			content.style.maxHeight = '1000px';
-		}
-	}
-
-	function collapseAllOpenContent() {
-		const colls = document.getElementsByClassName('collapsible');
-		for (const coll of colls) {
-			if (coll.classList.contains('active')) {
-			coll.classList.remove('active');
-			toggleContent(coll.nextElementSibling);
-			}
-		}
-	}
-
-	const colls = document.getElementsByClassName('collapsible');
-	for (const coll of colls) {
-		coll.addEventListener('click', function() {
-			if (!this.classList.contains('active')) {
-			collapseAllOpenContent();
-			}
-			this.classList.toggle('active');
-			toggleContent(this.nextElementSibling);
-		});
-	}
-</script>
 <script>
 	const traveling = document.getElementById("traveling")
 
@@ -275,148 +302,49 @@
 		sidebar.classList.toggle('sidebar-active')
 		sidebar.classList.toggle('sidebar-open')		
 	})
-</script>
-<script>
-    var price_json = {
-        "hero":{
-            "sapphire":[0, 0, 1, 3, 6, 10, 15, 20, 25, 30, 35, 42, 49, 56, 63, 70, 80, 90, 100, 110, 120, 135, 150, 165, 180, 195, 215, 235, 255, 275, 295, 325, 355, 385, 415, 445, 485, 525, 565, 605, 645, 695, 745, 795, 845, 895, 960, 1025, 1090, 1155, 1220, 1300, 1380, 1460, 1540, 1620, 1720, 1820, 1920, 2020, 2120, 2240, 2360, 2480, 2600, 2720, 2860, 3000, 3140, 3280, 3420, 3590, 3760, 3930, 4100, 4270, 4470, 4670, 4870, 5070, 5270, 5510, 5750, 5990, 6230, 6470, 6750, 7030, 7310, 7590, 7870, 8190, 8510, 8830, 9150, 9470, 9830, 10190, 10550, 10910, 11270, 11670, 12070, 12470, 12870, 13270, 13720, 14170, 14620, 15070, 15520, 16020, 16520, 17020, 17520, 18020, 18620, 19220, 19820, 20420, 21020],
-            "gold":[0, 0, 400, 1200, 2400, 4000, 6000, 8400, 11200, 14400, 18000, 22000, 26400, 31200, 36400, 42000, 48000, 54400, 61200, 68400, 76000, 84000, 92400, 101200, 110400, 120000, 130000, 141000, 153000, 166000, 180000, 195000, 211000, 228000, 246000, 265000, 285000, 307000, 331000, 357000, 385000, 415000, 447000, 481000, 517000, 555000, 595000, 639000, 687000, 739000, 795000, 855000, 919000, 987000, 1059000, 1135000, 1215000, 1305000, 1405000, 1515000, 1635000, 1765000, 1905000, 2055000, 2215000, 2385000, 2565000, 2755000, 2955000, 3175000, 3415000, 3675000, 3955000, 4255000, 4575000, 4915000, 5275000, 5655000, 6055000, 6495000, 6975000, 7495000, 8055000, 8655000, 9295000, 9975000, 10695000, 11455000, 12255000, 13155000, 14155000, 15255000, 16455000, 17755000, 19155000, 20655000, 22255000, 23955000, 25755000, 27655000, 29655000, 31755000, 33955000, 36255000, 38655000, 41155000, 43755000, 46455000, 49255000, 52155000, 55155000, 58355000, 61755000, 65355000, 69155000, 73155000, 77355000, 81755000, 86355000, 91155000, 96155000]
-        },
-        "item":{
-            "gold":[0, 0, 200, 600, 1200, 2000, 3000, 4200, 5600, 7200, 9000, 11000, 13200, 15600, 18200, 21000, 24000, 27200, 30600, 34200, 38000, 42000, 46200, 50600, 55200, 60000, 65000, 70500, 76500, 83000, 90000, 97500, 105500, 115000, 123000, 132500, 152500, 153500, 165500, 178500, 192500, 207500, 223500, 240500, 248500, 277500, 297500, 319500, 343500, 369500, 397500, 427500, 459500, 493500, 529500, 567500, 607500, 652500, 702500, 757500, 817500, 882500, 952500, 1027500, 1107500, 1192500, 1282500, 1377500, 1477500, 1587500, 1707500, 1837500, 1977500, 2127500, 2287500, 2457500, 2637500, 2827500, 3027500, 3247500, 3487500, 3747500, 4027500, 4327500, 4647500, 4987500, 5347500, 5727500, 6127500, 6577500, 7077500, 7627500, 8227500, 8877500, 9577500, 10327500, 11127500, 11977500, 12877500, 13827500, 14827500, 15927500, 17127500, 18427500, 19827500, 21327500, 22927500, 24627500, 26427500, 28327500, 30327500, 32527500, 34927500, 37527500, 40327500, 43327500, 46527500, 49927500, 53527500, 57327500, 61327500],
-            "scroll":[0, 0, 1, 3, 7, 13, 21, 31, 41, 51, 61, 76, 91, 106, 121, 136, 156, 176, 196, 216, 236, 261, 286, 311, 336, 361, 391, 421, 451, 481, 511, 551, 591, 631, 671, 711, 761, 811, 861, 911, 961, 1031, 1101, 1171, 1241, 1311, 1411, 1511, 1611, 1711, 1811, 1961, 2111, 2261, 2411, 2561, 2711, 2961, 3161, 3361, 3561, 3811, 4061, 4311, 4561, 4811, 5111, 5411, 5711, 6011, 6311, 6711, 7111, 7511, 7911, 8311, 8811, 9311, 9811, 10311, 10811, 11411, 12011, 12611, 13211, 13811, 14611, 15411, 16211, 17011, 17811, 18811, 19811, 20811, 21811, 22811, 24011, 25211, 26411, 27611, 28811, 30311, 31811, 33311, 34811, 36311, 38311, 40311, 42311, 44311, 46311, 48811, 51311, 53811, 56311, 58811, 61811, 64811, 67811, 70811, 73811]
-        },
-        "talent":{
-            "gold":[0, 200, 450, 750, 1100, 1500, 1950, 2450, 3050, 3750, 4550, 5450, 6450, 7650, 9050, 10650, 12450, 14450, 16650, 19050, 21650, 24450, 27450, 30950, 34950, 39450, 44450, 49950, 55950, 62450, 69450, 76950, 84950, 93450, 102450, 111950, 121950, 132950, 144950, 157950, 171950, 186950, 202950, 219950, 237950, 256950, 276950, 298950, 322950, 348950, 376950, 406950, 438950, 472950, 508950, 546950, 586950, 628950, 672950, 718950, 766950, 816950, 871950, 931950, 996950, 1066950, 1141950, 1221950, 1306950, 1396950, 1491950, 1591950, 1696950, 1806950, 1921950, 2041950, 2166950, 2296950, 2431950, 2571950, 2716950, 2866950, 3026950, 3196950, 3376950, 3566950, 3766950, 3976950, 4196950, 4426950, 4666950, 4916950, 5176950, 5446950, 5726950, 6016950, 6316950, 6636950, 6976950, 7336950, 7716950, 8116950, 8536950, 8976950, 9436950, 9916950, 10416950, 10936950, 11476950, 12036950, 12616950, 13216950, 13836950, 14476950, 15146950, 15846950, 16576950, 17336950, 18126950, 18946950, 19796950, 20676950, 21586950, 22526950, 23496950, 24496950, 25536950, 26616950, 27736950, 28896950, 30096950, 31336950, 32616950, 33936950, 35296950, 36696950, 38136950, 39616950, 41136950, 42696950, 44296950, 45946950, 47646950, 49396950, 51196950, 53046950, 54946950, 56896950, 58896950, 60996950, 63196950, 65496950, 67896950, 70396950, 72996950, 75696950, 78496950, 81396950, 84396950, 87596950, 90996950, 94596950, 98396950, 102396950, 106596950, 110996950, 115596950, 120396950, 125396950, 130896950, 136896950, 143396950, 150096450, 157596450, 165596450, 174096450, 183196450, 192596450, 202596450, 213096450, 224096450, 235596450, 247596450, 260096450, 273096450, 286596450, 300596450, 315096450, 330096450, 346096450, 363096450, 381096450, 400096450, 420096450, 441096450, 463096450, 486096450, 510096450, 535096450, 561096450, 588096450, 616096450, 646096450, 678096450, 712096450, 748096450, 786096450]
-        },
-		"dragon":{
-            "magestone":[],
-            "gold":[]
-        },
-    }
-
-	function numberWithCommas(x) {
-    	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	}
-
-	var price1 = document.getElementById('price1');
-	var type = document.getElementById('cost_type').value;
-	var submit_input = document.getElementById('submit_input');
-
-	function calculatePrice(lvl1, lvl2, type){
-		var heros_cost_gold = price_json['hero']['gold']
-		var heros_cost_sapphire = price_json['hero']['sapphire']
-		var item_cost_gold = price_json['item']['gold']
-		var item_cost_scroll = price_json['item']['scroll']
-		var talent_cost_gold = price_json['talent']['gold']
-		if(type == "talent"){
-			return talent_cost_gold[lvl2] - talent_cost_gold[lvl1];
-		}else if(type == "item"){
-			return [item_cost_gold[lvl2] - item_cost_gold[lvl1], item_cost_scroll[lvl2] - item_cost_scroll[lvl1]];
-		}else if(type == "hero"){
-			return [heros_cost_gold[lvl2] - heros_cost_gold[lvl1], heros_cost_sapphire[lvl2] - heros_cost_sapphire[lvl1]];
-		}
-	}
-
-	function setPrice(type, lvl1, lvl2, bool_url){
-		if(bool_url == true){
-			document.getElementById("level1").value = lvl1;
-			document.getElementById("level2").value = lvl2;
-		}
-		if(parseInt(lvl2) > parseInt(lvl1)){
-			var e_description = document.getElementById('e_description'); 
-			if(type == "talents"){
-				var price_gold = calculatePrice(lvl1, lvl2, "talent")
-				price1.innerText = numberWithCommas(price_gold)
-				e_description.innerText = `To upgrade talent from level ${lvl1} to ${lvl2}`
-			}else if(type == "items"){
-				var price2 = document.getElementById('price2');
-				var price_gold = calculatePrice(lvl1, lvl2, "item")[0]
-				var price_scroll = calculatePrice(lvl1, lvl2, "item")[1]
-				price1.innerText = numberWithCommas(price_gold)
-				price2.innerText = numberWithCommas(price_scroll)
-				e_description.innerText = `To upgrade equipment from level ${lvl1} to ${lvl2}`
-			}else if(type == "heroes"){
-				var price2 = document.getElementById('price2');
-				var price_gold = calculatePrice(lvl1, lvl2, "hero")[0]
-				var price_sapphire = calculatePrice(lvl1, lvl2, "hero")[1]
-				price1.innerText = numberWithCommas(price_gold)
-				price2.innerText = numberWithCommas(price_sapphire)
-				e_description.innerText = `To upgrade heroes from level ${lvl1} to ${lvl2}`
-			}
-		}
-	}
 
 	submit_input.addEventListener('click', function a(){
 		var type = document.getElementById('cost_type').value;
 		var level1 = document.getElementById('level1').value;
 		var level2 = document.getElementById('level2').value;
-		window.location.href = `/wiki/upgrade?${type}_${level1}_${level2}` 
+		if (type == "dragons" || type === "relics"){
+			var rankInput = document.querySelector('input[name="rank"]:checked').value.toUpperCase();
+			window.location.href = `/wiki/upgrade/${type}/${level1}/${level2}/${rankInput}/`
+		}else{
+			window.location.href = `/wiki/upgrade/${type}/${level1}/${level2}/` 
+		}
 	})
 </script>
 <script>
-	/* SCRIPT has been refactored by chatGPT */
 	var costType = document.getElementById("cost_type");
-	const eTitle = document.getElementById("e_title");
-	const eDescription = document.getElementById("e_description");
-	const eImage = document.getElementById("e_image");
-	const eField = document.getElementById("e_field2");
-	const level1 = document.getElementById("level1");
-	const level2 = document.getElementById("level2");
-	const price2 = document.getElementById("price2");
+	upgradeType("{{ cost_type }}")
 
 	function upgradeType(type) {
-		level1.value = "";
-		level2.value = "";
-		price1.innerText = "200";
-		costType.value = type
-		if (type === "items") {
-			price2.innerText = "1";
-			level1.max = "119";
-			level2.max = "120";
-			price2.innerText = "200";
-			eTitle.innerHTML = "Equipment Upgrade Cost";
-			eDescription.innerHTML = "To upgrade equipment from level 0 to 1";
-			eImage.src = "/static/image/wiki-image/Cost_Item.png";
-			eField.innerHTML =
-				'<b>Scrolls:</b><br><div class="field_value2"><div class="price2" id="price2">1</div> <object type="image/png" data="\\static\\image\\svg\\scroll.svg" width="18" height="18"></object></div>';
-		} else if (type === "heroes") {
-			price2.innerText = "1";
-			level1.max = "119";
-			level2.max = "120";
-			eTitle.innerHTML = "Heroes Upgrade Cost";
-			eDescription.innerHTML = "To upgrade heroes from level 0 to 1";
-			eImage.src = "/static/image/wiki-image/Cost_Heroes.png";
-			eField.innerHTML =
-				'<b>Sapphire:</b><br><div class="field_value2"><div class="price2" id="price2">1</div> <object type="image/png" data="\\static\\image\\svg\\sapphire.svg" width="18" height="18"></object></div>';
-		} else if (type === "talents") {
-			price2.innerText = "<br>";
-			level1.max = "205";
-			level2.max = "206";
-			eTitle.innerHTML = "Talents Upgrade Cost";
-			eDescription.innerHTML = "To upgrade talents from level 0 to 1";
-			eImage.src = "/static/image/wiki-image/Cost_Talent.png";
-			eField.innerHTML = '<b></b><br><div class="field_value2"><div class="price2" id="price2"></div></div>';
+		const rank_container = document.getElementById('rank_container');
+		const title_legend = document.getElementById('title_legend');
+		const img_rank_input1 = document.getElementById('img_rank_input1');
+		const img_rank_input2 = document.getElementById('img_rank_input2');
+		const img_rank_input3 = document.getElementById('img_rank_input3');
+		if (type === "dragons") {
+			rank_container.style.display = "grid";
+			title_legend.innerHTML = "Dragons Rank";
+			img_rank_input1.src = "/static/image/dragon/A.png";
+			img_rank_input2.src = "/static/image/dragon/S.png";
+			img_rank_input3.src = "/static/image/dragon/SS.png";
+		} else if (type === "relics") {
+			rank_container.style.display = "grid";
+			title_legend.innerHTML = "Relics Rank";
+			img_rank_input1.src = "/static/image/rarity/great.png";
+			img_rank_input2.src = "/static/image/rarity/epic.png";
+			img_rank_input3.src = "/static/image/rarity/legendary.png";
+		}else{
+			rank_container.style.display = "none";
 		}
 	};
 
 	costType.addEventListener("change", function changeCostType(){
 		upgradeType(costType.value);
 	});
-</script>
-<script>
-	try {
-        var url = window.location.href;
-        var postSearch = url.split("?");
-        var postSearchParam = postSearch[1].split("_");
-		var type = postSearchParam[0];
-		var lv1 = postSearchParam[1];
-		var lv2 = postSearchParam[2];
-		upgradeType(type)
-		setPrice(type,lv1,lv2,true)
-    } catch (error) {
-        console.log(error);
-    }
 </script>
 <script>
 	const self_inline_div_traveling = document.getElementById('Upgrade-sidebar-image')

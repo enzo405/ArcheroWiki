@@ -3,15 +3,22 @@
 <head>
 	{% load static %}
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.18.2 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.3.1">
+	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.3.1">
+	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.3.1">
 	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 	<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-	<script src="{% static 'main.js' %}"></script>
+	<script src="{% static 'main.js' %}?version=1.3.1"></script>
 	<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Create Stats - Calculator</title>
+
+	<meta property="og:title" content="Archero Stats Calculator">
+	<meta property="og:url" content="https://stats.wiki-archero.com/calculator/index/">
+	<meta property="og:type" content="website">
+	<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+	<meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+	<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.1">
 </head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
@@ -69,13 +76,6 @@
 								</div>
 							</div>
 						{% endif %}
-						{% if ingame_id == none %}
-							<b>Ingame Id :</b> <input type="text" value="{{ cookie_id }}" pattern="[0-9]{1}-[0-9]{6,}" name="ingame_id" required id="ingame_id" placeholder="1-00000000" readonly><br>
-							<b>Username :</b> <input type="text" value="{{ cookie_name }}" name="ingame_name" maxlength="30" required id="id_ingame_name" readonly><br>
-						{% else %}
-							<b>Ingame ID :</b> <input type="text" name="ingame_id" required id="ingame_id" value="{{ ingame_id }}" readonly><br>
-							<b>Username :</b> <input type="text" name="ingame_name" maxlength="30" required id="id_ingame_name" value="{{ ingame_name }}" readonly><br>
-						{% endif %}
 					</div>
 					<div class="stuff container">
 						<div class="form_stuff" translate="no">
@@ -118,38 +118,16 @@
 							<u><b>Medals: </b></u><br>
 							<em>(Click on the Medals you own)</em>
 							<div class="medals_container" id="medals_container">
-								<img src="/static/image/medals/Medal1001.png" class="medals_img" alt="medals_01" id="medals_01">
-								<img src="/static/image/medals/Medal1002.png" class="medals_img" alt="medals_02" id="medals_02">
-								<img src="/static/image/medals/Medal1003.png" class="medals_img" alt="medals_03" id="medals_03">
-								<img src="/static/image/medals/Medal1004.png" class="medals_img" alt="medals_04" id="medals_04">
-								<img src="/static/image/medals/Medal1005.png" class="medals_img" alt="medals_05" id="medals_05">
-								<img src="/static/image/medals/Medal1006.png" class="medals_img" alt="medals_06" id="medals_06">
-								<!-- <img src="/static/image/medals/Medal1007.png" class="medals_img" alt="medals_07" id="medals_07"> -->
-								<img src="/static/image/medals/Medal1008.png" class="medals_img" alt="medals_08" id="medals_08">
-								<img src="/static/image/medals/Medal1009.png" class="medals_img" alt="medals_09" id="medals_09">
-								<img src="/static/image/medals/Medal1010.png" class="medals_img" alt="medals_10" id="medals_10">
-								<img src="/static/image/medals/Medal2001.png" class="medals_img" alt="medals_11" id="medals_11">
-								<img src="/static/image/medals/Medal2002.png" class="medals_img" alt="medals_12" id="medals_12">
-								<img src="/static/image/medals/Medal2003.png" class="medals_img" alt="medals_13" id="medals_13">
-								<img src="/static/image/medals/Medal2004.png" class="medals_img" alt="medals_14" id="medals_14">
-								<img src="/static/image/medals/Medal2005.png" class="medals_img" alt="medals_15" id="medals_15">
-								<img src="/static/image/medals/Medal2006.png" class="medals_img" alt="medals_16" id="medals_16">
-								<img src="/static/image/medals/Medal2007.png" class="medals_img" alt="medals_17" id="medals_17">
-								<img src="/static/image/medals/Medal2008.png" class="medals_img" alt="medals_18" id="medals_18">
-								<img src="/static/image/medals/Medal2009.png" class="medals_img" alt="medals_19" id="medals_19">
-								<img src="/static/image/medals/Medal2010.png" class="medals_img" alt="medals_20" id="medals_20">
-								<img src="/static/image/medals/Medal2011.png" class="medals_img" alt="medals_21" id="medals_21">
-								<img src="/static/image/medals/Medal2012.png" class="medals_img" alt="medals_22" id="medals_22">
-								<img src="/static/image/medals/Medal3001.png" class="medals_img" alt="medals_23" id="medals_23">
-								<img src="/static/image/medals/Medal3002.png" class="medals_img" alt="medals_24" id="medals_24">
-								<img src="/static/image/medals/Medal3003.png" class="medals_img" alt="medals_25" id="medals_25">
-								<img src="/static/image/medals/Medal3004.png" class="medals_img" alt="medals_26" id="medals_26">
-								<img src="/static/image/medals/Medal3005.png" class="medals_img" alt="medals_27" id="medals_27">
-								<img src="/static/image/medals/Medal3006.png" class="medals_img" alt="medals_28" id="medals_28">
-								<img src="/static/image/medals/Medal3007.png" class="medals_img" alt="medals_29" id="medals_29">
-								<img src="/static/image/medals/Medal3008.png" class="medals_img" alt="medals_30" id="medals_30">
-								<img src="/static/image/medals/Medal3009.png" class="medals_img" alt="medals_31" id="medals_31">
-								<img src="/static/image/medals/Medal3010.png" class="medals_img" alt="medals_32" id="medals_32">
+								{% for field in form_MedalTable %}
+									{% if field.name != "user_profile"  %}
+									<div class="checkbox-weapon-skin" id="{{ field.name }}">					
+										{{ field }}
+										<label for="{{ field.id_for_label }}">
+											<img src="/static/image/medals/{{ field.name }}.png" class="medals_img" alt="{{field.name}}" id="{{field.name}}">
+										</label>
+									</div>
+									{% endif %}
+								{% endfor %}
 							</div>
 						</div>
 					</div>
@@ -297,6 +275,28 @@
 							<div class="bobo">
 								<b>Level :</b> {{  form_HeroTable.bobo_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.bobo_star  }}
 							</div>
+						</div>
+						<div class="container-hero">    
+							<img src="/static/image/hero_icon/icon_stella.png" width="52px" height="52px" alt="stella">
+							<div class="stella">
+								<b>Level :</b> {{  form_HeroTable.stella_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.stella_star  }}
+							</div>
+						</div>
+					</div>
+					<div class="weapon_skin_form container">
+						<u><b>Weapon Skin: </b></u>
+						<em>(Click on the Skin you own)</em>
+						<div class="container-weapon-skin">
+						{% for field in form_WeaponSkinTable %}
+							{% if field.name != "user_profile"  %}
+							<div class="checkbox-weapon-skin" id="{{ field.name }}">					
+							  {{ field }}
+							  <label for="{{ field.id_for_label }}">
+								<img src="/static/image/weapon_skin/{{ field.name }}.png" alt="{{ field.name }}">
+							  </label>
+							</div>
+							{% endif %}
+						{% endfor %}
 						</div>
 					</div>
 					<div class="talent container">
@@ -671,7 +671,11 @@
 						</div>
 						<div class="dragon_form">
 							<fieldset class="dragon_box dragon_1_container">
-								<legend id="legend_dragon1_type">{{form_dragon_1}} <img id="image_dragon1_type" src="/static/image/formulaire-image/{{ form_dragon_1 }}.png" height="25px"></legend>
+								{% if ingame_id == none %}
+									<legend id="legend_dragon1_type">Glacion <img id="image_dragon1_type" src="/static/image/formulaire-image/Glacion.png" height="25px"></legend>
+								{% else %}
+									<legend id="legend_dragon1_type">{{form_dragon_1}} <img id="image_dragon1_type" src="/static/image/formulaire-image/{{ form_dragon_1 }}.png" height="25px"></legend>
+								{% endif %}
 								<span class="dragon_content">Rarity : {{ form_DragonTable.dragon1_rarity }}</span>
 								<span class="dragon_content">Level : {{ form_DragonTable.dragon1_level }}</span>
 								<span class="dragon_content">Skill 1 level : {{ form_DragonTable.dragon_1_boost_1 }}</span>
@@ -680,7 +684,11 @@
 								<span class="dragon_content">Skill 4 level : {{ form_DragonTable.dragon_1_boost_4 }}</span>
 							</fieldset>
 							<fieldset class="dragon_box dragon_2_container">
-								<legend id="legend_dragon2_type">{{form_dragon_2}} <img id="image_dragon2_type" src="/static/image/formulaire-image/{{ form_dragon_2 }}.png" height="25px"></legend>
+								{% if ingame_id == none %}
+									<legend id="legend_dragon2_type">Infernox <img id="image_dragon2_type" src="/static/image/formulaire-image/Infernox.png" height="25px"></legend>
+								{% else %}
+									<legend id="legend_dragon2_type">{{form_dragon_2}} <img id="image_dragon2_type" src="/static/image/formulaire-image/{{ form_dragon_2 }}.png" height="25px"></legend>
+								{% endif %}
 								<span class="dragon_content">Rarity : {{ form_DragonTable.dragon2_rarity }}</span>
 								<span class="dragon_content">Level : {{ form_DragonTable.dragon2_level }}</span>
 								<span class="dragon_content">Skill 1 level : {{ form_DragonTable.dragon_2_boost_1 }}</span>
@@ -689,7 +697,11 @@
 								<span class="dragon_content">Skill 4 level : {{ form_DragonTable.dragon_2_boost_4 }}</span>
 							</fieldset>
 							<fieldset class="dragon_box dragon_3_container">
-								<legend id="legend_dragon3_type">{{form_dragon_3}} <img id="image_dragon3_type" src="/static/image/formulaire-image/{{ form_dragon_3 }}.png" height="25px"></legend>
+								{% if ingame_id == none %}
+									<legend id="legend_dragon3_type">Stormra <img id="image_dragon3_type" src="/static/image/formulaire-image/Stormra.png" height="25px"></legend>
+								{% else %}
+									<legend id="legend_dragon3_type">{{form_dragon_3}} <img id="image_dragon3_type" src="/static/image/formulaire-image/{{ form_dragon_3 }}.png" height="25px"></legend>
+								{% endif %}
 								<span class="dragon_content">Rarity : {{ form_DragonTable.dragon3_rarity }}</span>
 								<span class="dragon_content">Level : {{ form_DragonTable.dragon3_level }}</span>
 								<span class="dragon_content">Skill 1 level : {{ form_DragonTable.dragon_3_boost_1 }}</span>
@@ -2034,45 +2046,18 @@
 							</div>
 						</div>
 					</div>
-					<div id="medal_input_container" class="auto_input_container" style="display: none; opacity: 0;">
-						{{ form_MedalTable.medals_01 }}
-						{{ form_MedalTable.medals_02 }}
-						{{ form_MedalTable.medals_03 }}
-						{{ form_MedalTable.medals_04 }}
-						{{ form_MedalTable.medals_05 }}
-						{{ form_MedalTable.medals_06 }}
-						{{ form_MedalTable.medals_08 }}
-						{{ form_MedalTable.medals_09 }}
-						{{ form_MedalTable.medals_10 }}
-						{{ form_MedalTable.medals_11 }}
-						{{ form_MedalTable.medals_12 }}
-						{{ form_MedalTable.medals_13 }}
-						{{ form_MedalTable.medals_14 }}
-						{{ form_MedalTable.medals_15 }}
-						{{ form_MedalTable.medals_16 }}
-						{{ form_MedalTable.medals_17 }}
-						{{ form_MedalTable.medals_18 }}
-						{{ form_MedalTable.medals_19 }}
-						{{ form_MedalTable.medals_20 }}
-						{{ form_MedalTable.medals_21 }}
-						{{ form_MedalTable.medals_22 }}
-						{{ form_MedalTable.medals_23 }}
-						{{ form_MedalTable.medals_24 }}
-						{{ form_MedalTable.medals_25 }}
-						{{ form_MedalTable.medals_26 }}
-						{{ form_MedalTable.medals_27 }}
-						{{ form_MedalTable.medals_28 }}
-						{{ form_MedalTable.medals_29 }}
-						{{ form_MedalTable.medals_30 }}
-						{{ form_MedalTable.medals_31 }}
-						{{ form_MedalTable.medals_32 }}
-					</div>
 					<div class="public_id_hiden">
-					{% if ingame_id == none %}
-						<input type="number" name="public_id" value="{{ pbid }}" min="-9223372036854775808" max="9223372036854775807" required="" id="id_public_id">
-					{% else %}
+						<select name="user_profile" required="" id="id_user_profile">
+							<option value="{{ pk_id }}" selected></option>
+						</select>
 						<input type="number" name="public_id" value="{{ public_id }}" min="-9223372036854775808" max="9223372036854775807" required="" id="id_public_id" readonly>
-					{% endif %}
+						{% if ingame_id == none %}
+						<input type="text" name="ingame_id" required id="ingame_id" value="{{ cookie_request_id }}">
+						<input type="text" name="ingame_name" maxlength="30" required id="id_ingame_name" value="{{ cookie_request_name }}">
+						{% else %}
+						<input type="text" name="ingame_id" required id="ingame_id" value="{{ ingame_id }}">
+						<input type="text" name="ingame_name" maxlength="30" required id="id_ingame_name" value="{{ ingame_name }}">
+						{% endif %}
 					</div>
 				</div>
 				<br>
@@ -2084,7 +2069,7 @@
 	<footer>
 		<div class="footer-content">
 			<div class="footer-about">
-				<img class="footer-img-icon" src="/static/image/archero_icon.png" alt="image game icon">
+				<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.3.1" alt="image game icon">
 				<div class="about-content">
 					<h2>Archero :</h2>
 					<div>Archero Update will be added with a certains delay</div>
@@ -2135,7 +2120,7 @@
 		if(!target.closest('.popup2') && runes_popup.classList.contains('show')) runesPopupFunction()
 		if(!target.closest('.popup') && refine_popup.classList.contains('show')) refinePopupFunction()
 		if(!target.closest('.popup3') && privileges_popup.classList.contains('show')) privilegesPopupFunction()
-	})	
+	})
 </script>
 <script>
 	const traveling = document.getElementById("traveling")
@@ -2221,38 +2206,6 @@
 		var sidebar = document.getElementById("sidebar")
 		sidebar.classList.toggle('sidebar-active')
         sidebar.classList.toggle('sidebar-open')
-	})
-</script>
-<script>
-	var medals = document.getElementById("medals_container");
-	var medals_childs = Object.values(medals.children);
-	medals_childs.forEach(element => {
-		var value = element.id
-		element.addEventListener('click', function toggleClass(){
-			var medals_input = document.getElementById("medal_input_container");
-			var medals_input_children = Object.values(medals_input.children);
-			var medals_input_element = document.getElementById(`id_${value}`);
-			if(element.className == "medals_img"){
-				element.className = 'medals_img_active';
-				medals_input_element.checked = true
-			}else{
-				element.className = 'medals_img';
-				medals_input_element.checked = false
-			}
-		})
-	});
-</script>
-<script>
-	var medals_input = document.getElementById("medal_input_container");
-	var medals_input_children = Object.values(medals_input.children);
-	medals_input_children.forEach(element => {
-		var id_image_medal = element.id.replace('id_','')
-		var medal_image = document.getElementById(`${id_image_medal}`)
-		if(element.checked == true){
-			medal_image.className = 'medals_img_active';
-		}else if(element.checked == false){
-			medal_image.className = 'medals_img';
-		}
 	})
 </script>
 <script>

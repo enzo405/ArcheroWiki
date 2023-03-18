@@ -18,32 +18,38 @@ def round_jewel(jewel:int):
         jewel=0
     return jewel
 
+font_lvl = ImageFont.truetype("calculator/static/fonts/archero_font_level.ttf",33)
 
 items={
     "demon_blade_rain":{
         "common":Path("calculator/static/image/items/demon_blade_rain_common.png"),
         "epic":Path("calculator/static/image/items/demon_blade_rain_epic.png"),
-        "mythic":Path("calculator/static/image/items/demon_blade_rain_mythic.png")
+        "mythic":Path("calculator/static/image/items/demon_blade_rain_mythic.png"),
+        "demon_blade_rain_1":Path("calculator/static/image/weapon_skin/demon_blade_rain_1.png")
         },
     "brave_bow":{
         "common":Path("calculator/static/image/items/brave_bow_common.png"),
         "epic":Path("calculator/static/image/items/brave_bow_epic.png"),
-        "mythic":Path("calculator/static/image/items/brave_bow_mythic.png")
+        "mythic":Path("calculator/static/image/items/brave_bow_mythic.png"),
+        "brave_bow_1":Path("calculator/static/image/weapon_skin/brave_bow_1.png")
         },
     "brightspear":{
         "common":Path("calculator/static/image/items/brightspear_common.png"),
         "epic":Path("calculator/static/image/items/brightspear_epic.png"),
-        "mythic":Path("calculator/static/image/items/brightspear_mythic.png")
+        "mythic":Path("calculator/static/image/items/brightspear_mythic.png"),
+        "brightspear_1":Path("calculator/static/image/weapon_skin/brightspear_1.png")
         },
     "death_scythe":{
         "common":Path("calculator/static/image/items/death_scythe_common.png"),
         "epic":Path("calculator/static/image/items/death_scythe_epic.png"),
-        "mythic":Path("calculator/static/image/items/death_scythe_mythic.png")
+        "mythic":Path("calculator/static/image/items/death_scythe_mythic.png"),
+        "death_scythe_1":Path("calculator/static/image/weapon_skin/death_scythe_1.png")
         },
     "gale_force":{
         "common":Path("calculator/static/image/items/gale_force_common.png"),
         "epic":Path("calculator/static/image/items/gale_force_epic.png"),
-        "mythic":Path("calculator/static/image/items/gale_force_mythic.png")
+        "mythic":Path("calculator/static/image/items/gale_force_mythic.png"),
+        "gale_force_1":Path("calculator/static/image/weapon_skin/gale_force_1.png")
         },
     "mini_atreus":{
         "common":Path("calculator/static/image/items/mini_atreus.png"),
@@ -53,22 +59,26 @@ items={
     "saw_blade":{
         "common":Path("calculator/static/image/items/saw_blade_common.png"),
         "epic":Path("calculator/static/image/items/saw_blade_epic.png"),
-        "mythic":Path("calculator/static/image/items/saw_blade_mythic.png")
+        "mythic":Path("calculator/static/image/items/saw_blade_mythic.png"),
+        "saw_blade_1":Path("calculator/static/image/weapon_skin/saw_blade_1.png")
         },
     "stalker_staff":{
         "common":Path("calculator/static/image/items/stalker_staff_common.png"),
         "epic":Path("calculator/static/image/items/stalker_staff_epic.png"),
-        "mythic":Path("calculator/static/image/items/stalker_staff_mythic.png")
+        "mythic":Path("calculator/static/image/items/stalker_staff_mythic.png"),
+        "stalker_staff_1":Path("calculator/static/image/weapon_skin/stalker_staff_1.png")
         },
     "tornado":{
         "common":Path("calculator/static/image/items/tornado_common.png"),
         "epic":Path("calculator/static/image/items/tornado_epic.png"),
-        "mythic":Path("calculator/static/image/items/tornado_mythic.png")
+        "mythic":Path("calculator/static/image/items/tornado_mythic.png"),
+        "boomerang_1":Path("calculator/static/image/weapon_skin/boomerang_1.png")
         },
     "antiquated_sword":{
         "common":Path("calculator/static/image/items/antiquated_sword_common.png"),
         "epic":Path("calculator/static/image/items/antiquated_sword_epic.png"),
-        "mythic":Path("calculator/static/image/items/antiquated_sword_mythic.png")
+        "mythic":Path("calculator/static/image/items/antiquated_sword_mythic.png"),
+        "antiquated_sword_1":Path("calculator/static/image/weapon_skin/antiquated_sword_1.png")
         },
 
     "bright_robe":Path("calculator/static/image/items/bright_robe.png"),
@@ -159,6 +169,13 @@ rarity_weapon={
     "legendary":"epic",
     "ancient_legendary":"epic",
     "mythic":"mythic",
+    "mythic_1":"mythic",
+    "mythic_2":"mythic",
+    "titan_tales":"mythic",
+    "titan_tales_1":"mythic",
+    "titan_tales_2":"mythic",
+    "titan_tales_3":"mythic",
+    "chaos":"mythic",
 }
 
 rarity_ring={
@@ -171,6 +188,13 @@ rarity_ring={
     "legendary":"epic",
     "ancient_legendary":"epic",
     "mythic":"epic",
+    "mythic_1":"epic",
+    "mythic_2":"epic",
+    "titan_tales":"epic",
+    "titan_tales_1":"epic",
+    "titan_tales_2":"epic",
+    "titan_tales_3":"epic",
+    "chaos":"epic",
 }
 
 fond_items={
@@ -182,8 +206,23 @@ fond_items={
     "legendary":Path("calculator/static/image/rarity/legendary.png"),
     "ancient_legendary":Path("calculator/static/image/rarity/ancient_legendary.png"),
     "mythic":Path("calculator/static/image/rarity/mythic.png"),
+    "mythic_1":Path("calculator/static/image/rarity/mythic.png"),
+    "mythic_2":Path("calculator/static/image/rarity/mythic.png"),
+    "titan_tales":Path("calculator/static/image/rarity/titan_tales.png"),
+    "titan_tales_1":Path("calculator/static/image/rarity/titan_tales.png"),
+    "titan_tales_2":Path("calculator/static/image/rarity/titan_tales.png"),
+    "titan_tales_3":Path("calculator/static/image/rarity/titan_tales.png"),
+    "chaos":Path("calculator/static/image/rarity/chaos.png"),
 
     "none":Path("calculator/static/image/items/none.png")
+}
+
+subQuality = {
+    "mythic_1":Path("calculator/static/image/rarity/SubQuality_8.png"),
+    "mythic_2":Path("calculator/static/image/rarity/SubQuality_8.png"),
+    "titan_tales_1":Path("calculator/static/image/rarity/SubQuality_9.png"),
+    "titan_tales_2":Path("calculator/static/image/rarity/SubQuality_9.png"),
+    "titan_tales_3":Path("calculator/static/image/rarity/SubQuality_9.png"),
 }
 
 heros={
@@ -218,7 +257,8 @@ heros={
     "Blazo":Path("calculator/static/image/heros/Blazo.png"),
     "Melinda":Path("calculator/static/image/heros/Melinda.png"),
     "Elaine":Path("calculator/static/image/heros/Elaine.png"),
-    "Bobo":Path("calculator/static/image/heros/Bobo.png")
+    "Bobo":Path("calculator/static/image/heros/Bobo.png"),
+    "Stella":Path("calculator/static/image/heros/Stella2.png"),
 }
 
 jewel = {
@@ -233,43 +273,54 @@ jewel = {
 }
 
 position = {
-    "weapon": (61,17),
-    "armor": (930,17),
-    "ring1": (61,275),
-    "ring2": (930,275),
-    "pet1": (61,534),
-    "pet2": (930,534),
-    "bracelet": (61,795),
-    "book": (485,790),
-    "locket": (930,795),
+    "weapon": (61,82),
+    "armor": (930,82),
+    "ring1": (61,340),
+    "ring2": (930,340),
+    "pet1": (61,599),
+    "pet2": (930,599),
+    "bracelet": (61,860),
+    "book": (485,855),
+    "locket": (930,860),
 
-    "jewel_weapon": (37,-3),
-    "jewel_armor": (905,-3),
-    "jewel_ring1": (37,257),
-    "jewel_ring2": (905,257),
-    "jewel_pet1": (37,517),
-    "jewel_pet2": (905,517),
-    "jewel_bracelet": (37,778),
-    "jewel_book": (463,767),
-    "jewel_locket": (905,778),
+    "jewel_weapon": (37,62),
+    "jewel_armor": (905,62),
+    "jewel_ring1": (37,322),
+    "jewel_ring2": (905,322),
+    "jewel_pet1": (37,582),
+    "jewel_pet2": (905,582),
+    "jewel_bracelet": (37,843),
+    "jewel_book": (463,832),
+    "jewel_locket": (905,843),
 
-    "button_jewel": (730,20),
+    "button_jewel": (730,85),
 
-    "hero": (375,25),
-    "hero_elaine": (240,118),
+    "hero": (375,85),
+    "hero_elaine": (240,178),
+    "hero_stella": (220,104),
 
-    "lvl_weapon": (172,215),
-    "lvl_armor": (1045,215),
-    "lvl_ring1": (172,470),
-    "lvl_ring2": (1045,470),
-    "lvl_pet1": (172,730),
-    "lvl_pet2": (1045,730),
-    "lvl_bracelet": (172,990),
-    "lvl_book": (620,1010),
-    "lvl_locket": (1045,992),
+    "lvl_weapon": (172,277),
+    "lvl_armor": (1045,277),
+    "lvl_ring1": (172,532),
+    "lvl_ring2": (1045,532),
+    "lvl_pet1": (172,790),
+    "lvl_pet2": (1045,790),
+    "lvl_bracelet": (172,1055),
+    "lvl_book": (620,1064),
+    "lvl_locket": (1045,1055),
 
     "dragon": (320,-5),
-    "dragon_rank": (335,135)
+    "dragon_rank": (335,135),
+
+    "subQuality_weapon": (148, 63),
+    "subQuality_armor": (1015, 63),
+    "subQuality_ring1": (148, 322),
+    "subQuality_ring2": (1015, 322),
+    "subQuality_pet1": (148, 582),
+    "subQuality_pet2": (1015, 582),
+    "subQuality_locket": (1015, 843),
+    "subQuality_bracelet": (148, 843),
+    "subQuality_book": (580, 839),
 }
 
 letter_dragon={
@@ -327,7 +378,7 @@ def create_image(ingame_name_unlowered:str,weapon_name:str,weapon_rarity:str,wea
     locket_name:str,locket_rarity:str,locket_lvl:int,book_name:str,book_rarity:str,book_lvl:int,
     atk:int,pv:int,jewel_weapon:int,jewel_armor:int,jewel_ring1:int,jewel_ring2:int,jewel_pet1:int,
     jewel_pet2:int,jewel_bracelet:int,jewel_locket:int,jewel_book:int,hero:str,dragon_name1:str,dragon_name2:str,
-    dragon_name3:str,dragon_rarity1:str,dragon_rarity2:str,dragon_rarity3:str):
+    dragon_name3:str,dragon_rarity1:str,dragon_rarity2:str,dragon_rarity3:str, weapon_skin_activ:str):
 
     if weapon_name == "none":
         weapon_name = "none_dict"
@@ -394,14 +445,17 @@ def create_image(ingame_name_unlowered:str,weapon_name:str,weapon_rarity:str,wea
         box=position["pet2"],mask=Image.open(fond_items[pet_rarity2]).resize((228,228)))
     base.paste(im=Image.open(fond_items[bracelet_rarity]).resize((228,228)),
         box=position["bracelet"],mask=Image.open(fond_items[bracelet_rarity]).resize((228,228)))
-    base.paste(im=Image.open(fond_items[book_rarity]).resize((250,250)),
-        box=position["book"],mask=Image.open(fond_items[book_rarity]).resize((250,250)))
+    base.paste(im=Image.open(fond_items[book_rarity]).resize((246,246)),
+        box=position["book"],mask=Image.open(fond_items[book_rarity]).resize((246,246)))
     base.paste(im=Image.open(fond_items[locket_rarity]).resize((228,228)),
         box=position["locket"],mask=Image.open(fond_items[locket_rarity]).resize((228,228)))
 
-
-    base.paste(im=Image.open(items[weapon_name][rarity_weapon[weapon_rarity]]).resize((228,228)),
-        box=position["weapon"],mask=Image.open(items[weapon_name][rarity_weapon[weapon_rarity]]).resize((228,228)))
+    if weapon_skin_activ == "None":
+        base.paste(im=Image.open(items[weapon_name][rarity_weapon[weapon_rarity]]).resize((228,228)),
+            box=position["weapon"],mask=Image.open(items[weapon_name][rarity_weapon[weapon_rarity]]).resize((228,228)))
+    else:
+        base.paste(im=Image.open(items[weapon_name][weapon_skin_activ]).resize((228,228)),
+            box=position["weapon"],mask=Image.open(items[weapon_name][weapon_skin_activ]).resize((228,228)))
     base.paste(im=Image.open(items[armor_name]).resize((228,228)),
         box=position["armor"],mask=Image.open(items[armor_name]).resize((228,228)))
     base.paste(im=Image.open(items[ring_name1][rarity_ring[ring_rarity1]]).resize((228,228)),
@@ -414,11 +468,57 @@ def create_image(ingame_name_unlowered:str,weapon_name:str,weapon_rarity:str,wea
         box=position["pet2"],mask=Image.open(items[pet_name2]).resize((228,228)))
     base.paste(im=Image.open(items[bracelet_name]).resize((228,228)),
         box=position["bracelet"],mask=Image.open(items[bracelet_name]).resize((228,228)))
-    base.paste(im=Image.open(items[book_name]).resize((250,250)),
-        box=position["book"],mask=Image.open(items[book_name]).resize((250,250)))
+    base.paste(im=Image.open(items[book_name]).resize((246,246)),
+        box=position["book"],mask=Image.open(items[book_name]).resize((246,246)))
     base.paste(im=Image.open(items[locket_name]).resize((228,228)),
         box=position["locket"],mask=Image.open(items[locket_name]).resize((228,228)))
 
+    number_SubQuality = ImageDraw.Draw(base)
+    if weapon_rarity[-1].isdigit():
+        number = weapon_rarity.split('_')[-1]
+        base.paste(im=Image.open(subQuality[weapon_rarity]).resize((62,62)),box=position["subQuality_weapon"],mask=Image.open(subQuality[weapon_rarity]).resize((62,62)))
+        number_SubQuality.text((168,72),str(number),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",40))
+        number_SubQuality.text((168,72),str(number),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",40))
+    if armor_rarity[-1].isdigit():
+        number = armor_rarity.split('_')[-1]
+        base.paste(im=Image.open(subQuality[armor_rarity]).resize((62,62)),box=position["subQuality_armor"],mask=Image.open(subQuality[armor_rarity]).resize((62,62)))
+        number_SubQuality.text((1035,72),str(number),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",40))
+        number_SubQuality.text((1035,72),str(number),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",40))
+    if ring_rarity1[-1].isdigit():
+        number = ring_rarity1.split('_')[-1]
+        base.paste(im=Image.open(subQuality[ring_rarity1]).resize((62,62)),box=position["subQuality_ring1"],mask=Image.open(subQuality[ring_rarity1]).resize((62,62)))
+        number_SubQuality.text((168,332),str(number),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",40))
+        number_SubQuality.text((168,332),str(number),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",40))
+    if ring_rarity2[-1].isdigit():
+        number = ring_rarity2.split('_')[-1]
+        base.paste(im=Image.open(subQuality[ring_rarity2]).resize((62,62)),box=position["subQuality_ring2"],mask=Image.open(subQuality[ring_rarity2]).resize((62,62)))
+        number_SubQuality.text((1035,332),str(number),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",40))
+        number_SubQuality.text((1035,332),str(number),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",40))
+    if pet_rarity1[-1].isdigit():
+        number = pet_rarity1.split('_')[-1]
+        base.paste(im=Image.open(subQuality[pet_rarity1]).resize((62,62)),box=position["subQuality_pet1"],mask=Image.open(subQuality[pet_rarity1]).resize((62,62)))
+        number_SubQuality.text((168,592),str(number),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",40))
+        number_SubQuality.text((168,592),str(number),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",40))
+    if pet_rarity2[-1].isdigit():
+        number = pet_rarity2.split('_')[-1]
+        base.paste(im=Image.open(subQuality[pet_rarity2]).resize((62,62)),box=position["subQuality_pet2"],mask=Image.open(subQuality[pet_rarity2]).resize((62,62)))
+        number_SubQuality.text((1035,592),str(number),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",40))
+        number_SubQuality.text((1035,592),str(number),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",40))
+    if locket_rarity[-1].isdigit():
+        number = locket_rarity.split('_')[-1]
+        base.paste(im=Image.open(subQuality[locket_rarity]).resize((62,62)),box=position["subQuality_locket"],mask=Image.open(subQuality[locket_rarity]).resize((62,62)))
+        number_SubQuality.text((1035,852),str(number),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",40))
+        number_SubQuality.text((1035,852),str(number),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",40))
+    if bracelet_rarity[-1].isdigit():
+        number = bracelet_rarity.split('_')[-1]
+        base.paste(im=Image.open(subQuality[bracelet_rarity]).resize((62,62)),box=position["subQuality_bracelet"],mask=Image.open(subQuality[bracelet_rarity]).resize((62,62)))
+        number_SubQuality.text((168,852),str(number),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",40))
+        number_SubQuality.text((168,852),str(number),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",40))
+    if book_rarity[-1].isdigit():
+        number = book_rarity.split('_')[-1]
+        base.paste(im=Image.open(subQuality[book_rarity]).resize((62,62)),box=position["subQuality_book"],mask=Image.open(subQuality[book_rarity]).resize((62,62)))
+        number_SubQuality.text((600,848),str(number),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",40))
+        number_SubQuality.text((600,848),str(number),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",40))
     base.paste(Image.open(jewel[-1]).resize((100,104)),box=position["jewel_weapon"],mask=Image.open(jewel[-1]).resize((100,104)))
     base.paste(Image.open(jewel[-1]).resize((100,104)),box=position["jewel_armor"],mask=Image.open(jewel[-1]).resize((100,104)))
     base.paste(Image.open(jewel[-1]).resize((100,104)),box=position["jewel_ring1"],mask=Image.open(jewel[-1]).resize((100,104)))
@@ -442,6 +542,8 @@ def create_image(ingame_name_unlowered:str,weapon_name:str,weapon_rarity:str,wea
         base.paste(im=Image.open(heros["Atreus"][armor_name]),box=position["hero"],mask=Image.open(heros["Atreus"][armor_name]))
     elif hero == "Elaine":
         base.paste(im=Image.open(heros[hero]),box=position["hero_elaine"],mask=Image.open(heros[hero]))
+    elif hero == "Stella":
+        base.paste(im=Image.open(heros[hero]),box=position["hero_stella"],mask=Image.open(heros[hero]))
     else:
         base.paste(im=Image.open(heros[hero]),box=position["hero"],mask=Image.open(heros[hero]))
 
@@ -466,7 +568,7 @@ def create_image(ingame_name_unlowered:str,weapon_name:str,weapon_rarity:str,wea
 
     draw = ImageDraw.Draw(base)
 
-    font_lvl = ImageFont.truetype("calculator/static/fonts/archero_font_level.ttf",33)
+    
     draw.multiline_text(position["lvl_weapon"],
         f"Lv.{weapon_lvl}",(255,255,255),
         anchor="mm",align="center",
@@ -504,9 +606,9 @@ def create_image(ingame_name_unlowered:str,weapon_name:str,weapon_rarity:str,wea
         anchor="mm",align="center",
         font=font_lvl)
 
-    draw.text((220,1140),str(atk),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",65))
-    draw.text((220,1140),str(atk),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",65))
-    draw.text((995,1140),str(pv),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",65))
-    draw.text((995,1140),str(pv),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",65))
+    draw.text((220,1200),str(atk),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",65))
+    draw.text((220,1200),str(atk),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",65))
+    draw.text((995,1200),str(pv),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",65))
+    draw.text((995,1200),str(pv),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",65))
 
     base.save(f"calculator/static/image/stuff_save/stuff_{ingame_name_unlowered}.png")

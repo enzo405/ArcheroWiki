@@ -1,9 +1,3 @@
-@font-face {
-	font-family: 'Rubik';
-	src: url("/static/fonts/rubik.otf");
-}
-
-
 @media screen and (max-width : 1070px){ /* pour résolution inférieur à 1070 */
 	.altar_cost_content{
 		display: flex;
@@ -14,10 +8,10 @@
 		margin-left: 0px;
 	}
 	.tierlist_img, .tierlist_img_myt{
-		width: 85%;
+		width: 100%;
 	}
 	.fusion_item_img{
-		width: 70%;
+		width: 100%;
 		object-fit: contain;
 	}
 	.div-onclick-menu{
@@ -63,7 +57,6 @@
 	}
 	.div-onclick-menu{
 		font-size: x-large;
-		font-family: "Rubik";
 		font-weight: bold;
 		padding: 10px 20px 10px 20px;
 	}
@@ -81,7 +74,6 @@
 	} 
 	.div-onclick-menu{
 		font-size: large;
-		font-family: "Rubik";
 		font-weight: 500;
 		padding: 5px 10px 5px 10px;
 	}
@@ -123,7 +115,6 @@
 		margin-top: 45px;
 	}
 	#myUL li a {
-		padding: 7px;
 		font-size: 18px;
 	}
 }
@@ -147,7 +138,6 @@
 		margin-top: 32px;
 	}
 	#myUL li a {
-		padding: 7px;
 		font-size: 13px;
 	}
 }
@@ -189,7 +179,6 @@
 
 *{
     margin: 0;
-    font-family: 'Rubik';
 }
 .main-container{
 	width: 100%;
@@ -280,6 +269,8 @@
 .main-menu{
 	display: flex;
     flex-direction: column;
+	height: 100%;
+    min-height: 90vh;
 }
 .select-href{
 	user-select: none;
@@ -320,6 +311,8 @@
 .main-flexbox{
 	display: flex;
 	flex-direction: column;
+	height: 100%;
+	min-height: 90vh;
 }
 .flex-box{
 	margin-top: 20px;
@@ -380,12 +373,13 @@
 	background-color: rgb(211, 199, 182);
 }
 .copy-icon-container i{
-	display: none;
-}
-.active .copy-icon-container i{
 	display: inline;
+	font-size: smaller;
 	margin-left: 5px;
 	cursor: pointer;
+}
+.body_dark_mode .copy-icon-container i{
+	color: black;
 }
 .gems_spending_guide_child, .gold_earning_guide_child, .gear_farming_guide_child{
 	display: flex;
@@ -488,10 +482,13 @@
 	position: absolute;
 	overflow-y: scroll;
 	max-height: 284px;
-	max-width: 185px;
+	max-width: 200px;
 }
 #myUL li a {
-	border: 1px solid #ddd;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	width: 100%;
+	border-top: 1px solid #ddd;
 	cursor: pointer;
 	margin-top: -1px;
 	background-color: #f6f6f6;
@@ -499,8 +496,20 @@
 	color: black; 
 	display: flex;
 	justify-content: center;
-	gap: 6px;
 	align-items: center;
+}
+.item_name{
+	width: 70%;
+	justify-content: end;
+}
+.siimg{
+	width: 30%;
+	justify-content: center;
+}
+.item_name, .siimg{
+	padding-top: 3px;
+	padding-bottom: 3px;
+	display: flex;
 }
 .searchbar-ul-hero li a{
 	flex-direction: row;
@@ -669,7 +678,6 @@
 	padding: 0 5%;
 }
 .div_formulaire{
-	font-family: "Rubik";
 	font-weight: bold;
 	padding: 10px 20px 10px 20px;
 	background-color: #6CB4EE;
@@ -732,6 +740,10 @@
 	text-transform: capitalize;
 	width: 100%;
 	font-weight: bold;
+}
+.linkSheetBox{
+	color: black;
+    text-decoration: none;
 }
 .get-back-ies{
 	color: darkblue;
@@ -824,10 +836,14 @@ label {
 }
 .input-cost{
 	margin-top: 20px;
+	display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 .cost_input_container{
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 }
 .cost_input{
 	margin: 0;
@@ -847,7 +863,7 @@ label {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	margin-top: 2px;
+	margin-top: 12px;
 }
 .submit-input{
 	color: #fff;
@@ -895,12 +911,41 @@ label {
 .body_dark_mode .category-cost{
 	color: white;
 }
+.rank_input {
+	margin-top: 16px;
+	border: 1px solid #777;
+	padding: 10px;
+	background-color: #fff;
+	border-radius: 10px;
+	display: grid;
+	grid-template-columns: repeat(3,auto);
+}
+.body_dark_mode .rank_input{
+	background: transparent;
+    border: none;
+}
+.label_fieldset{
+	display: flex;
+	justify-content: center;
+	cursor: pointer;
+	padding: 2px;
+}
+.fieldset_container input[type="radio"]:checked + label{
+	background-color: bisque;
+    border: 0px solid;
+    border-radius: 10px;
+    width: auto;
+}
+.body_dark_mode .fieldset_container input[type="radio"]:checked + label{
+	background-color: #57327a;
+}
 .news{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 .news-title{
 	display: flex;

@@ -2,7 +2,9 @@
 	font-family: 'Rubik';
 	src: url("/static/fonts/rubik.otf");
 }
-
+*{
+	font-family: 'Rubik';
+}
 
 @media screen and (min-width : 1200px){/* pour résolution supérieur à 400px */
 	.cmcath{
@@ -155,7 +157,6 @@ body{
 .globe_header_icon select{
 	background-color: transparent;
 	border: none;
-	font-family: 'Rubik';
 	font-weight: bold;
 }
 .globe_header_icon i, .globe_header_icon select{
@@ -166,7 +167,6 @@ body{
 }
 .globe_header_icon option{
 	background-color: #d50400;
-	font-family: 'Rubik';
 	font-weight: bold;
 }
 .body_dark_mode .header-container{
@@ -387,10 +387,10 @@ body{
 	width: 100%;
 }
 .success-messages{
-	background-color: #267612;
+	color: #267612;
 }
 .error-messages{
-	background-color: #d50400;
+	color: #d50400;
 }
 .close_span_message{
 	position: absolute;

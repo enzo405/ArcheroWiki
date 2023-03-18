@@ -12,105 +12,95 @@
 
 
 StatsWeapon =  {
-    "antiquated_sword_common_inc_atk": "8", "antiquated_sword_common_base_atk": "70", "antiquated_sword_common_var_atk" : "0", "antiquated_sword_common_crit" : "0",
-    "antiquated_sword_great_inc_atk": "9", "antiquated_sword_great_base_atk": "100", "antiquated_sword_great_var_atk" : "0", "antiquated_sword_great_crit" : "0",
-    "antiquated_sword_rare_inc_atk": "10", "antiquated_sword_rare_base_atk": "125", "antiquated_sword_rare_var_atk" : "5", "antiquated_sword_rare_crit" : "0",
-    "antiquated_sword_epic_inc_atk": "12", "antiquated_sword_epic_base_atk": "170", "antiquated_sword_epic_var_atk" : "5", "antiquated_sword_epic_crit" : "0",
-    "antiquated_sword_perfect_epic_inc_atk": "14", "antiquated_sword_perfect_epic_base_atk": "215", "antiquated_sword_perfect_epic_var_atk" : "5", "antiquated_sword_perfect_epic_crit" : "0",
-    "antiquated_sword_legendary_inc_atk": "16", "antiquated_sword_legendary_base_atk": "265", "antiquated_sword_legendary_var_atk" : "5", "antiquated_sword_legendary_crit" : "0",
-    "antiquated_sword_ancient_legendary_inc_atk": "18", "antiquated_sword_ancient_legendary_base_atk": "325", "antiquated_sword_ancient_legendary_var_atk" : "5", "antiquated_sword_ancient_legendary_crit" : "0",
-    "antiquated_sword_mythic_inc_atk": "20", "antiquated_sword_mythic_base_atk": "390", "antiquated_sword_mythic_var_atk" : "5", "antiquated_sword_mythic_crit" : "0",
-
-    "demon_blade_rain_common_inc_atk": "8", "demon_blade_rain_common_base_atk": "70", "demon_blade_rain_common_var_atk" : "0", "demon_blade_rain_common_crit" : "0",
-    "demon_blade_rain_great_inc_atk": "9", "demon_blade_rain_great_base_atk": "100", "demon_blade_rain_great_var_atk" : "0", "demon_blade_rain_great_crit" : "0",
-    "demon_blade_rain_rare_inc_atk": "10", "demon_blade_rain_rare_base_atk": "125", "demon_blade_rain_rare_var_atk" : "5", "demon_blade_rain_rare_crit" : "0",
-    "demon_blade_rain_epic_inc_atk": "12", "demon_blade_rain_epic_base_atk": "170", "demon_blade_rain_epic_var_atk" : "5", "demon_blade_rain_epic_crit" : "0",
-    "demon_blade_rain_perfect_epic_inc_atk": "14", "demon_blade_rain_perfect_epic_base_atk": "215", "demon_blade_rain_perfect_epic_var_atk" : "5", "demon_blade_rain_perfect_epic_crit" : "0",
-    "demon_blade_rain_legendary_inc_atk": "16", "demon_blade_rain_legendary_base_atk": "265", "demon_blade_rain_legendary_var_atk" : "5", "demon_blade_rain_legendary_crit" : "0",
-    "demon_blade_rain_ancient_legendary_inc_atk": "18", "demon_blade_rain_ancient_legendary_base_atk": "325", "demon_blade_rain_ancient_legendary_var_atk" : "5", "demon_blade_rain_ancient_legendary_crit" : "0",
-    "demon_blade_rain_mythic_inc_atk": "20", "demon_blade_rain_mythic_base_atk": "390", "demon_blade_rain_mythic_var_atk" : "5", "demon_blade_rain_mythic_crit" : "0",
-
-    "brave_bow_common_inc_atk": "8", "brave_bow_common_base_atk": "50", "brave_bow_common_var_atk" : "0", "brave_bow_common_crit" : "0",
-    "brave_bow_great_inc_atk": "9", "brave_bow_great_base_atk": "70", "brave_bow_great_var_atk" : "0", "brave_bow_great_crit" : "0",
-    "brave_bow_rare_inc_atk": "10", "brave_bow_rare_base_atk": "90", "brave_bow_rare_var_atk" : "5", "brave_bow_rare_crit" : "0",
-    "brave_bow_epic_inc_atk": "12", "brave_bow_epic_base_atk": "120", "brave_bow_epic_var_atk" : "5", "brave_bow_epic_crit" : "50",
-    "brave_bow_perfect_epic_inc_atk": "14", "brave_bow_perfect_epic_base_atk": "150", "brave_bow_perfect_epic_var_atk" : "5", "brave_bow_perfect_epic_crit" : "50",
-    "brave_bow_legendary_inc_atk": "16", "brave_bow_legendary_base_atk": "200", "brave_bow_legendary_var_atk" : "5", "brave_bow_legendary_crit" : "50",
-    "brave_bow_ancient_legendary_inc_atk": "18", "brave_bow_ancient_legendary_base_atk": "250", "brave_bow_ancient_legendary_var_atk" : "5", "brave_bow_ancient_legendary_crit" : "50",
-    "brave_bow_mythic_inc_atk": "20", "brave_bow_mythic_base_atk":"300","brave_bow_mythic_var_atk" : "5", "brave_bow_mythic_crit" : "50",
-
-    "saw_blade_common_inc_atk": "8", "saw_blade_common_base_atk": "50", "saw_blade_common_var_atk" : "0", "saw_blade_common_crit" : "0",
-    "saw_blade_great_inc_atk": "9", "saw_blade_great_base_atk": "70", "saw_blade_great_var_atk" : "0", "saw_blade_great_crit" : "0",
-    "saw_blade_rare_inc_atk": "10", "saw_blade_rare_base_atk": "90", "saw_blade_rare_var_atk" : "5", "saw_blade_rare_crit" : "0",
-    "saw_blade_epic_inc_atk": "12", "saw_blade_epic_base_atk": "120", "saw_blade_epic_var_atk" : "5", "saw_blade_epic_crit" : "0",
-    "saw_blade_perfect_epic_inc_atk": "14", "saw_blade_perfect_epic_base_atk": "150", "saw_blade_perfect_epic_var_atk" : "5", "saw_blade_perfect_epic_crit" : "0",
-    "saw_blade_legendary_inc_atk": "16", "saw_blade_legendary_base_atk": "200", "saw_blade_legendary_var_atk" : "5", "saw_blade_legendary_crit" : "0",
-    "saw_blade_ancient_legendary_inc_atk": "18", "saw_blade_ancient_legendary_base_atk": "250", "saw_blade_ancient_legendary_var_atk" : "5", "saw_blade_ancient_legendary_crit" : "0",
-    "saw_blade_mythic_inc_atk": "20", "saw_blade_mythic_base_atk": "300", "saw_blade_mythic_var_atk" : "5", "saw_blade_mythic_crit" : "0",
-
-    "tornado_common_inc_atk": "8", "tornado_common_base_atk": "50", "tornado_common_var_atk" : "0", "tornado_common_crit" : "0",
-    "tornado_great_inc_atk": "9", "tornado_great_base_atk": "70", "tornado_great_var_atk" : "0", "tornado_great_crit" : "0",
-    "tornado_rare_inc_atk": "10", "tornado_rare_base_atk": "90", "tornado_rare_var_atk" : "5", "tornado_rare_crit" : "0",
-    "tornado_epic_inc_atk": "12", "tornado_epic_base_atk": "120", "tornado_epic_var_atk" : "5", "tornado_epic_crit" : "0",
-    "tornado_perfect_epic_inc_atk": "14", "tornado_perfect_epic_base_atk": "150", "tornado_perfect_epic_var_atk" : "5", "tornado_perfect_epic_crit" : "0",
-    "tornado_legendary_inc_atk": "16", "tornado_legendary_base_atk": "200", "tornado_legendary_var_atk" : "5", "tornado_legendary_crit" : "0",
-    "tornado_ancient_legendary_inc_atk": "18", "tornado_ancient_legendary_base_atk": "250", "tornado_ancient_legendary_var_atk" : "5", "tornado_ancient_legendary_crit" : "0",
-    "tornado_mythic_inc_atk": "20", "tornado_mythic_base_atk": "300", "tornado_mythic_var_atk" : "5", "tornado_mythic_crit" : "0",
-
-    "gale_force_common_inc_atk": "8", "gale_force_common_base_atk": "60", "gale_force_common_var_atk" : "0", "gale_force_common_crit" : "0",
-    "gale_force_great_inc_atk": "9", "gale_force_great_base_atk": "85", "gale_force_great_var_atk" : "5", "gale_force_great_crit" : "0",
-    "gale_force_rare_inc_atk": "10", "gale_force_rare_base_atk": "110", "gale_force_rare_var_atk" : "5", "gale_force_rare_crit" : "0",
-    "gale_force_epic_inc_atk": "12", "gale_force_epic_base_atk": "150", "gale_force_epic_var_atk" : "5", "gale_force_epic_crit" : "0",
-    "gale_force_perfect_epic_inc_atk": "14", "gale_force_perfect_epic_base_atk": "190", "gale_force_perfect_epic_var_atk" : "5", "gale_force_perfect_epic_crit" : "0",
-    "gale_force_legendary_inc_atk": "16", "gale_force_legendary_base_atk": "240", "gale_force_legendary_var_atk" : "5", "gale_force_legendary_crit" : "0",
-    "gale_force_ancient_legendary_inc_atk": "18", "gale_force_ancient_legendary_base_atk": "300", "gale_force_ancient_legendary_var_atk" : "5", "gale_force_ancient_legendary_crit" : "0",
-    "gale_force_mythic_inc_atk": "20", "gale_force_mythic_base_atk": "360", "gale_force_mythic_var_atk" : "5", "gale_force_mythic_crit" : "0",
-
-    "stalker_staff_common_inc_atk": "8", "stalker_staff_common_base_atk": "50", "stalker_staff_common_var_atk" : "0", "stalker_staff_common_crit" : "0",
-    "stalker_staff_great_inc_atk": "9", "stalker_staff_great_base_atk": "70", "stalker_staff_great_var_atk" : "0", "stalker_staff_great_crit" : "0",
-    "stalker_staff_rare_inc_atk": "10", "stalker_staff_rare_base_atk": "90", "stalker_staff_rare_var_atk" : "5", "stalker_staff_rare_crit" : "0",
-    "stalker_staff_epic_inc_atk": "12", "stalker_staff_epic_base_atk": "120", "stalker_staff_epic_var_atk" : "5", "stalker_staff_epic_crit" : "0",
-    "stalker_staff_perfect_epic_inc_atk": "14", "stalker_staff_perfect_epic_base_atk": "150", "stalker_staff_perfect_epic_var_atk" : "5", "stalker_staff_perfect_epic_crit" : "0",
-    "stalker_staff_legendary_inc_atk": "16", "stalker_staff_legendary_base_atk": "200", "stalker_staff_legendary_var_atk" : "5", "stalker_staff_legendary_crit" : "0",
-    "stalker_staff_ancient_legendary_inc_atk": "18", "stalker_staff_ancient_legendary_base_atk": "250", "stalker_staff_ancient_legendary_var_atk" : "5", "stalker_staff_ancient_legendary_crit" : "0",
-    "stalker_staff_mythic_inc_atk": "20", "stalker_staff_mythic_base_atk": "300", "stalker_staff_mythic_var_atk" : "5", "stalker_staff_mythic_crit" : "0",
-
-    "death_scythe_common_inc_atk": "8", "death_scythe_common_base_atk": "50", "death_scythe_common_var_atk" : "0", "death_scythe_common_crit" : "0",
-    "death_scythe_great_inc_atk": "9", "death_scythe_great_base_atk": "70", "death_scythe_great_var_atk" : "0", "death_scythe_great_crit" : "0",
-    "death_scythe_rare_inc_atk": "10", "death_scythe_rare_base_atk": "90", "death_scythe_rare_var_atk" : "5", "death_scythe_rare_crit" : "0",
-    "death_scythe_epic_inc_atk": "12", "death_scythe_epic_base_atk": "120", "death_scythe_epic_var_atk" : "5", "death_scythe_epic_crit" : "0",
-    "death_scythe_perfect_epic_inc_atk": "14", "death_scythe_perfect_epic_base_atk": "150", "death_scythe_perfect_epic_var_atk" : "5", "death_scythe_perfect_epic_crit" : "0",
-    "death_scythe_legendary_inc_atk": "16", "death_scythe_legendary_base_atk": "200", "death_scythe_legendary_var_atk" : "5", "death_scythe_legendary_crit" : "0",
-    "death_scythe_ancient_legendary_inc_atk": "18", "death_scythe_ancient_legendary_base_atk": "250", "death_scythe_ancient_legendary_var_atk" : "5", "death_scythe_ancient_legendary_crit" : "0",
-    "death_scythe_mythic_inc_atk": "20", "death_scythe_mythic_base_atk": "300", "death_scythe_mythic_var_atk" : "5", "death_scythe_mythic_crit" : "0",
-
-    "brightspear_common_inc_atk": "8", "brightspear_common_base_atk": "50", "brightspear_common_var_atk" : "0", "brightspear_common_crit" : "0",
-    "brightspear_great_inc_atk": "9", "brightspear_great_base_atk": "70", "brightspear_great_var_atk" : "0", "brightspear_great_crit" : "0",
-    "brightspear_rare_inc_atk": "10", "brightspear_rare_base_atk": "90", "brightspear_rare_var_atk" : "5", "brightspear_rare_crit" : "0",
-    "brightspear_epic_inc_atk": "12", "brightspear_epic_base_atk": "120", "brightspear_epic_var_atk" : "5", "brightspear_epic_crit" : "0",
-    "brightspear_perfect_epic_inc_atk": "14", "brightspear_perfect_epic_base_atk": "150", "brightspear_perfect_epic_var_atk" : "5", "brightspear_perfect_epic_crit" : "0",
-    "brightspear_legendary_inc_atk": "16", "brightspear_legendary_base_atk": "200", "brightspear_legendary_var_atk" : "5", "brightspear_legendary_crit" : "0",
-    "brightspear_ancient_legendary_inc_atk": "18", "brightspear_ancient_legendary_base_atk": "250", "brightspear_ancient_legendary_var_atk" : "5", "brightspear_ancient_legendary_crit" : "0",
-    "brightspear_mythic_inc_atk": "20", "brightspear_mythic_base_atk": "300", "brightspear_mythic_var_atk" : "5", "brightspear_mythic_crit" : "0",
-
-    "mini_atreus_common_inc_atk": "8", "mini_atreus_common_base_atk": "70", "mini_atreus_common_var_atk" : "0", "mini_atreus_common_crit" : "0",
-    "mini_atreus_great_inc_atk": "9", "mini_atreus_great_base_atk": "100", "mini_atreus_great_var_atk" : "0", "mini_atreus_great_crit" : "0",
-    "mini_atreus_rare_inc_atk": "10", "mini_atreus_rare_base_atk": "125", "mini_atreus_rare_var_atk" : "5", "mini_atreus_rare_crit" : "0",
-    "mini_atreus_epic_inc_atk": "12", "mini_atreus_epic_base_atk": "170", "mini_atreus_epic_var_atk" : "5", "mini_atreus_epic_crit" : "0",
-    "mini_atreus_perfect_epic_inc_atk": "14", "mini_atreus_perfect_epic_base_atk": "215", "mini_atreus_perfect_epic_var_atk" : "5", "mini_atreus_perfect_epic_crit" : "0",
-    "mini_atreus_legendary_inc_atk": "16", "mini_atreus_legendary_base_atk": "265", "mini_atreus_legendary_var_atk" : "5", "mini_atreus_legendary_crit" : "0",
-    "mini_atreus_ancient_legendary_inc_atk": "18", "mini_atreus_ancient_legendary_base_atk": "325", "mini_atreus_ancient_legendary_var_atk" : "5", "mini_atreus_ancient_legendary_crit" : "0",
-    "mini_atreus_mythic_inc_atk": "20", "mini_atreus_mythic_base_atk": "390", "mini_atreus_mythic_var_atk" : "5", "mini_atreus_mythic_crit" : "0",
-
-    "none_common_inc_atk": "0", "none_common_base_atk": "0", "none_common_var_atk" : "0", "none_common_crit" : "0",
-    "none_great_inc_atk": "0", "none_great_base_atk": "0", "none_great_var_atk" : "0", "none_great_crit" : "0",
-    "none_rare_inc_atk": "0", "none_rare_base_atk": "0", "none_rare_var_atk" : "0", "none_rare_crit" : "0",
-    "none_epic_inc_atk": "0", "none_epic_base_atk": "0", "none_epic_var_atk" : "0", "none_epic_crit" : "0",
-    "none_perfect_epic_inc_atk": "0", "none_perfect_epic_base_atk": "0", "none_perfect_epic_var_atk" : "0", "none_perfect_epic_crit" : "0",
-    "none_legendary_inc_atk": "0", "none_legendary_base_atk": "0", "none_legendary_var_atk" : "0", "none_legendary_crit" : "0",
-    "none_ancient_legendary_inc_atk": "0", "none_ancient_legendary_base_atk": "0", "none_ancient_legendary_var_atk" : "0", "none_ancient_legendary_crit" : "0",
-    "none_mythic_inc_atk": "0", "none_mythic_base_atk": "0", "none_mythic_var_atk" : "0", "none_mythic_crit" : "0",
+    "antiquated_sword": {
+        "inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
+        "base": [70,100,125,170,215,265,325,390,460,540,760,880,1000,1100,1200],
+        "var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
+        "crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        "weapon_damage": [0,0,0,0,0,0,0,0,0,0,12,12,12,12,12],
+        "basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+    },
+    "demon_blade_rain": {
+		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
+		"base": [70,100,125,170,215,265,325,390,460,540,760,880,1000,1100,1200],
+		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
+		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,11,11,11,11,11],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"brave_bow": {
+		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
+		"base": [50,70,90,120,150,200,250,300,350,410,490,490,490,490,490],
+		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
+		"crit": [0,0,0,50,50,50,50,50,50,75,75,75,75,75,75],
+		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,8,8,8,8,8],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"saw_blade": {
+		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
+		"base": [50,70,90,120,150,200,250,300,350,410,490,490,490,490,490],
+		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
+		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,8,8,8,8,8],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"tornado": {
+		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
+		"base": [50,70,90,120,150,200,250,300,350,410,490,490,490,490,490],
+		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
+		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,8,8,8,8,8],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"gale_force": {
+		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
+		"base": [60,85,110,150,190,240,300,360,0,0,0,0,0,0,0],
+		"var_atk": [0,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
+		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"stalker_staff": {
+		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
+		"base": [50,70,90,120,150,200,250,300,350,410,490,490,490,490,490],
+		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
+		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,9,9,9,9,9],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"death_scythe": {
+		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
+		"base": [50,70,90,120,150,200,250,300,350,410,490,490,490,490,490],
+		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
+		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,8,8,8,8,8],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"brightspear": {
+		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
+		"base": [50,70,90,120,150,200,250,300,350,410,490,490,490,490,490],
+		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
+		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,9,9,9,9,9],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"mini_atreus": {
+		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
+		"base": [70,100,125,170,215,265,325,390,460,540,760,880,1000,1100,1200],
+		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
+		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+    },
+    "none": {
+		"inc": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"base": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"var_atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     }
+}
 
 
 
@@ -119,76 +109,70 @@ StatsWeapon =  {
 
 
 StatsArmor =  {
-    "golden_chestplate_resistance_type": "damage resistance",
-    "golden_chestplate_common_inc_hp": "25", "golden_chestplate_common_base_hp": "200", "golden_chestplate_common_var_hp" : "0", "golden_chestplate_common_dodge" : "0", "golden_chestplate_common_resistance" : "5",
-    "golden_chestplate_great_inc_hp": "30", "golden_chestplate_great_base_hp": "280", "golden_chestplate_great_var_hp" : "0", "golden_chestplate_great_dodge" : "0", "golden_chestplate_great_resistance" : "5",
-    "golden_chestplate_rare_inc_hp": "35", "golden_chestplate_rare_base_hp": "360", "golden_chestplate_rare_var_hp" : "0", "golden_chestplate_rare_dodge" : "0", "golden_chestplate_rare_resistance" : "5",
-    "golden_chestplate_epic_inc_hp": "40", "golden_chestplate_epic_base_hp": "480", "golden_chestplate_epic_var_hp" : "0", "golden_chestplate_epic_dodge" : "0", "golden_chestplate_epic_resistance" : "5",
-    "golden_chestplate_perfect_epic_inc_hp": "50", "golden_chestplate_perfect_epic_base_hp": "600", "golden_chestplate_perfect_epic_var_hp" : "0", "golden_chestplate_perfect_epic_dodge" : "0", "golden_chestplate_perfect_epic_resistance" : "5",
-    "golden_chestplate_legendary_inc_hp": "60", "golden_chestplate_legendary_base_hp": "800", "golden_chestplate_legendary_var_hp" : "0", "golden_chestplate_legendary_dodge" : "0", "golden_chestplate_legendary_resistance" : "5",
-    "golden_chestplate_ancient_legendary_inc_hp": "70", "golden_chestplate_ancient_legendary_base_hp": "1000", "golden_chestplate_ancient_legendary_var_hp" : "0", "golden_chestplate_ancient_legendary_dodge" : "0", "golden_chestplate_ancient_legendary_resistance" : "5",
-    "golden_chestplate_mythic_inc_hp": "80", "golden_chestplate_mythic_base_hp": "1200", "golden_chestplate_mythic_var_hp" : "0", "golden_chestplate_mythic_dodge" : "0", "golden_chestplate_mythic_resistance" : "5",
-
-    "void_robe_resistance_type": "collision damage resistance",
-    "void_robe_common_inc_hp": "25", "void_robe_common_base_hp": "200", "void_robe_common_var_hp" : "0", "void_robe_common_dodge" : "0", "void_robe_common_resistance" : "10",
-    "void_robe_great_inc_hp": "30", "void_robe_great_base_hp": "280", "void_robe_great_var_hp" : "0", "void_robe_great_dodge" : "0", "void_robe_great_resistance" : "10",
-    "void_robe_rare_inc_hp": "35", "void_robe_rare_base_hp": "360", "void_robe_rare_var_hp" : "0", "void_robe_rare_dodge" : "0", "void_robe_rare_resistance" : "10",
-    "void_robe_epic_inc_hp": "40", "void_robe_epic_base_hp": "480", "void_robe_epic_var_hp" : "0", "void_robe_epic_dodge" : "0", "void_robe_epic_resistance" : "10",
-    "void_robe_perfect_epic_inc_hp": "50", "void_robe_perfect_epic_base_hp": "600", "void_robe_perfect_epic_var_hp" : "0", "void_robe_perfect_epic_dodge" : "0", "void_robe_perfect_epic_resistance" : "10",
-    "void_robe_legendary_inc_hp": "60", "void_robe_legendary_base_hp": "800", "void_robe_legendary_var_hp" : "0", "void_robe_legendary_dodge" : "0", "void_robe_legendary_resistance" : "10",
-    "void_robe_ancient_legendary_inc_hp": "70", "void_robe_ancient_legendary_base_hp": "1000", "void_robe_ancient_legendary_var_hp" : "0", "void_robe_ancient_legendary_dodge" : "0", "void_robe_ancient_legendary_resistance" : "10",
-    "void_robe_mythic_inc_hp": "80", "void_robe_mythic_base_hp": "1200", "void_robe_mythic_var_hp" : "0", "void_robe_mythic_dodge" : "0", "void_robe_mythic_resistance" : "10",
-
-    "phantom_cloak_resistance_type": "projectile damage resistance",
-    "phantom_cloak_common_inc_hp": "25", "phantom_cloak_common_base_hp": "200", "phantom_cloak_common_var_hp" : "0", "phantom_cloak_common_dodge" : "0", "phantom_cloak_common_resistance" : "10",
-    "phantom_cloak_great_inc_hp": "30", "phantom_cloak_great_base_hp": "280", "phantom_cloak_great_var_hp" : "0", "phantom_cloak_great_dodge" : "0", "phantom_cloak_great_resistance" : "10",
-    "phantom_cloak_rare_inc_hp": "35", "phantom_cloak_rare_base_hp": "360", "phantom_cloak_rare_var_hp" : "0", "phantom_cloak_rare_dodge" : "0", "phantom_cloak_rare_resistance" : "10",
-    "phantom_cloak_epic_inc_hp": "40", "phantom_cloak_epic_base_hp": "480", "phantom_cloak_epic_var_hp" : "0", "phantom_cloak_epic_dodge" : "0", "phantom_cloak_epic_resistance" : "10",
-    "phantom_cloak_perfect_epic_inc_hp": "50", "phantom_cloak_perfect_epic_base_hp": "600", "phantom_cloak_perfect_epic_var_hp" : "0", "phantom_cloak_perfect_epic_dodge" : "0", "phantom_cloak_perfect_epic_resistance" : "10",
-    "phantom_cloak_legendary_inc_hp": "60", "phantom_cloak_legendary_base_hp": "800", "phantom_cloak_legendary_var_hp" : "0", "phantom_cloak_legendary_dodge" : "0", "phantom_cloak_legendary_resistance" : "10",
-    "phantom_cloak_ancient_legendary_inc_hp": "70", "phantom_cloak_ancient_legendary_base_hp": "1000", "phantom_cloak_ancient_legendary_var_hp" : "0", "phantom_cloak_ancient_legendary_dodge" : "0", "phantom_cloak_ancient_legendary_resistance" : "10",
-    "phantom_cloak_mythic_inc_hp": "80", "phantom_cloak_mythic_base_hp": "1200", "phantom_cloak_mythic_var_hp" : "0", "phantom_cloak_mythic_dodge" : "0", "phantom_cloak_mythic_resistance" : "10",
-
-    "vest_of_dexterity_resistance_type": "none",
-    "vest_of_dexterity_common_inc_hp": "25", "vest_of_dexterity_common_base_hp": "200", "vest_of_dexterity_common_var_hp" : "0", "vest_of_dexterity_common_dodge" : "7", "vest_of_dexterity_common_resistance" : "0",
-    "vest_of_dexterity_great_inc_hp": "30", "vest_of_dexterity_great_base_hp": "280", "vest_of_dexterity_great_var_hp" : "0", "vest_of_dexterity_great_dodge" : "7", "vest_of_dexterity_great_resistance" : "0",
-    "vest_of_dexterity_rare_inc_hp": "35", "vest_of_dexterity_rare_base_hp": "360", "vest_of_dexterity_rare_var_hp" : "0", "vest_of_dexterity_rare_dodge" : "7", "vest_of_dexterity_rare_resistance" : "0",
-    "vest_of_dexterity_epic_inc_hp": "40", "vest_of_dexterity_epic_base_hp": "480", "vest_of_dexterity_epic_var_hp" : "0", "vest_of_dexterity_epic_dodge" : "7", "vest_of_dexterity_epic_resistance" : "0",
-    "vest_of_dexterity_perfect_epic_inc_hp": "50", "vest_of_dexterity_perfect_epic_base_hp": "600", "vest_of_dexterity_perfect_epic_var_hp" : "0", "vest_of_dexterity_perfect_epic_dodge" : "7", "vest_of_dexterity_perfect_epic_resistance" : "0",
-    "vest_of_dexterity_legendary_inc_hp": "60", "vest_of_dexterity_legendary_base_hp": "800", "vest_of_dexterity_legendary_var_hp" : "0", "vest_of_dexterity_legendary_dodge" : "7", "vest_of_dexterity_legendary_resistance" : "0",
-    "vest_of_dexterity_ancient_legendary_inc_hp": "70", "vest_of_dexterity_ancient_legendary_base_hp": "1000", "vest_of_dexterity_ancient_legendary_var_hp" : "0", "vest_of_dexterity_ancient_legendary_dodge" : "7", "vest_of_dexterity_ancient_legendary_resistance" : "0",
-    "vest_of_dexterity_mythic_inc_hp": "80", "vest_of_dexterity_mythic_base_hp": "1200", "vest_of_dexterity_mythic_var_hp" : "0", "vest_of_dexterity_mythic_dodge" : "7", "vest_of_dexterity_mythic_resistance" : "0",
-
-    "bright_robe_resistance_type": "front damage resistance",
-    "bright_robe_common_inc_hp": "28", "bright_robe_common_base_hp": "200", "bright_robe_common_var_hp" : "0", "bright_robe_common_dodge" : "0", "bright_robe_common_resistance" : "12",
-    "bright_robe_great_inc_hp": "33", "bright_robe_great_base_hp": "280", "bright_robe_great_var_hp" : "0", "bright_robe_great_dodge" : "0", "bright_robe_great_resistance" : "12",
-    "bright_robe_rare_inc_hp": "38", "bright_robe_rare_base_hp": "360", "bright_robe_rare_var_hp" : "0", "bright_robe_rare_dodge" : "0", "bright_robe_rare_resistance" : "12",
-    "bright_robe_epic_inc_hp": "43", "bright_robe_epic_base_hp": "480", "bright_robe_epic_var_hp" : "0", "bright_robe_epic_dodge" : "0", "bright_robe_epic_resistance" : "12",
-    "bright_robe_perfect_epic_inc_hp": "54", "bright_robe_perfect_epic_base_hp": "600", "bright_robe_perfect_epic_var_hp" : "0", "bright_robe_perfect_epic_dodge" : "0", "bright_robe_perfect_epic_resistance" : "12",
-    "bright_robe_legendary_inc_hp": "64", "bright_robe_legendary_base_hp": "800", "bright_robe_legendary_var_hp" : "0", "bright_robe_legendary_dodge" : "0", "bright_robe_legendary_resistance" : "12",
-    "bright_robe_ancient_legendary_inc_hp": "75", "bright_robe_ancient_legendary_base_hp": "1000", "bright_robe_ancient_legendary_var_hp" : "0", "bright_robe_ancient_legendary_dodge" : "0", "bright_robe_ancient_legendary_resistance" : "12",
-    "bright_robe_mythic_inc_hp": "87", "bright_robe_mythic_base_hp": "1200", "bright_robe_mythic_var_hp" : "0", "bright_robe_mythic_dodge" : "0", "bright_robe_mythic_resistance" : "12",
-
-    "shadow_robe_resistance_type": "rear damage resistance",
-    "shadow_robe_common_inc_hp": "28", "shadow_robe_common_base_hp": "200", "shadow_robe_common_var_hp" : "0", "shadow_robe_common_dodge" : "0", "shadow_robe_common_resistance" : "22",
-    "shadow_robe_great_inc_hp": "33", "shadow_robe_great_base_hp": "280", "shadow_robe_great_var_hp" : "0", "shadow_robe_great_dodge" : "0", "shadow_robe_great_resistance" : "22",
-    "shadow_robe_rare_inc_hp": "38", "shadow_robe_rare_base_hp": "360", "shadow_robe_rare_var_hp" : "0", "shadow_robe_rare_dodge" : "0", "shadow_robe_rare_resistance" : "22",
-    "shadow_robe_epic_inc_hp": "43", "shadow_robe_epic_base_hp": "480", "shadow_robe_epic_var_hp" : "7", "shadow_robe_epic_dodge" : "0", "shadow_robe_epic_resistance" : "22",
-    "shadow_robe_perfect_epic_inc_hp": "54", "shadow_robe_perfect_epic_base_hp": "600", "shadow_robe_perfect_epic_var_hp" : "7", "shadow_robe_perfect_epic_dodge" : "0", "shadow_robe_perfect_epic_resistance" : "22",
-    "shadow_robe_legendary_inc_hp": "64", "shadow_robe_legendary_base_hp": "800", "shadow_robe_legendary_var_hp" : "7", "shadow_robe_legendary_dodge" : "0", "shadow_robe_legendary_resistance" : "22",
-    "shadow_robe_ancient_legendary_inc_hp": "75", "shadow_robe_ancient_legendary_base_hp": "1000", "shadow_robe_ancient_legendary_var_hp" : "7", "shadow_robe_ancient_legendary_dodge" : "0", "shadow_robe_ancient_legendary_resistance" : "22",
-    "shadow_robe_mythic_inc_hp": "87", "shadow_robe_mythic_base_hp": "1200", "shadow_robe_mythic_var_hp" : "7", "shadow_robe_mythic_dodge" : "0", "shadow_robe_mythic_resistance" : "22",
-
-    "none_resistance_type": "none",
-    "none_common_inc_hp": "0", "none_common_base_hp": "0", "none_common_var_hp" : "0", "none_common_dodge" : "0", "none_common_resistance" : "0",
-    "none_great_inc_hp": "0", "none_great_base_hp": "0", "none_great_var_hp" : "0", "none_great_dodge" : "0", "none_great_resistance" : "0",
-    "none_rare_inc_hp": "0", "none_rare_base_hp": "0", "none_rare_var_hp" : "0", "none_rare_dodge" : "0", "none_rare_resistance" : "0",
-    "none_epic_inc_hp": "0", "none_epic_base_hp": "0", "none_epic_var_hp" : "0", "none_epic_dodge" : "0", "none_epic_resistance" : "0",
-    "none_perfect_epic_inc_hp": "0", "none_perfect_epic_base_hp": "0", "none_perfect_epic_var_hp" : "0", "none_perfect_epic_dodge" : "0", "none_perfect_epic_resistance" : "0",
-    "none_legendary_inc_hp": "0", "none_legendary_base_hp": "0", "none_legendary_var_hp" : "0", "none_legendary_dodge" : "0", "none_legendary_resistance" : "0",
-    "none_ancient_legendary_inc_hp": "0", "none_ancient_legendary_base_hp": "0", "none_ancient_legendary_var_hp" : "0", "none_ancient_legendary_dodge" : "0", "none_ancient_legendary_resistance" : "0",
-    "none_mythic_inc_hp": "0", "none_mythic_base_hp": "0", "none_mythic_var_hp" : "0", "none_mythic_dodge" : "0", "none_mythic_resistance" : "0",
-    }
+    "golden_chestplate": {
+        "resistance_type":"damage resistance",
+        "inc": [25,30,35,40,50,60,70,80,87,87,87,87,87,87,87],
+        "base": [200,280,360,480,600,800,1000,1200,1420,1420,1420,1420,1420,1420,1420],
+        "var_hp": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
+        "dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        "resistance": [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
+        "basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"void_robe": {
+        "resistance_type":"collision damage resistance",
+		"inc": [25,30,35,40,50,60,70,80,87,87,87,87,87,87,87],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1420,1420,1420,1420,1420,1420],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"phantom_cloak": {
+        "resistance_type":"projectile damage resistance",
+		"inc": [25,30,35,40,50,60,70,80,87,87,87,87,87,87,87],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1420,1420,1420,1420,1420,1420],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"vest_of_dexterity": {
+        "resistance_type":"none",
+		"inc": [25,30,35,40,50,60,70,80,87,87,87,87,87,87,87],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1420,1420,1420,1420,1420,1420],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
+		"dodge": [7,7,7,7,7,7,7,7,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"bright_robe": {
+        "resistance_type":"front damage resistance",
+		"inc": [28,33,38,43,54,64,75,87,87,87,87,87,87,87,87],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1420,1420,1420,1420,1420,1420],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,12,12,12,12,12],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"shadow_robe": {
+        "resistance_type":"rear damage resistance",
+		"inc": [28,33,38,43,54,64,75,87,87,87,87,87,87,87,87],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1420,1420,1420,1420,1420,1420],
+		"var_hp": [0,0,0,7,7,7,7,7,7,7,19,19,19,19,19],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [22,22,22,22,22,22,22,22,22,22,22,22,22,22,22],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+    "none": {
+        "resistance_type":"none",
+		"inc": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"base": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	}
+}
 
 
 
@@ -197,131 +181,142 @@ StatsArmor =  {
 
 
 StatsRing =  {
-    "lion_ring_damage_type": "boss units dmg",
-    "lion_ring_resistance_type": "none",
-    "lion_ring_mythic_resistance_type": "boss units dmg reduced",
-    "lion_ring_common_inc_damage": "2", "lion_ring_common_base_damage": "25", "lion_ring_common_hp" : "0", "lion_ring_common_atk" : "0", "lion_ring_common_dodge" : "0", "lion_ring_common_crit_chance" : "0", "lion_ring_common_resistance" : "0", "lion_ring_common_resistance_mythic" : "0", "lion_ring_common_crit_damage" : "0",
-    "lion_ring_great_inc_damage": "3", "lion_ring_great_base_damage": "30", "lion_ring_great_hp" : "0", "lion_ring_great_atk" : "0", "lion_ring_great_dodge" : "0", "lion_ring_great_crit_chance" : "0", "lion_ring_great_resistance" : "0", "lion_ring_great_resistance_mythic" : "0", "lion_ring_great_crit_damage" : "0",
-    "lion_ring_rare_inc_damage": "4", "lion_ring_rare_base_damage": "40", "lion_ring_rare_hp" : "0", "lion_ring_rare_atk" : "0", "lion_ring_rare_dodge" : "0", "lion_ring_rare_crit_chance" : "0", "lion_ring_rare_resistance" : "0", "lion_ring_rare_resistance_mythic" : "0", "lion_ring_rare_crit_damage" : "20",
-    "lion_ring_epic_inc_damage": "5", "lion_ring_epic_base_damage": "50", "lion_ring_epic_hp" : "0", "lion_ring_epic_atk" : "5", "lion_ring_epic_dodge" : "0", "lion_ring_epic_crit_chance" : "0", "lion_ring_epic_resistance" : "0", "lion_ring_epic_resistance_mythic" : "0", "lion_ring_epic_crit_damage" : "20",
-    "lion_ring_perfect_epic_inc_damage": "5", "lion_ring_perfect_epic_base_damage": "60", "lion_ring_perfect_epic_hp" : "0", "lion_ring_perfect_epic_atk" : "5", "lion_ring_perfect_epic_dodge" : "0", "lion_ring_perfect_epic_crit_chance" : "0", "lion_ring_perfect_epic_resistance" : "0", "lion_ring_perfect_epic_resistance_mythic" : "0", "lion_ring_perfect_epic_crit_damage" : "20",
-    "lion_ring_legendary_inc_damage": "6", "lion_ring_legendary_base_damage": "70", "lion_ring_legendary_hp" : "0", "lion_ring_legendary_atk" : "5", "lion_ring_legendary_dodge" : "0", "lion_ring_legendary_crit_chance" : "0", "lion_ring_legendary_resistance" : "0", "lion_ring_legendary_resistance_mythic" : "0", "lion_ring_legendary_crit_damage" : "20",
-    "lion_ring_ancient_legendary_inc_damage": "7", "lion_ring_ancient_legendary_base_damage": "85", "lion_ring_ancient_legendary_hp" : "0", "lion_ring_ancient_legendary_atk" : "5", "lion_ring_ancient_legendary_dodge" : "0", "lion_ring_ancient_legendary_crit_chance" : "0", "lion_ring_ancient_legendary_resistance" : "0", "lion_ring_ancient_legendary_resistance_mythic" : "0", "lion_ring_ancient_legendary_crit_damage" : "20",
-    "lion_ring_mythic_inc_damage": "8", "lion_ring_mythic_base_damage": "100", "lion_ring_mythic_hp" : "0", "lion_ring_mythic_atk" : "5", "lion_ring_mythic_dodge" : "0", "lion_ring_mythic_crit_chance" : "0", "lion_ring_mythic_resistance" : "0", "lion_ring_mythic_resistance_mythic" : "5", "lion_ring_mythic_crit_damage" : "20",
-
-    "bull_ring_damage_type": "mobs units dmg",
-    "bull_ring_resistance_type": "all damage resistance",
-    "bull_ring_mythic_resistance_type": "mobs units dmg reduced",
-    "bull_ring_common_inc_damage": "2", "bull_ring_common_base_damage": "25", "bull_ring_common_hp" : "0", "bull_ring_common_atk" : "0", "bull_ring_common_dodge" : "0", "bull_ring_common_crit_chance" : "0", "bull_ring_common_resistance" : "0", "bull_ring_common_resistance_mythic" : "0", "bull_ring_common_crit_damage" : "0",
-    "bull_ring_great_inc_damage": "3", "bull_ring_great_base_damage": "30", "bull_ring_great_hp" : "0", "bull_ring_great_atk" : "0", "bull_ring_great_dodge" : "0", "bull_ring_great_crit_chance" : "0", "bull_ring_great_resistance" : "0", "bull_ring_great_resistance_mythic" : "0", "bull_ring_great_crit_damage" : "0",
-    "bull_ring_rare_inc_damage": "4", "bull_ring_rare_base_damage": "40", "bull_ring_rare_hp" : "0", "bull_ring_rare_atk" : "0", "bull_ring_rare_dodge" : "0", "bull_ring_rare_crit_chance" : "0", "bull_ring_rare_resistance" : "10", "bull_ring_rare_resistance_mythic" : "0", "bull_ring_rare_crit_damage" : "0",
-    "bull_ring_epic_inc_damage": "5", "bull_ring_epic_base_damage": "50", "bull_ring_epic_hp" : "0", "bull_ring_epic_atk" : "0", "bull_ring_epic_dodge" : "0", "bull_ring_epic_crit_chance" : "0", "bull_ring_epic_resistance" : "10", "bull_ring_epic_resistance_mythic" : "0", "bull_ring_epic_crit_damage" : "0",
-    "bull_ring_perfect_epic_inc_damage": "5", "bull_ring_perfect_epic_base_damage": "60", "bull_ring_perfect_epic_hp" : "0", "bull_ring_perfect_epic_atk" : "0", "bull_ring_perfect_epic_dodge" : "0", "bull_ring_perfect_epic_crit_chance" : "0", "bull_ring_perfect_epic_resistance" : "10", "bull_ring_perfect_epic_resistance_mythic" : "0", "bull_ring_perfect_epic_crit_damage" : "0",
-    "bull_ring_legendary_inc_damage": "6", "bull_ring_legendary_base_damage": "70", "bull_ring_legendary_hp" : "0", "bull_ring_legendary_atk" : "0", "bull_ring_legendary_dodge" : "0", "bull_ring_legendary_crit_chance" : "0", "bull_ring_legendary_resistance" : "10", "bull_ring_legendary_resistance_mythic" : "0", "bull_ring_legendary_crit_damage" : "0",
-    "bull_ring_ancient_legendary_inc_damage": "7", "bull_ring_ancient_legendary_base_damage": "85", "bull_ring_ancient_legendary_hp" : "0", "bull_ring_ancient_legendary_atk" : "0", "bull_ring_ancient_legendary_dodge" : "0", "bull_ring_ancient_legendary_crit_chance" : "0", "bull_ring_ancient_legendary_resistance" : "10", "bull_ring_ancient_legendary_resistance_mythic" : "0", "bull_ring_ancient_legendary_crit_damage" : "0",
-    "bull_ring_mythic_inc_damage": "8", "bull_ring_mythic_base_damage": "100", "bull_ring_mythic_hp" : "0", "bull_ring_mythic_atk" : "0", "bull_ring_mythic_dodge" : "0", "bull_ring_mythic_crit_chance" : "0", "bull_ring_mythic_resistance" : "10", "bull_ring_mythic_resistance_mythic" : "5", "bull_ring_mythic_crit_damage" : "0",
-   
-    "serpent_ring_damage_type": "ranged units dmg",
-    "serpent_ring_resistance_type": "none",
-    "serpent_ring_mythic_resistance_type": "ranged units dmg reduced",
-    "serpent_ring_common_inc_damage": "2", "serpent_ring_common_base_damage": "20", "serpent_ring_common_hp" : "0", "serpent_ring_common_atk" : "0", "serpent_ring_common_dodge" : "0", "serpent_ring_common_crit_chance" : "0", "serpent_ring_common_resistance" : "0", "serpent_ring_common_resistance_mythic" : "0", "serpent_ring_common_crit_damage" : "0",
-    "serpent_ring_great_inc_damage": "3", "serpent_ring_great_base_damage": "25", "serpent_ring_great_hp" : "0", "serpent_ring_great_atk" : "0", "serpent_ring_great_dodge" : "0", "serpent_ring_great_crit_chance" : "0", "serpent_ring_great_resistance" : "0", "serpent_ring_great_resistance_mythic" : "0", "serpent_ring_great_crit_damage" : "0",
-    "serpent_ring_rare_inc_damage": "3", "serpent_ring_rare_base_damage": "30", "serpent_ring_rare_hp" : "0", "serpent_ring_rare_atk" : "0", "serpent_ring_rare_dodge" : "0", "serpent_ring_rare_crit_chance" : "0", "serpent_ring_rare_resistance" : "0", "serpent_ring_rare_resistance_mythic" : "0", "serpent_ring_rare_crit_damage" : "0",
-    "serpent_ring_epic_inc_damage": "4", "serpent_ring_epic_base_damage": "40", "serpent_ring_epic_hp" : "0", "serpent_ring_epic_atk" : "0", "serpent_ring_epic_dodge" : "0", "serpent_ring_epic_crit_chance" : "0", "serpent_ring_epic_resistance" : "0", "serpent_ring_epic_resistance_mythic" : "0", "serpent_ring_epic_crit_damage" : "0",
-    "serpent_ring_perfect_epic_inc_damage": "4", "serpent_ring_perfect_epic_base_damage": "50", "serpent_ring_perfect_epic_hp" : "0", "serpent_ring_perfect_epic_atk" : "0", "serpent_ring_perfect_epic_dodge" : "0", "serpent_ring_perfect_epic_crit_chance" : "0", "serpent_ring_perfect_epic_resistance" : "0", "serpent_ring_perfect_epic_resistance_mythic" : "0", "serpent_ring_perfect_epic_crit_damage" : "0",
-    "serpent_ring_legendary_inc_damage": "5", "serpent_ring_legendary_base_damage": "60", "serpent_ring_legendary_hp" : "0", "serpent_ring_legendary_atk" : "0", "serpent_ring_legendary_dodge" : "0", "serpent_ring_legendary_crit_chance" : "0", "serpent_ring_legendary_resistance" : "0", "serpent_ring_legendary_resistance_mythic" : "0", "serpent_ring_legendary_crit_damage" : "0",
-    "serpent_ring_ancient_legendary_inc_damage": "6", "serpent_ring_ancient_legendary_base_damage": "70", "serpent_ring_ancient_legendary_hp" : "0", "serpent_ring_ancient_legendary_atk" : "0", "serpent_ring_ancient_legendary_dodge" : "0", "serpent_ring_ancient_legendary_crit_chance" : "0", "serpent_ring_ancient_legendary_resistance" : "0", "serpent_ring_ancient_legendary_resistance_mythic" : "0", "serpent_ring_ancient_legendary_crit_damage" : "0",
-    "serpent_ring_mythic_inc_damage": "9", "serpent_ring_mythic_base_damage": "80", "serpent_ring_mythic_hp" : "0", "serpent_ring_mythic_atk" : "0", "serpent_ring_mythic_dodge" : "0", "serpent_ring_mythic_crit_chance" : "0", "serpent_ring_mythic_resistance" : "0", "serpent_ring_mythic_resistance_mythic" : "7", "serpent_ring_mythic_crit_damage" : "0",
-
-    "wolf_ring_damage_type": "melee units dmg",
-    "wolf_ring_resistance_type": "none",
-    "wolf_ring_mythic_resistance_type": "melee units dmg reduced",
-    "wolf_ring_common_inc_damage": "2", "wolf_ring_common_base_damage": "20", "wolf_ring_common_hp" : "0", "wolf_ring_common_atk" : "0", "wolf_ring_common_dodge" : "0", "wolf_ring_common_crit_chance" : "0", "wolf_ring_common_resistance" : "0", "wolf_ring_common_resistance_mythic" : "0", "wolf_ring_common_crit_damage" : "0",
-    "wolf_ring_great_inc_damage": "3", "wolf_ring_great_base_damage": "25", "wolf_ring_great_hp" : "0", "wolf_ring_great_atk" : "0", "wolf_ring_great_dodge" : "0", "wolf_ring_great_crit_chance" : "0", "wolf_ring_great_resistance" : "0", "wolf_ring_great_resistance_mythic" : "0", "wolf_ring_great_crit_damage" : "0",
-    "wolf_ring_rare_inc_damage": "3", "wolf_ring_rare_base_damage": "30", "wolf_ring_rare_hp" : "0", "wolf_ring_rare_atk" : "0", "wolf_ring_rare_dodge" : "0", "wolf_ring_rare_crit_chance" : "5", "wolf_ring_rare_resistance" : "0", "wolf_ring_rare_resistance_mythic" : "0", "wolf_ring_rare_crit_damage" : "0",
-    "wolf_ring_epic_inc_damage": "4", "wolf_ring_epic_base_damage": "40", "wolf_ring_epic_hp" : "0", "wolf_ring_epic_atk" : "0", "wolf_ring_epic_dodge" : "0", "wolf_ring_epic_crit_chance" : "5", "wolf_ring_epic_resistance" : "0", "wolf_ring_epic_resistance_mythic" : "0", "wolf_ring_epic_crit_damage" : "0",
-    "wolf_ring_perfect_epic_inc_damage": "4", "wolf_ring_perfect_epic_base_damage": "50", "wolf_ring_perfect_epic_hp" : "0", "wolf_ring_perfect_epic_atk" : "0", "wolf_ring_perfect_epic_dodge" : "0", "wolf_ring_perfect_epic_crit_chance" : "5", "wolf_ring_perfect_epic_resistance" : "0", "wolf_ring_perfect_epic_resistance_mythic" : "0", "wolf_ring_perfect_epic_crit_damage" : "0",
-    "wolf_ring_legendary_inc_damage": "5", "wolf_ring_legendary_base_damage": "60", "wolf_ring_legendary_hp" : "0", "wolf_ring_legendary_atk" : "0", "wolf_ring_legendary_dodge" : "0", "wolf_ring_legendary_crit_chance" : "5", "wolf_ring_legendary_resistance" : "0", "wolf_ring_legendary_resistance_mythic" : "0", "wolf_ring_legendary_crit_damage" : "0",
-    "wolf_ring_ancient_legendary_inc_damage": "6", "wolf_ring_ancient_legendary_base_damage": "70", "wolf_ring_ancient_legendary_hp" : "0", "wolf_ring_ancient_legendary_atk" : "0", "wolf_ring_ancient_legendary_dodge" : "0", "wolf_ring_ancient_legendary_crit_chance" : "5", "wolf_ring_ancient_legendary_resistance" : "0", "wolf_ring_ancient_legendary_resistance_mythic" : "0", "wolf_ring_ancient_legendary_crit_damage" : "0",
-    "wolf_ring_mythic_inc_damage": "9", "wolf_ring_mythic_base_damage": "80", "wolf_ring_mythic_hp" : "0", "wolf_ring_mythic_atk" : "0", "wolf_ring_mythic_dodge" : "0", "wolf_ring_mythic_crit_chance" : "5", "wolf_ring_mythic_resistance" : "0", "wolf_ring_mythic_resistance_mythic" : "7", "wolf_ring_mythic_crit_damage" : "0",
-
-    "falcon_ring_damage_type": "airborne units dmg",
-    "falcon_ring_resistance_type": "none",
-    "falcon_ring_mythic_resistance_type": "airborne units dmg reduced",
-    "falcon_ring_common_inc_damage": "2", "falcon_ring_common_base_damage": "20", "falcon_ring_common_hp" : "0", "falcon_ring_common_atk" : "0", "falcon_ring_common_dodge" : "0", "falcon_ring_common_crit_chance" : "0", "falcon_ring_common_resistance" : "0", "falcon_ring_common_resistance_mythic" : "0", "falcon_ring_common_crit_damage" : "0",
-    "falcon_ring_great_inc_damage": "3", "falcon_ring_great_base_damage": "25", "falcon_ring_great_hp" : "0", "falcon_ring_great_atk" : "0", "falcon_ring_great_dodge" : "0", "falcon_ring_great_crit_chance" : "0", "falcon_ring_great_resistance" : "0", "falcon_ring_great_resistance_mythic" : "0", "falcon_ring_great_crit_damage" : "0",
-    "falcon_ring_rare_inc_damage": "3", "falcon_ring_rare_base_damage": "30", "falcon_ring_rare_hp" : "0", "falcon_ring_rare_atk" : "0", "falcon_ring_rare_dodge" : "0", "falcon_ring_rare_crit_chance" : "0", "falcon_ring_rare_resistance" : "0", "falcon_ring_rare_resistance_mythic" : "0", "falcon_ring_rare_crit_damage" : "0",
-    "falcon_ring_epic_inc_damage": "4", "falcon_ring_epic_base_damage": "40", "falcon_ring_epic_hp" : "0", "falcon_ring_epic_atk" : "0", "falcon_ring_epic_dodge" : "0", "falcon_ring_epic_crit_chance" : "0", "falcon_ring_epic_resistance" : "0", "falcon_ring_epic_resistance_mythic" : "0", "falcon_ring_epic_crit_damage" : "0",
-    "falcon_ring_perfect_epic_inc_damage": "4", "falcon_ring_perfect_epic_base_damage": "50", "falcon_ring_perfect_epic_hp" : "0", "falcon_ring_perfect_epic_atk" : "0", "falcon_ring_perfect_epic_dodge" : "0", "falcon_ring_perfect_epic_crit_chance" : "0", "falcon_ring_perfect_epic_resistance" : "0", "falcon_ring_perfect_epic_resistance_mythic" : "0", "falcon_ring_perfect_epic_crit_damage" : "0",
-    "falcon_ring_legendary_inc_damage": "5", "falcon_ring_legendary_base_damage": "60", "falcon_ring_legendary_hp" : "0", "falcon_ring_legendary_atk" : "0", "falcon_ring_legendary_dodge" : "0", "falcon_ring_legendary_crit_chance" : "0", "falcon_ring_legendary_resistance" : "0", "falcon_ring_legendary_resistance_mythic" : "0", "falcon_ring_legendary_crit_damage" : "0",
-    "falcon_ring_ancient_legendary_inc_damage": "6", "falcon_ring_ancient_legendary_base_damage": "70", "falcon_ring_ancient_legendary_hp" : "0", "falcon_ring_ancient_legendary_atk" : "0", "falcon_ring_ancient_legendary_dodge" : "0", "falcon_ring_ancient_legendary_crit_chance" : "0", "falcon_ring_ancient_legendary_resistance" : "0", "falcon_ring_ancient_legendary_resistance_mythic" : "0", "falcon_ring_ancient_legendary_crit_damage" : "0",
-    "falcon_ring_mythic_inc_damage": "9", "falcon_ring_mythic_base_damage": "80", "falcon_ring_mythic_hp" : "0", "falcon_ring_mythic_atk" : "0", "falcon_ring_mythic_dodge" : "0", "falcon_ring_mythic_crit_chance" : "0", "falcon_ring_mythic_resistance" : "0", "falcon_ring_mythic_resistance_mythic" : "7", "falcon_ring_mythic_crit_damage" : "0",
-
-    "bear_ring_damage_type": "ground units dmg",
-    "bear_ring_resistance_type": "none",
-    "bear_ring_mythic_resistance_type": "ground units dmg reduced",
-    "bear_ring_common_inc_damage": "2", "bear_ring_common_base_damage": "20", "bear_ring_common_hp" : "0", "bear_ring_common_atk" : "0", "bear_ring_common_dodge" : "0", "bear_ring_common_crit_chance" : "0", "bear_ring_common_resistance" : "0", "bear_ring_common_resistance_mythic" : "0", "bear_ring_common_crit_damage" : "0",
-    "bear_ring_great_inc_damage": "3", "bear_ring_great_base_damage": "25", "bear_ring_great_hp" : "0", "bear_ring_great_atk" : "0", "bear_ring_great_dodge" : "0", "bear_ring_great_crit_chance" : "0", "bear_ring_great_resistance" : "0", "bear_ring_great_resistance_mythic" : "0", "bear_ring_great_crit_damage" : "0",
-    "bear_ring_rare_inc_damage": "3", "bear_ring_rare_base_damage": "30", "bear_ring_rare_hp" : "5", "bear_ring_rare_atk" : "0", "bear_ring_rare_dodge" : "0", "bear_ring_rare_crit_chance" : "0", "bear_ring_rare_resistance" : "0", "bear_ring_rare_resistance_mythic" : "0", "bear_ring_rare_crit_damage" : "0",
-    "bear_ring_epic_inc_damage": "4", "bear_ring_epic_base_damage": "40", "bear_ring_epic_hp" : "5", "bear_ring_epic_atk" : "0", "bear_ring_epic_dodge" : "0", "bear_ring_epic_crit_chance" : "0", "bear_ring_epic_resistance" : "0", "bear_ring_epic_resistance_mythic" : "0", "bear_ring_epic_crit_damage" : "0",
-    "bear_ring_perfect_epic_inc_damage": "4", "bear_ring_perfect_epic_base_damage": "50", "bear_ring_perfect_epic_hp" : "5", "bear_ring_perfect_epic_atk" : "0", "bear_ring_perfect_epic_dodge" : "0", "bear_ring_perfect_epic_crit_chance" : "0", "bear_ring_perfect_epic_resistance" : "0", "bear_ring_perfect_epic_resistance_mythic" : "0", "bear_ring_perfect_epic_crit_damage" : "0",
-    "bear_ring_legendary_inc_damage": "5", "bear_ring_legendary_base_damage": "60", "bear_ring_legendary_hp" : "5", "bear_ring_legendary_atk" : "0", "bear_ring_legendary_dodge" : "0", "bear_ring_legendary_crit_chance" : "0", "bear_ring_legendary_resistance" : "0", "bear_ring_legendary_resistance_mythic" : "0", "bear_ring_legendary_crit_damage" : "0",
-    "bear_ring_ancient_legendary_inc_damage": "6", "bear_ring_ancient_legendary_base_damage": "70", "bear_ring_ancient_legendary_hp" : "5", "bear_ring_ancient_legendary_atk" : "0", "bear_ring_ancient_legendary_dodge" : "0", "bear_ring_ancient_legendary_crit_chance" : "0", "bear_ring_ancient_legendary_resistance" : "0", "bear_ring_ancient_legendary_resistance_mythic" : "0", "bear_ring_ancient_legendary_crit_damage" : "0",
-    "bear_ring_mythic_inc_damage": "9", "bear_ring_mythic_base_damage": "80", "bear_ring_mythic_hp" : "5", "bear_ring_mythic_atk" : "0", "bear_ring_mythic_dodge" : "0", "bear_ring_mythic_crit_chance" : "0", "bear_ring_mythic_resistance" : "0", "bear_ring_mythic_resistance_mythic" : "7", "bear_ring_mythic_crit_damage" : "0",
-
-    "dragon_ring_damage_type": "elite mobs dmg",
-    "dragon_ring_resistance_type": "Projectile Resistance",
-    "dragon_ring_mythic_resistance_type": "humanoid units dmg",
-    "dragon_ring_common_inc_damage": "3", "dragon_ring_common_base_damage": "30", "dragon_ring_common_hp" : "0", "dragon_ring_common_atk" : "0", "dragon_ring_common_dodge" : "0", "dragon_ring_common_crit_chance" : "0", "dragon_ring_common_resistance" : "0", "dragon_ring_common_resistance_mythic" : "0", "dragon_ring_common_crit_damage" : "0",
-    "dragon_ring_great_inc_damage": "4", "dragon_ring_great_base_damage": "35", "dragon_ring_great_hp" : "0", "dragon_ring_great_atk" : "0", "dragon_ring_great_dodge" : "0", "dragon_ring_great_crit_chance" : "0", "dragon_ring_great_resistance" : "0", "dragon_ring_great_resistance_mythic" : "0", "dragon_ring_great_crit_damage" : "0",
-    "dragon_ring_rare_inc_damage": "5", "dragon_ring_rare_base_damage": "42", "dragon_ring_rare_hp" : "0", "dragon_ring_rare_atk" : "0", "dragon_ring_rare_dodge" : "0", "dragon_ring_rare_crit_chance" : "0", "dragon_ring_rare_resistance" : "12", "dragon_ring_rare_resistance_mythic" : "0", "dragon_ring_rare_crit_damage" : "0",
-    "dragon_ring_epic_inc_damage": "6", "dragon_ring_epic_base_damage": "60", "dragon_ring_epic_hp" : "0", "dragon_ring_epic_atk" : "0", "dragon_ring_epic_dodge" : "0", "dragon_ring_epic_crit_chance" : "6", "dragon_ring_epic_resistance" : "12", "dragon_ring_epic_resistance_mythic" : "0", "dragon_ring_epic_crit_damage" : "0",
-    "dragon_ring_perfect_epic_inc_damage": "7", "dragon_ring_perfect_epic_base_damage": "70", "dragon_ring_perfect_epic_hp" : "0", "dragon_ring_perfect_epic_atk" : "0", "dragon_ring_perfect_epic_dodge" : "0", "dragon_ring_perfect_epic_crit_chance" : "6", "dragon_ring_perfect_epic_resistance" : "12", "dragon_ring_perfect_epic_resistance_mythic" : "0", "dragon_ring_perfect_epic_crit_damage" : "0",
-    "dragon_ring_legendary_inc_damage": "7", "dragon_ring_legendary_base_damage": "85", "dragon_ring_legendary_hp" : "0", "dragon_ring_legendary_atk" : "0", "dragon_ring_legendary_dodge" : "0", "dragon_ring_legendary_crit_chance" : "6", "dragon_ring_legendary_resistance" : "12", "dragon_ring_legendary_resistance_mythic" : "0", "dragon_ring_legendary_crit_damage" : "0",
-    "dragon_ring_ancient_legendary_inc_damage": "8", "dragon_ring_ancient_legendary_base_damage": "100", "dragon_ring_ancient_legendary_hp" : "0", "dragon_ring_ancient_legendary_atk" : "0", "dragon_ring_ancient_legendary_dodge" : "0", "dragon_ring_ancient_legendary_crit_chance" : "6", "dragon_ring_ancient_legendary_resistance" : "12", "dragon_ring_ancient_legendary_resistance_mythic" : "0", "dragon_ring_ancient_legendary_crit_damage" : "0",
-    "dragon_ring_mythic_inc_damage": "9", "dragon_ring_mythic_base_damage": "120", "dragon_ring_mythic_hp" : "0", "dragon_ring_mythic_atk" : "0", "dragon_ring_mythic_dodge" : "0", "dragon_ring_mythic_crit_chance" : "6", "dragon_ring_mythic_resistance" : "12", "dragon_ring_mythic_resistance_mythic" : "15", "dragon_ring_mythic_crit_damage" : "0",
-
-    "vilebat_ring_damage_type": "non-elite mobs dmg",
-    "vilebat_ring_resistance_type": "none",
-    "vilebat_ring_mythic_resistance_type": "colision dmg reduced",
-    "vilebat_ring_common_inc_damage": "3", "vilebat_ring_common_base_damage": "30", "vilebat_ring_common_hp" : "0", "vilebat_ring_common_atk" : "0", "vilebat_ring_common_dodge" : "0", "vilebat_ring_common_crit_chance" : "0", "vilebat_ring_common_resistance" : "0", "vilebat_ring_common_resistance_mythic" : "0", "vilebat_ring_common_crit_damage" : "0",
-    "vilebat_ring_great_inc_damage": "4", "vilebat_ring_great_base_damage": "35", "vilebat_ring_great_hp" : "0", "vilebat_ring_great_atk" : "0", "vilebat_ring_great_dodge" : "0", "vilebat_ring_great_crit_chance" : "0", "vilebat_ring_great_resistance" : "0", "vilebat_ring_great_resistance_mythic" : "0", "vilebat_ring_great_crit_damage" : "0",
-    "vilebat_ring_rare_inc_damage": "5", "vilebat_ring_rare_base_damage": "42", "vilebat_ring_rare_hp" : "0", "vilebat_ring_rare_atk" : "0", "vilebat_ring_rare_dodge" : "0", "vilebat_ring_rare_crit_chance" : "0", "vilebat_ring_rare_resistance" : "0", "vilebat_ring_rare_resistance_mythic" : "0", "vilebat_ring_rare_crit_damage" : "0",
-    "vilebat_ring_epic_inc_damage": "6", "vilebat_ring_epic_base_damage": "60", "vilebat_ring_epic_hp" : "0", "vilebat_ring_epic_atk" : "0", "vilebat_ring_epic_dodge" : "0", "vilebat_ring_epic_crit_chance" : "0", "vilebat_ring_epic_resistance" : "0", "vilebat_ring_epic_resistance_mythic" : "0", "vilebat_ring_epic_crit_damage" : "0",
-    "vilebat_ring_perfect_epic_inc_damage": "7", "vilebat_ring_perfect_epic_base_damage": "70", "vilebat_ring_perfect_epic_hp" : "0", "vilebat_ring_perfect_epic_atk" : "0", "vilebat_ring_perfect_epic_dodge" : "0", "vilebat_ring_perfect_epic_crit_chance" : "0", "vilebat_ring_perfect_epic_resistance" : "0", "vilebat_ring_perfect_epic_resistance_mythic" : "0", "vilebat_ring_perfect_epic_crit_damage" : "0",
-    "vilebat_ring_legendary_inc_damage": "7", "vilebat_ring_legendary_base_damage": "85", "vilebat_ring_legendary_hp" : "0", "vilebat_ring_legendary_atk" : "0", "vilebat_ring_legendary_dodge" : "0", "vilebat_ring_legendary_crit_chance" : "0", "vilebat_ring_legendary_resistance" : "0", "vilebat_ring_legendary_resistance_mythic" : "0", "vilebat_ring_legendary_crit_damage" : "0",
-    "vilebat_ring_ancient_legendary_inc_damage": "8", "vilebat_ring_ancient_legendary_base_damage": "100", "vilebat_ring_ancient_legendary_hp" : "0", "vilebat_ring_ancient_legendary_atk" : "0", "vilebat_ring_ancient_legendary_dodge" : "0", "vilebat_ring_ancient_legendary_crit_chance" : "0", "vilebat_ring_ancient_legendary_resistance" : "0", "vilebat_ring_ancient_legendary_resistance_mythic" : "0", "vilebat_ring_ancient_legendary_crit_damage" : "0",
-    "vilebat_ring_mythic_inc_damage": "9", "vilebat_ring_mythic_base_damage": "120", "vilebat_ring_mythic_hp" : "0", "vilebat_ring_mythic_atk" : "0", "vilebat_ring_mythic_dodge" : "0", "vilebat_ring_mythic_crit_chance" : "0", "vilebat_ring_mythic_resistance" : "0", "vilebat_ring_mythic_resistance_mythic" : "12", "vilebat_ring_mythic_crit_damage" : "0",
-
-    "none_damage_type": "0",
-    "none_resistance_type": "0",
-    "none_mythic_resistance_type": "0",
-    "none_common_inc_damage": "0", "none_common_base_damage": "0", "none_common_hp" : "0", "none_common_atk" : "0", "none_common_dodge" : "0", "none_common_crit_chance" : "0", "none_common_resistance" : "0", "none_common_resistance_mythic" : "0", "none_common_crit_damage" : "0",
-    "none_great_inc_damage": "0", "none_great_base_damage": "0", "none_great_hp" : "0", "none_great_atk" : "0", "none_great_dodge" : "0", "none_great_crit_chance" : "0", "none_great_resistance" : "0", "none_great_resistance_mythic" : "0", "none_great_crit_damage" : "0",
-    "none_rare_inc_damage": "0", "none_rare_base_damage": "0", "none_rare_hp" : "0", "none_rare_atk" : "0", "none_rare_dodge" : "0", "none_rare_crit_chance" : "0", "none_rare_resistance" : "0", "none_rare_resistance_mythic" : "0", "none_rare_crit_damage" : "0",
-    "none_epic_inc_damage": "0", "none_epic_base_damage": "0", "none_epic_hp" : "0", "none_epic_atk" : "0", "none_epic_dodge" : "0", "none_epic_crit_chance" : "0", "none_epic_resistance" : "0", "none_epic_resistance_mythic" : "0", "none_epic_crit_damage" : "0",
-    "none_perfect_epic_inc_damage": "0", "none_perfect_epic_base_damage": "0", "none_perfect_epic_hp" : "0", "none_perfect_epic_atk" : "0", "none_perfect_epic_dodge" : "0", "none_perfect_epic_crit_chance" : "0", "none_perfect_epic_resistance" : "0", "none_perfect_epic_resistance_mythic" : "0", "none_perfect_epic_crit_damage" : "0",
-    "none_legendary_inc_damage": "0", "none_legendary_base_damage": "0", "none_legendary_hp" : "0", "none_legendary_atk" : "0", "none_legendary_dodge" : "0", "none_legendary_crit_chance" : "0", "none_legendary_resistance" : "0", "none_legendary_resistance_mythic" : "0", "none_legendary_crit_damage" : "0",
-    "none_ancient_legendary_inc_damage": "0", "none_ancient_legendary_base_damage": "0", "none_ancient_legendary_hp" : "0", "none_ancient_legendary_atk" : "0", "none_ancient_legendary_dodge" : "0", "none_ancient_legendary_crit_chance" : "0", "none_ancient_legendary_resistance" : "0", "none_ancient_legendary_resistance_mythic" : "0", "none_ancient_legendary_crit_damage" : "0",
-    "none_mythic_inc_damage": "0", "none_mythic_base_damage": "0", "none_mythic_hp" : "0", "none_mythic_atk" : "0", "none_mythic_dodge" : "0", "none_mythic_crit_chance" : "0", "none_mythic_resistance" : "0", "none_mythic_resistance_mythic" : "0", "none_mythic_crit_damage" : "0",
-    }
-
-
-
-
-
-
-
-StatsPet =  {
-    "laser_bat_img": "none",
-    "elf_img": "none",
-    "noisy_owl_img": "none",
-    "flaming_ghost_img": "none",
-    "scythe_mage_img": "none",
-    "living_bomb_img": "none",
-    "bone_warrior_img": "none",
-    "none_img": "0",
-    }
+    "lion_ring": {
+        "damage_type":"boss units dmg",
+        "resistance_type":"none",
+        "mythic_resistance_type":"boss units dmg reduced",
+		"inc": [2,3,4,5,5,6,7,8,8,8,8,8,8,8,8],
+		"base": [25,30,40,50,60,70,85,100,120,140,170,200,230,230,230],
+		"hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"atk": [0,0,0,5,5,5,5,5,5,7,7,7,7,7,7],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit_chance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance_mythic": [0,0,0,0,0,0,0,5,5,5,5,5,5,7,7],
+		"crit_damage": [0,0,20,20,20,20,20,20,20,20,20,20,20,20,20],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"bull_ring": {
+        "damage_type":"mobs units dmg",
+        "resistance_type":"all damage resistance",
+        "mythic_resistance_type":"mobs units dmg reduced",
+		"inc": [2,3,4,5,5,6,7,8,8,8,8,8,8,8,8],
+		"base": [25,30,40,50,60,70,85,100,120,140,170,200,230,230,230],
+		"hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit_chance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,10,10,10,10,10,10,10,10,10,10,10,15,15],
+		"resistance_mythic": [0,0,0,0,0,0,0,5,5,5,5,5,5,7,7],
+		"crit_damage": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"serpent_ring": {
+        "damage_type":"ranged units dmg",
+        "resistance_type":"none",
+        "mythic_resistance_type":"ranged units dmg reduced",
+		"inc": [2,3,3,4,4,5,6,9,9,9,9,9,9,9,9],
+		"base": [20,25,30,40,50,60,70,80,80,80,80,80,80,80,80],
+		"hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,7,7,7,7,7,7,7,7,7,7,7,7,7],
+		"crit_chance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance_mythic": [0,0,0,0,0,0,0,7,7,7,7,7,7,7,7],
+		"crit_damage": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"wolf_ring": {
+        "damage_type":"melee units dmg",
+        "resistance_type":"none",
+        "mythic_resistance_type":"melee units dmg reduced",
+		"inc": [2,3,3,4,4,5,6,9,9,9,9,9,9,9,9],
+		"base": [20,25,30,40,50,60,70,80,80,80,80,80,80,80,80],
+		"hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit_chance": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance_mythic": [0,0,0,0,0,0,0,7,7,7,7,7,7,7,7],
+		"crit_damage": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"falcon_ring": {
+        "damage_type":"airborne units dmg",
+        "resistance_type":"none",
+        "mythic_resistance_type":"airborne units dmg reduced",
+		"inc": [2,3,3,4,4,5,6,9,9,9,9,9,9,9,9],
+		"base": [20,25,30,40,50,60,70,80,80,80,80,80,80,80,80],
+		"hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit_chance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance_mythic": [0,0,0,0,0,0,0,7,7,7,7,7,7,7,7],
+		"crit_damage": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"bear_ring": {
+        "damage_type":"ground units dmg",
+        "resistance_type":"none",
+        "mythic_resistance_type":"ground units dmg reduced",
+		"inc": [2,3,3,4,4,5,6,9,9,9,9,9,9,9,9],
+		"base": [20,25,30,40,50,60,70,80,80,80,80,80,80,80,80],
+		"hp": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
+		"atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit_chance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance_mythic": [0,0,0,0,0,0,0,7,7,7,7,7,7,7,7],
+		"crit_damage": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"dragon_ring": {
+        "damage_type":"elite mobs dmg",
+        "resistance_type":"Projectile Resistance",
+        "mythic_resistance_type":"humanoid units dmg",
+		"inc": [3,4,5,6,7,7,8,9,9,9,9,9,9,9,9],
+		"base": [30,35,42,60,70,85,100,120,140,140,140,140,140,140,140],
+		"hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit_chance": [0,0,0,6,6,6,6,6,6,6,8,8,8,8,8],
+		"resistance": [0,0,12,12,12,12,12,12,12,12,12,12,12,12,12],
+		"resistance_mythic": [0,0,0,0,0,0,0,15,15,15,15,15,15,20,20],
+		"crit_damage": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"vilebat_ring": {
+        "damage_type":"non-elite mobs dmg",
+        "resistance_type":"none",
+        "mythic_resistance_type":"colision dmg reduced",
+		"inc": [3,4,5,6,7,7,8,9,9,9,9,9,9,9,9],
+		"base": [30,35,42,60,70,85,100,120,140,140,140,140,140,140,140],
+		"hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit_chance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance_mythic": [0,0,0,0,0,0,0,12,12,12,12,12,12,15,15],
+		"crit_damage": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"none": {
+        "damage_type":"none",
+        "resistance_type":"none",
+        "mythic_resistance_type":"none",
+		"inc": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"base": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit_chance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance_mythic": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit_damage": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	}
+}
 
 
 
@@ -330,78 +325,63 @@ StatsPet =  {
 
 
 StatsBracelet =  {
-    "quickshot_bracelet_common_inc_atk": "5", "quickshot_bracelet_common_base_atk": "30", "quickshot_bracelet_common_var_atk" : "0", "quickshot_bracelet_common_crit" : "0",
-    "quickshot_bracelet_great_inc_atk": "6", "quickshot_bracelet_great_base_atk": "40", "quickshot_bracelet_great_var_atk" : "0", "quickshot_bracelet_great_crit" : "0",
-    "quickshot_bracelet_rare_inc_atk": "7", "quickshot_bracelet_rare_base_atk": "55", "quickshot_bracelet_rare_var_atk" : "0", "quickshot_bracelet_rare_crit" : "0",
-    "quickshot_bracelet_epic_inc_atk": "8", "quickshot_bracelet_epic_base_atk": "70", "quickshot_bracelet_epic_var_atk" : "6", "quickshot_bracelet_epic_crit" : "0",
-    "quickshot_bracelet_perfect_epic_inc_atk": "9", "quickshot_bracelet_perfect_epic_base_atk": "90", "quickshot_bracelet_perfect_epic_var_atk" : "6", "quickshot_bracelet_perfect_epic_crit" : "0",
-    "quickshot_bracelet_legendary_inc_atk": "11", "quickshot_bracelet_legendary_base_atk": "120", "quickshot_bracelet_legendary_var_atk" : "6", "quickshot_bracelet_legendary_crit" : "0",
-    "quickshot_bracelet_ancient_legendary_inc_atk": "13", "quickshot_bracelet_ancient_legendary_base_atk": "150", "quickshot_bracelet_ancient_legendary_var_atk" : "6", "quickshot_bracelet_ancient_legendary_crit" : "0",
-    "quickshot_bracelet_mythic_inc_atk": "15", "quickshot_bracelet_mythic_base_atk": "180", "quickshot_bracelet_mythic_var_atk" : "6", "quickshot_bracelet_mythic_crit" : "0",
-
-    "shield_bracelet_common_inc_atk": "6", "shield_bracelet_common_base_atk": "35", "shield_bracelet_common_var_atk" : "0", "shield_bracelet_common_crit" : "0",
-    "shield_bracelet_great_inc_atk": "7", "shield_bracelet_great_base_atk": "48", "shield_bracelet_great_var_atk" : "0", "shield_bracelet_great_crit" : "0",
-    "shield_bracelet_rare_inc_atk": "8", "shield_bracelet_rare_base_atk": "65", "shield_bracelet_rare_var_atk" : "0", "shield_bracelet_rare_crit" : "0",
-    "shield_bracelet_epic_inc_atk": "9", "shield_bracelet_epic_base_atk": "85", "shield_bracelet_epic_var_atk" : "7", "shield_bracelet_epic_crit" : "0",
-    "shield_bracelet_perfect_epic_inc_atk": "11", "shield_bracelet_perfect_epic_base_atk": "105", "shield_bracelet_perfect_epic_var_atk" : "7", "shield_bracelet_perfect_epic_crit" : "0",
-    "shield_bracelet_legendary_inc_atk": "12", "shield_bracelet_legendary_base_atk": "145", "shield_bracelet_legendary_var_atk" : "7", "shield_bracelet_legendary_crit" : "0",
-    "shield_bracelet_ancient_legendary_inc_atk": "14", "shield_bracelet_ancient_legendary_base_atk": "180", "shield_bracelet_ancient_legendary_var_atk" : "7", "shield_bracelet_ancient_legendary_crit" : "0",
-    "shield_bracelet_mythic_inc_atk": "16", "shield_bracelet_mythic_base_atk": "215", "shield_bracelet_mythic_var_atk" : "7", "shield_bracelet_mythic_crit" : "0",
-
-    "invincible_bracelet_common_inc_atk": "5", "invincible_bracelet_common_base_atk": "30", "invincible_bracelet_common_var_atk" : "0", "invincible_bracelet_common_crit" : "0",
-    "invincible_bracelet_great_inc_atk": "6", "invincible_bracelet_great_base_atk": "40", "invincible_bracelet_great_var_atk" : "0", "invincible_bracelet_great_crit" : "0",
-    "invincible_bracelet_rare_inc_atk": "7", "invincible_bracelet_rare_base_atk": "55", "invincible_bracelet_rare_var_atk" : "0", "invincible_bracelet_rare_crit" : "0",
-    "invincible_bracelet_epic_inc_atk": "8", "invincible_bracelet_epic_base_atk": "70", "invincible_bracelet_epic_var_atk" : "6", "invincible_bracelet_epic_crit" : "0",
-    "invincible_bracelet_perfect_epic_inc_atk": "9", "invincible_bracelet_perfect_epic_base_atk": "90", "invincible_bracelet_perfect_epic_var_atk" : "6", "invincible_bracelet_perfect_epic_crit" : "0",
-    "invincible_bracelet_legendary_inc_atk": "11", "invincible_bracelet_legendary_base_atk": "120", "invincible_bracelet_legendary_var_atk" : "6", "invincible_bracelet_legendary_crit" : "0",
-    "invincible_bracelet_ancient_legendary_inc_atk": "13", "invincible_bracelet_ancient_legendary_base_atk": "150", "invincible_bracelet_ancient_legendary_var_atk" : "6", "invincible_bracelet_ancient_legendary_crit" : "0",
-    "invincible_bracelet_mythic_inc_atk": "15", "invincible_bracelet_mythic_base_atk": "180", "invincible_bracelet_mythic_var_atk" : "6", "invincible_bracelet_mythic_crit" : "0",
-
-    "frozen_bracelet_common_inc_atk": "4", "frozen_bracelet_common_base_atk": "30", "frozen_bracelet_common_var_atk" : "0", "frozen_bracelet_common_crit" : "0",
-    "frozen_bracelet_great_inc_atk": "5", "frozen_bracelet_great_base_atk": "40", "frozen_bracelet_great_var_atk" : "0", "frozen_bracelet_great_crit" : "0",
-    "frozen_bracelet_rare_inc_atk": "6", "frozen_bracelet_rare_base_atk": "55", "frozen_bracelet_rare_var_atk" : "0", "frozen_bracelet_rare_crit" : "0",
-    "frozen_bracelet_epic_inc_atk": "7", "frozen_bracelet_epic_base_atk": "70", "frozen_bracelet_epic_var_atk" : "0", "frozen_bracelet_epic_crit" : "15",
-    "frozen_bracelet_perfect_epic_inc_atk": "8", "frozen_bracelet_perfect_epic_base_atk": "90", "frozen_bracelet_perfect_epic_var_atk" : "0", "frozen_bracelet_perfect_epic_crit" : "15",
-    "frozen_bracelet_legendary_inc_atk": "10", "frozen_bracelet_legendary_base_atk": "120", "frozen_bracelet_legendary_var_atk" : "0", "frozen_bracelet_legendary_crit" : "15",
-    "frozen_bracelet_ancient_legendary_inc_atk": "12", "frozen_bracelet_ancient_legendary_base_atk": "150", "frozen_bracelet_ancient_legendary_var_atk" : "0", "frozen_bracelet_ancient_legendary_crit" : "15",
-    "frozen_bracelet_mythic_inc_atk": "14", "frozen_bracelet_mythic_base_atk": "180", "frozen_bracelet_mythic_var_atk" : "0", "frozen_bracelet_mythic_crit" : "15",
-
-    "thunder_bracelet_common_inc_atk": "4", "thunder_bracelet_common_base_atk": "30", "thunder_bracelet_common_var_atk" : "0", "thunder_bracelet_common_crit" : "0",
-    "thunder_bracelet_great_inc_atk": "5", "thunder_bracelet_great_base_atk": "40", "thunder_bracelet_great_var_atk" : "0", "thunder_bracelet_great_crit" : "0",
-    "thunder_bracelet_rare_inc_atk": "6", "thunder_bracelet_rare_base_atk": "55", "thunder_bracelet_rare_var_atk" : "0", "thunder_bracelet_rare_crit" : "0",
-    "thunder_bracelet_epic_inc_atk": "7", "thunder_bracelet_epic_base_atk": "70", "thunder_bracelet_epic_var_atk" : "0", "thunder_bracelet_epic_crit" : "15",
-    "thunder_bracelet_perfect_epic_inc_atk": "8", "thunder_bracelet_perfect_epic_base_atk": "90", "thunder_bracelet_perfect_epic_var_atk" : "0", "thunder_bracelet_perfect_epic_crit" : "15",
-    "thunder_bracelet_legendary_inc_atk": "10", "thunder_bracelet_legendary_base_atk": "120", "thunder_bracelet_legendary_var_atk" : "0", "thunder_bracelet_legendary_crit" : "15",
-    "thunder_bracelet_ancient_legendary_inc_atk": "12", "thunder_bracelet_ancient_legendary_base_atk": "150", "thunder_bracelet_ancient_legendary_var_atk" : "0", "thunder_bracelet_ancient_legendary_crit" : "15",
-    "thunder_bracelet_mythic_inc_atk": "14", "thunder_bracelet_mythic_base_atk": "180", "thunder_bracelet_mythic_var_atk" : "0", "thunder_bracelet_mythic_crit" : "15",
-
-    "blazing_bracelet_common_inc_atk": "4", "blazing_bracelet_common_base_atk": "30", "blazing_bracelet_common_var_atk" : "0", "blazing_bracelet_common_crit" : "0",
-    "blazing_bracelet_great_inc_atk": "5", "blazing_bracelet_great_base_atk": "40", "blazing_bracelet_great_var_atk" : "0", "blazing_bracelet_great_crit" : "0",
-    "blazing_bracelet_rare_inc_atk": "6", "blazing_bracelet_rare_base_atk": "55", "blazing_bracelet_rare_var_atk" : "0", "blazing_bracelet_rare_crit" : "0",
-    "blazing_bracelet_epic_inc_atk": "7", "blazing_bracelet_epic_base_atk": "70", "blazing_bracelet_epic_var_atk" : "0", "blazing_bracelet_epic_crit" : "15",
-    "blazing_bracelet_perfect_epic_inc_atk": "8", "blazing_bracelet_perfect_epic_base_atk": "90", "blazing_bracelet_perfect_epic_var_atk" : "0", "blazing_bracelet_perfect_epic_crit" : "15",
-    "blazing_bracelet_legendary_inc_atk": "10", "blazing_bracelet_legendary_base_atk": "120", "blazing_bracelet_legendary_var_atk" : "0", "blazing_bracelet_legendary_crit" : "15",
-    "blazing_bracelet_ancient_legendary_inc_atk": "12", "blazing_bracelet_ancient_legendary_base_atk": "150", "blazing_bracelet_ancient_legendary_var_atk" : "0", "blazing_bracelet_ancient_legendary_crit" : "15",
-    "blazing_bracelet_mythic_inc_atk": "14", "blazing_bracelet_mythic_base_atk": "180", "blazing_bracelet_mythic_var_atk" : "0", "blazing_bracelet_mythic_crit" : "15",
-
-    "split_bracelet_common_inc_atk": "4", "split_bracelet_common_base_atk": "30", "split_bracelet_common_var_atk" : "0", "split_bracelet_common_crit" : "0",
-    "split_bracelet_great_inc_atk": "5", "split_bracelet_great_base_atk": "40", "split_bracelet_great_var_atk" : "0", "split_bracelet_great_crit" : "0",
-    "split_bracelet_rare_inc_atk": "6", "split_bracelet_rare_base_atk": "55", "split_bracelet_rare_var_atk" : "0", "split_bracelet_rare_crit" : "0",
-    "split_bracelet_epic_inc_atk": "7", "split_bracelet_epic_base_atk": "70", "split_bracelet_epic_var_atk" : "0", "split_bracelet_epic_crit" : "15",
-    "split_bracelet_perfect_epic_inc_atk": "8", "split_bracelet_perfect_epic_base_atk": "90", "split_bracelet_perfect_epic_var_atk" : "0", "split_bracelet_perfect_epic_crit" : "15",
-    "split_bracelet_legendary_inc_atk": "10", "split_bracelet_legendary_base_atk": "120", "split_bracelet_legendary_var_atk" : "0", "split_bracelet_legendary_crit" : "15",
-    "split_bracelet_ancient_legendary_inc_atk": "12", "split_bracelet_ancient_legendary_base_atk": "150", "split_bracelet_ancient_legendary_var_atk" : "0", "split_bracelet_ancient_legendary_crit" : "15",
-    "split_bracelet_mythic_inc_atk": "14", "split_bracelet_mythic_base_atk": "180", "split_bracelet_mythic_var_atk" : "0","split_bracelet_mythic_crit" : "15",
-
-    "none_common_inc_atk": "0", "none_common_base_atk": "0", "none_common_var_atk" : "0", "none_common_crit" : "0",
-    "none_great_inc_atk": "0", "none_great_base_atk": "0", "none_great_var_atk" : "0", "none_great_crit" : "0",
-    "none_rare_inc_atk": "0", "none_rare_base_atk": "0", "none_rare_var_atk" : "0", "none_rare_crit" : "0",
-    "none_epic_inc_atk": "0", "none_epic_base_atk": "0", "none_epic_var_atk" : "0", "none_epic_crit" : "0",
-    "none_perfect_epic_inc_atk": "0", "none_perfect_epic_base_atk": "0", "none_perfect_epic_var_atk" : "0", "none_perfect_epic_crit" : "0",
-    "none_legendary_inc_atk": "0", "none_legendary_base_atk": "0", "none_legendary_var_atk" : "0", "none_legendary_crit" : "0",
-    "none_ancient_legendary_inc_atk": "0", "none_ancient_legendary_base_atk": "0", "none_ancient_legendary_var_atk" : "0", "none_ancient_legendary_crit" : "0",
-    "none_mythic_inc_atk": "0", "none_mythic_base_atk": "0", "none_mythic_var_atk" : "0", "none_mythic_crit" :"0",
-    }
+    "quickshot_bracelet": {
+		"inc": [5,6,7,8,9,11,13,15,16,16,16,16,16,16,16],
+		"base": [30,40,55,70,90,120,150,180,210,210,210,210,210,210,210],
+		"var_atk": [0,0,0,6,6,6,6,6,6,8,18,18,18,18,18],
+		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"shield_bracelet": {
+		"inc": [6,7,8,9,11,12,14,16,16,16,16,16,16,16,16],
+		"base": [35,48,65,85,105,145,180,215,250,290,290,290,290,290,290],
+		"var_atk": [0,0,0,7,7,7,7,7,7,9,21,21,21,21,21],
+		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"invincible_bracelet": {
+		"inc": [5,6,7,8,9,11,13,15,16,16,16,16,16,16,16],
+		"base": [30,40,55,70,90,120,150,180,210,210,210,210,210,210,210],
+		"var_atk": [0,0,0,6,6,6,6,6,6,8,18,18,18,18,18],
+		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"frozen_bracelet": {
+		"inc": [4,5,6,7,8,10,12,14,14,14,14,14,14,14,14],
+		"base": [30,40,55,70,90,120,150,180,210,210,210,210,210,210,210],
+		"var_atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit": [0,0,0,15,15,15,15,15,15,20,20,20,20,20,20],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"thunder_bracelet": {
+		"inc": [4,5,6,7,8,10,12,14,14,14,14,14,14,14,14],
+		"base": [30,40,55,70,90,120,150,180,210,210,210,210,210,210,210],
+		"var_atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit": [0,0,0,15,15,15,15,15,15,20,20,20,20,20,20],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"blazing_bracelet": {
+		"inc": [4,5,6,7,8,10,12,14,14,14,14,14,14,14,14],
+		"base": [30,40,55,70,90,120,150,180,210,210,210,210,210,210,210],
+		"var_atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit": [0,0,0,15,15,15,15,15,15,20,20,20,20,20,20],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"split_bracelet": {
+		"inc": [4,5,6,7,8,10,12,14,14,14,14,14,14,14,14],
+		"base": [30,40,55,70,90,120,150,180,210,210,210,210,210,210,210],
+		"var_atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit": [0,0,0,15,15,15,15,15,15,20,20,20,20,20,20],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"none": {
+		"inc": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"base": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"var_atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	}
+}
 
 
 
@@ -410,86 +390,79 @@ StatsBracelet =  {
 
 
 StatsLocket =  {
-    "angel_locket_resistance_type": "none",
-    "angel_locket_common_inc_hp": "15", "angel_locket_common_base_hp": "120", "angel_locket_common_dodge" : "0", "angel_locket_common_resistance" : "0", "angel_locket_common_var_hp" : "0",
-    "angel_locket_great_inc_hp": "18", "angel_locket_great_base_hp": "170", "angel_locket_great_dodge" : "0", "angel_locket_great_resistance" : "0", "angel_locket_great_var_hp" : "0",
-    "angel_locket_rare_inc_hp": "20", "angel_locket_rare_base_hp": "220", "angel_locket_rare_dodge" : "0", "angel_locket_rare_resistance" : "0", "angel_locket_rare_var_hp" : "0",
-    "angel_locket_epic_inc_hp": "25", "angel_locket_epic_base_hp": "290", "angel_locket_epic_dodge" : "0", "angel_locket_epic_resistance" : "0", "angel_locket_epic_var_hp" : "0",
-    "angel_locket_perfect_epic_inc_hp": "30", "angel_locket_perfect_epic_base_hp": "360", "angel_locket_perfect_epic_dodge" : "0", "angel_locket_perfect_epic_resistance" : "0", "angel_locket_perfect_epic_var_hp" : "0",
-    "angel_locket_legendary_inc_hp": "35", "angel_locket_legendary_base_hp": "480", "angel_locket_legendary_dodge" : "0", "angel_locket_legendary_resistance" : "0", "angel_locket_legendary_var_hp" : "0",
-    "angel_locket_ancient_legendary_inc_hp": "40", "angel_locket_ancient_legendary_base_hp": "600", "angel_locket_ancient_legendary_dodge" : "0", "angel_locket_ancient_legendary_resistance" : "0", "angel_locket_ancient_legendary_var_hp" : "0",
-    "angel_locket_mythic_inc_hp": "45", "angel_locket_mythic_base_hp": "720", "angel_locket_mythic_dodge" : "0", "angel_locket_mythic_resistance" : "0", "angel_locket_mythic_var_hp" : "0",
-
-    "counterattack_locket_resistance_type": "none",
-    "counterattack_locket_common_inc_hp": "19", "counterattack_locket_common_base_hp": "145", "counterattack_locket_common_dodge" : "0", "counterattack_locket_common_resistance" : "0", "counterattack_locket_common_var_hp" : "0",
-    "counterattack_locket_great_inc_hp": "23", "counterattack_locket_great_base_hp": "205", "counterattack_locket_great_dodge" : "0", "counterattack_locket_great_resistance" : "0", "counterattack_locket_great_var_hp" : "0",
-    "counterattack_locket_rare_inc_hp": "26", "counterattack_locket_rare_base_hp": "265", "counterattack_locket_rare_dodge" : "0", "counterattack_locket_rare_resistance" : "0", "counterattack_locket_rare_var_hp" : "0",
-    "counterattack_locket_epic_inc_hp": "32", "counterattack_locket_epic_base_hp": "350", "counterattack_locket_epic_dodge" : "0", "counterattack_locket_epic_resistance" : "0", "counterattack_locket_epic_var_hp" : "0",
-    "counterattack_locket_perfect_epic_inc_hp": "40", "counterattack_locket_perfect_epic_base_hp": "430", "counterattack_locket_perfect_epic_dodge" : "0", "counterattack_locket_perfect_epic_resistance" : "0", "counterattack_locket_perfect_epic_var_hp" : "0",
-    "counterattack_locket_legendary_inc_hp": "45", "counterattack_locket_legendary_base_hp": "575", "counterattack_locket_legendary_dodge" : "0", "counterattack_locket_legendary_resistance" : "0", "counterattack_locket_legendary_var_hp" : "4",
-    "counterattack_locket_ancient_legendary_inc_hp": "52", "counterattack_locket_ancient_legendary_base_hp": "720", "counterattack_locket_ancient_legendary_dodge" : "0", "counterattack_locket_ancient_legendary_resistance" : "0", "counterattack_locket_ancient_legendary_var_hp" : "4",
-    "counterattack_locket_mythic_inc_hp": "60", "counterattack_locket_mythic_base_hp": "865", "counterattack_locket_mythic_dodge" : "0", "counterattack_locket_mythic_resistance" : "0", "counterattack_locket_mythic_var_hp" : "4",
-
-    "agile_locket_resistance_type": "none",
-    "agile_locket_common_inc_hp": "15", "agile_locket_common_base_hp": "120", "agile_locket_common_dodge" : "0", "agile_locket_common_resistance" : "0", "agile_locket_common_var_hp" : "0",
-    "agile_locket_great_inc_hp": "18", "agile_locket_great_base_hp": "170", "agile_locket_great_dodge" : "0", "agile_locket_great_resistance" : "0", "agile_locket_great_var_hp" : "0",
-    "agile_locket_rare_inc_hp": "20", "agile_locket_rare_base_hp": "220", "agile_locket_rare_dodge" : "0", "agile_locket_rare_resistance" : "0", "agile_locket_rare_var_hp" : "0",
-    "agile_locket_epic_inc_hp": "25", "agile_locket_epic_base_hp": "290", "agile_locket_epic_dodge" : "0", "agile_locket_epic_resistance" : "0", "agile_locket_epic_var_hp" : "0",
-    "agile_locket_perfect_epic_inc_hp": "30", "agile_locket_perfect_epic_base_hp": "360", "agile_locket_perfect_epic_dodge" : "0", "agile_locket_perfect_epic_resistance" : "0", "agile_locket_perfect_epic_var_hp" : "0",
-    "agile_locket_legendary_inc_hp": "35", "agile_locket_legendary_base_hp": "480", "agile_locket_legendary_dodge" : "0", "agile_locket_legendary_resistance" : "0", "agile_locket_legendary_var_hp" : "0",
-    "agile_locket_ancient_legendary_inc_hp": "40", "agile_locket_ancient_legendary_base_hp": "600", "agile_locket_ancient_legendary_dodge" : "0", "agile_locket_ancient_legendary_resistance" : "0", "agile_locket_ancient_legendary_var_hp" : "0",
-    "agile_locket_mythic_inc_hp": "45", "agile_locket_mythic_base_hp": "720", "agile_locket_mythic_dodge" : "6", "agile_locket_mythic_resistance" : "0", "agile_locket_mythic_var_hp" : "0",
-
-    "iron_locket_resistance_type": "none",
-    "iron_locket_common_inc_hp": "15", "iron_locket_common_base_hp": "120", "iron_locket_common_dodge" : "0", "iron_locket_common_resistance" : "0", "iron_locket_common_var_hp" : "0",
-    "iron_locket_great_inc_hp": "18", "iron_locket_great_base_hp": "170", "iron_locket_great_dodge" : "0", "iron_locket_great_resistance" : "0", "iron_locket_great_var_hp" : "0",
-    "iron_locket_rare_inc_hp": "20", "iron_locket_rare_base_hp": "220", "iron_locket_rare_dodge" : "0", "iron_locket_rare_resistance" : "0", "iron_locket_rare_var_hp" : "0",
-    "iron_locket_epic_inc_hp": "25", "iron_locket_epic_base_hp": "290", "iron_locket_epic_dodge" : "0", "iron_locket_epic_resistance" : "0", "iron_locket_epic_var_hp" : "0",
-    "iron_locket_perfect_epic_inc_hp": "30", "iron_locket_perfect_epic_base_hp": "360", "iron_locket_perfect_epic_dodge" : "0", "iron_locket_perfect_epic_resistance" : "0", "iron_locket_perfect_epic_var_hp" : "0",
-    "iron_locket_legendary_inc_hp": "35", "iron_locket_legendary_base_hp": "480", "iron_locket_legendary_dodge" : "0", "iron_locket_legendary_resistance" : "0", "iron_locket_legendary_var_hp" : "0",
-    "iron_locket_ancient_legendary_inc_hp": "40", "iron_locket_ancient_legendary_base_hp": "600", "iron_locket_ancient_legendary_dodge" : "0", "iron_locket_ancient_legendary_resistance" : "0", "iron_locket_ancient_legendary_var_hp" : "0",
-    "iron_locket_mythic_inc_hp": "45", "iron_locket_mythic_base_hp": "720", "iron_locket_mythic_dodge" : "0", "iron_locket_mythic_resistance" : "0", "iron_locket_mythic_var_hp" : "0",
-
-    "bulletproof_locket_resistance_type": "projectile resistance",
-    "bulletproof_locket_common_inc_hp": "15", "bulletproof_locket_common_base_hp": "120", "bulletproof_locket_common_dodge" : "0", "bulletproof_locket_common_resistance" : "0", "bulletproof_locket_common_var_hp" : "0",
-    "bulletproof_locket_great_inc_hp": "18", "bulletproof_locket_great_base_hp": "170", "bulletproof_locket_great_dodge" : "0", "bulletproof_locket_great_resistance" : "0", "bulletproof_locket_great_var_hp" : "0",
-    "bulletproof_locket_rare_inc_hp": "20", "bulletproof_locket_rare_base_hp": "220", "bulletproof_locket_rare_dodge" : "0", "bulletproof_locket_rare_resistance" : "0", "bulletproof_locket_rare_var_hp" : "0",
-    "bulletproof_locket_epic_inc_hp": "25", "bulletproof_locket_epic_base_hp": "290", "bulletproof_locket_epic_dodge" : "0", "bulletproof_locket_epic_resistance" : "0", "bulletproof_locket_epic_var_hp" : "0",
-    "bulletproof_locket_perfect_epic_inc_hp": "30", "bulletproof_locket_perfect_epic_base_hp": "360", "bulletproof_locket_perfect_epic_dodge" : "0", "bulletproof_locket_perfect_epic_resistance" : "0", "bulletproof_locket_perfect_epic_var_hp" : "0",
-    "bulletproof_locket_legendary_inc_hp": "35", "bulletproof_locket_legendary_base_hp": "480", "bulletproof_locket_legendary_dodge" : "0", "bulletproof_locket_legendary_resistance" : "0", "bulletproof_locket_legendary_var_hp" : "0",
-    "bulletproof_locket_ancient_legendary_inc_hp": "40", "bulletproof_locket_ancient_legendary_base_hp": "600", "bulletproof_locket_ancient_legendary_dodge" : "0", "bulletproof_locket_ancient_legendary_resistance" : "0", "bulletproof_locket_ancient_legendary_var_hp" : "0",
-    "bulletproof_locket_mythic_inc_hp": "45", "bulletproof_locket_mythic_base_hp": "720", "bulletproof_locket_mythic_dodge" : "0", "bulletproof_locket_mythic_resistance" : "8", "bulletproof_locket_mythic_var_hp" : "0",
-
-    "piercer_locket_resistance_type": "none",
-    "piercer_locket_common_inc_hp": "16", "piercer_locket_common_base_hp": "120", "piercer_locket_common_dodge" : "0", "piercer_locket_common_resistance" : "0", "piercer_locket_common_var_hp" : "0",
-    "piercer_locket_great_inc_hp": "19", "piercer_locket_great_base_hp": "170", "piercer_locket_great_dodge" : "0", "piercer_locket_great_resistance" : "0", "piercer_locket_great_var_hp" : "0",
-    "piercer_locket_rare_inc_hp": "22", "piercer_locket_rare_base_hp": "220", "piercer_locket_rare_dodge" : "0", "piercer_locket_rare_resistance" : "0", "piercer_locket_rare_var_hp" : "0",
-    "piercer_locket_epic_inc_hp": "27", "piercer_locket_epic_base_hp": "290", "piercer_locket_epic_dodge" : "0", "piercer_locket_epic_resistance" : "0", "piercer_locket_epic_var_hp" : "0",
-    "piercer_locket_perfect_epic_inc_hp": "33", "piercer_locket_perfect_epic_base_hp": "360", "piercer_locket_perfect_epic_dodge" : "0", "piercer_locket_perfect_epic_resistance" : "0", "piercer_locket_perfect_epic_var_hp" : "0",
-    "piercer_locket_legendary_inc_hp": "38", "piercer_locket_legendary_base_hp": "480", "piercer_locket_legendary_dodge" : "0", "piercer_locket_legendary_resistance" : "0", "piercer_locket_legendary_var_hp" : "0",
-    "piercer_locket_ancient_legendary_inc_hp": "44", "piercer_locket_ancient_legendary_base_hp": "600", "piercer_locket_ancient_legendary_dodge" : "0", "piercer_locket_ancient_legendary_resistance" : "0", "piercer_locket_ancient_legendary_var_hp" : "0",
-    "piercer_locket_mythic_inc_hp": "50", "piercer_locket_mythic_base_hp": "720", "piercer_locket_mythic_dodge" : "0", "piercer_locket_mythic_resistance" : "0", "piercer_locket_mythic_var_hp" : "0",
-
-    "bloodthirsty_locket_resistance_type": "none",
-    "bloodthirsty_locket_common_inc_hp": "16", "bloodthirsty_locket_common_base_hp": "120", "bloodthirsty_locket_common_dodge" : "0", "bloodthirsty_locket_common_resistance" : "0", "bloodthirsty_locket_common_var_hp" : "0",
-    "bloodthirsty_locket_great_inc_hp": "19", "bloodthirsty_locket_great_base_hp": "170", "bloodthirsty_locket_great_dodge" : "0", "bloodthirsty_locket_great_resistance" : "0", "bloodthirsty_locket_great_var_hp" : "0",
-    "bloodthirsty_locket_rare_inc_hp": "22", "bloodthirsty_locket_rare_base_hp": "220", "bloodthirsty_locket_rare_dodge" : "0", "bloodthirsty_locket_rare_resistance" : "0", "bloodthirsty_locket_rare_var_hp" : "0",
-    "bloodthirsty_locket_epic_inc_hp": "27", "bloodthirsty_locket_epic_base_hp": "290", "bloodthirsty_locket_epic_dodge" : "0", "bloodthirsty_locket_epic_resistance" : "0", "bloodthirsty_locket_epic_var_hp" : "0",
-    "bloodthirsty_locket_perfect_epic_inc_hp": "33", "bloodthirsty_locket_perfect_epic_base_hp": "360", "bloodthirsty_locket_perfect_epic_dodge" : "0", "bloodthirsty_locket_perfect_epic_resistance" : "0", "bloodthirsty_locket_perfect_epic_var_hp" : "0",
-    "bloodthirsty_locket_legendary_inc_hp": "38", "bloodthirsty_locket_legendary_base_hp": "480", "bloodthirsty_locket_legendary_dodge" : "0", "bloodthirsty_locket_legendary_resistance" : "0", "bloodthirsty_locket_legendary_var_hp" : "0",
-    "bloodthirsty_locket_ancient_legendary_inc_hp": "44", "bloodthirsty_locket_ancient_legendary_base_hp": "600", "bloodthirsty_locket_ancient_legendary_dodge" : "0", "bloodthirsty_locket_ancient_legendary_resistance" : "0", "bloodthirsty_locket_ancient_legendary_var_hp" : "0",
-    "bloodthirsty_locket_mythic_inc_hp": "50", "bloodthirsty_locket_mythic_base_hp": "720", "bloodthirsty_locket_mythic_dodge" : "0", "bloodthirsty_locket_mythic_resistance" : "0", "bloodthirsty_locket_mythic_var_hp" : "0",
-
-    "none_resistance_type": "none",
-    "none_common_inc_hp": "0", "none_common_base_hp": "0", "none_common_dodge" : "0", "none_common_resistance" : "0", "none_common_var_hp" : "0",
-    "none_great_inc_hp": "0", "none_great_base_hp": "0", "none_great_dodge" : "0", "none_great_resistance" : "0", "none_great_var_hp" : "0",
-    "none_rare_inc_hp": "0", "none_rare_base_hp": "0", "none_rare_dodge" : "0", "none_rare_resistance" : "0", "none_rare_var_hp" : "0",
-    "none_epic_inc_hp": "0", "none_epic_base_hp": "0", "none_epic_dodge" : "0", "none_epic_resistance" : "0", "none_epic_var_hp" : "0",
-    "none_perfect_epic_inc_hp": "0", "none_perfect_epic_base_hp": "0", "none_perfect_epic_dodge" : "0", "none_perfect_epic_resistance" : "0", "none_perfect_epic_var_hp" : "0",
-    "none_legendary_inc_hp": "0", "none_legendary_base_hp": "0", "none_legendary_dodge" : "0", "none_legendary_resistance" : "0", "none_legendary_var_hp" : "0",
-    "none_ancient_legendary_inc_hp": "0", "none_ancient_legendary_base_hp": "0", "none_ancient_legendary_dodge" : "0", "none_ancient_legendary_resistance" : "0", "none_ancient_legendary_var_hp" : "0",
-    "none_mythic_inc_hp": "0", "none_mythic_base_hp": "0", "none_mythic_dodge" : "0", "none_mythic_resistance" : "0", "none_mythic_var_hp" : "0",
-    }
+    "angel_locket": {
+        "resistance_type":"none",
+		"inc": [15,18,20,25,30,35,40,45,50,55,60,65,70,75,80],
+		"base": [120,170,220,290,360,480,600,720,720,720,720,720,720,720,720],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"counterattack_locket": {
+        "resistance_type":"none",
+		"inc": [19,23,26,32,40,45,52,60,70,80,90,100,110,120,130],
+		"base": [145,205,265,350,430,575,720,865,865,865,865,865,865,865,865],
+		"var_hp": [0,0,0,0,0,4,4,4,4,4,4,4,4,4,4],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"agile_locket": {
+        "resistance_type":"none",
+		"inc": [15,18,20,25,30,35,40,45,50,55,60,65,70,75,80],
+		"base": [120,170,220,290,360,480,600,720,720,720,720,720,720,720,720],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,6,6,6,6,6,6,8,8],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"iron_locket": {
+        "resistance_type":"none",
+		"inc": [15,18,20,25,30,35,40,45,50,55,60,65,70,75,80],
+		"base": [120,170,220,290,360,480,600,720,720,720,720,720,720,720,720],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"bulletproof_locket": {
+        "resistance_type":"projectile resistance",
+		"inc": [15,18,20,25,30,35,40,45,50,55,60,65,70,75,80],
+		"base": [120,170,220,290,360,480,600,720,720,720,720,720,720,720,720],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,8,8,8,8,8,8,10,10],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"piercer_locket": {
+        "resistance_type":"none",
+		"inc": [16,19,22,27,33,38,44,50,55,60,65,70,75,80,85,90],
+		"base": [120,170,220,290,360,480,600,720,720,720,720,720,720,720,720],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"bloodthirsty_locket": {
+        "resistance_type":"none",
+		"inc": [16,19,22,27,33,38,44,50,55,60,65,70,75,80,85,90],
+		"base": [120,170,220,290,360,480,600,720,720,720,720,720,720,720,720,720],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
+	},
+	"none": {
+        "resistance_type":"none",
+		"inc": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"base": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	}
+}
 
 
 
@@ -498,94 +471,95 @@ StatsLocket =  {
 
 
 StatsBook =  {
-    "arcanum_of_time_resistance_type": "none",
-    "arcanum_of_time_resistance2_type": "none",
-    "arcanum_of_time_common_inc_hp": "10", "arcanum_of_time_common_base_hp": "85", "arcanum_of_time_common_var_hp" : "0", "arcanum_of_time_common_resistance" : "0",  "arcanum_of_time_common_resistance2" : "0",
-    "arcanum_of_time_great_inc_hp": "12", "arcanum_of_time_great_base_hp": "122", "arcanum_of_time_great_var_hp" : "0", "arcanum_of_time_great_resistance" : "0",  "arcanum_of_time_great_resistance2" : "0",
-    "arcanum_of_time_rare_inc_hp": "14", "arcanum_of_time_rare_base_hp": "149", "arcanum_of_time_rare_var_hp" : "0", "arcanum_of_time_rare_resistance" : "0",  "arcanum_of_time_rare_resistance2" : "0",
-    "arcanum_of_time_epic_inc_hp": "16", "arcanum_of_time_epic_base_hp": "191", "arcanum_of_time_epic_var_hp" : "0", "arcanum_of_time_epic_resistance" : "0",  "arcanum_of_time_epic_resistance2" : "0",
-    "arcanum_of_time_perfect_epic_inc_hp": "20", "arcanum_of_time_perfect_epic_base_hp": "240", "arcanum_of_time_perfect_epic_var_hp" : "0", "arcanum_of_time_perfect_epic_resistance" : "0",  "arcanum_of_time_perfect_epic_resistance2" : "0",
-    "arcanum_of_time_legendary_inc_hp": "24", "arcanum_of_time_legendary_base_hp": "309", "arcanum_of_time_legendary_var_hp" : "0", "arcanum_of_time_legendary_resistance" : "0",  "arcanum_of_time_legendary_resistance2" : "0",
-    "arcanum_of_time_ancient_legendary_inc_hp": "27", "arcanum_of_time_ancient_legendary_base_hp": "385", "arcanum_of_time_ancient_legendary_var_hp" : "0", "arcanum_of_time_ancient_legendary_resistance" : "0",  "arcanum_of_time_ancient_legendary_resistance2" : "0",
-    "arcanum_of_time_mythic_inc_hp": "30", "arcanum_of_time_mythic_base_hp": "470", "arcanum_of_time_mythic_var_hp" : "0", "arcanum_of_time_mythic_resistance" : "0",  "arcanum_of_time_mythic_resistance2" : "0",
-
-    "arcane_archer_resistance_type": "none",
-    "arcane_archer_resistance2_type": "none",
-    "arcane_archer_common_inc_hp": "8", "arcane_archer_common_base_hp": "68", "arcane_archer_common_var_hp" : "0", "arcane_archer_common_resistance" : "0",  "arcane_archer_common_resistance2" : "0",
-    "arcane_archer_great_inc_hp": "10", "arcane_archer_great_base_hp": "95", "arcane_archer_great_var_hp" : "0", "arcane_archer_great_resistance" : "0",  "arcane_archer_great_resistance2" : "0",
-    "arcane_archer_rare_inc_hp": "11", "arcane_archer_rare_base_hp": "121", "arcane_archer_rare_var_hp" : "0", "arcane_archer_rare_resistance" : "0",  "arcane_archer_rare_resistance2" : "0",
-    "arcane_archer_epic_inc_hp": "14", "arcane_archer_epic_base_hp": "159", "arcane_archer_epic_var_hp" : "0", "arcane_archer_epic_resistance" : "0",  "arcane_archer_epic_resistance2" : "0",
-    "arcane_archer_perfect_epic_inc_hp": "17", "arcane_archer_perfect_epic_base_hp": "197", "arcane_archer_perfect_epic_var_hp" : "0", "arcane_archer_perfect_epic_resistance" : "0",  "arcane_archer_perfect_epic_resistance2" : "0",
-    "arcane_archer_legendary_inc_hp": "20", "arcane_archer_legendary_base_hp": "260", "arcane_archer_legendary_var_hp" : "0", "arcane_archer_legendary_resistance" : "0",  "arcane_archer_legendary_resistance2" : "0",
-    "arcane_archer_ancient_legendary_inc_hp": "23", "arcane_archer_ancient_legendary_base_hp": "323", "arcane_archer_ancient_legendary_var_hp" : "0", "arcane_archer_ancient_legendary_resistance" : "0",  "arcane_archer_ancient_legendary_resistance2" : "0",
-    "arcane_archer_mythic_inc_hp": "26", "arcane_archer_mythic_base_hp": "386", "arcane_archer_mythic_var_hp" : "0", "arcane_archer_mythic_resistance" : "0",  "arcane_archer_mythic_resistance2" : "0",
-
-    "art_of_combat_resistance_type": "none",
-    "art_of_combat_resistance2_type": "none",
-    "art_of_combat_common_inc_hp": "8", "art_of_combat_common_base_hp": "68", "art_of_combat_common_var_hp" : "0", "art_of_combat_common_resistance" : "0",  "art_of_combat_common_resistance2" : "0",
-    "art_of_combat_great_inc_hp": "10", "art_of_combat_great_base_hp": "95", "art_of_combat_great_var_hp" : "0", "art_of_combat_great_resistance" : "0",  "art_of_combat_great_resistance2" : "0",
-    "art_of_combat_rare_inc_hp": "11", "art_of_combat_rare_base_hp": "121", "art_of_combat_rare_var_hp" : "0", "art_of_combat_rare_resistance" : "0",  "art_of_combat_rare_resistance2" : "0",
-    "art_of_combat_epic_inc_hp": "14", "art_of_combat_epic_base_hp": "159", "art_of_combat_epic_var_hp" : "0", "art_of_combat_epic_resistance" : "0",  "art_of_combat_epic_resistance2" : "0",
-    "art_of_combat_perfect_epic_inc_hp": "17", "art_of_combat_perfect_epic_base_hp": "197", "art_of_combat_perfect_epic_var_hp" : "0", "art_of_combat_perfect_epic_resistance" : "0",  "art_of_combat_perfect_epic_resistance2" : "0",
-    "art_of_combat_legendary_inc_hp": "20", "art_of_combat_legendary_base_hp": "260", "art_of_combat_legendary_var_hp" : "0", "art_of_combat_legendary_resistance" : "0",  "art_of_combat_legendary_resistance2" : "0",
-    "art_of_combat_ancient_legendary_inc_hp": "23", "art_of_combat_ancient_legendary_base_hp": "323", "art_of_combat_ancient_legendary_var_hp" : "0", "art_of_combat_ancient_legendary_resistance" : "0",  "art_of_combat_ancient_legendary_resistance2" : "0",
-    "art_of_combat_mythic_inc_hp": "26", "art_of_combat_mythic_base_hp": "386", "art_of_combat_mythic_var_hp" : "8", "art_of_combat_mythic_resistance" : "0",  "art_of_combat_mythic_resistance2" : "0",
-
-    "ice_realm_resistance_type": "none",
-    "ice_realm_resistance2_type": "none",
-    "ice_realm_common_inc_hp": "8", "ice_realm_common_base_hp": "68", "ice_realm_common_var_hp" : "0", "ice_realm_common_resistance" : "0",  "ice_realm_common_resistance2" : "0",
-    "ice_realm_great_inc_hp": "10", "ice_realm_great_base_hp": "95", "ice_realm_great_var_hp" : "0", "ice_realm_great_resistance" : "0",  "ice_realm_great_resistance2" : "0",
-    "ice_realm_rare_inc_hp": "11", "ice_realm_rare_base_hp": "121", "ice_realm_rare_var_hp" : "0", "ice_realm_rare_resistance" : "0",  "ice_realm_rare_resistance2" : "0",
-    "ice_realm_epic_inc_hp": "14", "ice_realm_epic_base_hp": "159", "ice_realm_epic_var_hp" : "0", "ice_realm_epic_resistance" : "0",  "ice_realm_epic_resistance2" : "0",
-    "ice_realm_perfect_epic_inc_hp": "17", "ice_realm_perfect_epic_base_hp": "197", "ice_realm_perfect_epic_var_hp" : "0", "ice_realm_perfect_epic_resistance" : "0",  "ice_realm_perfect_epic_resistance2" : "0",
-    "ice_realm_legendary_inc_hp": "20", "ice_realm_legendary_base_hp": "260", "ice_realm_legendary_var_hp" : "0", "ice_realm_legendary_resistance" : "0",  "ice_realm_legendary_resistance2" : "0",
-    "ice_realm_ancient_legendary_inc_hp": "23", "ice_realm_ancient_legendary_base_hp": "323", "ice_realm_ancient_legendary_var_hp" : "0", "ice_realm_ancient_legendary_resistance" : "0",  "ice_realm_ancient_legendary_resistance2" : "0",
-    "ice_realm_mythic_inc_hp": "26", "ice_realm_mythic_base_hp": "386", "ice_realm_mythic_var_hp" : "0", "ice_realm_mythic_resistance" : "0",  "ice_realm_mythic_resistance2" : "0",
-
-    "enlightenment_resistance_type": "colission resistance",
-    "enlightenment_resistance2_type": "projectile resistance",
-    "enlightenment_common_inc_hp": "8", "enlightenment_common_base_hp": "68", "enlightenment_common_var_hp" : "0", "enlightenment_common_resistance" : "0",  "enlightenment_common_resistance2" : "0",
-    "enlightenment_great_inc_hp": "10", "enlightenment_great_base_hp": "95", "enlightenment_great_var_hp" : "0", "enlightenment_great_resistance" : "5",  "enlightenment_great_resistance2" : "0",
-    "enlightenment_rare_inc_hp": "11", "enlightenment_rare_base_hp": "121", "enlightenment_rare_var_hp" : "0", "enlightenment_rare_resistance" : "5",  "enlightenment_rare_resistance2" : "5",
-    "enlightenment_epic_inc_hp": "14", "enlightenment_epic_base_hp": "159", "enlightenment_epic_var_hp" : "0", "enlightenment_epic_resistance" : "5",  "enlightenment_epic_resistance2" : "5",
-    "enlightenment_perfect_epic_inc_hp": "17", "enlightenment_perfect_epic_base_hp": "197", "enlightenment_perfect_epic_var_hp" : "0", "enlightenment_perfect_epic_resistance" : "5",  "enlightenment_perfect_epic_resistance2" : "5",
-    "enlightenment_legendary_inc_hp": "20", "enlightenment_legendary_base_hp": "260", "enlightenment_legendary_var_hp" : "0", "enlightenment_legendary_resistance" : "5",  "enlightenment_legendary_resistance2" : "5",
-    "enlightenment_ancient_legendary_inc_hp": "23", "enlightenment_ancient_legendary_base_hp": "323", "enlightenment_ancient_legendary_var_hp" : "7", "enlightenment_ancient_legendary_resistance" : "5",  "enlightenment_ancient_legendary_resistance2" : "5",
-    "enlightenment_mythic_inc_hp": "26", "enlightenment_mythic_base_hp": "386", "enlightenment_mythic_var_hp" : "7", "enlightenment_mythic_resistance" : "5",  "enlightenment_mythic_resistance2" : "5",
-
-    "giants_contract_resistance_type": "none",
-    "giants_contract_resistance2_type": "none",
-    "giants_contract_common_inc_hp": "9", "giants_contract_common_base_hp": "79", "giants_contract_common_var_hp" : "0", "giants_contract_common_resistance" : "0",  "giants_contract_common_resistance2" : "0",
-    "giants_contract_great_inc_hp": "11", "giants_contract_great_base_hp": "111", "giants_contract_great_var_hp" : "0", "giants_contract_great_resistance" : "0",  "giants_contract_great_resistance2" : "0",
-    "giants_contract_rare_inc_hp": "13", "giants_contract_rare_base_hp": "138", "giants_contract_rare_var_hp" : "0", "giants_contract_rare_resistance" : "0",  "giants_contract_rare_resistance2" : "0",
-    "giants_contract_epic_inc_hp": "15", "giants_contract_epic_base_hp": "175", "giants_contract_epic_var_hp" : "0", "giants_contract_epic_resistance" : "0",  "giants_contract_epic_resistance2" : "0",
-    "giants_contract_perfect_epic_inc_hp": "18", "giants_contract_perfect_epic_base_hp": "218", "giants_contract_perfect_epic_var_hp" : "0", "giants_contract_perfect_epic_resistance" : "0",  "giants_contract_perfect_epic_resistance2" : "0",
-    "giants_contract_legendary_inc_hp": "22", "giants_contract_legendary_base_hp": "272", "giants_contract_legendary_var_hp" : "0", "giants_contract_legendary_resistance" : "0",  "giants_contract_legendary_resistance2" : "0",
-    "giants_contract_ancient_legendary_inc_hp": "25", "giants_contract_ancient_legendary_base_hp": "350", "giants_contract_ancient_legendary_var_hp" : "0", "giants_contract_ancient_legendary_resistance" : "0",  "giants_contract_ancient_legendary_resistance2" : "0",
-    "giants_contract_mythic_inc_hp": "28", "giants_contract_mythic_base_hp": "428", "giants_contract_mythic_var_hp" : "0", "giants_contract_mythic_resistance" : "0",  "giants_contract_mythic_resistance2" : "0",
-
-    "spectre_book_resistance_type": "none",
-    "spectre_book_resistance2_type": "none",
-    "spectre_book_common_inc_hp": "9", "spectre_book_common_base_hp": "79", "spectre_book_common_var_hp" : "0", "spectre_book_common_resistance" : "0",  "spectre_book_common_resistance2" : "0",
-    "spectre_book_great_inc_hp": "11", "spectre_book_great_base_hp": "111", "spectre_book_great_var_hp" : "0", "spectre_book_great_resistance" : "0",  "spectre_book_great_resistance2" : "0",
-    "spectre_book_rare_inc_hp": "13", "spectre_book_rare_base_hp": "138", "spectre_book_rare_var_hp" : "0", "spectre_book_rare_resistance" : "0",  "spectre_book_rare_resistance2" : "0",
-    "spectre_book_epic_inc_hp": "15", "spectre_book_epic_base_hp": "175", "spectre_book_epic_var_hp" : "0", "spectre_book_epic_resistance" : "0",  "spectre_book_epic_resistance2" : "0",
-    "spectre_book_perfect_epic_inc_hp": "18", "spectre_book_perfect_epic_base_hp": "218", "spectre_book_perfect_epic_var_hp" : "0", "spectre_book_perfect_epic_resistance" : "0",  "spectre_book_perfect_epic_resistance2" : "0",
-    "spectre_book_legendary_inc_hp": "21", "spectre_book_legendary_base_hp": "272", "spectre_book_legendary_var_hp" : "0", "spectre_book_legendary_resistance" : "0",  "spectre_book_legendary_resistance2" : "0",
-    "spectre_book_ancient_legendary_inc_hp": "25", "spectre_book_ancient_legendary_base_hp": "350", "spectre_book_ancient_legendary_var_hp" : "0", "spectre_book_ancient_legendary_resistance" : "0",  "spectre_book_ancient_legendary_resistance2" : "0",
-    "spectre_book_mythic_inc_hp": "28", "spectre_book_mythic_base_hp": "428", "spectre_book_mythic_var_hp" : "0", "spectre_book_mythic_resistance" : "0",  "spectre_book_mythic_resistance2" : "0",
-
-    "none_resistance_type": "0",
-    "none_resistance2_type": "0",
-    "none_common_inc_hp": "0", "none_common_base_hp": "0", "none_common_var_hp" : "0", "none_common_resistance" : "0",  "none_common_resistance2" : "0",
-    "none_great_inc_hp": "0", "none_great_base_hp": "0", "none_great_var_hp" : "0", "none_great_resistance" : "0",  "none_great_resistance2" : "0",
-    "none_rare_inc_hp": "0", "none_rare_base_hp": "0", "none_rare_var_hp" : "0", "none_rare_resistance" : "0",  "none_rare_resistance2" : "0",
-    "none_epic_inc_hp": "0", "none_epic_base_hp": "0", "none_epic_var_hp" : "0", "none_epic_resistance" : "0",  "none_epic_resistance2" : "0",
-    "none_perfect_epic_inc_hp": "0", "none_perfect_epic_base_hp": "0", "none_perfect_epic_var_hp" : "0", "none_perfect_epic_resistance" : "0",  "none_perfect_epic_resistance2" : "0",
-    "none_legendary_inc_hp": "0", "none_legendary_base_hp": "0", "none_legendary_var_hp" : "0", "none_legendary_resistance" : "0",  "none_legendary_resistance2" : "0",
-    "none_ancient_legendary_inc_hp": "0", "none_ancient_legendary_base_hp": "0", "none_ancient_legendary_var_hp" : "0", "none_ancient_legendary_resistance" : "0",  "none_ancient_legendary_resistance2" : "0",
-    "none_mythic_inc_hp": "0", "none_mythic_base_hp": "0", "none_mythic_var_hp" : "0", "none_mythic_resistance" : "0",  "none_mythic_resistance2" : "0",
-    }
+    "arcanum_of_time": {
+        "resistance_type":"none",
+        "resistance2_type":"none",
+		"inc": [10,12,14,16,20,24,27,30,30,30,30,30,30,30,30,30],
+		"base": [85,122,149,191,240,309,385,470,470,470,470,470,470,470,470,470],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance2": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+	},
+	"arcane_archer": {
+        "resistance_type":"none",
+        "resistance2_type":"none",
+		"inc": [8,10,11,14,17,20,23,26,26,26,26,26,26,26,26],
+		"base": [68,95,121,159,197,260,323,386,386,386,386,386,386,386,386],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance2": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+	},
+	"art_of_combat": {
+        "resistance_type":"none",
+        "resistance2_type":"none",
+		"inc": [8,10,11,14,17,20,23,26,26,26,26,26,26,26,26],
+		"base": [68,95,121,159,197,260,323,386,386,386,386,386,386,386,386],
+		"var_hp": [0,0,0,0,0,0,0,8,8,8,8,8,8,10,10],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance2": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+	},
+	"ice_realm": {
+        "resistance_type":"none",
+        "resistance2_type":"none",
+		"inc": [8,10,11,14,17,20,23,26,26,26,26,26,26,26,26],
+		"base": [68,95,121,159,197,260,323,386,386,386,386,386,386,386,386],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance2": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+	},
+	"enlightenment": {
+        "resistance_type":"colission resistance",
+        "resistance2_type":"projectile resistance",
+		"inc": [8,10,11,14,17,20,23,26,26,26,26,26,26,26,26],
+		"base": [68,95,121,159,197,260,323,386,386,386,386,386,386,386,386],
+		"var_hp": [0,0,0,0,0,0,7,7,7,9,9,9,9,9,9],
+		"resistance": [0,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
+		"resistance2": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+	},
+	"giants_contract": {
+        "resistance_type":"none",
+        "resistance2_type":"none",
+		"inc": [9,11,13,15,18,22,25,28,28,28,28,28,28,28,28],
+		"base": [79,111,138,175,218,272,350,428,428,428,428,428,428,428,428],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance2": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+	},
+	"spectre_book": {
+        "resistance_type":"none",
+        "resistance2_type":"none",
+		"inc": [9,11,13,15,18,22,25,28,28,28,28,28,28,28,28],
+		"base": [79,111,138,175,218,272,350,428,428,428,428,428,428,428,428],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance2": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+	},
+	"none": {
+        "resistance_type":"none",
+        "resistance2_type":"none",
+		"inc": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"base": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"resistance2": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"basic_stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	}
+}
 
 
 
@@ -597,13 +571,13 @@ StatsBook =  {
 
 
 TalentStats = {
-    "strength_0": "0","strength_1": "200","strength_2": "300","strength_3": "410","strength_4": "530","strength_5": "650","strength_6": "780","strength_7": "930","strength_8": "1080","strength_9": "1250","strength_10": "1430","strength_11": "1620","strength_12": "1830","strength_13": "2050","strength_14": "2290","strength_15": "2540","strength_16": "2800","strength_17": "3090","strength_18": "3390","strength_19": "3710","strength_20": "4050","strength_21": "4390","strength_22": "4750","strength_23": "5130","strength_24": "5530","strength_25": "5950",
-    "power_0": "0","power_1": "50","power_2": "75","power_3": "100","power_4": "130","power_5": "170","power_6": "210","power_7": "250","power_8": "300","power_9": "360","power_10": "420","power_11": "480","power_12": "560","power_13": "640","power_14": "720","power_15": "820","power_16": "920","power_17": "1030","power_18": "1140","power_19": "1270","power_20": "1400","power_21": "1540","power_22": "1680","power_23": "1840","power_24": "2000","power_25": "2180",
-    "recover_0": "0","recover_1": "50","recover_2": "100","recover_3": "150","recover_4": "200","recover_5": "260","recover_6": "320","recover_7": "390","recover_8": "460","recover_9": "530","recover_10": "600","recover_11": "680","recover_12": "760","recover_13": "840","recover_14": "930","recover_15": "1030","recover_16": "1130","recover_17": "1230","recover_18": "1340","recover_19": "1450","recover_20": "1570","recover_21": "1690","recover_22": "1810","recover_23": "1940","recover_24": "2070","recover_25": "2200",
-    "block_0": "0","block_1": "80","block_2": "120","block_3": "160","block_4": "210","block_5": "270","block_6": "330","block_7": "400","block_8": "480","block_9": "570","block_10": "670","block_11": "780","block_12": "900","block_13": "1020","block_14": "1150","block_15": "1300","block_16": "1450","block_17": "1600","block_18": "1750","block_19": "1900","block_20": "2100","block_21": "2300","block_22": "2500","block_23": "2700","block_24": "2900","block_25": "3100",
-    "iron_bulwark_0": "0","iron_bulwark_1": "50","iron_bulwark_2": "75","iron_bulwark_3": "100","iron_bulwark_4": "130","iron_bulwark_5": "170","iron_bulwark_6": "210","iron_bulwark_7": "250","iron_bulwark_8": "300","iron_bulwark_9": "360","iron_bulwark_10": "420","iron_bulwark_11": "480","iron_bulwark_12": "560","iron_bulwark_13": "640","iron_bulwark_14": "720","iron_bulwark_15": "820","iron_bulwark_16": "920","iron_bulwark_17": "1030","iron_bulwark_18": "1140","iron_bulwark_19": "1270","iron_bulwark_20": "1410","iron_bulwark_21": "1550","iron_bulwark_22": "1700","iron_bulwark_23": "1850","iron_bulwark_24": "2000","iron_bulwark_25": "2160",
-    "enhanced_equipment_0": "0","enhanced_equipment_1": "3","enhanced_equipment_2": "6","enhanced_equipment_3": "9","enhanced_equipment_4": "12","enhanced_equipment_5": "15","enhanced_equipment_6": "18","enhanced_equipment_7": "21","enhanced_equipment_8": "24","enhanced_equipment_9": "27","enhanced_equipment_10": "30",
-    "hero_power_up_0": "0","hero_power_up_1": "4","hero_power_up_2": "8","hero_power_up_3": "12","hero_power_up_4": "16","hero_power_up_5": "20","hero_power_up_6": "24","hero_power_up_7": "28","hero_power_up_8": "32","hero_power_up_9": "36","hero_power_up_10": "40",
+    "strength_0": 0,"strength_1": "200","strength_2": "300","strength_3": "410","strength_4": "530","strength_5": "650","strength_6": "780","strength_7": "930","strength_8": "1080","strength_9": "1250","strength_10": "1430","strength_11": "1620","strength_12": "1830","strength_13": "2050","strength_14": "2290","strength_15": "2540","strength_16": "2800","strength_17": "3090","strength_18": "3390","strength_19": "3710","strength_20": "4050","strength_21": "4390","strength_22": "4750","strength_23": "5130","strength_24": "5530","strength_25": "5950",
+    "power_0": 0,"power_1": "50","power_2": "75","power_3": "100","power_4": "130","power_5": "170","power_6": "210","power_7": "250","power_8": "300","power_9": "360","power_10": "420","power_11": "480","power_12": "560","power_13": "640","power_14": "720","power_15": "820","power_16": "920","power_17": "1030","power_18": "1140","power_19": "1270","power_20": "1400","power_21": "1540","power_22": "1680","power_23": "1840","power_24": "2000","power_25": "2180",
+    "recover_0": 0,"recover_1": "50","recover_2": "100","recover_3": "150","recover_4": "200","recover_5": "260","recover_6": "320","recover_7": "390","recover_8": "460","recover_9": "530","recover_10": "600","recover_11": "680","recover_12": "760","recover_13": "840","recover_14": "930","recover_15": "1030","recover_16": "1130","recover_17": "1230","recover_18": "1340","recover_19": "1450","recover_20": "1570","recover_21": "1690","recover_22": "1810","recover_23": "1940","recover_24": "2070","recover_25": "2200",
+    "block_0": 0,"block_1": "80","block_2": "120","block_3": "160","block_4": "210","block_5": "270","block_6": "330","block_7": "400","block_8": "480","block_9": "570","block_10": "670","block_11": "780","block_12": "900","block_13": "1020","block_14": "1150","block_15": "1300","block_16": "1450","block_17": "1600","block_18": "1750","block_19": "1900","block_20": "2100","block_21": "2300","block_22": "2500","block_23": "2700","block_24": "2900","block_25": "3100",
+    "iron_bulwark_0": 0,"iron_bulwark_1": "50","iron_bulwark_2": "75","iron_bulwark_3": "100","iron_bulwark_4": "130","iron_bulwark_5": "170","iron_bulwark_6": "210","iron_bulwark_7": "250","iron_bulwark_8": "300","iron_bulwark_9": "360","iron_bulwark_10": "420","iron_bulwark_11": "480","iron_bulwark_12": "560","iron_bulwark_13": "640","iron_bulwark_14": "720","iron_bulwark_15": "820","iron_bulwark_16": "920","iron_bulwark_17": "1030","iron_bulwark_18": "1140","iron_bulwark_19": "1270","iron_bulwark_20": "1410","iron_bulwark_21": "1550","iron_bulwark_22": "1700","iron_bulwark_23": "1850","iron_bulwark_24": "2000","iron_bulwark_25": "2160",
+    "enhanced_equipment_0": 0,"enhanced_equipment_1": "3","enhanced_equipment_2": "6","enhanced_equipment_3": "9","enhanced_equipment_4": "12","enhanced_equipment_5": "15","enhanced_equipment_6": "18","enhanced_equipment_7": "21","enhanced_equipment_8": "24","enhanced_equipment_9": "27","enhanced_equipment_10": "30",
+    "hero_power_up_0": 0,"hero_power_up_1": "4","hero_power_up_2": "8","hero_power_up_3": "12","hero_power_up_4": "16","hero_power_up_5": "20","hero_power_up_6": "24","hero_power_up_7": "28","hero_power_up_8": "32","hero_power_up_9": "36","hero_power_up_10": "40",
     }
 
 
@@ -688,6 +662,9 @@ HerosStats = {
     
     "bobo_star_0": [0,0,0],"bobo_star_2": [240,0,0],"bobo_star_7": [240,1800,0],"bobo_star_8": [240,1800,5],
     "bobo_0": [0,0,0,0,0],"bobo_20": [150,0,0,0,0],"bobo_40": [150,5,0,0,0],"bobo_60": [150,5,5,0,0],"bobo_80": [150,5,5,20,0],"bobo_120": [150,5,5,20,6],
+
+    "stella_star_0": [0,0,0],"stella_star_2": [3,0,0],"stella_star_7": [3,10,0],"stella_star_8": [3,1800,8],
+    "stella_0": [0,0,0,0,0],"stella_20": [125,0,0,0,0],"stella_40": [125,6,0,0,0],"stella_60": [125,6,6,0,0],"stella_80": [125,6,6,7,0],"stella_120": [125,6,6,7,7],
     }
 
 
@@ -700,49 +677,49 @@ HerosStats = {
 
 
 StuffAltar = {
-    "0_inc_attack": "10","0_attack": "0",
-    "10_inc_attack": "10","10_attack": "100",
-    "20_inc_attack": "15","20_attack": "200",
-    "30_inc_attack": "15","30_attack": "350",
-    "40_inc_attack": "20","40_attack": "500",
-    "50_inc_attack": "20","50_attack": "700",
-    "60_inc_attack": "30","60_attack": "900",
-    "70_inc_attack": "30","70_attack": "1200",
-    "80_inc_attack": "40","80_attack": "1500",
-    "90_inc_attack": "50","90_attack": "1900",
-    "100_inc_attack": "70","100_attack": "2400",
-    "110_inc_attack": "100","110_attack": "3100",
-    "120_inc_attack": "0","120_attack": "4100",
+    "0_inc_attack": 10,"0_attack": 0,
+    "10_inc_attack": 10,"10_attack": 100,
+    "20_inc_attack": 15,"20_attack": 200,
+    "30_inc_attack": 15,"30_attack": 350,
+    "40_inc_attack": 20,"40_attack": 500,
+    "50_inc_attack": 20,"50_attack": 700,
+    "60_inc_attack": 30,"60_attack": 900,
+    "70_inc_attack": 30,"70_attack": 1200,
+    "80_inc_attack": 40,"80_attack": 1500,
+    "90_inc_attack": 50,"90_attack": 1900,
+    "100_inc_attack": 70,"100_attack": 2400,
+    "110_inc_attack": 100,"110_attack": 3100,
+    "120_inc_attack": 0,"120_attack": 4100,
 
 
-    "0_inc_hp": "50","0_hp": "0",
-    "10_inc_hp": "50","10_hp": "500",
-    "20_inc_hp": "75","20_hp": "1000",
-    "30_inc_hp": "75","30_hp": "1750",
-    "40_inc_hp": "100","40_hp": "2500",
-    "50_inc_hp": "100","50_hp": "3500",
-    "60_inc_hp": "150","60_hp": "4500",
-    "70_inc_hp": "150","70_hp": "6000",
-    "80_inc_hp": "200","80_hp": "7500",
-    "90_inc_hp": "250","90_hp": "9500",
-    "100_inc_hp": "350","100_hp": "12000",
-    "110_inc_hp": "500","110_hp": "15500",
-    "120_inc_hp": "0","120_hp": "20500",
+    "0_inc_hp": 50,"0_hp": 0,
+    "10_inc_hp": 50,"10_hp": 500,
+    "20_inc_hp": 75,"20_hp": 1000,
+    "30_inc_hp": 75,"30_hp": 1750,
+    "40_inc_hp": 100,"40_hp": 2500,
+    "50_inc_hp": 100,"50_hp": 3500,
+    "60_inc_hp": 150,"60_hp": 4500,
+    "70_inc_hp": 150,"70_hp": 6000,
+    "80_inc_hp": 200,"80_hp": 7500,
+    "90_inc_hp": 250,"90_hp": 9500,
+    "100_inc_hp": 350,"100_hp": 12000,
+    "110_inc_hp": 500,"110_hp": 15500,
+    "120_inc_hp": 0,"120_hp": 20500,
 
 
-    "0_inc_healing_effect": "5","0_healing_effect": "0",
-    "10_inc_healing_effect": "10","10_healing_effect": "50",
-    "20_inc_healing_effect": "10","20_healing_effect": "150",
-    "30_inc_healing_effect": "15","30_healing_effect": "250",
-    "40_inc_healing_effect": "15","40_healing_effect": "400",
-    "50_inc_healing_effect": "15","50_healing_effect": "550",
-    "60_inc_healing_effect": "20","60_healing_effect": "700",
-    "70_inc_healing_effect": "20","70_healing_effect": "900",
-    "80_inc_healing_effect": "30","80_healing_effect": "1100",
-    "90_inc_healing_effect": "30","90_healing_effect": "1400",
-    "100_inc_healing_effect": "40","100_healing_effect": "1700",
-    "110_inc_healing_effect": "50","110_healing_effect": "2100",
-    "120_inc_healing_effect": "0","120_healing_effect": "2600",
+    "0_inc_healing_effect": 5,"0_healing_effect": 0,
+    "10_inc_healing_effect": 10,"10_healing_effect": 50,
+    "20_inc_healing_effect": 10,"20_healing_effect": 150,
+    "30_inc_healing_effect": 15,"30_healing_effect": 250,
+    "40_inc_healing_effect": 15,"40_healing_effect": 400,
+    "50_inc_healing_effect": 15,"50_healing_effect": 550,
+    "60_inc_healing_effect": 20,"60_healing_effect": 700,
+    "70_inc_healing_effect": 20,"70_healing_effect": 900,
+    "80_inc_healing_effect": 30,"80_healing_effect": 1100,
+    "90_inc_healing_effect": 30,"90_healing_effect": 1400,
+    "100_inc_healing_effect": 40,"100_healing_effect": 1700,
+    "110_inc_healing_effect": 50,"110_healing_effect": 2100,
+    "120_inc_healing_effect": 0,"120_healing_effect": 2600,
     }
 
 
@@ -755,49 +732,49 @@ StuffAltar = {
 
 
 HerosAltar = {
-    "0_inc_attack": "10","0_attack": "0",
-    "10_inc_attack": "10","10_attack": "100",
-    "20_inc_attack": "15","20_attack": "200",
-    "30_inc_attack": "15","30_attack": "350",
-    "40_inc_attack": "20","40_attack": "500",
-    "50_inc_attack": "20","50_attack": "700",
-    "60_inc_attack": "30","60_attack": "900",
-    "70_inc_attack": "30","70_attack": "1200",
-    "80_inc_attack": "40","80_attack": "1500",
-    "90_inc_attack": "50","90_attack": "1900",
-    "100_inc_attack": "70","100_attack": "2400",
-    "110_inc_attack": "100","110_attack": "3100",
-    "120_inc_attack": "0","120_attack": "4100",
+    "0_inc_attack": 10,"0_attack": 0,
+    "10_inc_attack": 10,"10_attack": 100,
+    "20_inc_attack": 15,"20_attack": 200,
+    "30_inc_attack": 15,"30_attack": 350,
+    "40_inc_attack": 20,"40_attack": 500,
+    "50_inc_attack": 20,"50_attack": 700,
+    "60_inc_attack": 30,"60_attack": 900,
+    "70_inc_attack": 30,"70_attack": 1200,
+    "80_inc_attack": 40,"80_attack": 1500,
+    "90_inc_attack": 50,"90_attack": 1900,
+    "100_inc_attack": 70,"100_attack": 2400,
+    "110_inc_attack": 100,"110_attack": 3100,
+    "120_inc_attack": 0,"120_attack": 4100,
 
 
-    "0_inc_hp": "50","0_hp": "0",
-    "10_inc_hp": "50","10_hp": "500",
-    "20_inc_hp": "75","20_hp": "1000",
-    "30_inc_hp": "75","30_hp": "1750",
-    "40_inc_hp": "100","40_hp": "2500",
-    "50_inc_hp": "100","50_hp": "3500",
-    "60_inc_hp": "150","60_hp": "4500",
-    "70_inc_hp": "150","70_hp": "6000",
-    "80_inc_hp": "200","80_hp": "7500",
-    "90_inc_hp": "250","90_hp": "9500",
-    "100_inc_hp": "350","100_hp": "12000",
-    "110_inc_hp": "500","110_hp": "15500",
-    "120_inc_hp": "0","120_hp": "20500",
+    "0_inc_hp": 50,"0_hp": 0,
+    "10_inc_hp": 50,"10_hp": 500,
+    "20_inc_hp": 75,"20_hp": 1000,
+    "30_inc_hp": 75,"30_hp": 1750,
+    "40_inc_hp": 100,"40_hp": 2500,
+    "50_inc_hp": 100,"50_hp": 3500,
+    "60_inc_hp": 150,"60_hp": 4500,
+    "70_inc_hp": 150,"70_hp": 6000,
+    "80_inc_hp": 200,"80_hp": 7500,
+    "90_inc_hp": 250,"90_hp": 9500,
+    "100_inc_hp": 350,"100_hp": 12000,
+    "110_inc_hp": 500,"110_hp": 15500,
+    "120_inc_hp": 0,"120_hp": 20500,
 
 
-    "0_inc_projectile_resistance": "5","0_projectile_resistance": "0",
-    "10_inc_projectile_resistance": "10","10_projectile_resistance": "50",
-    "20_inc_projectile_resistance": "10","20_projectile_resistance": "150",
-    "30_inc_projectile_resistance": "15","30_projectile_resistance": "250",
-    "40_inc_projectile_resistance": "15","40_projectile_resistance": "400",
-    "50_inc_projectile_resistance": "15","50_projectile_resistance": "550",
-    "60_inc_projectile_resistance": "20","60_projectile_resistance": "700",
-    "70_inc_projectile_resistance": "20","70_projectile_resistance": "900",
-    "80_inc_projectile_resistance": "30","80_projectile_resistance": "1100",
-    "90_inc_projectile_resistance": "30","90_projectile_resistance": "1400",
-    "100_inc_projectile_resistance": "40","100_projectile_resistance": "1700",
-    "110_inc_projectile_resistance": "50","110_projectile_resistance": "2100",
-    "120_inc_projectile_resistance": "0","120_projectile_resistance": "2600",
+    "0_inc_projectile_resistance": 5,"0_projectile_resistance": 0,
+    "10_inc_projectile_resistance": 10,"10_projectile_resistance": 50,
+    "20_inc_projectile_resistance": 10,"20_projectile_resistance": 150,
+    "30_inc_projectile_resistance": 15,"30_projectile_resistance": 250,
+    "40_inc_projectile_resistance": 15,"40_projectile_resistance": 400,
+    "50_inc_projectile_resistance": 15,"50_projectile_resistance": 550,
+    "60_inc_projectile_resistance": 20,"60_projectile_resistance": 700,
+    "70_inc_projectile_resistance": 20,"70_projectile_resistance": 900,
+    "80_inc_projectile_resistance": 30,"80_projectile_resistance": 1100,
+    "90_inc_projectile_resistance": 30,"90_projectile_resistance": 1400,
+    "100_inc_projectile_resistance": 40,"100_projectile_resistance": 1700,
+    "110_inc_projectile_resistance": 50,"110_projectile_resistance": 2100,
+    "120_inc_projectile_resistance": 0,"120_projectile_resistance": 2600,
     }
 
 
@@ -810,19 +787,19 @@ HerosAltar = {
 
 
 StuffAltarAscension = {
-    "0_attack":"0","0_hp":"0","0_healing_effect":"0","0_equipment_base":"0",
-    "1_attack":"0","1_hp":"5","1_healing_effect":"0","1_equipment_base":"2",
-    "2_attack":"5","2_hp":"5","2_healing_effect":"0","2_equipment_base":"4",
-    "3_attack":"5","3_hp":"5","3_healing_effect":"5","3_equipment_base":"6",
-    "4_attack":"5","4_hp":"10","4_healing_effect":"5","4_equipment_base":"8",
-    "5_attack":"10","5_hp":"10","5_healing_effect":"5","5_equipment_base":"10",
-    "6_attack":"10","6_hp":"10","6_healing_effect":"10","6_equipment_base":"13",
-    "7_attack":"10","7_hp":"15","7_healing_effect":"10","7_equipment_base":"16",
-    "8_attack":"15","8_hp":"15","8_healing_effect":"10","8_equipment_base":"19",
-    "9_attack":"15","9_hp":"15","9_healing_effect":"15","9_equipment_base":"21",
-    "10_attack":"15","10_hp":"20","10_healing_effect":"15","10_equipment_base":"24",
-    "11_attack":"20","11_hp":"20","11_healing_effect":"15","11_equipment_base":"27",
-    "12_attack":"20","12_hp":"20","12_healing_effect":"20","12_equipment_base":"30",
+    "0_attack":0,"0_hp":0,"0_healing_effect":0,"0_equipment_base":0,
+    "1_attack":0,"1_hp":5,"1_healing_effect":0,"1_equipment_base":2,
+    "2_attack":5,"2_hp":5,"2_healing_effect":0,"2_equipment_base":4,
+    "3_attack":5,"3_hp":5,"3_healing_effect":5,"3_equipment_base":6,
+    "4_attack":5,"4_hp":10,"4_healing_effect":5,"4_equipment_base":8,
+    "5_attack":10,"5_hp":10,"5_healing_effect":5,"5_equipment_base":10,
+    "6_attack":10,"6_hp":10,"6_healing_effect":10,"6_equipment_base":13,
+    "7_attack":10,"7_hp":15,"7_healing_effect":10,"7_equipment_base":16,
+    "8_attack":15,"8_hp":15,"8_healing_effect":10,"8_equipment_base":19,
+    "9_attack":15,"9_hp":15,"9_healing_effect":15,"9_equipment_base":21,
+    "10_attack":15,"10_hp":20,"10_healing_effect":15,"10_equipment_base":24,
+    "11_attack":20,"11_hp":20,"11_healing_effect":15,"11_equipment_base":27,
+    "12_attack":20,"12_hp":20,"12_healing_effect":20,"12_equipment_base":30,
     }
 
 
@@ -835,19 +812,19 @@ StuffAltarAscension = {
 
 
 HerosAltarAscension = {
-    "0_attack":"0","0_hp":"0","0_hp_drop":"0","0_heros_base":"0",
-    "1_attack":"0","1_hp":"5","1_hp_drop":"0","1_heros_base":"2",
-    "2_attack":"5","2_hp":"5","2_hp_drop":"0","2_heros_base":"4",
-    "3_attack":"5","3_hp":"5","3_hp_drop":"5","3_heros_base":"6",
-    "4_attack":"5","4_hp":"10","4_hp_drop":"5","4_heros_base":"8",
-    "5_attack":"10","5_hp":"10","5_hp_drop":"5","5_heros_base":"10",
-    "6_attack":"10","6_hp":"10","6_hp_drop":"10","6_heros_base":"13",
-    "7_attack":"10","7_hp":"15","7_hp_drop":"10","7_heros_base":"16",
-    "8_attack":"15","8_hp":"15","8_hp_drop":"10","8_heros_base":"19",
-    "9_attack":"15","9_hp":"15","9_hp_drop":"15","9_heros_base":"21",
-    "10_attack":"15","10_hp":"20","10_hp_drop":"15","10_heros_base":"24",
-    "11_attack":"20","11_hp":"20","11_hp_drop":"15","11_heros_base":"27",
-    "12_attack":"20","12_hp":"20","12_hp_drop":"20","12_heros_base":"30",
+    "0_attack":0,"0_hp":0,"0_hp_drop":0,"0_heros_base":0,
+    "1_attack":0,"1_hp":"5","1_hp_drop":0,"1_heros_base":2,
+    "2_attack":5,"2_hp":5,"2_hp_drop":0,"2_heros_base":4,
+    "3_attack":5,"3_hp":5,"3_hp_drop":5,"3_heros_base":6,
+    "4_attack":5,"4_hp":10,"4_hp_drop":5,"4_heros_base":8,
+    "5_attack":10,"5_hp":10,"5_hp_drop":5,"5_heros_base":10,
+    "6_attack":10,"6_hp":10,"6_hp_drop":10,"6_heros_base":13,
+    "7_attack":10,"7_hp":15,"7_hp_drop":10,"7_heros_base":16,
+    "8_attack":15,"8_hp":15,"8_hp_drop":10,"8_heros_base":19,
+    "9_attack":15,"9_hp":15,"9_hp_drop":15,"9_heros_base":21,
+    "10_attack":15,"10_hp":20,"10_hp_drop":15,"10_heros_base":24,
+    "11_attack":20,"11_hp":20,"11_hp_drop":15,"11_heros_base":27,
+    "12_attack":20,"12_hp":20,"12_hp_drop":20,"12_heros_base":30,
     }
 
 
@@ -860,32 +837,32 @@ HerosAltarAscension = {
 
 
 JewelStats = {
-    "kunzite_lvl1_bonus1": "30", #sure
-    "kunzite_lvl2_bonus1": "50", #sure
-    "kunzite_lvl3_bonus1": "80", #sure
-    "kunzite_lvl4_bonus1": "120", #sure
-    "kunzite_lvl5_bonus1": "160", #sure
-    "kunzite_lvl6_bonus1": "220", #sure
-    "kunzite_lvl7_bonus1": "280", #sure
-    "kunzite_lvl8_bonus1": "350", #sure
-    "kunzite_lvl9_bonus1": "440", #sure
-    "kunzite_lvl10_bonus1": "550", #sure
-    "kunzite_lvl11_bonus1": "690", #sure
-    "kunzite_lvl12_bonus1": "830", #sure
-    "kunzite_lvl13_bonus1": "1000", #sure
-    "kunzite_lvl1_bonus2": "15", #sure
-    "kunzite_lvl2_bonus2": "25", #sure
-    "kunzite_lvl3_bonus2": "40", #sure
-    "kunzite_lvl4_bonus2": "60", #sure
-    "kunzite_lvl5_bonus2": "80", #sure
-    "kunzite_lvl6_bonus2": "110", #sure
-    "kunzite_lvl7_bonus2": "140", #sure
-    "kunzite_lvl8_bonus2": "175", #sure
-    "kunzite_lvl9_bonus2": "220", #sure
-    "kunzite_lvl10_bonus2": "275", #sure
-    "kunzite_lvl11_bonus2": "345", #sure
-    "kunzite_lvl12_bonus2": "415", #sure
-    "kunzite_lvl13_bonus2": "500", #sure
+    "kunzite_lvl1_bonus1": 30, #sure
+    "kunzite_lvl2_bonus1": 50, #sure
+    "kunzite_lvl3_bonus1": 80, #sure
+    "kunzite_lvl4_bonus1": 120, #sure
+    "kunzite_lvl5_bonus1": 160, #sure
+    "kunzite_lvl6_bonus1": 220, #sure
+    "kunzite_lvl7_bonus1": 280, #sure
+    "kunzite_lvl8_bonus1": 350, #sure
+    "kunzite_lvl9_bonus1": 440, #sure
+    "kunzite_lvl10_bonus1": 550, #sure
+    "kunzite_lvl11_bonus1": 690, #sure
+    "kunzite_lvl12_bonus1": 830, #sure
+    "kunzite_lvl13_bonus1": 1000, #sure
+    "kunzite_lvl1_bonus2": 15, #sure
+    "kunzite_lvl2_bonus2": 25, #sure
+    "kunzite_lvl3_bonus2": 40, #sure
+    "kunzite_lvl4_bonus2": 60, #sure
+    "kunzite_lvl5_bonus2": 80, #sure
+    "kunzite_lvl6_bonus2": 110, #sure
+    "kunzite_lvl7_bonus2": 140, #sure
+    "kunzite_lvl8_bonus2": 175, #sure
+    "kunzite_lvl9_bonus2": 220, #sure
+    "kunzite_lvl10_bonus2": 275, #sure
+    "kunzite_lvl11_bonus2": 345, #sure
+    "kunzite_lvl12_bonus2": 415, #sure
+    "kunzite_lvl13_bonus2": 500, #sure
     "kunzite_lvl1_bonus3": "none", #sure
     "kunzite_lvl2_bonus3": "none", #sure
     "kunzite_lvl3_bonus3": "none", #sure
@@ -899,34 +876,34 @@ JewelStats = {
     "kunzite_lvl11_bonus3": "none", #sure
     "kunzite_lvl12_bonus3": "none", #sure
     "kunzite_lvl13_bonus3": "none", #sure
-    "kunzite_special_bonus": "1", #sure
+    "kunzite_special_bonus": 1, #sure
 
-    "ruby_lvl1_bonus1": "30", #sure
-    "ruby_lvl2_bonus1": "50", #sure
-    "ruby_lvl3_bonus1": "80", #sure
-    "ruby_lvl4_bonus1": "120", #sure
-    "ruby_lvl5_bonus1": "160", #sure
-    "ruby_lvl6_bonus1": "220", #sure
-    "ruby_lvl7_bonus1": "280", #sure
-    "ruby_lvl8_bonus1": "350", #sure
-    "ruby_lvl9_bonus1": "440", #sure
-    "ruby_lvl10_bonus1": "550", #sure
-    "ruby_lvl11_bonus1": "690", #sure
-    "ruby_lvl12_bonus1": "830", #sure
-    "ruby_lvl13_bonus1": "1000", #sure
-    "ruby_lvl1_bonus2": "15", #sure
-    "ruby_lvl2_bonus2": "25", #sure
-    "ruby_lvl3_bonus2": "40", #sure
-    "ruby_lvl4_bonus2": "60", #sure
-    "ruby_lvl5_bonus2": "80", #sure
-    "ruby_lvl6_bonus2": "110", #sure
-    "ruby_lvl7_bonus2": "140", #sure
-    "ruby_lvl8_bonus2": "175", #sure
-    "ruby_lvl9_bonus2": "220", #sure
-    "ruby_lvl10_bonus2": "275", #sure
-    "ruby_lvl11_bonus2": "345", #sure
-    "ruby_lvl12_bonus2": "415", #sure
-    "ruby_lvl13_bonus2": "500", #sure
+    "ruby_lvl1_bonus1": 30, #sure
+    "ruby_lvl2_bonus1": 50, #sure
+    "ruby_lvl3_bonus1": 80, #sure
+    "ruby_lvl4_bonus1": 120, #sure
+    "ruby_lvl5_bonus1": 160, #sure
+    "ruby_lvl6_bonus1": 220, #sure
+    "ruby_lvl7_bonus1": 280, #sure
+    "ruby_lvl8_bonus1": 350, #sure
+    "ruby_lvl9_bonus1": 440, #sure
+    "ruby_lvl10_bonus1": 550, #sure
+    "ruby_lvl11_bonus1": 690, #sure
+    "ruby_lvl12_bonus1": 830, #sure
+    "ruby_lvl13_bonus1": 1000, #sure
+    "ruby_lvl1_bonus2": 15, #sure
+    "ruby_lvl2_bonus2": 25, #sure
+    "ruby_lvl3_bonus2": 40, #sure
+    "ruby_lvl4_bonus2": 60, #sure
+    "ruby_lvl5_bonus2": 80, #sure
+    "ruby_lvl6_bonus2": 110, #sure
+    "ruby_lvl7_bonus2": 140, #sure
+    "ruby_lvl8_bonus2": 175, #sure
+    "ruby_lvl9_bonus2": 220, #sure
+    "ruby_lvl10_bonus2": 275, #sure
+    "ruby_lvl11_bonus2": 345, #sure
+    "ruby_lvl12_bonus2": 415, #sure
+    "ruby_lvl13_bonus2": 500, #sure
     "ruby_lvl1_bonus3": "none", #sure
     "ruby_lvl2_bonus3": "none", #sure
     "ruby_lvl3_bonus3": "none", #sure
@@ -940,75 +917,75 @@ JewelStats = {
     "ruby_lvl11_bonus3": "none", #sure
     "ruby_lvl12_bonus3": "none", #sure
     "ruby_lvl13_bonus3": "none", #sure
-    "ruby_special_bonus": "1", #sure
+    "ruby_special_bonus": 1, #sure
 
-    "tourmaline_lvl1_bonus1": "50", #sure
-    "tourmaline_lvl2_bonus1": "80", #sure
-    "tourmaline_lvl3_bonus1": "120", #sure
-    "tourmaline_lvl4_bonus1": "160", #sure
-    "tourmaline_lvl5_bonus1": "220", #sure
-    "tourmaline_lvl6_bonus1": "280", #sure
-    "tourmaline_lvl7_bonus1": "350", #sure
-    "tourmaline_lvl8_bonus1": "440", #sure
-    "tourmaline_lvl9_bonus1": "550", #sure
-    "tourmaline_lvl10_bonus1": "690", #sure
-    "tourmaline_lvl11_bonus1": "830", #sure
-    "tourmaline_lvl12_bonus1": "1020",
-    "tourmaline_lvl13_bonus1": "1200", #sure
-    "tourmaline_lvl1_bonus2": "35", #sure
-    "tourmaline_lvl2_bonus2": "55", #sure
-    "tourmaline_lvl3_bonus2": "85", #sure
-    "tourmaline_lvl4_bonus2": "110", #sure
-    "tourmaline_lvl5_bonus2": "150", #sure
-    "tourmaline_lvl6_bonus2": "195", #sure
-    "tourmaline_lvl7_bonus2": "240", #sure
-    "tourmaline_lvl8_bonus2": "300", #sure
-    "tourmaline_lvl9_bonus2": "380", #sure
-    "tourmaline_lvl10_bonus2": "470", #sure
-    "tourmaline_lvl11_bonus2": "580", #sure
-    "tourmaline_lvl12_bonus2": "660",
-    "tourmaline_lvl13_bonus2": "800", #sure
-    "tourmaline_lvl1_bonus3": "0.3", #sure
-    "tourmaline_lvl2_bonus3": "0.5", #sure
-    "tourmaline_lvl3_bonus3": "0.5", #sure
-    "tourmaline_lvl4_bonus3": "0.75", #sure
-    "tourmaline_lvl5_bonus3": "0.8", #sure
-    "tourmaline_lvl6_bonus3": "1.0", #sure
-    "tourmaline_lvl7_bonus3": "1.0", #sure
-    "tourmaline_lvl8_bonus3": "1.0", #sure
-    "tourmaline_lvl9_bonus3": "1.2", #sure
-    "tourmaline_lvl10_bonus3": "1.2", #sure
-    "tourmaline_lvl11_bonus3": "1.25", #sure
-    "tourmaline_lvl12_bonus3": "1.3",
-    "tourmaline_lvl13_bonus3": "1.35", #sure
-    "tourmaline_special_bonus": "1", #sure
+    "tourmaline_lvl1_bonus1": 50, #sure
+    "tourmaline_lvl2_bonus1": 80, #sure
+    "tourmaline_lvl3_bonus1": 120, #sure
+    "tourmaline_lvl4_bonus1": 160, #sure
+    "tourmaline_lvl5_bonus1": 220, #sure
+    "tourmaline_lvl6_bonus1": 280, #sure
+    "tourmaline_lvl7_bonus1": 350, #sure
+    "tourmaline_lvl8_bonus1": 440, #sure
+    "tourmaline_lvl9_bonus1": 550, #sure
+    "tourmaline_lvl10_bonus1": 690, #sure
+    "tourmaline_lvl11_bonus1": 830, #sure
+    "tourmaline_lvl12_bonus1": 1020,
+    "tourmaline_lvl13_bonus1": 1200, #sure
+    "tourmaline_lvl1_bonus2": 35, #sure
+    "tourmaline_lvl2_bonus2": 55, #sure
+    "tourmaline_lvl3_bonus2": 85, #sure
+    "tourmaline_lvl4_bonus2": 110, #sure
+    "tourmaline_lvl5_bonus2": 150, #sure
+    "tourmaline_lvl6_bonus2": 195, #sure
+    "tourmaline_lvl7_bonus2": 240, #sure
+    "tourmaline_lvl8_bonus2": 300, #sure
+    "tourmaline_lvl9_bonus2": 380, #sure
+    "tourmaline_lvl10_bonus2": 470, #sure
+    "tourmaline_lvl11_bonus2": 580, #sure
+    "tourmaline_lvl12_bonus2": 660,
+    "tourmaline_lvl13_bonus2": 800, #sure
+    "tourmaline_lvl1_bonus3": 0.3, #sure
+    "tourmaline_lvl2_bonus3": 0.5, #sure
+    "tourmaline_lvl3_bonus3": 0.5, #sure
+    "tourmaline_lvl4_bonus3": 0.75, #sure
+    "tourmaline_lvl5_bonus3": 0.8, #sure
+    "tourmaline_lvl6_bonus3": 1.0, #sure
+    "tourmaline_lvl7_bonus3": 1.0, #sure
+    "tourmaline_lvl8_bonus3": 1.0, #sure
+    "tourmaline_lvl9_bonus3": 1.2, #sure
+    "tourmaline_lvl10_bonus3": 1.2, #sure
+    "tourmaline_lvl11_bonus3": 1.25, #sure
+    "tourmaline_lvl12_bonus3": 1.3,
+    "tourmaline_lvl13_bonus3": 1.35, #sure
+    "tourmaline_special_bonus": 1, #sure
 
-    "lapis_lvl1_bonus1": "120", #sure
-    "lapis_lvl2_bonus1": "200", #sure
-    "lapis_lvl3_bonus1": "320", #sure
-    "lapis_lvl4_bonus1": "480", #sure
-    "lapis_lvl5_bonus1": "640", #sure
-    "lapis_lvl6_bonus1": "880", #sure
-    "lapis_lvl7_bonus1": "1120", #sure
-    "lapis_lvl8_bonus1": "1400", #sure
-    "lapis_lvl9_bonus1": "1750", #sure
-    "lapis_lvl10_bonus1": "2200", #sure
-    "lapis_lvl11_bonus1": "2700", #sure
-    "lapis_lvl12_bonus1": "3300", #sure
-    "lapis_lvl13_bonus1": "3960", #sure
-    "lapis_lvl1_bonus2": "30", #sure
-    "lapis_lvl2_bonus2": "50", #sure
-    "lapis_lvl3_bonus2": "80", #sure
-    "lapis_lvl4_bonus2": "110", #sure
-    "lapis_lvl5_bonus2": "140", #sure
-    "lapis_lvl6_bonus2": "170", #sure
-    "lapis_lvl7_bonus2": "230", #sure
-    "lapis_lvl8_bonus2": "280", #sure
-    "lapis_lvl9_bonus2": "350", #sure
-    "lapis_lvl10_bonus2": "440", #sure
-    "lapis_lvl11_bonus2": "550", #sure
-    "lapis_lvl12_bonus2": "660", #sure
-    "lapis_lvl13_bonus2": "790", #sure
+    "lapis_lvl1_bonus1": 120, #sure
+    "lapis_lvl2_bonus1": 200, #sure
+    "lapis_lvl3_bonus1": 320, #sure
+    "lapis_lvl4_bonus1": 480, #sure
+    "lapis_lvl5_bonus1": 640, #sure
+    "lapis_lvl6_bonus1": 880, #sure
+    "lapis_lvl7_bonus1": 1120, #sure
+    "lapis_lvl8_bonus1": 1400, #sure
+    "lapis_lvl9_bonus1": 1750, #sure
+    "lapis_lvl10_bonus1": 2200, #sure
+    "lapis_lvl11_bonus1": 2700, #sure
+    "lapis_lvl12_bonus1": 3300, #sure
+    "lapis_lvl13_bonus1": 3960, #sure
+    "lapis_lvl1_bonus2": 30, #sure
+    "lapis_lvl2_bonus2": 50, #sure
+    "lapis_lvl3_bonus2": 80, #sure
+    "lapis_lvl4_bonus2": 110, #sure
+    "lapis_lvl5_bonus2": 140, #sure
+    "lapis_lvl6_bonus2": 170, #sure
+    "lapis_lvl7_bonus2": 230, #sure
+    "lapis_lvl8_bonus2": 280, #sure
+    "lapis_lvl9_bonus2": 350, #sure
+    "lapis_lvl10_bonus2": 440, #sure
+    "lapis_lvl11_bonus2": 550, #sure
+    "lapis_lvl12_bonus2": 660, #sure
+    "lapis_lvl13_bonus2": 790, #sure
     "lapis_lvl1_bonus3": "none", #sure
     "lapis_lvl2_bonus3": "none", #sure
     "lapis_lvl3_bonus3": "none", #sure
@@ -1022,34 +999,34 @@ JewelStats = {
     "lapis_lvl11_bonus3": "none", #sure
     "lapis_lvl12_bonus3": "none", #sure
     "lapis_lvl13_bonus3": "none", #sure
-    "lapis_special_bonus": "3.0", #sure
+    "lapis_special_bonus": 3.0, #sure
 
-    "emerald_lvl1_bonus1": "120", #sure
-    "emerald_lvl2_bonus1": "200", #sure
-    "emerald_lvl3_bonus1": "320", #sure
-    "emerald_lvl4_bonus1": "480", #sure
-    "emerald_lvl5_bonus1": "640", #sure
-    "emerald_lvl6_bonus1": "880", #sure
-    "emerald_lvl7_bonus1": "1120", #sure
-    "emerald_lvl8_bonus1": "1400", #sure
-    "emerald_lvl9_bonus1": "1750", #sure
-    "emerald_lvl10_bonus1": "2200", #sure
-    "emerald_lvl11_bonus1": "2750", #sure
-    "emerald_lvl12_bonus1": "3300", #sure
-    "emerald_lvl13_bonus1": "3960", #sure
-    "emerald_lvl1_bonus2": "1", #sure
-    "emerald_lvl2_bonus2": "2", #sure
-    "emerald_lvl3_bonus2": "2", #sure
-    "emerald_lvl4_bonus2": "3", #sure
-    "emerald_lvl5_bonus2": "4", #sure
-    "emerald_lvl6_bonus2": "5", #sure
-    "emerald_lvl7_bonus2": "5", #sure
-    "emerald_lvl8_bonus2": "6", #sure
-    "emerald_lvl9_bonus2": "7", #sure
-    "emerald_lvl10_bonus2": "8", #sure
-    "emerald_lvl11_bonus2": "9", #sure
-    "emerald_lvl12_bonus2": "10", #sure
-    "emerald_lvl13_bonus2": "11", #sure
+    "emerald_lvl1_bonus1": 120, #sure
+    "emerald_lvl2_bonus1": 200, #sure
+    "emerald_lvl3_bonus1": 320, #sure
+    "emerald_lvl4_bonus1": 480, #sure
+    "emerald_lvl5_bonus1": 640, #sure
+    "emerald_lvl6_bonus1": 880, #sure
+    "emerald_lvl7_bonus1": 1120, #sure
+    "emerald_lvl8_bonus1": 1400, #sure
+    "emerald_lvl9_bonus1": 1750, #sure
+    "emerald_lvl10_bonus1": 2200, #sure
+    "emerald_lvl11_bonus1": 2750, #sure
+    "emerald_lvl12_bonus1": 3300, #sure
+    "emerald_lvl13_bonus1": 3960, #sure
+    "emerald_lvl1_bonus2": 1, #sure
+    "emerald_lvl2_bonus2": 2, #sure
+    "emerald_lvl3_bonus2": 2, #sure
+    "emerald_lvl4_bonus2": 3, #sure
+    "emerald_lvl5_bonus2": 4, #sure
+    "emerald_lvl6_bonus2": 5, #sure
+    "emerald_lvl7_bonus2": 5, #sure
+    "emerald_lvl8_bonus2": 6, #sure
+    "emerald_lvl9_bonus2": 7, #sure
+    "emerald_lvl10_bonus2": 8, #sure
+    "emerald_lvl11_bonus2": 9, #sure
+    "emerald_lvl12_bonus2": 10, #sure
+    "emerald_lvl13_bonus2": 11, #sure
     "emerald_lvl1_bonus3": "none", #sure
     "emerald_lvl2_bonus3": "none", #sure
     "emerald_lvl3_bonus3": "none", #sure
@@ -1063,34 +1040,34 @@ JewelStats = {
     "emerald_lvl11_bonus3": "none", #sure
     "emerald_lvl12_bonus3": "none", #sure
     "emerald_lvl13_bonus3": "none", #sure
-    "emerald_special_bonus": "4", #sure
+    "emerald_special_bonus": 4, #sure
 
-    "topaz_lvl1_bonus1": "15", #sure
-    "topaz_lvl2_bonus1": "30", #sure
-    "topaz_lvl3_bonus1": "45", #sure
-    "topaz_lvl4_bonus1": "65", #sure
-    "topaz_lvl5_bonus1": "90", #sure
-    "topaz_lvl6_bonus1": "120", #sure
-    "topaz_lvl7_bonus1": "155", #sure
-    "topaz_lvl8_bonus1": "195", #sure
-    "topaz_lvl9_bonus1": "245", #sure
-    "topaz_lvl10_bonus1": "305", #sure
-    "topaz_lvl11_bonus1": "365", #sure
-    "topaz_lvl12_bonus1": "435", #sure
-    "topaz_lvl13_bonus1": "520", #sure
-    "topaz_lvl1_bonus2": "1", #sure
-    "topaz_lvl2_bonus2": "2", #sure
-    "topaz_lvl3_bonus2": "2", #sure
-    "topaz_lvl4_bonus2": "3", #sure
-    "topaz_lvl5_bonus2": "3", #sure
-    "topaz_lvl6_bonus2": "4", #sure
-    "topaz_lvl7_bonus2": "4", #sure
-    "topaz_lvl8_bonus2": "5", #sure
-    "topaz_lvl9_bonus2": "5", #sure
-    "topaz_lvl10_bonus2": "5", #sure
-    "topaz_lvl11_bonus2": "5", #sure
-    "topaz_lvl12_bonus2": "6", #sure
-    "topaz_lvl13_bonus2": "6", #sure
+    "topaz_lvl1_bonus1": 15, #sure
+    "topaz_lvl2_bonus1": 30, #sure
+    "topaz_lvl3_bonus1": 45, #sure
+    "topaz_lvl4_bonus1": 65, #sure
+    "topaz_lvl5_bonus1": 90, #sure
+    "topaz_lvl6_bonus1": 120, #sure
+    "topaz_lvl7_bonus1": 155, #sure
+    "topaz_lvl8_bonus1": 195, #sure
+    "topaz_lvl9_bonus1": 245, #sure
+    "topaz_lvl10_bonus1": 305, #sure
+    "topaz_lvl11_bonus1": 365, #sure
+    "topaz_lvl12_bonus1": 435, #sure
+    "topaz_lvl13_bonus1": 520, #sure
+    "topaz_lvl1_bonus2": 1, #sure
+    "topaz_lvl2_bonus2": 2, #sure
+    "topaz_lvl3_bonus2": 2, #sure
+    "topaz_lvl4_bonus2": 3, #sure
+    "topaz_lvl5_bonus2": 3, #sure
+    "topaz_lvl6_bonus2": 4, #sure
+    "topaz_lvl7_bonus2": 4, #sure
+    "topaz_lvl8_bonus2": 5, #sure
+    "topaz_lvl9_bonus2": 5, #sure
+    "topaz_lvl10_bonus2": 5, #sure
+    "topaz_lvl11_bonus2": 5, #sure
+    "topaz_lvl12_bonus2": 6, #sure
+    "topaz_lvl13_bonus2": 6, #sure
     "topaz_lvl1_bonus3": "none", #sure
     "topaz_lvl2_bonus3": "none", #sure
     "topaz_lvl3_bonus3": "none", #sure
@@ -1104,34 +1081,34 @@ JewelStats = {
     "topaz_lvl11_bonus3": "none", #sure
     "topaz_lvl12_bonus3": "none", #sure
     "topaz_lvl13_bonus3": "none", #sure
-    "topaz_special_bonus": "2.5", #sure
+    "topaz_special_bonus": 2.5, #sure
 
-    "amber_lvl1_bonus1": "15", #sure
-    "amber_lvl2_bonus1": "25", #sure
-    "amber_lvl3_bonus1": "40", #sure
-    "amber_lvl4_bonus1": "60", #sure
-    "amber_lvl5_bonus1": "80", #sure
-    "amber_lvl6_bonus1": "110", #sure
-    "amber_lvl7_bonus1": "140", #sure
-    "amber_lvl8_bonus1": "175", #sure
-    "amber_lvl9_bonus1": "220", #sure
-    "amber_lvl10_bonus1": "275", #sure
-    "amber_lvl11_bonus1": "330", #sure
-    "amber_lvl12_bonus1": "420",
-    "amber_lvl13_bonus1": "520", #sure
-    "amber_lvl1_bonus2": "1", #sure
-    "amber_lvl2_bonus2": "2", #sure
-    "amber_lvl3_bonus2": "2", #sure
-    "amber_lvl4_bonus2": "3", #sure
-    "amber_lvl5_bonus2": "3", #sure
-    "amber_lvl6_bonus2": "4", #sure
-    "amber_lvl7_bonus2": "4", #sure
-    "amber_lvl8_bonus2": "5", #sure
-    "amber_lvl9_bonus2": "5", #sure
-    "amber_lvl10_bonus2": "6", #sure
-    "amber_lvl11_bonus2": "6", #sure
-    "amber_lvl12_bonus2": "7",
-    "amber_lvl13_bonus2": "7.5", #sure
+    "amber_lvl1_bonus1": 15, #sure
+    "amber_lvl2_bonus1": 25, #sure
+    "amber_lvl3_bonus1": 40, #sure
+    "amber_lvl4_bonus1": 60, #sure
+    "amber_lvl5_bonus1": 80, #sure
+    "amber_lvl6_bonus1": 110, #sure
+    "amber_lvl7_bonus1": 140, #sure
+    "amber_lvl8_bonus1": 175, #sure
+    "amber_lvl9_bonus1": 220, #sure
+    "amber_lvl10_bonus1": 275, #sure
+    "amber_lvl11_bonus1": 330, #sure
+    "amber_lvl12_bonus1": 420,
+    "amber_lvl13_bonus1": 520, #sure
+    "amber_lvl1_bonus2": 1, #sure
+    "amber_lvl2_bonus2": 2, #sure
+    "amber_lvl3_bonus2": 2, #sure
+    "amber_lvl4_bonus2": 3, #sure
+    "amber_lvl5_bonus2": 3, #sure
+    "amber_lvl6_bonus2": 4, #sure
+    "amber_lvl7_bonus2": 4, #sure
+    "amber_lvl8_bonus2": 5, #sure
+    "amber_lvl9_bonus2": 5, #sure
+    "amber_lvl10_bonus2": 6, #sure
+    "amber_lvl11_bonus2": 6, #sure
+    "amber_lvl12_bonus2": 7,
+    "amber_lvl13_bonus2": 7.5, #sure
     "amber_lvl1_bonus3": "none", #sure
     "amber_lvl2_bonus3": "none", #sure
     "amber_lvl3_bonus3": "none", #sure
@@ -1145,75 +1122,75 @@ JewelStats = {
     "amber_lvl11_bonus3": "none", #sure
     "amber_lvl12_bonus3": "none",
     "amber_lvl13_bonus3": "none", #sure
-    "amber_special_bonus": "4.0", #sure
+    "amber_special_bonus": 4.0, #sure
 
-    "amethyst_lvl1_bonus1": "18", #sure
-    "amethyst_lvl2_bonus1": "35", #sure
-    "amethyst_lvl3_bonus1": "50", #sure
-    "amethyst_lvl4_bonus1": "75", #sure
-    "amethyst_lvl5_bonus1": "100", #sure
-    "amethyst_lvl6_bonus1": "135", #sure
-    "amethyst_lvl7_bonus1": "175", #sure
-    "amethyst_lvl8_bonus1": "220", #sure
-    "amethyst_lvl9_bonus1": "275", #sure
-    "amethyst_lvl10_bonus1": "350", #sure
-    "amethyst_lvl11_bonus1": "430", #sure
-    "amethyst_lvl12_bonus1": "540", #sure
-    "amethyst_lvl13_bonus1": "640",
-    "amethyst_lvl1_bonus2": "1", #sure
-    "amethyst_lvl2_bonus2": "2", #sure
-    "amethyst_lvl3_bonus2": "2", #sure
-    "amethyst_lvl4_bonus2": "3", #sure
-    "amethyst_lvl5_bonus2": "3", #sure
-    "amethyst_lvl6_bonus2": "4", #sure
-    "amethyst_lvl7_bonus2": "4", #sure
-    "amethyst_lvl8_bonus2": "5", #sure
-    "amethyst_lvl9_bonus2": "5", #sure
-    "amethyst_lvl10_bonus2": "6", #sure
-    "amethyst_lvl11_bonus2": "6", #sure
-    "amethyst_lvl12_bonus2": "7", #sure
-    "amethyst_lvl13_bonus2": "8",
-    "amethyst_lvl1_bonus3": "0.3", #sure
-    "amethyst_lvl2_bonus3": "0.5", #sure
-    "amethyst_lvl3_bonus3": "0.5", #sure
-    "amethyst_lvl4_bonus3": "0.75", #sure
-    "amethyst_lvl5_bonus3": "1.0", #sure
-    "amethyst_lvl6_bonus3": "1.5", #sure
-    "amethyst_lvl7_bonus3": "1.5", #sure
-    "amethyst_lvl8_bonus3": "1.5", #sure
-    "amethyst_lvl9_bonus3": "2.0", #sure
-    "amethyst_lvl10_bonus3": "2.0", #sure
-    "amethyst_lvl11_bonus3": "2.0", #sure
-    "amethyst_lvl12_bonus3": "2.0", #sure
-    "amethyst_lvl13_bonus3": "2.5",
-    "amethyst_special_bonus": "0",
+    "amethyst_lvl1_bonus1": 18, #sure
+    "amethyst_lvl2_bonus1": 35, #sure
+    "amethyst_lvl3_bonus1": 50, #sure
+    "amethyst_lvl4_bonus1": 75, #sure
+    "amethyst_lvl5_bonus1": 100, #sure
+    "amethyst_lvl6_bonus1": 135, #sure
+    "amethyst_lvl7_bonus1": 175, #sure
+    "amethyst_lvl8_bonus1": 220, #sure
+    "amethyst_lvl9_bonus1": 275, #sure
+    "amethyst_lvl10_bonus1": 350, #sure
+    "amethyst_lvl11_bonus1": 430, #sure
+    "amethyst_lvl12_bonus1": 540, #sure
+    "amethyst_lvl13_bonus1": 640,
+    "amethyst_lvl1_bonus2": 1, #sure
+    "amethyst_lvl2_bonus2": 2, #sure
+    "amethyst_lvl3_bonus2": 2, #sure
+    "amethyst_lvl4_bonus2": 3, #sure
+    "amethyst_lvl5_bonus2": 3, #sure
+    "amethyst_lvl6_bonus2": 4, #sure
+    "amethyst_lvl7_bonus2": 4, #sure
+    "amethyst_lvl8_bonus2": 5, #sure
+    "amethyst_lvl9_bonus2": 5, #sure
+    "amethyst_lvl10_bonus2": 6, #sure
+    "amethyst_lvl11_bonus2": 6, #sure
+    "amethyst_lvl12_bonus2": 7, #sure
+    "amethyst_lvl13_bonus2": 8,
+    "amethyst_lvl1_bonus3": 0.3, #sure
+    "amethyst_lvl2_bonus3": 0.5, #sure
+    "amethyst_lvl3_bonus3": 0.5, #sure
+    "amethyst_lvl4_bonus3": 0.75, #sure
+    "amethyst_lvl5_bonus3": 1.0, #sure
+    "amethyst_lvl6_bonus3": 1.5, #sure
+    "amethyst_lvl7_bonus3": 1.5, #sure
+    "amethyst_lvl8_bonus3": 1.5, #sure
+    "amethyst_lvl9_bonus3": 2.0, #sure
+    "amethyst_lvl10_bonus3": 2.0, #sure
+    "amethyst_lvl11_bonus3": 2.0, #sure
+    "amethyst_lvl12_bonus3": 2.0, #sure
+    "amethyst_lvl13_bonus3": 2.5,
+    "amethyst_special_bonus": 0,
 
-    "calaite_lvl1_bonus1": "135", #sure
-    "calaite_lvl2_bonus1": "230", #sure
-    "calaite_lvl3_bonus1": "365", #sure
-    "calaite_lvl4_bonus1": "550", #sure
-    "calaite_lvl5_bonus1": "735", #sure
-    "calaite_lvl6_bonus1": "1000", #sure
-    "calaite_lvl7_bonus1": "1250", #sure
-    "calaite_lvl8_bonus1": "1600", #sure
-    "calaite_lvl9_bonus1": "2000", #sure
-    "calaite_lvl10_bonus1": "2500", #sure
-    "calaite_lvl11_bonus1": "3000", #sure
-    "calaite_lvl12_bonus1": "3600", #sure
-    "calaite_lvl13_bonus1": "4320", #sure
-    "calaite_lvl1_bonus2": "5", #sure
-    "calaite_lvl2_bonus2": "10", #sure
-    "calaite_lvl3_bonus2": "15", #sure
-    "calaite_lvl4_bonus2": "20", #sure
-    "calaite_lvl5_bonus2": "25", #sure
-    "calaite_lvl6_bonus2": "30", #sure
-    "calaite_lvl7_bonus2": "35", #sure
-    "calaite_lvl8_bonus2": "40", #sure
-    "calaite_lvl9_bonus2": "45", #sure
-    "calaite_lvl10_bonus2": "50", #sure
-    "calaite_lvl11_bonus2": "55", #sure
-    "calaite_lvl12_bonus2": "60", #sure
-    "calaite_lvl13_bonus2": "65", #sure
+    "calaite_lvl1_bonus1": 135, #sure
+    "calaite_lvl2_bonus1": 230, #sure
+    "calaite_lvl3_bonus1": 365, #sure
+    "calaite_lvl4_bonus1": 550, #sure
+    "calaite_lvl5_bonus1": 735, #sure
+    "calaite_lvl6_bonus1": 1000, #sure
+    "calaite_lvl7_bonus1": 1250, #sure
+    "calaite_lvl8_bonus1": 1600, #sure
+    "calaite_lvl9_bonus1": 2000, #sure
+    "calaite_lvl10_bonus1": 2500, #sure
+    "calaite_lvl11_bonus1": 3000, #sure
+    "calaite_lvl12_bonus1": 3600, #sure
+    "calaite_lvl13_bonus1": 4320, #sure
+    "calaite_lvl1_bonus2": 5, #sure
+    "calaite_lvl2_bonus2": 10, #sure
+    "calaite_lvl3_bonus2": 15, #sure
+    "calaite_lvl4_bonus2": 20, #sure
+    "calaite_lvl5_bonus2": 25, #sure
+    "calaite_lvl6_bonus2": 30, #sure
+    "calaite_lvl7_bonus2": 35, #sure
+    "calaite_lvl8_bonus2": 40, #sure
+    "calaite_lvl9_bonus2": 45, #sure
+    "calaite_lvl10_bonus2": 50, #sure
+    "calaite_lvl11_bonus2": 55, #sure
+    "calaite_lvl12_bonus2": 60, #sure
+    "calaite_lvl13_bonus2": 65, #sure
     "calaite_lvl1_bonus3": "none", #sure
     "calaite_lvl2_bonus3": "none", #sure
     "calaite_lvl3_bonus3": "none", #sure
@@ -1227,7 +1204,7 @@ JewelStats = {
     "calaite_lvl11_bonus3": "none", #sure
     "calaite_lvl12_bonus3": "none", #sure
     "calaite_lvl13_bonus3": "none", #sure
-    "calaite_special_bonus": "3.0", #sure
+    "calaite_special_bonus": 3.0, #sure
     }
 
 
@@ -1319,21 +1296,21 @@ DragonStats =  {
     "none_bonus3" : "none",
     "none_stats_boost3" : "none",
     "none_mythic_boost_inc" : "none",
-    "none_great_base_1": "0", "none_great_base_2" : "0", "none_great_inc_1" : "0","none_great_inc_2" : "0",
-    "none_rare_base_1": "0", "none_rare_base_2" : "0", "none_rare_inc_1" : "0","none_rare_inc_2" : "0",
-    "none_epic_base_1": "0", "none_epic_base_2" : "0", "none_epic_inc_1" : "0","none_epic_inc_2" : "0",
-    "none_perfect_epic_base_1": "0", "none_perfect_epic_base_2" : "0", "none_perfect_epic_inc_1" : "0","none_perfect_epic_inc_2" : "0",
-    "none_legendary_base_1": "0", "none_legendary_base_2" : "0", "none_legendary_inc_1" : "0","none_legendary_inc_2" : "0",
-    "none_ancient_legendary_base_1": "0", "none_ancient_legendary_base_2" : "0", "none_ancient_legendary_inc_1" : "0","none_ancient_legendary_inc_2" : "0",
-    "none_mythic_base_1": "0", "none_mythic_base_2" : "0", "none_mythic_inc_1" : "0","none_mythic_inc_2" : "0",
+    "none_great_base_1": 0, "none_great_base_2" : 0, "none_great_inc_1" : 0,"none_great_inc_2" : 0,
+    "none_rare_base_1": 0, "none_rare_base_2" : 0, "none_rare_inc_1" : 0,"none_rare_inc_2" : 0,
+    "none_epic_base_1": 0, "none_epic_base_2" : 0, "none_epic_inc_1" : 0,"none_epic_inc_2" : 0,
+    "none_perfect_epic_base_1": 0, "none_perfect_epic_base_2" : 0, "none_perfect_epic_inc_1" : 0,"none_perfect_epic_inc_2" : 0,
+    "none_legendary_base_1": 0, "none_legendary_base_2" : 0, "none_legendary_inc_1" : 0,"none_legendary_inc_2" : 0,
+    "none_ancient_legendary_base_1": 0, "none_ancient_legendary_base_2" : 0, "none_ancient_legendary_inc_1" : 0,"none_ancient_legendary_inc_2" : 0,
+    "none_mythic_base_1": 0, "none_mythic_base_2" : 0, "none_mythic_inc_1" : 0,"none_mythic_inc_2" : 0,
 
 
     "glacion_bonus1" : "Rear Damage Resistance",
     "glacion_bonus2" : "Max Hp",
     "glacion_bonus3" : "Healling effect of Red Heart",
-    "glacion_stats_boost3" : "0.2",
-    "glacion_mythic_boost_inc" : ["0.6","4"],
-    "glacion_great_base_1": "200", "glacion_great_base_2" : "0", "glacion_great_inc_1" : "4","glacion_great_inc_2" : "0",
+    "glacion_stats_boost3" : [0.2,0.2],
+    "glacion_mythic_boost_inc" : [0.6,4],
+    "glacion_great_base_1": "200", "glacion_great_base_2" : 0, "glacion_great_inc_1" : "4","glacion_great_inc_2" : 0,
     "glacion_rare_base_1": "250", "glacion_rare_base_2" : "1250", "glacion_rare_inc_1" : "5","glacion_rare_inc_2" : "28",
     "glacion_epic_base_1": "300", "glacion_epic_base_2" : "1500", "glacion_epic_inc_1" : "6","glacion_epic_inc_2" : "32",
     "glacion_perfect_epic_base_1": "360", "glacion_perfect_epic_base_2" : "1750", "glacion_perfect_epic_inc_1" : "7","glacion_perfect_epic_inc_2" : "36",
@@ -1345,9 +1322,9 @@ DragonStats =  {
     "shadex_bonus1" : "Front Damage Resistance",
     "shadex_bonus2" : "Max Hp",
     "shadex_bonus3" : "Collision Damage Resistance",
-    "shadex_stats_boost3" : "0.08",
-    "shadex_mythic_boost_inc" : ["0.6","4"],
-    "shadex_great_base_1": "230", "shadex_great_base_2" : "0", "shadex_great_inc_1" : "5","shadex_great_inc_2" : "0",
+    "shadex_stats_boost3" : [0.08,0.08],
+    "shadex_mythic_boost_inc" : [0.6,4],
+    "shadex_great_base_1": "230", "shadex_great_base_2" : 0, "shadex_great_inc_1" : "5","shadex_great_inc_2" : 0,
     "shadex_rare_base_1": "300", "shadex_rare_base_2" : "1250", "shadex_rare_inc_1" : "6","shadex_rare_inc_2" : "28",
     "shadex_epic_base_1": "360", "shadex_epic_base_2" : "1500", "shadex_epic_inc_1" : "7","shadex_epic_inc_2" : "32",
     "shadex_perfect_epic_base_1": "435", "shadex_perfect_epic_base_2" : "1750", "shadex_perfect_epic_inc_1" : "8","shadex_perfect_epic_inc_2" : "36",
@@ -1359,9 +1336,9 @@ DragonStats =  {
     "jadeon_bonus1" : "Max Hp",
     "jadeon_bonus2" : "Attack",
     "jadeon_bonus3" : "Mana Points Recovery effect",
-    "jadeon_stats_boost3" : "0.12",
-    "jadeon_mythic_boost_inc" : ["0.6","4"],
-    "jadeon_great_base_1": "1000", "jadeon_great_base_2" : "0", "jadeon_great_inc_1" : "24","jadeon_great_inc_2" : "0",
+    "jadeon_stats_boost3" : [0.12,0.12],
+    "jadeon_mythic_boost_inc" : [0.6,4],
+    "jadeon_great_base_1": "1000", "jadeon_great_base_2" : 0, "jadeon_great_inc_1" : "24","jadeon_great_inc_2" : 0,
     "jadeon_rare_base_1": "1315", "jadeon_rare_base_2" : "355", "jadeon_rare_inc_1" : "28","jadeon_rare_inc_2" : "9",
     "jadeon_epic_base_1": "1575", "jadeon_epic_base_2" : "425", "jadeon_epic_inc_1" : "32","jadeon_epic_inc_2" : "10",
     "jadeon_perfect_epic_base_1": "1835", "jadeon_perfect_epic_base_2" : "500", "jadeon_perfect_epic_inc_1" : "36","jadeon_perfect_epic_inc_2" : "11",
@@ -1373,9 +1350,9 @@ DragonStats =  {
     "dominus_bonus1" : "Attack",
     "dominus_bonus2" : "Damage To Ground Units",
     "dominus_bonus3" : "Mp Strength",
-    "dominus_stats_boost3" : "0.1",
-    "dominus_mythic_boost_inc" : ["0.6","4"],
-    "dominus_great_base_1": "240", "dominus_great_base_2" : "0", "dominus_great_inc_1" : "5","dominus_great_inc_2" : "0",
+    "dominus_stats_boost3" : [0.1,0.1],
+    "dominus_mythic_boost_inc" : [0.6,4],
+    "dominus_great_base_1": "240", "dominus_great_base_2" : 0, "dominus_great_inc_1" : "5","dominus_great_inc_2" : 0,
     "dominus_rare_base_1": "285", "dominus_rare_base_2" : "450", "dominus_rare_inc_1" : "7","dominus_rare_inc_2" : "7",
     "dominus_epic_base_1": "380", "dominus_epic_base_2" : "540", "dominus_epic_inc_1" : "8","dominus_epic_inc_2" : "8",
     "dominus_perfect_epic_base_1": "500", "dominus_perfect_epic_base_2" : "630", "dominus_perfect_epic_inc_1" : "9","dominus_perfect_epic_inc_2" : "9",
@@ -1387,9 +1364,9 @@ DragonStats =  {
     "infernox_bonus1" : "Attack",
     "infernox_bonus2" : "Damage To Ranged Units",
     "infernox_bonus3" : "HP drops",
-    "infernox_stats_boost3" : "0.15",
-    "infernox_mythic_boost_inc" : ["0.6","4"],
-    "infernox_great_base_1": "240", "infernox_great_base_2" : "0", "infernox_great_inc_1" : "5","infernox_great_inc_2" : "0",
+    "infernox_stats_boost3" : [0.16,0.16],
+    "infernox_mythic_boost_inc" : [0.6,4],
+    "infernox_great_base_1": "240", "infernox_great_base_2" : 0, "infernox_great_inc_1" : "5","infernox_great_inc_2" : 0,
     "infernox_rare_base_1": "300", "infernox_rare_base_2" : "375", "infernox_rare_inc_1" : "6","infernox_rare_inc_2" : "7",
     "infernox_epic_base_1": "400", "infernox_epic_base_2" : "450", "infernox_epic_inc_1" : "7","infernox_epic_inc_2" : "8",
     "infernox_perfect_epic_base_1": "525", "infernox_perfect_epic_base_2" : "525", "infernox_perfect_epic_inc_1" : "8","infernox_perfect_epic_inc_2" : "9",
@@ -1401,9 +1378,9 @@ DragonStats =  {
     "stormra_bonus1" : "Attack",
     "stormra_bonus2" : "Damage To Melee Units",
     "stormra_bonus3" : "Melee Units Damage reduced",
-    "stormra_stats_boost3" : "0.10",
-    "stormra_mythic_boost_inc" : ["0.6","4"],
-    "stormra_great_base_1": "240", "stormra_great_base_2" : "0", "stormra_great_inc_1" : "5","stormra_great_inc_2" : "0",
+    "stormra_stats_boost3" : [0.10,0.10],
+    "stormra_mythic_boost_inc" : [0.6,4],
+    "stormra_great_base_1": "240", "stormra_great_base_2" : 0, "stormra_great_inc_1" : "5","stormra_great_inc_2" : 0,
     "stormra_rare_base_1": "300", "stormra_rare_base_2" : "375", "stormra_rare_inc_1" : "6","stormra_rare_inc_2" : "7",
     "stormra_epic_base_1": "400", "stormra_epic_base_2" : "450", "stormra_epic_inc_1" : "7","stormra_epic_inc_2" : "8",
     "stormra_perfect_epic_base_1": "525", "stormra_perfect_epic_base_2" : "525", "stormra_perfect_epic_inc_1" : "8","stormra_perfect_epic_inc_2" : "9",
@@ -1415,9 +1392,9 @@ DragonStats =  {
     "noxion_bonus1" : "Max Hp",
     "noxion_bonus2" : "Attack",
     "noxion_bonus3" : "Mana Points Regeneration",
-    "noxion_stats_boost3" : "0.22",
-    "noxion_mythic_boost_inc" : ["0.6","4"],
-    "noxion_great_base_1": "1000", "noxion_great_base_2" : "0", "noxion_great_inc_1" : "24","noxion_great_inc_2" : "0",
+    "noxion_stats_boost3" :  [0.22,0.22],
+    "noxion_mythic_boost_inc" : [0.6,4],
+    "noxion_great_base_1": "1000", "noxion_great_base_2" : 0, "noxion_great_inc_1" : "24","noxion_great_inc_2" : 0,
     "noxion_rare_base_1": "1250", "noxion_rare_base_2" : "375", "noxion_rare_inc_1" : "28","noxion_rare_inc_2" : "7",
     "noxion_epic_base_1": "1500", "noxion_epic_base_2" : "450", "noxion_epic_inc_1" : "32","noxion_epic_inc_2" : "8",
     "noxion_perfect_epic_base_1": "1750", "noxion_perfect_epic_base_2" : "525", "noxion_perfect_epic_inc_1" : "36","noxion_perfect_epic_inc_2" : "9",
@@ -1429,9 +1406,9 @@ DragonStats =  {
     "geogon_bonus1" : "Max Hp",
     "geogon_bonus2" : "Attack",
     "geogon_bonus3" : "Melee Units Damage reduced",
-    "geogon_stats_boost3" : "0.10",
-    "geogon_mythic_boost_inc" : ["0.9","6"],
-    "geogon_great_base_1": "0", "geogon_great_base_2" : "0", "geogon_great_inc_1" : "0","geogon_great_inc_2" : "0",
+    "geogon_stats_boost3" : [0.10,0.10],
+    "geogon_mythic_boost_inc" : [0.9,6],
+    "geogon_great_base_1": 0, "geogon_great_base_2" : 0, "geogon_great_inc_1" : 0,"geogon_great_inc_2" : 0,
     "geogon_rare_base_1": "2000", "geogon_rare_base_2" : "450", "geogon_rare_inc_1" : "45","geogon_rare_inc_2" : "8",
     "geogon_epic_base_1": "2400", "geogon_epic_base_2" : "540", "geogon_epic_inc_1" : "51","geogon_epic_inc_2" : "9",
     "geogon_perfect_epic_base_1": "2800", "geogon_perfect_epic_base_2" : "630", "geogon_perfect_epic_inc_1" : "58","geogon_perfect_epic_inc_2" : "10",
@@ -1443,9 +1420,9 @@ DragonStats =  {
     "ferron_bonus1" : "Max Hp",
     "ferron_bonus2" : "Attack",
     "ferron_bonus3" : "Damage to Mobs",
-    "ferron_stats_boost3" : "0.10",
-    "ferron_mythic_boost_inc" : ["0.9","6"],
-    "ferron_great_base_1": "0", "ferron_great_base_2" : "0", "ferron_great_inc_1" : "0","ferron_great_inc_2" : "0",
+    "ferron_stats_boost3" : [0.10,0.10],
+    "ferron_mythic_boost_inc" : [0.9,6],
+    "ferron_great_base_1": 0, "ferron_great_base_2" : 0, "ferron_great_inc_1" : 0,"ferron_great_inc_2" : 0,
     "ferron_rare_base_1": "1500", "ferron_rare_base_2" : "600", "ferron_rare_inc_1" : "34","ferron_rare_inc_2" : "11",
     "ferron_epic_base_1": "1800", "ferron_epic_base_2" : "720", "ferron_epic_inc_1" : "38","ferron_epic_inc_2" : "12",
     "ferron_perfect_epic_base_1": "2100", "ferron_perfect_epic_base_2" : "840", "ferron_perfect_epic_inc_1" : "42","ferron_perfect_epic_inc_2" : "13",
@@ -1457,9 +1434,9 @@ DragonStats =  {
     "swordian_bonus1" : "Damage To Mobs",
     "swordian_bonus2" : "Max Hp",
     "swordian_bonus3" : "Weapon Melee Damage",
-    "swordian_stats_boost3" : "0.08",
-    "swordian_mythic_boost_inc" : ["0.9","6"],
-    "swordian_great_base_1": "0", "swordian_great_base_2" : "0", "swordian_great_inc_1" : "0","swordian_great_inc_2" : "0",
+    "swordian_stats_boost3" : [0.08,0.08],
+    "swordian_mythic_boost_inc" : [0.9,6],
+    "swordian_great_base_1": 0, "swordian_great_base_2" : 0, "swordian_great_inc_1" : 0,"swordian_great_inc_2" : 0,
     "swordian_rare_base_1": "660", "swordian_rare_base_2" : "1425", "swordian_rare_inc_1" : "12","swordian_rare_inc_2" : "33",
     "swordian_epic_base_1": "780", "swordian_epic_base_2" : "1710", "swordian_epic_inc_1" : "14","swordian_epic_inc_2" : "36",
     "swordian_perfect_epic_base_1": "910", "swordian_perfect_epic_base_2" : "1995", "swordian_perfect_epic_inc_1" : "15","swordian_perfect_epic_inc_2" : "40",
@@ -1471,9 +1448,9 @@ DragonStats =  {
     "necrogon_bonus1" : "Attack",
     "necrogon_bonus2" : "Max Hp",
     "necrogon_bonus3" : "Summoned Creature Damage",
-    "necrogon_stats_boost3" : "0.32",
-    "necrogon_mythic_boost_inc" : ["0.9","6"],
-    "necrogon_great_base_1": "0", "necrogon_great_base_2" : "0", "necrogon_great_inc_1" : "0","necrogon_great_inc_2" : "0",
+    "necrogon_stats_boost3" : [0.32,0.4],
+    "necrogon_mythic_boost_inc" : [0.9,6],
+    "necrogon_great_base_1": 0, "necrogon_great_base_2" : 0, "necrogon_great_inc_1" : 0,"necrogon_great_inc_2" : 0,
     "necrogon_rare_base_1": "475", "necrogon_rare_base_2" : "1995", "necrogon_rare_inc_1" : "9","necrogon_rare_inc_2" : "45",
     "necrogon_epic_base_1": "570", "necrogon_epic_base_2" : "2395", "necrogon_epic_inc_1" : "10","necrogon_epic_inc_2" : "51",
     "necrogon_perfect_epic_base_1": "665", "necrogon_perfect_epic_base_2" : "2795", "necrogon_perfect_epic_inc_1" : "11","necrogon_perfect_epic_inc_2" : "58",
@@ -1485,10 +1462,10 @@ DragonStats =  {
     "starrite_bonus1" : "Max Hp",
     "starrite_bonus2" : "Attack",
     "starrite_bonus3" : "Max Mp",
-    "starrite_stats_boost3" : "0.12",
-    "starrite_mythic_boost_inc" : ["1.2","8"],
-    "starrite_great_base_1": "0", "starrite_great_base_2" : "0", "starrite_great_inc_1" : "0","starrite_great_inc_2" : "0",
-    "starrite_rare_base_1": "0", "starrite_rare_base_2" : "0", "starrite_rare_inc_1" : "0","starrite_rare_inc_2" : "0",
+    "starrite_stats_boost3" : [0.12,0.12],
+    "starrite_mythic_boost_inc" : [1.2,8],
+    "starrite_great_base_1": 0, "starrite_great_base_2" : 0, "starrite_great_inc_1" : 0,"starrite_great_inc_2" : 0,
+    "starrite_rare_base_1": 0, "starrite_rare_base_2" : 0, "starrite_rare_inc_1" : 0,"starrite_rare_inc_2" : 0,
     "starrite_epic_base_1": "3000", "starrite_epic_base_2" : "900", "starrite_epic_inc_1" : "64","starrite_epic_inc_2" : "16",
     "starrite_perfect_epic_base_1": "3500", "starrite_perfect_epic_base_2" : "1050", "starrite_perfect_epic_inc_1" : "72","starrite_perfect_epic_inc_2" : "18",
     "starrite_legendary_base_1": "4000", "starrite_legendary_base_2" : "1200", "starrite_legendary_inc_1" : "76","starrite_legendary_inc_2" : "20",
@@ -1499,10 +1476,10 @@ DragonStats =  {
     "voideon_bonus1" : "Max Hp",
     "voideon_bonus2" : "Attack",
     "voideon_bonus3" : "Dodge",
-    "voideon_stats_boost3" : "0.9",
-    "voideon_mythic_boost_inc" : ["1.2","8"],
-    "voideon_great_base_1": "0", "voideon_great_base_2" : "0", "voideon_great_inc_1" : "0","voideon_great_inc_2" : "0",
-    "voideon_rare_base_1": "0", "voideon_rare_base_2" : "0", "voideon_rare_inc_1" : "0","voideon_rare_inc_2" : "0",
+    "voideon_stats_boost3" : [0.9,0.9],
+    "voideon_mythic_boost_inc" : [1.2,8],
+    "voideon_great_base_1": 0, "voideon_great_base_2" : 0, "voideon_great_inc_1" : 0,"voideon_great_inc_2" : 0,
+    "voideon_rare_base_1": 0, "voideon_rare_base_2" : 0, "voideon_rare_inc_1" : 0,"voideon_rare_inc_2" : 0,
     "voideon_epic_base_1": "3675", "voideon_epic_base_2" : "720", "voideon_epic_inc_1" : "80","voideon_epic_inc_2" : "13",
     "voideon_perfect_epic_base_1": "4285", "voideon_perfect_epic_base_2" : "840", "voideon_perfect_epic_inc_1" : "90","voideon_perfect_epic_inc_2" : "15",
     "voideon_legendary_base_1": "4900", "voideon_legendary_base_2" : "960", "voideon_legendary_inc_1" : "95","voideon_legendary_inc_2" : "16",
@@ -2381,7 +2358,7 @@ RelicLabel = {
 
 
 
-	# dragons_skills['Damage dealt to undead']
+# dragons_skills['Damage dealt to undead']
 
 SkillPassivBonusDragon = {
     "none" : {
@@ -2495,3 +2472,1693 @@ SkillPassivBonusDragon = {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+WeaponSkinData = {
+    "demon_blade_rain": {
+        1:{
+            "all_hero_value":200,
+            "all_hero_type":"attack",
+            "activ_boost":0,
+            "activ_type":"none"
+        }
+    },
+    "antiquated_sword": {
+        1:{
+            "all_hero_value":200,
+            "all_hero_type":"attack",
+            "activ_boost":0,
+            "activ_type":"none"
+        }
+    },
+    "gale_force": {
+        1:{
+            "all_hero_value":150,
+            "all_hero_type":"attack",
+            "activ_boost":0,
+            "activ_type":"none"
+        }
+    },
+    "death_scythe": {
+        1:{
+            "all_hero_value":125,
+            "all_hero_type":"attack",
+            "activ_boost":0,
+            "activ_type":"none"
+        }
+    },
+    "boomerang": {
+        1:{
+            "all_hero_value":80,
+            "all_hero_type":"attack",
+            "activ_boost":7,
+            "activ_type":"crit_rate"
+        }
+    },
+    "brightspear": {
+        1:{
+            "all_hero_value":150,
+            "all_hero_type":"attack",
+            "activ_boost":7,
+            "activ_type":"crit_rate"
+        }
+    },
+    "saw_blade": {
+        1:{
+            "all_hero_value":100,
+            "all_hero_type":"attack",
+            "activ_boost":0,
+            "activ_type":"none"
+        }
+    },
+    "brave_bow": {
+        1:{
+            "all_hero_value":125,
+            "all_hero_type":"attack",
+            "activ_boost":7,
+            "activ_type":"crit_rate"
+        }
+    },
+    "stalker_staff": {
+        1:{
+            "all_hero_value":125,
+            "all_hero_type":"attack",
+            "activ_boost":0,
+            "activ_type":"none"
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+SkillData = {
+        "Agility" :{
+            "description": "Your Dodge chance increase the lower your HP is",       
+            "stats": "+0.3% chance to dodge each 1% of life missing. (Additive)"
+        },
+        "Attack Boost" :{
+            "description": "Increase your damage",
+            "stats": "[Major] Damage + 30%<br>[Minor] Damage + 15%<br>Additive"
+        },
+        "Attack Plus" :{
+            "description": "Increases your attack when you don't take damage in a stage",
+            "stats": "Increases your attack by 2.25% when you don't take damage in a room.<br> 18 times max [40%]"
+        },
+        "Attack Speed Boost" :{
+            "description": "Increase your attack speed",
+            "stats": "• [Major] Attack Speed +25%<br>• [Minor] Attack Speed +12.5%<br>• Additive"
+        },
+        "Angelic Blessing" :{
+            "description": "Angel room has chance to heal 2x 4x HP",
+            "stats": "<br>"
+        },
+        "Berserker" :{
+            "description": "Increases Max Fury by 50%",
+            "stats": "Increases Max Fury by 50%. Fury charges faster at low HP. Upon taking damage, Fury charges by a lot."
+        },
+        "Blade Storm" :{
+            "description": "Whirldwind storm of blades that blocks projectiles.",
+            "stats": "<br>"
+        },
+        "Blaze" :{
+            "description": "Your attacks cause a Flame effect",
+            "stats": "Deals 18% equipment damage every 0.25s to enemies hit by weapon projectile after initial hit up to 7 ticks (2s)"
+        },
+        "Blazing Meteor" :{
+            "description": "Summon a flame meteor to attack enemies",
+            "stats": "Burn chips off enemy HP for 2 seconds.<br>  225% modifiable damage, Partial hit: 80% damage.<br> Unlocks in Chapter 9. <br>Not affected by Rage ability."
+        },
+        "Blazing Star" :{
+            "description": "Summon a flame star to attack enemies",
+            "stats": "Burn chips off enemy HP for 2 seconds.<br>  90% modifiable damage. <br>Not affected by Rage ability.<br>Stars are affected by ricochet and will bounce between enemies just like ricochet."
+        },
+        "Blazing Strike" :{
+            "description": "Summon a flame sword to attack enemies",
+            "stats": "Burn chips off enemy HP for 2 seconds.<br>  165% modifiable damage.<br>Not affected by Rage ability.<br>  The faster the attack speed, the shorter the summoning time."
+        },
+        "Blazing Sword" :{
+            "description": "Summons 2 flame swords to spin around you",
+            "stats": "Burn chips off enemy HP for 2 seconds.<br>132% modifiable damage.<br>Unlocks in Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
+        },
+        "Bloodthirst" :{
+            "description": "Restores HP when you kill enemies!",
+            "stats": "Gain 1.5% of base Max HP on enemy kills."
+        },
+        "Bolt" :{
+            "description": "Your attacks cause Lightning effect",
+            "stats": "Deal 25% equipment damage to enemies within a few tiles of enemies hit by weapon projectile.<br> Deals 30% (Up to 45%) damage to the initial target, with an additional 5% damage per enemy chained by the lightning bolt.<br>Works well with Ricochet<br>Maximum of one spark per enemy per tick.<br> i.e. doesn't hit twice with Front Arrow or extremely high attack speed."
+        },
+        "Bolt Circle" :{
+            "description": "Two lightning orbs circle around you",
+            "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br>  Affected by rage.<br>  Spins faster with attack speed boosts."
+        },
+        "Bolt Meteor" :{
+            "description": "Summon a bolt meteor to attack enemies",
+            "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  225% modifiable damage, Partial hit: 80% damage.<br>  Unlocks in Chapter 9.<br>Not affected by Rage ability."
+        },
+        "Bolt Star" :{
+            "description": "Summon a bolt star to attack enemies",
+            "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  90% modifiable damage.<br>Not affected by Rage ability.<br>  Stars are affected by ricochet and will bounce between enemies just like ricochet."
+        },
+        "Bolt Strike" :{
+            "description": "Summon a bolt sword to attack enemies",
+            "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  165% modifiable damage.<br>Not affected by Rage ability.<br>  The faster the attack speed, the shorter the summoning time."
+        },
+        "Bolt Sword" :{
+            "description": "Summons 2 bolt swords to spin around you",
+            "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>132% modifiable damage.<br>Unlocks in Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
+        },
+        "Bouncy Wall" :{
+            "description": "Your arrows bounce up to 2 times against walls.",
+            "stats": "-50% damage after the first bounce"
+        },
+        "Chilling Blast" :{
+            "description": "Enemies blast a cold wave on death",
+            "stats": "Enemies explode on death causing an explosive ice effect.<br>  Unlocks in Chapter 3."
+        },
+        "Crit Aura" :{
+            "description": "Increases Crit Chance for a short time",
+            "stats": "Increases your crit chance by 47.5% for 2 seconds.<br> 8 second cooldown"
+        },
+        "Crit Master" :{
+            "description": "Increase your critical damage & chance",
+            "stats": "[Major] Crit Damage + 40% & Crit chance + 10%<br>[Minor] Crit Damage + 20% & Crit chance + 5%<br>Additive"
+        },
+        "Crit Plus" :{
+            "description": "Increases your crit chance when you don't take damage in a stage",
+            "stats": "Increases your crit chance by 1.3% when you don't take damage in a room.<br> 17 times max [22%]"
+        },
+        "Dauntless Greatsword" :{
+            "description": "Reduced greatsword rage cost. Forms can be freely changed.",
+            "stats": "<br>"
+        },
+        "Dark Touch" :{
+            "description": "Your attacks cause a Dark effect",
+            "stats": "Dark touch places a bomb on a struck target for 1 second, the explosion deals 90% of modified damage from ATK boosts in an area of effect around the targeted mob.<br>Base damage does not affect damage.<br> Multiple darks will not stack on an enemy."
+        },
+        "Death Bomb" :{
+            "description": "Cause enemies to explode on death",
+            "stats": "Enemies explode on death causing an area of effect damage (2/3 of base damage).<br>  Unlocks in Chapter 3."
+        },
+        "Death Nova" :{
+            "description": "Enemies explode into lightning bolts upon death",
+            "stats": "When an enemy is killed, enemies create holy projectiles, shooting out in 8 equidistant directions dealing 30% current damage on contact."
+        },
+        "Diagonal Arrows" :{
+            "description": "Fire 2 additional projectile diagonally.",
+            "stats": "You fire an additional projectile diagonally forward to the left and right<br>Deal 100% of damage per projectile<br>Up to 3 diagonal arrow."
+        },
+        "Dodge Aura" :{
+            "description": "Greatly increases Dodge once in a while.",
+            "stats": "<br>"
+        },
+        "Dodge Burst" :{
+            "description": "Greatly increases Attack once in a while after dodging.",
+            "stats": "<br>"
+        },
+        "Dodge Challenge" :{
+            "description": "Increases Dodge if no damage taken when clearing a room.",
+            "stats": "<br>"
+        },
+        "Dodge Master" :{
+            "description": "Your Dodge Chance is increased",
+            "stats": "Dodge Chance +20%<br>  Dodge is multiplicative when combining dodge from different items and abilities"
+        },
+        "Dwarf" :{
+            "description": "Transform into a dwarf with a smaller body",
+            "stats": "Reduces your hitbox by 15%.<br>Crit Chance + 10%.<br>Defeat Chapter 10"
+        },
+        "Enhanced Summon" :{
+            "description": "Greatly increases summoned creature duration and attack",
+            "stats": "<br>"
+        },
+        "Element Burst" :{
+            "description": "Various elemental stats, elemental damage has chance for Crit.",
+            "stats": "<em>Elemental damage crit chance/damage TBC</em>"
+        },
+        "Element Upgrade" :{
+            "description": "Elemental damage increased greatly.",
+            "stats": "     Freeze Damage +100%<br>     Bolt Damage +150%<br>     Poison Damage +250%<br>     Blaze Damage +100%<br>     Dark Touch Damage +100%"
+        },
+        "Explosive Arrow" :{
+            "description": "Store explosive arrow when moving.<br> Explodes when enemies or walls are hit",
+            "stats": "Can stack up to 4 explosive arrow.<br>Each explosion does x1.5 damage to mobs close to the wall"
+        },
+        "Extra Life" :{
+            "description": "Provides you an automatic free revival after death",
+            "stats": "Revives you once after death.<br>  Reduces your Max HP by 30% (Devil Tax).<br>  Can only be recieved by the devil<br>  There is no invincibility when reviving from the extra life', Does not use up your revive.<br> When you exclude reviving, Extra Life provides you with 40% more HP overall. However if you choose to revive, Extra Life only provides you with a 5% increase overall in HP compared to if you didn't accept the deal from the Devil"
+        },
+        "Fatal Excitement" :{
+            "description": "The lower your HP, the faster circling objects spin",
+            "stats": "<br>"
+        },
+        "Fire Circle" :{
+            "description": "Two flame orbs circle around you",
+            "stats": "Burn chips off enemy HP for 2 seconds.<br> Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br> Affected by rage.<br> Spins faster with attack speed boosts."
+        },
+        "Freeze" :{
+            "description": "Slows enemies down",
+            "stats": "Freezes enemies until attacked or for 2 seconds.<br> Only freezes enemies; does not slow enemies. Mobs will be unfrozen by next hit, including pets hits. Freeze changes the behavior of mobs"
+        },
+        "Front Arrow" :{
+            "description": "Shoot 2 arrows in one shot.",
+            "stats": "  Additional Front Arrow.<br>  -25% damage per arrow<br><br><b>Devil Stats</b><br>  Additional Front Arrow.<br>  -20% damage per arrow"
+        },
+        "Frost Meteor" :{
+            "description": "Summon a frost meteor to attack enemies",
+            "stats": "Freeze or slows enemies for 2 seconds.<br>  225% modifiable damage, Partial hit: 80% damage.<br>  Unlocks in Chapter 9.<br>Not affected by Rage ability."
+        },
+        "Frost Star" :{
+            "description": "Summon a frost star to attack enemies",
+            "stats": "Freeze or slows enemies for 2 seconds.<br>  90% modifiable damage.<br>Not affected by Rage ability.<br>  Stars are affected by ricochet and will bounce between enemies just like ricochet."
+        },
+        "Frost Strike" :{
+            "description": "Summon a frost sword to attack enemies",
+            "stats": "Freeze or slows enemies for 2 seconds.<br>  165% modifiable damage.<br>Not affected by Rage ability.<br>  The faster the attack speed, the shorter the summoning time."
+        },
+        "Frost Sword" :{
+            "description": "Summons 2 frost swords to spin around you",
+            "stats": "Freeze or slows enemies for 2 seconds.<br>132% modifiable damage.<br>Unlocks in Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
+        },
+        "Furious" :{
+            "description": "When wielding the Broadsword, it deals more damage at higher Fury.",
+            "stats": "<br>"
+        },
+        "Fury" :{
+            "description": "Your Attack Speed increase the lower your HP is",
+            "stats": "+0.4% Attack Speed per 1% of life missing. (Additive)"
+        },
+        "Fury Command" :{
+            "description": "Spirits enters a fury state within 5s of entering a room",
+            "stats": "<br>"
+        },
+        "Giant" :{
+            "description": "Transform into a giant with increased damage",
+            "stats": "Increases your hitbox by 10%.<br>  Attack + 40%<br>  Max HP + 5%<br>  Unlocks in Chapter 11"
+        },
+        "Grace" :{
+            "description": "Heal from red heart increase the lower your HP is",
+            "stats": "+0.6% of heal for red heart each 1% of life missing. (Additive)"
+        },
+        "Greed" :{
+            "description": "Collect more coins, but also receive more damage",
+            "stats": "Coin drop chance +25%<br>  Enemy damage +20%"
+        },
+        "Headshot" :{
+            "description": "Small chance to kill mobs instantly",
+            "stats": "12% chance to kill mobs instantly<br>  Ricochet, pierce, and spirit shots can trigger the effect."
+        },
+        "Heal" :{
+            "description": "Restores HP partially",
+            "stats": "Restores 40% of your HP<br><b>Notes</b><br>Can only be recieved via an Angel and lucky wheel"
+        },
+        "Hermes Shoes" :{
+            "description": "Increases movement speed and some dodge rate.",
+            "stats": "Movement Speed +12%<br>Dodge Chance +15%"
+        },
+        "Heal Overflow" :{
+            "description": "Excess healing increases Max HP",
+            "stats": "<br>"
+        },
+        "Heroic Fightback" :{
+            "description": "Once the hero falls, huge amounts of damage is dealt to all enemies",
+            "stats": "<br>"
+        },
+        "Holy Touch" :{
+            "description": "Your attacks cause Holy effect",
+            "stats": "All arrows that hit an enemy create two perpendicular holy projectiles that deals 70% of your modified projectile damage each.<br>Piercing."
+        },
+        "HP Boost" :{
+            "description": "Max HP increased!",
+            "stats": "Increases HP by 20% of base max HP"
+        },
+        "Bloodthirst Aura" :{
+            "description": "Bloodthirst Aura increases health once in a while (cooldown of 8s)",
+            "stats": "Mob/Boss kill heal 15% of Max HP."
+        },
+        "HP Plus" :{
+            "description": "Increases your Max HP when you don't take damage in a stage",
+            "stats": "Increases your max HP by 2.2% when you don't take damage in a room.<br> 14 times max [30%]"
+        },
+        "Ice Circle" :{
+            "description": "Two ice orbs circle around you",
+            "stats": "Freeze or slows enemies for 2 seconds.<br> Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br>  Affected by rage.<br>  Spins faster with attack speed boosts."
+        },
+        "Inherited Summon" :{
+            "description": "Summon creature inherits portion of own stats",
+            "stats": "<br>"
+        },
+        "Inspire" :{
+            "description": "Increases attack speed and effect is doubled once enemy is killed.",
+            "stats": "Attack Speed +25% (Effect doubled when enemy killed)"
+        },
+        "Invincibility Star" :{
+            "description": "Become invincible for 2 seconds once a while",
+            "stats": "Become invincible for 2 seconds every 10 seconds (1/6th of total time)"
+        },
+        "Multishot" :{
+            "description": "Shoot 2 consecutive arrows in a row.",
+            "stats": "-10% damage per arrow<br>-15% attack speed<br><br><b>Devil Stats</b><br>-10% damage per arrow<br>-10% attack speed"
+        },
+        "Obsidian Circle" :{
+            "description": "Two dark orbs circle around you",
+            "stats": "Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br>  Affected by rage.<br>  Spins faster with attack speed boosts."
+        },
+        "Overdraft" :{
+            "description": "Massive boost to attack speed, but gain experience slower.",
+            "stats": "Attack Speed +45%<br> XP gain -20%."
+        },
+        "Phantom Sword" :{
+            "description": "Melee attacks will split the sword into two",
+            "stats": "<br>"
+        },
+        "Piercing Shot" :{
+            "description": "Your arrows pierce enemies.",
+            "stats": "-33% damage after each enemy pierced"
+        },
+        "Poison Circle" :{
+            "description": "Two poisonous orbs circle around you",
+            "stats": "Poison slowly chips off enemy HP till it dies<br>  Deals 90% modifiable damage.<br>Proportional to damage of a single projectile.<br>  Affected by rage.<br>  Spins faster with attack speed boosts."
+        },
+        "Poisoned Touch" :{
+            "description": "Your attacks cause Poison effect",
+            "stats": "Poison deals 30% equipment damage per sec utill mob dies.<br>Works well with Ricochet.<br> Does not stack."
+        },
+        "Price of Strength" :{
+            "description": "Get greatly enhanced when entering a room.<br>Weakened for a time when durations ends",
+            "stats": "Pros: Increases Attack, Attack Speed,  Movement Speed and Crit Rate, Increase hero size for 10 seconds.<br>Cons: Weakened for 5 seconds after buff ends: Slower Attack Speed, Movement speed and Hero size back to normal."
+        },
+        "Rage" :{
+            "description": "Your Attack Speed increase the lower your HP is",
+            "stats": "+1% Damage each 1% of life missing. (Additive)<br>At 20% of your HP you'll have +80% damage (multiplicative with the other abilities)"
+        },
+        "Red-Hearted Grace" :{
+            "description": "Chance for enemies to drop a heart when they are hit.",
+            "stats": "<br>"
+        },
+        "Rear Arrow" :{
+            "description": "Fire 1 additional projectile backward.",
+            "stats": "You fire an additional projectile backwards<br>Deal 100% of damage per projectile"
+        },
+        "Ricochet" :{
+            "description": "Your arrows bounce up to 3 times between nearby enemies.",
+            "stats": "You fire an additional projectile to the left and right<br>-30% damage after each bounce<br> Allows your shot to rebound between enemies up to 3 times in total"
+        },
+        "Side Arrow" :{
+            "description": "Fire 2 additional projectile on your both sides.",
+            "stats": "You fire an additional projectile to the left and right <br> Deal 100% of damage per projectile"        
+        },
+        "Shadow Samurai" :{
+            "description": "Summon a Samurai to help you in Melee attacks.",
+            "stats": "<br>"
+        },
+        "Shadow Clone" :{
+            "description": "Summons a shadow clone of yours.",
+            "stats": "15% chance to spawn.<br>Max 1 per enemy.<br>Max 3 per boss.<br>Up to 15 clones can be spawned at once.<br>Lasts up to 8 seconds.<br>Deals 100% equipment damage every second.<br>Defeat chapter 2."        
+        },
+        "Shield Guard" :{
+            "description": "A shield circles around you",
+            "stats": "Two shields rotate around you, blocking incoming projectiles<br>Up to 3 shield rotating"
+        },
+        "Slow Projectile" :{
+            "description": "Slow enemy projectiles",
+            "stats": "Effect : -50% projectile speed"
+        },
+        "Smart" :{
+            "description": "Level-up faster, Max level increased by 2.",
+            "stats": "30% increased experience (XP).<br>2 Additional levels<br>This ability does not appear in hero adventure.<br>     The extra level provides you with only 1 additional extra skill besides smart.<br>     Chapters where there are only 10 stages (chapterd 7 and 14) don't give much xp. On these stages you don't usually recieve enough xp to get anywhere close to max level."
+        },
+        "Speed Aura" :{
+            "description": "Increases Attack Speed for a short time",
+            "stats": "+62.5% Attack Speed for 2s.<br> 8 second cooldown"
+        },
+        "Speed Plus" :{
+            "description": "Increases speed by a small percent if no damage is taken",
+            "stats": "Increases your attack speed by 2.1% when you don't take damage in a room.<br> 17 times max [35%]"
+        },
+        "Spirit - Blaze" :{
+            "description": "Your spirit's attacks cause a flame effect",
+            "stats": "Hero Attack + 22%.<br>  Unlocks in Chapter 8."
+        },
+        "Spirit - Bolt" :{
+            "description": "Your spirit's attacks cause a lightning effect",
+            "stats": "Hero Crit Chance + 3%<br>  Unlocks in Chapter 8."
+        },
+        "Spirit - Freeze" :{
+            "description": "Your spirit's attacks slows enemies down",
+            "stats": "Hero Attack Speed + 18%<br>  Unlocks in Chapter 8."
+        },
+        "Spirit - Front Arrow" :{
+            "description": "Your spirit Front Arrow +1",
+            "stats": "Scales with hero attack and crit damage.<br>  Your spirit's attack can receive a maximum of 80% in boosts, whereas the spirit's crit damage can receive a maximum of 200%. Does not boost your hero, in-game description is incorrect."
+        },
+        "Spirit - Multishot" :{
+            "description": "Your spirit fire one more arrow",
+            "stats": "Scales with hero attack speed and crit rate.<br>  Your spirit's attack speed can receive a maximum of 95% in boosts, whereas the spirit's crit rate can receive a maximum of 30%. Does not boost your hero, in-game description is incorrect."
+        },
+        "Spirit - Poisoned Touch" :{
+            "description": "Your spirit's attacks cause a poison effect",
+            "stats": "Hero HP Boost + 15%<br>  Unlocks in Chapter 8."
+        },
+        "Strong Heart" :{
+            "description": "You restore more HP when healed",
+            "stats": "Increases red heart heal power by 40% of the base heal.<br>  40% more red hearts spawn<br>When receiving this ability from the Angel, heal power of heart crystal is only increased by 20%. (Half the strength of the regular Strong Heart ability)"
+        },
+        "Strong Strong Heart" :{
+            "description": "Strong Heart increases attack speed and can be stacked",
+            "stats": "Attack Speed +2% every time you get a crystal heart (Max 60%) (Requires Strong Heart)"
+        },
+        "Summon Bone Warrior" :{
+            "description": "Chance to summon bone warrior when attacking enemies",
+            "stats": "<br>"
+        },
+        "Summon One-Eyed Bat" :{
+            "description": "Summon a One-Eyed Bat",
+            "stats": "15% chance to spawn<br>  Max 1 per enemy<br>  Max 3 per boss<br>  Up to 15 clones can be spawned at once.<br>  Lasts up to 8 seconds.<br>  Each bat shoots 1 laser per second dealing 65% of player damage.<br>  Unlocks in Chapter 3."
+        },
+        "Summon Wolfhound" :{
+            "description": "Chance to summon wolfhound when attacking enemies",
+            "stats": "<br>"
+        },
+        "Toxic Meteor" :{
+            "description": "Summon a toxic meteor to attack enemies",
+            "stats": "Poison slowly chips off enemy HP till it dies<br>  225% modifiable damage, Partial hit: 80% damage.<br>  Unlocks in Chapter 9.<br>Not affected by Rage ability."
+        },
+        "Toxic Star" :{
+            "description": "Summon a toxic star to attack enemies",
+            "stats": "Poison slowly chips off enemy HP until it dies<br>  95% modifiable damage.<br>Not affected by Rage ability.<br>  Stars are affected by ricochet and will bounce between enemies just like ricochet."
+        },
+        "Toxic Strike" :{
+            "description": "Summon a toxic sword to attack enemies",
+            "stats": "Poison slowly chips off enemy HP till it dies<br>  168% modifiable damage.<br>Not affected by Rage ability.<br>  The faster the attack speed, the shorter the summoning time."
+        },
+        "Toxic Sword" :{
+            "description": "Summons 2 toxic swords to spin around you",
+            "stats": "Poison slowly chips off enemy HP till it dies<br>132% modifiable damage.<br>Unlocks in Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
+        },
+        "Through The Wall" :{
+            "description": "Allows the player to walk through walls",
+            "stats": "Increases attack damage by 15%"
+        },
+        "Water Walker" :{
+            "description": "Allows the player to walk across water",
+            "stats": "Increases attack damage by 15%"
+        },
+        "Wingman" :{
+            "description": "Your spirit can block projectiles for you.",
+            "stats": "Pets block projectiles.<br>  Unlocks in Chapter 4."
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+ItemData = {
+        "Brave Bow":{
+            "description":"Only the worthly can use this bow, with balanced performance.<br><br><b>Hidden</b><br>Damage Multiplier x 1<br>Base Attack Speed x 1.73",
+            "image":"image/items/brave_bow_mythic.png",
+            "base":"A well-balanced weapon<br>Attack + x",
+            "great":"",
+            "rare":"[Rare] Attack + 5%",
+            "epic":"[Epic] Crit Damage + 50%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Attack increased temporarily after moving"
+        },
+        "Brightspear":{
+            "description":"Contains immense energy, you're defeated before you know it!<br><br><b>Hidden</b><br>Damage Multiplier x 1.2<br>Base Attack Speed x 1.63",
+            "image":"\\static\\image\\items\\brightspear_mythic.png",
+            "base":"Can suddenly attack enemies<br>Attack + [x]",
+            "great":"",
+            "rare":"[Rare] Attack + 5%",
+            "epic":"[Epic] When attacking a similar target (same mob), damage dealt will increase.",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Landing crits increases Attack Speed"
+        },
+        "Death Scythe":{
+            "description":"Powerful scythe, very heavy with slow attack speed.<br><br><b>Hidden</b><br>Damage Multiplier x 1.45<br>Base Attack Speed x 0.85<br>50% chance to kill enemies under 30% Hp",
+            "image":"image/items/death_scythe_mythic.png",
+            "base":"High attack with low speed<br>Attack + [x]",
+            "great":"",
+            "rare":"[Rare] Attack + 5%",
+            "epic":"[Epic] High chance to kill mobs with less than 30% of HP",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] The closer, the higher the damage"
+        },
+        "Demon Blade Rain":{
+            "description":"Legendary demon blade can devour the soul of the enemy.<br><br><b>Hidden</b><br>Damage Multiplier<br>x 1.5 (Ranged)<br>x 1.85 (Melee)<br>Base Attack Speed x ?",
+            "image":"image/items/demon_blade_rain_mythic.png",
+            "base":"Unsheathing deals melee damage, also deals long-range damage.<br>Attack + [x]<br>Immune to front collision damage in melee attacks",
+            "great":"[Great] When low HP, kill enemies in melee can recover HP",
+            "rare":"[Rare] Attack + 5%",
+            "epic":"[Epic] The higher the enemy's HP, the more damage dealt",
+            "pe":"[Perfect Epic] Lost HP will increase Crit damage",
+            "legendary":"[Legendary] When moving, dodge rate slightly increased",
+            "ale":"",
+            "mythic":"[Mythic] Taking damage increases Crit Chance temporarily"
+        },
+        "Antiquated Sword":{
+            "description":"Ancient Sword that becomes bigger when empowered. Named 'Giantkiller' for its history of slaying titans<br><br><b>Hidden</b><br>Damage Multiplier x 1.5<br>Base Attack Speed x ?",
+            "image":"image/items/antiquated_sword_mythic.png",
+            "base":"Allows change of forms: one-handed swords attack faster; increases two-handed sword attack range<br>Attack + [x]<br>Broadsword deals more damage to bigger enemies",
+            "great":"[Great] Broadsword bullets can go through enemies",
+            "rare":"[Rare] Attack + 5%",
+            "epic":"[Epic] Unlock active skill: Whirlwind<br>[Epic] Upon hitting an enemy, Attack Speed becomes higher",
+            "pe":"[Perfect Epic] Upon killing an enemy, Attack becomes higher.",
+            "legendary":"[Legendary] Increases Max HP and reduces Whirlwind cost. At low HP, Fury cost is significantly reduced",
+            "ale":"",
+            "mythic":"[Mythic] Upon taking damage, increases Attack Speed and Crit Chance"
+        },
+        "Gale Force":{
+            "description":"A crossbow infused with the power of the wind, shooting out charged arrows.<br><br><b>Hidden</b><br>Damage Multiplier x 1.55<br>Base Attack Speed x 0.75<br>Charged Attack x 2<br>Penetrating Attack x 1.35",
+            "image":"image/items/gale_force_mythic.png",
+            "base":"High attack, slow attack speed. It automatically reloads and shoots a charged arrow.<br>Attack + [x]",
+            "great":"[Great] Attack + 5%",
+            "rare":"[Rare] Charged attacks carry a penetrating effect.",
+            "epic":"[Epic] Penetrating attacks have multiple damage effects, normal attack crit rate increases over distance.",
+            "pe":"",
+            "legendary":"[Legendary] After a Crit attack, charging speed can be increased.",
+            "ale":"[Ancient Legendary] After a Crit Attack, charging speed can be increased.",
+            "mythic":"[Mythic] Charged attacks deal increased damage and slow enemies."
+        },
+        "Mini Atreus":{
+            "description":"An exquisite Atreus puppet that can be used for battle in times of danger.<br>Damage Multiplier x 1.25<br>Base Attack Speed x ?",
+            "image":"image/items/mini_atreus.png",
+            "base":"Slows enemies on hit<br>Attack + [x]",
+            "great":"[Great] Attack + 5%",
+            "rare":"",
+            "epic":"[Epic] Hitting the enemy has a chance to summon an Atreus to assist in battle",
+            "pe":"",
+            "legendary":"[Legendary] Chance to summon 2 Atreus Rotating Shields after hitting an enemy",
+            "ale":"",
+            "mythic":"[Mythic] Coins from Battle + 10%"
+        },
+        "Saw Blade":{
+            "description":"A serrated throwing knife from the mysterious Orient.<br>Damage Multiplier x 0.8<br>Base Attack Speed x 2.6",
+            "image":"image/items/saw_blade_mythic.png",
+            "base":"Low Attack with high speed<br>Attack + [x]",
+            "great":"",
+            "rare":"[Rare] Attack + 5%",
+            "epic":"[Epic] Increases your Attack Speed for 3 sec after entering a room",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Hitting enemies has a chance to increase Dodge and Attack (Stackable)"
+        },
+        "Stalker Staff":{
+            "description":"The staff of all staffs, no one can escape!<br>Damage Multiplier x 1<br>Base Attack Speed x 2",
+            "image":"image/items/stalker_staff_mythic.png",
+            "base":"The Bullets will follow enemies and attack<br>Attack + [x]",
+            "great":"",
+            "rare":"[Rare] Attack + 5%",
+            "epic":"[Epic] The lower the target's HP, the higher the Crit rate.",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Projectile charge time -50%"
+        },
+        "Tornado":{
+            "description":"A sharp boomerang that can fly back and forth.<br>Damage Multiplier x 1.24<br>Base Attack Speed x 1.73",
+            "image":"image/items/tornado_mythic.png",
+            "base":"It returns to your hand<br>Attack + [x]",
+            "great":"",
+            "rare":"[Rare] Attack + 5%",
+            "epic":"[Epic] Boomerang deals increased damage when it returns",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] The further projectiles travel, the higher the damage"
+        },
+        "Phantom Cloak":{
+            "description":"An awesome-looking cloak.<br><br><b>Hidden</b><br>Thorn attacks are x2 your base damage",
+            "image":"image/items/phantom_cloak.png",
+            "base":"Max HP + [x]<br>[Common] Projectile Resistance +10%",
+            "great":"",
+            "rare":"[Rare] Healing from red hearts + 20%",
+            "epic":"[Epic] Freezes enemies who hit you for 1-2s and deal thorn damage",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Enemies frozen by Phantom Cloak take more damage"
+        },
+        "Golden Chestplate":{
+            "description":"A chestplate made of pure gold. It's as solid as a rock.",
+            "image":"image/items/golden_chestplate.png",
+            "base":"Max HP + [x]<br>[Common] Damage Resistance + 5%",
+            "great":"",
+            "rare":"[Rare] Healing from red hearts + 20%",
+            "epic":"[Epic] Deals 8% of base damage per tick as flame damage to close enemies",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Damage taken is greatly reduced for 2s after taking damage (30% damage reduction)"
+        },
+        "Vest of Dexterity":{
+            "description":"Light and durable. Wear it to dodge enemy attacks.",
+            "image":"image/items/vest_of_dexterity.png",
+            "base":"Max HP + [x]<br>[Common] Dodge Chance + 7%",
+            "great":"",
+            "rare":"[Rare] Healing from red hearts + 20%",
+            "epic":"[Epic] Deals 80% base damage (affected by attack boost) and applies Lightning effect to nearest enemy",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Increased Dodge while moving"
+        },
+        "Void Robe":{
+            "description":"A robe from a demonic realm.<br><br><b>Hidden</b><br>[Epic] Poison effect is 30%",
+            "image":"image/items/void_robe.png",
+            "base":"Max HP + [x]<br>[Common] Collision Resistance + 10%",
+            "great":"",
+            "rare":"[Rare] Healing from red hearts + 20%",
+            "epic":"[Epic] Poisons all enemies in the room.",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Dropped Hearts restore more HP"
+        },
+        "Bright Robe":{
+            "description":"A robe that's full of light, reduces front damage during battle.<br><br><b>Hidden</b><br>[Epic] HP limit increases by +3% per skill/ability received from levelling up",
+            "image":"image/items/bright_robe.png",
+            "base":"Max HP + [x]<br>[Common] Front Damage Resistance + 12%",
+            "great":"",
+            "rare":"[Rare] Battle XP Gain + 25%",
+            "epic":"[Epic] Each upgrade will increase HP limit.",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] HP Drops +10%"
+        },
+        "Shadow Robe":{
+            "description":"An assassin's special robe, reduces rear damage during battle.<br><br><b>Hidden</b><br>[Epic] Deals 135% modifiable base damage",
+            "image":"image/items/shadow_robe.png",
+            "base":"Max HP + [x]<br>[Common] Rear Damage Resistance + 20%",
+            "great":"",
+            "rare":"[Rare] Max HP + 7%",
+            "epic":"[Epic] Causes strong dark damage (Dark Touch) to nearby enemies.",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] In case of many enemies, damage taken is reduced"
+        },
+        "Laser Bat":{
+            "description":"Bat from a mysterious cave. Its laser could easily penetrate obsticles.",
+            "image":"image/items/laser_bat.png",
+            "base":"Own Attack + x",
+            "great":"[Great] Own Attack Speed + 10%",
+            "rare":"[Rare] Own crit + 20%",
+            "epic":"[Epic] 50% chance for new ability after adventure level-up",
+            "pe":"[Perfect Epic] Inherit Leader's attack +10%",
+            "legendary":"[Legendary] Attacked enemies will be poisoned",
+            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
+            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+        },
+        "Scythe Mage":{
+            "description":"Like the Grim Reaper, he can slice through enemies with his sharpened scythe.",
+            "image":"image/items/scythe_mage.png",
+            "base":"Own Attack + x",
+            "great":"[Great] Own Attack Speed + 10%",
+            "rare":"[Rare] Own crit + 20%",
+            "epic":"[Epic] 50% chance for new ability after adventure level-up",
+            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
+            "legendary":"[Legendary] Crit Damage increased greatly",
+            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
+            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+        },
+        "Elf":{
+            "description":"Elf of the Dark Forest. Fires projectiles.",
+            "image":"image/items/elf.png",
+            "base":"Own Attack + x",
+            "great":"[Great] Own Attack Speed + 10%",
+            "rare":"[Rare] Own crit + 20%",
+            "epic":"[Epic] 50% chance for new ability after adventure level-up",
+            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
+            "legendary":"[Legendary] Attack Speed increased greatly from time to time",
+            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
+            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+        },
+        "Bone Warrior":{
+            "description":"Once a powerful warrior, now it pledges its blade to you",
+            "image":"image/items/bone_warrior.png",
+            "base":"Own Attack + x",
+            "great":"[Great] Own Attack Speed + 10%",
+            "rare":"[Rare] Own Crit + 20%",
+            "epic":"[Epic] 50% chance for new ability after adventure level-up",
+            "pe":"[Perfect Epic] Inherit Leader's attack +10%",
+            "legendary":"[Legendary] Trigger Fury State for a short duration after a Crit",
+            "ale":"[Ancient Legendary] Chance to block a lethal attack and die for Hero 1 time",
+            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+        },
+        "Living Bomb":{
+            "description":"Keeps throwing bombs that deal splash damage.",
+            "image":"image/items/living_bomb.png",
+            "base":"Own Attack + x",
+            "great":"[Great] Own Attack Speed + 10%",
+            "rare":"[Rare] Own crit + 20%",
+            "epic":"[Epic] 50% chance for new ability after adventure level-up",
+            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
+            "legendary":"[Legendary] The bomb will split into 3 mini bombs once it hits the floor",
+            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
+            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+        },
+        "Noisy Owl":{
+            "description":"Part of the gale force, this owl can summon a strong gale which can knockback enemies.<br><br><b>Hidden</b><br>Sends 2 forward-facing tornado projectiles that can knockback enemies",
+            "image":"image/items/noisy_owl.png",
+            "base":"Own Attack + x",
+            "great":"[Great] Own Attack Speed + 10%",
+            "rare":"[Rare] Own crit + 20%",
+            "epic":"[Epic] 50% chance for new ability after adventure level-up",
+            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
+            "legendary":"[Legendary] Projectiles split into 2 after some distance",
+            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
+            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+        },
+        "Flaming Ghost":{
+            "description":"A ghost burning with blue flames that can shoot fireballs which split.<br><br><b>Hidden</b><br>Sends a single forward-facing projectile that splits into two, similar to the purple ghost projectile",
+            "image":"image/items/flaming_ghost.png",
+            "base":"Own Attack + x",
+            "great":"[Great] Own Attack Speed + 10%",
+            "rare":"[Rare] Own crit + 20%",
+            "epic":"[Epic] 50% chance for new ability after adventure level-up",
+            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
+            "legendary":"[Legendary] Projectiles rebound once",
+            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
+            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+        },
+        "Bear Ring":{
+            "description":"Bestowed with the Power of a Bear.",
+            "image":"image/items/bear_ring_epic.png",
+            "base":"Increases damage to ground units + x",
+            "great":"",
+            "rare":"[Rare] Max HP + 5%",
+            "epic":"[Epic] Coins From Battle + 10%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Ground Units damage reduced +7%"
+        },
+        "Wolf Ring":{
+            "description":"Bestowed with the Power of a Wolf.",
+            "image":"image/items/wolf_ring_epic.png",
+            "base":"Increases damage to melee units + x",
+            "great":"",
+            "rare":"[Rare] Crit Chance + 5%",
+            "epic":"[Epic] Coins From Battle + 10%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Melee Units damage reduced+7%"
+        },
+        "Falcon Ring":{
+            "description":"Bestowed with the Power of a Falcon.",
+            "image":"image/items/falcon_ring_epic.png",
+            "base":"Increases damage to airborne units + x",
+            "great":"",
+            "rare":"[Rare] Attack Speed + 5%",
+            "epic":"[Epic] Coins From Battle + 10%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Airborne damage resistance + 7%"
+        },
+        "Serpent Ring":{
+            "description":"Bestowed with the Power of a Serpent.",
+            "image":"image/items/serpent_ring_epic.png",
+            "base":"Increases damage to ranged units + x",
+            "great":"",
+            "rare":"[Rare] Dodge + 7%",
+            "epic":"[Epic] Coins From Battle + 10%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Ranged Units damage reduced + 7%"
+        },
+        "Bull Ring":{
+            "description":"Contains the power of bulls, use it to increase attacks on all mobs.",
+            "image":"image/items/bull_ring_epic.png",
+            "base":"Increases damage to mobs + x",
+            "great":"",
+            "rare":"[Rare] Damage Resistance + 10%",
+            "epic":"[Epic] Coins From Battle + 10%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Mobs damage resistance +5%"
+        },
+        "Lion Ring":{
+            "description":"Contains the power of a berserk lion, use it to increase attacks on boss monsters.",
+            "image":"image/items/lion_ring_epic.png",
+            "base":"Increases damage to bosses + x",
+            "great":"",
+            "rare":"[Rare] Crit Damage + 20%",
+            "epic":"[Epic] Attack + 5%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Boss Damage Resistance + 5%"
+        },
+        "Dragon Ring":{
+            "description":"Contains draconic power, and increases attack effects on Hero Mode monsters.",
+            "image":"image/items/dragon_ring_epic.png",
+            "base":"Deals damage to elite enemies + x",
+            "great":"",
+            "rare":"[Rare] Projectile Resistance + 12%",
+            "epic":"[Epic] Crit Chance + 6%",
+            "pe":"",
+            "legendary":"[Legendary] MP Strength + 15%",
+            "ale":"",
+            "mythic":"[Mythic] Damage dealt to Humanoid enemies + 10%"
+        },
+        "Vilebat Ring":{
+            "description":"Contains the ability of vampiric bats, and increases attack effects on Normal Mode monsters.",
+            "image":"image/items/vilebat_ring_epic.png",
+            "base":"Increases damage to normal enemies + x",
+            "great":"",
+            "rare":"[Rare] Healing Effect of Red Heart + 20%",
+            "epic":"[Epic] Killing enemies restores HP. Heal is stronger for boss kills",
+            "pe":"",
+            "legendary":"[Legendary] Heart drops + 20%",
+            "ale":"",
+            "mythic":"[Mythic] Collision Damage Resistance + 12%"
+        },
+        "Agile Locket":{
+            "description":"Locket created with agility to dodge enemies easily.",
+            "image":"image/items/agile_locket.png",
+            "base":"Max HP + x<br>When HP is lower than 20%, Dodge increases by y %.",
+            "great":"",
+            "rare":"",
+            "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Dodge + 6%"
+        },
+        "Iron Locket":{
+            "description":"Locket engraved with iron to reduce damage from contact with enemies.",
+            "image":"image/items/iron_locket.png",
+            "base":"Max HP + x<br>When HP is lower than 20%, Damage dealt by bumping into enemies is reduced by y %.",
+            "great":"",
+            "rare":"",
+            "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Collision damage resistance + 8%"
+        },
+        "Angel Locket":{
+            "description":"Locket blessed by the angels to be invincible in times of dispair.",
+            "image":"image/items/angel_locket.png",
+            "base":"Max HP + x<br>There's a y% chance to revive and be invincible for t seconds when dying; available once only.",
+            "great":"",
+            "rare":"",
+            "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Chance to Revive + 5%"
+        },
+        "Bulletproof Locket":{
+            "description":"Locket crafted with bulletproof in mind to reduce projectile damage.",
+            "image":"image/items/bulletproof_locket.png",
+            "base":"Max HP + x<br>Projectile damage decreased y % when HP is lower than 20%.",
+            "great":"",
+            "rare":"",
+            "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Projectile Resistance + 8%"
+        },
+        "Bloodthirsty Locket":{
+            "description":"An engraved locket which allows you to restore HP after kill.",
+            "image":"image/items/bloodthirsty_locket.png",
+            "base":"Max HP + x<br>Can recover HP on kills when HP is lower than y%",
+            "great":"",
+            "rare":"",
+            "epic":"[Epic] HP drops + 20%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Enhanced Recovery Effects of Bloodthirst"
+        },
+        "Piercer Locket":{
+            "description":"An engraved locket which allows you to climb over walls.",
+            "image":"image/items/piercer_locket.png",
+            "base":"Max HP + x<br>Can penetrate walls when HP is lower than y%",
+            "great":"",
+            "rare":"",
+            "epic":"[Epic] HP drops + 20%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Movement Speed + 3%"
+        },
+        "Counterattack Locket":{
+            "description":"Etched with a Counterattack. Performs Counterattacks on enemies each time damage is taken.",
+            "image":"image/items/counterattack_locket.png",
+            "base":"Max HP + x",
+            "great":"",
+            "rare":"[Rare] x% chance to counter (increases with quality) enemies after taking damage (does 5x the damage taken to the enemy)",
+            "epic":"[Epic] More Hearts equal better recovery effect, up to 100%",
+            "pe":"",
+            "legendary":"[Legendary] Max HP + 4%",
+            "ale":"",
+            "mythic":"[Mythic] Counterattack damage to bosses is increased by 120%."
+        },
+        "Thunder Bracelet":{
+            "description":"Bracelet containing thunder, bring down their wrath upon enemies.",
+            "image":"image/items/thunder_bracelet.png",
+            "base":"Attack + x<br>Deals y times random Lightning damage to nearby enemies; damage amount is random too.",
+            "great":"",
+            "rare":"",
+            "epic":"[Epic] Crit Damage + 15%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Elemental Lightning damage increased"
+        },
+        "Frozen Bracelet":{
+            "description":"Bracelet containing ice, freeze enemies on the spot.",
+            "image":"image/items/frozen_bracelet.png",
+            "base":"Attack + x<br>Randomly freezes y enemies for t seconds.",
+            "great":"",
+            "rare":"",
+            "epic":"[Epic] Crit Damage + 15%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Elemental Freezing damage increased"
+        },
+        "Blazing Bracelet":{
+            "description":"Bracelet containing fire, burn enemies while they live.",
+            "image":"image/items/blazing_bracelet.png",
+            "base":"Attack + x<br>Burns y enemies lasting t seconds.",
+            "great":"",
+            "rare":"",
+            "epic":"[Epic] Crit Damage + 15%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Elemental Fire damage increased"
+        },
+        "Split Bracelet":{
+            "description":"Bracelet containing a copy, brings out a copy when fighting enemies.",
+            "image":"image/items/split_bracelet.png",
+            "base":"Attack + x<br>Summons y copy to help battle, lasting t seconds.",
+            "great":"",
+            "rare":"",
+            "epic":"[Epic] Crit Damage + 15%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] The lower the HP, the higher the clones attack"
+        },
+        "Invincible Bracelet":{
+            "description":"A bracelet which triggers an invincible star when enemies appear.",
+            "image":"image/items/invincible_bracelet.png",
+            "base":"Attack + x<br>Be protected by Invincible Star lasting t seconds when encountering enemies.",
+            "great":"",
+            "rare":"",
+            "epic":"[Epic] Attack + 6%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] When the bracelet triggers Invincible, Crit Damage is increased"
+        },
+        "Quickshot Bracelet":{
+            "description":"A bracelet which magically shoots multiple arrows when enemies appear.",
+            "image":"image/items/quickshot_bracelet.png",
+            "base":"Attack + x<br>Shoot more arrows continuously lasting t seconds encountering enemies.",
+            "great":"",
+            "rare":"",
+            "epic":"[Epic] Attack + 6%",
+            "pe":"",
+            "legendary":"",
+            "ale":"",
+            "mythic":"[Mythic] Projectiles travel faster"
+        },
+        "Shield Bracelet":{
+            "description":"Bracelet inscribed with Shield Guard, used to protect oneself when enemies appear.",
+            "image":"image/items/shield_bracelet.png",
+            "base":"Attack + x<br>Gain x-y Shield Guards that add damage for t seconds in battle.<br>Gain Crit Rate when blocking shots.",
+            "great":"",
+            "rare":"",
+            "epic":"[Epic] Attack + 7%",
+            "pe":"",
+            "legendary":"[Legendary] Shield Size + 25%",
+            "ale":"",
+            "mythic":"[Mythic] Chance to gain Shield Guard after a Crit hit"
+        },
+        "Arcane Archer":{
+            "description":"A book that has all powers and experiences of an Archer. Use it to get an active Ultimate skill.",
+            "image":"image/items/arcane_archer.png",
+            "base":"Increases projectile frequency and own attack<br>Max HP + x<br>Attack + y (ULT)",
+            "great":"[Great] Attack Speed + 10% (ULT)",
+            "rare":"[Rare] Side Arrow + 1 (ULT)",
+            "epic":"[Epic] Front Arrow + 1 (ULT)",
+            "pe":"[Perfect Epic] Rear Arrow + 1 (ULT)",
+            "legendary":"[Legendary] Time Span + 1.2seconds (ULT)",
+            "ale":"[Ancient Legendary] Crit Damage + 25% (ULT)",
+            "mythic":"[Mythic] Time Span + 1"
+        },
+        "Art of Combat":{
+            "description":"A book containing the arts of powerful combat. Use it to get an auto Ultimate skill.",
+            "image":"image/items/art_of_combat.png",
+            "base":"Increased projectile knockback effect when full<br>Max HP + x<br>Attack + y (ULT)",
+            "great":"[Great] Increases projectile knockback effect (ULT)",
+            "rare":"[Rare] Power Speed + 25% (ULT)",
+            "epic":"[Epic] Increases projectile speed (ULT)",
+            "pe":"[Perfect Epic] Attack Speed + 25% (ULT)",
+            "legendary":"[Legendary] Attack contains Random Elemental (ULT)",
+            "ale":"[Ancient Legendary] Crit Chance + 15% (ULT)",
+            "mythic":"[Mythic] Max HP + 8%"
+        },
+        "Ice Realm":{
+            "description":"A book containing powerful Frost magic. Use it to get an active Ultimate skill.",
+            "image":"image/items/ice_realm.png",
+            "base":"Freezes surrounding enemies and increases own attack<br>Max HP + x<br>Attack + x (ULT)",
+            "great":"[Great] Attack Speed + 20% (ULT)",
+            "rare":"[Rare] Power Speed + x% (ULT)",
+            "epic":"[Epic] Frost Damage + x (ULT)<br>Frost area increased by 100% (ULT)",
+            "pe":"[Perfect Epic] Time Span + t seconds (ULT)",
+            "legendary":"[Legendary] Crit Chance + 20% (ULT)",
+            "ale":"[Ancient Legendary] Initial Power + 35% (ULT)",
+            "mythic":"[Mythic] When used, it may return 50% of the power (ULT.)"
+        },
+        "Enlightenment":{
+            "description":"A book with magic that will help you learn new skills in battle. Use it to get an auto Ultimate skill.",
+            "image":"image/items/enlightenment.png",
+            "base":"Grant a new skill when full<br>Max HP + x<br>Power Speed + y (ULT)",
+            "great":"[Great] Collision Damage Resistance + 5%",
+            "rare":"[Rare] Projectile Damage Resistance + 5%",
+            "epic":"[Epic] Multi-Skill + 1 (ULT)",
+            "pe":"[Perfect Epic] Initial Power + 40% (ULT)",
+            "legendary":"[Legendary] Multi-Skill + 1 (ULT)",
+            "ale":"[Ancient Legendary] Max HP + 7%",
+            "mythic":"[Mythic] Battle XP Gain + 8%"
+        },
+        "Giants Contract":{
+            "description":"The contract with 7 Giants, allowing the user the power of the Giants. Wear it to get an auto skill",
+            "image":"image/items/giants_contract.png",
+            "base":"Once the energy is fully charged, transform with the Courage Giant power<br>Max HP + x<br>Attack + y (ULT)",
+            "great":"[Great] Crit Damage + z (ULT)<br>[Great] Wild Giant - Deals collision damage to enemy (ULT)",
+            "rare":"[Rare] Stone Giant - Defence increased greatly (ULT)",
+            "epic":"[Epic] Sword Giant - Receive all spinning sword skills (ULT)",
+            "pe":"[Perfect Epic] Flaming Giant - Leaves behind a blaze when moving (ULT)",
+            "legendary":"[Legendary] Gale Giant - Increased movement and attack speed (ULT)",
+            "ale":"[Ancient Legendary] Bolt Giant - Surrounding enemies will be hit by lightning (ULT)",
+            "mythic":"[Mythic] Rage Giant - Skill can be released earlier if losing HP (ULT.)"
+        },
+        "Spectre Book":{
+            "description":"Holds the magic of the undead; you can use it to summon undead soldiers. Where it to get an active skill.",
+            "image":"image/items/spectre_book.png",
+            "base":"Summon undead enemies to help you battle<br>Max HP + x<br>Attack + y (ULT)<br>Undead Attack + z (ULT)",
+            "great":"[Great] Higher the quality, the faster the release (ULT)",
+            "rare":"[Rare] Higher the quality, the longer the duration (ULT)",
+            "epic":"[Epic] Summon new warrior - Flame Mage (ULT)",
+            "pe":"[Perfect Epic] Enter a short state of Rage",
+            "legendary":"[Legendary] Summon an Ultimate warrior - Skeleton King (ULT)",
+            "ale":"[Ancient Legendary] Kill enemies to extend summon time (ULT)",
+            "mythic":"[Mythic] When the undead disappears, it may drop a heart (ULT)"
+        },
+        "Arcanum of Time":{
+            "description":"Perceive the mysteries of time that let you slow or speed up time. Gain an active Ultimate skill when equipped<br><br><b>Hidden</b><br>Recovers 1.5% HP for 3s after ULT ends.",
+            "image":"image/items/arcanum_of_time.png",
+            "base":"Max HP +<br>Attack + x (ULT)",
+            "great":"[Great] Slow effect +x% (ULT)<br>[Great] Slow: Enemy attacks and movement are slowed (ULT)",
+            "rare":"[Rare] Gain Crit Rate (ULT)",
+            "epic":"[Epic] Effect range doubled. Ultimate skill duration increased (ULT)",
+            "pe":"[Perfect Epic] Haste: Gain Crit Rate, increased buff duration and summoned creature duration (ULT)",
+            "legendary":"[Legendary] Haste: Speed of attacks, movement, spins, shots, magic casts increased (ULT)",
+            "ale":"[Ancient Legendary] Manipulate Time: Reduces continuous damage intervals on enemies. Increases enemy debuff duration (ULT)",
+            "mythic":"[Mythic] Greatly increase damage immunity after taking damage. Effect reduces time (ULT)"
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+HeroData = {
+        "Atreus":{
+            "description":"A rookie archer on his way to become an archer hero",
+            "base_atk":"150 [+8]",
+            "base_hp":"600 [+25]",
+            "attributes":" • Lvl 20: Max HP + 100 [All Heroes]<br>• Lvl 40: Damage to Ranged Units + 15%<br>• Lvl 60: Max HP + 4% [All Heroes]<br>• Lvl 80: Attack Speed + 5%<br>• Lvl 120: Projectile Resistance + 7% [All Heroes]",
+            "price":"Free",
+            "skill":"Skill: Atreus does not have a unique ability",
+            "skill_details":"<br>",
+            "star_1":"Patrol Gold Earnings + 4%",
+            "star_2":"Attack + 30 [All Heroes]",
+            "star_3":"Skill - Growth: Acquire a new skill - Growth",
+            "star_4":"Trait - Stubborn: When HP is lower than 20%, HP is restored for a while",
+            "star_5":"Spirit - Upgrade: During Spirit's crit attack, Atreus's attack speed is increased for a while",
+            "star_6":"Growth - Insight: Upgrade speed and Heart droprate increased",
+            "star_7":"Max HP + 800 [All Heroes]",
+            "star_8":"Max HP + 5% [All Heroes]"
+        },
+        "Urasil":{
+            "description":"Proficient in the study of Medicine, an invisible killer allowing him to be skilled in Poison.",
+            "base_atk":"120 [+9]",
+            "base_hp":"550 [+30]",
+            "attributes":" • Lvl 20: Attack + 40 [All Heroes]<br> • Lvl 40: Damage to Melee Units + 15%<br> • Lvl 60: Crit Damage + 15% [All Heroes]<br> • Lvl 80: Max HP + 6%<br> • Lvl 120: Damage to Melee Units + 9% [All Heroes]",
+            "price":"Free (Unlocked after clearing stage 1 of chapter 2)",
+            "skill":"Skill: Your attacks cause an enhanced Poison effect",
+            "skill_details":"<br><b>Skill Details:</b><br>40% of base damage per second<br><br>",
+            "star_1":"Patrol Ring Scroll Earnings + 4%",
+            "star_2":"Max HP + 120 [All heroes]",
+            "star_3":"Poison - Feeble: Enemy movement speed reduced 10% when poisoned",
+            "star_4":"Trait - Low-key: Toxic damaged + 35% after killing enemy for a while",
+            "star_5":"Spirit - Upgrade: Whenever an enemy dies of poison, Spirit's attack is increased by a little",
+            "star_6":"Poison - Lethal: Toxic attack, chance to deal 3x more damage",
+            "star_7":"Crit Chance + 2% [All heroes]",
+            "star_8":"Healing Effect of Red Heart + 7% [All Heroes]"
+        },
+        "Phoren":{
+            "description":"Born from Fire, and Fire answers to no one but him.",
+            "base_atk":"130 [+9]",
+            "base_hp":"500 [+35]",
+            "attributes":" • Lvl 20: Critical Chance + 2% [All Heroes]<br> • Lvl 40: Projectile Resistance: + 15%<br> • Lvl 60: Critical Chance + 2% [All Heroes]<br> • Lvl 80: Critical Chance + 5%<br> • Lvl 120: Damage to Ranged Units + 9% [All Heroes]",
+            "price":"50,000 <object type='image/png' data='\\static\\image\\svg\\gold.svg' width='16' height='16'></object>",
+            "skill":"Skill: Your attacks cause an enhanced Flame effect",
+            "skill_details":"<br>",
+            "star_1":"Patrol Sapphires Earnings + 4%",
+            "star_2":"Damage to Airborne Units + 75 [All heroes]",
+            "star_3":"Red Flame - Super Fire: Fire damage is increased",
+            "star_4":"Trait - Passion: When entering a room, a random enemy will be ignited",
+            "star_5":"Spirit - Upgrade: Extra damage is dealt when Spirit attacks burning enemy",
+            "star_6":"Red Flame - Flame Star: Enemies that are burning will cause reduced damage to hero",
+            "star_7":"Attack + 200 [All heroes]",
+            "star_8":"Ground Units damage reduced + 6% [All Heroes]"
+        },
+        "Taranis":{
+            "description":"Born of the Thunder, and naturally able to control and wield Thunder.",
+            "base_atk":"130 [+10]",
+            "base_hp":"550 [+40]",
+            "attributes":" • Lvl 20: Crit Chance + 2% [All Heroes]<br> • Lvl 40: Damage to Airborne Units + 20%<br> • Lvl 60: Attack + 4% [All Heroes]<br> • Lvl 80: Crit Damage + 50%<br> • Lvl 120: Damage to Airborne Units + 9% [All Heroes]",
+            "price":"1000 <object type='image/png' data='\\static\\image\\svg\\gem.svg' width='16' height='16'></object> or 30 Taranis Shards",
+            "skill":"Skill: Your attacks cause an enhanced Lightning effect",
+            "skill_details":"<br>",
+            "star_1":"Patrol XP Earnings + 4%",
+            "star_2":"Max HP + 150 [All heroes]",
+            "star_3":"Thunderstorm - Distance: Lightning range increased",
+            "star_4":"Trait - Rapid: Hitting the enemy continuously will gradually increase movement speed",
+            "star_5":"Spirit - Upgrade: Attacks have a Lightning Element in the first 15s after entering a room",
+            "star_6":"Thunderstorm - Damage: Lightning damage increased by 20%",
+            "star_7":"Damage to Airborne Units + 300 [All heroes]",
+            "star_8":"Airborne Units Damage Resistance + 7% [All Heroes]"
+        },
+        "Helix":{
+            "description":"A tribe warrior, a hunter; even the strong admire his power!",
+            "base_atk":"125 [+10]",
+            "base_hp":"620 [+43]",
+            "attributes":" • Lvl 20: Crit Damage + 20% [All Heroes]<br> • Lvl 40: Healing Effect of Red Heart + 20%<br> • Lvl 60: Max HP + 5% [All Heroes]<br> • Lvl 80: Crit Chance + 5%<br> • Lvl 120: Healing Effect + 10% [All Heroes]",
+            "price":"1500 <object type='image/png' data='\\static\\image\\svg\\gem.svg' width='16' height='16'></object> or 30 Helix Shards",
+            "skill":"Skill: Your attacks deal more damage at low HP.",
+            "skill_details":"<br><b>Skill Details:</b><br>Fury Command: +1.2% attack for every 1% of player HP lost.<br><br>",
+            "star_1":"Patrol Gold Earnings + 4%",
+            "star_2":"Attack + 40 [All heroes]",
+            "star_3":"Rage - Fury: When losing HP, attack is increased",
+            "star_4":"Trait - Irritant: After losing HP, damage is increased on next attack",
+            "star_5":"Spirit - Upgrade: Spirit has faster attack speed",
+            "star_6":"Rage - Nimble: When HP is lower than 25%, movement speed increased slightly",
+            "star_7":"Damage to Ranged Units + 300 [All heroes]",
+            "star_8":"Ranged Units Damage Resistance + 8% [All Heroes]"
+        },
+        "Meowgik":{
+            "description":"The spirit of the cat combined with magic; not to be underestimated.",
+            "base_atk":"135 [+11]",
+            "base_hp":"550 [+40]",
+            "attributes":" • Lvl 20: Attack + 50 [All Heroes]<br> • Lvl 40: Dodge + 5%<br> • Lvl 60: Attack + 4% [All Heroes]<br> • Lvl 80: Healing Effect of Red Heart + 30%<br> • Lvl 120: Dodge + 3% [All Heroes]",
+            "price":"1800 <object type='image/png' data='\\static\\image\\svg\\gem.svg' width='16' height='16'></object> or 30 Meowgik Shards",
+            "skill":"Skill: A chance to summon an auto-attacking kitty when attacking enemies",
+            "skill_details":"<br>",
+            "star_1":"Patrol Spirit Scroll Earnings + 4%",
+            "star_2":"Healing Effect of Red Heart + 10% [All heroes]",
+            "star_3":"Meow - Giant: Meowing increases, attack and attack range increased",
+            "star_4":"Trait - Lazy: Crit rate increased after standing still",
+            "star_5":"Spirit - Upgrade: Spirit's crit damage increased",
+            "star_6":"Meow - Tracking: Meowspirit becomes better at tracking and has its Attack increased",
+            "star_7":"Max HP +1000 [All heroes]",
+            "star_8":"Dodge + 7% [All Heroes]"
+        },
+        "Shari":{
+            "description":"Born of the magical woodlands, she is in touch with nature.",
+            "base_atk":"135 [+10]",
+            "base_hp":"550 [+35]",
+            "attributes":" • Lvl 20: Damage to Melee Units + 150<br> • Lvl 40: Max HP + 300 [All Heroes]<br> • Lvl 60: Crit Chance + 5%<br> • Lvl 80: Damage to Melee Units + 5% [All Heroes]<br> • Lvl 120: Max HP + 8% [All Heroes]",
+            "price":"30 Shari Shards",
+            "skill":"Skill:  Summons a thorned vine to attack enemies.",
+            "skill_details":"<br>",
+            "star_1":"Patrol Gold Earnings + 4%",
+            "star_2":"Max HP + 120 [All heroes]",
+            "star_3":"Entangle - Vine: Vine has increased attack",
+            "star_4":"Trait - Active: When moving, dodge rate slightly increased",
+            "star_5":"Spirit - Upgrade: When Spirit is near Vine, attack speed is increased",
+            "star_6":"Entangle - Auto Track: Vines will follow and attack enemies",
+            "star_7":"Damage to Melee Units + 300 [All heroes]",
+            "star_8":"Melee Units Damage Resistance + 7% [All Heroes]"
+        },
+        "Ayana":{
+            "description":"Hailing from a magical city, a witch with powerful magic!",
+            "base_atk":"160 [+11]",
+            "base_hp":"550 [+42]",
+            "attributes":" • Lvl 20: Damage to Airborne Units + 80 [All Heroes]<br> • Lvl 40: Damage to Ranged Units + 15%<br> • Lvl 60: Attack + 4% [All Heroes]<br> • Lvl 80: Dodge + 10%<br> • Lvl 120: Damage to Ranged Units + 9% [All Heroes]",
+            "price":"2500 <object type='image/png' data='\\static\\image\\svg\\gem.svg' width='16' height='16'></object> or 30 Ayana Shards",
+            "skill":"Skill: Attacks can charm the enemy, with a chance to summon a portal",
+            "skill_details":"<br><b>Skill Details:</b><br>Charm: Charmed enemies will receive additional damage with reduced movement speed and loss of health.<br><br><b>Additional Skill Notes:</b><br> • Applies a 'Charm' when targetting an enemy every 10 seconds, or applies it instantly when attacking an enemy.<br> • Deals 48% of non-modifiable base damage (includes rune ATK% boosts) for 2 ticks.<br> • The damage ticked increases by 0.4% of your base damage each time you level up, maximum of 49.6%.<br> • Creates a portal that lasts 5 seconds at a time until used.<br><br>",
+            "star_1":"Patrol Locket Scroll Earnings + 4%",
+            "star_2":"Crit Damage + 15% [All heroes]",
+            "star_3":"Witchcraft - Dodger: After leaving the portal, dodge rate increased by 75% for a while",
+            "star_4":"Trait - Elegance: After using the portal, enemies around the portal will be Charmed",
+            "star_5":"Spirit - Upgrade: Damage towards furthest enemies is increased",
+            "star_6":"Witchcraft - Charm: Strengthen Charmed effect",
+            "star_7":"Attack + 250 [All heroes]",
+            "star_8":"Damage to Bosses + 7% [All Heroes]"
+        },
+        "Onir":{
+            "description":"The son of Light, possessing all the powers from the Light like his shiny hair.",
+            "base_atk":"140 [+11]",
+            "base_hp":"650 [+45]",
+            "attributes":" • Lvl 20: Max HP + 200 [All Heroes]<br> • Lvl 40: Damage to Ground Units + 20%<br> • Lvl 60: Healing Effect of Red Heart + 20% [All Heroes]<br> • Lvl 80: Attack + 6%<br> • Lvl 120: Damage to Ground Units + 6% [All Heroes]",
+            "price":"$9.99 USD or 30 Onir Shards",
+            "skill":"Skill: Your attacks cause an enhanced Holy effect",
+            "skill_details":"<br>",
+            "star_1":"Patrol Weapon Scroll Earnings + 4%",
+            "star_2":"Max HP + 200 [All heroes]",
+            "star_3":"Aurora - Shine: Light repeatedly attacks enemies, with increased damage",
+            "star_4":"Trait - Justice: When only one enemy remains, own crit rate is increased by 10%",
+            "star_5":"Spirit - Upgrade: Attack speed and projectile speed increased",
+            "star_6":"Aurora - Re-Shine: When enemy dies, another powerful light is released",
+            "star_7":"Projectile Resistance + 10% [All heroes]",
+            "star_8":"Damage to Mobs + 7% [All Heroes]"
+        },
+        "Rolla":{
+            "description":"The goddess of Ice, wielder of the power of ice and snow with virtuous heart.",
+            "base_atk":"170 [+12]",
+            "base_hp":"500 [+40]",
+            "attributes":" • Lvl 20: Attack + 60 [All Heroes]<br> • Lvl 40: Collision Damage Resistence + 20%<br> • Lvl 60: Attack + 5% [All Heroes]<br> • Lvl 80: Dodge + 10%<br> • Lvl 120: Collision Damage Resistance + 7% [All Heroes]",
+            "price":"$16.99 USD or 30 Rolla Shards",
+            "skill":"Skill: Your attacks freeze enemies for a longer time",
+            "skill_details":"<br><br><br>",
+            "star_1":"Patrol XP Earnings + 5%",
+            "star_2":"Damage to Melee Units + 75 [All heroes]",
+            "star_3":"Frost - Sub-Zero: Frozen damage increased, frozen time increased",
+            "star_4":"Trait - Ice Snow: Upgrade quicker during battle, Spellbook mana increased",
+            "star_5":"Spirit - Upgrade: Attack is reduced for a while for the enemy the Spirit attacks",
+            "star_6":"Frost - Ice Spike: Frozen enemies will have their first received damage increased",
+            "star_7":"Crit Damage + 20% [All heroes]",
+            "star_8":"Max HP + 7% [All Heroes]"
+        },
+        "Bonnie":{
+            "description":"Heroic and kind woman of the sea! She robs the rich and helps the poor.",
+            "base_atk":"150 [+11]",
+            "base_hp":"600 [+45]",
+            "attributes":" • Lvl 20: Crit Damage + 20% [All Heroes]<br> • Lvl 40: Attack Speed + 5%<br> • Lvl 60: Max HP + 5% [All Heroes]<br> • Lvl 80: Attack + 5%<br> • Lvl 120: Attack + 6% [All Heroes]",
+            "price":"$9.99 USD or 30 Bonnie Shards",
+            "skill":"Chance to summon Clone when attacking",
+            "skill_details":"<br>",
+            "star_1":"Patrol Gold Earnings + 5%",
+            "star_2":"Attack + 50 [All heroes]",
+            "star_3":"Clone - Emergency: Chance to summon 2 clones",
+            "star_4":"Trait - Fearless: When there are too many enemies, own attack speed increased",
+            "star_5":"Spirit - Upgrade: The more coins on the floor, the quicker the attack speed",
+            "star_6":"Clone - Crowd: Clone max limit increased",
+            "star_7":"Max HP + 1200 [All heroes]",
+            "star_8":"Summoned Creature Damage + 15% [All Heroes]"
+        },
+        "Sylvan":{
+            "description":"An elf prince, master of the elements and loves nature.",
+            "base_atk":"160 [+12]",
+            "base_hp":"600 [+45]",
+            "attributes":" • Lvl 20: Max HP + 200 [All Heroes]<br> • Lvl 40: Damage to Ranged Units + 20%<br> • Lvl 60: Attack + 5% [All Heroes]<br> • Lvl 80: Max HP + 6%<br> • Lvl 120: Damage to Ranged Units + 9% [All Heroes]",
+            "price":"$18.99 USD or 30 Sylvan Shards",
+            "skill":"Skill: When attacking, there's a chance to trigger a random powerful elemental attack.",
+            "skill_details":"<br><b>Skill Details:</b><br>Every time an enemy is attacked, a random effect from fire, toxic, bolt or ice is used.<br><br>",
+            "star_1":"Patrol Locket Scroll Earnings + 4%",
+            "star_2":"Damage to Ranged Units + 75 [All heroes]",
+            "star_3":"Elemental - Damage: Elemental damage increased",
+            "star_4":"Trait - Pride: When HP is higher than 75%, get extra attack speed",
+            "star_5":"Spirit - Upgrade: Enemy gets a second Elemental attack",
+            "star_6":"Elemental - Critical Strike: Elemental damage has a chance to deal crit attack",
+            "star_7":"Damage to Ground Units + 400 [All heroes]",
+            "star_8":"Elemental Damage + 25% [All Heroes]"
+        },
+        "Shade":{
+            "description":"Killer of shadows, queen of the night, she can switch between her real and shadow self in battle.",
+            "base_atk":"170 [+13]",
+            "base_hp":"550 [+40]",
+            "attributes":" • Lvl 20: Damage to Ground Units + 100 [All Heroes]<br> • Lvl 40: Crit Chance + 5%<br> • Lvl 60: Max HP + 5% [All Heroes]<br> • Lvl 80: Attack Speed + 5%<br> • Lvl 120: Crit Damage + 10% [All Heroes]",
+            "price":"$18.99 USD or 30 Shade Shards",
+            "skill":"Skill: You can enjoy different effects with real and shadow forms, which switch automatically during battle.",
+            "skill_details":"<br><b>Skill Details:</b><br><b><em>Real Self</em></b>: Attacks have strong dark powers, and deal continued damage.<br><b><em>Shadow Self:</em></b> Increased attack, attack speed and dodge rate.<br><br><b>Additional Skill Notes:</b><br> • Switches between her 2 forms every 4 seconds.<br> • Normal form: 135% Damage on hit, 30% damage for 2 ticks, and 135% Dark Touch Explosion.<br> • Shadow form: 75% Attack, 15% Attack Speed, ~15% Dodge Chance.<br><br>",
+            "star_1":"Patrol Sapphire Earnings + 5%",
+            "star_2":"Crit Chance + 2% [All heroes]",
+            "star_3":"Twin Shadows - Cold Blood: Chance for Dark stats increased",
+            "star_4":"Trait - Calm: HP max limit is increased with each kill",
+            "star_5":"Spirit - Upgrade: When switching forms, Spirit gets a new combat power",
+            "star_6":"Twin Shadows - Cruel: Increases crit attack when in Dark form",
+            "star_7":"Attack + 300 [All heroes]",
+            "star_8":"Attack + 8% [All Heroes]"
+        },
+        "Ophelia":{
+            "description":"Huntress walking between darkness and light, adept at hunting evil monsters.",
+            "base_atk":"160 [+12]",
+            "base_hp":"650 [+42]",
+            "attributes":" • Lvl 20: Attack + 70 [All Heroes]<br> • Lvl 40: Damage to Melee Units + 20%<br> • Lvl 60: Attack + 120 [All Heroes]<br> • Lvl 80: Max HP + 7%<br> • Lvl 120: Damage to Melee Units + 9% [All Heroes]",
+            "price":"$9.99 USD or 30 Ophelia Shards",
+            "skill":"Skill (Demon Soul): Chance to suck and absorb the enemy's soul, increasing own strength.",
+            "skill_details":"<br><b>Skill Details:</b><br>Souls are absorbed into different colors in the formation.<br><br><b>Green</b>: Increase attack speed and projectile speed.<br><b>Yellow</b>: Chance to recover HP during crit attacks.<br><b>Blue</b>: Attacked enemy will explode.<br><b>Red</b>: Increase attack and add knockback effect.<br><br>",
+            "star_1":"Patrol Armor Scroll Earnings + 4%",
+            "star_2":"Damage to Ground Units + 75 [All heroes]",
+            "star_3":"Demon Soul - Amplify: Soul absorption effect increases",
+            "star_4":"Trait - Tranquil: Each kill increases HP limit",
+            "star_5":"Spirit - Upgrade: Spirit will provide own attack stats to Hero",
+            "star_6":"Demon Soul - Distort: Get a new strengthening effect",
+            "star_7":"Attack Speed + 3% [All heroes]",
+            "star_8":"MP Cast Speed + 25% [All Heroes]"
+        },
+        "Ryan":{
+            "description":"A traveling red panda that loves to sing, dance, and meet new people",
+            "base_atk":"150 [+11]",
+            "base_hp":"700 [+45]",
+            "attributes":" • Lvl 20: Damage to Ranged Units + 100 [All heroes]<br> • Lvl 40: Max HP + 5%<br> • Lvl 60: Damage to Airborne Units [All heroes]<br> • Lvl 80: Healing Effect of Red Heart + 30%<br> • Lvl 120: Max HP + 8% [All Heroes]",
+            "price":"50 Ryan Shards",
+            "skill":"Skill: Revive upon death, with Invincibility for 1s. Invincibility increases with the amount of monsters killed.",
+            "skill_details":"<br><b>Skill Details:</b><br> • Defeating enemies increase invincibilty time after revive. The time limit for invincibility is 6 seconds.<br> • Defeating bosses gives 10 times the amount extra invincibility time compared to normal monsters.<br><br>",
+            "star_1":"Patrol Ring Scroll Earnings + 4%",
+            "star_2":"Damage to Ranged Units + 75 [All heroes]",
+            "star_3":"Luck - Counterattack: When invincible, attack and crit rate increased greatly",
+            "star_4":"Trait - Leisure: Enemy projectiles will slow down near Ryan",
+            "star_5":"Spirit - Power: Get a Front Arrow + 1",
+            "star_6":"Luck - Haven: After revival, doge rate, movement speed and crit attack increased during this game",
+            "star_7":"Damage to Airborne Units + 400 [All heroes]",
+            "star_8":"Coin Drops + 10% [All Heroes]"
+        },
+        "Lina":{
+            "description":"A mysterious dancer who loves to travel and dance gracefully for strangers she meets.",
+            "base_atk":"180 [+13]",
+            "base_hp":"650 [+45]",
+            "attributes":" • Lvl 20: Attack + 100 [All Heroes]<br> • Lvl 40: Dodge + 5%<br> • Lvl 60: Max HP + 5% [All Heroes]<br> • Lvl 80: Attack Speed + 5%<br> • Lvl 120: Damage to Melee Units + 9% [All Heroes]",
+            "price":"50 Lina Shards",
+            "skill":"Skill: Hitting an enemy deals extra damage and summons a phantom dancer who attacks enemies and causes a negative effect.",
+            "skill_details":"<br><b>Skill Details:</b><br>Enemies around the Phantom Dancer will slow down and reduce HP.<br><br>",
+            "star_1":"Patrol Sapphire Earnings + 5%",
+            "star_2":"Attack + 60 [All heroes]",
+            "star_3":"Dream Dance - Enlarge: Range increased 50%",
+            "star_4":"Trait - Tender: Red hearts droprate + 20%, HP Recovery + 20%",
+            "star_5":"Spirit - Strengthen: Attack increased 25%",
+            "star_6":"Dream Dance - Freeze: Enemies in the range will be frozen after 5s",
+            "star_7":"Max HP + 1500 [All heroes]",
+            "star_8":"Max MP + 15% [All Heroes]"
+        },
+        "Aquea":{
+            "description":"Princess of the seas, loved by all underwater.",
+            "base_atk":"180 [+14]",
+            "base_hp":"800 [+50]",
+            "attributes":" • Lvl 20: Max HP + 250 [All Heroes]<br> • Lvl 40: Healing Effect of Red Heart + 30%<br> • Lvl 60: Attack + 5% [All Heroes]<br> • Lvl 80: Max HP + 10%<br> • Lvl 120: Healing Effect of Red Heart + 12% [All Heroes]",
+            "price":"50 Aquea Shards or $24.99 USD",
+            "skill":"Skill: Attack carries a strong freezing effect which slows down enemies. When HP is lower than 35%, combat mode is entered.",
+            "skill_details":"<br><b>Skill Details:</b><br><b><em>Combat Form:</em></b> Body size reduced 15%, crit rate increased 10%, dodge rate increased 15%, freezing damage increased.<br><br>",
+            "star_1":"Patrol Bracelet Scroll Earnings + 5%",
+            "star_2":"Attack + 70 [All heroes]",
+            "star_3":"Duel Form - Freeze: Freezing effect is greatly increased",
+            "star_4":"Trait - Optimism: When HP is lower than 10%, 20% HP is recovered",
+            "star_5":"Spirit - Upgrade: Attack speed increased 20%",
+            "star_6":"Duel Form - Bloodthirst: Get a bloodthirst effect in combat form",
+            "star_7":"Max HP + 1800 [All heroes]",
+            "star_8":"Movement Speed + 4% [All Heroes]"
+        },
+        "Shingen":{
+            "description":"The only heir of an ancient clan, owning their curse and gifts. (Owns their family heirloom: Demon Blade - Rain)",
+            "base_atk":"200[+14]",
+            "base_hp":"700 [+45]",
+            "attributes":" • Lvl 20: Damage to Melee Units + 120 [All Heroes]<br> • Lvl 40: Attack speed + 5%<br> • Lvl 60: Max HP + 6% [All Heroes]<br> • Lvl 80: Damage to Melee Units +20%<br> • Lvl 120: Damage to Ground Units + 6% [All Heroes]",
+            "price":"25.99€ or 50 Shingen Shards",
+            "skill":"Skill: Lower the HP, higher the attack speed. Has high Crit damage.",
+            "skill_details":"<br><b>Skill Details:</b><br>Lower the HP, higher the attack speed. Has high Crit Damage.<br><br><b>Hidden Skill Details:</b><br>Able to cast Slash when equipped with an Epic or above Demon Blade<br><br>",
+            "star_1":"Patrol Gold Earnings + 5%",
+            "star_2":"Damage to Melee Units + 80 [All heroes]",
+            "star_3":"Charge - Strengthen: Melee damage +12%, long range damage +7%, Crit damage +20%",
+            "star_4":"Trait - Persevere: Hitting the same target consecutively increases damage dealt",
+            "star_5":"Spirit - Upgrade: Attack increased 15%, Crit damage increased 25%",
+            "star_6":"Charge - Souleater: The more enemies killed, the higher the attack (Max limit 10%)",
+            "star_7":"Max HP +1800 [All Heroes]",
+            "star_8":"Weapon Melee Damage + 11% [All Heroes]"
+        },
+        "Gugu":{
+            "description":"A brave warrior owl, with a gleam of wisdom in its eyes.",
+            "base_atk":"160 (+ 14)",
+            "base_hp":"600 (+45)",
+            "attributes":" • Lvl 20: Damage to Airborne Units + 100 [All Heroes]<br> • Lvl 40: Dodge + 5%<br> • Lvl 60: Damage to Ranged Units + 5% [All Heroes]<br> • Lvl 80: Attack Speed + 5%<br> • Lvl 120: Max HP + 8% [All Heroes]",
+            "price":"50 Gugu Shards",
+            "skill":"Small chance to summon an owl guardian on hitting enemies. Owl guardians can resist damage and strengthen their hero.",
+            "skill_details":"<br><b>Skill Details:</b><br>Small chance to summon an owl guardian on hitting enemies. Owl guardians can resist damage and strengthen their hero.<br><br><FONT color='red'>Red Owl</FONT>: Increased attack, can be stacked.(Increases Attack by 0.1%. Attack is doubled [0.2%] when there are two red owls)<br><FONT color='yellow'>Yellow Owl</FONT>: Killing enemies can restore HP, can be stacked.(Gain 0.7% of Base HP on enemy kills. The amount of Healing is doubled [1.4%] when there are two yellow owls)<br><FONT color='blue'>Blue Owl</FONT>: Increased attack speed, can be stacked. (No data)<br><FONT color='green'>Green Owl</FONT>: Increased attack crit rate, can be stacked. (No data)<br><br>",
+            "star_1":"Patrol Sapphire Earnings + 10%",
+            "star_2":"Damage to Airborne Units + 60 [All Heroes]",
+            "star_3":"Guardian Spirit - Hope: When own HP is low, chance for summon is higher",
+            "star_4":"Trait - Intelligence: Level-up Speed is increased 15% during battle",
+            "star_5":"Spirit - Upgrade: Noisy Owl's projectiles can penetrate walls",
+            "star_6":"Guardian Spirit - Strength: Owl Guardian's stats increased",
+            "star_7":"Damage to Ranged Units + 400 [All Heroes]",
+            "star_8":"Spin Speed + 15% [All Heroes]"
+        },
+        "Iris":{
+            "description":"A powerful archer and the guardian of the forest.",
+            "base_atk":"160 [+15]",
+            "base_hp":"950 [+43]",
+            "attributes":" • Lvl 20: Max HP + 250 [All Heroes]<br> • Lvl 40: Attack + 200<br> • Lvl 60: Attack + 5% [All Heroes]<br> • Lvl 80: Dodge + 10%<br> • Lvl 120: Damage to Airborne Units + 10% [All Heroes]",
+            "price":"50 Iris Shards",
+            "skill":"High Movement Speed and Dodge. Each ranged attack has a chance to shoot an extra projectile. (Front Arrow)",
+            "skill_details":"<br>",
+            "star_1":"Patrol Gold Earnings + 15%",
+            "star_2":"Attack + 70 [All Heroes]",
+            "star_3":"Sharpshooter - Power Attack: Increase damage of extra projectiles and knockback effect.",
+            "star_4":"Trait - Lively: Each successful dodge will increase Attack Speed temporarily.",
+            "star_5":"Spirit - Upgrade: Enemies hit by Spirits will have reduced Movement Speed.",
+            "star_6":"Sharpshooter - Charged Attack: Moving increases Crit Chance temporarily.",
+            "star_7":"Damage to Airborne Units + 400 [All Heroes]",
+            "star_8":"Weapon Ranged Damage + 10% [All Heroes]"
+        },
+        "Blazo":{
+            "description":"A furious avenger, and an inquisitor against evil.",
+            "base_atk":"200 [+15]",
+            "base_hp":"900 [+44]",
+            "attributes":" • Lvl 20: Damage to Melee Units + 130 [All Heroes]<br> • Lvl 40: Attack + 250<br> • Lvl 60: Max HP + 6% [All Heroes]<br> • Lvl 80: Damage to Ground Units + 20%<br> • Lvl 120: Max HP + 8% [All Heroes]",
+            "price":"28.99€ or 50 Blazo Shards",
+            "skill":"Skill: Attacks have a chance to be judged; repeated hits inflicts justice.",
+            "skill_details":"<br><b>Skill Details:</b><br>Greatly increases its own attack, and reduces the enemy's movement speed and attack. Enemies lose more HP when injured.<br><br>",
+            "star_1":"Patrol Gold Earnings + 25%",
+            "star_2":"Damage to Ground Units +80 [All Heroes]",
+            "star_3":"Judge - Ghast: Increases Crit Chance for killing enemies when justice",
+            "star_4":"Trait - Revenge: Chance to deal Revenge damage when receiving damage",
+            "star_5":"Spirit - Enhance: Doubles spirit's attack when hero's HP is reduced",
+            "star_6":"Judge - Execution: Performs Judgement more quickly with greater effect",
+            "star_7":"Max HP + 1800 [All Heroes]",
+            "star_8":"Free Magic Cast Rate + 12% [All Heroes]"
+        },
+        "Melinda":{
+            "description":"A beautiful and brave noble who has embarked on a journey to become a renowned ranger.",
+            "base_atk":"200 [+16]",
+            "base_hp":"1000 [+50]",
+            "attributes":" • Lvl 20: Damage to Ranged Units + 150 [All Heroes]<br> • Lvl 40: Attack Speed + 5%<br> • Lvl 60: Damage to Melee Units + 5% [All Heroes]<br> • Lvl 80: Crit Chance + 5%<br> • Lvl 120: Damage to Ranged Units + 8% [All Heroes]",
+            "price":"29.99€ or 50 Shards",
+            "skill":"Chance to fire a projectile barrage with each attack. The lower the HP, the stronger the barrage.",
+            "skill_details":"<br>",
+            "star_1":"Patrol XP Earnings + 25%",
+            "star_2":"Damage to Ranged Units + 100 [All Heroes]",
+            "star_3":"Ranger's Heart - Inspire: Chance to increase attack when projectile barrage is hitting enemies; can stack",
+            "star_4":"Trait - Righteous: Surrounding enemies; more and closer will increase hero's attack",
+            "star_5":"Spirit - Upgrade: Spirit gains multi-attacks",
+            "star_6":"Ranger's Heart - Composure: Increased leveling speed at a higher level cap",
+            "star_7":"Attack + 400 [All Heroes]",
+            "star_8":"Attack + 9% [All Heroes]"
+        },
+        "Elaine":{
+            "description":"An adorable butterfly maiden blessed by elven gods since her birth",
+            "base_atk":"215 (+ 16)",
+            "base_hp":"900 (+ 46)",
+            "attributes":" • Lvl 20: Damage to Airborne Units + 120 [All Heroes]<br> • Lvl 40: Max HP + 5%<br> • Lvl 60: Max HP + 7% [All Heroes]<br> • Lvl 80: Crit Chance + 7%<br> • Lvl 120: Damage to Ground Units + 9% [All Heroes]",
+            "price":"50 Elaine Shards",
+            "skill":"Gain invincibility shield at intervals that also increases Attack Speed. When shield fades, attack is greatly increased.",
+            "skill_details":"<br>",
+            "star_1":"Patrol Weapon Scroll Earnings + 5%",
+            "star_2":"Max HP + 350 [All Heroes]",
+            "star_3":"Invincible Elaine - Counter: Shots blocked by invincibility shield are converted into attack when shield fades.",
+            "star_4":"Trait - Outgoing: Great at making friends, reducing hostility of surrounding enemies (reduces attack)",
+            "star_5":"Spirit - Upgrade: Attack increases for every room cleared. Flying Spirits gain + 20%",
+            "star_6":"Invincible Elaine - Enhanced Shield: Shield's duration increased. Also increases Crit Rate and summoned creature attack.",
+            "star_7":"Max HP + 2000 [All Heroes]",
+            "star_8":"Max HP + 9% [All Heroes]"
+        },
+        "Bobo":{
+            "description":"A brainy bear from a faraway city",
+            "base_atk":"160 (+12)",
+            "base_hp":"700 (+ 47)",
+            "attributes":" • Lvl 20: Damage to mobs + 150 [All Heroes]<br> • Lvl 40: Attack + 5%<br> • Lvl 60: Damage to Ranged Units + 5% [All Heroes]<br> • Lvl 80: MP Strength + 20%<br> • Lvl 120: Attack + 6% [All Heroes]",
+            "price":"4000 <object type='image/png' data='\\static\\image\\svg\\gem.svg' width='16' height='16'></object>",
+            "skill":"Increases leveling speed. Attack increases with level in a chamber",
+            "skill_details":"<br>",
+            "star_1":"Patrol XP Earnings + 4%",
+            "star_2":"Max HP + 240 [All Heroes]",
+            "star_3":"Wisdom's Might - Upgrade: Gain higher Attack and leveling speed",
+            "star_4":"Trait - Learner: Loot Hearts to increase slight Attack Speed (Max 10%)",
+            "star_5":"Spirit - Upgrade: Inherits 10% of Hero's Attack",
+            "star_6":"Wisdom's Might - Insight: Inflicts weakness on enemies. Hitting the same enemy repeatedly deals more damage",
+            "star_7":"Max HP + 1800 [All Heroes]",
+            "star_8":"Battle XP Gain + 5% [All Heroes]"
+        },
+        "Stella":{
+            "description":"Princess of the Sky City, able to wield the power of the astral realm since birth.",
+            "base_atk":"225 (+18)",
+            "base_hp":"950 (+ 50)",
+            "attributes":" •  Lvl 20: Attack +125  [All Heroes]<br> •  Lvl 40: Crit Chance + 6%<br> •  Lvl 60: Attack + 6% [All Heroes]<br> •  Lvl 80: Attack Speed + 7%<br> •  Lvl 120: HP drops + 7% [All Heroes]",
+            "price":"40 USD or 50 Stella Shards",
+            "skill":"Master of starlight and lightning. Attacks with guardian spirit. Possesses strong weapon damage and knockback.",
+            "skill_details":"<br>",
+            "star_1":"Patrol Armor Scroll Earnings + 5%",
+            "star_2":"Rear Damage Resistance +3% [All Heroes]",
+            "star_3":"Starlight and Thunder - Dazzle: Increases Starlight damage, summon chance and max summons",
+            "star_4":"Trait - Mischievous: Chance to use lightning to attack surrounding enemies when moving",
+            "star_5":"Spirit - Enhance: When spirit attacks enemies, they take more damage when attacked by lightning and spirit.",
+            "star_6":"Starlight and Thunder - Eon Ward: Guardian spirit's weapon damage increased. Successive attacks on enemies increase Attack Speed",
+            "star_7":"Meteor and Star damage + 10% [All Heroes]",
+            "star_8":"Weapon Damage + 8% [All Heroes]"
+        }
+    }
+
+
+
+
+
+
+
+
+
+GsheetData = {
+	"Archero Medals (by KeithShade)":{
+		"thumbnail":"https://images-ext-2.discordapp.net/external/ZsDT1l5orZpai68x5CiADPuP4kc96SjsCeuoj9tWPMc/https/lh4.googleusercontent.com/NWM-lnXoGJMGFZIAF3ekkQK-gzwLAI5Xmtz3LsvT9rN6bSz9DT8fUOiS6yDVRvAlcBu9sOT9lzViLA%3Dw1200-h630-p",
+		"description":"-List of the Medals of 4.8 update\n-Medal name\n-Trigger\n-Rarity\n-Enhancement",
+		"url":"https://docs.google.com/spreadsheets/d/1In0CS_bJsHR9xO7KDgEftXgogPxMYrW-20nlEp-s8WI"
+	},
+	"Archero Hatchery 4.10.0 (LanderZ, mrb, Shusaku, Abstrusity, LuhCaran)":{
+		"thumbnail":"https://images-ext-1.discordapp.net/external/Wr4YOONrx0-ZrldaKK6-ej3gnnFj4Be5seFuSk7Webo/https/lh6.googleusercontent.com/t6U7OU0W2oEP2ECobzUm8UJWLmG-oqunPtygosBafiCgNIbWotsVx9JIFQdGkmb37iMn9JE0-aBlFg%3Dw1200-h630-p",
+		"description":"-List of available Monsters\n-Numbers of kills required to hatch or complete quests\n-Completed quest dialogue\n-Automated hatch timers\n-Where to find each Monster and which locations are recommended\n-Monster training bonuses and costs (still Work in Progress)",
+		"url":"https://docs.google.com/spreadsheets/d/1p0xAb6ZrgwqhynromVXTqJSsfWlK1W8EDDt2HyvmRKE"
+	},
+	"Relics 4.10 (LuhCaran, Hollmanovec, RedsMeName)":{
+		"thumbnail":"https://images-ext-2.discordapp.net/external/-Uz7vgaHAmL8pV5TP0tsN3RQEXljKR__UwkC8ggld34/https/lh6.googleusercontent.com/4JXx6B6snH453Vv-toFLnMwKsiTEd11kBbwDQ87-mbkyd7iI9p6zWuW_nIOIWdCKeqMkrl1hOZC0oQ%3Dw1200-h630-p",
+		"description":"This Google Sheet is inventoring all the Relics Stats (4.8.4). Name of Relics,Base Effect,Advance Effect,Exclusive Effect,Effective Exclusive Effect,Resonance Effect",
+		"url":"https://docs.google.com/spreadsheets/d/1SWsyuI6PwYVHHeIpbHyGe3w6nS4C4d_QzlOPAyKh_2Y"
+	},
+	"Jewels Stats (LuhCaran on 4.10)":{
+		"thumbnail":"https://images-ext-2.discordapp.net/external/qvZ57PWuTO0Zq9NcFueJZ7fMZqFR-Xu4B5zxOt9BkLU/https/lh4.googleusercontent.com/pps5MNL0e1UjKyt5UKbeTyjTmD5U4stUPMXTUlaDCOcWaEtmTurONg9Y9iTSbbQsvVt-TgExWaw2EA%3Dw1200-h630-p",
+		"description":"This Google Sheet will be inventoring all the Jewel Stats (4.8.4), you can help us collecting the stats by asking LuhCaran#9802 on discord\nName,Kunzite,Ruby,Tourmaline,Emerald,Lapis,Calaite,Amber,Topaz,Amethyst",
+		"url":"https://docs.google.com/spreadsheets/d/1h81qU9p1H6TkeyPrZlRzh2U6W28x3S2q2pOrVeusw94"
+	},
+	"Archero Skin 4.10":{
+		"thumbnail":"https://images-ext-1.discordapp.net/external/2m6_dLBYX7gokkd_QjfWbwgulPgYLYBl00fH3UbiJgI/https/lh4.googleusercontent.com/J1thV7jB_Gg8hJSGGUBBbmXLpnN4tKOhudzTg_rti3uFvw7lEcQcljnKI_NwYQXQKJYYknCboGfDdQ%3Dw1200-h630-p",
+		"description":"In here you will find all the Outfit / Skin / Coupon / Type / Bonus / Unit / Value that are in the game right now",
+		"url":"https://docs.google.com/spreadsheets/d/1EcvyN2NGT3k8hDrIk14CsUmyILzMDOJidKKEDDB2dSU"
+	},
+	"QuickRaid 4.10 (LuhCaran, Pelmens, tkn)":{
+		"thumbnail":"https://images-ext-1.discordapp.net/external/O49IU7I7N0xrxgeEv4_olqJXCTCuzbP0o8MdDSvoNsI/https/lh4.googleusercontent.com/E-QN8HZJy2uCkSHmt9_Q-KQ2IXLUafedztTrXxtWsfqN_Z3CO9Vx3qoYO5UygUIjQIlYuvAQJq5cTw%3Dw1200-h630-p",
+		"description":"Please don't change the formula, if you did it by accident just @ me on discord (LuhCaran#9802)\nMode,Heroic Mode\nN° de Chapitre / Chapter LVL,35",
+		"url":"https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w"
+	},
+	"Archero Damage Calculator (u/raytheblue)":{
+		"thumbnail":"https://images-ext-1.discordapp.net/external/Tn91MQaYwILZoP4sgFgb0LvCvQQx4Zz5CvqdaLpYSos/https/lh5.googleusercontent.com/j8pbCp_DWmtcBd4eUppd8Iw4B9U6m8ID0nHvxERjhMjckFNhFyCPxCnMDPHten5nkId9c785-8smHw%3Dw1200-h630-p",
+		"description":"Damage Calculator by u/raytheblue - Version 4.8.2 updated 17 January 2023 (RELIC WORK IN PROGRESS)\nInstructions\nMake a copy of this to input your own data. File > Make a copy\n<- Key in data here\n< - White cells are calculated by formula\n<- Take note of these rows when checking ...",
+		"url":"https://docs.google.com/spreadsheets/d/1-xLV4JSE71lI9W3SbXn9G_BNganA9VkzbnC5FmH3DaA"
+	},
+	"Archero Dragon Statues Abilities":{
+		"thumbnail":"https://images-ext-2.discordapp.net/external/fkzJepRKpWrthq96krfQ8p2dhO090DJXyQ9WeWCliEM/https/lh3.googleusercontent.com/uyA_RxDbcP1bUYq8M-jYf-8LSk5XYLSIyE8udfavG_XHYOKF0hgoUNBkPwGXTi6nrTKkGyDzXYTOVg%3Dw1200-h630-p",
+		"description":"This chart shows all the abilities of each dragon\nMagestone,MP cost,Stats (epic rarity start up number),Ancient Legendary stats,Epic skills ,Perfect Epic,Legendary,Mythic\nGlacion,A,Ice,Defense,Mid,Rear Dmg Resit 300(+6)/Max HP 1500(+32),Healing effect of hearts +20%,Icy Breath ...",
+		"url":"https://docs.google.com/spreadsheets/d/1Sl6_e7Iyu8cmcQTgoGK0SITdDOonjrPzGS-X3P0eQjA"
+	},
+	"Archero - Dragon Statues":{
+		"thumbnail":"https://images-ext-2.discordapp.net/external/AccfaoPsbN10zENGhYENIzgPNl7MOfp6cwg8xFnC2bs/https/lh6.googleusercontent.com/GLeFmoEr2flz378z-wM6QrpH6lAU_TvA2yjsyG4hPebNrQaoUV14n0_vwP4ZTknjvaTa-1YEAXTCvQ%3Dw1200-h630-p",
+		"description":"How to use\nSelect Dragon name, rarity and level using coloured cells below\nFigures pull through Data tab - please let me know if there are any errors (4-13-20 on discord)\nNote: If table shows all zeroes, I don't have any data for this dragon at this rarity - you can help by sending me a s...",
+		"url":"https://docs.google.com/spreadsheets/d/10wp79kS7-eLptmo6tiOXEk4zS9w-2VB5R8KJ9j0cJ8E"
+	},
+	"Archero Glyphs (pelmens#9812)":{
+		"thumbnail":"https://images-ext-1.discordapp.net/external/13k54r0tWfjKogpCB0UlEXZsbssP1gyGPCPvjBbtsbg/https/lh5.googleusercontent.com/NzRlN2dNJbshgumbnKzYPpaxsm0zQpD1mimzMRcki3DY5hCn6Py9yX1bAOVP8z4fIvphdSD0-S0Rew%3Dw1200-h630-p",
+		"description":"Rare,Epic,Epic+1,Epic+2,PE,PE+1,PE+2,PE+3,L,L+1,L+2,L+3,AL\nS,All glyphs,Attack,-,200,310,400,490,580,670,970\nStrike - Rip and Tear,Upon 8 consecutive hits, inflict bleed for x seconds,-,3s,4s\nMovement - Crit,After moving, crit chance increased,-,5%,6%,7%\nSlaughter - Assault,Upon killing 1...",
+		"url":"https://docs.google.com/spreadsheets/d/1Z0bGaCJ8EuKZQSqeW8q1eS5bWl_5z6E237-JAuf9pFk"
+	},
+	"Runes Effect (Chaos)":{
+		"thumbnail":"https://images-ext-2.discordapp.net/external/TTjY-t704t-k3Hm9EDO1k8cTLzhfvoe_LTANNVEEJEk/https/lh3.googleusercontent.com/Sp8ouH5BX7skeBQa-Kq6NuKSBES9euh9rKxfjV6X-AUfxCo-CR2Zb6txry5ZydslPT68gF-b3qh6OA%3Dw1200-h630-p",
+		"description":"Power,Saviour,Recovery (Level 40),Courage (Level 60),Luck (Level 80)\nSlot 1,Atk + X,Max HP + X,Healing effect of red heart + X,Atk + X,Max HP + X\nSlot 2,Crit damage + %,Projectile resistance + X,Diagonal arrows chance increased + %,Atreus base HP + X,All sword skills damage + X\nDamage to ...",
+		"url":"https://docs.google.com/spreadsheets/d/1Y2C0yY-Ht5XDEYcA85XSnM51G8bguFIWE8LL7AMCVc0"
+	},
+	"Archero Evolution (LanderZ)":{
+		"thumbnail":"https://images-ext-2.discordapp.net/external/OohKn7EI8dFn2uigdC4FlebSrx-7M5TqEXvUrQd0Guo/https/lh5.googleusercontent.com/_tmOT-weBwZ-hbMq_1GZxMT7ADTjF2L_6MBzUbmcP1dy7JaSURZqJnKwmas891kJWZk%3Dw1200-h630-p",
+		"description":"Archero Compilation Document\n-Put together and compiled by LanderZ\n-Assistance in gathering this data comes from dozens of amazing sources, including Kang Greenstrider, Abstrusity, Player99 and far, far too many to list all of them. Without your help, this would not be possi...",
+		"url":"https://docs.google.com/spreadsheets/d/1HkQweiilqoxMN61CugBrITqGZtQZVleO"
+	}
+}
+
+
+
+
+
+
+
+
+
+DataPrice = {
+        "hero":{
+            "sapphire":[0,0,1,3,6,10,15,20,25,30,35,42,49,56,63,70,80,90,100,110,120,135,150,165,180,195,215,235,255,275,295,325,355,385,415,445,485,525,565,605,645,695,745,795,845,895,960,1025,1090,1155,1220,1300,1380,1460,1540,1620,1720,1820,1920,2020,2120,2240,2360,2480,2600,2720,2860,3000,3140,3280,3420,3590,3760,3930,4100,4270,4470,4670,4870,5070,5270,5510,5750,5990,6230,6470,6750,7030,7310,7590,7870,8190,8510,8830,9150,9470,9830,10190,10550,10910,11270,11670,12070,12470,12870,13270,13720,14170,14620,15070,15520,16020,16520,17020,17520,18020,18620,19220,19820,20420,21020],
+            "gold":[0,0,400,1200,2400,4000,6000,8400,11200,14400,18000,22000,26400,31200,36400,42000,48000,54400,61200,68400,76000,84000,92400,101200,110400,120000,130000,141000,153000,166000,180000,195000,211000,228000,246000,265000,285000,307000,331000,357000,385000,415000,447000,481000,517000,555000,595000,639000,687000,739000,795000,855000,919000,987000,1059000,1135000,1215000,1305000,1405000,1515000,1635000,1765000,1905000,2055000,2215000,2385000,2565000,2755000,2955000,3175000,3415000,3675000,3955000,4255000,4575000,4915000,5275000,5655000,6055000,6495000,6975000,7495000,8055000,8655000,9295000,9975000,10695000,11455000,12255000,13155000,14155000,15255000,16455000,17755000,19155000,20655000,22255000,23955000,25755000,27655000,29655000,31755000,33955000,36255000,38655000,41155000,43755000,46455000,49255000,52155000,55155000,58355000,61755000,65355000,69155000,73155000,77355000,81755000,86355000,91155000,96155000]
+        },
+        "item":{
+            "gold":[0,0,200,600,1200,2000,3000,4200,5600,7200,9000,11000,13200,15600,18200,21000,24000,27200,30600,34200,38000,42000,46200,50600,55200,60000,65000,70500,76500,83000,90000,97500,105500,115000,123000,132500,152500,153500,165500,178500,192500,207500,223500,240500,248500,277500,297500,319500,343500,369500,397500,427500,459500,493500,529500,567500,607500,652500,702500,757500,817500,882500,952500,1027500,1107500,1192500,1282500,1377500,1477500,1587500,1707500,1837500,1977500,2127500,2287500,2457500,2637500,2827500,3027500,3247500,3487500,3747500,4027500,4327500,4647500,4987500,5347500,5727500,6127500,6577500,7077500,7627500,8227500,8877500,9577500,10327500,11127500,11977500,12877500,13827500,14827500,15927500,17127500,18427500,19827500,21327500,22927500,24627500,26427500,28327500,30327500,32527500,34927500,37527500,40327500,43327500,46527500,49927500,53527500,57327500,61327500],
+            "scroll":[0,0,1,3,7,13,21,31,41,51,61,76,91,106,121,136,156,176,196,216,236,261,286,311,336,361,391,421,451,481,511,551,591,631,671,711,761,811,861,911,961,1031,1101,1171,1241,1311,1411,1511,1611,1711,1811,1961,2111,2261,2411,2561,2711,2961,3161,3361,3561,3811,4061,4311,4561,4811,5111,5411,5711,6011,6311,6711,7111,7511,7911,8311,8811,9311,9811,10311,10811,11411,12011,12611,13211,13811,14611,15411,16211,17011,17811,18811,19811,20811,21811,22811,24011,25211,26411,27611,28811,30311,31811,33311,34811,36311,38311,40311,42311,44311,46311,48811,51311,53811,56311,58811,61811,64811,67811,70811,73811]
+        },
+        "talent":{
+            "gold":[0,200,450,750,1100,1500,1950,2450,3050,3750,4550,5450,6450,7650,9050,10650,12450,14450,16650,19050,21650,24450,27450,30950,34950,39450,44450,49950,55950,62450,69450,76950,84950,93450,102450,111950,121950,132950,144950,157950,171950,186950,202950,219950,237950,256950,276950,298950,322950,348950,376950,406950,438950,472950,508950,546950,586950,628950,672950,718950,766950,816950,871950,931950,996950,1066950,1141950,1221950,1306950,1396950,1491950,1591950,1696950,1806950,1921950,2041950,2166950,2296950,2431950,2571950,2716950,2866950,3026950,3196950,3376950,3566950,3766950,3976950,4196950,4426950,4666950,4916950,5176950,5446950,5726950,6016950,6316950,6636950,6976950,7336950,7716950,8116950,8536950,8976950,9436950,9916950,10416950,10936950,11476950,12036950,12616950,13216950,13836950,14476950,15146950,15846950,16576950,17336950,18126950,18946950,19796950,20676950,21586950,22526950,23496950,24496950,25536950,26616950,27736950,28896950,30096950,31336950,32616950,33936950,35296950,36696950,38136950,39616950,41136950,42696950,44296950,45946950,47646950,49396950,51196950,53046950,54946950,56896950,58896950,60996950,63196950,65496950,67896950,70396950,72996950,75696950,78496950,81396950,84396950,87596950,90996950,94596950,98396950,102396950,106596950,110996950,115596950,120396950,125396950,130896950,136896950,143396950,150096450,157596450,165596450,174096450,183196450,192596450,202596450,213096450,224096450,235596450,247596450,260096450,273096450,286596450,300596450,315096450,330096450,346096450,363096450,381096450,400096450,420096450,441096450,463096450,486096450,510096450,535096450,561096450,588096450,616096450,646096450,678096450,712096450,748096450,786096450]
+        },
+		"dragon":{
+            "magestone": [0,0,10,20,30,40,50,70,90,110,130,150,180,210,240,270,300,340,380,420,460,500,560,620,680,740,800,880,960,1040,1120,1200,1320,1440,1560,1680,1800,1950,2100,2250,2400,2550,2750,2950,3150,3350,3550,3750,3950,4150,4350,4550,4870,5190,5510,5830,6150,6470,6790,7110,7430,7750,8250,8750,9250,9750,10250,10750,11250,11750,12250,12750,13550,14350,15150,15950,16750,17550,18350,19150,19950,20750,21950,23150,24350,25550,26750,27950,29150,30350,31550,32750,34750,36750,38750,40750,42750,44750,46750,48750,50750,52750,55250,57750,60250,62750,65250,67750,70250,72750,75250,77750,80750,83750,86750,89750,92750,95750,98750,101750,104750],
+    		"gold":[0,0,5000,11000,18000,26000,35000,45000,57000,71000,87000,105000,125000,147000,171000,197000,225000,255000,287000,321000,357000,395000,435000,480000,530000,585000,645000,710000,780000,855000,935000,1025000,1125000,1235000,1355000,1485000,1625000,1775000,1935000,2105000,2285000,2475000,2675000,2895000,3135000,3395000,3675000,3975000,4295000,4635000,4995000,5375000,5775000,6195000,6635000,7095000,7575000,8075000,8595000,9135000,9695000,10275000,10875000,11525000,12225000,12975000,13775000,14625000,15525000,16475000,17475000,18525000,19625000,20775000,21975000,23225000,24525000,25875000,27275000,28725000,30225000,31775000,33375000,35025000,36725000,38475000,40275000,42125000,44025000,45975000,47975000,50075000,52275000,54575000,56975000,59475000,62075000,64775000,67575000,70475000,73475000,76575000,79775000,83075000,86475000,89975000,93575000,97275000,101075000,104975000,108975000,113175000,117575000,122175000,126975000,131975000,137175000,142575000,148175000,153975000,159975000]
+        },
+		"relics":{
+            "starlight": [0,0,2,6,12,22,36,56,82,118,162,214,274,342,430,532,648,778,922,1098,1296,1516,1758,2046,2360,2700,3066,3492,3952,4446,4974,5582],
+    		"gold":[0,0,1000,3000,6000,10000,15000,22000,32000,47000,65000,86000,110000,137000,177000,227000,287000,357000,437000,537000,657000,797000,957000,1157000,1377000,1617000,1877000,2197000,2537000,2897000,3297000,3797000]
+        }
+    }

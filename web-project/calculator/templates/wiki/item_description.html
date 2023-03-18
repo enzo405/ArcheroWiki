@@ -3,15 +3,29 @@
 <head>
 	{% load static %}
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.18.2 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.18.2 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.3.1">
+	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.1">
+	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.3.1">
+	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.3.1">
 	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Welcome to Wiki</title>
-    <script src="{% static 'main.js' %}"></script>
+	<title>Archero - Wiki</title>
+    <script src="{% static 'main.js' %}?version=1.3.1"></script>
 	<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
+
+	<meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+	<meta property="og:type" content="website">
+	{% if item == "yes" %}
+	<meta property="og:title" content="{{ name }}">
+	<meta property="og:url" content="{{ url_cpy }}">
+	<meta property="og:description" content="{{ item_description|safe }}">
+	<meta property="og:image" content="{% static item_image %}?version=1.3.1">
+	{% else %}
+    <meta property="og:title" content="Archero - Item Description">
+	<meta property="og:url" content="https://stats.wiki-archero.com/wiki/item">
+	<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+	<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.1">
+	{% endif %}
 </head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
@@ -23,6 +37,14 @@
 		<p>Please enable JavaScript to use this website.</p>
 	</div>
 </noscript>
+{% if messages %}
+	{% for message in messages %}
+		<script>
+			var stringElement = '<div{% if message.tags %} class="{{ message.tags }}-messages"{% endif %}>{{ message }}</div>'
+			createModale(stringElement)
+		</script>
+	{% endfor %}
+{% endif %}
     <div class="sidebar sidebar-open sidebar-position-f" id="sidebar">
         <div class="sidebar-icon" id="sidebar-icon">
             <div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
@@ -68,60 +90,64 @@
                             }
                         }
 					</script>
+					{% if item == "yes" %}
+					<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for items.." value="{{ name }}">
+					{% else %}
 					<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for items..">
+					{% endif %}
 					<ul id="myUL" style="display: none;">
-						<li value="Brave Bow"><a id="toggle-display-list" href="item?Search=Brave_Bow">Brave Bow</a></li>
-						<li value="Death Scythe"><a id="toggle-display-list" href="item?Search=Death_Scythe">Death Scythe</a></li>
-						<li value="Saw Blade"><a id="toggle-display-list" href="item?Search=Saw_Blade">Saw Blade</a></li>
-						<li value="Tornado"><a id="toggle-display-list" href="item?Search=Tornado">Tornado</a></li>
-						<li value="Brightspear"><a id="toggle-display-list" href="item?Search=Brightspear">Brightspear</a></li>
-						<li value="Stalker Staff"><a id="toggle-display-list" href="item?Search=Stalker_Staff">Stalker Staff</a></li>
-						<li value="Gale Force"><a id="toggle-display-list" href="item?Search=Gale_Force">Gale Force</a></li>
-						<li value="Demon Blade Rain"><a id="toggle-display-list" href="item?Search=Demon_Blade_Rain">Demon Blade Rain</a></li>
-						<li value="Mini Atreus"><a id="toggle-display-list" href="item?Search=Mini_Atreus">Mini Atreus</a></li>
-						<li value="Antiquated Sword"><a id="toggle-display-list" href="item?Search=Antiquated_Sword">Antiquated Sword</a></li>
-						<li value="Phantom Cloak"><a id="toggle-display-list" href="item?Search=Phantom_Cloak">Phantom Cloak</a></li>
-						<li value="Vest of Dexterity"><a id="toggle-display-list" href="item?Search=Vest_of_Dexterity">Vest of Dexterity</a></li>
-						<li value="Golden Chestplate"><a id="toggle-display-list" href="item?Search=Golden_Chestplate">Golden Chestplate</a></li>
-						<li value="Void Robe"><a id="toggle-display-list" href="item?Search=Void_Robe">Void Robe</a></li>
-						<li value="Bright Robe"><a id="toggle-display-list" href="item?Search=Bright_Robe">Bright Robe</a></li>
-						<li value="Shadow Robe"><a id="toggle-display-list" href="item?Search=Shadow_Robe">Shadow Robe</a></li>
-						<li value="Bear Ring"><a id="toggle-display-list" href="item?Search=Bear_Ring">Bear Ring</a></li>
-						<li value="Wolf Ring"><a id="toggle-display-list" href="item?Search=Wolf_Ring">Wolf Ring</a></li>
-						<li value="Falcon Ring"><a id="toggle-display-list" href="item?Search=Falcon_Ring">Falcon Ring</a></li>
-						<li value="Serpent Ring"><a id="toggle-display-list" href="item?Search=Serpent_Ring">Serpent Ring</a></li>
-						<li value="Bull Ring"><a id="toggle-display-list" href="item?Search=Bull_Ring">Bull Ring</a></li>
-						<li value="Lion Ring"><a id="toggle-display-list" href="item?Search=Lion_Ring">Lion Ring</a></li>
-						<li value="Vilebat Ring"><a id="toggle-display-list" href="item?Search=Vilebat_Ring">Vilebat Ring</a></li>
-						<li value="Dragon Ring"><a id="toggle-display-list" href="item?Search=Dragon_Ring">Dragon Ring</a></li>
-						<li value="Laser Bat"><a id="toggle-display-list" href="item?Search=Laser_Bat">Laser Bat</a></li>
-						<li value="Scythe Mage"><a id="toggle-display-list" href="item?Search=Scythe_Mage">Scythe Mage</a></li>
-						<li value="Living Bomb"><a id="toggle-display-list" href="item?Search=Living_Bomb">Living Bomb</a></li>
-						<li value="Elf"><a id="toggle-display-list" href="item?Search=Elf">Elf</a></li>
-						<li value="Noisy Owl"><a id="toggle-display-list" href="item?Search=Noisy_Owl">Noisy Owl</a></li>
-						<li value="Flaming Ghost"><a id="toggle-display-list" href="item?Search=Flaming_Ghost">Flaming Ghost</a></li>
-						<li value="Bone Warrior"><a id="toggle-display-list" href="item?Search=Bone_Warrior">Bone Warrior</a></li>
-						<li value="Thunder Bracelet"><a id="toggle-display-list" href="item?Search=Thunder_Bracelet">Thunder Bracelet</a></li>
-						<li value="Frozen Bracelet"><a id="toggle-display-list" href="item?Search=Frozen_Bracelet">Frozen Bracelet</a></li>
-						<li value="Blazing Bracelet"><a id="toggle-display-list" href="item?Search=Blazing_Bracelet">Blazing Bracelet</a></li>
-						<li value="Split Bracelet"><a id="toggle-display-list" href="item?Search=Split_Bracelet">Split Bracelet</a></li>
-						<li value="Invincible Bracelet"><a id="toggle-display-list" href="item?Search=Invincible_Bracelet">Invincible Bracelet</a></li>
-						<li value="Quickshot Bracelet"><a id="toggle-display-list" href="item?Search=Quickshot_Bracelet">Quickshot Bracelet</a></li>
-						<li value="Shield Bracelet"><a id="toggle-display-list" href="item?Search=Shield_Bracelet">Shield Bracelet</a></li>
-						<li value="Agile Locket"><a id="toggle-display-list" href="item?Search=Agile_Locket">Agile Locket</a></li>
-						<li value="Iron Locket"><a id="toggle-display-list" href="item?Search=Iron_Locket">Iron Locket</a></li>
-						<li value="Angel Locket"><a id="toggle-display-list" href="item?Search=Angel_Locket">Angel Locket</a></li>
-						<li value="Bulletproof Locket"><a id="toggle-display-list" href="item?Search=Bulletproof_Locket">Bulletproof Locket</a></li>
-						<li value="Piercer Locket"><a id="toggle-display-list" href="item?Search=Piercer_Locket">Piercer Locket</a></li>
-						<li value="Bloodthirsty Locket"><a id="toggle-display-list" href="item?Search=Bloodthirsty_Locket">Bloodthirsty Locket</a></li>
-						<li value="Counterattack Locket"><a id="toggle-display-list" href="item?Search=Counterattack_Locket">Counterattack Locket</a></li>
-						<li value="Arcane Archer"><a id="toggle-display-list" href="item?Search=Arcane_Archer">Arcane Archer</a></li>
-						<li value="Art of Combat"><a id="toggle-display-list" href="item?Search=Art_of_Combat">Art of Combat</a></li>
-						<li value="Ice Realm"><a id="toggle-display-list" href="item?Search=Ice_Realm">Ice Realm</a></li>
-						<li value="Enlightenment"><a id="toggle-display-list" href="item?Search=Enlightenment">Enlightenment</a></li>
-						<li value="Giants Contract"><a id="toggle-display-list" href="item?Search=Giants_Contract">Giants Contract</a></li>
-						<li value="Spectre Book"><a id="toggle-display-list" href="item?Search=Spectre_Book">Spectre Book</a></li>
-						<li value="Arcanum of Time"><a id="toggle-display-list" href="item?Search=Arcanum_of_Time">Arcanum of Time</a></li>
+						<li value="Brave Bow"><a id="toggle-display-list" href="/wiki/item/Brave_Bow/"><div class="item_name">Brave Bow</div><div class="siimg"><img src="/static/image/items/brave_bow_epic.png" width="26px"></div></a></li>
+						<li value="Death Scythe"><a id="toggle-display-list" href="/wiki/item/Death_Scythe/"><div class="item_name">Death Scythe</div><div class="siimg"><img src="/static/image/items/death_scythe_epic.png" width="26px"></div></a></li>
+						<li value="Saw Blade"><a id="toggle-display-list" href="/wiki/item/Saw_Blade/"><div class="item_name">Saw Blade</div><div class="siimg"><img src="/static/image/items/saw_blade_epic.png" width="26px"></div></a></li>
+						<li value="Tornado"><a id="toggle-display-list" href="/wiki/item/Tornado/"><div class="item_name">Tornado</div><div class="siimg"><img src="/static/image/items/tornado_epic.png" width="26px"></div></a></li>
+						<li value="Brightspear"><a id="toggle-display-list" href="/wiki/item/Brightspear/"><div class="item_name">Brightspear</div><div class="siimg"><img src="/static/image/items/brightspear_epic.png" width="26px"></div></a></li>
+						<li value="Stalker Staff"><a id="toggle-display-list" href="/wiki/item/Stalker_Staff/"><div class="item_name">Stalker Staff</div><div class="siimg"><img src="/static/image/items/stalker_staff_epic.png" width="26px"></div></a></li>
+						<li value="Gale Force"><a id="toggle-display-list" href="/wiki/item/Gale_Force/"><div class="item_name">Gale Force</div><div class="siimg"><img src="/static/image/items/gale_force_epic.png" width="26px"></div></a></li>
+						<li value="Demon Blade Rain"><a id="toggle-display-list" href="/wiki/item/Demon_Blade_Rain/"><div class="item_name">Demon Blade Rain</div><div class="siimg"><img src="/static/image/items/demon_blade_rain_epic.png" width="26px"></div></a></li>
+						<li value="Mini Atreus"><a id="toggle-display-list" href="/wiki/item/Mini_Atreus/"><div class="item_name">Mini Atreus</div><div class="siimg"><img src="/static/image/items/mini_atreus.png" width="26px"></div></a></li>
+						<li value="Antiquated Sword"><a id="toggle-display-list" href="/wiki/item/Antiquated_Sword/"><div class="item_name">Antiquated Sword</div><div class="siimg"><img src="/static/image/items/antiquated_sword_epic.png" width="26px"></div></a></li>
+						<li value="Phantom Cloak"><a id="toggle-display-list" href="/wiki/item/Phantom_Cloak/"><div class="item_name">Phantom Cloak</div><div class="siimg"><img src="/static/image/items/phantom_cloak.png" width="26px"></div></a></li>
+						<li value="Vest of Dexterity"><a id="toggle-display-list" href="/wiki/item/Vest_of_Dexterity/"><div class="item_name">Vest of Dexterity</div><div class="siimg"><img src="/static/image/items/vest_of_dexterity.png" width="26px"></div></a></li>
+						<li value="Golden Chestplate"><a id="toggle-display-list" href="/wiki/item/Golden_Chestplate/"><div class="item_name">Golden Chestplate</div><div class="siimg"><img src="/static/image/items/golden_chestplate.png" width="26px"></div></a></li>
+						<li value="Void Robe"><a id="toggle-display-list" href="/wiki/item/Void_Robe/"><div class="item_name">Void Robe</div><div class="siimg"><img src="/static/image/items/void_robe.png" width="26px"></div></a></li>
+						<li value="Bright Robe"><a id="toggle-display-list" href="/wiki/item/Bright_Robe/"><div class="item_name">Bright Robe</div><div class="siimg"><img src="/static/image/items/bright_robe.png" width="26px"></div></a></li>
+						<li value="Shadow Robe"><a id="toggle-display-list" href="/wiki/item/Shadow_Robe/"><div class="item_name">Shadow Robe</div><div class="siimg"><img src="/static/image/items/shadow_robe.png" width="26px"></div></a></li>
+						<li value="Bear Ring"><a id="toggle-display-list" href="/wiki/item/Bear_Ring/"><div class="item_name">Bear Ring</div><div class="siimg"><img src="/static/image/items/bear_ring_epic.png" width="26px"></div></a></li>
+						<li value="Wolf Ring"><a id="toggle-display-list" href="/wiki/item/Wolf_Ring/"><div class="item_name">Wolf Ring</div><div class="siimg"><img src="/static/image/items/wolf_ring_epic.png" width="26px"></div></a></li>
+						<li value="Falcon Ring"><a id="toggle-display-list" href="/wiki/item/Falcon_Ring/"><div class="item_name">Falcon Ring</div><div class="siimg"><img src="/static/image/items/falcon_ring_epic.png" width="26px"></div></a></li>
+						<li value="Serpent Ring"><a id="toggle-display-list" href="/wiki/item/Serpent_Ring/"><div class="item_name">Serpent Ring</div><div class="siimg"><img src="/static/image/items/serpent_ring_epic.png" width="26px"></div></a></li>
+						<li value="Bull Ring"><a id="toggle-display-list" href="/wiki/item/Bull_Ring/"><div class="item_name">Bull Ring</div><div class="siimg"><img src="/static/image/items/bull_ring_epic.png" width="26px"></div></a></li>
+						<li value="Lion Ring"><a id="toggle-display-list" href="/wiki/item/Lion_Ring/"><div class="item_name">Lion Ring</div><div class="siimg"><img src="/static/image/items/lion_ring_epic.png" width="26px"></div></a></li>
+						<li value="Vilebat Ring"><a id="toggle-display-list" href="/wiki/item/Vilebat_Ring/"><div class="item_name">Vilebat Ring</div><div class="siimg"><img src="/static/image/items/vilebat_ring_epic.png" width="26px"></div></a></li>
+						<li value="Dragon Ring"><a id="toggle-display-list" href="/wiki/item/Dragon_Ring/"><div class="item_name">Dragon Ring</div><div class="siimg"><img src="/static/image/items/dragon_ring_epic.png" width="26px"></div></a></li>
+						<li value="Laser Bat"><a id="toggle-display-list" href="/wiki/item/Laser_Bat/"><div class="item_name">Laser Bat</div><div class="siimg"><img src="/static/image/items/laser_bat.png" width="26px"></div></a></li>
+						<li value="Scythe Mage"><a id="toggle-display-list" href="/wiki/item/Scythe_Mage/"><div class="item_name">Scythe Mage</div><div class="siimg"><img src="/static/image/items/scythe_mage.png" width="26px"></div></a></li>
+						<li value="Living Bomb"><a id="toggle-display-list" href="/wiki/item/Living_Bomb/"><div class="item_name">Living Bomb</div><div class="siimg"><img src="/static/image/items/living_bomb.png" width="26px"></div></a></li>
+						<li value="Elf"><a id="toggle-display-list" href="/wiki/item/Elf/"><div class="item_name">Elf</div><div class="siimg"><img src="/static/image/items/elf.png" width="26px"></div></a></li>
+						<li value="Noisy Owl"><a id="toggle-display-list" href="/wiki/item/Noisy_Owl/"><div class="item_name">Noisy Owl</div><div class="siimg"><img src="/static/image/items/noisy_owl.png" width="26px"></div></a></li>
+						<li value="Flaming Ghost"><a id="toggle-display-list" href="/wiki/item/Flaming_Ghost/"><div class="item_name">Flaming Ghost</div><div class="siimg"><img src="/static/image/items/flaming_ghost.png" width="26px"></div></a></li>
+						<li value="Bone Warrior"><a id="toggle-display-list" href="/wiki/item/Bone_Warrior/"><div class="item_name">Bone Warrior</div><div class="siimg"><img src="/static/image/items/bone_warrior.png" width="26px"></div></a></li>
+						<li value="Thunder Bracelet"><a id="toggle-display-list" href="/wiki/item/Thunder_Bracelet/"><div class="item_name">Thunder Bracelet</div><div class="siimg"><img src="/static/image/items/thunder_bracelet.png" width="26px"></div></a></li>
+						<li value="Frozen Bracelet"><a id="toggle-display-list" href="/wiki/item/Frozen_Bracelet/"><div class="item_name">Frozen Bracelet</div><div class="siimg"><img src="/static/image/items/frozen_bracelet.png" width="26px"></div></a></li>
+						<li value="Blazing Bracelet"><a id="toggle-display-list" href="/wiki/item/Blazing_Bracelet/"><div class="item_name">Blazing Bracelet</div><div class="siimg"><img src="/static/image/items/blazing_bracelet.png" width="26px"></div></a></li>
+						<li value="Split Bracelet"><a id="toggle-display-list" href="/wiki/item/Split_Bracelet/"><div class="item_name">Split Bracelet</div><div class="siimg"><img src="/static/image/items/split_bracelet.png" width="26px"></div></a></li>
+						<li value="Invincible Bracelet"><a id="toggle-display-list" href="/wiki/item/Invincible_Bracelet/"><div class="item_name">Invincible Bracelet</div><div class="siimg"><img src="/static/image/items/invincible_bracelet.png" width="26px"></div></a></li>
+						<li value="Quickshot Bracelet"><a id="toggle-display-list" href="/wiki/item/Quickshot_Bracelet/"><div class="item_name">Quickshot Bracelet</div><div class="siimg"><img src="/static/image/items/quickshot_bracelet.png" width="26px"></div></a></li>
+						<li value="Shield Bracelet"><a id="toggle-display-list" href="/wiki/item/Shield_Bracelet/"><div class="item_name">Shield Bracelet</div><div class="siimg"><img src="/static/image/items/shield_bracelet.png" width="26px"></div></a></li>
+						<li value="Agile Locket"><a id="toggle-display-list" href="/wiki/item/Agile_Locket/"><div class="item_name">Agile Locket</div><div class="siimg"><img src="/static/image/items/agile_locket.png" width="26px"></div></a></li>
+						<li value="Iron Locket"><a id="toggle-display-list" href="/wiki/item/Iron_Locket/"><div class="item_name">Iron Locket</div><div class="siimg"><img src="/static/image/items/iron_locket.png" width="26px"></div></a></li>
+						<li value="Angel Locket"><a id="toggle-display-list" href="/wiki/item/Angel_Locket/"><div class="item_name">Angel Locket</div><div class="siimg"><img src="/static/image/items/angel_locket.png" width="26px"></div></a></li>
+						<li value="Bulletproof Locket"><a id="toggle-display-list" href="/wiki/item/Bulletproof_Locket/"><div class="item_name">Bulletproof Locket</div><div class="siimg"><img src="/static/image/items/bulletproof_locket.png" width="26px"></div></a></li>
+						<li value="Piercer Locket"><a id="toggle-display-list" href="/wiki/item/Piercer_Locket/"><div class="item_name">Piercer Locket</div><div class="siimg"><img src="/static/image/items/piercer_locket.png" width="26px"></div></a></li>
+						<li value="Bloodthirsty Locket"><a id="toggle-display-list" href="/wiki/item/Bloodthirsty_Locket/"><div class="item_name">Bloodthirsty Locket</div><div class="siimg"><img src="/static/image/items/bloodthirsty_locket.png" width="26px"></div></a></li>
+						<li value="Counterattack Locket"><a id="toggle-display-list" href="/wiki/item/Counterattack_Locket/"><div class="item_name">Counterattack Locket</div><div class="siimg"><img src="/static/image/items/counterattack_locket.png" width="26px"></div></a></li>
+						<li value="Arcane Archer"><a id="toggle-display-list" href="/wiki/item/Arcane_Archer/"><div class="item_name">Arcane Archer</div><div class="siimg"><img src="/static/image/items/arcane_archer.png" width="26px"></div></a></li>
+						<li value="Art of Combat"><a id="toggle-display-list" href="/wiki/item/Art_of_Combat/"><div class="item_name">Art of Combat</div><div class="siimg"><img src="/static/image/items/art_of_combat.png" width="26px"></div></a></li>
+						<li value="Ice Realm"><a id="toggle-display-list" href="/wiki/item/Ice_Realm/"><div class="item_name">Ice Realm</div><div class="siimg"><img src="/static/image/items/ice_realm.png" width="26px"></div></a></li>
+						<li value="Enlightenment"><a id="toggle-display-list" href="/wiki/item/Enlightenment/"><div class="item_name">Enlightenment</div><div class="siimg"><img src="/static/image/items/enlightenment.png" width="26px"></div></a></li>
+						<li value="Giants Contract"><a id="toggle-display-list" href="/wiki/item/Giants_Contract/"><div class="item_name">Giants Contract</div><div class="siimg"><img src="/static/image/items/giants_contract.png" width="26px"></div></a></li>
+						<li value="Spectre Book"><a id="toggle-display-list" href="/wiki/item/Spectre_Book/"><div class="item_name">Spectre Book</div><div class="siimg"><img src="/static/image/items/spectre_book.png" width="26px"></div></a></li>
+						<li value="Arcanum of Time"><a id="toggle-display-list" href="/wiki/item/Arcanum_of_Time/"><div class="item_name">Arcanum of Time</div><div class="siimg"><img src="/static/image/items/arcanum_of_time.png" width="26px"></div></a></li>
 					</ul>
 				</div>
 				<div class="embed-container">
@@ -133,15 +159,28 @@
 								<span class="sgp62q-3 cTBPsI">BOT</span>
 								<span class="sc-1idsap7-0 dyOqmJ" id="date"></span>
 							</a>
+							{% if item == "yes" %}
+							<span class="span-share" id="{{ name }}"><a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
+							{% else %}
+							<span class="span-share" id="Brave_Bow"><a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
+							{% endif %}
 						</div>
 						<div class="kn3fae-2 eKjosW">
 							<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
 								<div class="sc-3qrykn-0 bdFBtt">
 									<span class="sc-3qrykn-1 bsDYtY">
+										{% if item == "yes" %}
+										<div class="sc-27l7o2-0 heOpKb" id="name_item">{{ name }}</div>
+										{% else %}
 										<div class="sc-27l7o2-0 heOpKb" id="name_item">Brave Bow</div>
+										{% endif %}
 									</span>
 									<div class="sc-3qrykn-3 hXMbfy">
+										{% if item == "yes" %}
+										<div class="sc-27l7o2-0 heOpKb" id="item_description">{{ item_description|safe }}</div>
+										{% else %}
 										<div class="sc-27l7o2-0 heOpKb" id="item_description">Only the worthly can use this bow, with balanced performance.<br><br><b>Hidden</b><br>Damage Multiplier x 1<br>Base Attack Speed x 1.73</div>
+										{% endif %}
 									</div>
 									<div class="sc-3qrykn-4 hQKgZF">
 										<div class="rgqgux-0 dQAxvm">
@@ -152,20 +191,35 @@
 											</div>
 											<div class="rgqgux-2 jFcAhO">
 												<div class="sc-27l7o2-0 heOpKb">
+													{% if item == "yes" %}
+													<div id="item_base">{{ item_base|safe }}</div>
+													<div id="item_great">{{ item_great|safe }}</div>
+													<div id="item_rare">{{ item_rare|safe }}</div>
+													<div id="item_epic">{{ item_epic|safe }}</div>
+													<div id="item_perfect_epic">{{ item_perfect_epic|safe }}</div>
+													<div id="item_legendary">{{ item_legendary|safe }}</div>
+													<div id="item_ancient_legendary">{{ item_ancient_legendary|safe }}</div>
+													<div id="item_mythic">{{ item_mythic|safe }}</div>
+													{% else %}
 													<div id="item_base">A well-balanced weapon<br>Attack + x</div>
 													<div id="item_great"></div>
 													<div id="item_rare">[Rare] Attack + 5%</div>
-													<div id="item_epic">[Epic] Crit Damage + 50%   <em>(Doesn't work)</em></div>
+													<div id="item_epic">[Epic] Crit Damage + 50%</div>
 													<div id="item_perfect_epic"></div>
 													<div id="item_legendary"></div>
 													<div id="item_ancient_legendary"></div>
 													<div id="item_mythic">[Mythic] Attack increased temporarily after moving</div>
+													{% endif %}
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="sc-3qrykn-6 fTOqMH">
+										{% if item == "yes" %}
+										<img src="/static/{{ item_image }}" alt="Thumbnail" class="sc-3qrykn-7 fUliQq" id="item_image">
+										{% else %}
 										<img src="/static/image/items/brave_bow_mythic.png" alt="Thumbnail" class="sc-3qrykn-7 fUliQq" id="item_image">
+										{% endif %}
 									</div>
 								</div>
 							</div>
@@ -174,10 +228,10 @@
 				</div>
 			</div>
 		</main>
-        <footer class="footer-margin">
+        <footer>
             <div class="footer-content">
                 <div class="footer-about">
-                    <img class="footer-img-icon" src="/static/image/archero_icon.png" alt="image game icon">
+                    <img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.3.1" alt="image game icon">
                     <div class="about-content">
                         <h2>Archero :</h2>
                         <div>Archero Update will be added with a certains delay</div>
@@ -297,22 +351,9 @@
 	})
 
 	var mainDescription = document.getElementsByClassName('main-description')
-	var search_bar = document.getElementById('search-bar');
+	var search_bar = document.getElementById('myInput');
 	var ul_li = document.getElementById('myUL');
 	var item_li_a = document.querySelectorAll("#toggle-display-list");
-	var body = document.body;
-	var myInput = document.getElementById('myInput')
-	var name_item = document.getElementById('name_item');
-	var item_description = document.getElementById('item_description');
-	var item_image = document.getElementById('item_image');
-	var item_base = document.getElementById('item_base');
-	var item_great = document.getElementById('item_great');
-	var item_rare = document.getElementById('item_rare');
-	var item_epic = document.getElementById('item_epic');
-	var item_perfect_epic = document.getElementById('item_perfect_epic');
-	var item_legendary = document.getElementById('item_legendary');
-	var item_ancient_legendary = document.getElementById('item_ancient_legendary');
-	var item_mythic = document.getElementById('item_mythic');
 
 	var n =  new Date();
 	var y = n.getFullYear();
@@ -321,675 +362,25 @@
 	document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
 
 	search_bar.addEventListener('click', function(){
-		var myInput = document.getElementById('myInput')
 		if(ul_li.style.display == "none"){
 			ul_li.style.display = "block"
-			myInput.value = ""
+			search_bar.value = ""
 		}else if(ul_li.style.display !== "none"){
 			ul_li.style.display = "none"
 		}
 	})
-</script>
-<script>
-	var item_json = {
-        "Brave Bow":{
-            "description":"Only the worthly can use this bow, with balanced performance.<br><br><b>Hidden</b><br>Damage Multiplier x 1<br>Base Attack Speed x 1.73",
-            "image":"/static/image/items/brave_bow_mythic.png",
-            "base":"A well-balanced weapon<br>Attack + x",
-            "great":"",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] Crit Damage + 50%     <em>(Doesn't work)</em>",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Attack increased temporarily after moving"
-        },
-        "Brightspear":{
-            "description":"Contains immense energy, you're defeated before you know it!<br><br><b>Hidden</b><br>Damage Multiplier x 1.2<br>Base Attack Speed x 1.63",
-            "image":"\\static\\image\\items\\brightspear_mythic.png",
-            "base":"Can suddenly attack enemies<br>Attack + [x]",
-            "great":"",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] When attacking a similar target (same mob), damage dealt will increase.",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Landing crits increases Attack Speed"
-        },
-        "Death Scythe":{
-            "description":"Powerful scythe, very heavy with slow attack speed.<br><br><b>Hidden</b><br>Damage Multiplier x 1.45<br>Base Attack Speed x 0.85<br>50% chance to kill enemies under 30% Hp",
-            "image":"/static/image/items/death_scythe_mythic.png",
-            "base":"High attack with low speed<br>Attack + [x]",
-            "great":"",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] High chance to kill mobs with less than 30% of HP",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] The closer, the higher the damage"
-        },
-        "Demon Blade Rain":{
-            "description":"Legendary demon blade can devour the soul of the enemy.<br><br><b>Hidden</b><br>Damage Multiplier<br>x 1.5 (Ranged)<br>x 1.85 (Melee)<br>Base Attack Speed x ?",
-            "image":"/static/image/items/demon_blade_rain_mythic.png",
-            "base":"Unsheathing deals melee damage, also deals long-range damage.<br>Attack + [x]<br>Immune to front collision damage in melee attacks",
-            "great":"[Great] When low HP, kill enemies in melee can recover HP",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] The higher the enemy's HP, the more damage dealt",
-            "pe":"[Perfect Epic] Lost HP will increase Crit damage",
-            "legendary":"[Legendary] When moving, dodge rate slightly increased",
-            "ale":"",
-            "mythic":"[Mythic] Taking damage increases Crit Chance temporarily"
-        },
-        "Antiquated Sword":{
-            "description":"Ancient Sword that becomes bigger when empowered. Named 'Giantkiller' for its history of slaying titans<br><br><b>Hidden</b><br>Damage Multiplier x 1.5<br>Base Attack Speed x ?",
-            "image":"/static/image/items/antiquated_sword_mythic.png",
-            "base":"Allows change of forms: one-handed swords attack faster; increases two-handed sword attack range<br>Attack + [x]<br>Broadsword deals more damage to bigger enemies",
-            "great":"[Great] Broadsword bullets can go through enemies",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] Unlock active skill: Whirlwind<br>[Epic] Upon hitting an enemy, Attack Speed becomes higher",
-            "pe":"[Perfect Epic] Upon killing an enemy, Attack becomes higher.",
-            "legendary":"[Legendary] Increases Max HP and reduces Whirlwind cost. At low HP, Fury cost is significantly reduced",
-            "ale":"",
-            "mythic":"[Mythic] Upon taking damage, increases Attack Speed and Crit Chance"
-        },
-        "Gale Force":{
-            "description":"A crossbow infused with the power of the wind, shooting out charged arrows.<br><br><b>Hidden</b><br>Damage Multiplier x 1.55<br>Base Attack Speed x 0.75<br>Charged Attack x 2<br>Penetrating Attack x 1.35",
-            "image":"/static/image/items/gale_force_mythic.png",
-            "base":"High attack, slow attack speed. It automatically reloads and shoots a charged arrow.<br>Attack + [x]",
-            "great":"[Great] Attack + 5%",
-            "rare":"[Rare] Charged attacks carry a penetrating effect.",
-            "epic":"[Epic] Penetrating attacks have multiple damage effects, normal attack crit rate increases over distance.",
-            "pe":"",
-            "legendary":"[Legendary] After a Crit attack, charging speed can be increased.",
-            "ale":"[Ancient Legendary] After a Crit Attack, charging speed can be increased.",
-            "mythic":"[Mythic] Charged attacks deal increased damage and slow enemies."
-        },
-        "Mini Atreus":{
-            "description":"An exquisite Atreus puppet that can be used for battle in times of danger.<br>Damage Multiplier x 1.25<br>Base Attack Speed x ?",
-            "image":"/static/image/items/mini_atreus.png",
-            "base":"Slows enemies on hit<br>Attack + [x]",
-            "great":"[Great] Attack + 5%",
-            "rare":"",
-            "epic":"[Epic] Hitting the enemy has a chance to summon an Atreus to assist in battle",
-            "pe":"",
-            "legendary":"[Legendary] Chance to summon 2 Atreus Rotating Shields after hitting an enemy",
-            "ale":"",
-            "mythic":"[Mythic] Coins from Battle + 10%"
-        },
-        "Saw Blade":{
-            "description":"A serrated throwing knife from the mysterious Orient.<br>Damage Multiplier x 0.8<br>Base Attack Speed x 2.6",
-            "image":"/static/image/items/saw_blade_mythic.png",
-            "base":"Low Attack with high speed<br>Attack + [x]",
-            "great":"",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] Increases your Attack Speed for 3 sec after entering a room",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Hitting enemies has a chance to increase Dodge and Attack (Stackable)"
-        },
-        "Stalker Staff":{
-            "description":"The staff of all staffs, no one can escape!<br>Damage Multiplier x 1<br>Base Attack Speed x 2",
-            "image":"/static/image/items/stalker_staff_mythic.png",
-            "base":"The Bullets will follow enemies and attack<br>Attack + [x]",
-            "great":"",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] The lower the target's HP, the higher the Crit rate.",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Projectile charge time -50%"
-        },
-        "Tornado":{
-            "description":"A sharp boomerang that can fly back and forth.<br>Damage Multiplier x 1.24<br>Base Attack Speed x 1.73",
-            "image":"/static/image/items/tornado_mythic.png",
-            "base":"It returns to your hand<br>Attack + [x]",
-            "great":"",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] Boomerang deals increased damage when it returns",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] The further projectiles travel, the higher the damage"
-        },
-        "Phantom Cloak":{
-            "description":"An awesome-looking cloak.<br><br><b>Hidden</b><br>Thorn attacks are x2 your base damage",
-            "image":"/static/image/items/phantom_cloak.png",
-            "base":"Max HP + [x]<br>[Common] Projectile Resistance +10%",
-            "great":"",
-            "rare":"[Rare] Healing from red hearts + 20%",
-            "epic":"[Epic] Freezes enemies who hit you for 1-2s and deal thorn damage",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Enemies frozen by Phantom Cloak take more damage"
-        },
-        "Golden Chestplate":{
-            "description":"A chestplate made of pure gold. It's as solid as a rock.",
-            "image":"/static/image/items/golden_chestplate.png",
-            "base":"Max HP + [x]<br>[Common] Damage Resistance + 5%",
-            "great":"",
-            "rare":"[Rare] Healing from red hearts + 20%",
-            "epic":"[Epic] Deals 8% of base damage per tick as flame damage to close enemies",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Damage taken is greatly reduced for 2s after taking damage (30% damage reduction)"
-        },
-        "Vest of Dexterity":{
-            "description":"Light and durable. Wear it to dodge enemy attacks.",
-            "image":"/static/image/items/vest_of_dexterity.png",
-            "base":"Max HP + [x]<br>[Common] Dodge Chance + 7%",
-            "great":"",
-            "rare":"[Rare] Healing from red hearts + 20%",
-            "epic":"[Epic] Deals 80% base damage (affected by attack boost) and applies Lightning effect to nearest enemy",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Increased Dodge while moving"
-        },
-        "Void Robe":{
-            "description":"A robe from a demonic realm.<br><br><b>Hidden</b><br>[Epic] Poison effect is 30%",
-            "image":"/static/image/items/void_robe.png",
-            "base":"Max HP + [x]<br>[Common] Collision Resistance + 10%",
-            "great":"",
-            "rare":"[Rare] Healing from red hearts + 20%",
-            "epic":"[Epic] Poisons all enemies in the room.",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Dropped Hearts restore more HP"
-        },
-        "Bright Robe":{
-            "description":"A robe that's full of light, reduces front damage during battle.<br><br><b>Hidden</b><br>[Epic] HP limit increases by +3% per skill/ability received from levelling up",
-            "image":"/static/image/items/bright_robe.png",
-            "base":"Max HP + [x]<br>[Common] Front Damage Resistance + 12%",
-            "great":"",
-            "rare":"[Rare] Battle XP Gain + 25%",
-            "epic":"[Epic] Each upgrade will increase HP limit.",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] HP Drops +10%"
-        },
-        "Shadow Robe":{
-            "description":"An assassin's special robe, reduces rear damage during battle.<br><br><b>Hidden</b><br>[Epic] Deals 135% modifiable base damage",
-            "image":"/static/image/items/shadow_robe.png",
-            "base":"Max HP + [x]<br>[Common] Rear Damage Resistance + 20%",
-            "great":"",
-            "rare":"[Rare] Max HP + 7%",
-            "epic":"[Epic] Causes strong dark damage (Dark Touch) to nearby enemies.",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] In case of many enemies, damage taken is reduced"
-        },
-        "Laser Bat":{
-            "description":"Bat from a mysterious cave. Its laser could easily penetrate obsticles.",
-            "image":"/static/image/items/laser_bat.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's attack +10%",
-            "legendary":"[Legendary] Attacked enemies will be poisoned",
-            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
-        },
-        "Scythe Mage":{
-            "description":"Like the Grim Reaper, he can slice through enemies with his sharpened scythe.",
-            "image":"/static/image/items/scythe_mage.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
-            "legendary":"[Legendary] Crit Damage increased greatly",
-            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
-        },
-        "Elf":{
-            "description":"Elf of the Dark Forest. Fires projectiles.",
-            "image":"/static/image/items/elf.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
-            "legendary":"[Legendary] Attack Speed increased greatly from time to time",
-            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
-        },
-        "Bone Warrior":{
-            "description":"Once a powerful warrior, now it pledges its blade to you",
-            "image":"/static/image/items/bone_warrior.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own Crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's attack +10%",
-            "legendary":"[Legendary] Trigger Fury State for a short duration after a Crit",
-            "ale":"[Ancient Legendary] Chance to block a lethal attack and die for Hero 1 time",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
-        },
-        "Living Bomb":{
-            "description":"Keeps throwing bombs that deal splash damage.",
-            "image":"/static/image/items/living_bomb.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
-            "legendary":"[Legendary] The bomb will split into 3 mini bombs once it hits the floor",
-            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
-        },
-        "Noisy Owl":{
-            "description":"Part of the gale force, this owl can summon a strong gale which can knockback enemies.<br><br><b>Hidden</b><br>Sends 2 forward-facing tornado projectiles that can knockback enemies",
-            "image":"/static/image/items/noisy_owl.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
-            "legendary":"[Legendary] Projectiles split into 2 after some distance",
-            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
-        },
-        "Flaming Ghost":{
-            "description":"A ghost burning with blue flames that can shoot fireballs which split.<br><br><b>Hidden</b><br>Sends a single forward-facing projectile that splits into two, similar to the purple ghost projectile",
-            "image":"/static/image/items/flaming_ghost.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
-            "legendary":"[Legendary] Projectiles rebound once",
-            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
-        },
-        "Bear Ring":{
-            "description":"Bestowed with the Power of a Bear.",
-            "image":"/static/image/items/bear_ring_epic.png",
-            "base":"Increases damage to ground units + x",
-            "great":"",
-            "rare":"[Rare] Max HP + 5%",
-            "epic":"[Epic] Coins From Battle + 10%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Ground Units damage reduced +7%"
-        },
-        "Wolf Ring":{
-            "description":"Bestowed with the Power of a Wolf.",
-            "image":"/static/image/items/wolf_ring_epic.png",
-            "base":"Increases damage to melee units + x",
-            "great":"",
-            "rare":"[Rare] Crit Chance + 5%",
-            "epic":"[Epic] Coins From Battle + 10%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Melee Units damage reduced+7%"
-        },
-        "Falcon Ring":{
-            "description":"Bestowed with the Power of a Falcon.",
-            "image":"/static/image/items/falcon_ring_epic.png",
-            "base":"Increases damage to airborne units + x",
-            "great":"",
-            "rare":"[Rare] Attack Speed + 5%",
-            "epic":"[Epic] Coins From Battle + 10%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Airborne damage resistance + 7%"
-        },
-        "Serpent Ring":{
-            "description":"Bestowed with the Power of a Serpent.",
-            "image":"/static/image/items/serpent_ring_epic.png",
-            "base":"Increases damage to ranged units + x",
-            "great":"",
-            "rare":"[Rare] Dodge + 7%",
-            "epic":"[Epic] Coins From Battle + 10%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Ranged Units damage reduced + 7%"
-        },
-        "Bull Ring":{
-            "description":"Contains the power of bulls, use it to increase attacks on all mobs.",
-            "image":"/static/image/items/bull_ring_epic.png",
-            "base":"Increases damage to mobs + x",
-            "great":"",
-            "rare":"[Rare] Damage Resistance + 10%",
-            "epic":"[Epic] Coins From Battle + 10%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Mobs damage resistance +5%"
-        },
-        "Lion Ring":{
-            "description":"Contains the power of a berserk lion, use it to increase attacks on boss monsters.",
-            "image":"/static/image/items/lion_ring_epic.png",
-            "base":"Increases damage to bosses + x",
-            "great":"",
-            "rare":"[Rare] Crit Damage + 20%",
-            "epic":"[Epic] Attack + 5%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Boss Damage Resistance + 5%"
-        },
-        "Dragon Ring":{
-            "description":"Contains draconic power, and increases attack effects on Hero Mode monsters.",
-            "image":"/static/image/items/dragon_ring_epic.png",
-            "base":"Deals damage to elite enemies + x",
-            "great":"",
-            "rare":"[Rare] Projectile Resistance + 12%",
-            "epic":"[Epic] Crit Chance + 6%",
-            "pe":"",
-            "legendary":"[Legendary] MP Strength + 15%",
-            "ale":"",
-            "mythic":"[Mythic] Damage dealt to Humanoid enemies + 10%"
-        },
-        "Vilebat Ring":{
-            "description":"Contains the ability of vampiric bats, and increases attack effects on Normal Mode monsters.",
-            "image":"/static/image/items/vilebat_ring_epic.png",
-            "base":"Increases damage to normal enemies + x",
-            "great":"",
-            "rare":"[Rare] Healing Effect of Red Heart + 20%",
-            "epic":"[Epic] Killing enemies restores HP. Heal is stronger for boss kills",
-            "pe":"",
-            "legendary":"[Legendary] Heart drops + 20%",
-            "ale":"",
-            "mythic":"[Mythic] Collision Damage Resistance + 12%"
-        },
-        "Agile Locket":{
-            "description":"Locket created with agility to dodge enemies easily.",
-            "image":"/static/image/items/agile_locket.png",
-            "base":"Max HP + x<br>When HP is lower than 20%, Dodge increases by y %.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Dodge + 6%"
-        },
-        "Iron Locket":{
-            "description":"Locket engraved with iron to reduce damage from contact with enemies.",
-            "image":"/static/image/items/iron_locket.png",
-            "base":"Max HP + x<br>When HP is lower than 20%, Damage dealt by bumping into enemies is reduced by y %.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Collision damage resistance + 8%"
-        },
-        "Angel Locket":{
-            "description":"Locket blessed by the angels to be invincible in times of dispair.",
-            "image":"/static/image/items/angel_locket.png",
-            "base":"Max HP + x<br>There's a y% chance to revive and be invincible for t seconds when dying; available once only.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Chance to Revive + 5%"
-        },
-        "Bulletproof Locket":{
-            "description":"Locket crafted with bulletproof in mind to reduce projectile damage.",
-            "image":"/static/image/items/bulletproof_locket.png",
-            "base":"Max HP + x<br>Projectile damage decreased y % when HP is lower than 20%.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Projectile Resistance + 8%"
-        },
-        "Bloodthirsty Locket":{
-            "description":"An engraved locket which allows you to restore HP after kill.",
-            "image":"/static/image/items/bloodthirsty_locket.png",
-            "base":"Max HP + x<br>Can recover HP on kills when HP is lower than y%",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] HP drops + 20%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Enhanced Recovery Effects of Bloodthirst"
-        },
-        "Piercer Locket":{
-            "description":"An engraved locket which allows you to climb over walls.",
-            "image":"/static/image/items/piercer_locket.png",
-            "base":"Max HP + x<br>Can penetrate walls when HP is lower than y%",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] HP drops + 20%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Movement Speed + 3%"
-        },
-        "Counterattack Locket":{
-            "description":"Etched with a Counterattack. Performs Counterattacks on enemies each time damage is taken.",
-            "image":"/static/image/items/counterattack_locket.png",
-            "base":"Max HP + x",
-            "great":"",
-            "rare":"[Rare] x% chance to counter (increases with quality) enemies after taking damage (does 5x the damage taken to the enemy)",
-            "epic":"[Epic] More Hearts equal better recovery effect, up to 100%",
-            "pe":"",
-            "legendary":"[Legendary] Max HP + 4%",
-            "ale":"",
-            "mythic":"[Mythic] Counterattack damage to bosses is increased by 120%."
-        },
-        "Thunder Bracelet":{
-            "description":"Bracelet containing thunder, bring down their wrath upon enemies.",
-            "image":"/static/image/items/thunder_bracelet.png",
-            "base":"Attack + x<br>Deals y times random Lightning damage to nearby enemies; damage amount is random too.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Crit Damage + 15%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Elemental Lightning damage increased"
-        },
-        "Frozen Bracelet":{
-            "description":"Bracelet containing ice, freeze enemies on the spot.",
-            "image":"/static/image/items/frozen_bracelet.png",
-            "base":"Attack + x<br>Randomly freezes y enemies for t seconds.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Crit Damage + 15%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Elemental Freezing damage increased"
-        },
-        "Blazing Bracelet":{
-            "description":"Bracelet containing fire, burn enemies while they live.",
-            "image":"/static/image/items/blazing_bracelet.png",
-            "base":"Attack + x<br>Burns y enemies lasting t seconds.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Crit Damage + 15%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Elemental Fire damage increased"
-        },
-        "Split Bracelet":{
-            "description":"Bracelet containing a copy, brings out a copy when fighting enemies.",
-            "image":"/static/image/items/split_bracelet.png",
-            "base":"Attack + x<br>Summons y copy to help battle, lasting t seconds.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Crit Damage + 15%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] The lower the HP, the higher the clones attack"
-        },
-        "Invincible Bracelet":{
-            "description":"A bracelet which triggers an invincible star when enemies appear.",
-            "image":"/static/image/items/invincible_bracelet.png",
-            "base":"Attack + x<br>Be protected by Invincible Star lasting t seconds when encountering enemies.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Attack + 6%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] When the bracelet triggers Invincible, Crit Damage is increased"
-        },
-        "Quickshot Bracelet":{
-            "description":"A bracelet which magically shoots multiple arrows when enemies appear.",
-            "image":"/static/image/items/quickshot_bracelet.png",
-            "base":"Attack + x<br>Shoot more arrows continuously lasting t seconds encountering enemies.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Attack + 6%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Projectiles travel faster"
-        },
-        "Shield Bracelet":{
-            "description":"Bracelet inscribed with Shield Guard, used to protect oneself when enemies appear.",
-            "image":"/static/image/items/shield_bracelet.png",
-            "base":"Attack + x<br>Gain x-y Shield Guards that add damage for t seconds in battle.<br>Gain Crit Rate when blocking shots.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Attack + 7%",
-            "pe":"",
-            "legendary":"[Legendary] Shield Size + 25%",
-            "ale":"",
-            "mythic":"[Mythic] Chance to gain Shield Guard after a Crit hit"
-        },
-        "Arcane Archer":{
-            "description":"A book that has all powers and experiences of an Archer. Use it to get an active Ultimate skill.",
-            "image":"/static/image/items/arcane_archer.png",
-            "base":"Increases projectile frequency and own attack<br>Max HP + x<br>Attack + y (ULT)",
-            "great":"[Great] Attack Speed + 10% (ULT)",
-            "rare":"[Rare] Side Arrow + 1 (ULT)",
-            "epic":"[Epic] Front Arrow + 1 (ULT)",
-            "pe":"[Perfect Epic] Rear Arrow + 1 (ULT)",
-            "legendary":"[Legendary] Time Span + 1.2seconds (ULT)",
-            "ale":"[Ancient Legendary] Crit Damage + 25% (ULT)",
-            "mythic":"[Mythic] Time Span + 1"
-        },
-        "Art of Combat":{
-            "description":"A book containing the arts of powerful combat. Use it to get an auto Ultimate skill.",
-            "image":"/static/image/items/art_of_combat.png",
-            "base":"Increased projectile knockback effect when full<br>Max HP + x<br>Attack + y (ULT)",
-            "great":"[Great] Increases projectile knockback effect (ULT)",
-            "rare":"[Rare] Power Speed + 25% (ULT)",
-            "epic":"[Epic] Increases projectile speed (ULT)",
-            "pe":"[Perfect Epic] Attack Speed + 25% (ULT)",
-            "legendary":"[Legendary] Attack contains Random Elemental (ULT)",
-            "ale":"[Ancient Legendary] Crit Chance + 15% (ULT)",
-            "mythic":"[Mythic] Max HP + 8%"
-        },
-        "Ice Realm":{
-            "description":"A book containing powerful Frost magic. Use it to get an active Ultimate skill.",
-            "image":"/static/image/items/ice_realm.png",
-            "base":"Freezes surrounding enemies and increases own attack<br>Max HP + x<br>Attack + x (ULT)",
-            "great":"[Great] Attack Speed + 20% (ULT)",
-            "rare":"[Rare] Power Speed + x% (ULT)",
-            "epic":"[Epic] Frost Damage + x (ULT)<br>Frost area increased by 100% (ULT)",
-            "pe":"[Perfect Epic] Time Span + t seconds (ULT)",
-            "legendary":"[Legendary] Crit Chance + 20% (ULT)",
-            "ale":"[Ancient Legendary] Initial Power + 35% (ULT)",
-            "mythic":"[Mythic] When used, it may return 50% of the power (ULT.)"
-        },
-        "Enlightenment":{
-            "description":"A book with magic that will help you learn new skills in battle. Use it to get an auto Ultimate skill.",
-            "image":"/static/image/items/enlightenment.png",
-            "base":"Grant a new skill when full<br>Max HP + x<br>Power Speed + y (ULT)",
-            "great":"[Great] Collision Damage Resistance + 5%",
-            "rare":"[Rare] Projectile Damage Resistance + 5%",
-            "epic":"[Epic] Multi-Skill + 1 (ULT)",
-            "pe":"[Perfect Epic] Initial Power + 40% (ULT)",
-            "legendary":"[Legendary] Multi-Skill + 1 (ULT)",
-            "ale":"[Ancient Legendary] Max HP + 7%",
-            "mythic":"[Mythic] Battle XP Gain + 8%"
-        },
-        "Giants Contract":{
-            "description":"The contract with 7 Giants, allowing the user the power of the Giants. Wear it to get an auto skill",
-            "image":"/static/image/items/giants_contract.png",
-            "base":"Once the energy is fully charged, transform with the Courage Giant power<br>Max HP + x<br>Attack + y (ULT)",
-            "great":"[Great] Crit Damage + z (ULT)<br>[Great] Wild Giant - Deals collision damage to enemy (ULT)",
-            "rare":"[Rare] Stone Giant - Defence increased greatly (ULT)",
-            "epic":"[Epic] Sword Giant - Receive all spinning sword skills (ULT)",
-            "pe":"[Perfect Epic] Flaming Giant - Leaves behind a blaze when moving (ULT)",
-            "legendary":"[Legendary] Gale Giant - Increased movement and attack speed (ULT)",
-            "ale":"[Ancient Legendary] Bolt Giant - Surrounding enemies will be hit by lightning (ULT)",
-            "mythic":"[Mythic] Rage Giant - Skill can be released earlier if losing HP (ULT.)"
-        },
-        "Spectre Book":{
-            "description":"Holds the magic of the undead; you can use it to summon undead soldiers. Where it to get an active skill.",
-            "image":"/static/image/items/spectre_book.png",
-            "base":"Summon undead enemies to help you battle<br>Max HP + x<br>Attack + y (ULT)<br>Undead Attack + z (ULT)",
-            "great":"[Great] Higher the quality, the faster the release (ULT)",
-            "rare":"[Rare] Higher the quality, the longer the duration (ULT)",
-            "epic":"[Epic] Summon new warrior - Flame Mage (ULT)",
-            "pe":"[Perfect Epic] Enter a short state of Rage",
-            "legendary":"[Legendary] Summon an Ultimate warrior - Skeleton King (ULT)",
-            "ale":"[Ancient Legendary] Kill enemies to extend summon time (ULT)",
-            "mythic":"[Mythic] When the undead disappears, it may drop a heart (ULT)"
-        },
-        "Arcanum of Time":{
-            "description":"Perceive the mysteries of time that let you slow or speed up time. Gain an active Ultimate skill when equipped<br><br><b>Hidden</b><br>Recovers 1.5% HP for 3s after ULT ends.",
-            "image":"/static/image/items/arcanum_of_time.png",
-            "base":"Max HP +<br>Attack + x (ULT)",
-            "great":"[Great] Slow effect +x% (ULT)<br>[Great] Slow: Enemy attacks and movement are slowed (ULT)",
-            "rare":"[Rare] Gain Crit Rate (ULT)",
-            "epic":"[Epic] Effect range doubled. Ultimate skill duration increased (ULT)",
-            "pe":"[Perfect Epic] Haste: Gain Crit Rate, increased buff duration and summoned creature duration (ULT)",
-            "legendary":"[Legendary] Haste: Speed of attacks, movement, spins, shots, magic casts increased (ULT)",
-            "ale":"[Ancient Legendary] Manipulate Time: Reduces continuous damage intervals on enemies. Increases enemy debuff duration (ULT)",
-            "mythic":"[Mythic] Greatly increase damage immunity after taking damage. Effect reduces time (ULT)"
-        }
-    }
 
-    function setItemValues(item) {
-        myInput.value = item;
-        name_item.innerHTML = item;
-        item_description.innerHTML = item_json[item]["description"];
-        item_image.src = item_json[item]["image"];
-        item_base.innerHTML = item_json[item]["base"];
-        item_great.innerHTML = item_json[item]["great"];
-        item_rare.innerHTML = item_json[item]["rare"];
-        item_epic.innerHTML = item_json[item]["epic"];
-        item_perfect_epic.innerHTML = item_json[item]["pe"];
-        item_legendary.innerHTML = item_json[item]["legendary"];
-        item_ancient_legendary.innerHTML = item_json[item]["ale"];
-        item_mythic.innerHTML = item_json[item]["mythic"];
-    }
+    window.addEventListener('click', ({target}) => {
+        if(target.id != "myInput"){
+            ul_li.style.display = "none"
+        }
+	})
 
 	item_li_a.forEach(function(e) {
 	    e.addEventListener("click", function() {
 	    	setItemValues(e.textContent);
         });
     });
-	
-	try{
-		var url = window.location.href;
-        var postSearch = url.split("?");
-        var postSearchParam = postSearch[1].split('=')[1];
-        var item = postSearchParam.replaceAll("_"," ");
-		if(postSearch[1]){
-			setItemValues(item);
-		}
-	} catch(error){
-		console.log(error)
-	}
 </script>
 <script>
 	const self_inline_div_traveling = document.getElementById('Item-sidebar-image')

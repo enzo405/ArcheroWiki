@@ -3,14 +3,14 @@
 	<head>
 		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.18.2 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.1">
+		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.3.1">
+		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.3.1">
 		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>{{ message }}</title>
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-        <script src="{% static 'main.js' %}"></script>
+        <script src="{% static 'main.js' %}?version=1.3.1"></script>
 	</head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
@@ -53,16 +53,16 @@
 			{% if profil == "yes" %}
             <h3>Go <a href='/calculator/update/{{ public_id }}'>here</a> if you want to load CSRF cookie</h3>
             {% elif profil == "no" %}
-            <h3>Go <a href='/calculator/create/'>here</a> if you want to load CSRF cookie</h3>
+            <h3>Login <a href='/login/'>here</a> first if you want to load CSRF cookie</h3>
             {% endif %}
             <h3>If this persist, you may need to allow cookie for this website</h3>
 		</div>
 	</main>
 </div>
-<footer class="sticky_footer">
+<footer>
 	<div class="footer-content">
 		<div class="footer-about">
-			<img class="footer-img-icon" src="/static/image/archero_icon.png" alt="image game icon">
+			<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.3.1" alt="image game icon">
 			<div class="about-content">
 				<h2>Archero :</h2>
 				<div>Archero Update will be added with a certains delay</div>

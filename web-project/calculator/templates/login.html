@@ -5,9 +5,9 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.18.2 %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.3.1">
 	<link rel="icon" type="image/ong" href="{% static 'favicon.ico' %}">
-	<script src="{% static 'main.js' %}"></script>
+	<script src="{% static 'main.js' %}?version=1.3.1"></script>
 </head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
@@ -19,6 +19,14 @@
 		<p>Please enable JavaScript to use this website.</p>
 	</div>
 </noscript>
+{% if messages %}
+	{% for message in messages %}
+	<script>
+		var stringElement = '<div{% if message.tags %} class="{{ message.tags }}-messages"{% endif %}>{{ message }}</div>'
+		createModale(stringElement)
+	</script>
+	{% endfor %}
+{% endif %}
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -36,14 +44,14 @@
 					<div class="wrap-input100 validate-input">
 						<fieldset class="fieldset-input">
 							<legend>Username</legend>
-							<input id="username" type="text" placeholder="">
+							<input class="input-login-field username" id="username" type="text" placeholder="" pattern="^.{4,15}$" required>
 						</fieldset>
 						<ul>
 							<li class="list-info-login">Avoid space and special character for your username</li>
 						</ul><br>
 						<fieldset class="fieldset-input">
 							<legend>Ingame ID</legend>	
-							<input id="ingameid" type="text" placeholder="1-234567">
+							<input class="input-login-field username" id="ingameid" type="text" placeholder="1-234567" pattern="^[0-9]{1}-[0-9]{6,12}$">
 						</fieldset>
 					</div>
 					<div class="container-login100-form-btn">
@@ -72,14 +80,15 @@
 	</div>
 </body>
 <script>
-	var span = document.getElementsByClassName("close_span_error")[0];
+	document.cookie = 'visitor=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+</script>
+<script>
 	var span2 = document.getElementsByClassName("close_span_confirmation")[0];
 	var no_action = document.getElementById('cancel');
 
 	var objClosableBtn = {
-		1:[span,'errorBox'],
-		2:[span2,'confirmationBox'],
-		3:[no_action,'confirmationBox'],
+		1:[span2,'confirmationBox'],
+		2:[no_action,'confirmationBox'],
 	}
 	for(const element in objClosableBtn){
 		objClosableBtn[element][0].onclick = function(){
@@ -89,7 +98,6 @@
 	}
 </script>
 <script>
-	/* SCRIPT has been refactored by chatGPT */
 	const submitBtn = document.getElementById('submit-btn');
 	const confirmBox = document.getElementById('confirmationBox');
 	const confirmBtn = document.getElementById('confirm');
@@ -105,15 +113,10 @@
 	submitBtn.addEventListener('click', () => {
 		const username = usernameInput.value.trim();
 		const ingameId = ingameIdInput.value.trim();
-		const errors = {
-			username: '',
-			ingameId: '',
-		};
-
 		if (!username) {
 			errors.username = 'Username field cannot be empty';
-		} else if (username.length < 3 || username.length > 20) {
-			errors.username = 'Username must be between 3 and 20 characters long';
+		} else if (username.length < 3 || username.length > 15) {
+			errors.username = 'Username must be between 3 and 15 characters long';
 		} else if (username === 'visitor') {
 			errors.username = 'You cannot use this username';
 		}
@@ -126,14 +129,7 @@
 			errors.ingameId = 'Your id must be minimum 11 number';
 		}
 
-		if (errors.username || errors.ingameId) {
-			errorContent.innerText = `${errors.username}\n${errors.ingameId}`;
-			errorBox.style.display = 'block';
-			return;
-		}
-
 		async function submitLogin() {
-			console.log("Bonjour");
 			return new Promise((resolve) => {
 				confirmBtn.addEventListener('click', () => {
 					resolve('yes');
@@ -159,7 +155,6 @@
 </script>
 <script>
 	var visitor= document.getElementById('visitor');
-	document.cookie = 'visitor=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 	visitor.addEventListener('click', function(){
 		var date = new Date()
 		date.setTime(date.getTime() + (365*24*60*60*1000));

@@ -1,5 +1,4 @@
 from django.forms import ModelForm
-from django.utils.translation import gettext_lazy as _
 from . import models
 
 
@@ -23,7 +22,7 @@ class StuffTable(ModelForm):
 	class Meta:
 		model = models.stuff_table
 		fields = (
-				'ingame_id',
+				'user_profile',
 				"weapon_choosen","weapon_level" ,"weapon_rarity" ,
 				"armor_choosen","armor_level" ,"armor_rarity" ,
 				"ring1_choosen","ring1_level" ,"ring1_rarity" ,
@@ -40,7 +39,7 @@ class HeroTable(ModelForm):
 	class Meta:
 		model = models.hero_table
 		fields = (
-				'ingame_id',
+				'user_profile',
 				'atreus_level', 'atreus_star', 
 				'urasil_level', 'urasil_star',
 				'phoren_level', 'phoren_star',
@@ -65,6 +64,7 @@ class HeroTable(ModelForm):
 				'melinda_level', 'melinda_star',
 				'elaine_level', 'elaine_star',
 				'bobo_level', 'bobo_star',
+				'stella_level', 'stella_star',
 )
 
 
@@ -72,7 +72,7 @@ class TalentTable(ModelForm):
 	class Meta:
 		model = models.talent_table
 		fields = (
-				'ingame_id',
+				'user_profile',
 				'strength_level',
 				'power_level',
 				'recover_level',
@@ -87,7 +87,7 @@ class SkinTable(ModelForm):
 	class Meta:
 		model = models.skin_table
 		fields = (
-				'ingame_id',
+				'user_profile',
 				'skin_health',
 				'skin_attack',
 )
@@ -98,7 +98,7 @@ class AltarTable(ModelForm):
 	class Meta:
 		model = models.altar_table
 		fields = (
-				'ingame_id',
+				'user_profile',
 				'stuff_altar_level', 
 				'stuff_altar_ascension', 
 				'heros_altar_level', 
@@ -110,7 +110,7 @@ class JewelTypeTable(ModelForm):
 	class Meta:
 		model = models.jewel_type_table
 		fields = (
-				'ingame_id',
+				'user_profile',
 				'weapon_jewel1_type','weapon_jewel2_type','weapon_jewel3_type','weapon_jewel4_type',
 				'armor_jewel1_type','armor_jewel2_type','armor_jewel3_type','armor_jewel4_type',
 				'ring1_jewel1_type','ring1_jewel2_type','ring1_jewel3_type','ring1_jewel4_type', 
@@ -127,7 +127,7 @@ class JewelLevelTable(ModelForm):
 	class Meta:
 		model = models.jewel_level_table
 		fields = (
-				'ingame_id',
+				'user_profile',
 				'weapon_jewel1_level','weapon_jewel2_level','weapon_jewel3_level','weapon_jewel4_level',
 				'armor_jewel1_level','armor_jewel2_level','armor_jewel3_level','armor_jewel4_level',
 				'ring1_jewel1_level','ring1_jewel2_level','ring1_jewel3_level','ring1_jewel4_level',
@@ -144,7 +144,7 @@ class EggTable(ModelForm):
 	class Meta:
 		model = models.egg_table
 		fields = (
-				'ingame_id','green_bat','vase','bomb_ghost','rock_puppet','party_tree','wolfhound',
+				'user_profile','green_bat','vase','bomb_ghost','rock_puppet','party_tree','wolfhound',
 				'skeleton_archer','skeleton_soldier','wasp','fire_mage','medusa','ice_mage',
 				'fire_lizard','flame_ghost','thorny_snake','tornado_demon','piranha',
 				'zombie','scarecrow','long_dragon','skull_wizard','lava_golem','ice_golem',
@@ -164,7 +164,7 @@ class EggEquippedTable(ModelForm):
 	class Meta:
 		model = models.egg_equipped_table
 		fields = (
-				'ingame_id',
+				'user_profile',
 				'egg_equipped1',
 				'egg_equipped2',
 				'egg_equipped3',
@@ -176,7 +176,7 @@ class DragonTable(ModelForm):
 	class Meta:
 		model = models.dragon_table
 		fields = (
-				'ingame_id',
+				'user_profile',
 				'dragon1_type',
 				'dragon2_type',
 				'dragon3_type',
@@ -205,7 +205,7 @@ class RunesTable(ModelForm):
 	class Meta:
 		model = models.runes_table
 		fields = (
-				"ingame_id",
+				"user_profile",
 				"power_attack_flat", 
 				"power_attack_var", 
 				"power_line_2", 
@@ -270,7 +270,7 @@ class ReforgeTable(ModelForm):
 	class Meta:
 		model = models.reforge_table
 		fields = (
-				"ingame_id",
+				"user_profile",
 				'reforge_power',
 				'reforge_saviour',
 				'reforge_recovery',
@@ -283,7 +283,7 @@ class RefineTable(ModelForm):
 	class Meta:
 		model = models.refine_table
 		fields = (
-				'ingame_id',
+				'user_profile',
 				'weapon_refine_atk',
 				'weapon_refine_basic_stats',
 				'armor_refine_hp',
@@ -305,14 +305,14 @@ class MedalsTable(ModelForm):
 	class Meta:
 		model = models.medals_table
 		fields = (
-				'ingame_id',
+				'user_profile',
 				'medals_01',
 				'medals_02',
 				'medals_03',
 				'medals_04',
 				'medals_05',
 				'medals_06',
-				'medals_07',
+				# 'medals_07',
 				'medals_08',
 				'medals_09',
 				'medals_10',
@@ -346,64 +346,52 @@ class RelicsTable(ModelForm):
 	class Meta:
 		model = models.relics_table
 		fields = (
-				"ingame_id",
-				"wraith_mask",
-				"clown_mask",
-				"princess_teddy_bear",
-				"belt_of_might",
-				"beastmaster_whistle",
-				"archmage_robe",
-				"shimmering_gem",
-				"bloom_of_eternity",
-				"challenger_headband",
-				"jade_gobelet",
-				"veteran_plate",
-				"dragonscale",
-				"dragon_tooth",
-				"scholar_telescope",
-				"pirate_shank",
-				"giant_greatsword",
-				"healing_potion",
-				"whirlwind_mauler",
-				"special_lance",
-				"precision_slingshot",
-				"supreme_trinity_alpha",
-				"golden_apple",
-				"ancient_stele",
-				"philosopher_stone",
-				"dragon_heart",
-				"spectral_duality",
-				"mystic_emblem",
-				"immortal_brooch",
-				"golden_statue",
-				"smilling_mask",
-				"unmerciful_mask",
-				"holy_water",
-				"book_of_the_dead",
-				"psionist_treasure",
-				"book_of_archery",
-				"book_of_bravery",
-				"angelic_heart",
-				"devil_whisper",
-				"stone_of_wisdom",
-				"empyrean_mirror",
-				"fabled_archer_arrow",
-				"shiny_gemmed_belt",
-				"mythril_flux_mail",
-				"stealth_boots",
-				"assassin_dagger",
-				"gold_bunny",
-				"genesis_staff",
-				"bloodstained_sword",
-				"starcluster_rage",
-				"elven_king_cape",
-				"spear_of_yggdrasil",
-				"dragon_gem",
-				"life_crown",
-				"sand_of_time",
-				"first_lightning",
-				"oracle_quill",
-				"bloodthirsty_grail",
-				"healing_grail",
-				"cupids_necklace",
+				"user_profile","wraith_mask",
+				"clown_mask","princess_teddy_bear",
+				"belt_of_might","beastmaster_whistle",
+				"archmage_robe","shimmering_gem",
+				"bloom_of_eternity","challenger_headband",
+				"jade_gobelet","veteran_plate",
+				"dragonscale","dragon_tooth",
+				"scholar_telescope","pirate_shank",
+				"giant_greatsword","healing_potion",
+				"whirlwind_mauler","special_lance",
+				"precision_slingshot","supreme_trinity_alpha",
+				"golden_apple","ancient_stele",
+				"philosopher_stone","dragon_heart",
+				"spectral_duality","mystic_emblem",
+				"immortal_brooch","golden_statue",
+				"smilling_mask","unmerciful_mask",
+				"holy_water","book_of_the_dead",
+				"psionist_treasure","book_of_archery",
+				"book_of_bravery","angelic_heart",
+				"devil_whisper","stone_of_wisdom",
+				"empyrean_mirror","fabled_archer_arrow",
+				"shiny_gemmed_belt","mythril_flux_mail",
+				"stealth_boots","assassin_dagger",
+				"gold_bunny","genesis_staff",
+				"bloodstained_sword","starcluster_rage",
+				"elven_king_cape","spear_of_yggdrasil",
+				"dragon_gem","life_crown",
+				"sand_of_time","first_lightning",
+				"oracle_quill","bloodthirsty_grail",
+				"healing_grail","cupids_necklace",
 )
+
+
+
+class WeaponSkinTable(ModelForm):
+	class Meta:
+		model = models.weapon_skins_table
+		fields = (
+				"user_profile",
+				"demon_blade_rain_1",
+				"antiquated_sword_1",
+				"gale_force_1",
+				"death_scythe_1",
+				"boomerang_1",
+				"brightspear_1",
+				"saw_blade_1",
+				"brave_bow_1",
+				"stalker_staff_1"
+		)

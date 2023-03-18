@@ -3,14 +3,21 @@
 	<head>
 		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.18.2 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.1">
+		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.3.1">
+		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.3.1">
 		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Welcome to Wiki</title>
+		<title>Archero - Wiki</title>
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-        <script src="{% static 'main.js' %}"></script>
+        <script src="{% static 'main.js' %}?version=1.3.1"></script>
+
+		<meta property="og:title" content="Archero Emulator Runes">
+		<meta property="og:url" content="https://stats.wiki-archero.com/wiki/damage-calculator">
+		<meta property="og:type" content="website">
+		<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+		<meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.1">
 	</head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
@@ -62,10 +69,10 @@
 				<a class="div-onclick-menu" href="/wiki/damage-calculator/calc/{{chapter_ch42}}/" style="cursor: pointer;">Chapter +ch42</a>
 			</div>
 		</main>
-		<footer class="footer-menu">
+		<footer>
 			<div class="footer-content">
 				<div class="footer-about">
-					<img class="footer-img-icon" src="/static/image/archero_icon.png" alt="image game icon">
+					<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.3.1" alt="image game icon">
 					<div class="about-content">
 						<h2>Archero :</h2>
 						<div>Archero Update will be added with a certains delay</div>

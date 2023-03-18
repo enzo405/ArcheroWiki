@@ -9,38 +9,27 @@ from math import *
 from urllib.request import urlopen
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from django.http import HttpResponse, HttpResponseRedirect
+from http.cookies import CookieError
 from datetime import timedelta, datetime
 import json
 import os
 import sys
 import traceback
-import re
-import urllib.parse
-
 
 app_version = os.environ.get('APP_VERSION')
 lang = ["English","Francais","Deutsch","Russian","Española"]
 missing_data = []
-
+WEBHOOK_URL = "https://discord.com/api/webhooks/#########/#############################################"
+WEBHOOK_URL2 = "https://discord.com/api/webhooks/#########/#############################################"
 
 def menu(request):
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
-	requestJson(request)
+	darkmode = checkTheme_Request(request)
 	return render(request, 'menu.html', {"darkmode": darkmode, "header_msg": "Menu Archero Wiki", 'lang':lang})
 
 def maze(request):
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
+	darkmode = checkTheme_Request(request)
 	with urlopen("https://config-archero.habby.mobi/data/config/MazeConfig.json") as url:
 		data_json = json.load(url)
-	requestJson(request)
 	return render(request, 'wiki/get_maze.html', {"data_json":data_json, "darkmode": darkmode, "header_msg": "maze","lang":lang})
 
 
@@ -59,8 +48,7 @@ def csrf_failure(request, reason=""):
 	except:
 		profil = "no"
 		public_id =''
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
+	if "modeDisplay" in list(request.COOKIES):
 		darkmode = "yes"
 	else:
 		darkmode = "no"
@@ -72,118 +60,268 @@ def login(request):
 		darkmode = "yes"
 	else:
 		darkmode = "no"
-	cookie_value = checkCookie(request.COOKIES)
-	if len(cookie_value) >= 1 and "visitor" not in list(cookie_value.keys()):
-		return redirect("/", {"darkmode":darkmode})
+	cookiePopList = ['csrftoken','sessionid','windowInnerWidth','windowInnerHeight', 'modeDisplay','messages']
+	cookie_value = request.COOKIES
+	for i in cookiePopList:
+		try:
+			cookie_value.pop(i)
+		except:
+			pass
+	try:
+		ingame_id_cookie = list(cookie_value.values())[0]
+		user_stats = models.user.objects.get(ingame_id=ingame_id_cookie)
+	except:
+		user_stats = "no"
+	if len(cookie_value) >= 1 and user_stats != "no" and "visitor" not in list(cookie_value):
+		send_webhook(f'{cookie_value} tried to acces Login but was redirected to Home')
+		messages.warning(request, f"You cannot go to Login : {list(cookie_value.keys())[0]}")
+		return render(request, "menu.html" , {"darkmode":darkmode})
 	else:
 		return render(request, "login.html", {"darkmode":darkmode})
 
-def login_processing(request, username_raw, id):
-	if "modeDisplay" in list(request.COOKIES):
-		darkmode = "yes"
+def login_processing(request, username_raw, id_raw):
+	username_legal = checkIllegalKey(username_raw)
+	response = redirect("/")
+	boolCheck = checkUsernameCredentials(username_raw,id_raw)
+	if boolCheck[1] == "visitor" and boolCheck[0]:
+		response.set_cookie(key="visitor", value="0-000000", httponly=True, path='/')
+	elif boolCheck[1] != 'visitor' and boolCheck[2] != '0-000000' and boolCheck[0]:
+		response.delete_cookie('visitor', path='/')
+		expires = datetime.now() + timedelta(days=365)
+		try:
+			response.set_cookie(key=boolCheck[1], value=boolCheck[2], expires=expires, httponly=True, samesite="Strict")
+		except CookieError as e:
+			send_webhook(f"<@382930544385851392> : {e}")
+			messages.error(request, f'Login Failed (forbidden character {username_legal})')
+			return response
+		messages.success(request, f'Successful Login ({boolCheck[1]})')
+		send_embed(boolCheck[1],"Successful Login",description_embed=f"",field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck[1]}`|`{boolCheck[2]}`",e_color="32ec08",request=request, ping_me=False)
 	else:
-		darkmode = "no"
-	list_forbiden_char = ['(',')','<','>','@',',',';',':','\\','"','/','[',']','?','=','{','}',' ']
-	username = username_raw
-	for i in str(username_raw):
-		if i in list_forbiden_char:
-			username = str(username_raw).replace(str(i),"*")
-	username = urllib.parse.quote(str(username))
-	response = redirect("/", {"darkmode":darkmode})
-	if request.method == "GET":
-		cookie_value = checkCookie(request.COOKIES)
-		if len(cookie_value) == 0 and "visitor" not in list(cookie_value.keys()):
-			pattern = re.compile(r'^[0-9]{1}-[0-9]{6,12}$')
-			if len(username) >= 3 and len(username) < 20 and re.fullmatch(pattern, id) and id != "" and id != None:
-				expires = datetime.now() + timedelta(days=365)
-				response.set_cookie(key=username, value=id, expires=expires, httponly=True, samesite=None)
-				messages.success(request, 'Successful Login')
-			else:
-				messages.error(request, 'Login Failed')
+		messages.error(request, 'Login Failed')
+		send_embed(boolCheck[1],"Login Failed",description_embed=f"",field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck[1]}`|`{boolCheck[2]}`",e_color="d50400",request=request, ping_me=True)
 	return response
 
 def wiki_theorycrafting(request):
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
-	requestJson(request)
+	darkmode = checkTheme_Request(request)
 	return render(request, "wiki/theorycraft.html", {"darkmode": darkmode, "header_msg": "TheoryCrafting","lang":lang})
 
-def item_description(request):
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
-	requestJson(request)
-	return render(request, "wiki/item_description.html", {"darkmode": darkmode, "header_msg": "Item Description","lang":lang})
+def item_description(request, item=None):
+	darkmode = checkTheme_Request(request)
+	ctx = {
+		"darkmode": darkmode,
+		"header_msg": "Item Description",
+		"lang":lang,
+		"item":"no"
+	}
+	if item != None:
+		try:
+			item_data = ItemData[str(item).replace('_',' ')]
+			ctx.update({
+				"name":str(item).replace('_',' '),
+				"item_description":item_data["description"],
+				"item_image":item_data["image"],
+				"item_base":item_data["base"],
+				"item_great":item_data["great"],
+				"item_rare":item_data["rare"],
+				"item_epic":item_data["epic"],
+				"item_perfect_epic":item_data["pe"],
+				"item_legendary":item_data["legendary"],
+				"item_ancient_legendary":item_data["ale"],
+				"item_mythic":item_data["mythic"],
+				"url_cpy":request.build_absolute_uri(),
+				"item":"yes"
+			})
+		except Exception as e:
+			messages.warning(request, message=f"{e} isn't an item")
+	return render(request, "wiki/item_description.html", ctx)
 
-def skill_description(request):
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
-	requestJson(request)
-	return render(request, "wiki/skill_description.html", {"darkmode": darkmode, "header_msg": "Skill Description","lang":lang})
 
-def heros_description(request):
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
-	requestJson(request)
-	return render(request, "wiki/heros_description.html", {"darkmode": darkmode, "header_msg": "Heroes Description","lang":lang})
+def skill_description(request, skill=None):
+	darkmode = checkTheme_Request(request)
+	ctx = {
+		"darkmode": darkmode,
+		"header_msg": "Skill Description",
+		"lang":lang,
+		"skill":"no"
+	}
+	if skill != None:
+		try:
+			skill_data = SkillData[skill.replace("_"," ")]
+			image_skill = f"image/skill/{str(skill).lower().replace(' - ', '_').replace(' ', '_').replace('one-eyed', 'one_eyed')}.png"
+			skill_description = skill_data['description']
+			skill_base = skill_data['stats']
+			url_cpy = request.build_absolute_uri()
+			ctx.update({"name":skill.replace("_"," "),"image_skill":image_skill,"skill_description":skill_description,"skill_base":skill_base,"url_cpy":url_cpy,"skill":"yes"})
+		except Exception as e:
+			messages.warning(request, message=f"{e} isn't an skill")
+	return render(request, "wiki/skill_description.html", ctx)
 
-def upgrade_cost(request):
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
-	requestJson(request)
-	return render(request, "wiki/upgrade_cost.html", {"darkmode": darkmode, "header_msg": "Upgrade Cost","lang":lang})
+def heros_description(request, hero=None):
+	darkmode = checkTheme_Request(request)
+	ctx = {
+		"darkmode": darkmode,
+		"header_msg": "Heroes Description",
+		"lang":lang,
+		"hero":"no"
+	}
+	if hero != None:
+		try:
+			hero_data = HeroData[hero]
+			ctx.update({
+				"name_hero": hero,
+				"hero_description": hero_data['description'],
+				"hero_image": f'image/hero_icon/icon_{str(hero).lower()}.png',
+				"base_atk": f'• Base Attack: {hero_data["base_atk"]}',
+				"base_hp": f'• Base Hp: {hero_data["base_hp"]}',
+				"attributes": hero_data['attributes'],
+				"price": hero_data['price'],
+				"skill": hero_data['skill'],
+				"skill_details": hero_data['skill_details'],
+				"star_1": hero_data['star_1'],
+				"star_2": hero_data['star_2'],
+				"star_3": hero_data['star_3'],
+				"star_4": hero_data['star_4'],
+				"star_5": hero_data['star_5'],
+				"star_6": hero_data['star_6'],
+				"star_7": hero_data['star_7'],
+				"star_8": hero_data['star_8'],
+				"url_cpy": request.build_absolute_uri(),
+				"hero":"yes"
+			})
+		except Exception as e:
+			messages.warning(request, message=f"{e} isn't a hero")
+	return render(request, "wiki/heros_description.html",ctx)
+
+def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str="None"):
+	darkmode = checkTheme_Request(request)
+	all_rank = ["A","S","SS"]
+	content = ""
+	ctx = {
+		"darkmode": darkmode,
+		"header_msg": "Upgrade Cost",
+		"lang":lang,
+		"cost_type":cost_type,
+		"lvl1":lvl1,
+		"lvl2":lvl2,
+		"rank":rank,
+	}
+	if cost_type == "items":
+		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
+			price = calculatePrice(lvl1,lvl2,cost_type)
+			content = {
+				"eTitle": "Equipment Upgrade Cost",
+				"eDescription": f"To upgrade equipment from level {lvl1} to {lvl2}",
+				"eImage": "/static/image/wiki-image/Cost_Item.png",
+				"eField1": f'{int(price[0]):,}',
+				"eField2": f'{int(price[1]):,}',
+				"currency1": ['Gold :','gold'],
+				"currency2": ['Scrolls :','scroll'],
+			}
+		else:
+			messages.error(request, message="The levels need to be between 0 and 120")
+			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/")
+	elif cost_type == "heroes":
+		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
+			price = calculatePrice(lvl1,lvl2,cost_type)
+			content = {
+				"eTitle": "Heroes Upgrade Cost",
+				"eDescription": f"To upgrade heroes from level {lvl1} to {lvl2}",
+				"eImage": "/static/image/wiki-image/Cost_Heroes.png",
+				"eField1": f'{int(price[0]):,}',
+				"eField2": f'{int(price[1]):,}',
+				"currency1": ['Gold :','gold'],
+				"currency2": ['Sapphire :','sapphire'],
+			}
+		else:
+			messages.error(request, message="The levels need to be between 0 and 120")
+			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/")
+	elif cost_type == "talents":
+		if lvl1 <= lvl2 and (0 <= lvl1 <= 205) and (1 <= lvl2 <= 206):
+			price = calculatePrice(lvl1,lvl2,cost_type)
+			content = {
+				"eTitle": "Talents Upgrade Cost",
+				"eDescription": f"To upgrade talents from level {lvl1} to {lvl2}",
+				"eImage": "/static/image/wiki-image/Cost_Talent.png",
+				"eField1": f'{int(price):,}',
+				"eField2": f'<br>',
+				"currency1": ['Gold :','gold'],
+				"currency2": ['',''],
+			}
+		else:
+			messages.error(request, message="The levels need to be between 0 and 206")
+			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/")
+	elif cost_type == "dragons":
+		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
+			if rank in all_rank:
+				price = calculatePrice(lvl1,lvl2,cost_type,rank)
+				content = {
+					"eTitle": "Dragon Upgrade Cost",
+					"eDescription": f"To upgrade dragons from level {lvl1} to {lvl2}",
+					"eImage": "/static/image/wiki-image/Cost_Dragon" + str(rank).upper() + ".png",
+					"eField1": f'{int(price[0]):,}',
+					"eField2": f'{int(price[1]):,}',
+					"currency1": ['Gold :','gold'],
+					"currency2": ['Magestones :','magestone'],
+				}
+			else:
+				messages.error(request, message="The rank need to be whether A, S or SS")
+				return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/{lvl1}/{lvl2}/A/")
+		else:
+			messages.error(request, message="The levels need to be between 0 and 120")
+			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/{rank}/")
+	elif cost_type == "relics":
+		if lvl1 <= lvl2 and (0 <= lvl1 <= 29) and (1 <= lvl2 <= 30):
+			if rank in all_rank:
+				price = calculatePrice(lvl1,lvl2,cost_type,rank)
+				content = {
+					"eTitle": "Relics Upgrade Cost",
+					"eDescription": f"To upgrade relics from level {lvl1} to {lvl2}",
+					"eImage": "/static/image/wiki-image/Cost_Relics" + str(rank).upper() + ".png",
+					"eField1": f'{int(price[0]):,}',
+					"eField2": f'{int(price[1]):,}',
+					"currency1": ['Gold :','gold'],
+					"currency2": ['Starlight :','starlight'],
+				}
+			else:
+				messages.error(request, message="The rank need to be whether A, S or SS")
+				return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/{lvl1}/{lvl2}/A/")
+		else:
+			messages.error(request, message="The levels need to be between 0 and 30")
+			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/{rank}/")
+	ctx.update({"content":content})
+	return render(request, "wiki/upgrade_cost.html", ctx)
 
 
 def ghssetGrid(request):
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
+	darkmode = checkTheme_Request(request)
 	ctx = {
 		'darkmode':darkmode,
 		"header_msg": "Google Sheet Wiki",
-		"lang":lang
+		"lang":lang,
+		"GsheetData":GsheetData
 	}
-	requestJson(request)
 	return render(request, "wiki/gsheet.html", ctx)
 
 def promocode(request):
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
-	requestJson(request)
+	darkmode = checkTheme_Request(request)
 	all_active_code = []
 	promo_codes = models.promo_code.objects.all().filter(is_active=True)
 	for i in promo_codes:
+		expireDate = i.expire
+		if i.expire == None:
+			expireDate = ""
 		r1 = [i.reward_1_amount,i.reward_1_type]
 		r2 = [i.reward_2_amount,i.reward_2_type]
 		r3 = [i.reward_3_amount,i.reward_3_type]
 		r4 = [i.reward_4_amount,i.reward_4_type]
 		if str(r1[1]) != "none":
-			result = [i.code,i.expire,[r1]]
+			result = [i.code,expireDate,[r1]]
 			if str(r2[1]) != "none":
-				result = [i.code,i.expire,[r1,r2]]
+				result = [i.code,expireDate,[r1,r2]]
 				if str(r3[1]) != "none":
-					result = [i.code,i.expire,[r1,r2,r3]]
+					result = [i.code,expireDate,[r1,r2,r3]]
 					if str(r4[1]) != "none":
-						result = [i.code,i.expire,[r1,r2,r3,r4]]
+						result = [i.code,expireDate,[r1,r2,r3,r4]]
 			all_active_code.append(result)
 	ctx = {
 		"darkmode": darkmode,
@@ -196,12 +334,12 @@ def promocode(request):
 
 
 def damage(request):
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
+	cookies = request.COOKIES
+	if "modeDisplay" in list(cookies):
 		darkmode = "yes"
 	else:
 		darkmode = "no"
-	cookie_value = checkCookie(request.COOKIES)
+	cookie_value = checkCookie(cookies)
 	try:
 		ingame_id_cookie = list(cookie_value.values())[0]
 		ingame_name_cookie = list(cookie_value.keys())[0]
@@ -236,41 +374,34 @@ def damage(request):
 def dmgCalc_processing(request,pbid):
 	global missing_data
 	user_stats = models.user.objects.get(public_id=pbid)
-	ingame_id = user_stats.ingame_id
-	stuff_table_stats = models.stuff_table.objects.get(ingame_id=ingame_id)
-	hero_table_stats = models.hero_table.objects.get(ingame_id=ingame_id)
-	talent_table_stats = models.talent_table.objects.get(ingame_id=ingame_id)
-	skin_table_stats = models.skin_table.objects.get(ingame_id=ingame_id)
-	altar_table_stats = models.altar_table.objects.get(ingame_id=ingame_id)
-	jewel_level_table_stats = models.jewel_level_table.objects.get(ingame_id=ingame_id)
-	egg_table_stats = models.egg_table.objects.get(ingame_id=ingame_id)
-	egg_equipped_table_stats = models.egg_equipped_table.objects.get(ingame_id=ingame_id)
-	dragon_table_stats = models.dragon_table.objects.get(ingame_id=ingame_id)
-	runes_table_stats = models.runes_table.objects.get(ingame_id=ingame_id)
-	reforge_table_stats = models.reforge_table.objects.get(ingame_id=ingame_id)
-	refine_table_stats = models.refine_table.objects.get(ingame_id=ingame_id)
-	medals_table_stats = models.medals_table.objects.get(ingame_id=ingame_id)
-	relics_table_stats = models.relics_table.objects.get(ingame_id=ingame_id)
+	stuff_table_stats = models.stuff_table.objects.get(user_profile=user_stats)
+	hero_table_stats = models.hero_table.objects.get(user_profile=user_stats)
+	talent_table_stats = models.talent_table.objects.get(user_profile=user_stats)
+	skin_table_stats = models.skin_table.objects.get(user_profile=user_stats)
+	altar_table_stats = models.altar_table.objects.get(user_profile=user_stats)
+	jewel_level_table_stats = models.jewel_level_table.objects.get(user_profile=user_stats)
+	egg_table_stats = models.egg_table.objects.get(user_profile=user_stats)
+	egg_equipped_table_stats = models.egg_equipped_table.objects.get(user_profile=user_stats)
+	dragon_table_stats = models.dragon_table.objects.get(user_profile=user_stats)
+	runes_table_stats = models.runes_table.objects.get(user_profile=user_stats)
+	reforge_table_stats = models.reforge_table.objects.get(user_profile=user_stats)
+	refine_table_stats = models.refine_table.objects.get(user_profile=user_stats)
+	medals_table_stats = models.medals_table.objects.get(user_profile=user_stats)
+	relics_table_stats = models.relics_table.objects.get(user_profile=user_stats)
+	weapon_skins_table_stats = models.weapon_skins_table.objects.get(user_profile=user_stats)
 
 	atk_base_hero_choosen = user_stats.atk_base_stats_hero_choosen
-	health_base_hero_choosen = user_stats.health_base_stats_hero_choosen
 
 	stuff_altar_ascension = altar_table_stats.stuff_altar_ascension
 	heros_altar_ascension = altar_table_stats.heros_altar_ascension
 
 	runes_power_attack_flat = runes_table_stats.power_attack_flat
 	runes_power_attack_var = runes_table_stats.power_attack_var
-	runes_saviour_hp_flat = runes_table_stats.saviour_hp_flat
-	runes_saviour_hp_var = runes_table_stats.saviour_hp_var
-	runes_recovery_hp_flat = runes_table_stats.recovery_hp_flat
 	runes_courage_attack_flat = runes_table_stats.courage_attack_flat
 	runes_courage_attack_var = runes_table_stats.courage_attack_var
-	runes_luck_hp_flat  = runes_table_stats.luck_hp_flat 
-	runes_luck_hp_var  = runes_table_stats.luck_hp_var
 
 	refine_weapon_atk = refine_table_stats.weapon_refine_atk
 	refine_weapon_enhanced_equipment = int(refine_table_stats.weapon_refine_basic_stats)/100
-	refine_armor_hp = refine_table_stats.armor_refine_hp
 	refine_armor_enhanced_equipment = int(refine_table_stats.armor_refine_basic_stats)/100
 	refine_ring1_atk = refine_table_stats.ring1_refine_atk
 	refine_ring1_enhanced_equipment = int(refine_table_stats.ring1_refine_basic_stats)/100
@@ -278,9 +409,7 @@ def dmgCalc_processing(request,pbid):
 	refine_ring2_enhanced_equipment = int(refine_table_stats.ring2_refine_basic_stats)/100
 	refine_bracelet_atk = refine_table_stats.bracelet_refine_atk
 	refine_bracelet_enhanced_equipment = int(refine_table_stats.bracelet_refine_basic_stats)/100
-	refine_locket_hp = refine_table_stats.locket_refine_hp
 	refine_locket_enhanced_equipment = int(refine_table_stats.locket_refine_basic_stats)/100
-	refine_book_hp = refine_table_stats.book_refine_hp
 	refine_book_enhanced_equipment = int(refine_table_stats.book_refine_basic_stats)/100
 
 	brave_privileges_level = int(user_stats.brave_privileges_level)
@@ -381,18 +510,12 @@ def dmgCalc_processing(request,pbid):
 	talent_stats_dict = talent_table_stats.getTalentStats()
 	## Get Altar Ascension Stats
 	altar_stuff_ascension_atk = StuffAltarAscension[str(stuff_altar_ascension) + '_attack']
-	altar_stuff_ascension_hp = StuffAltarAscension[str(stuff_altar_ascension) + '_hp']
-	altar_stuff_ascension_healing_effect = StuffAltarAscension[str(stuff_altar_ascension) + '_healing_effect']
 	altar_stuff_ascension_equipment_base = StuffAltarAscension[str(stuff_altar_ascension) + '_equipment_base']
 	altar_heros_ascension_atk = HerosAltarAscension[str(heros_altar_ascension) + '_attack']
-	altar_heros_ascension_hp = HerosAltarAscension[str(heros_altar_ascension) + '_hp']
-	altar_heros_ascension_hp_drop = HerosAltarAscension[str(heros_altar_ascension) + '_hp_drop']
 	altar_heros_ascension_heros_base = HerosAltarAscension[str(heros_altar_ascension) + '_heros_base']
 	## Get Altar Stats 
 	altar_stuff_atk = altar_table_stats.CalculAltar("stuff","attack")
-	altar_stuff_hp = altar_table_stats.CalculAltar("stuff","hp")
 	altar_hero_atk = altar_table_stats.CalculAltar("heros","attack") ##laissé le S (le nom du field prend un s)
-	altar_hero_hp = altar_table_stats.CalculAltar("heros","hp")
 	# Get All Heroes Stats
 	hero_Atreus = hero_table_stats.HerosStatsRecup("Atreus")
 	hero_Urasil = hero_table_stats.HerosStatsRecup("Urasil")
@@ -418,63 +541,33 @@ def dmgCalc_processing(request,pbid):
 	hero_Melinda = hero_table_stats.HerosStatsRecup("Melinda")
 	hero_Elaine = hero_table_stats.HerosStatsRecup("Elaine")
 	hero_Bobo = hero_table_stats.HerosStatsRecup("Bobo")
+	hero_Stella = hero_table_stats.HerosStatsRecup("Stella")
 	## Get Skin Atk and Hp
-	skin_health_boost = skin_table_stats.skin_health
 	skin_atk_boost = skin_table_stats.skin_attack
 	## Get Passiv Stats From Type 1 Egg
 	egg_green_bat_passiv = egg_table_stats.GetPassivEggStats1("green_bat", missing_data)
-	egg_vase_passiv = egg_table_stats.GetPassivEggStats1("vase",missing_data)
 	egg_bomb_ghost_passiv = egg_table_stats.GetPassivEggStats1("bomb_ghost",missing_data)
-	egg_rock_puppet_passiv = egg_table_stats.GetPassivEggStats1("rock_puppet",missing_data)
-	egg_party_tree_passiv = egg_table_stats.GetPassivEggStats1("party_tree",missing_data)
-	egg_zombie_passiv = egg_table_stats.GetPassivEggStats1("zombie",missing_data)
 	egg_piranha_passiv = egg_table_stats.GetPassivEggStats1("piranha",missing_data)
 	## Get Passiv Stats From Type 2 Egg
-	egg_wolfhound_passiv = egg_table_stats.GetPassivEggStats2("wolfhound",missing_data)
 	egg_skeleton_archer_passiv = egg_table_stats.GetPassivEggStats2("skeleton_archer",missing_data)
 	egg_skeleton_soldier_passiv = egg_table_stats.GetPassivEggStats2("skeleton_soldier",missing_data)
-	egg_wasp_passiv = egg_table_stats.GetPassivEggStats2("wasp",missing_data)
 	egg_fire_mage_passiv = egg_table_stats.GetPassivEggStats2("fire_mage",missing_data)
-	egg_medusa_passiv = egg_table_stats.GetPassivEggStats2("medusa",missing_data)
 	egg_ice_mage_passiv = egg_table_stats.GetPassivEggStats2("ice_mage",missing_data)
-	egg_fire_lizard_passiv = egg_table_stats.GetPassivEggStats2("fire_lizard",missing_data)
 	egg_flame_ghost_passiv = egg_table_stats.GetPassivEggStats2("flame_ghost",missing_data)
-	egg_thorny_snake_passiv = egg_table_stats.GetPassivEggStats2("thorny_snake",missing_data)
 	egg_tornado_demon_passiv = egg_table_stats.GetPassivEggStats2("tornado_demon",missing_data)
-	egg_scarecrow_passiv = egg_table_stats.GetPassivEggStats2("scarecrow",missing_data)
-	egg_long_dragon_passiv = egg_table_stats.GetPassivEggStats2("long_dragon",missing_data)
 	egg_skull_wizard_passiv = egg_table_stats.GetPassivEggStats2("skull_wizard",missing_data)
-	egg_lava_golem_passiv = egg_table_stats.GetPassivEggStats2("lava_golem",missing_data)
-	egg_ice_golem_passiv = egg_table_stats.GetPassivEggStats2("ice_golem",missing_data)
-	egg_cactus_passiv = egg_table_stats.GetPassivEggStats2("cactus",missing_data)
 	egg_crazy_spider_passiv = egg_table_stats.GetPassivEggStats2("crazy_spider",missing_data)
 	egg_fire_element_passiv = egg_table_stats.GetPassivEggStats2("fire_element",missing_data)
-	egg_skeleton_swordsman_passiv = egg_table_stats.GetPassivEggStats2("skeleton_swordsman",missing_data)
-	egg_scythe_mage_passiv = egg_table_stats.GetPassivEggStats2("scythe_mage",missing_data)
 	egg_pea_shooter_passiv = egg_table_stats.GetPassivEggStats2("pea_shooter",missing_data)
 	egg_shadow_assassin_passiv = egg_table_stats.GetPassivEggStats2("shadow_assassin",missing_data)
-	egg_tornado_mage_passiv = egg_table_stats.GetPassivEggStats2("tornado_mage",missing_data)
-	egg_spitting_mushroom_passiv = egg_table_stats.GetPassivEggStats2("spitting_mushroom",missing_data)
-	egg_rolling_mushroom_passiv = egg_table_stats.GetPassivEggStats2("rolling_mushroom",missing_data)
-	egg_fallen_bat_passiv = egg_table_stats.GetPassivEggStats2("fallen_bat",missing_data)
 	egg_one_eyed_bat_passiv = egg_table_stats.GetPassivEggStats2("one_eyed_bat",missing_data)
 	egg_scarlet_mage_passiv = egg_table_stats.GetPassivEggStats2("scarlet_mage",missing_data)
 	egg_icefire_phantom_passiv = egg_table_stats.GetPassivEggStats2("icefire_phantom",missing_data)
 	egg_purple_phantom_passiv = egg_table_stats.GetPassivEggStats2("purple_phantom",missing_data)
-	egg_tundra_dragon_passiv = egg_table_stats.GetPassivEggStats2("tundra_dragon",missing_data)
-	egg_sandian_passiv = egg_table_stats.GetPassivEggStats2("sandian",missing_data)
-	egg_nether_puppet_passiv = egg_table_stats.GetPassivEggStats2("nether_puppet",missing_data)
-	egg_psionic_scarecrow_passiv = egg_table_stats.GetPassivEggStats2("psionic_scarecrow",missing_data)
-	egg_steel_dryad_passiv = egg_table_stats.GetPassivEggStats2("steel_dryad",missing_data)
 	egg_savage_spider_passiv = egg_table_stats.GetPassivEggStats2("savage_spider",missing_data)
 	egg_flaming_bug_passiv = egg_table_stats.GetPassivEggStats2("flaming_bug",missing_data)
-	egg_fat_bat_passiv = egg_table_stats.GetPassivEggStats2("fat_bat",missing_data)
-	egg_shark_bro_passiv = egg_table_stats.GetPassivEggStats2("shark_bro",missing_data)
 	egg_crimson_zombie_passiv = egg_table_stats.GetPassivEggStats2("crimson_zombie",missing_data)
-	egg_plainswolf_passiv = egg_table_stats.GetPassivEggStats2("plainswolf",missing_data)
 	egg_elite_archer_passiv = egg_table_stats.GetPassivEggStats2("elite_archer",missing_data)
-	egg_little_dragon_passiv = egg_table_stats.GetPassivEggStats2("little_dragon",missing_data)
-	egg_rage_golem_passiv = egg_table_stats.GetPassivEggStats2("rage_golem",missing_data)
 	## Get Passiv Stats From Type 3 Egg
 	egg_arch_leader_passiv = egg_table_stats.GetPassivEggStats3("arch_leader",missing_data)
 	egg_skeleton_king_passiv = egg_table_stats.GetPassivEggStats3("skeleton_king",missing_data)
@@ -497,37 +590,23 @@ def dmgCalc_processing(request,pbid):
 	brave_privileges_stats = BravePrivileges['level' + str(brave_privileges_level)]
 	## Get Special Bonus Stats
 	BonusSpe_jewel_weapon = jewel_level_table_stats.JewelSpeBonusStatsRecup('weapon',brave_privileges_stats['Weapon JSSSA'])
-	BonusSpe_jewel_armor = jewel_level_table_stats.JewelSpeBonusStatsRecup('armor',brave_privileges_stats['Armor JSSSA'])
 	BonusSpe_jewel_ring1 = jewel_level_table_stats.JewelSpeBonusStatsRecup('ring1',brave_privileges_stats['Ring JSSSA'])
-	BonusSpe_jewel_ring2 = jewel_level_table_stats.JewelSpeBonusStatsRecup('ring2',brave_privileges_stats['Ring JSSSA'])
-	BonusSpe_jewel_pet1 = jewel_level_table_stats.JewelSpeBonusStatsRecup('pet1',brave_privileges_stats['Spirit JSSSA'])
-	BonusSpe_jewel_pet2 = jewel_level_table_stats.JewelSpeBonusStatsRecup('pet2',brave_privileges_stats['Spirit JSSSA'])
 	BonusSpe_jewel_bracelet = jewel_level_table_stats.JewelSpeBonusStatsRecup('bracelet',brave_privileges_stats['Bracelet JSSSA'])
-	BonusSpe_jewel_locket = jewel_level_table_stats.JewelSpeBonusStatsRecup('locket',brave_privileges_stats['Locket JSSSA'])
 	BonusSpe_jewel_book = jewel_level_table_stats.JewelSpeBonusStatsRecup('book',brave_privileges_stats['Spellbook JSSSA'])
-	## Get Global Jewel Level
-	all_jewel_lvl_dict = jewel_level_table_stats.allLevelForImage()
-	## DRAGON
+	## DRAGON stats
 	dragon_1_stats_dict = dragon_table_stats.DragonStatueStats("1")
 	dragon_2_stats_dict = dragon_table_stats.DragonStatueStats("2")
 	dragon_3_stats_dict = dragon_table_stats.DragonStatueStats("3")
-	## Get Dragon For Image
-	dragon_1 = dragon_table_stats.GetDragon("1")
-	dragon_2 = dragon_table_stats.GetDragon("2")
-	dragon_3 = dragon_table_stats.GetDragon("3")
 	## Get Dragon passiv Skills
 	dragons_skills = dragon_table_stats.getPassivSkillDragon()
 	## Get All Stats of Equipped Egg
 	activ_egg_stats = egg_equipped_table_stats.GetEggStats(missing_data)
 	## Get Reforge Stats
-	reforge_atk_power = reforge_table_stats.ReforgePowerCourage("power")
-	reforge_atk_courage = reforge_table_stats.ReforgePowerCourage("courage")
-	reforge_hp_saviour = reforge_table_stats.ReforgeSaviourRecoLuck("saviour")
-	reforge_hp_recovery = reforge_table_stats.ReforgeSaviourRecoLuck("recovery")
-	reforge_hp_luck = reforge_table_stats.ReforgeSaviourRecoLuck("luck")
 	rune_courage_hero = runes_table_stats.CourageBoostHero(user_stats.choosen_hero)
 	## Get Rune Line Stats
 	rune_line_stats = runes_table_stats.getValueLine()
+	## Get Weapon Skin Stats
+	weapon_skin_stats = weapon_skins_table_stats.getWeaponSkinStats()
 
 	#________________________ TO BE CONTINUED  ________________________________________
 	medals_list = [m_cutting_your_teeth,m_minor_achiever,m_daring_brave_1,m_fashon_icon_1,m_unrivaled,m_supreme_champion,m_preeminent_master,m_bright_victor,m_unstoppable,m_stark_challenge,m_assisiduous,m_resolute_will,m_lavish_wealth,m_miner_supremo,m_miner_master,m_maze_victor,m_maze_master,m_undefeated,m_indomitable,m_reliable,m_amateur_hour,m_deft_skill,m_flaunting_display,m_worthy_warrior_1,m_worthy_warrior_2,m_worthy_warrior_3,m_decked_out_1,m_decked_out_2,m_daring_brave_2,m_fashion_icon_2,m_fashion_icon_3]
@@ -542,12 +621,12 @@ def dmgCalc_processing(request,pbid):
 	cumul_var_passiv_enhanced_equipment = (float(rune_line_stats['var_enhanced_eqpm']) + float(relics_stats['enhance_equipment_var']) + float(medal_stats['enhance_equipment']) + float(talent_stats_dict['talents_enhanced_equipment']) + float(egg_var_passiv_enhanced_equipment) + float(altar_stuff_ascension_equipment_base))/100+1
 	
 	## Get Stuff Stats
-	stuff_activ_stats = stuff_table_stats.getStuffStats(cumul_var_passiv_enhanced_equipment,refine_weapon_enhanced_equipment,refine_armor_enhanced_equipment,refine_ring1_enhanced_equipment,refine_ring2_enhanced_equipment,refine_bracelet_enhanced_equipment,refine_locket_enhanced_equipment,refine_book_enhanced_equipment)
+	stuff_activ_stats = stuff_table_stats.getStuffStats(cumul_var_passiv_enhanced_equipment,refine_weapon_enhanced_equipment,refine_armor_enhanced_equipment,refine_ring1_enhanced_equipment,refine_ring2_enhanced_equipment,refine_bracelet_enhanced_equipment,refine_locket_enhanced_equipment,refine_book_enhanced_equipment,weapon_skin_stats)
 	stuff_raw_stats = stuff_table_stats.GetRawStats()
 	
 	cumul_talent_flat_passiv_atk = int(talent_stats_dict['talents_power'])
 	# cumul_runes_flat_passiv_atk = int(reforge_atk_power) + int(reforge_atk_courage) + int(runes_power_attack_flat) + int(runes_courage_attack_flat)
-	cumul_hero_flat_passiv_atk = int(hero_Atreus[5]) + int(hero_Urasil[0]) + int(hero_Phoren[6]) + int(hero_Helix[5]) + int(hero_Meowgik[0]) + int(hero_Ayana[6]) + int(hero_Rolla[0]) + int(hero_Bonnie[5]) + int(hero_Shade[6]) + int(hero_Ophelia[0]) + int(hero_Ophelia[2]) + int(hero_Lina[0]) + int(hero_Lina[5]) + int(hero_Aquea[5]) + int(hero_Iris[5]) + int(hero_Melinda[6]) + int(hero_Iris[1]) + int(hero_Blazo[1])
+	cumul_hero_flat_passiv_atk = int(hero_Atreus[5]) + int(hero_Urasil[0]) + int(hero_Phoren[6]) + int(hero_Helix[5]) + int(hero_Meowgik[0]) + int(hero_Ayana[6]) + int(hero_Rolla[0]) + int(hero_Bonnie[5]) + int(hero_Shade[6]) + int(hero_Ophelia[0]) + int(hero_Ophelia[2]) + int(hero_Lina[0]) + int(hero_Lina[5]) + int(hero_Aquea[5]) + int(hero_Iris[5]) + int(hero_Melinda[6]) + int(hero_Iris[1]) + int(hero_Blazo[1]) + int(hero_Stella[0])
 	cumul_skin_flat_passiv_atk = int(skin_atk_boost)
 	cumul_egg_flat_passiv_atk = int(egg_bomb_ghost_passiv[1]) + int(egg_green_bat_passiv[1]) + int(egg_piranha_passiv[1]) + int(egg_crazy_spider_passiv[1]) + int(egg_fire_mage_passiv[1]) + int(egg_skeleton_archer_passiv[1]) + int(egg_skeleton_soldier_passiv[1]) + int(egg_fire_element_passiv[1]) + int(egg_flame_ghost_passiv[1]) + int(egg_ice_mage_passiv[1]) + int(egg_pea_shooter_passiv[1]) + int(egg_shadow_assassin_passiv[1]) + int(egg_skull_wizard_passiv[1]) + int(egg_tornado_demon_passiv[1]) + int(egg_savage_spider_passiv[1]) + int(egg_flaming_bug_passiv[1]) + int(egg_one_eyed_bat_passiv[1]) + int(egg_elite_archer_passiv[1]) + int(egg_icefire_phantom_passiv[1]) + int(egg_purple_phantom_passiv[1]) + int(egg_scarlet_mage_passiv[1]) + int(egg_arch_leader_passiv[0]) + int(egg_crimson_witch_passiv[0]) + int(egg_medusa_boss_passiv[0]) + int(egg_ice_worm_passiv[0]) + int(egg_desert_goliath_passiv[0]) + int(egg_ice_demon_passiv[0]) + int(egg_fire_demon_passiv[1]) + int(egg_crimson_zombie_passiv[1]) + int(egg_scythe_pharoah_passiv[1]) + int(egg_infernal_demon_passiv[0]) + int(egg_fireworm_queen_passiv[0])
 	cumul_altar_flat_passiv_atk = int(altar_stuff_atk) + int(altar_hero_atk)
@@ -557,36 +636,39 @@ def dmgCalc_processing(request,pbid):
 	cumul_dragon_flat_activ_atk = int(dragon_1_stats_dict["Attack"]) + int(dragon_2_stats_dict["Attack"]) + int(dragon_3_stats_dict["Attack"])
 	cumul_stuff_flat_activ_atk = round(stuff_activ_stats['weapon_total'] + stuff_activ_stats['bracelet_total'])
 
-	cumul_heros_var_passiv_atk = float(hero_Taranis[2]) + float(hero_Meowgik[2]) + float(hero_Ayana[2]) + float(hero_Rolla[2]) + float(hero_Sylvan[2]) + float(hero_Aquea[2]) + float(hero_Iris[2]) + float(hero_Bonnie[4]) + float(hero_Shade[7]) + float(hero_Melinda[7]) + float(hero_Bobo[1]) + float(hero_Bobo[4])
+	cumul_heros_var_passiv_atk = float(hero_Taranis[2]) + float(hero_Meowgik[2]) + float(hero_Ayana[2]) + float(hero_Rolla[2]) + float(hero_Sylvan[2]) + float(hero_Aquea[2]) + float(hero_Iris[2]) + float(hero_Bonnie[4]) + float(hero_Shade[7]) + float(hero_Melinda[7]) + float(hero_Bobo[1]) + float(hero_Bobo[4]) + float(hero_Stella[2])
 	cumul_heros_var_activ_atk = float(hero_Onir[3]) + float(hero_Bonnie[3])
 	cumul_altar_var_passiv_atk = float(altar_heros_ascension_atk) + float(altar_stuff_ascension_atk)
 	cumul_privileges_var_passiv_atk = float(brave_privileges_stats['Attack Var'])
 	cumul_jewel_var_activ_atk =  (float(BonusSpe_jewel_weapon[2]) + float(BonusSpe_jewel_ring1[5]) + float(BonusSpe_jewel_book[2]))/100
 	cumul_stuff_var_activ_atk = (stuff_activ_stats['weapon_attack_var'] + stuff_activ_stats['bracelet_attack_var'] + stuff_activ_stats['ring1_atk_var'] + stuff_activ_stats['ring2_atk_var'])
 
+	cumul_heros_var_passiv_crit_dmg = float(hero_Urasil[2]) + float(hero_Taranis[3]) + float(hero_Helix[0]) + float(hero_Ayana[5]) + float(hero_Rolla[6]) + float(hero_Bonnie[0]) + float(hero_Shade[4])
+	cumul_heros_var_passiv_crit_rate = float(hero_Elaine[3]) + float(hero_Melinda[3]) + float(hero_Shade[1]) + float(hero_Shade[5]) + float(hero_Shari[2]) + float(hero_Helix[3]) + float(hero_Taranis[0]) + float(hero_Phoren[0]) + float(hero_Phoren[2]) + float(hero_Phoren[3]) + float(hero_Urasil[6]) + float(hero_Stella[1])
+
 	cumul_var_atk = (float(cumul_heros_var_passiv_atk) + float(cumul_heros_var_activ_atk) + float(cumul_altar_var_passiv_atk) + float(cumul_privileges_var_passiv_atk) + float(medal_stats['attack_var']) + float(relics_stats['attack_var']))/100
 	global_stats_atk_flat = int(cumul_stuff_flat_activ_atk) + int(int(activ_egg_stats["Attack"])) + int(cumul_altar_flat_passiv_atk) + int(cumul_dragon_flat_activ_atk) + int(brave_privileges_stats['Attack Flat']) + int(medal_stats['attack']) + int(relics_stats['attack'])
 
 	hero_atk_step = [
-		user_stats.global_atk_save,
-		cumul_old_flat_passiv_atk, # + int(runes_power_attack_flat) + int(runes_courage_attack_flat)
-		cumul_var_atk, # float(runes_power_attack_var) + float(runes_courage_attack_var)
+		int(user_stats.global_atk_save),
+		int(cumul_old_flat_passiv_atk), # + int(runes_power_attack_flat) + int(runes_courage_attack_flat)
+		float(cumul_var_atk), # float(runes_power_attack_var) + float(runes_courage_attack_var)
 		## atk_base_hero_choosen
-		atk_base_hero_choosen,
-		cumul_var_passiv_power_up_hero,
+		int(atk_base_hero_choosen),
+		float(cumul_var_passiv_power_up_hero),
 		#global_stats_atk_flat
-		global_stats_atk_flat, # + int(hero_base_modified_stats_atk) + cumul_all_bonus_passif_atk
+		int(global_stats_atk_flat), # + int(hero_base_modified_stats_atk) + cumul_all_bonus_passif_atk
 		#global_stats_atk
-		cumul_stuff_var_activ_atk,
-		cumul_jewel_var_activ_atk,
-		cumul_jewel_flat_activ_atk,
-		cumul_refine_flat_activ_atk,
-		runes_power_attack_flat,
-		runes_courage_attack_flat,
-		runes_power_attack_var,
-		runes_courage_attack_var,
-		int(rune_courage_hero['current_hero_atk_flat']),
-		rune_courage_hero['current_hero_atk_var']
+		float(cumul_stuff_var_activ_atk),
+		float(cumul_jewel_var_activ_atk),
+		int(cumul_jewel_flat_activ_atk),
+		int(cumul_refine_flat_activ_atk),
+		int(runes_power_attack_flat),
+		int(runes_courage_attack_flat),
+		float(runes_power_attack_var),
+		float(runes_courage_attack_var),
+		float(rune_courage_hero['current_hero_atk_flat']),
+		float(rune_courage_hero['current_hero_atk_var'])
 	]
 
 ############################################# RÉSULTAT #############################################
@@ -594,10 +676,10 @@ def dmgCalc_processing(request,pbid):
 #melee airborne boss =>  
 #melee ground boss => fire demon (other than the egg) IG 52028 / calc 51626
 
-	global_critic_damage = 200 + float(dragons_skills['Crit Damage']) + float(rune_line_stats['var_crit_dmg']) + float(stats_jewel_dict['crit_dmg_topaz']) + float(stuff_table_stats.GetRawStats()['weapon_crit_raw']) + float(stuff_table_stats.GetRawStats()['ring1_crit_damage_raw']) + float(stuff_table_stats.GetRawStats()['ring2_crit_damage_raw']) + float(stuff_table_stats.GetRawStats()['bracelet_crit_raw']) + float(activ_egg_stats['Critic Damage']) + float(hero_Urasil[2]) + float(hero_Taranis[3]) + float(hero_Helix[0]) + float(hero_Ayana[5]) + float(hero_Rolla[6]) + float(hero_Bonnie[0]) + float(hero_Shade[4]) + float(BonusSpe_jewel_weapon[1])
+	global_critic_damage = 200 + float(dragons_skills['Crit Damage']) + float(rune_line_stats['var_crit_dmg']) + float(stats_jewel_dict['crit_dmg_topaz']) + float(stuff_table_stats.GetRawStats()['weapon_crit_raw']) + float(stuff_table_stats.GetRawStats()['ring1_crit_damage_raw']) + float(stuff_table_stats.GetRawStats()['ring2_crit_damage_raw']) + float(stuff_table_stats.GetRawStats()['bracelet_crit_raw']) + float(activ_egg_stats['Critic Damage']) + float(cumul_heros_var_passiv_crit_dmg) + float(BonusSpe_jewel_weapon[1])
 	global_elemental_damage = 0
 	global_elemental_damage_var = float(rune_line_stats['var_elemental_dmg']) + float(relics_stats['elemental_damage_var']) + float(brave_privileges_stats['Elemental Damage']) + float(stats_jewel_dict['elementary_dmg_amber']) + float(hero_Sylvan[7])
-	global_crit_rate = float(15) + float(rune_line_stats['var_crit_rate']) + float(BonusSpe_jewel_weapon[5]) + float(relics_stats['crit_chance_var']) + float(brave_privileges_stats['Critic Rate']) + float(stuff_raw_stats['ring1_crit_chance_raw']) + float(stuff_raw_stats['ring2_crit_chance_raw']) + float(hero_Elaine[3]) + float(hero_Melinda[3]) + float(hero_Shade[1]) + float(hero_Shade[5]) + float(hero_Shari[2]) + float(hero_Helix[3]) + float(hero_Taranis[0]) + float(hero_Phoren[0]) + float(hero_Phoren[2]) + float(hero_Phoren[3]) + float(hero_Urasil[6])
+	global_crit_rate = float(15) + float(rune_line_stats['var_crit_rate']) + float(BonusSpe_jewel_weapon[5]) + float(relics_stats['crit_chance_var']) + float(brave_privileges_stats['Critic Rate']) + float(stuff_raw_stats['ring1_crit_chance_raw']) + float(stuff_raw_stats['ring2_crit_chance_raw']) + float(cumul_heros_var_passiv_crit_rate)
 	global_boss_damage = int(rune_line_stats['flat_dmg_boss']) + int(relics_stats['damage_bosses']) + int(activ_egg_stats['Damage To Bosses']) + int(stuff_table_stats.GetRingDamage(stuff_raw_stats['ring1_damage_type_raw'],stuff_activ_stats['ring1_total'])['boss units dmg']) + int(stuff_table_stats.GetRingDamage(stuff_raw_stats['ring2_damage_type_raw'],stuff_activ_stats['ring2_total'])['boss units dmg']) + int(stats_jewel_dict['dmg_to_boss'])
 	global_boss_damage_var = float(rune_line_stats['var_dmg_boss']) + float(relics_stats['damage_bosses_var'])
 	global_mobs_damage = int(rune_line_stats['flat_dmg_mob']) + int(relics_stats['damage_mobs']) + int(dragon_1_stats_dict["Damage To Mobs"]) + int(dragon_2_stats_dict["Damage To Mobs"]) + int(dragon_3_stats_dict["Damage To Mobs"]) + int(activ_egg_stats['Damage To Mobs']) + int(stuff_table_stats.GetRingDamage(stuff_raw_stats['ring1_damage_type_raw'],stuff_activ_stats['ring1_total'])['mobs units dmg']) + int(stuff_table_stats.GetRingDamage(stuff_raw_stats['ring2_damage_type_raw'],stuff_activ_stats['ring2_total'])['mobs units dmg']) + int(stats_jewel_dict['dmg_to_mobs']) + int(hero_Bobo[0])
@@ -614,42 +696,37 @@ def dmgCalc_processing(request,pbid):
 	var_all_damage = 0
 	weapon_dmg_multiplier = WeaponHiddenStats[stuff_table_stats.dictionnaire()['weapon_choosen'].lower().replace(" ","_") + "_dmg_multiplier"]
 
-	cookie_keys = checkDarkMode(request.COOKIES)
-	
-	if "modeDisplay" in list(cookie_keys):
+	if "modeDisplay" in list(request.COOKIES):
 		darkmode = "yes"
 	else:
 		darkmode = "no"
 	if request.method == "GET":
 		try:
-			models.dmg_calc_table.objects.get(ingame_id=ingame_id)
-			calc_user_dmg = models.dmg_calc_table.objects.filter(ingame_id=ingame_id)
-			calc_user_dmg.update(
-				ingame_id = user_stats.ingame_id,
-				hero_atk = hero_atk_step,
-				weapon_coeff = weapon_dmg_multiplier,
-				flat_dmg_vs_ground = global_ground_damage,
-				flat_dmg_vs_airborne = global_airborne_damage,
-				flat_dmg_vs_melee = global_melee_damage,
-				flat_dmg_vs_range = global_ranged_damage,
-				flat_dmg_vs_mobs = global_mobs_damage,
-				flat_dmg_vs_boss = global_boss_damage,
-				flat_dmg_element = global_elemental_damage,
-				flat_dmg_all = flat_all_damage,
-				var_dmg_vs_ground = global_ground_damage_var,
-				var_dmg_vs_airborne = global_airborne_damage_var,
-				var_dmg_vs_melee = global_melee_damage_var,
-				var_dmg_vs_range = global_ranged_damage_var,
-				var_dmg_vs_mobs = global_mobs_damage_var,
-				var_dmg_vs_boss = global_boss_damage_var,
-				var_dmg_element = global_elemental_damage_var,
-				var_dmg_all = var_all_damage,
-				crit_dmg = global_critic_damage,
-				crit_rate = global_crit_rate
-			)
+			calc_user_dmg = models.dmg_calc_table.objects.get(user_profile=user_stats)
+			calc_user_dmg.hero_atk = hero_atk_step
+			calc_user_dmg.weapon_coeff = weapon_dmg_multiplier
+			calc_user_dmg.flat_dmg_vs_ground = global_ground_damage
+			calc_user_dmg.flat_dmg_vs_airborne = global_airborne_damage
+			calc_user_dmg.flat_dmg_vs_melee = global_melee_damage
+			calc_user_dmg.flat_dmg_vs_range = global_ranged_damage
+			calc_user_dmg.flat_dmg_vs_mobs = global_mobs_damage
+			calc_user_dmg.flat_dmg_vs_boss = global_boss_damage
+			calc_user_dmg.flat_dmg_element = global_elemental_damage
+			calc_user_dmg.flat_dmg_all = flat_all_damage
+			calc_user_dmg.var_dmg_vs_ground = global_ground_damage_var
+			calc_user_dmg.var_dmg_vs_airborne = global_airborne_damage_var
+			calc_user_dmg.var_dmg_vs_melee = global_melee_damage_var
+			calc_user_dmg.var_dmg_vs_range = global_ranged_damage_var
+			calc_user_dmg.var_dmg_vs_mobs = global_mobs_damage_var
+			calc_user_dmg.var_dmg_vs_boss = global_boss_damage_var
+			calc_user_dmg.var_dmg_element = global_elemental_damage_var
+			calc_user_dmg.var_dmg_all = var_all_damage
+			calc_user_dmg.crit_dmg = global_critic_damage
+			calc_user_dmg.crit_rate = global_crit_rate
+			calc_user_dmg.save()
 		except Exception:
 			calc_user_dmg = dmg_calc_table(
-				ingame_id = user_stats.ingame_id,
+				user_profile = user_stats,
 				hero_atk = hero_atk_step,
 				weapon_coeff = weapon_dmg_multiplier,
 				flat_dmg_vs_ground = global_ground_damage,
@@ -672,23 +749,20 @@ def dmgCalc_processing(request,pbid):
 				crit_rate = global_crit_rate
 			)
 			calc_user_dmg.save()
-		return redirect(f"/wiki/damage-calculator/{pbid}/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang})
+		return redirect(f"/wiki/damage-calculator/{pbid}/")
 	else :
-		return redirect("/wiki/damage-calculator/", {"darkmode": darkmode,"header_msg":"Damage Calculator","lang":lang})
+		return redirect("/wiki/damage-calculator/")
 
 
 def damageCalc(request,pbid):
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
+	darkmode = checkTheme_Request(request)
 	try:
 		user_stats = models.user.objects.get(public_id=pbid)
+		calc_user_dmg = models.dmg_calc_table.objects.get(user_profile=user_stats.pk)
 	except:
 		return HttpResponseRedirect("/")
 	ingame_id = user_stats.ingame_id
-	runes_table_stats = models.runes_table.objects.get(ingame_id=ingame_id)
+	runes_table_stats = models.runes_table.objects.get(user_profile=user_stats.pk)
 	runes_power_attack_flat = runes_table_stats.power_attack_flat
 	runes_power_attack_var = runes_table_stats.power_attack_var
 	runes_courage_attack_flat = runes_table_stats.courage_attack_flat
@@ -696,9 +770,7 @@ def damageCalc(request,pbid):
 	runes_courage_hero_attack_flat = runes_table_stats.courage_hero_attack_flat
 	runes_courage_hero_attack_var = runes_table_stats.courage_hero_attack_var
 	param_runes_display = [runes_power_attack_flat,runes_power_attack_var,runes_courage_attack_flat,runes_courage_attack_var,runes_courage_hero_attack_flat,runes_courage_hero_attack_var]
-	calc_user_dmg = models.dmg_calc_table.objects.get(ingame_id=ingame_id)
 	ctx = {
-		"ingame_id": calc_user_dmg.ingame_id,
 		"paramDmgTable": calc_user_dmg.hero_atk,
 		"weapon_coeff": calc_user_dmg.weapon_coeff,
 		"flat_dmg_vs_ground": calc_user_dmg.flat_dmg_vs_ground,
@@ -724,7 +796,7 @@ def damageCalc(request,pbid):
 		"header_msg": "Damage Calc",
 		"lang":lang
 	}
-	resultCalcDamg = calculDamage(calc_user_dmg.ingame_id)
+	resultCalcDamg = calc_user_dmg.calculDamage()
 	ctx['averageDamage'] = resultCalcDamg['averageDamageAll']
 	ctx["mob_ground_melee_damage"] = resultCalcDamg['mob_ground_melee_damage']
 	ctx["mob_ground_range_damage"] = resultCalcDamg['mob_ground_range_damage']
@@ -734,13 +806,11 @@ def damageCalc(request,pbid):
 	ctx["boss_ground_range_damage"] = resultCalcDamg['boss_ground_range_damage']
 	ctx["boss_airborne_melee_damage"] = resultCalcDamg['boss_airborne_melee_damage']
 	ctx["boss_airborne_range_damage"] = resultCalcDamg['boss_airborne_range_damage']
-	requestJson(request)
 	return render(request, "wiki/dmg_calc.html", ctx)
 
 
 def handler404(request, exception):
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
+	if "modeDisplay" in list(request.COOKIES):
 		darkmode = "yes"
 	else:
 		darkmode = "no"
@@ -752,8 +822,7 @@ def handler404(request, exception):
 	return render(request,'base/404.html', ctx, status=404)
 
 def handler500(request):
-	cookie_keys = checkDarkMode(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
+	if "modeDisplay" in list(request.COOKIES):
 		darkmode = "yes"
 	else:
 		darkmode = "no"
@@ -770,7 +839,7 @@ def handler500(request):
 	with open(f'calculator/static/traceback_file/{username}.txt','a', encoding='utf-8') as exc_value:
 		for i in exc_output:
 			exc_value.write(i)
-	webhook = DiscordWebhook(url='WEBHOOK_URL', content="<@382930544385851392>", rate_limit_retry=True)
+	webhook = DiscordWebhook(url=WEBHOOK_URL, content="<@382930544385851392>", rate_limit_retry=True, allowed_mentions={"users": ["382930544385851392"]})
 	embed = DiscordEmbed(title='Error 500 - Internal Server Error', description='', color='963e3e')
 	embed.set_author(
 		name=username.capitalize(),

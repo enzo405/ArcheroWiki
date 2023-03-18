@@ -3,14 +3,14 @@
 	<head>
 		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.18.2 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.18.2 %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.18.2 %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.1">
+		<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.3.1">
+		<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.3.1">
 		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Welcome to Wiki - Maze</title>
+		<title>Archero - Wiki - Maze</title>
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-        <script src="{% static 'main.js' %}"></script>
+        <script src="{% static 'main.js' %}?version=1.3.1"></script>
 	</head>
 {% if darkmode == "yes" %}
 <body class="body_maze body_dark_mode">
@@ -233,9 +233,7 @@
 		gold[0] = false;
 
 		item[1].forEach((value, key, map) => {
-			//console.log(key, green, blue, purple, gold)
 			if(key == "start" || (green[1] == true && key == "🟢") || (blue[1] == true && key == "🔵") || (purple[1] == true && key == "🟣") || (gold[1] == true && key == "🟠")) {
-			//console.log(key)
 			if(value.includes("🟢")) green[0] = true;
 			if(value.includes("🔵")) blue[0] = true;
 			if(value.includes("🟣")) purple[0] = true;

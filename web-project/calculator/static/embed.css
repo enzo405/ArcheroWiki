@@ -2,6 +2,10 @@
 	.container *{
         font-size: small;
     }
+    .upcted .fUliQq{
+        display: block;
+        width: 70%;
+    }
     .fUliQq {
         display: none;
     }
@@ -38,7 +42,7 @@
     flex-direction: column;
     overflow: hidden;
     height: 100%;
-    min-height: 650px;
+    min-height: 90vh;
 }
 
 .embed-container{
@@ -146,6 +150,7 @@
     background: rgb(47, 49, 54);
     border-radius: 4px;
     border-left: 4px solid rgb(32, 34, 37);
+    width: 100%;
 }
 
 .bdFBtt {

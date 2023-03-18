@@ -2,7 +2,9 @@
 	font-family: 'Rubik';
 	src: url("/static/fonts/rubik.otf");
 }
-
+*{
+	font-family: 'Rubik';
+}
 @media screen and (min-width : 850px){/* pour résolution supérieur à 850px */
 	.wrap-login100 {
 		justify-content: space-between;
@@ -155,8 +157,8 @@ button:hover {
 .wrap-input100 .fieldset-input input {
 	font-size: 15px;
 	line-height: 1.5;
-	color: #666666;
 	background: #e6e6e6;
+	width: 100%;
 }
 .wrap-input100 .fieldset-input input::placeholder{
 	font-size: 13px;
@@ -234,7 +236,6 @@ legend{
 	margin-top: 10px;
 	font-size: medium;
 	font-weight: 600;
-	font-family: 'Rubik';
 }
 /*------------------------------------------------------------------
 [ Confirmation ]*/
@@ -284,4 +285,43 @@ legend{
 	font-size: small;
 	font-style: italic;
 	list-style-type: none;
+}
+
+
+.input-login-field:invalid{
+	color: red;
+}
+.input-login-field:valid{
+	color: #666666;
+}
+
+/* MODALE */
+.modals {
+	position: fixed;
+	top: 80vh;
+	left: 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 999;
+}
+.modals-contenu {
+	background-color: white;
+	padding: 1rem;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	text-align: center;
+}  
+.modals-contenu h2 {
+	margin-top: 0;
+}  
+.modals-contenu button {
+	margin-top: 1rem;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
 }

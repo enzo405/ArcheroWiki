@@ -1,2 +1,5 @@
-app/settings.py
+web-project/app/settings.py
+web-project/app/__pycache__
+web-project/calculator/__pycache__
+web-project/calculator/migrations/__pycache__
 data.json
