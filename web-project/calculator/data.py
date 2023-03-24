@@ -112,7 +112,7 @@ StatsArmor =  {
     "golden_chestplate": {
         "resistance_type":"damage resistance",
         "inc": [25,30,35,40,50,60,70,80,87,87,87,87,87,87,87],
-        "base": [200,280,360,480,600,800,1000,1200,1420,1420,1420,1420,1420,1420,1420],
+        "base": [200,280,360,480,600,800,1000,1200,1420,1680,1960,2260,2580,3150,3770],
         "var_hp": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
         "dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         "resistance": [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
@@ -121,7 +121,7 @@ StatsArmor =  {
 	"void_robe": {
         "resistance_type":"collision damage resistance",
 		"inc": [25,30,35,40,50,60,70,80,87,87,87,87,87,87,87],
-		"base": [200,280,360,480,600,800,1000,1200,1420,1420,1420,1420,1420,1420,1420],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1680,1960,2260,2580,3150,3770],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],
@@ -130,7 +130,7 @@ StatsArmor =  {
 	"phantom_cloak": {
         "resistance_type":"projectile damage resistance",
 		"inc": [25,30,35,40,50,60,70,80,87,87,87,87,87,87,87],
-		"base": [200,280,360,480,600,800,1000,1200,1420,1420,1420,1420,1420,1420,1420],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1680,1960,2260,2580,3150,3770],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],
@@ -139,7 +139,7 @@ StatsArmor =  {
 	"vest_of_dexterity": {
         "resistance_type":"none",
 		"inc": [25,30,35,40,50,60,70,80,87,87,87,87,87,87,87],
-		"base": [200,280,360,480,600,800,1000,1200,1420,1420,1420,1420,1420,1420,1420],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1680,1960,2260,2580,3150,3770],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
 		"dodge": [7,7,7,7,7,7,7,7,0,0,0,0,0,0,0],
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -148,7 +148,7 @@ StatsArmor =  {
 	"bright_robe": {
         "resistance_type":"front damage resistance",
 		"inc": [28,33,38,43,54,64,75,87,87,87,87,87,87,87,87],
-		"base": [200,280,360,480,600,800,1000,1200,1420,1420,1420,1420,1420,1420,1420],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1680,1960,2260,2580,3150,3770],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,12,12,12,12,12],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
@@ -157,7 +157,7 @@ StatsArmor =  {
 	"shadow_robe": {
         "resistance_type":"rear damage resistance",
 		"inc": [28,33,38,43,54,64,75,87,87,87,87,87,87,87,87],
-		"base": [200,280,360,480,600,800,1000,1200,1420,1420,1420,1420,1420,1420,1420],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1680,1960,2260,2580,3150,3770],
 		"var_hp": [0,0,0,7,7,7,7,7,7,7,19,19,19,19,19],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [22,22,22,22,22,22,22,22,22,22,22,22,22,22,22],
@@ -276,7 +276,7 @@ StatsRing =  {
         "resistance_type":"Projectile Resistance",
         "mythic_resistance_type":"humanoid units dmg",
 		"inc": [3,4,5,6,7,7,8,9,9,9,9,9,9,9,9],
-		"base": [30,35,42,60,70,85,100,120,140,140,140,140,140,140,140],
+		"base": [30,35,42,60,70,85,100,120,140,160,140,140,140,140,140],
 		"hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -291,7 +291,7 @@ StatsRing =  {
         "resistance_type":"none",
         "mythic_resistance_type":"colision dmg reduced",
 		"inc": [3,4,5,6,7,7,8,9,9,9,9,9,9,9,9],
-		"base": [30,35,42,60,70,85,100,120,140,140,140,140,140,140,140],
+		"base": [30,35,42,60,70,85,100,120,140,160,140,140,140,140,140],
 		"hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -2097,71 +2097,76 @@ WeaponHiddenStats = {
 
 
 
-MedalsStats = {
-    "stats_cutting_your_teeth":120,
-    "type_cutting_your_teeth":"Hp",
-	"stats_minor_achiever":600,
-	"type_minor_achiever":"Hp",
-	"stats_daring_brave_1":250,
-	"type_daring_brave_1":"Hp",
-	"stats_fashon_icon_1":300,
-	"type_fashon_icon_1":"Hp",
-	"stats_unrivaled":0,
-	"type_unrivaled":"Gain Crit Rate",
-	"stats_supreme_champion":2,
-	"type_supreme_champion":"Attack%",
-	"stats_preeminent_master":2,
-	"type_preeminent_master":"Hp%",
-	"stats_bright_victor":400,
-	"type_bright_victor":"Attack",
-	"stats_unstoppable":1,
-	"type_unstoppable":"Hp%",
-	"stats_stark_challenge":200,
-	"type_stark_challenge":"Hp",
-	"stats_assisiduous":85,
-	"type_assisiduous":"Attack",
-	"stats_resolute_will":2,
-	"type_resolute_will":"Attack%",
-	"stats_lavish_wealth":1,
-	"type_lavish_wealth":"Hp%",
-	"stats_miner_supremo":100,
-	"type_miner_supremo":"Attack",
-	"stats_miner_master":0,
-	"type_miner_master":"Gain Attack Speed",
-	"stats_maze_victor":150,
-	"type_maze_victor":"Hp",
-	"stats_maze_master":1,
-	"type_maze_master":"Hp%",
-	"stats_undefeated":5,
-	"type_undefeated":"Damage to Heroes",
-	"stats_indomitable":1,
-	"type_indomitable":"Attack%",
-	"stats_reliable":200,
-	"type_reliable":"Hp",
-	"stats_amateur_hour":70,
-	"type_amateur_hour":"Attack",
-	"stats_deft_skill":7,
-	"type_deft_skill":"Coins From Battle",
-	"stats_flaunting_display":5,
-	"type_flaunting_display":"XP Gain",
-	"stats_worthy_warrior_1":5,
-	"type_worthy_warrior_1":"Hero Base Enhanced",
-	"stats_worthy_warrior_2":2,
-	"type_worthy_warrior_2":"Hp%",
-	"stats_worthy_warrior_3":0,
-	"type_worthy_warrior_3":"Gain Dodge Rate",
-	"stats_decked_out_1":4,
-	"type_decked_out_1":"Enhance Equipment",
-	"stats_decked_out_2":0,
-	"type_decked_out_2":"Gain Projectile Damage",
-	"stats_daring_brave_2":300,
-	"type_daring_brave_2":"Attack",
-	"stats_fashion_icon_2":400,
-	"type_fashion_icon_2":"Attack",
-	"stats_fashion_icon_3":1,
-	"type_fashion_icon_3":"Hp%",
-    }
 
+
+
+
+
+
+MedalsStats = {
+    "stats_medals_19":120,
+    "type_medals_19":"Hp",
+	"stats_medals_20":600,
+	"type_medals_20":"Hp",
+	"stats_medals_28":250,
+	"type_medals_28":"Hp",
+	"stats_medals_30":300,
+	"type_medals_30":"Hp",
+	"stats_medals_01":0,
+	"type_medals_01":"Gain Crit Rate",
+	"stats_medals_02":2,
+	"type_medals_02":"Attack%",
+	"stats_medals_03":2,
+	"type_medals_03":"Hp%",
+	"stats_medals_04":400,
+	"type_medals_04":"Attack",
+	"stats_medals_05":1,
+	"type_medals_05":"Hp%",
+	"stats_medals_06":200,
+	"type_medals_06":"Hp",
+	"stats_medals_08":85,
+	"type_medals_08":"Attack",
+	"stats_medals_09":2,
+	"type_medals_09":"Attack%",
+	"stats_medals_10":1,
+	"type_medals_10":"Hp%",
+	"stats_medals_11":100,
+	"type_medals_11":"Attack",
+	"stats_medals_12":0,
+	"type_medals_12":"Gain Attack Speed",
+	"stats_medals_13":150,
+	"type_medals_13":"Hp",
+	"stats_medals_14":1,
+	"type_medals_14":"Hp%",
+	"stats_medals_15":5,
+	"type_medals_15":"Damage to Heroes",
+	"stats_medals_16":1,
+	"type_medals_16":"Attack%",
+	"stats_medals_17":200,
+	"type_medals_17":"Hp",
+	"stats_medals_18":70,
+	"type_medals_18":"Attack",
+	"stats_medals_21":7,
+	"type_medals_21":"Coins From Battle",
+	"stats_medals_22":5,
+	"type_medals_22":"XP Gain",
+	"stats_medals_23":5,
+	"type_medals_23":"Hero Base Enhanced",
+	"stats_medals_24":2,
+	"type_medals_24":"Hp%",
+	"stats_medals_25":0,
+	"type_medals_25":"Gain Dodge Rate",
+	"stats_medals_26":4,
+	"type_medals_26":"Enhance Equipment",
+	"stats_medals_27":0,
+	"type_medals_27":"Gain Projectile Damage",
+	"stats_medals_29":300,
+	"type_medals_29":"Attack",
+	"stats_medals_31":400,
+	"type_medals_31":"Attack",
+	"stats_medals_32":1,
+	"type_medals_32":"Hp%",
+    }
 
 
 
@@ -4033,7 +4038,7 @@ HeroData = {
             "attributes":" • Lvl 20: Damage to mobs + 150 [All Heroes]<br> • Lvl 40: Attack + 5%<br> • Lvl 60: Damage to Ranged Units + 5% [All Heroes]<br> • Lvl 80: MP Strength + 20%<br> • Lvl 120: Attack + 6% [All Heroes]",
             "price":"4000 <object type='image/png' data='\\static\\image\\svg\\gem.svg' width='16' height='16'></object>",
             "skill":"Increases leveling speed. Attack increases with level in a chamber",
-            "skill_details":"<br>",
+            "skill_details":"<br><b>Skill Details:</b><br>Bobo has 12.5% atk boost at start, and gains around 8.5% attack per lvl (credit to Chaos)<br><br>",
             "star_1":"Patrol XP Earnings + 4%",
             "star_2":"Max HP + 240 [All Heroes]",
             "star_3":"Wisdom's Might - Upgrade: Gain higher Attack and leveling speed",
@@ -4141,6 +4146,248 @@ GsheetData = {
 
 
 
+SidebarContent = {
+    "Menu":{
+        "class":"traveling-inline-div",
+        "onclick":"/",
+        "childs_container":{
+            "leftsidebar":{
+                "self_class":"leftsidebarc traveling-left",
+                "child_class":"shcl",
+                "child_content":"Home"
+            },
+            "rightsidebar":{
+                "self_class":"rightsidebarc traveling-right ",
+                "child_class":"shcr",
+                "child_content":{
+                    "image_src":"\\static\\image\\img-sidebar\\home.png",
+                    "image_width":"21",
+                    "image_id":"svg-filter-home",
+                    "image_height":"21"
+                }
+            }
+        }
+    },
+    "Stats":{
+        "class":"traveling-inline-div",
+        "onclick":"/calculator/index/",
+        "childs_container":{
+            "leftsidebar":{
+                "self_class":"leftsidebarc traveling-left",
+                "child_class":"shcl",
+                "child_content":"Stats"
+            },
+            "rightsidebar":{
+                "self_class":"rightsidebarc traveling-right ",
+                "child_class":"shcr",
+                "child_content":{                        
+                    "image_src":"\\static\\image\\img-sidebar\\stats.png",
+                    "image_width":"21",
+                    "image_id":"",
+                    "image_height":"21"
+                }
+            }
+        }
+    },
+    "Wiki":{
+        "class":"traveling-inline-div",
+        "onclick":"/wiki/menu",
+        "childs_container":{
+            "leftsidebar":{
+                "self_class":"leftsidebarc traveling-left",
+                "child_class":"shcl",
+                "child_content":"Wiki"
+            },
+            "rightsidebar":{
+                "self_class":"rightsidebarc traveling-right ",
+                "child_class":"shcr",
+                "child_content":{                        
+                    "image_src":"\\static\\image\\img-sidebar\\wiki.png",
+                    "image_width":"21",
+                    "image_id":"",
+                    "image_height":"21"
+                }
+            }
+        }
+    },
+    "Heroes":{
+        "class":"traveling-inline-div",
+        "onclick":"/wiki/heroes",
+        "childs_container":{
+            "leftsidebar":{
+                "self_class":"leftsidebarc traveling-left",
+                "child_class":"shcl",
+                "child_content":"Heroes"
+            },
+            "rightsidebar":{
+                "self_class":"rightsidebarc traveling-right ",
+                "child_class":"shcr",
+                "child_content":{                        
+                    "image_src":"\\static\\image\\img-sidebar\\hero.png",
+                    "image_width":"21",
+                    "image_id":"",
+                    "image_height":"21"
+                }
+            }
+        }
+    },
+    "Item":{
+        "class":"traveling-inline-div",
+        "onclick":"/wiki/item",
+        "childs_container":{
+            "leftsidebar":{
+                "self_class":"leftsidebarc traveling-left",
+                "child_class":"shcl",
+                "child_content":"Item"
+            },
+            "rightsidebar":{
+                "self_class":"rightsidebarc traveling-right ",
+                "child_class":"shcr",
+                "child_content":{                        
+                    "image_src":"\\static\\image\\img-sidebar\\icon_stuff.png",
+                    "image_width":"21",
+                    "image_id":"",
+                    "image_height":"21"
+                }
+            }
+        }
+    },
+    "Skill":{
+        "class":"traveling-inline-div",
+        "onclick":"/wiki/skill-list",
+        "childs_container":{
+            "leftsidebar":{
+                "self_class":"leftsidebarc traveling-left",
+                "child_class":"shcl",
+                "child_content":"Skill"
+            },
+            "rightsidebar":{
+                "self_class":"rightsidebarc traveling-right ",
+                "child_class":"shcr",
+                "child_content":{                        
+                    "image_src":"\\static\\image\\img-sidebar\\skill.png",
+                    "image_width":"21",
+                    "image_id":"",
+                    "image_height":"21"
+                }
+            }
+        }
+    },
+    "Damage":{
+        "class":"traveling-inline-div",
+        "onclick":"/wiki/damage-calculator",
+        "childs_container":{
+            "leftsidebar":{
+                "self_class":"leftsidebarc traveling-left",
+                "child_class":"shcl",
+                "child_content":"Damage"
+            },
+            "rightsidebar":{
+                "self_class":"rightsidebarc traveling-right ",
+                "child_class":"shcr",
+                "child_content":{                        
+                    "image_src":"\\static\\image\\img-sidebar\\damage.png",
+                    "image_width":"21",
+                    "image_id":"",
+                    "image_height":"21"
+                }
+            }
+        }
+    },
+    "Upgrade":{
+        "class":"traveling-inline-div",
+        "onclick":"/wiki/upgrade",
+        "childs_container":{
+            "leftsidebar":{
+                "self_class":"leftsidebarc traveling-left",
+                "child_class":"shcl",
+                "child_content":"Upgrade"
+            },
+            "rightsidebar":{
+                "self_class":"rightsidebarc traveling-right",
+                "child_class":"shcr",
+                "child_content":{                        
+                    "image_src":"\\static\\image\\img-sidebar\\upgrade.png",
+                    "image_width":"21",
+                    "image_id":"",
+                    "image_height":"21"
+                }
+            }
+        }
+    },
+    "Promos":{
+        "class":"traveling-inline-div",
+        "onclick":"/wiki/promo-code",
+        "childs_container":{
+            "leftsidebar":{
+                "self_class":"leftsidebarc traveling-left",
+                "child_class":"shcl",
+                "child_content":"Promos"
+            },
+            "rightsidebar":{
+                "self_class":"rightsidebarc traveling-right",
+                "child_class":"shcr",
+                "child_content":{                        
+                    "image_src":"\\static\\image\\img-sidebar\\promotion_code.png",
+                    "image_width":"21",
+                    "image_id":"",
+                    "image_height":"21"
+                }
+            }
+        }
+    },
+    "Sheet":{
+        "class":"traveling-inline-div",
+        "onclick":"/wiki/archive",
+        "childs_container":{
+            "leftsidebar":{
+                "self_class":"leftsidebarc traveling-left",
+                "child_class":"shcl",
+                "child_content":"Sheet"
+            },
+            "rightsidebar":{
+                "self_class":"rightsidebarc traveling-right ",
+                "child_class":"shcr",
+                "child_content":{                        
+                    "image_src":"\\static\\image\\img-sidebar\\sheet.png",
+                    "image_width":"21",
+                    "image_id":"",
+                    "image_height":"21"
+                }
+            }
+        }
+    },
+    "Maze":{
+            "class":"traveling-inline-div",
+            "onclick":"/wiki/maze",
+            "childs_container":{
+                "leftsidebar":{
+                    "self_class":"leftsidebarc traveling-left",
+                    "child_class":"shcl",
+                    "child_content":"Maze"
+                },
+                "rightsidebar":{
+                    "self_class":"rightsidebarc traveling-right ",
+                    "child_class":"shcr",
+                    "child_content":{                        
+                        "image_src":"\\static\\image\\img-sidebar\\maze.png",
+                        "image_width":"21",
+                        "image_id":"",
+                        "image_height":"21"
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
 DataPrice = {
         "hero":{
             "sapphire":[0,0,1,3,6,10,15,20,25,30,35,42,49,56,63,70,80,90,100,110,120,135,150,165,180,195,215,235,255,275,295,325,355,385,415,445,485,525,565,605,645,695,745,795,845,895,960,1025,1090,1155,1220,1300,1380,1460,1540,1620,1720,1820,1920,2020,2120,2240,2360,2480,2600,2720,2860,3000,3140,3280,3420,3590,3760,3930,4100,4270,4470,4670,4870,5070,5270,5510,5750,5990,6230,6470,6750,7030,7310,7590,7870,8190,8510,8830,9150,9470,9830,10190,10550,10910,11270,11670,12070,12470,12870,13270,13720,14170,14620,15070,15520,16020,16520,17020,17520,18020,18620,19220,19820,20420,21020],
@@ -4162,3 +4409,75 @@ DataPrice = {
     		"gold":[0,0,1000,3000,6000,10000,15000,22000,32000,47000,65000,86000,110000,137000,177000,227000,287000,357000,437000,537000,657000,797000,957000,1157000,1377000,1617000,1877000,2197000,2537000,2897000,3297000,3797000]
         }
     }
+
+
+
+
+
+
+
+
+
+TheoryCraftingContent = {
+    'fusion_item':{
+        "type":"block",
+        "displayName":"fusion item",
+        "classButton":"collapsible fusion",
+        "linkButton":{
+            "innerHTML":'<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a>'
+        },
+        "collapsible_container":{
+            "class_content":"fusion content",
+            "content":{
+                "type":"img",
+                "src":"image/wiki-image/Fusing_Hierarchy.png",
+                "class":"fusion_collaps_img"
+            },
+        }
+    },
+    'fusion_item2':{
+        "type":"block",
+    },
+    'fusion_dragon':{
+        "type":"block",
+    },
+    'tierlist_item_1':{
+        "type":"block",
+    },
+    'tierlist_item_2':{
+        "type":"block",
+    },
+    'faq':{
+        "type":"block",
+    },
+    'evo_cost':{
+        "type":"block",
+    },
+    'gems_spending_guide':{
+        "type":"embed",
+    },
+    'gold_earning_guide':{
+        "type":"embed",
+    },
+    'gear_farming_guide':{
+        "type":"embed",
+    },
+    'glyphs':{
+        "type":"block",
+    },
+    'refinement':{
+        "type":"block",
+    },
+    'quickraid':{
+        "type":"block",
+    },
+    'altar_cost':{
+        "type":"block",
+    },
+    'egg_stats':{
+        "type":"block",
+    },
+    'hidden_stats':{
+        "type":"block",
+    },
+}

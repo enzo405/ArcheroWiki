@@ -2,10 +2,13 @@ from django.urls import path
 from calculator import views
 from calculator import views_wiki
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic.base import TemplateView
 
 
 urlpatterns = [
+    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
     path('', views_wiki.menu),
+    path('Terms-of-Use/', views_wiki.tos),
     path('calculator/', views.index_calc),
     path('calculator/show/<str:pbid>/', views.affiche_calc),
     path('calculator/create/', views.formulaire_calc),

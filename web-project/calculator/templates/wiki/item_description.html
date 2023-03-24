@@ -1,355 +1,186 @@
-<!doctype html>
-<html lang="en">
-<head>
-	{% load static %}
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.3.1">
-	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.1">
-	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.3.1">
-	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.3.1">
-	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Archero - Wiki</title>
-    <script src="{% static 'main.js' %}?version=1.3.1"></script>
-	<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-
-	<meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-	<meta property="og:type" content="website">
-	{% if item == "yes" %}
-	<meta property="og:title" content="{{ name }}">
-	<meta property="og:url" content="{{ url_cpy }}">
-	<meta property="og:description" content="{{ item_description|safe }}">
-	<meta property="og:image" content="{% static item_image %}?version=1.3.1">
-	{% else %}
-    <meta property="og:title" content="Archero - Item Description">
-	<meta property="og:url" content="https://stats.wiki-archero.com/wiki/item">
-	<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-	<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.1">
-	{% endif %}
-</head>
-{% if darkmode == "yes" %}
-<body class="body_dark_mode">
-{% elif darkmode == "no" %}
-<body>
+{% extends "template.html" %}
+{% load static %}
+{% block head %}
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.7">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.3.7">
+<title>Archero - Wiki</title>
+<meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+<meta property="og:type" content="website">
+{% if item == "yes" %}
+<meta property="og:title" content="{{ name }}">
+<meta property="og:url" content="{{ url_cpy }}">
+<meta property="og:description" content="{{ item_description|safe }}">
+<meta property="og:image" content="{% static item_image %}?version=1.3.7">
+{% else %}
+<meta property="og:title" content="Archero - Item Description">
+<meta property="og:url" content="https://stats.wiki-archero.com/wiki/item">
+<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.7">
 {% endif %}
-<noscript>
-	<div id="no-script-message">
-		<p>Please enable JavaScript to use this website.</p>
-	</div>
-</noscript>
-{% if messages %}
-	{% for message in messages %}
+{% endblock %}
+{% block header_content %}{{ header_msg }}{% endblock %}
+{% block content %}
+<div class="content_container">
+	<div class="search-bar" id="search-bar">
 		<script>
-			var stringElement = '<div{% if message.tags %} class="{{ message.tags }}-messages"{% endif %}>{{ message }}</div>'
-			createModale(stringElement)
-		</script>
-	{% endfor %}
-{% endif %}
-    <div class="sidebar sidebar-open sidebar-position-f" id="sidebar">
-        <div class="sidebar-icon" id="sidebar-icon">
-            <div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
-            <div class="rightsidebarc" id="rscimg">
-                <svg id="svg-filter-sidebar" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
-            </div>
-        </div>
-        <div class="traveling" id="traveling">
-            <!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
-        </div>
-    </div>
-	<div class="main-container">
-		<div class="container cmcath">
-			<header class="header-container">
-				<div class="header-container-1"></div>
-				<div class="header-container-2 header_msg"><h2>{{ header_msg }}</h2></div>
-				<div class="header-container-3 globe_header_icon">
-					<!-- <label for="lang"><i class="fa-solid fa-globe"></i></label>
-					<select name="lang" id="lang">
-						{% for language in lang %}
-						<option value="{{language}}">{{language}}</option>
-						{% endfor %}
-					</select> -->
-				</div>
-			</header>
-			<main class="main-description">
-				<div class="search-bar" id="search-bar">
-					<script>
-                        function filterList() {
-                            var input = document.getElementById("myInput");
-                            var filter = input.value.toUpperCase();
-                            var ul = document.getElementById("myUL");
-                            var li = ul.getElementsByTagName("li");
+			function filterList() {
+				var input = document.getElementById("myInput");
+				var filter = input.value.toUpperCase();
+				var ul = document.getElementById("myUL");
+				var li = ul.getElementsByTagName("li");
 
-                            for (var i = 0; i < li.length; i++) {
-                                var a = li[i].getElementsByTagName("a")[0];
-                                var txtValue = a.textContent || a.innerText;
-                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                    li[i].style.display = "";
-                                } else {
-                                    li[i].style.display = "none";
-                                }
-                            }
-                        }
-					</script>
-					{% if item == "yes" %}
-					<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for items.." value="{{ name }}">
-					{% else %}
-					<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for items..">
-					{% endif %}
-					<ul id="myUL" style="display: none;">
-						<li value="Brave Bow"><a id="toggle-display-list" href="/wiki/item/Brave_Bow/"><div class="item_name">Brave Bow</div><div class="siimg"><img src="/static/image/items/brave_bow_epic.png" width="26px"></div></a></li>
-						<li value="Death Scythe"><a id="toggle-display-list" href="/wiki/item/Death_Scythe/"><div class="item_name">Death Scythe</div><div class="siimg"><img src="/static/image/items/death_scythe_epic.png" width="26px"></div></a></li>
-						<li value="Saw Blade"><a id="toggle-display-list" href="/wiki/item/Saw_Blade/"><div class="item_name">Saw Blade</div><div class="siimg"><img src="/static/image/items/saw_blade_epic.png" width="26px"></div></a></li>
-						<li value="Tornado"><a id="toggle-display-list" href="/wiki/item/Tornado/"><div class="item_name">Tornado</div><div class="siimg"><img src="/static/image/items/tornado_epic.png" width="26px"></div></a></li>
-						<li value="Brightspear"><a id="toggle-display-list" href="/wiki/item/Brightspear/"><div class="item_name">Brightspear</div><div class="siimg"><img src="/static/image/items/brightspear_epic.png" width="26px"></div></a></li>
-						<li value="Stalker Staff"><a id="toggle-display-list" href="/wiki/item/Stalker_Staff/"><div class="item_name">Stalker Staff</div><div class="siimg"><img src="/static/image/items/stalker_staff_epic.png" width="26px"></div></a></li>
-						<li value="Gale Force"><a id="toggle-display-list" href="/wiki/item/Gale_Force/"><div class="item_name">Gale Force</div><div class="siimg"><img src="/static/image/items/gale_force_epic.png" width="26px"></div></a></li>
-						<li value="Demon Blade Rain"><a id="toggle-display-list" href="/wiki/item/Demon_Blade_Rain/"><div class="item_name">Demon Blade Rain</div><div class="siimg"><img src="/static/image/items/demon_blade_rain_epic.png" width="26px"></div></a></li>
-						<li value="Mini Atreus"><a id="toggle-display-list" href="/wiki/item/Mini_Atreus/"><div class="item_name">Mini Atreus</div><div class="siimg"><img src="/static/image/items/mini_atreus.png" width="26px"></div></a></li>
-						<li value="Antiquated Sword"><a id="toggle-display-list" href="/wiki/item/Antiquated_Sword/"><div class="item_name">Antiquated Sword</div><div class="siimg"><img src="/static/image/items/antiquated_sword_epic.png" width="26px"></div></a></li>
-						<li value="Phantom Cloak"><a id="toggle-display-list" href="/wiki/item/Phantom_Cloak/"><div class="item_name">Phantom Cloak</div><div class="siimg"><img src="/static/image/items/phantom_cloak.png" width="26px"></div></a></li>
-						<li value="Vest of Dexterity"><a id="toggle-display-list" href="/wiki/item/Vest_of_Dexterity/"><div class="item_name">Vest of Dexterity</div><div class="siimg"><img src="/static/image/items/vest_of_dexterity.png" width="26px"></div></a></li>
-						<li value="Golden Chestplate"><a id="toggle-display-list" href="/wiki/item/Golden_Chestplate/"><div class="item_name">Golden Chestplate</div><div class="siimg"><img src="/static/image/items/golden_chestplate.png" width="26px"></div></a></li>
-						<li value="Void Robe"><a id="toggle-display-list" href="/wiki/item/Void_Robe/"><div class="item_name">Void Robe</div><div class="siimg"><img src="/static/image/items/void_robe.png" width="26px"></div></a></li>
-						<li value="Bright Robe"><a id="toggle-display-list" href="/wiki/item/Bright_Robe/"><div class="item_name">Bright Robe</div><div class="siimg"><img src="/static/image/items/bright_robe.png" width="26px"></div></a></li>
-						<li value="Shadow Robe"><a id="toggle-display-list" href="/wiki/item/Shadow_Robe/"><div class="item_name">Shadow Robe</div><div class="siimg"><img src="/static/image/items/shadow_robe.png" width="26px"></div></a></li>
-						<li value="Bear Ring"><a id="toggle-display-list" href="/wiki/item/Bear_Ring/"><div class="item_name">Bear Ring</div><div class="siimg"><img src="/static/image/items/bear_ring_epic.png" width="26px"></div></a></li>
-						<li value="Wolf Ring"><a id="toggle-display-list" href="/wiki/item/Wolf_Ring/"><div class="item_name">Wolf Ring</div><div class="siimg"><img src="/static/image/items/wolf_ring_epic.png" width="26px"></div></a></li>
-						<li value="Falcon Ring"><a id="toggle-display-list" href="/wiki/item/Falcon_Ring/"><div class="item_name">Falcon Ring</div><div class="siimg"><img src="/static/image/items/falcon_ring_epic.png" width="26px"></div></a></li>
-						<li value="Serpent Ring"><a id="toggle-display-list" href="/wiki/item/Serpent_Ring/"><div class="item_name">Serpent Ring</div><div class="siimg"><img src="/static/image/items/serpent_ring_epic.png" width="26px"></div></a></li>
-						<li value="Bull Ring"><a id="toggle-display-list" href="/wiki/item/Bull_Ring/"><div class="item_name">Bull Ring</div><div class="siimg"><img src="/static/image/items/bull_ring_epic.png" width="26px"></div></a></li>
-						<li value="Lion Ring"><a id="toggle-display-list" href="/wiki/item/Lion_Ring/"><div class="item_name">Lion Ring</div><div class="siimg"><img src="/static/image/items/lion_ring_epic.png" width="26px"></div></a></li>
-						<li value="Vilebat Ring"><a id="toggle-display-list" href="/wiki/item/Vilebat_Ring/"><div class="item_name">Vilebat Ring</div><div class="siimg"><img src="/static/image/items/vilebat_ring_epic.png" width="26px"></div></a></li>
-						<li value="Dragon Ring"><a id="toggle-display-list" href="/wiki/item/Dragon_Ring/"><div class="item_name">Dragon Ring</div><div class="siimg"><img src="/static/image/items/dragon_ring_epic.png" width="26px"></div></a></li>
-						<li value="Laser Bat"><a id="toggle-display-list" href="/wiki/item/Laser_Bat/"><div class="item_name">Laser Bat</div><div class="siimg"><img src="/static/image/items/laser_bat.png" width="26px"></div></a></li>
-						<li value="Scythe Mage"><a id="toggle-display-list" href="/wiki/item/Scythe_Mage/"><div class="item_name">Scythe Mage</div><div class="siimg"><img src="/static/image/items/scythe_mage.png" width="26px"></div></a></li>
-						<li value="Living Bomb"><a id="toggle-display-list" href="/wiki/item/Living_Bomb/"><div class="item_name">Living Bomb</div><div class="siimg"><img src="/static/image/items/living_bomb.png" width="26px"></div></a></li>
-						<li value="Elf"><a id="toggle-display-list" href="/wiki/item/Elf/"><div class="item_name">Elf</div><div class="siimg"><img src="/static/image/items/elf.png" width="26px"></div></a></li>
-						<li value="Noisy Owl"><a id="toggle-display-list" href="/wiki/item/Noisy_Owl/"><div class="item_name">Noisy Owl</div><div class="siimg"><img src="/static/image/items/noisy_owl.png" width="26px"></div></a></li>
-						<li value="Flaming Ghost"><a id="toggle-display-list" href="/wiki/item/Flaming_Ghost/"><div class="item_name">Flaming Ghost</div><div class="siimg"><img src="/static/image/items/flaming_ghost.png" width="26px"></div></a></li>
-						<li value="Bone Warrior"><a id="toggle-display-list" href="/wiki/item/Bone_Warrior/"><div class="item_name">Bone Warrior</div><div class="siimg"><img src="/static/image/items/bone_warrior.png" width="26px"></div></a></li>
-						<li value="Thunder Bracelet"><a id="toggle-display-list" href="/wiki/item/Thunder_Bracelet/"><div class="item_name">Thunder Bracelet</div><div class="siimg"><img src="/static/image/items/thunder_bracelet.png" width="26px"></div></a></li>
-						<li value="Frozen Bracelet"><a id="toggle-display-list" href="/wiki/item/Frozen_Bracelet/"><div class="item_name">Frozen Bracelet</div><div class="siimg"><img src="/static/image/items/frozen_bracelet.png" width="26px"></div></a></li>
-						<li value="Blazing Bracelet"><a id="toggle-display-list" href="/wiki/item/Blazing_Bracelet/"><div class="item_name">Blazing Bracelet</div><div class="siimg"><img src="/static/image/items/blazing_bracelet.png" width="26px"></div></a></li>
-						<li value="Split Bracelet"><a id="toggle-display-list" href="/wiki/item/Split_Bracelet/"><div class="item_name">Split Bracelet</div><div class="siimg"><img src="/static/image/items/split_bracelet.png" width="26px"></div></a></li>
-						<li value="Invincible Bracelet"><a id="toggle-display-list" href="/wiki/item/Invincible_Bracelet/"><div class="item_name">Invincible Bracelet</div><div class="siimg"><img src="/static/image/items/invincible_bracelet.png" width="26px"></div></a></li>
-						<li value="Quickshot Bracelet"><a id="toggle-display-list" href="/wiki/item/Quickshot_Bracelet/"><div class="item_name">Quickshot Bracelet</div><div class="siimg"><img src="/static/image/items/quickshot_bracelet.png" width="26px"></div></a></li>
-						<li value="Shield Bracelet"><a id="toggle-display-list" href="/wiki/item/Shield_Bracelet/"><div class="item_name">Shield Bracelet</div><div class="siimg"><img src="/static/image/items/shield_bracelet.png" width="26px"></div></a></li>
-						<li value="Agile Locket"><a id="toggle-display-list" href="/wiki/item/Agile_Locket/"><div class="item_name">Agile Locket</div><div class="siimg"><img src="/static/image/items/agile_locket.png" width="26px"></div></a></li>
-						<li value="Iron Locket"><a id="toggle-display-list" href="/wiki/item/Iron_Locket/"><div class="item_name">Iron Locket</div><div class="siimg"><img src="/static/image/items/iron_locket.png" width="26px"></div></a></li>
-						<li value="Angel Locket"><a id="toggle-display-list" href="/wiki/item/Angel_Locket/"><div class="item_name">Angel Locket</div><div class="siimg"><img src="/static/image/items/angel_locket.png" width="26px"></div></a></li>
-						<li value="Bulletproof Locket"><a id="toggle-display-list" href="/wiki/item/Bulletproof_Locket/"><div class="item_name">Bulletproof Locket</div><div class="siimg"><img src="/static/image/items/bulletproof_locket.png" width="26px"></div></a></li>
-						<li value="Piercer Locket"><a id="toggle-display-list" href="/wiki/item/Piercer_Locket/"><div class="item_name">Piercer Locket</div><div class="siimg"><img src="/static/image/items/piercer_locket.png" width="26px"></div></a></li>
-						<li value="Bloodthirsty Locket"><a id="toggle-display-list" href="/wiki/item/Bloodthirsty_Locket/"><div class="item_name">Bloodthirsty Locket</div><div class="siimg"><img src="/static/image/items/bloodthirsty_locket.png" width="26px"></div></a></li>
-						<li value="Counterattack Locket"><a id="toggle-display-list" href="/wiki/item/Counterattack_Locket/"><div class="item_name">Counterattack Locket</div><div class="siimg"><img src="/static/image/items/counterattack_locket.png" width="26px"></div></a></li>
-						<li value="Arcane Archer"><a id="toggle-display-list" href="/wiki/item/Arcane_Archer/"><div class="item_name">Arcane Archer</div><div class="siimg"><img src="/static/image/items/arcane_archer.png" width="26px"></div></a></li>
-						<li value="Art of Combat"><a id="toggle-display-list" href="/wiki/item/Art_of_Combat/"><div class="item_name">Art of Combat</div><div class="siimg"><img src="/static/image/items/art_of_combat.png" width="26px"></div></a></li>
-						<li value="Ice Realm"><a id="toggle-display-list" href="/wiki/item/Ice_Realm/"><div class="item_name">Ice Realm</div><div class="siimg"><img src="/static/image/items/ice_realm.png" width="26px"></div></a></li>
-						<li value="Enlightenment"><a id="toggle-display-list" href="/wiki/item/Enlightenment/"><div class="item_name">Enlightenment</div><div class="siimg"><img src="/static/image/items/enlightenment.png" width="26px"></div></a></li>
-						<li value="Giants Contract"><a id="toggle-display-list" href="/wiki/item/Giants_Contract/"><div class="item_name">Giants Contract</div><div class="siimg"><img src="/static/image/items/giants_contract.png" width="26px"></div></a></li>
-						<li value="Spectre Book"><a id="toggle-display-list" href="/wiki/item/Spectre_Book/"><div class="item_name">Spectre Book</div><div class="siimg"><img src="/static/image/items/spectre_book.png" width="26px"></div></a></li>
-						<li value="Arcanum of Time"><a id="toggle-display-list" href="/wiki/item/Arcanum_of_Time/"><div class="item_name">Arcanum of Time</div><div class="siimg"><img src="/static/image/items/arcanum_of_time.png" width="26px"></div></a></li>
-					</ul>
-				</div>
-				<div class="embed-container">
-					<div class="kn3fae-0 ezpxFx">
-						<div class="sgp62q-0 iuJdTu">
-							<a title="TigerShark's Bot">
-								<img src="/static/image/wiki-image/sylvanpfp3.png" alt="User avatar" class="sgp62q-1 dLWNvE">
-								<h1 class="sgp62q-2 hfwuZw">Sylvan</h1>
-								<span class="sgp62q-3 cTBPsI">BOT</span>
-								<span class="sc-1idsap7-0 dyOqmJ" id="date"></span>
-							</a>
+				for (var i = 0; i < li.length; i++) {
+					var a = li[i].getElementsByTagName("a")[0];
+					var txtValue = a.textContent || a.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						li[i].style.display = "";
+					} else {
+						li[i].style.display = "none";
+					}
+				}
+			}
+		</script>
+		{% if item == "yes" %}
+		<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for items.." value="{{ name }}">
+		{% else %}
+		<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for items..">
+		{% endif %}
+		<ul id="myUL" style="display: none;">
+			<li value="Brave Bow"><a id="toggle-display-list" href="/wiki/item/Brave_Bow/"><div class="item_name">Brave Bow</div><div class="siimg"><img src="/static/image/items/brave_bow_epic.png" width="26px"></div></a></li>
+			<li value="Death Scythe"><a id="toggle-display-list" href="/wiki/item/Death_Scythe/"><div class="item_name">Death Scythe</div><div class="siimg"><img src="/static/image/items/death_scythe_epic.png" width="26px"></div></a></li>
+			<li value="Saw Blade"><a id="toggle-display-list" href="/wiki/item/Saw_Blade/"><div class="item_name">Saw Blade</div><div class="siimg"><img src="/static/image/items/saw_blade_epic.png" width="26px"></div></a></li>
+			<li value="Tornado"><a id="toggle-display-list" href="/wiki/item/Tornado/"><div class="item_name">Tornado</div><div class="siimg"><img src="/static/image/items/tornado_epic.png" width="26px"></div></a></li>
+			<li value="Brightspear"><a id="toggle-display-list" href="/wiki/item/Brightspear/"><div class="item_name">Brightspear</div><div class="siimg"><img src="/static/image/items/brightspear_epic.png" width="26px"></div></a></li>
+			<li value="Stalker Staff"><a id="toggle-display-list" href="/wiki/item/Stalker_Staff/"><div class="item_name">Stalker Staff</div><div class="siimg"><img src="/static/image/items/stalker_staff_epic.png" width="26px"></div></a></li>
+			<li value="Gale Force"><a id="toggle-display-list" href="/wiki/item/Gale_Force/"><div class="item_name">Gale Force</div><div class="siimg"><img src="/static/image/items/gale_force_epic.png" width="26px"></div></a></li>
+			<li value="Demon Blade Rain"><a id="toggle-display-list" href="/wiki/item/Demon_Blade_Rain/"><div class="item_name">Demon Blade Rain</div><div class="siimg"><img src="/static/image/items/demon_blade_rain_epic.png" width="26px"></div></a></li>
+			<li value="Mini Atreus"><a id="toggle-display-list" href="/wiki/item/Mini_Atreus/"><div class="item_name">Mini Atreus</div><div class="siimg"><img src="/static/image/items/mini_atreus.png" width="26px"></div></a></li>
+			<li value="Antiquated Sword"><a id="toggle-display-list" href="/wiki/item/Antiquated_Sword/"><div class="item_name">Antiquated Sword</div><div class="siimg"><img src="/static/image/items/antiquated_sword_epic.png" width="26px"></div></a></li>
+			<li value="Phantom Cloak"><a id="toggle-display-list" href="/wiki/item/Phantom_Cloak/"><div class="item_name">Phantom Cloak</div><div class="siimg"><img src="/static/image/items/phantom_cloak.png" width="26px"></div></a></li>
+			<li value="Vest of Dexterity"><a id="toggle-display-list" href="/wiki/item/Vest_of_Dexterity/"><div class="item_name">Vest of Dexterity</div><div class="siimg"><img src="/static/image/items/vest_of_dexterity.png" width="26px"></div></a></li>
+			<li value="Golden Chestplate"><a id="toggle-display-list" href="/wiki/item/Golden_Chestplate/"><div class="item_name">Golden Chestplate</div><div class="siimg"><img src="/static/image/items/golden_chestplate.png" width="26px"></div></a></li>
+			<li value="Void Robe"><a id="toggle-display-list" href="/wiki/item/Void_Robe/"><div class="item_name">Void Robe</div><div class="siimg"><img src="/static/image/items/void_robe.png" width="26px"></div></a></li>
+			<li value="Bright Robe"><a id="toggle-display-list" href="/wiki/item/Bright_Robe/"><div class="item_name">Bright Robe</div><div class="siimg"><img src="/static/image/items/bright_robe.png" width="26px"></div></a></li>
+			<li value="Shadow Robe"><a id="toggle-display-list" href="/wiki/item/Shadow_Robe/"><div class="item_name">Shadow Robe</div><div class="siimg"><img src="/static/image/items/shadow_robe.png" width="26px"></div></a></li>
+			<li value="Bear Ring"><a id="toggle-display-list" href="/wiki/item/Bear_Ring/"><div class="item_name">Bear Ring</div><div class="siimg"><img src="/static/image/items/bear_ring_epic.png" width="26px"></div></a></li>
+			<li value="Wolf Ring"><a id="toggle-display-list" href="/wiki/item/Wolf_Ring/"><div class="item_name">Wolf Ring</div><div class="siimg"><img src="/static/image/items/wolf_ring_epic.png" width="26px"></div></a></li>
+			<li value="Falcon Ring"><a id="toggle-display-list" href="/wiki/item/Falcon_Ring/"><div class="item_name">Falcon Ring</div><div class="siimg"><img src="/static/image/items/falcon_ring_epic.png" width="26px"></div></a></li>
+			<li value="Serpent Ring"><a id="toggle-display-list" href="/wiki/item/Serpent_Ring/"><div class="item_name">Serpent Ring</div><div class="siimg"><img src="/static/image/items/serpent_ring_epic.png" width="26px"></div></a></li>
+			<li value="Bull Ring"><a id="toggle-display-list" href="/wiki/item/Bull_Ring/"><div class="item_name">Bull Ring</div><div class="siimg"><img src="/static/image/items/bull_ring_epic.png" width="26px"></div></a></li>
+			<li value="Lion Ring"><a id="toggle-display-list" href="/wiki/item/Lion_Ring/"><div class="item_name">Lion Ring</div><div class="siimg"><img src="/static/image/items/lion_ring_epic.png" width="26px"></div></a></li>
+			<li value="Vilebat Ring"><a id="toggle-display-list" href="/wiki/item/Vilebat_Ring/"><div class="item_name">Vilebat Ring</div><div class="siimg"><img src="/static/image/items/vilebat_ring_epic.png" width="26px"></div></a></li>
+			<li value="Dragon Ring"><a id="toggle-display-list" href="/wiki/item/Dragon_Ring/"><div class="item_name">Dragon Ring</div><div class="siimg"><img src="/static/image/items/dragon_ring_epic.png" width="26px"></div></a></li>
+			<li value="Laser Bat"><a id="toggle-display-list" href="/wiki/item/Laser_Bat/"><div class="item_name">Laser Bat</div><div class="siimg"><img src="/static/image/items/laser_bat.png" width="26px"></div></a></li>
+			<li value="Scythe Mage"><a id="toggle-display-list" href="/wiki/item/Scythe_Mage/"><div class="item_name">Scythe Mage</div><div class="siimg"><img src="/static/image/items/scythe_mage.png" width="26px"></div></a></li>
+			<li value="Living Bomb"><a id="toggle-display-list" href="/wiki/item/Living_Bomb/"><div class="item_name">Living Bomb</div><div class="siimg"><img src="/static/image/items/living_bomb.png" width="26px"></div></a></li>
+			<li value="Elf"><a id="toggle-display-list" href="/wiki/item/Elf/"><div class="item_name">Elf</div><div class="siimg"><img src="/static/image/items/elf.png" width="26px"></div></a></li>
+			<li value="Noisy Owl"><a id="toggle-display-list" href="/wiki/item/Noisy_Owl/"><div class="item_name">Noisy Owl</div><div class="siimg"><img src="/static/image/items/noisy_owl.png" width="26px"></div></a></li>
+			<li value="Flaming Ghost"><a id="toggle-display-list" href="/wiki/item/Flaming_Ghost/"><div class="item_name">Flaming Ghost</div><div class="siimg"><img src="/static/image/items/flaming_ghost.png" width="26px"></div></a></li>
+			<li value="Bone Warrior"><a id="toggle-display-list" href="/wiki/item/Bone_Warrior/"><div class="item_name">Bone Warrior</div><div class="siimg"><img src="/static/image/items/bone_warrior.png" width="26px"></div></a></li>
+			<li value="Thunder Bracelet"><a id="toggle-display-list" href="/wiki/item/Thunder_Bracelet/"><div class="item_name">Thunder Bracelet</div><div class="siimg"><img src="/static/image/items/thunder_bracelet.png" width="26px"></div></a></li>
+			<li value="Frozen Bracelet"><a id="toggle-display-list" href="/wiki/item/Frozen_Bracelet/"><div class="item_name">Frozen Bracelet</div><div class="siimg"><img src="/static/image/items/frozen_bracelet.png" width="26px"></div></a></li>
+			<li value="Blazing Bracelet"><a id="toggle-display-list" href="/wiki/item/Blazing_Bracelet/"><div class="item_name">Blazing Bracelet</div><div class="siimg"><img src="/static/image/items/blazing_bracelet.png" width="26px"></div></a></li>
+			<li value="Split Bracelet"><a id="toggle-display-list" href="/wiki/item/Split_Bracelet/"><div class="item_name">Split Bracelet</div><div class="siimg"><img src="/static/image/items/split_bracelet.png" width="26px"></div></a></li>
+			<li value="Invincible Bracelet"><a id="toggle-display-list" href="/wiki/item/Invincible_Bracelet/"><div class="item_name">Invincible Bracelet</div><div class="siimg"><img src="/static/image/items/invincible_bracelet.png" width="26px"></div></a></li>
+			<li value="Quickshot Bracelet"><a id="toggle-display-list" href="/wiki/item/Quickshot_Bracelet/"><div class="item_name">Quickshot Bracelet</div><div class="siimg"><img src="/static/image/items/quickshot_bracelet.png" width="26px"></div></a></li>
+			<li value="Shield Bracelet"><a id="toggle-display-list" href="/wiki/item/Shield_Bracelet/"><div class="item_name">Shield Bracelet</div><div class="siimg"><img src="/static/image/items/shield_bracelet.png" width="26px"></div></a></li>
+			<li value="Agile Locket"><a id="toggle-display-list" href="/wiki/item/Agile_Locket/"><div class="item_name">Agile Locket</div><div class="siimg"><img src="/static/image/items/agile_locket.png" width="26px"></div></a></li>
+			<li value="Iron Locket"><a id="toggle-display-list" href="/wiki/item/Iron_Locket/"><div class="item_name">Iron Locket</div><div class="siimg"><img src="/static/image/items/iron_locket.png" width="26px"></div></a></li>
+			<li value="Angel Locket"><a id="toggle-display-list" href="/wiki/item/Angel_Locket/"><div class="item_name">Angel Locket</div><div class="siimg"><img src="/static/image/items/angel_locket.png" width="26px"></div></a></li>
+			<li value="Bulletproof Locket"><a id="toggle-display-list" href="/wiki/item/Bulletproof_Locket/"><div class="item_name">Bulletproof Locket</div><div class="siimg"><img src="/static/image/items/bulletproof_locket.png" width="26px"></div></a></li>
+			<li value="Piercer Locket"><a id="toggle-display-list" href="/wiki/item/Piercer_Locket/"><div class="item_name">Piercer Locket</div><div class="siimg"><img src="/static/image/items/piercer_locket.png" width="26px"></div></a></li>
+			<li value="Bloodthirsty Locket"><a id="toggle-display-list" href="/wiki/item/Bloodthirsty_Locket/"><div class="item_name">Bloodthirsty Locket</div><div class="siimg"><img src="/static/image/items/bloodthirsty_locket.png" width="26px"></div></a></li>
+			<li value="Counterattack Locket"><a id="toggle-display-list" href="/wiki/item/Counterattack_Locket/"><div class="item_name">Counterattack Locket</div><div class="siimg"><img src="/static/image/items/counterattack_locket.png" width="26px"></div></a></li>
+			<li value="Arcane Archer"><a id="toggle-display-list" href="/wiki/item/Arcane_Archer/"><div class="item_name">Arcane Archer</div><div class="siimg"><img src="/static/image/items/arcane_archer.png" width="26px"></div></a></li>
+			<li value="Art of Combat"><a id="toggle-display-list" href="/wiki/item/Art_of_Combat/"><div class="item_name">Art of Combat</div><div class="siimg"><img src="/static/image/items/art_of_combat.png" width="26px"></div></a></li>
+			<li value="Ice Realm"><a id="toggle-display-list" href="/wiki/item/Ice_Realm/"><div class="item_name">Ice Realm</div><div class="siimg"><img src="/static/image/items/ice_realm.png" width="26px"></div></a></li>
+			<li value="Enlightenment"><a id="toggle-display-list" href="/wiki/item/Enlightenment/"><div class="item_name">Enlightenment</div><div class="siimg"><img src="/static/image/items/enlightenment.png" width="26px"></div></a></li>
+			<li value="Giants Contract"><a id="toggle-display-list" href="/wiki/item/Giants_Contract/"><div class="item_name">Giants Contract</div><div class="siimg"><img src="/static/image/items/giants_contract.png" width="26px"></div></a></li>
+			<li value="Spectre Book"><a id="toggle-display-list" href="/wiki/item/Spectre_Book/"><div class="item_name">Spectre Book</div><div class="siimg"><img src="/static/image/items/spectre_book.png" width="26px"></div></a></li>
+			<li value="Arcanum of Time"><a id="toggle-display-list" href="/wiki/item/Arcanum_of_Time/"><div class="item_name">Arcanum of Time</div><div class="siimg"><img src="/static/image/items/arcanum_of_time.png" width="26px"></div></a></li>
+		</ul>
+	</div>
+	<div class="embed-container">
+		<div class="kn3fae-0 ezpxFx">
+			<div class="sgp62q-0 iuJdTu">
+				<a title="TigerShark's Bot">
+					<img src="/static/image/wiki-image/sylvanpfp3.png" alt="User avatar" class="sgp62q-1 dLWNvE">
+					<h1 class="sgp62q-2 hfwuZw">Sylvan</h1>
+					<span class="sgp62q-3 cTBPsI">BOT</span>
+					<span class="sc-1idsap7-0 dyOqmJ" id="date"></span>
+				</a>
+				{% if item == "yes" %}
+				<span class="span-share" id="{{ name }}"><a onclick="createModale(this,false)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
+				{% else %}
+				<span class="span-share" id="Brave_Bow"><a onclick="createModale(this,false)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
+				{% endif %}
+			</div>
+			<div class="kn3fae-2 eKjosW">
+				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
+					<div class="sc-3qrykn-0 bdFBtt">
+						<span class="sc-3qrykn-1 bsDYtY">
 							{% if item == "yes" %}
-							<span class="span-share" id="{{ name }}"><a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
+							<div class="sc-27l7o2-0 heOpKb" id="name_item">{{ name }}</div>
 							{% else %}
-							<span class="span-share" id="Brave_Bow"><a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
+							<div class="sc-27l7o2-0 heOpKb" id="name_item">Brave Bow</div>
+							{% endif %}
+						</span>
+						<div class="sc-3qrykn-3 hXMbfy">
+							{% if item == "yes" %}
+							<div class="sc-27l7o2-0 heOpKb" id="item_description">{{ item_description|safe }}</div>
+							{% else %}
+							<div class="sc-27l7o2-0 heOpKb" id="item_description">Only the worthly can use this bow, with balanced performance.<br><br><b>Hidden</b><br>Damage Multiplier x 1<br>Base Attack Speed x 1.73</div>
 							{% endif %}
 						</div>
-						<div class="kn3fae-2 eKjosW">
-							<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
-								<div class="sc-3qrykn-0 bdFBtt">
-									<span class="sc-3qrykn-1 bsDYtY">
-										{% if item == "yes" %}
-										<div class="sc-27l7o2-0 heOpKb" id="name_item">{{ name }}</div>
-										{% else %}
-										<div class="sc-27l7o2-0 heOpKb" id="name_item">Brave Bow</div>
-										{% endif %}
-									</span>
-									<div class="sc-3qrykn-3 hXMbfy">
-										{% if item == "yes" %}
-										<div class="sc-27l7o2-0 heOpKb" id="item_description">{{ item_description|safe }}</div>
-										{% else %}
-										<div class="sc-27l7o2-0 heOpKb" id="item_description">Only the worthly can use this bow, with balanced performance.<br><br><b>Hidden</b><br>Damage Multiplier x 1<br>Base Attack Speed x 1.73</div>
-										{% endif %}
+						<div class="sc-3qrykn-4 hQKgZF">
+							<div class="rgqgux-0 dQAxvm">
+								<div class="rgqgux-1 dHYyKL">
+									<div class="sc-27l7o2-0 heOpKb" style="color: white;">
+										<strong>Stats</strong>
 									</div>
-									<div class="sc-3qrykn-4 hQKgZF">
-										<div class="rgqgux-0 dQAxvm">
-											<div class="rgqgux-1 dHYyKL">
-												<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-													<strong>Stats</strong>
-												</div>
-											</div>
-											<div class="rgqgux-2 jFcAhO">
-												<div class="sc-27l7o2-0 heOpKb">
-													{% if item == "yes" %}
-													<div id="item_base">{{ item_base|safe }}</div>
-													<div id="item_great">{{ item_great|safe }}</div>
-													<div id="item_rare">{{ item_rare|safe }}</div>
-													<div id="item_epic">{{ item_epic|safe }}</div>
-													<div id="item_perfect_epic">{{ item_perfect_epic|safe }}</div>
-													<div id="item_legendary">{{ item_legendary|safe }}</div>
-													<div id="item_ancient_legendary">{{ item_ancient_legendary|safe }}</div>
-													<div id="item_mythic">{{ item_mythic|safe }}</div>
-													{% else %}
-													<div id="item_base">A well-balanced weapon<br>Attack + x</div>
-													<div id="item_great"></div>
-													<div id="item_rare">[Rare] Attack + 5%</div>
-													<div id="item_epic">[Epic] Crit Damage + 50%</div>
-													<div id="item_perfect_epic"></div>
-													<div id="item_legendary"></div>
-													<div id="item_ancient_legendary"></div>
-													<div id="item_mythic">[Mythic] Attack increased temporarily after moving</div>
-													{% endif %}
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="sc-3qrykn-6 fTOqMH">
+								</div>
+								<div class="rgqgux-2 jFcAhO">
+									<div class="sc-27l7o2-0 heOpKb">
 										{% if item == "yes" %}
-										<img src="/static/{{ item_image }}" alt="Thumbnail" class="sc-3qrykn-7 fUliQq" id="item_image">
+										<div id="item_base">{{ item_base|safe }}</div>
+										<div id="item_great">{{ item_great|safe }}</div>
+										<div id="item_rare">{{ item_rare|safe }}</div>
+										<div id="item_epic">{{ item_epic|safe }}</div>
+										<div id="item_perfect_epic">{{ item_perfect_epic|safe }}</div>
+										<div id="item_legendary">{{ item_legendary|safe }}</div>
+										<div id="item_ancient_legendary">{{ item_ancient_legendary|safe }}</div>
+										<div id="item_mythic">{{ item_mythic|safe }}</div>
 										{% else %}
-										<img src="/static/image/items/brave_bow_mythic.png" alt="Thumbnail" class="sc-3qrykn-7 fUliQq" id="item_image">
+										<div id="item_base">A well-balanced weapon<br>Attack + x</div>
+										<div id="item_great"></div>
+										<div id="item_rare">[Rare] Attack + 5%</div>
+										<div id="item_epic">[Epic] Crit Damage + 50%</div>
+										<div id="item_perfect_epic"></div>
+										<div id="item_legendary"></div>
+										<div id="item_ancient_legendary"></div>
+										<div id="item_mythic">[Mythic] Attack increased temporarily after moving</div>
 										{% endif %}
 									</div>
 								</div>
 							</div>
 						</div>
+						<div class="sc-3qrykn-6 fTOqMH">
+							{% if item == "yes" %}
+							<img src="/static/{{ item_image }}" alt="Thumbnail" class="sc-3qrykn-7 fUliQq" id="item_image">
+							{% else %}
+							<img src="/static/image/items/brave_bow_mythic.png" alt="Thumbnail" class="sc-3qrykn-7 fUliQq" id="item_image">
+							{% endif %}
+						</div>
 					</div>
 				</div>
 			</div>
-		</main>
-        <footer>
-            <div class="footer-content">
-                <div class="footer-about">
-                    <img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.3.1" alt="image game icon">
-                    <div class="about-content">
-                        <h2>Archero :</h2>
-                        <div>Archero Update will be added with a certains delay</div>
-                        <div class="contact-me">
-                            <div>If you encounter any bugs / anomaly please contact me on discord</div>
-                            <div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="discord_link">
-                    <div class="container_dlink">
-                        <h2>Community Link:</h2> 
-                        <a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMutique's Server</li></a>
-                        <a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
-                    </div>
-                    <div class="container_rlink">
-                        <a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
-                    </div>
-                    <div class="container_flink">
-                        <a href="https://www.facebook.com/archerogame/" target="_blank"><li> FB Archero</li></a>
-                    </div>
-                </div>
-                <div class="thanks">
-                    <h2>Shout-out :</h2>
-                <div class="shout-out">SonHaon, Deth, TigerShark14</div>
-                <div class="shout-out">Ktaplouf, Pew, Lorenz, RedsMeName</div>
-                <div class="shout-out">Everyone who helped me getting data</div>
-                </div>
-            </div>
-        </footer>
+		</div>
 	</div>
-</body>
+</div>
+{% endblock %}
+{% block javascript %}
 <script>
-	const traveling = document.getElementById("traveling")
-
-    for(const item of sidebar){
-        const parentContainer = document.createElement("div")
-        const leftSidebar = document.createElement("div")
-        const childLeftSidebar = document.createElement("div")
-        const rightSidebar = document.createElement("div")
-        const childRightSidebar = document.createElement("a")
-        const image = document.createElement("img")
-
-        traveling.appendChild(parentContainer)
-        parentContainer.appendChild(leftSidebar)
-        parentContainer.appendChild(rightSidebar)
-        leftSidebar.appendChild(childLeftSidebar)
-        rightSidebar.appendChild(childRightSidebar)
-        childRightSidebar.appendChild(image)
-
-        parentContainer.className = item['container']['class']
-        parentContainer.id = item['container']['_name'] + "-sidebar-image"
-        parentContainer.addEventListener('click', function windowHref(){
-            window.location.href = item['container']['onclick']
-        })
-        leftSidebar.className = item['container']['childs_container']['leftsidebar']['self_class']
-        childLeftSidebar.className = item['container']['childs_container']['leftsidebar']['child_class']
-        childLeftSidebar.innerHTML = item['container']['childs_container']['leftsidebar']['child_content']
-        rightSidebar.className = item['container']['childs_container']['rightsidebar']['self_class']
-        childRightSidebar.className = item['container']['childs_container']['rightsidebar']['child_class']
-        image.id = item['container']['childs_container']['rightsidebar']['child_content']['image_id']
-        image.src = item['container']['childs_container']['rightsidebar']['child_content']['image_src']
-        image.width = item['container']['childs_container']['rightsidebar']['child_content']['image_width']
-        image.height = item['container']['childs_container']['rightsidebar']['child_content']['image_height']
-    }
-
-    const themeParentContainer = document.createElement("div")
-    const themeLeftSidebar = document.createElement("div")
-    const themeChildLeftSidebar = document.createElement("div")
-    const themeRightSidebar = document.createElement("div")
-    const themeImg = document.createElement("img")
-
-    traveling.appendChild(themeParentContainer)
-    themeParentContainer.appendChild(themeLeftSidebar)
-    themeParentContainer.appendChild(themeRightSidebar)
-    themeLeftSidebar.appendChild(themeChildLeftSidebar)
-    themeRightSidebar.appendChild(themeImg)
-
-    themeParentContainer.className = "traveling-inline-div"
-    themeParentContainer.id = "switch_dark_mode"
-    themeLeftSidebar.className = "leftsidebarc traveling-left"
-    themeChildLeftSidebar.className = "shcl"
-    themeChildLeftSidebar.innerHTML = "Theme"
-    themeRightSidebar.className = "rightsidebarc traveling-right"
-    themeImg.id = "darkmodeSWITCH" 
-    themeImg.width = "21"
-    themeImg.height = "21"
-
-    var darkmode = "{{ darkmode }}"
-    if(darkmode == "yes"){
-        themeImg.src = "\\static\\image\\img-sidebar\\moon.png"
-    }else if(darkmode == "no"){
-        themeImg.src = "\\static\\image\\img-sidebar\\sun.png"
-    }
-
-    var switchModeBtn = document.getElementById('switch_dark_mode');
-    switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
-        var date = new Date()
-        var darkmodeSWITCH = document.getElementById('darkmodeSWITCH')
-        date.setTime(date.getTime() + (365*24*60*60*1000));
-        var body = document.body;
-        body.classList.toggle("body_dark_mode");
-        if(body.className == "body_dark_mode"){
-            document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
-            darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\moon.png"
-        }else{
-            document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-            darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\sun.png"
-        }
-    })
-
-	var sidebarBtn = document.getElementById('sidebar-icon');
-	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
-		var sidebar = document.getElementById("sidebar")
-		sidebar.classList.toggle('sidebar-active')
-        sidebar.classList.toggle('sidebar-open')
-	})
-
 	var mainDescription = document.getElementsByClassName('main-description')
 	var search_bar = document.getElementById('myInput');
 	var ul_li = document.getElementById('myUL');
@@ -386,5 +217,4 @@
 	const self_inline_div_traveling = document.getElementById('Item-sidebar-image')
 	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
-</body>
-</html>
+{% endblock %} 

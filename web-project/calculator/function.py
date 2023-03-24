@@ -94,80 +94,6 @@ def findFormError(valid_User, valid_StuffTable, valid_HeroTable, valid_TalentTab
 			return
 
 
-################################# FONCTION CALCUL #######################################################
-
-def medal_calc(medalsList):
-	attack = 0
-	attack_var = 0
-	hp = 0
-	hp_var = 0
-	hero_base_enhanced = 0
-	enhance_equipment = 0
-	for i in medalsList:
-		if i.split("-")[0] == "True":
-			type_medal_boost = MedalsStats["type_" + str(i.split("-")[1])]
-			if type_medal_boost == "Attack":
-				attack += MedalsStats["stats_" + str(i.split("-")[1])]
-			elif type_medal_boost == "Attack%":
-				attack_var += MedalsStats["stats_" + str(i.split("-")[1])]
-			elif type_medal_boost == "Hp":
-				hp += MedalsStats["stats_" + str(i.split("-")[1])]
-			elif type_medal_boost == "Hp%":
-				attack_var += MedalsStats["stats_" + str(i.split("-")[1])]
-			elif type_medal_boost == "Hero Base Enhanced":
-				hero_base_enhanced += MedalsStats["stats_" + str(i.split("-")[1])]
-			elif type_medal_boost == "Enhance Equipment":
-				enhance_equipment += MedalsStats["stats_" + str(i.split("-")[1])]
-	returned_stats = {
-		"attack":attack,
-		"attack_var":attack_var,
-		"hp":hp,
-		"hp_var":hp_var,
-		"hero_base_enhanced":hero_base_enhanced,
-		"enhance_equipment":enhance_equipment
-	}
-	return returned_stats
-
-def relics_Stats(list_relic):
-		stats = {
-			'':0,
-			"attack": 0,
-			"attack_var": 0,
-			"hp": 0,
-			"hp_var": 0,
-			"enhance_equipment_var": 0,
-			"hero_base_stats_increased_var": 0,
-			"crit_chance_var": 0,
-			"damage_ranged_units": 0,
-			"damage_melee_units": 0,
-			"damage_humanoid_enemies_var": 0,
-			"damage_undead_var": 0,
-			"damage_heroes_var": 0,
-			"elemental_damage_var": 0,
-			"damage_mobs": 0,
-			"damage_mobs_var": 0,
-			"damage_bosses": 0,
-			"damage_bosses_var": 0,
-			"damage_ground_units": 0,
-			"damage_ground_units_var": 0,
-			"damage_airborne_units": 0,
-			"damage_airborne_units_var": 0,
-			"weapon_melee_damage_var": 0,
-			"weapon_ranged_damage_var": 0,
-			"dodge":0,
-			"attack_jewel_base":0,
-		}
-		relic_name = ["wraith_mask","clown_mask","princess_teddy_bear","belt_of_might","beastmaster_whistle","archmage_robe","shimmering_gem","bloom_of_eternity","challenger_headband","jade_gobelet","veteran_plate","dragonscale","dragon_tooth","scholar_telescope","pirate_shank","giant_greatsword","healing_potion","whirlwind_mauler","special_lance","precision_slingshot","supreme_trinity_alpha","golden_apple","ancient_stele","philosopher_stone","dragon_heart","spectral_duality","mystic_emblem","immortal_brooch","golden_statue","smilling_mask","unmerciful_mask","holy_water","book_of_the_dead","psionist_treasure","book_of_archery","book_of_bravery","angelic_heart","devil_whisper","stone_of_wisdom","empyrean_mirror","fabled_archer_arrow","shiny_gemmed_belt","mythril_flux_mail","stealth_boots","assassin_dagger","gold_bunny","genesis_staff","bloodstained_sword","starcluster_rage","elven_king_cape","spear_of_yggdrasil","dragon_gem","life_crown","sand_of_time","first_lightning","oracle_quill","bloodthirsty_grail","healing_grail","cupids_necklace"]
-		for i in range(0,len(list_relic)):
-			relic = relic_name[i]
-			relic_boost = list_relic[i]
-			for x in range(0,len(relic_boost)):
-				search_data = RelicLabel[str(relic)+ "_" +str(x+1)]
-				new_value = float(stats[search_data]) + float(relic_boost[x])
-				stats.update({search_data:new_value})
-		return stats
-
-
 ################################# FONCTION RESTE #######################################################
 
 def checkCookie(cookie_value:dict):
@@ -235,10 +161,13 @@ def checkUsernameCredentials(username_raw,id_raw):
 	decoded_bytes = urllib.parse.unquote(username_raw).encode('utf-8') # Décode le nom d'utilisateur brut en octets et encode la chaîne de caractères décodée en octets
 	ingame_name = decoded_bytes.decode('utf-8') # Remplace tous les caractères illégaux par "*" après avoir converti la chaîne de bytes en une chaîne de caractères en utf-8
 	ingame_id = urllib.parse.unquote(id_raw)   # Décode l'identifiant de jeu brut
-	if (len(ingame_name) >= 3 and len(ingame_name) < 15 and re.fullmatch(pattern, ingame_id) and ingame_id != "" and ingame_id != None and all(c.isdigit() or c == '-' for c in ingame_id)):
-		return True, ingame_name, ingame_id
+	if 3 <= len(ingame_name) < 20:
+		if re.fullmatch(pattern, ingame_id) and ingame_id != "" and ingame_id != None and all(c.isdigit() or c == '-' for c in ingame_id):
+			return True, ingame_name, ingame_id
+		else:
+			return False, ingame_name, ingame_id,"Ingame id incorrect"
 	else:
-		return False, ingame_name, ingame_id
+		return False, ingame_name, ingame_id,"Username length doesn't match"
 
 def checkIllegalKey(string:str):
 	for i in string:
@@ -253,7 +182,7 @@ def send_webhook(msg):
 	wh = DiscordWebhook(url=WEBHOOK_URL, content=msg, rate_limit_retry=True)
 	wh.execute()
 
-def send_embed(author_name,title_embed,description_embed,field_name,field_value,e_color, request, ping_me:bool):
+def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:str,field_value:str,e_color:int, request, ping_me:bool):
 	if ping_me:
 		content_msg = "<@382930544385851392>"
 	else:

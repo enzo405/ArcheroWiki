@@ -12,7 +12,7 @@ import os
 
 missing_data = []
 lang = ["English","Francais","Deutsch","Russian","Española"]
-
+user_init_primary_key = 6
 
 def views_calc_stats(request,pbid:str,redirectPath:int):
 	global missing_data
@@ -71,96 +71,6 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	refine_book_hp = refine_table_stats.book_refine_hp
 	refine_book_enhanced_equipment = int(refine_table_stats.book_refine_basic_stats)/100
 	brave_privileges_level = int(user_stats.brave_privileges_level)
-	m_cutting_your_teeth = str(medals_table_stats.medals_19) +  "-cutting_your_teeth"
-	m_minor_achiever = str(medals_table_stats.medals_20) +  "-minor_achiever"
-	m_daring_brave_1 = str(medals_table_stats.medals_28) +  "-daring_brave_1"
-	m_fashon_icon_1 = str(medals_table_stats.medals_30) +  "-fashon_icon_1"
-	m_unrivaled = str(medals_table_stats.medals_01) +  "-unrivaled"
-	m_supreme_champion = str(medals_table_stats.medals_02) +  "-supreme_champion"
-	m_preeminent_master = str(medals_table_stats.medals_03) +  "-preeminent_master"
-	m_bright_victor = str(medals_table_stats.medals_04) +  "-bright_victor"
-	m_unstoppable = str(medals_table_stats.medals_05) +  "-unstoppable"
-	m_stark_challenge = str(medals_table_stats.medals_06) +  "-stark_challenge"
-	m_assisiduous = str(medals_table_stats.medals_08) +  "-assisiduous"
-	m_resolute_will = str(medals_table_stats.medals_09) +  "-resolute_will"
-	m_lavish_wealth = str(medals_table_stats.medals_10) +  "-lavish_wealth"
-	m_miner_supremo = str(medals_table_stats.medals_11) +  "-miner_supremo"
-	m_miner_master = str(medals_table_stats.medals_12) +  "-miner_master"
-	m_maze_victor = str(medals_table_stats.medals_13) +  "-maze_victor"
-	m_maze_master = str(medals_table_stats.medals_14) +  "-maze_master"
-	m_undefeated = str(medals_table_stats.medals_15) +  "-undefeated"
-	m_indomitable = str(medals_table_stats.medals_16) +  "-indomitable"
-	m_reliable = str(medals_table_stats.medals_17) +  "-reliable"
-	m_amateur_hour = str(medals_table_stats.medals_18) +  "-amateur_hour"
-	m_deft_skill = str(medals_table_stats.medals_21) +  "-deft_skill"
-	m_flaunting_display = str(medals_table_stats.medals_22) +  "-flaunting_display"
-	m_worthy_warrior_1 = str(medals_table_stats.medals_23) +  "-worthy_warrior_1"
-	m_worthy_warrior_2 = str(medals_table_stats.medals_24) +  "-worthy_warrior_2"
-	m_worthy_warrior_3 = str(medals_table_stats.medals_25) +  "-worthy_warrior_3"
-	m_decked_out_1 = str(medals_table_stats.medals_26) +  "-decked_out_1"
-	m_decked_out_2 = str(medals_table_stats.medals_27) +  "-decked_out_2"
-	m_daring_brave_2 = str(medals_table_stats.medals_29) +  "-daring_brave_2"
-	m_fashion_icon_2 = str(medals_table_stats.medals_31) +  "-fashion_icon_2"
-	m_fashion_icon_3 = str(medals_table_stats.medals_32) +  "-fashion_icon_3"
-	r_wraith_mask = str(relics_table_stats.wraith_mask).split('-')
-	r_clown_mask = str(relics_table_stats.clown_mask).split('-')
-	r_princess_teddy_bear = str(relics_table_stats.princess_teddy_bear).split('-')
-	r_belt_of_might = str(relics_table_stats.belt_of_might).split('-')
-	r_beastmaster_whistle = str(relics_table_stats.beastmaster_whistle).split('-')
-	r_archmage_robe = str(relics_table_stats.archmage_robe).split('-')
-	r_shimmering_gem = str(relics_table_stats.shimmering_gem).split('-')
-	r_bloom_of_eternity = str(relics_table_stats.bloom_of_eternity).split('-')
-	r_challenger_headband = str(relics_table_stats.challenger_headband).split('-')
-	r_jade_gobelet = str(relics_table_stats.jade_gobelet).split('-')
-	r_veteran_plate = str(relics_table_stats.veteran_plate).split('-')
-	r_dragonscale = str(relics_table_stats.dragonscale).split('-')
-	r_dragon_tooth = str(relics_table_stats.dragon_tooth).split('-')
-	r_scholar_telescope = str(relics_table_stats.scholar_telescope).split('-')
-	r_pirate_shank = str(relics_table_stats.pirate_shank).split('-')
-	r_giant_greatsword = str(relics_table_stats.giant_greatsword).split('-')
-	r_healing_potion = str(relics_table_stats.healing_potion).split('-')
-	r_whirlwind_mauler = str(relics_table_stats.whirlwind_mauler).split('-')
-	r_special_lance = str(relics_table_stats.special_lance).split('-')
-	r_precision_slingshot = str(relics_table_stats.precision_slingshot).split('-')
-	r_supreme_trinity_alpha = str(relics_table_stats.supreme_trinity_alpha).split('-')
-	r_golden_apple = str(relics_table_stats.golden_apple).split('-')
-	r_ancient_stele = str(relics_table_stats.ancient_stele).split('-')
-	r_philosopher_stone = str(relics_table_stats.philosopher_stone).split('-')
-	r_dragon_heart = str(relics_table_stats.dragon_heart).split('-')
-	r_spectral_duality = str(relics_table_stats.spectral_duality).split('-')
-	r_mystic_emblem = str(relics_table_stats.mystic_emblem).split('-')
-	r_immortal_brooch = str(relics_table_stats.immortal_brooch).split('-')
-	r_golden_statue = str(relics_table_stats.golden_statue).split('-')
-	r_smilling_mask = str(relics_table_stats.smilling_mask).split('-')
-	r_unmerciful_mask = str(relics_table_stats.unmerciful_mask).split('-')
-	r_holy_water = str(relics_table_stats.holy_water).split('-')
-	r_book_of_the_dead = str(relics_table_stats.book_of_the_dead).split('-')
-	r_psionist_treasure = str(relics_table_stats.psionist_treasure).split('-')
-	r_book_of_archery = str(relics_table_stats.book_of_archery).split('-')
-	r_book_of_bravery = str(relics_table_stats.book_of_bravery).split('-')
-	r_angelic_heart = str(relics_table_stats.angelic_heart).split('-')
-	r_devil_whisper = str(relics_table_stats.devil_whisper).split('-')
-	r_stone_of_wisdom = str(relics_table_stats.stone_of_wisdom).split('-')
-	r_empyrean_mirror = str(relics_table_stats.empyrean_mirror).split('-')
-	r_fabled_archer_arrow = str(relics_table_stats.fabled_archer_arrow).split('-')
-	r_shiny_gemmed_belt = str(relics_table_stats.shiny_gemmed_belt).split('-')
-	r_mythril_flux_mail = str(relics_table_stats.mythril_flux_mail).split('-')
-	r_stealth_boots = str(relics_table_stats.stealth_boots).split('-')
-	r_assassin_dagger = str(relics_table_stats.assassin_dagger).split('-')
-	r_gold_bunny = str(relics_table_stats.gold_bunny).split('-')
-	r_genesis_staff = str(relics_table_stats.genesis_staff).split('-')
-	r_bloodstained_sword = str(relics_table_stats.bloodstained_sword).split('-')
-	r_starcluster_rage = str(relics_table_stats.starcluster_rage).split('-')
-	r_elven_king_cape = str(relics_table_stats.elven_king_cape).split('-')
-	r_spear_of_yggdrasil = str(relics_table_stats.spear_of_yggdrasil).split('-')
-	r_dragon_gem = str(relics_table_stats.dragon_gem).split('-')
-	r_life_crown = str(relics_table_stats.life_crown).split('-')
-	r_sand_of_time = str(relics_table_stats.sand_of_time).split('-')
-	r_first_lightning = str(relics_table_stats.first_lightning).split('-')
-	r_oracle_quill = str(relics_table_stats.oracle_quill).split('-')
-	r_bloodthirsty_grail = str(relics_table_stats.bloodthirsty_grail).split('-')
-	r_healing_grail = str(relics_table_stats.healing_grail).split('-')
-	r_cupids_necklace = str(relics_table_stats.cupids_necklace).split('-')
 	## Get Talents Stats
 	talent_stats_dict = talent_table_stats.getTalentStats()
 	## Get Altar Ascension Stats
@@ -319,11 +229,10 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	weapon_skin_activ = weapon_skins_table_stats.equippedSkin()
 	## Get Weapon Coeff Damage Multiplier
 	weapon_dmg_multiplier = stuff_table_stats.getWeaponCoeff()
-	#________________________ TO BE CONTINUED  ________________________________________
-	medals_list = [m_cutting_your_teeth,m_minor_achiever,m_daring_brave_1,m_fashon_icon_1,m_unrivaled,m_supreme_champion,m_preeminent_master,m_bright_victor,m_unstoppable,m_stark_challenge,m_assisiduous,m_resolute_will,m_lavish_wealth,m_miner_supremo,m_miner_master,m_maze_victor,m_maze_master,m_undefeated,m_indomitable,m_reliable,m_amateur_hour,m_deft_skill,m_flaunting_display,m_worthy_warrior_1,m_worthy_warrior_2,m_worthy_warrior_3,m_decked_out_1,m_decked_out_2,m_daring_brave_2,m_fashion_icon_2,m_fashion_icon_3]
-	medal_stats = medal_calc(medals_list)
-	relic_list = [r_wraith_mask,r_clown_mask,r_princess_teddy_bear,r_belt_of_might,r_beastmaster_whistle,r_archmage_robe,r_shimmering_gem,r_bloom_of_eternity,r_challenger_headband,r_jade_gobelet,r_veteran_plate,r_dragonscale,r_dragon_tooth,r_scholar_telescope,r_pirate_shank,r_giant_greatsword,r_healing_potion,r_whirlwind_mauler,r_special_lance,r_precision_slingshot,r_supreme_trinity_alpha,r_golden_apple,r_ancient_stele,r_philosopher_stone,r_dragon_heart,r_spectral_duality,r_mystic_emblem,r_immortal_brooch,r_golden_statue,r_smilling_mask,r_unmerciful_mask,r_holy_water,r_book_of_the_dead,r_psionist_treasure,r_book_of_archery,r_book_of_bravery,r_angelic_heart,r_devil_whisper,r_stone_of_wisdom,r_empyrean_mirror,r_fabled_archer_arrow,r_shiny_gemmed_belt,r_mythril_flux_mail,r_stealth_boots,r_assassin_dagger,r_gold_bunny,r_genesis_staff,r_bloodstained_sword,r_starcluster_rage,r_elven_king_cape,r_spear_of_yggdrasil,r_dragon_gem,r_life_crown,r_sand_of_time,r_first_lightning,r_oracle_quill,r_bloodthirsty_grail,r_healing_grail,r_cupids_necklace]
-	relics_stats = relics_Stats(relic_list)
+	## Get all Medals Stats
+	medal_stats = medals_table_stats.medal_calc()
+	## Get all Relics Stats
+	relics_stats = relics_table_stats.relics_Stats()
 	############################################## CALCUL #######################################################
 	egg_var_passiv_heros_power_up = int(egg_arch_leader_passiv[3]) + int(egg_medusa_boss_passiv[3]) + int(egg_fire_demon_passiv[3]) + int(egg_krab_boss_passiv[3]) + int(egg_skeleton_king_passiv[1]) + int(egg_skeleton_king_passiv[3]) + int(egg_desert_goliath_passiv[1]) + int(egg_desert_goliath_passiv[3]) + int(egg_ice_demon_passiv[1]) + int(egg_ice_demon_passiv[3]) + int(egg_fireworm_queen_passiv[3]) + int(egg_sinister_touch_passiv[1]) + int(egg_infernal_demon_passiv[3]) + int(egg_scythe_pharoah_passiv[3])
 	egg_var_passiv_enhanced_equipment = int(egg_crimson_witch_passiv[3]) + int(egg_queen_bee_passiv[3]) + int(egg_ice_worm_passiv[1]) + int(egg_ice_worm_passiv[3]) + int(egg_giant_owl_passiv[1]) + int(egg_giant_owl_passiv[3]) + int(egg_infernal_demon_passiv[1]) + int(egg_sinister_touch_passiv[3])
@@ -456,6 +365,7 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	dict_Link = {
 		0:f"/calculator/show/{user_stats.public_id}/",
 		1:f"/calculator/index/", # pour ne pas faire de boucle infini de redirection (utilisé dans affiche_calc)
+		2:f"/wiki/damage-calculator/",
 	}
 	messages.success(request=request,message=f"{ingame_name.capitalize()} updated with success")
 	return HttpResponseRedirect(f'{dict_Link[redirectPath]}')
@@ -463,12 +373,14 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 
 def affiche_calc(request, pbid):
 	darkmode = checkTheme_Request(request)
-	try:
+	try: ## handle error if pbid doesn't exist
 		user_stats = models.user.objects.get(public_id=pbid)
 		try:
 			dmg_calc_table_stats = models.dmg_calc_table.objects.get(user_profile=user_stats)
 		except:
 			return HttpResponseRedirect(f"/stats/calc/{pbid}/1/")
+		if not os.path.exists(f"calculator/static/image/stuff_save/stuff_{user_stats.ingame_name}.png"):
+			return HttpResponseRedirect(f"/stats/calc/{pbid}/0/")
 		valueError = "no"
 		if dmg_calc_table_stats.missing_data != "" and dmg_calc_table_stats.missing_data != "none":
 			valueError = "yes"
@@ -498,7 +410,8 @@ def affiche_calc(request, pbid):
 			"header_msg": "Stats Calculator",
 			"ValueError": valueError,
 			"missing_data": dmg_calc_table_stats.missing_data,
-			"lang":lang
+			"lang":lang,
+			"sidebarContent":SidebarContent
 		}
 		return render(request,'calculator/affiche.html',ctx)
 	except Exception as e:
@@ -507,12 +420,8 @@ def affiche_calc(request, pbid):
 
 
 def index_calc(request):
-	cookies = request.COOKIES
-	if "modeDisplay" in list(cookies):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
-	cookie_value = checkCookie(cookies)
+	darkmode = checkTheme_Request(request)
+	cookie_value = checkCookie(request.COOKIES)
 	if len(cookie_value) >= 1:
 		try_access = False
 		try:
@@ -553,18 +462,13 @@ def index_calc(request):
 		for i in notuserlist:
 			profile = models.user.objects.get(ingame_id=i)
 			user_liste.remove(profile)
-		requestJson(request)
-		return render(request,"calculator/index.html",{"listALL": user_liste, "self_ingame_name":self_ingame_name,"self_global_atk_save":self_global_atk_save,"self_global_hp_save":self_global_hp_save, "self_public_id":self_public_id, "show_table": show_table,"darkmode": darkmode, "header_msg": "Stats Calculator","lang":lang, "number_user":number_user, "try_access":try_access, "ingame_name_cookie":ingame_name_cookie})
+		return render(request,"calculator/index.html",{"listALL": user_liste, "self_ingame_name":self_ingame_name,"self_global_atk_save":self_global_atk_save,"self_global_hp_save":self_global_hp_save, "self_public_id":self_public_id, "show_table": show_table,"darkmode": darkmode, "header_msg": "Stats Calculator","lang":lang, "number_user":number_user, "try_access":try_access, "ingame_name_cookie":ingame_name_cookie,"sidebarContent":SidebarContent})
 	else:
 		return redirect("/login")
 
 
 def formulaire_calc(request):
-	cookie_keys = list(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
+	darkmode = checkTheme_Request(request)
 	cookie_value = checkCookie(request.COOKIES)
 	if len(cookie_value) >= 1:
 		cookie_request_id = list(cookie_value.values())[0]
@@ -578,7 +482,7 @@ def formulaire_calc(request):
 	except:
 		already_Profile = False
 	if request.method == "POST" or already_Profile:
-		return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang})
+		return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
 	else :
 		form_User = User()
 		form_StuffTable = StuffTable()
@@ -597,7 +501,7 @@ def formulaire_calc(request):
 		form_MedalTable = MedalsTable()
 		form_RelicsTable = RelicsTable()
 		form_WeaponSkinTable = WeaponSkinTable()
-		user_init = models.user.objects.get(id=6)
+		user_init = models.user.objects.get(id=user_init_primary_key)
 		ctx = {
 			'form_User': form_User,
 			'form_StuffTable': form_StuffTable,
@@ -622,18 +526,14 @@ def formulaire_calc(request):
 			"darkmode": darkmode,
 			"header_msg": "Create Profile",
 			"lang":lang,
-			"pk_id":user_init.pk
+			"pk_id":user_init.pk,
+			"sidebarContent":SidebarContent
 		}
-	requestJson(request)
 	return render(request,"calculator/formulaire.html",ctx)
 
 
 def traitement_calc(request):
-	cookie_keys = list(request.COOKIES)
-	if "modeDisplay" in list(cookie_keys):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
+	darkmode = checkTheme_Request(request)
 	form_User = User(request.POST)
 	form_StuffTable = StuffTable(request.POST)
 	form_HeroTable = HeroTable(request.POST)
@@ -735,14 +635,12 @@ def traitement_calc(request):
 			'form_JewelTypeTable' :form_JewelTypeTable,'form_JewelLevelTable' :form_JewelLevelTable,'form_EggTable' :form_EggTable,
 			'form_EggEquippedTable' :form_EggEquippedTable,'form_DragonTable' :form_DragonTable,'form_RunesTable' :form_RunesTable,
 			'form_ReforgeTable' :form_ReforgeTable,'form_RefineTable' :form_RefineTable,'form_MedalTable' :form_MedalTable,'form_RelicsTable' :form_RelicsTable,
-			'form_WeaponSkinTable' :form_WeaponSkinTable,'darkmode': darkmode, 'header_msg': 'Create Profile','lang':lang, "public_id":pbid,"cookie_request_id":ingame_id,"cookie_request_name":ingame_name,"pk_id":pk_id})
+			'form_WeaponSkinTable' :form_WeaponSkinTable,'darkmode': darkmode, 'header_msg': 'Create Profile','lang':lang, "public_id":pbid,"cookie_request_id":ingame_id,
+			"cookie_request_name":ingame_name,"pk_id":pk_id,"sidebarContent":SidebarContent})
 
 
 def update_calc(request, pbid):
-	if "modeDisplay" in list(request.COOKIES):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
+	darkmode = checkTheme_Request(request)
 	try:
 		user_stats = models.user.objects.get(public_id=pbid)
 	except:
@@ -821,12 +719,8 @@ def update_calc(request, pbid):
 			"darkmode": darkmode,
 			"header_msg": "Stats Calculator",
 			"lang":lang,
+			"sidebarContent":SidebarContent
 		}
-		requestJson(request)
-		try:
-			os.remove(f"calculator/static/image/stuff_save/stuff_{username_unlowered}.png")
-		except:
-			pass
 		return render(request,'calculator/formulaire.html',ctx)
 	else:
 		return HttpResponseRedirect("/calculator/index/")
@@ -850,10 +744,7 @@ def updatetraitement_calc(request, pbid):
 	medal_table_stats = models.medals_table.objects.get(user_profile=user_ingame_id)
 	relics_table_stats = models.relics_table.objects.get(user_profile=user_ingame_id)
 	weapon_skins_table_stats = models.weapon_skins_table.objects.get(user_profile=user_ingame_id)
-	if "modeDisplay" in list(request.COOKIES):
-		darkmode = "yes"
-	else:
-		darkmode = "no"
+	darkmode = checkTheme_Request(request)
 	form_User = User(request.POST,instance=user_ingame_id)
 	form_StuffTable = StuffTable(request.POST,instance=stuff_table_stats)
 	form_HeroTable = HeroTable(request.POST,instance=hero_table_stats)
@@ -958,7 +849,7 @@ def updatetraitement_calc(request, pbid):
 			'form_JewelTypeTable' :form_JewelTypeTable,'form_JewelLevelTable' :form_JewelLevelTable,'form_EggTable' :form_EggTable,
 			'form_EggEquippedTable' :form_EggEquippedTable,'form_DragonTable' :form_DragonTable,'form_RunesTable' :form_RunesTable,
 			'form_ReforgeTable' :form_ReforgeTable,'form_RefineTable' :form_RefineTable,"form_MedalTable":form_MedalTable,"form_RelicsTable":form_RelicsTable,"form_WeaponSkinTable":form_WeaponSkinTable,
-			"id_token": pbid, "value_error": value_error_msg,"darkmode": darkmode, "header_msg": "Stats Calculator", "lang":lang
+			"id_token": pbid, "value_error": value_error_msg,"darkmode": darkmode, "header_msg": "Stats Calculator", "lang":lang,"sidebarContent":SidebarContent
 		}
 		return render(request,"calculator/formulaire.html",ctx)
 
@@ -967,11 +858,21 @@ def delete_user(request, pbid):
 	user = models.user.objects.get(public_id=pbid)
 	if request.user.is_superuser:
 		user.delete()
+		try:
+			os.remove(f"calculator/static/image/stuff_save/stuff_{user.ingame_name}.png")
+		except:
+			pass
+	else:
+		cookie_value = checkCookie(request.COOKIES)
+		try:
+			ingame_name_cookie = list(cookie_value.keys())[0]
+		except:
+			ingame_name_cookie = "unknown"
+		send_embed(ingame_name_cookie,user.ingame_name,f"{ingame_name_cookie} tried to delete {user.ingame_name}'s profile","","",'FF0000',request,True)
 	return HttpResponseRedirect(f"/calculator/index")
 
 
 
 def damage_calc(request, pbid):
-	# TODO
 	# one page request POST form
 	return HttpResponseRedirect(f"/calculator/index")

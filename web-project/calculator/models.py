@@ -108,22 +108,22 @@ class user(models.Model):
 
 	def getOtherModels(self):
 			return {
-				"stuff_table":self.stuff_table_set.get(),
-				"hero_table":self.hero_table_set.get(),
-				"talent_table":self.talent_table_set.get(),
-				"skin_table":self.skin_table_set.get(),
-				"altar_table":self.altar_table_set.get(),
-				"jewel_type_table":self.jewel_type_table_set.get(),
-				"jewel_level_table":self.jewel_level_table_set.get(),
-				"egg_table":self.egg_table_set.get(),
-				"egg_equipped_table":self.egg_equipped_table_set.get(),
-				"dragon_table":self.dragon_table_set.get(),
-				"runes_table":self.runes_table_set.get(),
-				"reforge_table":self.reforge_table_set.get(),
-				"refine_table":self.refine_table_set.get(),
-				"medals_table":self.medals_table_set.get(),
-				"relics_table":self.relics_table_set.get(),
-				"weapon_skins_table":self.weapon_skins_table_set.get(),
+				"stuff_table":stuff_table(self.stuff_table_set.get()),
+				"hero_table":hero_table(self.hero_table_set.get()),
+				"talent_table":talent_table(self.talent_table_set.get()),
+				"skin_table":skin_table(self.skin_table_set.get()),
+				"altar_table":altar_table(self.altar_table_set.get()),
+				"jewel_type_table":jewel_type_table(self.jewel_type_table_set.get()),
+				"jewel_level_table":jewel_level_table(self.jewel_level_table_set.get()),
+				"egg_table":egg_table(self.egg_table_set.get()),
+				"egg_equipped_table":egg_equipped_table(self.egg_equipped_table_set.get()),
+				"dragon_table":dragon_table(self.dragon_table_set.get()),
+				"runes_table":runes_table(self.runes_table_set.get()),
+				"reforge_table":reforge_table(self.reforge_table_set.get()),
+				"refine_table":refine_table(self.refine_table_set.get()),
+				"medals_table":medals_table(self.medals_table_set.get()),
+				"relics_table":relics_table(self.relics_table_set.get()),
+				"weapon_skins_table":weapon_skins_table(self.weapon_skins_table_set.get()),
 			}
 
 	def __str__(self):
@@ -1555,6 +1555,7 @@ class runes_table(models.Model):
 			"flat_dmg_mob":0.0,
 			"var_dmg_mob":0.0,
 			"var_dmg_hero":0.0,
+			"var_all_dmg":0.0,
 			"var_elemental_dmg":0.0,
 			"var_crit_rate":0.0,
 			"var_crit_dmg":0.0,
@@ -1813,7 +1814,41 @@ class medals_table(models.Model):
 	def __str__(self):
 		chaine = f"{self.user_profile.ingame_id} | {self.user_profile.ingame_name}"
 		return chaine
-
+	
+	def medal_calc(self):
+		medalsList = []
+		for k,v in self.dictionnaire().items():
+			medalsList.append(f"{v}-{k}")
+		attack = 0
+		attack_var = 0
+		hp = 0
+		hp_var = 0
+		hero_base_enhanced = 0
+		enhance_equipment = 0
+		for i in medalsList:
+			medal = i.split("-")
+			if medal[0] == "True":
+				type_medal_boost = MedalsStats["type_" + str(medal[1])]
+				if type_medal_boost == "Attack":
+					attack += MedalsStats["stats_" + str(medal[1])]
+				elif type_medal_boost == "Attack%":
+					attack_var += MedalsStats["stats_" + str(medal[1])]
+				elif type_medal_boost == "Hp":
+					hp += MedalsStats["stats_" + str(medal[1])]
+				elif type_medal_boost == "Hp%":
+					attack_var += MedalsStats["stats_" + str(medal[1])]
+				elif type_medal_boost == "Hero Base Enhanced":
+					hero_base_enhanced += MedalsStats["stats_" + str(medal[1])]
+				elif type_medal_boost == "Enhance Equipment":
+					enhance_equipment += MedalsStats["stats_" + str(medal[1])]
+		return {
+			"attack":attack,
+			"attack_var":attack_var,
+			"hp":hp,
+			"hp_var":hp_var,
+			"hero_base_enhanced":hero_base_enhanced,
+			"enhance_equipment":enhance_equipment
+		}
 
 class relics_table(models.Model):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
@@ -1946,6 +1981,49 @@ class relics_table(models.Model):
 		chaine = f"{self.user_profile.ingame_id} | {self.user_profile.ingame_name}"
 		return chaine
 
+
+	def relics_Stats(self):
+		list_relic = []
+		for k,v in self.dictionnaire().items():
+			if k != "user_profile":
+				list_relic.append(v.split("-"))
+		stats = {
+			'':0,
+			"attack": 0,
+			"attack_var": 0,
+			"hp": 0,
+			"hp_var": 0,
+			"enhance_equipment_var": 0,
+			"hero_base_stats_increased_var": 0,
+			"crit_chance_var": 0,
+			"damage_ranged_units": 0,
+			"damage_melee_units": 0,
+			"damage_humanoid_enemies_var": 0,
+			"damage_undead_var": 0,
+			"damage_heroes_var": 0,
+			"elemental_damage_var": 0,
+			"damage_mobs": 0,
+			"damage_mobs_var": 0,
+			"damage_bosses": 0,
+			"damage_bosses_var": 0,
+			"damage_ground_units": 0,
+			"damage_ground_units_var": 0,
+			"damage_airborne_units": 0,
+			"damage_airborne_units_var": 0,
+			"weapon_melee_damage_var": 0,
+			"weapon_ranged_damage_var": 0,
+			"dodge":0,
+			"attack_jewel_base":0,
+		}
+		relic_name = ["wraith_mask","clown_mask","princess_teddy_bear","belt_of_might","beastmaster_whistle","archmage_robe","shimmering_gem","bloom_of_eternity","challenger_headband","jade_gobelet","veteran_plate","dragonscale","dragon_tooth","scholar_telescope","pirate_shank","giant_greatsword","healing_potion","whirlwind_mauler","special_lance","precision_slingshot","supreme_trinity_alpha","golden_apple","ancient_stele","philosopher_stone","dragon_heart","spectral_duality","mystic_emblem","immortal_brooch","golden_statue","smilling_mask","unmerciful_mask","holy_water","book_of_the_dead","psionist_treasure","book_of_archery","book_of_bravery","angelic_heart","devil_whisper","stone_of_wisdom","empyrean_mirror","fabled_archer_arrow","shiny_gemmed_belt","mythril_flux_mail","stealth_boots","assassin_dagger","gold_bunny","genesis_staff","bloodstained_sword","starcluster_rage","elven_king_cape","spear_of_yggdrasil","dragon_gem","life_crown","sand_of_time","first_lightning","oracle_quill","bloodthirsty_grail","healing_grail","cupids_necklace"]
+		for i in range(0,len(list_relic)):
+			relic = relic_name[i]
+			relic_boost = list_relic[i]
+			for x in range(0,len(relic_boost)):
+				search_data = RelicLabel[str(relic)+ "_" +str(x+1)]
+				new_value = float(stats[search_data]) + float(relic_boost[x])
+				stats.update({search_data:new_value})
+		return stats
 
 
 class promo_code(models.Model):

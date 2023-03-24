@@ -85,9 +85,6 @@
 		grid-gap: 50px;
 		margin: 10px 0 14px 7%;
 	}
-	.main-index{
-		margin-top: 10px;
-	}
 }
 
 @media screen and (min-width : 1070px){ /* pour résolution supérieux à 1070px */	
@@ -198,6 +195,7 @@
 	}
 	.main-affiche{
 		margin-top: 12px;
+		margin-bottom: 12px;
 	}
 	.detail-stats{
 		margin-top: 10px;
@@ -353,16 +351,6 @@
 }
 
 
-*{
-	margin:0;
-}
-
-body{
-	background-color: #e5e5f7;
-}
-.body_dark_mode{
-	background-color: #1c2429;
-}
 select {
 	background-color: #DFE8E3;
 	border-color: #9CB4B5;
@@ -414,7 +402,7 @@ main{
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	margin-bottom: 100px;
+	margin-bottom: 80px;
 }
 .go_to_details{
 	cursor: pointer;
@@ -427,7 +415,7 @@ main{
 	z-index: 49;
 }
 .body_dark_mode .go_to_details{
-	background-color: #6539b2;
+	background-color: #525a6c;
 	color: white;
 }
 .body_dark_mode .go_to_details a{
@@ -467,7 +455,7 @@ main{
 	align-items: center;
 }
 .body_dark_mode .stats-box{
-	background-color: transparent;
+	background-color: #4b4b4b;
     color: rgb(228, 228, 228);
     border: solid 0px;
     border-bottom: 1px solid;
@@ -487,6 +475,11 @@ main{
 /*       FORMULAIRE.HTML          */
 /*       FORMULAIRE.HTML          */
 /*       FORMULAIRE.HTML          */
+.container-form{
+	align-items: center;
+    display: flex;
+    flex-direction: column;
+}
 .stuff{
 	display: flex;
 	flex-direction: column;
@@ -641,7 +634,7 @@ main{
 	background-color: #F8D48B;
 }
 .body_dark_mode .container{
-	background-color: #8750e1;
+	background-color: #525a6c;
 }
 .runes_form{
 	grid-template-columns: repeat(auto-fill,285px);
@@ -651,6 +644,11 @@ main{
 	display: flex;
     flex-flow: column;
     width: -webkit-fill-available;
+}
+.body_dark_mode .container_rune,
+.body_dark_mode .jewel_table,
+.body_dark_mode .dragon_box{
+	border: black solid 1px;
 }
 .legend_rune_container{
 	display: flex;
@@ -917,6 +915,9 @@ input:invalid {
 	filter: grayscale(0);
 	background-color: #e95858;
 }
+.body_dark_mode .checkbox-weapon-skin input[type="checkbox"]:checked + label {
+	background-color: #272222;
+}
 @media (max-width: 767px) {
 	.checkbox-weapon-skin label {
 	  width: 40px;
@@ -953,8 +954,6 @@ input:invalid {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-bottom: 20px;
-	margin-top: 20px;
 	height: 100%;
 }
 .container_table_all{
@@ -973,9 +972,9 @@ input:invalid {
 	cursor: pointer;
 }
 .body_dark_mode .btn-table{
-	background: #4a5162;
+	background: #525a6c;
 	color: rgb(228, 228, 228);
-	border: solid 1px #1C1459;
+	border: solid 1px #000;
 }
 .div-table-index{
 	display: flex;
@@ -1018,7 +1017,7 @@ input:invalid {
     border: 1px solid #202932;
 }
 .body_dark_mode .table-header{
-	background-color: #8750e1;
+	background-color: #737373;
 }
 .body_dark_mode .table-header th{
 	background-color: transparent;
@@ -1079,7 +1078,7 @@ input:invalid {
 	color: white;
 }
 .body_dark_mode #pagination button.active {
-	background-color: #8750e1;
+	background-color: #45385c;
 }
 .index-damage-calc{
 	display: flex;

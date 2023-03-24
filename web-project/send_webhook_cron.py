@@ -21,7 +21,7 @@ def clearFile():
 WEBHOOK_URL = "https://discord.com/api/webhooks/#########/#############################################"
 webhook = DiscordWebhook(url=WEBHOOK_URL, content="", rate_limit_retry=True)
 with open('calculator/static/json/requetes.json','r', encoding='utf-8') as f:
-	user = DiscordEmbed(title='', description='', color='1ed9be')
+	user = DiscordEmbed(title='Number Request', description='', color='1ed9be')
 	suspect = []
 	for i in json.load(f)['user']:
 		if checkUsernameCredentials(i['username'],i['ingame_id']):

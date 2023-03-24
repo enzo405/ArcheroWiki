@@ -1,393 +1,224 @@
-<!doctype html>
-<html lang="en">
-<head>
-	{% load static %}
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.3.1">
-	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.1">
-	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.3.1">
-	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.3.1">
-	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Archero - Wiki</title>
-    <script src="{% static 'main.js' %}?version=1.3.1"></script>
-	<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-
-	<meta property="og:type" content="website">
-	<meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-	{% if skill == "yes" %}
-	<meta property="og:title" content="{{ name }}">
-	<meta property="og:url" content="{{ url_cpy }}">
-	<meta property="og:description" content="{{ skill_description|safe }}<br>{{ skill_base|safe }}">
-	<meta property="og:image" content="{% static image_skill %}?version=1.3.1">
-	{% else %}
-	<meta property="og:title" content="Archero - Skill Description">
-	<meta property="og:url" content="https://stats.wiki-archero.com/wiki/skill-list">
-	<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-	<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.1">
-	{% endif %}
-</head>
-{% if darkmode == "yes" %}
-<body class="body_dark_mode">
-{% elif darkmode == "no" %}
-<body>
+{% extends "template.html" %}
+{% load static %}
+{% block head %}
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.7">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.3.7">
+<title>Archero - Wiki</title>
+<meta property="og:type" content="website">
+<meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+{% if skill == "yes" %}
+<meta property="og:title" content="{{ name }}">
+<meta property="og:url" content="{{ url_cpy }}">
+<meta property="og:description" content="{{ skill_description|safe }}<br>{{ skill_base|safe }}">
+<meta property="og:image" content="{% static image_skill %}?version=1.3.7">
+{% else %}
+<meta property="og:title" content="Archero - Skill Description">
+<meta property="og:url" content="https://stats.wiki-archero.com/wiki/skill-list">
+<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.7">
 {% endif %}
-<noscript>
-	<div id="no-script-message">
-		<p>Please enable JavaScript to use this website.</p>
-	</div>
-</noscript>
-{% if messages %}
-	{% for message in messages %}
+{% endblock %}
+{% block header_content %}{{ header_msg }}{% endblock %}
+{% block content %}
+<div class="content_container">
+	<div class="search-bar" id="search-bar">
 		<script>
-			var stringElement = '<div{% if message.tags %} class="{{ message.tags }}-messages"{% endif %}>{{ message }}</div>'
-			createModale(stringElement)
-		</script>
-	{% endfor %}
-{% endif %}
-    <div class="sidebar sidebar-open sidebar-position-f" id="sidebar">
-        <div class="sidebar-icon" id="sidebar-icon">
-            <div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
-            <div class="rightsidebarc" id="rscimg">
-                <svg id="svg-filter-sidebar" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
-            </div>
-        </div>
-        <div class="traveling" id="traveling">
-            <!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
-        </div>
-    </div>
-	<div class="main-container">
-		<div class="container cmcath">
-			<header class="header-container">
-				<div class="header-container-1"></div>
-				<div class="header-container-2 header_msg"><h2>{{ header_msg }}</h2></div>
-				<div class="header-container-3 globe_header_icon">
-					<!-- <label for="lang"><i class="fa-solid fa-globe"></i></label>
-					<select name="lang" id="lang">
-						{% for language in lang %}
-						<option value="{{language}}">{{language}}</option>
-						{% endfor %}
-					</select> -->
-				</div>
-			</header>
-			<main class="main-description">
-				<div class="search-bar" id="search-bar">
-					<script>
-                        function filterList() {
-                            var input = document.getElementById("myInput");
-                            var filter = input.value.toUpperCase();
-                            var ul = document.getElementById("myUL");
-                            var li = ul.getElementsByTagName("li");
+			function filterList() {
+				var input = document.getElementById("myInput");
+				var filter = input.value.toUpperCase();
+				var ul = document.getElementById("myUL");
+				var li = ul.getElementsByTagName("li");
 
-                            for (var i = 0; i < li.length; i++) {
-                                var a = li[i].getElementsByTagName("a")[0];
-                                var txtValue = a.textContent || a.innerText;
-                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                    li[i].style.display = "";
-                                } else {
-                                    li[i].style.display = "none";
-                                }
-                            }
-                        }
-					</script>
-					{% if skill == "yes" %}
-					<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for skill.." value="{{ name }}">
-					{% else %}
-					<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for skill..">
-					{% endif %}
-					<ul id="myUL" class="searchbar-ul-skill" style="display: none;">
-						<li value="Bouncy Wall"><a href="/wiki/skill-list/Bouncy_Wall" id="toggle-display-list">Bouncy Wall<img class="img-dropdown-icon" src="/static/image/skill/bouncy_wall.png"></a></li>
-						<li value="Diagonal Arrows"><a href="/wiki/skill-list/Diagonal_Arrows" id="toggle-display-list">Diagonal Arrows<img class="img-dropdown-icon" src="/static/image/skill/diagonal_arrows.png"></a></li>
-						<li value="Front Arrow"><a href="/wiki/skill-list/Front_Arrow" id="toggle-display-list">Front Arrow<img class="img-dropdown-icon" src="/static/image/skill/front_arrow.png"></a></li>
-						<li value="Multishot"><a href="/wiki/skill-list/Multishot" id="toggle-display-list">Multishot<img class="img-dropdown-icon" src="/static/image/skill/multishot.png"></a></li>
-						<li value="Piercing Shot"><a href="/wiki/skill-list/Piercing_Shot" id="toggle-display-list">Piercing Shot<img class="img-dropdown-icon" src="/static/image/skill/piercing_shot.png"></a></li>
-						<li value="Rear Arrow"><a href="/wiki/skill-list/Rear_Arrow" id="toggle-display-list">Rear Arrow<img class="img-dropdown-icon" src="/static/image/skill/rear_arrow.png"></a></li>
-						<li value="Ricochet"><a href="/wiki/skill-list/Ricochet" id="toggle-display-list">Ricochet<img class="img-dropdown-icon" src="/static/image/skill/ricochet.png"></a></li>
-						<li value="Side Arrow"><a href="/wiki/skill-list/Side_Arrow" id="toggle-display-list">Side Arrow<img class="img-dropdown-icon" src="/static/image/skill/side_arrow.png"></a></li>
-						<li value="Explosive Arrow"><a href="/wiki/skill-list/Explosive_Arrow" id="toggle-display-list">Explosive Arrow<img class="img-dropdown-icon" src="/static/image/skill/explosive_arrow.png"></a></li>
-						<li value="Price of Strength"><a href="/wiki/skill-list/Price_of_Strength" id="toggle-display-list">Price of Strength<img class="img-dropdown-icon" src="/static/image/skill/price_of_strength.png"></a></li>
-						<li value="Element Burst"><a href="/wiki/skill-list/Element_Burst" id="toggle-display-list">Element Burst<img class="img-dropdown-icon" src="/static/image/skill/element_burst.png"></a></li>
-						<li value="Element Upgrade"><a href="/wiki/skill-list/Element_Upgrade" id="toggle-display-list">Element Upgrade<img class="img-dropdown-icon" src="/static/image/skill/element_upgrade.png"></a></li>        
-						<li value="Attack Boost"><a href="/wiki/skill-list/Attack_Boost" id="toggle-display-list">Attack Boost<img class="img-dropdown-icon" src="/static/image/skill/attack_boost.png"></a></li>
-						<li value="Attack Speed Boost"><a href="/wiki/skill-list/Attack_Speed_Boost" id="toggle-display-list">Attack Speed Boost<img class="img-dropdown-icon" src="/static/image/skill/attack_speed_boost.png"></a></li>  
-						<li value="Crit Master"><a href="/wiki/skill-list/Crit_Master" id="toggle-display-list">Crit Master<img class="img-dropdown-icon" src="/static/image/skill/crit_master.png"></a></li>
-						<li value="HP Boost"><a href="/wiki/skill-list/HP_Boost" id="toggle-display-list">HP Boost<img class="img-dropdown-icon" src="/static/image/skill/hp_boost.png"></a></li>
-						<li value="Headshot"><a href="/wiki/skill-list/Headshot" id="toggle-display-list">Headshot<img class="img-dropdown-icon" src="/static/image/skill/headshot.png"></a></li>
-						<li value="Dwarf"><a href="/wiki/skill-list/Dwarf" id="toggle-display-list">Dwarf<img class="img-dropdown-icon" src="/static/image/skill/dwarf.png"></a></li>
-						<li value="Giant"><a href="/wiki/skill-list/Giant" id="toggle-display-list">Giant<img class="img-dropdown-icon" src="/static/image/skill/giant.png"></a></li>
-						<li value="Smart"><a href="/wiki/skill-list/Smart" id="toggle-display-list">Smart<img class="img-dropdown-icon" src="/static/image/skill/smart.png"></a></li>
-						<li value="Strong Strong Heart"><a href="/wiki/skill-list/Strong_Strong_Heart" id="toggle-display-list">Strong Strong Heart<img class="img-dropdown-icon" src="/static/image/skill/strong_strong_heart.png"></a></li>
-						<li value="Hermes Shoes"><a href="/wiki/skill-list/Hermes_Shoes" id="toggle-display-list">Hermes Shoes<img class="img-dropdown-icon" src="/static/image/skill/hermes_shoes.png"></a></li>
-						<li value="Overdraft"><a href="/wiki/skill-list/Overdraft" id="toggle-display-list">Overdraft<img class="img-dropdown-icon" src="/static/image/skill/overdraft.png"></a></li>
-						<li value="Inspire"><a href="/wiki/skill-list/Inspire" id="toggle-display-list">Inspire<img class="img-dropdown-icon" src="/static/image/skill/inspire.png"></a></li>
-						<li value="Attack Plus"><a href="/wiki/skill-list/Attack_Plus" id="toggle-display-list">Attack Plus<img class="img-dropdown-icon" src="/static/image/skill/attack_plus.png"></a></li>
-						<li value="Crit Plus"><a href="/wiki/skill-list/Crit_Plus" id="toggle-display-list">Crit Plus<img class="img-dropdown-icon" src="/static/image/skill/crit_plus.png"></a></li>
-						<li value="HP Plus"><a href="/wiki/skill-list/HP_Plus" id="toggle-display-list">HP Plus<img class="img-dropdown-icon" src="/static/image/skill/hp_plus.png"></a></li>
-						<li value="Speed Plus"><a href="/wiki/skill-list/Speed_Plus" id="toggle-display-list">Speed Plus<img class="img-dropdown-icon" src="/static/image/skill/speed_plus.png"></a></li>
-						<li value="Crit Aura"><a href="/wiki/skill-list/Crit_Aura" id="toggle-display-list">Crit Aura<img class="img-dropdown-icon" src="/static/image/skill/crit_aura.png"></a></li>
-						<li value="Bloodthirst Aura"><a href="/wiki/skill-list/Bloodthirst_Aura" id="toggle-display-list">Bloodthirst Aura<img class="img-dropdown-icon" src="/static/image/skill/bloodthirst_aura.png"></a></li>
-						<li value="Speed Aura"><a href="/wiki/skill-list/Speed_Aura" id="toggle-display-list">Speed Aura<img class="img-dropdown-icon" src="/static/image/skill/speed_aura.png"></a></li>
-						<li value="Dodge Aura"><a href="/wiki/skill-list/Dodge_Aura" id="toggle-display-list">Dodge Aura<img class="img-dropdown-icon" src="/static/image/skill/dodge_aura.png"></a></li>
-						<li value="Dodge Challenge"><a href="/wiki/skill-list/Dodge_Challenge" id="toggle-display-list">Dodge Challenge<img class="img-dropdown-icon" src="/static/image/skill/dodge_challenge.png"></a></li>
-						<li value="Dodge Burst"><a href="/wiki/skill-list/Dodge_Burst" id="toggle-display-list">Dodge Burst<img class="img-dropdown-icon" src="/static/image/skill/dodge_burst.png"></a></li>
-						<li value="Agility"><a href="/wiki/skill-list/Agility" id="toggle-display-list">Agility<img class="img-dropdown-icon" src="/static/image/skill/agility.png"></a></li>
-						<li value="Fatal Excitement"><a href="/wiki/skill-list/Fatal_Excitement" id="toggle-display-list">Fatal Excitement<img class="img-dropdown-icon" src="/static/image/skill/fatal_excitement.png"></a></li>
-						<li value="Fury"><a href="/wiki/skill-list/Fury" id="toggle-display-list">Fury<img class="img-dropdown-icon" src="/static/image/skill/fury.png"></a></li>
-						<li value="Grace"><a href="/wiki/skill-list/Grace" id="toggle-display-list">Grace<img class="img-dropdown-icon" src="/static/image/skill/grace.png"></a></li>
-						<li value="Rage"><a href="/wiki/skill-list/Rage" id="toggle-display-list">Rage<img class="img-dropdown-icon" src="/static/image/skill/rage.png"></a></li>
-						<li value="Bloodthirst"><a href="/wiki/skill-list/Bloodthirst" id="toggle-display-list">Bloodthirst<img class="img-dropdown-icon" src="/static/image/skill/bloodthirst.png"></a></li>
-						<li value="Heal"><a href="/wiki/skill-list/Heal" id="toggle-display-list">Heal<img class="img-dropdown-icon" src="/static/image/skill/heal.png"></a></li>
-						<li value="Strong Heart"><a href="/wiki/skill-list/Strong_Heart" id="toggle-display-list">Strong Heart<img class="img-dropdown-icon" src="/static/image/skill/strong_heart.png"></a></li>
-						<li value="Heal Overflow"><a href="/wiki/skill-list/Heal_Overflow" id="toggle-display-list">Heal Overflow<img class="img-dropdown-icon" src="/static/image/skill/heal_overflow.png"></a></li>
-						<li value="Angelic Blessing"><a href="/wiki/skill-list/Angelic_Blessing" id="toggle-display-list">Angelic Blessing<img class="img-dropdown-icon" src="/static/image/skill/angelic_blessing.png"></a></li>
-						<li value="Dodge Master"><a href="/wiki/skill-list/Dodge_Master" id="toggle-display-list">Dodge Master<img class="img-dropdown-icon" src="/static/image/skill/dodge_master.png"></a></li>
-						<li value="Invincibility Star"><a href="/wiki/skill-list/Invincibility_Star" id="toggle-display-list">Invincibility Star<img class="img-dropdown-icon" src="/static/image/skill/invincibility_star.png"></a></li>
-						<li value="Shield Guard"><a href="/wiki/skill-list/Shield_Guard" id="toggle-display-list">Shield Guard<img class="img-dropdown-icon" src="/static/image/skill/shield_guard.png"></a></li>
-						<li value="Slow Projectile"><a href="/wiki/skill-list/Slow_Projectile" id="toggle-display-list">Slow Projectile<img class="img-dropdown-icon" src="/static/image/skill/slow_projectile.png"></a></li>
-						<li value="Chilling Blast"><a href="/wiki/skill-list/Chilling_Blast" id="toggle-display-list">Chilling Blast<img class="img-dropdown-icon" src="/static/image/skill/chilling_blast.png"></a></li>
-						<li value="Death Nova"><a href="/wiki/skill-list/Death_Nova" id="toggle-display-list">Death Nova<img class="img-dropdown-icon" src="/static/image/skill/death_nova.png"></a></li>
-						<li value="Death Bomb"><a href="/wiki/skill-list/Death_Bomb" id="toggle-display-list">Death Bomb<img class="img-dropdown-icon" src="/static/image/skill/death_bomb.png"></a></li>
-						<li value="Holy Touch"><a href="/wiki/skill-list/Holy_Touch" id="toggle-display-list">Holy Touch<img class="img-dropdown-icon" src="/static/image/skill/holy_touch.png"></a></li>
-						<li value="Blaze"><a href="/wiki/skill-list/Blaze" id="toggle-display-list">Blaze<img class="img-dropdown-icon" src="/static/image/skill/blaze.png"></a></li>
-						<li value="Fire Circle"><a href="/wiki/skill-list/Fire_Circle" id="toggle-display-list">Fire Circle<img class="img-dropdown-icon" src="/static/image/skill/fire_circle.png"></a></li>
-						<li value="Blazing Sword"><a href="/wiki/skill-list/Blazing_Sword" id="toggle-display-list">Blazing Sword<img class="img-dropdown-icon" src="/static/image/skill/blazing_sword.png"></a></li>
-						<li value="Blazing Strike"><a href="/wiki/skill-list/Blazing_Strike" id="toggle-display-list">Blazing Strike<img class="img-dropdown-icon" src="/static/image/skill/blazing_strike.png"></a></li>
-						<li value="Blazing Meteor"><a href="/wiki/skill-list/Blazing_Meteor" id="toggle-display-list">Blazing Meteor<img class="img-dropdown-icon" src="/static/image/skill/blazing_meteor.png"></a></li>
-						<li value="Blazing Star"><a href="/wiki/skill-list/Blazing_Star" id="toggle-display-list">Blazing Star<img class="img-dropdown-icon" src="/static/image/skill/blazing_star.png"></a></li>
-						<li value="Dark Touch"><a href="/wiki/skill-list/Dark_Touch" id="toggle-display-list">Dark Touch<img class="img-dropdown-icon" src="/static/image/skill/dark_touch.png"></a></li>
-						<li value="Obsidian Circle"><a href="/wiki/skill-list/Obsidian_Circle" id="toggle-display-list">Obsidian Circle<img class="img-dropdown-icon" src="/static/image/skill/obsidian_circle.png"></a></li>
-						<li value="Bolt"><a href="/wiki/skill-list/Bolt" id="toggle-display-list">Bolt<img class="img-dropdown-icon" src="/static/image/skill/bolt.png"></a></li>
-						<li value="Bolt Circle"><a href="/wiki/skill-list/Bolt_Circle" id="toggle-display-list">Bolt Circle<img class="img-dropdown-icon" src="/static/image/skill/bolt_circle.png"></a></li>
-						<li value="Bolt Sword"><a href="/wiki/skill-list/Bolt_Sword" id="toggle-display-list">Bolt Sword<img class="img-dropdown-icon" src="/static/image/skill/bolt_sword.png"></a></li>
-						<li value="Bolt Strike"><a href="/wiki/skill-list/Bolt_Strike" id="toggle-display-list">Bolt Strike<img class="img-dropdown-icon" src="/static/image/skill/bolt_strike.png"></a></li>
-						<li value="Bolt Meteor"><a href="/wiki/skill-list/Bolt_Meteor" id="toggle-display-list">Bolt Meteor<img class="img-dropdown-icon" src="/static/image/skill/bolt_meteor.png"></a></li>
-						<li value="Bolt Star"><a href="/wiki/skill-list/Bolt_Star" id="toggle-display-list">Bolt Star<img class="img-dropdown-icon" src="/static/image/skill/bolt_star.png"></a></li>
-						<li value="Freeze"><a href="/wiki/skill-list/Freeze" id="toggle-display-list">Freeze<img class="img-dropdown-icon" src="/static/image/skill/freeze.png"></a></li>
-						<li value="Ice Circle"><a href="/wiki/skill-list/Ice_Circle" id="toggle-display-list">Ice Circle<img class="img-dropdown-icon" src="/static/image/skill/ice_circle.png"></a></li>
-						<li value="Frost Sword"><a href="/wiki/skill-list/Frost_Sword" id="toggle-display-list">Frost Sword<img class="img-dropdown-icon" src="/static/image/skill/frost_sword.png"></a></li>
-						<li value="Frost Strike"><a href="/wiki/skill-list/Frost_Strike" id="toggle-display-list">Frost Strike<img class="img-dropdown-icon" src="/static/image/skill/frost_strike.png"></a></li>
-						<li value="Frost Meteor"><a href="/wiki/skill-list/Frost_Meteor" id="toggle-display-list">Frost Meteor<img class="img-dropdown-icon" src="/static/image/skill/frost_meteor.png"></a></li>
-						<li value="Frost Star"><a href="/wiki/skill-list/Frost_Star" id="toggle-display-list">Frost Star<img class="img-dropdown-icon" src="/static/image/skill/frost_star.png"></a></li>
-						<li value="Poisoned Touch"><a href="/wiki/skill-list/Poisoned_Touch" id="toggle-display-list">Poisoned Touch<img class="img-dropdown-icon" src="/static/image/skill/poisoned_touch.png"></a></li>
-						<li value="Poison Circle"><a href="/wiki/skill-list/Poison_Circle" id="toggle-display-list">Poison Circle<img class="img-dropdown-icon" src="/static/image/skill/poison_circle.png"></a></li>
-						<li value="Toxic Sword"><a href="/wiki/skill-list/Toxic_Sword" id="toggle-display-list">Toxic Sword<img class="img-dropdown-icon" src="/static/image/skill/toxic_sword.png"></a></li>
-						<li value="Toxic Strike"><a href="/wiki/skill-list/Toxic_Strike" id="toggle-display-list">Toxic Strike<img class="img-dropdown-icon" src="/static/image/skill/toxic_strike.png"></a></li>
-						<li value="Toxic Meteor"><a href="/wiki/skill-list/Toxic_Meteor" id="toggle-display-list">Toxic Meteor<img class="img-dropdown-icon" src="/static/image/skill/toxic_meteor.png"></a></li>
-						<li value="Toxic Star"><a href="/wiki/skill-list/Toxic_Star" id="toggle-display-list">Toxic Star<img class="img-dropdown-icon" src="/static/image/skill/toxic_star.png"></a></li>
-						<li value="Spirit - Multishot"><a href="/wiki/skill-list/Spirit_-_Multishot" id="toggle-display-list">Spirit - Multishot<img class="img-dropdown-icon" src="/static/image/skill/spirit_multishot.png"></a></li>
-						<li value="Spirit - Front Arrow"><a href="/wiki/skill-list/Spirit_-_Front_Arrow" id="toggle-display-list">Spirit - Front Arrow<img class="img-dropdown-icon" src="/static/image/skill/spirit_front_arrow.png"></a></li>
-						<li value="Spirit - Bolt"><a href="/wiki/skill-list/Spirit_-_Bolt" id="toggle-display-list">Spirit - Bolt<img class="img-dropdown-icon" src="/static/image/skill/spirit_bolt.png"></a></li>
-						<li value="Spirit - Blaze"><a href="/wiki/skill-list/Spirit_-_Blaze" id="toggle-display-list">Spirit - Blaze<img class="img-dropdown-icon" src="/static/image/skill/spirit_blaze.png"></a></li>
-						<li value="Spirit - Freeze"><a href="/wiki/skill-list/Spirit_-_Freeze" id="toggle-display-list">Spirit - Freeze<img class="img-dropdown-icon" src="/static/image/skill/spirit_freeze.png"></a></li>
-						<li value="Spirit - Poisoned Touch"><a href="/wiki/skill-list/Spirit_-_Poisoned_Touch" id="toggle-display-list">Spirit - Poisoned Touch<img class="img-dropdown-icon" src="/static/image/skill/spirit_poisoned_touch.png"></a></li>
-						<li value="Wingman"><a href="/wiki/skill-list/Wingman" id="toggle-display-list">Wingman<img class="img-dropdown-icon" src="/static/image/skill/wingman.png"></a></li>
-						<li value="Phantom Sword"><a href="/wiki/skill-list/Phantom_Sword" id="toggle-display-list">Phantom Sword<img class="img-dropdown-icon" src="/static/image/skill/phantom_sword.png"></a></li>
-						<li value="Shadow Samurai"><a href="/wiki/skill-list/Shadow_Samurai" id="toggle-display-list">Shadow Samurai<img class="img-dropdown-icon" src="/static/image/skill/shadow_samurai.png"></a></li>
-						<li value="Berserker"><a href="/wiki/skill-list/Berserker" id="toggle-display-list">Berserker<img class="img-dropdown-icon" src="/static/image/skill/berserker.png"></a></li>
-						<li value="Blade Storm"><a href="/wiki/skill-list/Blade_Storm" id="toggle-display-list">Blade Storm<img class="img-dropdown-icon" src="/static/image/skill/blade_storm.png"></a></li>
-						<li value="Red-Hearted Grace"><a href="/wiki/skill-list/Red-Hearted_Grace" id="toggle-display-list">Red-Hearted Grace<img class="img-dropdown-icon" src="/static/image/skill/red-hearted_grace.png"></a></li>
-						<li value="Dauntless Greatsword"><a href="/wiki/skill-list/Dauntless_Greatsword" id="toggle-display-list">Dauntless Greatsword<img class="img-dropdown-icon" src="/static/image/skill/dauntless_greatsword.png"></a></li>
-						<li value="Furious"><a href="/wiki/skill-list/Furious" id="toggle-display-list">Furious<img class="img-dropdown-icon" src="/static/image/skill/furious.png"></a></li>
-						<li value="Summon One-Eyed Bat"><a href="/wiki/skill-list/Summon_One-Eyed_Bat" id="toggle-display-list">Summon One-Eyed Bat<img class="img-dropdown-icon" src="/static/image/skill/summon_one_eyed_bat.png"></a></li>
-						<li value="Shadow Clone"><a href="/wiki/skill-list/Shadow_Clone" id="toggle-display-list">Shadow Clone<img class="img-dropdown-icon" src="/static/image/skill/shadow_clone.png"></a></li>
-						<li value="Summon Bone Warrior"><a href="/wiki/skill-list/Summon_Bone_Warrior" id="toggle-display-list">Summon Bone Warrior<img class="img-dropdown-icon" src="/static/image/skill/summon_bone_warrior.png"></a></li>
-						<li value="Summon wolfhound"><a href="/wiki/skill-list/Summon_Wolfhound" id="toggle-display-list">Summon wolfhound<img class="img-dropdown-icon" src="/static/image/skill/summon_wolfhound.png"></a></li>
-						<li value="Enhanced Summon"><a href="/wiki/skill-list/Enhanced_Summon" id="toggle-display-list">Enhanced Summon<img class="img-dropdown-icon" src="/static/image/skill/enhanced_summon.png"></a></li>
-						<li value="Inherited Summon"><a href="/wiki/skill-list/Inherited_Summon" id="toggle-display-list">Inherited Summon<img class="img-dropdown-icon" src="/static/image/skill/inherited_summon.png"></a></li>
-						<li value="Extra Life"><a href="/wiki/skill-list/Extra_Life" id="toggle-display-list">Extra Life<img class="img-dropdown-icon" src="/static/image/skill/extra_life.png"></a></li>
-						<li value="Through the Wall"><a href="/wiki/skill-list/Through_the_Wall" id="toggle-display-list">Through the Wall<img class="img-dropdown-icon" src="/static/image/skill/through_the_wall.png"></a></li>
-						<li value="Water Walker"><a href="/wiki/skill-list/Water_Walker" id="toggle-display-list">Water Walker<img class="img-dropdown-icon" src="/static/image/skill/water_walker.png"></a></li>
-						<li value="Fury Command"><a href="/wiki/skill-list/Fury_Command" id="toggle-display-list">Fury Command<img class="img-dropdown-icon" src="/static/image/skill/fury_command.png"></a></li>
-						<li value="Heroic Fightback"><a href="/wiki/skill-list/Heroic_Fightback" id="toggle-display-list">Heroic Fightback<img class="img-dropdown-icon" src="/static/image/skill/heroic_fightback.png"></a></li>
-						<li value="Greed"><a href="/wiki/skill-list/Greed" id="toggle-display-list">Greed<img class="img-dropdown-icon" src="/static/image/skill/greed.png"></a></li>
-					</ul>
-				</div>
-				<div class="embed-container">
-					<div class="kn3fae-0 ezpxFx">
-						<div class="sgp62q-0 iuJdTu">
-							<a title="TigerShark's Bot">
-								<img src="/static/image/wiki-image/sylvanpfp3.png" alt="User avatar" class="sgp62q-1 dLWNvE">
-								<h1 class="sgp62q-2 hfwuZw">Sylvan</h1>
-								<span class="sgp62q-3 cTBPsI">BOT</span>
-								<span class="sc-1idsap7-0 dyOqmJ" id="date"></span>
-							</a>
+				for (var i = 0; i < li.length; i++) {
+					var a = li[i].getElementsByTagName("a")[0];
+					var txtValue = a.textContent || a.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						li[i].style.display = "";
+					} else {
+						li[i].style.display = "none";
+					}
+				}
+			}
+		</script>
+		{% if skill == "yes" %}
+		<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for skill.." value="{{ name }}">
+		{% else %}
+		<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for skill..">
+		{% endif %}
+		<ul id="myUL" class="searchbar-ul-skill" style="display: none;">
+			<li value="Bouncy Wall"><a href="/wiki/skill-list/Bouncy_Wall" id="toggle-display-list">Bouncy Wall<img class="img-dropdown-icon" src="/static/image/skill/bouncy_wall.png"></a></li>
+			<li value="Diagonal Arrows"><a href="/wiki/skill-list/Diagonal_Arrows" id="toggle-display-list">Diagonal Arrows<img class="img-dropdown-icon" src="/static/image/skill/diagonal_arrows.png"></a></li>
+			<li value="Front Arrow"><a href="/wiki/skill-list/Front_Arrow" id="toggle-display-list">Front Arrow<img class="img-dropdown-icon" src="/static/image/skill/front_arrow.png"></a></li>
+			<li value="Multishot"><a href="/wiki/skill-list/Multishot" id="toggle-display-list">Multishot<img class="img-dropdown-icon" src="/static/image/skill/multishot.png"></a></li>
+			<li value="Piercing Shot"><a href="/wiki/skill-list/Piercing_Shot" id="toggle-display-list">Piercing Shot<img class="img-dropdown-icon" src="/static/image/skill/piercing_shot.png"></a></li>
+			<li value="Rear Arrow"><a href="/wiki/skill-list/Rear_Arrow" id="toggle-display-list">Rear Arrow<img class="img-dropdown-icon" src="/static/image/skill/rear_arrow.png"></a></li>
+			<li value="Ricochet"><a href="/wiki/skill-list/Ricochet" id="toggle-display-list">Ricochet<img class="img-dropdown-icon" src="/static/image/skill/ricochet.png"></a></li>
+			<li value="Side Arrow"><a href="/wiki/skill-list/Side_Arrow" id="toggle-display-list">Side Arrow<img class="img-dropdown-icon" src="/static/image/skill/side_arrow.png"></a></li>
+			<li value="Explosive Arrow"><a href="/wiki/skill-list/Explosive_Arrow" id="toggle-display-list">Explosive Arrow<img class="img-dropdown-icon" src="/static/image/skill/explosive_arrow.png"></a></li>
+			<li value="Price of Strength"><a href="/wiki/skill-list/Price_of_Strength" id="toggle-display-list">Price of Strength<img class="img-dropdown-icon" src="/static/image/skill/price_of_strength.png"></a></li>
+			<li value="Element Burst"><a href="/wiki/skill-list/Element_Burst" id="toggle-display-list">Element Burst<img class="img-dropdown-icon" src="/static/image/skill/element_burst.png"></a></li>
+			<li value="Element Upgrade"><a href="/wiki/skill-list/Element_Upgrade" id="toggle-display-list">Element Upgrade<img class="img-dropdown-icon" src="/static/image/skill/element_upgrade.png"></a></li>        
+			<li value="Attack Boost"><a href="/wiki/skill-list/Attack_Boost" id="toggle-display-list">Attack Boost<img class="img-dropdown-icon" src="/static/image/skill/attack_boost.png"></a></li>
+			<li value="Attack Speed Boost"><a href="/wiki/skill-list/Attack_Speed_Boost" id="toggle-display-list">Attack Speed Boost<img class="img-dropdown-icon" src="/static/image/skill/attack_speed_boost.png"></a></li>  
+			<li value="Crit Master"><a href="/wiki/skill-list/Crit_Master" id="toggle-display-list">Crit Master<img class="img-dropdown-icon" src="/static/image/skill/crit_master.png"></a></li>
+			<li value="HP Boost"><a href="/wiki/skill-list/HP_Boost" id="toggle-display-list">HP Boost<img class="img-dropdown-icon" src="/static/image/skill/hp_boost.png"></a></li>
+			<li value="Headshot"><a href="/wiki/skill-list/Headshot" id="toggle-display-list">Headshot<img class="img-dropdown-icon" src="/static/image/skill/headshot.png"></a></li>
+			<li value="Dwarf"><a href="/wiki/skill-list/Dwarf" id="toggle-display-list">Dwarf<img class="img-dropdown-icon" src="/static/image/skill/dwarf.png"></a></li>
+			<li value="Giant"><a href="/wiki/skill-list/Giant" id="toggle-display-list">Giant<img class="img-dropdown-icon" src="/static/image/skill/giant.png"></a></li>
+			<li value="Smart"><a href="/wiki/skill-list/Smart" id="toggle-display-list">Smart<img class="img-dropdown-icon" src="/static/image/skill/smart.png"></a></li>
+			<li value="Strong Strong Heart"><a href="/wiki/skill-list/Strong_Strong_Heart" id="toggle-display-list">Strong Strong Heart<img class="img-dropdown-icon" src="/static/image/skill/strong_strong_heart.png"></a></li>
+			<li value="Hermes Shoes"><a href="/wiki/skill-list/Hermes_Shoes" id="toggle-display-list">Hermes Shoes<img class="img-dropdown-icon" src="/static/image/skill/hermes_shoes.png"></a></li>
+			<li value="Overdraft"><a href="/wiki/skill-list/Overdraft" id="toggle-display-list">Overdraft<img class="img-dropdown-icon" src="/static/image/skill/overdraft.png"></a></li>
+			<li value="Inspire"><a href="/wiki/skill-list/Inspire" id="toggle-display-list">Inspire<img class="img-dropdown-icon" src="/static/image/skill/inspire.png"></a></li>
+			<li value="Attack Plus"><a href="/wiki/skill-list/Attack_Plus" id="toggle-display-list">Attack Plus<img class="img-dropdown-icon" src="/static/image/skill/attack_plus.png"></a></li>
+			<li value="Crit Plus"><a href="/wiki/skill-list/Crit_Plus" id="toggle-display-list">Crit Plus<img class="img-dropdown-icon" src="/static/image/skill/crit_plus.png"></a></li>
+			<li value="HP Plus"><a href="/wiki/skill-list/HP_Plus" id="toggle-display-list">HP Plus<img class="img-dropdown-icon" src="/static/image/skill/hp_plus.png"></a></li>
+			<li value="Speed Plus"><a href="/wiki/skill-list/Speed_Plus" id="toggle-display-list">Speed Plus<img class="img-dropdown-icon" src="/static/image/skill/speed_plus.png"></a></li>
+			<li value="Crit Aura"><a href="/wiki/skill-list/Crit_Aura" id="toggle-display-list">Crit Aura<img class="img-dropdown-icon" src="/static/image/skill/crit_aura.png"></a></li>
+			<li value="Bloodthirst Aura"><a href="/wiki/skill-list/Bloodthirst_Aura" id="toggle-display-list">Bloodthirst Aura<img class="img-dropdown-icon" src="/static/image/skill/bloodthirst_aura.png"></a></li>
+			<li value="Speed Aura"><a href="/wiki/skill-list/Speed_Aura" id="toggle-display-list">Speed Aura<img class="img-dropdown-icon" src="/static/image/skill/speed_aura.png"></a></li>
+			<li value="Dodge Aura"><a href="/wiki/skill-list/Dodge_Aura" id="toggle-display-list">Dodge Aura<img class="img-dropdown-icon" src="/static/image/skill/dodge_aura.png"></a></li>
+			<li value="Dodge Challenge"><a href="/wiki/skill-list/Dodge_Challenge" id="toggle-display-list">Dodge Challenge<img class="img-dropdown-icon" src="/static/image/skill/dodge_challenge.png"></a></li>
+			<li value="Dodge Burst"><a href="/wiki/skill-list/Dodge_Burst" id="toggle-display-list">Dodge Burst<img class="img-dropdown-icon" src="/static/image/skill/dodge_burst.png"></a></li>
+			<li value="Agility"><a href="/wiki/skill-list/Agility" id="toggle-display-list">Agility<img class="img-dropdown-icon" src="/static/image/skill/agility.png"></a></li>
+			<li value="Fatal Excitement"><a href="/wiki/skill-list/Fatal_Excitement" id="toggle-display-list">Fatal Excitement<img class="img-dropdown-icon" src="/static/image/skill/fatal_excitement.png"></a></li>
+			<li value="Fury"><a href="/wiki/skill-list/Fury" id="toggle-display-list">Fury<img class="img-dropdown-icon" src="/static/image/skill/fury.png"></a></li>
+			<li value="Grace"><a href="/wiki/skill-list/Grace" id="toggle-display-list">Grace<img class="img-dropdown-icon" src="/static/image/skill/grace.png"></a></li>
+			<li value="Rage"><a href="/wiki/skill-list/Rage" id="toggle-display-list">Rage<img class="img-dropdown-icon" src="/static/image/skill/rage.png"></a></li>
+			<li value="Bloodthirst"><a href="/wiki/skill-list/Bloodthirst" id="toggle-display-list">Bloodthirst<img class="img-dropdown-icon" src="/static/image/skill/bloodthirst.png"></a></li>
+			<li value="Heal"><a href="/wiki/skill-list/Heal" id="toggle-display-list">Heal<img class="img-dropdown-icon" src="/static/image/skill/heal.png"></a></li>
+			<li value="Strong Heart"><a href="/wiki/skill-list/Strong_Heart" id="toggle-display-list">Strong Heart<img class="img-dropdown-icon" src="/static/image/skill/strong_heart.png"></a></li>
+			<li value="Heal Overflow"><a href="/wiki/skill-list/Heal_Overflow" id="toggle-display-list">Heal Overflow<img class="img-dropdown-icon" src="/static/image/skill/heal_overflow.png"></a></li>
+			<li value="Angelic Blessing"><a href="/wiki/skill-list/Angelic_Blessing" id="toggle-display-list">Angelic Blessing<img class="img-dropdown-icon" src="/static/image/skill/angelic_blessing.png"></a></li>
+			<li value="Dodge Master"><a href="/wiki/skill-list/Dodge_Master" id="toggle-display-list">Dodge Master<img class="img-dropdown-icon" src="/static/image/skill/dodge_master.png"></a></li>
+			<li value="Invincibility Star"><a href="/wiki/skill-list/Invincibility_Star" id="toggle-display-list">Invincibility Star<img class="img-dropdown-icon" src="/static/image/skill/invincibility_star.png"></a></li>
+			<li value="Shield Guard"><a href="/wiki/skill-list/Shield_Guard" id="toggle-display-list">Shield Guard<img class="img-dropdown-icon" src="/static/image/skill/shield_guard.png"></a></li>
+			<li value="Slow Projectile"><a href="/wiki/skill-list/Slow_Projectile" id="toggle-display-list">Slow Projectile<img class="img-dropdown-icon" src="/static/image/skill/slow_projectile.png"></a></li>
+			<li value="Chilling Blast"><a href="/wiki/skill-list/Chilling_Blast" id="toggle-display-list">Chilling Blast<img class="img-dropdown-icon" src="/static/image/skill/chilling_blast.png"></a></li>
+			<li value="Death Nova"><a href="/wiki/skill-list/Death_Nova" id="toggle-display-list">Death Nova<img class="img-dropdown-icon" src="/static/image/skill/death_nova.png"></a></li>
+			<li value="Death Bomb"><a href="/wiki/skill-list/Death_Bomb" id="toggle-display-list">Death Bomb<img class="img-dropdown-icon" src="/static/image/skill/death_bomb.png"></a></li>
+			<li value="Holy Touch"><a href="/wiki/skill-list/Holy_Touch" id="toggle-display-list">Holy Touch<img class="img-dropdown-icon" src="/static/image/skill/holy_touch.png"></a></li>
+			<li value="Blaze"><a href="/wiki/skill-list/Blaze" id="toggle-display-list">Blaze<img class="img-dropdown-icon" src="/static/image/skill/blaze.png"></a></li>
+			<li value="Fire Circle"><a href="/wiki/skill-list/Fire_Circle" id="toggle-display-list">Fire Circle<img class="img-dropdown-icon" src="/static/image/skill/fire_circle.png"></a></li>
+			<li value="Blazing Sword"><a href="/wiki/skill-list/Blazing_Sword" id="toggle-display-list">Blazing Sword<img class="img-dropdown-icon" src="/static/image/skill/blazing_sword.png"></a></li>
+			<li value="Blazing Strike"><a href="/wiki/skill-list/Blazing_Strike" id="toggle-display-list">Blazing Strike<img class="img-dropdown-icon" src="/static/image/skill/blazing_strike.png"></a></li>
+			<li value="Blazing Meteor"><a href="/wiki/skill-list/Blazing_Meteor" id="toggle-display-list">Blazing Meteor<img class="img-dropdown-icon" src="/static/image/skill/blazing_meteor.png"></a></li>
+			<li value="Blazing Star"><a href="/wiki/skill-list/Blazing_Star" id="toggle-display-list">Blazing Star<img class="img-dropdown-icon" src="/static/image/skill/blazing_star.png"></a></li>
+			<li value="Dark Touch"><a href="/wiki/skill-list/Dark_Touch" id="toggle-display-list">Dark Touch<img class="img-dropdown-icon" src="/static/image/skill/dark_touch.png"></a></li>
+			<li value="Obsidian Circle"><a href="/wiki/skill-list/Obsidian_Circle" id="toggle-display-list">Obsidian Circle<img class="img-dropdown-icon" src="/static/image/skill/obsidian_circle.png"></a></li>
+			<li value="Bolt"><a href="/wiki/skill-list/Bolt" id="toggle-display-list">Bolt<img class="img-dropdown-icon" src="/static/image/skill/bolt.png"></a></li>
+			<li value="Bolt Circle"><a href="/wiki/skill-list/Bolt_Circle" id="toggle-display-list">Bolt Circle<img class="img-dropdown-icon" src="/static/image/skill/bolt_circle.png"></a></li>
+			<li value="Bolt Sword"><a href="/wiki/skill-list/Bolt_Sword" id="toggle-display-list">Bolt Sword<img class="img-dropdown-icon" src="/static/image/skill/bolt_sword.png"></a></li>
+			<li value="Bolt Strike"><a href="/wiki/skill-list/Bolt_Strike" id="toggle-display-list">Bolt Strike<img class="img-dropdown-icon" src="/static/image/skill/bolt_strike.png"></a></li>
+			<li value="Bolt Meteor"><a href="/wiki/skill-list/Bolt_Meteor" id="toggle-display-list">Bolt Meteor<img class="img-dropdown-icon" src="/static/image/skill/bolt_meteor.png"></a></li>
+			<li value="Bolt Star"><a href="/wiki/skill-list/Bolt_Star" id="toggle-display-list">Bolt Star<img class="img-dropdown-icon" src="/static/image/skill/bolt_star.png"></a></li>
+			<li value="Freeze"><a href="/wiki/skill-list/Freeze" id="toggle-display-list">Freeze<img class="img-dropdown-icon" src="/static/image/skill/freeze.png"></a></li>
+			<li value="Ice Circle"><a href="/wiki/skill-list/Ice_Circle" id="toggle-display-list">Ice Circle<img class="img-dropdown-icon" src="/static/image/skill/ice_circle.png"></a></li>
+			<li value="Frost Sword"><a href="/wiki/skill-list/Frost_Sword" id="toggle-display-list">Frost Sword<img class="img-dropdown-icon" src="/static/image/skill/frost_sword.png"></a></li>
+			<li value="Frost Strike"><a href="/wiki/skill-list/Frost_Strike" id="toggle-display-list">Frost Strike<img class="img-dropdown-icon" src="/static/image/skill/frost_strike.png"></a></li>
+			<li value="Frost Meteor"><a href="/wiki/skill-list/Frost_Meteor" id="toggle-display-list">Frost Meteor<img class="img-dropdown-icon" src="/static/image/skill/frost_meteor.png"></a></li>
+			<li value="Frost Star"><a href="/wiki/skill-list/Frost_Star" id="toggle-display-list">Frost Star<img class="img-dropdown-icon" src="/static/image/skill/frost_star.png"></a></li>
+			<li value="Poisoned Touch"><a href="/wiki/skill-list/Poisoned_Touch" id="toggle-display-list">Poisoned Touch<img class="img-dropdown-icon" src="/static/image/skill/poisoned_touch.png"></a></li>
+			<li value="Poison Circle"><a href="/wiki/skill-list/Poison_Circle" id="toggle-display-list">Poison Circle<img class="img-dropdown-icon" src="/static/image/skill/poison_circle.png"></a></li>
+			<li value="Toxic Sword"><a href="/wiki/skill-list/Toxic_Sword" id="toggle-display-list">Toxic Sword<img class="img-dropdown-icon" src="/static/image/skill/toxic_sword.png"></a></li>
+			<li value="Toxic Strike"><a href="/wiki/skill-list/Toxic_Strike" id="toggle-display-list">Toxic Strike<img class="img-dropdown-icon" src="/static/image/skill/toxic_strike.png"></a></li>
+			<li value="Toxic Meteor"><a href="/wiki/skill-list/Toxic_Meteor" id="toggle-display-list">Toxic Meteor<img class="img-dropdown-icon" src="/static/image/skill/toxic_meteor.png"></a></li>
+			<li value="Toxic Star"><a href="/wiki/skill-list/Toxic_Star" id="toggle-display-list">Toxic Star<img class="img-dropdown-icon" src="/static/image/skill/toxic_star.png"></a></li>
+			<li value="Spirit - Multishot"><a href="/wiki/skill-list/Spirit_-_Multishot" id="toggle-display-list">Spirit - Multishot<img class="img-dropdown-icon" src="/static/image/skill/spirit_multishot.png"></a></li>
+			<li value="Spirit - Front Arrow"><a href="/wiki/skill-list/Spirit_-_Front_Arrow" id="toggle-display-list">Spirit - Front Arrow<img class="img-dropdown-icon" src="/static/image/skill/spirit_front_arrow.png"></a></li>
+			<li value="Spirit - Bolt"><a href="/wiki/skill-list/Spirit_-_Bolt" id="toggle-display-list">Spirit - Bolt<img class="img-dropdown-icon" src="/static/image/skill/spirit_bolt.png"></a></li>
+			<li value="Spirit - Blaze"><a href="/wiki/skill-list/Spirit_-_Blaze" id="toggle-display-list">Spirit - Blaze<img class="img-dropdown-icon" src="/static/image/skill/spirit_blaze.png"></a></li>
+			<li value="Spirit - Freeze"><a href="/wiki/skill-list/Spirit_-_Freeze" id="toggle-display-list">Spirit - Freeze<img class="img-dropdown-icon" src="/static/image/skill/spirit_freeze.png"></a></li>
+			<li value="Spirit - Poisoned Touch"><a href="/wiki/skill-list/Spirit_-_Poisoned_Touch" id="toggle-display-list">Spirit - Poisoned Touch<img class="img-dropdown-icon" src="/static/image/skill/spirit_poisoned_touch.png"></a></li>
+			<li value="Wingman"><a href="/wiki/skill-list/Wingman" id="toggle-display-list">Wingman<img class="img-dropdown-icon" src="/static/image/skill/wingman.png"></a></li>
+			<li value="Phantom Sword"><a href="/wiki/skill-list/Phantom_Sword" id="toggle-display-list">Phantom Sword<img class="img-dropdown-icon" src="/static/image/skill/phantom_sword.png"></a></li>
+			<li value="Shadow Samurai"><a href="/wiki/skill-list/Shadow_Samurai" id="toggle-display-list">Shadow Samurai<img class="img-dropdown-icon" src="/static/image/skill/shadow_samurai.png"></a></li>
+			<li value="Berserker"><a href="/wiki/skill-list/Berserker" id="toggle-display-list">Berserker<img class="img-dropdown-icon" src="/static/image/skill/berserker.png"></a></li>
+			<li value="Blade Storm"><a href="/wiki/skill-list/Blade_Storm" id="toggle-display-list">Blade Storm<img class="img-dropdown-icon" src="/static/image/skill/blade_storm.png"></a></li>
+			<li value="Red-Hearted Grace"><a href="/wiki/skill-list/Red-Hearted_Grace" id="toggle-display-list">Red-Hearted Grace<img class="img-dropdown-icon" src="/static/image/skill/red-hearted_grace.png"></a></li>
+			<li value="Dauntless Greatsword"><a href="/wiki/skill-list/Dauntless_Greatsword" id="toggle-display-list">Dauntless Greatsword<img class="img-dropdown-icon" src="/static/image/skill/dauntless_greatsword.png"></a></li>
+			<li value="Furious"><a href="/wiki/skill-list/Furious" id="toggle-display-list">Furious<img class="img-dropdown-icon" src="/static/image/skill/furious.png"></a></li>
+			<li value="Summon One-Eyed Bat"><a href="/wiki/skill-list/Summon_One-Eyed_Bat" id="toggle-display-list">Summon One-Eyed Bat<img class="img-dropdown-icon" src="/static/image/skill/summon_one_eyed_bat.png"></a></li>
+			<li value="Shadow Clone"><a href="/wiki/skill-list/Shadow_Clone" id="toggle-display-list">Shadow Clone<img class="img-dropdown-icon" src="/static/image/skill/shadow_clone.png"></a></li>
+			<li value="Summon Bone Warrior"><a href="/wiki/skill-list/Summon_Bone_Warrior" id="toggle-display-list">Summon Bone Warrior<img class="img-dropdown-icon" src="/static/image/skill/summon_bone_warrior.png"></a></li>
+			<li value="Summon wolfhound"><a href="/wiki/skill-list/Summon_Wolfhound" id="toggle-display-list">Summon wolfhound<img class="img-dropdown-icon" src="/static/image/skill/summon_wolfhound.png"></a></li>
+			<li value="Enhanced Summon"><a href="/wiki/skill-list/Enhanced_Summon" id="toggle-display-list">Enhanced Summon<img class="img-dropdown-icon" src="/static/image/skill/enhanced_summon.png"></a></li>
+			<li value="Inherited Summon"><a href="/wiki/skill-list/Inherited_Summon" id="toggle-display-list">Inherited Summon<img class="img-dropdown-icon" src="/static/image/skill/inherited_summon.png"></a></li>
+			<li value="Extra Life"><a href="/wiki/skill-list/Extra_Life" id="toggle-display-list">Extra Life<img class="img-dropdown-icon" src="/static/image/skill/extra_life.png"></a></li>
+			<li value="Through the Wall"><a href="/wiki/skill-list/Through_the_Wall" id="toggle-display-list">Through the Wall<img class="img-dropdown-icon" src="/static/image/skill/through_the_wall.png"></a></li>
+			<li value="Water Walker"><a href="/wiki/skill-list/Water_Walker" id="toggle-display-list">Water Walker<img class="img-dropdown-icon" src="/static/image/skill/water_walker.png"></a></li>
+			<li value="Fury Command"><a href="/wiki/skill-list/Fury_Command" id="toggle-display-list">Fury Command<img class="img-dropdown-icon" src="/static/image/skill/fury_command.png"></a></li>
+			<li value="Heroic Fightback"><a href="/wiki/skill-list/Heroic_Fightback" id="toggle-display-list">Heroic Fightback<img class="img-dropdown-icon" src="/static/image/skill/heroic_fightback.png"></a></li>
+			<li value="Greed"><a href="/wiki/skill-list/Greed" id="toggle-display-list">Greed<img class="img-dropdown-icon" src="/static/image/skill/greed.png"></a></li>
+		</ul>
+	</div>
+	<div class="embed-container">
+		<div class="kn3fae-0 ezpxFx">
+			<div class="sgp62q-0 iuJdTu">
+				<a title="TigerShark's Bot">
+					<img src="/static/image/wiki-image/sylvanpfp3.png" alt="User avatar" class="sgp62q-1 dLWNvE">
+					<h1 class="sgp62q-2 hfwuZw">Sylvan</h1>
+					<span class="sgp62q-3 cTBPsI">BOT</span>
+					<span class="sc-1idsap7-0 dyOqmJ" id="date"></span>
+				</a>
+				{% if skill == "yes" %}
+				<span class="span-share" id="{{ name }}"><a onclick="createModale(this,false)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
+				{% else %}
+				<span class="span-share" id="Bouncy_Wall"><a onclick="createModale(this,false)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
+				{% endif %}
+			</div>
+			<div class="kn3fae-2 eKjosW">
+				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
+					<div class="sc-3qrykn-0 bdFBtt">
+						<span class="sc-3qrykn-1 bsDYtY">
 							{% if skill == "yes" %}
-							<span class="span-share" id="{{ name }}"><a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
+							<div class="sc-27l7o2-0 heOpKb" id="name_skill">{{ name }}</div>
 							{% else %}
-							<span class="span-share" id="Bouncy_Wall"><a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
+							<div class="sc-27l7o2-0 heOpKb" id="name_skill">Bouncy Wall</div>
+							{% endif %}
+						</span>
+						<div class="sc-3qrykn-3 hXMbfy">
+							{% if skill == "yes" %}
+							<div class="sc-27l7o2-0 heOpKb" id="skill_description">{{ skill_description|safe }}</div>
+							{% else %}
+							<div class="sc-27l7o2-0 heOpKb" id="skill_description">Your arrows bounce up to 2 times against walls.</div>
 							{% endif %}
 						</div>
-						<div class="kn3fae-2 eKjosW">
-							<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
-								<div class="sc-3qrykn-0 bdFBtt">
-									<span class="sc-3qrykn-1 bsDYtY">
-										{% if skill == "yes" %}
-										<div class="sc-27l7o2-0 heOpKb" id="name_skill">{{ name }}</div>
-										{% else %}
-										<div class="sc-27l7o2-0 heOpKb" id="name_skill">Bouncy Wall</div>
-										{% endif %}
-									</span>
-									<div class="sc-3qrykn-3 hXMbfy">
-										{% if skill == "yes" %}
-										<div class="sc-27l7o2-0 heOpKb" id="skill_description">{{ skill_description|safe }}</div>
-										{% else %}
-										<div class="sc-27l7o2-0 heOpKb" id="skill_description">Your arrows bounce up to 2 times against walls.</div>
-										{% endif %}
+						<div class="sc-3qrykn-4 hQKgZF">
+							<div class="rgqgux-0 dQAxvm">
+								<div class="rgqgux-1 dHYyKL">
+									<div class="sc-27l7o2-0 heOpKb" style="color: white;">
+										<strong>Stats</strong>
 									</div>
-									<div class="sc-3qrykn-4 hQKgZF">
-										<div class="rgqgux-0 dQAxvm">
-											<div class="rgqgux-1 dHYyKL">
-												<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-													<strong>Stats</strong>
-												</div>
-											</div>
-											<div class="rgqgux-2 jFcAhO">
-												<div class="sc-27l7o2-0 heOpKb">
-													{% if skill == "yes" %}
-													<div id="skill_base">{{ skill_base|safe }}</div>
-													{% else %}
-													<div id="skill_base">-50% damage after the first bounce</div>
-													{% endif %}
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="sc-3qrykn-6 fTOqMH">
+								</div>
+								<div class="rgqgux-2 jFcAhO">
+									<div class="sc-27l7o2-0 heOpKb">
 										{% if skill == "yes" %}
-										<img src="/static/{{ image_skill }}" alt="Thumbnail" class="sc-3qrykn-7 skill_image" id="skill_image">
+										<div id="skill_base">{{ skill_base|safe }}</div>
 										{% else %}
-										<img src="/static/image/skill/bouncy_wall.png" alt="Thumbnail" class="sc-3qrykn-7 skill_image" id="skill_image">
+										<div id="skill_base">-50% damage after the first bounce</div>
 										{% endif %}
 									</div>
 								</div>
 							</div>
 						</div>
+						<div class="sc-3qrykn-6 fTOqMH">
+							{% if skill == "yes" %}
+							<img src="/static/{{ image_skill }}" alt="Thumbnail" class="sc-3qrykn-7 skill_image" id="skill_image">
+							{% else %}
+							<img src="/static/image/skill/bouncy_wall.png" alt="Thumbnail" class="sc-3qrykn-7 skill_image" id="skill_image">
+							{% endif %}
+						</div>
 					</div>
 				</div>
-			</main>
+			</div>
 		</div>
-        <footer>
-            <div class="footer-content">
-                <div class="footer-about">
-                    <img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.3.1" alt="image game icon">
-                    <div class="about-content">
-                        <h2>Archero :</h2>
-                        <div>Archero Update will be added with a certains delay</div>
-                        <div class="contact-me">
-                            <div>If you encounter any bugs / anomaly please contact me on discord</div>
-                            <div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="discord_link">
-                    <div class="container_dlink">
-                        <h2>Community Link:</h2> 
-                        <a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMutique's Server</li></a>
-                        <a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
-                    </div>
-                    <div class="container_rlink">
-                        <a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
-                    </div>
-                    <div class="container_flink">
-                        <a href="https://www.facebook.com/archerogame/" target="_blank"><li> FB Archero</li></a>
-                    </div>
-                </div>
-                <div class="thanks">
-                    <h2>Shout-out :</h2>
-                <div class="shout-out">SonHaon, Deth, TigerShark14</div>
-                <div class="shout-out">Ktaplouf, Pew, Lorenz, RedsMeName</div>
-                <div class="shout-out">Everyone who helped me getting data</div>
-                </div>
-            </div>
-        </footer>
 	</div>
-</body>
+</div>
+{% endblock %}
+{% block javascript %}
 <script>
-	const traveling = document.getElementById("traveling")
-
-	for(const item of sidebar){
-		const parentContainer = document.createElement("div")
-		const leftSidebar = document.createElement("div")
-		const childLeftSidebar = document.createElement("div")
-		const rightSidebar = document.createElement("div")
-		const childRightSidebar = document.createElement("a")
-		const image = document.createElement("img")
-
-		traveling.appendChild(parentContainer)
-		parentContainer.appendChild(leftSidebar)
-		parentContainer.appendChild(rightSidebar)
-		leftSidebar.appendChild(childLeftSidebar)
-		rightSidebar.appendChild(childRightSidebar)
-		childRightSidebar.appendChild(image)
-
-		parentContainer.className = item['container']['class']
-        parentContainer.id = item['container']['_name'] + "-sidebar-image"
-		parentContainer.addEventListener('click', function windowHref(){
-			window.location.href = item['container']['onclick']
-		})
-		leftSidebar.className = item['container']['childs_container']['leftsidebar']['self_class']
-		childLeftSidebar.className = item['container']['childs_container']['leftsidebar']['child_class']
-		childLeftSidebar.innerHTML = item['container']['childs_container']['leftsidebar']['child_content']
-		rightSidebar.className = item['container']['childs_container']['rightsidebar']['self_class']
-		childRightSidebar.className = item['container']['childs_container']['rightsidebar']['child_class']
-		image.id = item['container']['childs_container']['rightsidebar']['child_content']['image_id']
-		image.src = item['container']['childs_container']['rightsidebar']['child_content']['image_src']
-		image.width = item['container']['childs_container']['rightsidebar']['child_content']['image_width']
-		image.height = item['container']['childs_container']['rightsidebar']['child_content']['image_height']
-	}
-
-	const themeParentContainer = document.createElement("div")
-	const themeLeftSidebar = document.createElement("div")
-	const themeChildLeftSidebar = document.createElement("div")
-	const themeRightSidebar = document.createElement("div")
-	const themeImg = document.createElement("img")
-
-	traveling.appendChild(themeParentContainer)
-	themeParentContainer.appendChild(themeLeftSidebar)
-	themeParentContainer.appendChild(themeRightSidebar)
-	themeLeftSidebar.appendChild(themeChildLeftSidebar)
-	themeRightSidebar.appendChild(themeImg)
-
-	themeParentContainer.className = "traveling-inline-div"
-	themeParentContainer.id = "switch_dark_mode"
-	themeLeftSidebar.className = "leftsidebarc traveling-left"
-	themeChildLeftSidebar.className = "shcl"
-	themeChildLeftSidebar.innerHTML = "Theme"
-	themeRightSidebar.className = "rightsidebarc traveling-right"
-	themeImg.id = "darkmodeSWITCH" 
-	themeImg.width = "21"
-	themeImg.height = "21"
-
-	var darkmode = "{{ darkmode }}"
-	if(darkmode == "yes"){
-		themeImg.src = "\\static\\image\\img-sidebar\\moon.png"
-	}else if(darkmode == "no"){
-		themeImg.src = "\\static\\image\\img-sidebar\\sun.png"
-	}
-	
-	var switchModeBtn = document.getElementById('switch_dark_mode');
-	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
-		var date = new Date()
-		var darkmodeSWITCH = document.getElementById('darkmodeSWITCH')
-		date.setTime(date.getTime() + (365*24*60*60*1000));
-		var body = document.body;
-		body.classList.toggle("body_dark_mode");
-		if(body.className == "body_dark_mode"){
-			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
-			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\moon.png"
-		}else{
-			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\sun.png"
-		}
-	})
-
-	var sidebarBtn = document.getElementById('sidebar-icon');
-	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
-		var sidebar = document.getElementById("sidebar")
-		sidebar.classList.toggle('sidebar-active')
-        sidebar.classList.toggle('sidebar-open')
-	})
-
 	var mainDescription = document.getElementsByClassName('main-description')
 	var body = document.body;
 	var search_bar = document.getElementById('myInput');
@@ -418,5 +249,4 @@
 	const self_inline_div_traveling = document.getElementById('Skill-sidebar-image')
 	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
-</body>
-</html>
+{% endblock %} 

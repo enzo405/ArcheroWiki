@@ -1,426 +1,350 @@
-<!doctype html>
-<html lang="en">
-<head>
-	{% load static %}
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.1">
-	<link rel="stylesheet" type="text/css" href="{% static 'sidebar.css' %}?version=1.3.1">
-	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}?version=1.3.1">
-	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.3.1">
-	<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Archero - Wiki</title>
-	<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-	<script src="{% static 'main.js' %}?version=1.3.1"></script>
-
-	<meta property="og:title" content="Archero - Wiki">
-	<meta property="og:url" content="https://stats.wiki-archero.com/wiki/menu?Search=fusion_item">
-	<meta property="og:type" content="website">
-	<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-	<meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-	<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.1">
-</head>
-{% if darkmode == "yes" %}
-<body class="body_dark_mode">
-{% elif darkmode == "no" %}
-<body>
-{% endif %}
-<noscript>
-	<div id="no-script-message">
-		<p>Please enable JavaScript to use this website.</p>
-	</div>
-</noscript>
-	<div class="sidebar sidebar-open sidebar-position-f" id="sidebar">
-		<div class="sidebar-icon" id="sidebar-icon">
-			<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
-			<div class="rightsidebarc" id="rscimg">
-				<svg id="svg-filter-sidebar" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
+{% extends "template.html" %}
+{% load static %}
+{% block head %}
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.7">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.3.7">
+<title>Archero - Wiki</title>
+<meta property="og:title" content="Archero - Wiki">
+<meta property="og:url" content="https://stats.wiki-archero.com/wiki/menu?Search=fusion_item">
+<meta property="og:type" content="website">
+<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+<meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.7">
+{% endblock %}
+{% block header_content %}{{ header_msg }}{% endblock %}
+{% block content %}
+<div class="content_container">
+	<div class="flex-box">
+		<div class="container-btn-flexbox">
+			<button type="button" class="collapsible fusion" id='fusion_item'>fusion item<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="fusion content">
+				<img src="{% static 'image/wiki-image/Fusing_Hierarchy.png' %}?version=1.3.7" class="fusion_collaps_img" alt="Fusion Archero Hierarchy">
 			</div>
 		</div>
-		<div class="traveling" id="traveling">
-			<!-- SIDEBAR CONTENT INJECTED BY JAVASCRIPT -->
+		<div class="container-btn-flexbox">
+			<button type="button" class="collapsible fusion" id='fusion_item2'>fusion item mythic+<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="fusion content">
+				<img src="{% static 'image/wiki-image/Fusing_Hierarchy2.png' %}?version=1.3.7" class="fusion_collaps_img" alt="Fusion Archero Hierarchy2">
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button type="button" class="collapsible fusion" id='fusion_dragon'>fusion dragon<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="fusion content">
+				<img src="{% static 'image/wiki-image/Dragon-Rarity-Guide.png' %}?version=1.3.7" class="fusion_collaps_img" alt="Achero rarity guide">
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button id="tierlist_item_1" type="button" class="collapsible tierlist">tierlist item normal<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="tierlist content">
+				<img src="{% static 'image/wiki-image/General-Tier-List_1.png' %}?version=1.3.7" class="tierlist_img" alt="Tierlist Archero">
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button id="tierlist_item_2" type="button" class="collapsible tierlist">tierlist item mythic<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="tierlist content">
+				<img src="{% static 'image/wiki-image/Mythic-Tier-List2023.png' %}?version=1.3.7" class="tierlist_img_myt" alt="Tierlist 2023 Archero">
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button id="faq" type="button" class="collapsible faq-container">Frequently Asked Questions<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="faq content">
+				Here is the link to a full post of <a href="https://www.reddit.com/r/Archero/wiki/faq/" target="_blank">Frequently Asked Questions</a>
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button id="evo_cost" type="button" class="collapsible evo_cost">evolution cost<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="evo_cost content">
+				<img src="{% static 'image/wiki-image/EvolutionCost.png' %}?version=1.3.7" style="width:100%; max-width: 750px;" class="evo_cost_img" alt="Evolution cost Archero">
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button id="gems_spending_guide" type="button" class="collapsible gems_spending_guide">Gems Spending guide<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="gems_spending_guide_child content">
+				<div class="kn3fae-0 ezpxFx">
+					<div class="kn3fae-2 eKjosW">
+						<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(0,249,54);">
+							<div class="sc-3qrykn-0 bdFBtt">
+								<span class="sc-3qrykn-1 bsDYtY">
+									<div class="sc-27l7o2-0 heOpKb" id="name_item">Gem Spending Guide</div>
+								</span>
+								<div class="sc-3qrykn-3 hXMbfy">
+									<div class="sc-27l7o2-0 heOpKb" id="item_description"></div>
+								</div>
+								<div class="sc-3qrykn-4 hQKgZF">
+									<div class="rgqgux-0 dQAxvm">
+										<div class="rgqgux-1 dHYyKL">
+											<div class="sc-27l7o2-0 heOpKb" style="color: white;">
+												<strong></strong>
+											</div>
+										</div>
+										<div class="rgqgux-2 jFcAhO">
+											<div class="sc-27l7o2-0 heOpKb">
+												• At least one main hero (Helix is recommended)<br>
+												• Extra hatchery slots, to speed up egg hatching<br>
+												• Extra monster book slots, to get more bonuses from monsters in use<br>
+												• Extra attempt for Ancient Maze, if you can consistently finish it on Extreme/Misery difficulty<br>
+												• Extra energy to farm Hero chapters or play events<br>
+												• Extra attempt(s) for Up-Close Dangers, if you are at the point where you earn relatively high amounts of coins from it compared to chapter runs<br>
+												• Mystery Chest in your Farm, if it shows up<br>
+												• Extra attempt for Mystery Mine, if you can consistently reach the last stage<br>
+												• The following Minerals in the Mineral Shop:<br>
+												100 Gems: 100% 2-5x lvl 3 Jewel
+												500 Gems: 100% 1x lvl 5 Jewel<br>
+												• Discounted offers of meta items from Vendors<br>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="sc-1wl8gx1-0 khpRBf"><span class="sc-1wl8gx1-2 frwlEK">Credit: zkn#4789</span></div>
+								<div class="sc-3qrykn-6 fTOqMH">
+									<img src="/static/image/wiki-image/Gem.png" alt="Thumbnail" class="sc-3qrykn-7 fUliQq">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button id="gold_earning_guide" type="button" class="collapsible gold_earning_guide">gold earning guide<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="gold_earning_guide_child content">
+				<div class="kn3fae-0 ezpxFx">
+					<div class="kn3fae-2 eKjosW">
+						<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(255,196,0);">
+							<div class="sc-3qrykn-0 bdFBtt">
+								<span class="sc-3qrykn-1 bsDYtY">
+									<div class="sc-27l7o2-0 heOpKb" id="name_item">Gold Earning Guide</div>
+								</span>
+								<div class="sc-3qrykn-3 hXMbfy">
+									<div class="sc-27l7o2-0 heOpKb" id="item_description"></div>
+								</div>
+								<div class="sc-3qrykn-4 hQKgZF">
+									<div class="rgqgux-0 dQAxvm">
+										<div class="rgqgux-1 dHYyKL">
+											<div class="sc-27l7o2-0 heOpKb" style="color: white;">
+												<strong></strong>
+											</div>
+										</div>
+										<div class="rgqgux-2 jFcAhO">
+											<div class="sc-27l7o2-0 heOpKb">
+												• Use any other rings than Lion Rings for +10% coins from battle<br>
+												• In your Spirit jewel slots, have an overall level of 8 or higher, for +5% Coins from battle<br>
+												• Play the Up-close Dangers event every time it is active (Tuesday, Thursday, Saturday, Sunday)<br>
+												• Play the clan event (Monster Treasure) every day<br>
+												• Watch 3 ads per day at the bottom of the Shop tab<br>
+												• Watch 4 ads per day for 5 energy each by clicking on your energy at the top, use this energy to play chapters<br>
+												<br><em>• Hero Mode Boss chapters (7, 14, 21, 28, 32)<br>
+													- Quick Runs<br>
+													- Highest amount of Gold possible</em><br>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="sc-1wl8gx1-0 khpRBf"><span class="sc-1wl8gx1-2 frwlEK">Credit: zkn#4789</span></div>
+								<div class="sc-3qrykn-6 fTOqMH">
+									<img src="/static/image/wiki-image/Gold.png" alt="Thumbnail" class="sc-3qrykn-7 fUliQq">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button id="gear_farming_guide" type="button" class="collapsible gear_farming_guide">gear farming guide<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="gear_farming_guide_child content">
+				<div class="kn3fae-0 ezpxFx">
+					<div class="kn3fae-2 eKjosW">
+						<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(177,177,177);">
+							<div class="sc-3qrykn-0 bdFBtt">
+								<span class="sc-3qrykn-1 bsDYtY">
+									<div class="sc-27l7o2-0 heOpKb" id="name_item">Gear Farming Guide</div>
+								</span>
+								<div class="sc-3qrykn-3 hXMbfy">
+									<div class="sc-27l7o2-0 heOpKb" id="item_description">TIP: Always wait for dropped items to reach your character! If you proceed to the next stage and the items did not reach your character, you will not get those items.</div>
+								</div>
+								<div class="sc-3qrykn-4 hQKgZF">
+									<div class="rgqgux-0 dQAxvm">
+										<div class="rgqgux-1 dHYyKL">
+											<div class="sc-27l7o2-0 heOpKb" style="color: white;">
+												<strong></strong>
+											</div>
+										</div>
+										<div class="rgqgux-2 jFcAhO">
+											<div class="sc-27l7o2-0 heOpKb">
+												<b>Flying Bullets</b><br>
+												• Can drop more than 5 items per run<br>
+												• Drops relatively many scrolls<br><br>
+												<b>Hero Mode wave chapters (3, 6, 10, 16, 20, 24, 31)</b><br>
+												• Drops more Jewels on average<br>
+												• Drops Bloodstone & runes<br><br>
+												
+												<b>Best mob chapters for "afk" farming</b><br>
+												• Choose the highest Hero wave chapter that you can always finish without needing to dodge<br>
+												⇒ you only need to pay attention to pick abilities and move to the next stage<br>
+												• Choose a spot in each stage that lets your hero reach all spawning monsters<br>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="sc-1wl8gx1-0 khpRBf"><span class="sc-1wl8gx1-2 frwlEK">Credit: zkn#4789</span></div>
+								<div class="sc-3qrykn-6 fTOqMH">
+									<img src="/static/image/wiki-image/CommonWeapon.png" alt="Thumbnail" class="sc-3qrykn-7 fUliQq">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button id="glyphs" type="button" class="collapsible glyphs">glyphs<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="glyphs content">
+				<div class="glyphs_explanation">
+					<b><u>Glyphs:</u></b><em><a href="https://www.reddit.com/r/Archero/wiki/refinement_guide/" target="_blank">(reddit guide)</a></em><br>
+					<u>There is 2 type of glyphs :</u><br>
+					• Base Glyphs (without rank) ---> <object type="image/png" data="\static\image\svg\base-glyphs.svg" width="21" height="21"></object> <br>
+					• Special Glyphs (rank A / S) ---> <object type="image/png" data="\static\image\svg\special-glyph.svg" width="21" height="21"></object> <br> 
+					<u>How to get glyphs ??</u>
+					<ul>
+						<li>you need to sacrifice stuff starting from epic to ancient legendary</li>
+						<li>When you sacrificed your stuff you can get random rarity & number of the same glyphs</li>
+						<li>There is a chance you will get duplicates of the same Glyphs.</li>
+						<li>Each item gives different glyphs</li>
+					</ul>
+					<u>Rarities</u>: Rare is the lowest rarity, Glyphs can be upgraded all the way up to Mythic.<br>
+					<em>(Rare → Epic →Perfect Epic → Legendary → Ancient Legendary → Mythic)</em>
+					<img style="width: 95%;" src="/static/image/wiki-image/all_glyphs.png" alt="glyph archero list"><br>
+					<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Be careful, a legendary stuff can give you up to 1 rare glyphs (wich is really bad)<br>
+				</div>
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button id="refinement" type="button" class="collapsible refinement">refinements<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="refinement content">
+				<div class="refinement_explanation">
+					<b><u>Refine:</u></b><em><a href="https://www.reddit.com/r/Archero/wiki/refinement_guide/" target="_blank">(reddit guide)</a></em><br>
+					<u>There are 4 Glyph slots.</u><br>
+					How to unlock them:<br>
+					<ul>
+						Refinement rarity starts at Epic, to unlock the second slot, Perfect Epic, you need to refine 8 times. Same goes for the next rarities.
+					</ul>
+					<ul>
+						<li>1st Slot (Epic) => Can only equip Normal Glyphs</li>
+						<li>2nd Slot (Perfect Epic) => Unlocks Special Glyph slot</li>
+						<li>3rd Slot (Legendary) => Unlocks Normal Glyph slot</li>
+						<li>4th Slot (Ancient Legendary) => Unlocks Normal Glyph slot</li>
+					</ul><br>
+					<u>Upgrading Star levels: </u><br>
+					<ul>
+						<li>Epic 1<object type="image/png" data="\static\image\svg\star-qua4.svg" width="14" height="14"></object> --> Epic 2<object type="image/png" data="\static\image\svg\star-qua4.svg" width="14" height="14"></object> = 1 Epic Item + <object type="image/png" data="\static\image\svg\gold.svg" width="18" height="18"></object> + <object type="image/png" data="\static\image\svg\scroll.svg" width="18" height="18"></object> <br>
+						7<object type="image/png" data="\static\image\svg\star-qua4.svg" width="14" height="14"></object> to Perfect Epic => 2 Epics</li>
+						
+						<li>Perfect Epic 1<object type="image/png" data="\static\image\svg\star-qua5.svg" width="14" height="14"></object> --> Perfect Epic 2<object type="image/png" data="\static\image\svg\star-qua5.svg" width="14" height="14"></object> = 1 Epic Item + <object type="image/png" data="\static\image\svg\gold.svg" width="18" height="18"></object> + <object type="image/png" data="\static\image\svg\scroll.svg" width="18" height="18"></object><br>
+						7<object type="image/png" data="\static\image\svg\star-qua5.svg" width="14" height="14"></object> to Legendary => 2 Perfect Epic</li>
+					
+						<li>Legendary 1<object type="image/png" data="\static\image\svg\star-qua6.svg" width="14" height="14"></object> --> Legendary 2<object type="image/png" data="\static\image\svg\star-qua6.svg" width="14" height="14"></object> = 1 Perfect Epic Item + <object type="image/png" data="\static\image\svg\gold.svg" width="18" height="18"></object> + <object type="image/png" data="\static\image\svg\scroll.svg" width="18" height="18"></object><br>
+						7<object type="image/png" data="\static\image\svg\star-qua6.svg" width="14" height="14"></object> to ALE  => 2 Legendary</li>
+					
+						<li>Ancient Legendary 1<object type="image/png" data="\static\image\svg\star-qua7.svg" width="14" height="14"></object> --> Ancient Legendary 2<object type="image/png" data="\static\image\svg\star-qua7.svg" width="14" height="14"></object> = 1 Legendary Item + <object type="image/png" data="\static\image\svg\gold.svg" width="18" height="18"></object> + <object type="image/png" data="\static\image\svg\scroll.svg" width="18" height="18"></object><br>
+						7<object type="image/png" data="\static\image\svg\star-qua7.svg" width="14" height="14"></object> to Mythic => 2 Legendary</li>
+					
+						<li>Mythic 1<object type="image/png" data="\static\image\svg\star-qua8.svg" width="14" height="14"></object> --> 2<object type="image/png" data="\static\image\svg\star-qua8.svg" width="14" height="14"></object> = 2 Legendary Items + <object type="image/png" data="\static\image\svg\gold.svg" width="18" height="18"></object> + <object type="image/png" data="\static\image\svg\scroll.svg" width="18" height="18"></object></li><br>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button id="quickraid" type="button" class="collapsible quickraid">quickraid<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="quickraid content">
+				<p><a href="https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w" target="_blank">Google Sheets Quickraid Drop</a></p>
+				<img src="{% static 'image/wiki-image/qr_chart.png' %}?version=1.3.7" class="qr-chart-img" alt="quickraid drop">
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button id="altar_cost" type="button" class="collapsible altar_cost">altar cost<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="altar_cost_content content">
+				<u><b>ALTAR lvl0 to 120<br>BS ==> bloodstone</b></u><br>
+				<div class="first-half-altar">
+					<h class="xtox">0 <i class="fa-solid fa-arrow-right"></i> 5</h>   =   <h class="xtoxresult">5 x 5 BS</h><br>
+					<h class="xtox">5 <i class="fa-solid fa-arrow-right"></i> 10</h>   =   <h class="xtoxresult">5 x 10 BS</h><br>
+					ascension n°10 = 100 BS<br>
+					<h class="xtox">10 <i class="fa-solid fa-arrow-right"></i> 15</h>   =   <h class="xtoxresult">5 x 20 BS</h><br>
+					<h class="xtox">15 <i class="fa-solid fa-arrow-right"></i> 20</h>   =   <h class="xtoxresult">5 x 30 BS</h><br>
+					ascension n°20 = 250 BS<br>
+					<h class="xtox">20 <i class="fa-solid fa-arrow-right"></i> 25</h>   =   <h class="xtoxresult">5 x 50 BS</h><br>
+					<h class="xtox">25 <i class="fa-solid fa-arrow-right"></i> 30</h>   =   <h class="xtoxresult">5 x 70 BS</h><br>
+					ascension n°30 = 450 BS<br>
+					<h class="xtox">30 <i class="fa-solid fa-arrow-right"></i> 35</h>   =   <h class="xtoxresult">5 x 100 BS</h><br>
+					<h class="xtox">35 <i class="fa-solid fa-arrow-right"></i> 40</h>   =   <h class="xtoxresult">5 x 150 BS</h><br>
+					ascension n°40 = 750 BS<br>
+					<h class="xtox">40 <i class="fa-solid fa-arrow-right"></i> 45</h>   =   <h class="xtoxresult">5 x 200 BS</h><br>
+					<h class="xtox">45 <i class="fa-solid fa-arrow-right"></i> 50</h>   =   <h class="xtoxresult">5 x 250 BS</h><br>
+					ascension n°50 = 1250 BS<br>
+					<h class="xtox">50 <i class="fa-solid fa-arrow-right"></i> 55</h>   =   <h class="xtoxresult">5 x 300 BS</h><br>
+					<h class="xtox">55 <i class="fa-solid fa-arrow-right"></i> 60</h>   =   <h class="xtoxresult">5 x 350 BS</h><br>
+					ascension n°60 = 2000 BS<br>
+				</div>
+				<div class="sec-half-altar">
+					<h class="xtox">60 <i class="fa-solid fa-arrow-right"></i> 65</h>   =   <h class="xtoxresult">5 x 400 BS</h><br> 
+					<h class="xtox">65 <i class="fa-solid fa-arrow-right"></i> 70</h>   =   <h class="xtoxresult">5 x 450 BS</h><br>
+					ascension n°70 = 3000 BS<br>
+					<h class="xtox">70 <i class="fa-solid fa-arrow-right"></i> 75</h>   =   <h class="xtoxresult">5 x 500 BS</h><br>
+					<h class="xtox">75 <i class="fa-solid fa-arrow-right"></i> 80</h>   =   <h class="xtoxresult">5 x 600 BS</h><br>
+					ascension n°80 = 4000 BS<br>
+					<h class="xtox">80 <i class="fa-solid fa-arrow-right"></i> 85</h>   =   <h class="xtoxresult">5 x 700 BS</h><br>
+					<h class="xtox">85 <i class="fa-solid fa-arrow-right"></i> 90</h>   =   <h class="xtoxresult">5 x 800 BS</h><br>
+					ascension n°90 = 5000 BS<br>
+					<h class="xtox">90 <i class="fa-solid fa-arrow-right"></i> 95</h>   =   <h class="xtoxresult">5 x 900 BS</h><br>
+					<h class="xtox">95 <i class="fa-solid fa-arrow-right"></i> 100</h>   =   <h class="xtoxresult">5 x 1000 BS</h><br>
+					ascension n°100 = 7500 BS<br>
+					<h class="xtox">100 <i class="fa-solid fa-arrow-right"></i> 105</h>   =   <h class="xtoxresult">5 x 1200 BS</h><br>
+					<h class="xtox">105 <i class="fa-solid fa-arrow-right"></i> 110</h>   =   <h class="xtoxresult">5 x 1400 BS</h><br> 
+					ascension n°110 = 10000 BS<br>
+					<h class="xtox">110 <i class="fa-solid fa-arrow-right"></i> 115</h>   =   <h class="xtoxresult">5 x 1600 BS</h><br>
+					<h class="xtox">115 <i class="fa-solid fa-arrow-right"></i> 120</h>   =   <h class="xtoxresult">5 x 1800 BS</h><br>
+					ascension n°120 = 12500 BS<br>
+				</div>
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button id="egg_stats" type="button" class="collapsible egg_stats">egg stats<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="egg_stats_content content">
+				<b><u>Archero Hatchery and Egg Farming Compilation  (edited by @Abstrusity, @Luhcaran, @Shusaku, @𝗺𝗿𝗯 from LanderZ's one):</u></b><br>
+					Includes:<br>
+					• List of available Monsters<br>
+					• Numbers of kills required to hatch or complete quests<br>
+					• Completed quest dialogue<br>
+					• Automated hatch timers<br>
+					• Where to find each Monster and which locations are recommended<br>
+					• Monster training bonuses and costs (still Work in Progress)<br>
+					<a href="https://docs.google.com/spreadsheets/d/1p0xAb6ZrgwqhynromVXTqJSsfWlK1W8EDDt2HyvmRKE" target="_blank">Google Sheets with all information about egg</a>
+			</div>
+		</div>
+		<div class="container-btn-flexbox">
+			<button id="hidden_stats" type="button" class="collapsible cost_upgrade_hero">Hidden Stats<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="hidden_stats_content content">
+				<u>Stats unlocked when reaching Mythic Refinement :</u><br><br>
+
+				•  Weapon => For a brief while after taking damage, the next hit fires an extra shot.<br>
+				•  Armor => The Higher the HP, the higher the Attack.<br>
+				•  Ring n°1 => While Standing still reduces incomming Bullets Damage.<br>
+				•  Ring n°2 => While Standing still reduces incomming Colision Damage.<br>
+				•  Bracelet => When recovering HP in the Angel room, there is a chance to receive 3x healing.<br>
+				•  Pets n°1 & Pets n°2 => After 2 attacks, the next attack deals double damage. <br>
+				•  Locket => For the first 3s after entering a room, increases movement speed.<br>
+				•  SpellBook => SpellBook can gain energy from Hearts<br><br>
+
+				<u>Comments :</u><br>
+				•  Pets n°1 & Pets n°2 => Works only for the pet attack.<br>
+			</div>
 		</div>
 	</div>
-	<div class="main-container">
-		<main class="main-flexbox cmcath">
-			<header class="header-container">
-				<div class="header-container-1"></div>
-				<div class="header-container-2 header_msg"><h2>{{ header_msg }}</h2></div>
-				<div class="header-container-3 globe_header_icon">
-					<!-- <label for="lang"><i class="fa-solid fa-globe"></i></label>
-					<select name="lang" id="lang">
-						{% for language in lang %}
-						<option value="{{language}}">{{language}}</option>
-						{% endfor %}
-					</select> -->
-				</div>
-			</header>
-			<div class="container-flexbox">
-				<div class="flex-box">
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button type="button" class="collapsible fusion" id='fusion_item'>fusion item<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="fusion content">
-							<img src="{% static 'image/wiki-image/Fusing_Hierarchy.png' %}?version=1.3.1" style="width: 100%;max-width: 700px;" class="fusion_item_img">
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button type="button" class="collapsible fusion" id='fusion_item2'>fusion item mythic+<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="fusion content">
-							<img src="{% static 'image/wiki-image/Fusing_Hierarchy2.png' %}?version=1.3.1" style="width: 100%;max-width: 700px;" class="fusion_item2_img">
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button type="button" class="collapsible fusion" id='fusion_dragon'>fusion dragon<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="fusion content">
-							<img src="{% static 'image/wiki-image/Dragon-Rarity-Guide.png' %}?version=1.3.1" style="width: 100%;max-width: 700px;" class="fusion_dragon_img">
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button id="tierlist_item_1" type="button" class="collapsible tierlist">tierlist item normal<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="tierlist content">
-							<img src="{% static 'image/wiki-image/General-Tier-List_1.png' %}?version=1.3.1" class="tierlist_img">
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button id="tierlist_item_2" type="button" class="collapsible tierlist">tierlist item mythic<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="tierlist content">
-							<img src="{% static 'image/wiki-image/Mythic-Tier-List2023.png' %}?version=1.3.1" class="tierlist_img_myt">
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button id="faq" type="button" class="collapsible faq-container">Frequently Asked Questions<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="faq content">
-							Here is the link to a full post of <a href="https://www.reddit.com/r/Archero/wiki/faq/" target="_blank">Frequently Asked Questions</a>
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button id="evo_cost" type="button" class="collapsible evo_cost">evolution cost<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="evo_cost content">
-							<img src="{% static 'image/wiki-image/EvolutionCost.png' %}?version=1.3.1" style="width:100%; max-width: 750px;" class="evo_cost_img">
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button id="gems_spending_guide" type="button" class="collapsible gems_spending_guide">Gems Spending guide<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="gems_spending_guide_child content">
-							<div class="kn3fae-0 ezpxFx">
-								<div class="kn3fae-2 eKjosW">
-									<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(0,249,54);">
-										<div class="sc-3qrykn-0 bdFBtt">
-											<span class="sc-3qrykn-1 bsDYtY">
-												<div class="sc-27l7o2-0 heOpKb" id="name_item">Gem Spending Guide</div>
-											</span>
-											<div class="sc-3qrykn-3 hXMbfy">
-												<div class="sc-27l7o2-0 heOpKb" id="item_description"></div>
-											</div>
-											<div class="sc-3qrykn-4 hQKgZF">
-												<div class="rgqgux-0 dQAxvm">
-													<div class="rgqgux-1 dHYyKL">
-														<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-															<strong></strong>
-														</div>
-													</div>
-													<div class="rgqgux-2 jFcAhO">
-														<div class="sc-27l7o2-0 heOpKb">
-															• At least one main hero (Helix is recommended)<br>
-															• Extra hatchery slots, to speed up egg hatching<br>
-															• Extra monster book slots, to get more bonuses from monsters in use<br>
-															• Extra attempt for Ancient Maze, if you can consistently finish it on Extreme/Misery difficulty<br>
-															• Extra energy to farm Hero chapters or play events<br>
-															• Extra attempt(s) for Up-Close Dangers, if you are at the point where you earn relatively high amounts of coins from it compared to chapter runs<br>
-															• Mystery Chest in your Farm, if it shows up<br>
-															• Extra attempt for Mystery Mine, if you can consistently reach the last stage<br>
-															• The following Minerals in the Mineral Shop:<br>
-															100 Gems: 100% 2-5x lvl 3 Jewel
-															500 Gems: 100% 1x lvl 5 Jewel<br>
-															• Discounted offers of meta items from Vendors<br>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="sc-1wl8gx1-0 khpRBf"><span class="sc-1wl8gx1-2 frwlEK">Credit: zkn#4789</span></div>
-											<div class="sc-3qrykn-6 fTOqMH">
-												<img src="/static/image/wiki-image/Gem.png" alt="Thumbnail" class="sc-3qrykn-7 fUliQq">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button id="gold_earning_guide" type="button" class="collapsible gold_earning_guide">gold earning guide<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="gold_earning_guide_child content">
-							<div class="kn3fae-0 ezpxFx">
-								<div class="kn3fae-2 eKjosW">
-									<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(255,196,0);">
-										<div class="sc-3qrykn-0 bdFBtt">
-											<span class="sc-3qrykn-1 bsDYtY">
-												<div class="sc-27l7o2-0 heOpKb" id="name_item">Gold Earning Guide</div>
-											</span>
-											<div class="sc-3qrykn-3 hXMbfy">
-												<div class="sc-27l7o2-0 heOpKb" id="item_description"></div>
-											</div>
-											<div class="sc-3qrykn-4 hQKgZF">
-												<div class="rgqgux-0 dQAxvm">
-													<div class="rgqgux-1 dHYyKL">
-														<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-															<strong></strong>
-														</div>
-													</div>
-													<div class="rgqgux-2 jFcAhO">
-														<div class="sc-27l7o2-0 heOpKb">
-															• Use any other rings than Lion Rings for +10% coins from battle<br>
-															• In your Spirit jewel slots, have an overall level of 8 or higher, for +5% Coins from battle<br>
-															• Play the Up-close Dangers event every time it is active (Tuesday, Thursday, Saturday, Sunday)<br>
-															• Play the clan event (Monster Treasure) every day<br>
-															• Watch 3 ads per day at the bottom of the Shop tab<br>
-															• Watch 4 ads per day for 5 energy each by clicking on your energy at the top, use this energy to play chapters<br>
-															<br><em>• Hero Mode Boss chapters (7, 14, 21, 28, 32)<br>
-																- Quick Runs<br>
-																- Highest amount of Gold possible</em><br>
-	
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="sc-1wl8gx1-0 khpRBf"><span class="sc-1wl8gx1-2 frwlEK">Credit: zkn#4789</span></div>
-											<div class="sc-3qrykn-6 fTOqMH">
-												<img src="/static/image/wiki-image/Gold.png" alt="Thumbnail" class="sc-3qrykn-7 fUliQq">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button id="gear_farming_guide" type="button" class="collapsible gear_farming_guide">gear farming guide<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="gear_farming_guide_child content">
-							<div class="kn3fae-0 ezpxFx">
-								<div class="kn3fae-2 eKjosW">
-									<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(177,177,177);">
-										<div class="sc-3qrykn-0 bdFBtt">
-											<span class="sc-3qrykn-1 bsDYtY">
-												<div class="sc-27l7o2-0 heOpKb" id="name_item">Gear Farming Guide</div>
-											</span>
-											<div class="sc-3qrykn-3 hXMbfy">
-												<div class="sc-27l7o2-0 heOpKb" id="item_description">TIP: Always wait for dropped items to reach your character! If you proceed to the next stage and the items did not reach your character, you will not get those items.</div>
-											</div>
-											<div class="sc-3qrykn-4 hQKgZF">
-												<div class="rgqgux-0 dQAxvm">
-													<div class="rgqgux-1 dHYyKL">
-														<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-															<strong></strong>
-														</div>
-													</div>
-													<div class="rgqgux-2 jFcAhO">
-														<div class="sc-27l7o2-0 heOpKb">
-															<b>Flying Bullets</b><br>
-															• Can drop more than 5 items per run<br>
-															• Drops relatively many scrolls<br><br>
-															<b>Hero Mode wave chapters (3, 6, 10, 16, 20, 24, 31)</b><br>
-															• Drops more Jewels on average<br>
-															• Drops Bloodstone & runes<br><br>
-															
-															<b>Best mob chapters for "afk" farming</b><br>
-															• Choose the highest Hero wave chapter that you can always finish without needing to dodge<br>
-															⇒ you only need to pay attention to pick abilities and move to the next stage<br>
-															• Choose a spot in each stage that lets your hero reach all spawning monsters<br>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="sc-1wl8gx1-0 khpRBf"><span class="sc-1wl8gx1-2 frwlEK">Credit: zkn#4789</span></div>
-											<div class="sc-3qrykn-6 fTOqMH">
-												<img src="/static/image/wiki-image/CommonWeapon.png" alt="Thumbnail" class="sc-3qrykn-7 fUliQq">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button id="glyphs" type="button" class="collapsible glyphs">glyphs<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="glyphs content">
-							<div class="glyphs_explanation">
-								<b><u>Glyphs:</u></b><em><a href="https://www.reddit.com/r/Archero/wiki/refinement_guide/" target="_blank">(reddit guide)</a></em><br>
-								<u>There is 2 type of glyphs :</u><br>
-								• Base Glyphs (without rank) ---> <object type="image/png" data="\static\image\svg\base-glyphs.svg" width="21" height="21"></object> <br>
-								• Special Glyphs (rank A / S) ---> <object type="image/png" data="\static\image\svg\special-glyph.svg" width="21" height="21"></object> <br> 
-								<u>How to get glyphs ??</u>
-								<ul>
-									<li>you need to sacrifice stuff starting from epic to ancient legendary</li>
-									<li>When you sacrificed your stuff you can get random rarity & number of the same glyphs</li>
-									<li>There is a chance you will get duplicates of the same Glyphs.</li>
-									<li>Each item gives different glyphs</li>
-								</ul>
-								<u>Rarities</u>: Rare is the lowest rarity, Glyphs can be upgraded all the way up to Mythic.<br>
-								<em>(Rare → Epic →Perfect Epic → Legendary → Ancient Legendary → Mythic)</em>
-								<img style="width: 95%;" src="/static/image/wiki-image/all_glyphs.png"><br>
-								<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Be careful, a legendary stuff can give you up to 1 rare glyphs (wich is really bad)<br>
-							</div>
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button id="refinement" type="button" class="collapsible refinement">refinements<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="refinement content">
-							<div class="refinement_explanation">
-								<b><u>Refine:</u></b><em><a href="https://www.reddit.com/r/Archero/wiki/refinement_guide/" target="_blank">(reddit guide)</a></em><br>
-								<u>There are 4 Glyph slots.</u><br>
-								How to unlock them:<br>
-								<ul>
-									Refinement rarity starts at Epic, to unlock the second slot, Perfect Epic, you need to refine 8 times. Same goes for the next rarities.
-								</ul>
-								<ul>
-									<li>1st Slot (Epic) => Can only equip Normal Glyphs</li>
-									<li>2nd Slot (Perfect Epic) => Unlocks Special Glyph slot</li>
-									<li>3rd Slot (Legendary) => Unlocks Normal Glyph slot</li>
-									<li>4th Slot (Ancient Legendary) => Unlocks Normal Glyph slot</li>
-								</ul><br>
-								<u>Upgrading Star levels: </u><br>
-								<ul>
-									<li>Epic 1<object type="image/png" data="\static\image\svg\star-qua4.svg" width="14" height="14"></object> --> Epic 2<object type="image/png" data="\static\image\svg\star-qua4.svg" width="14" height="14"></object> = 1 Epic Item + <object type="image/png" data="\static\image\svg\gold.svg" width="18" height="18"></object> + <object type="image/png" data="\static\image\svg\scroll.svg" width="18" height="18"></object> <br>
-									7<object type="image/png" data="\static\image\svg\star-qua4.svg" width="14" height="14"></object> to Perfect Epic => 2 Epics</li>
-									
-									<li>Perfect Epic 1<object type="image/png" data="\static\image\svg\star-qua5.svg" width="14" height="14"></object> --> Perfect Epic 2<object type="image/png" data="\static\image\svg\star-qua5.svg" width="14" height="14"></object> = 1 Epic Item + <object type="image/png" data="\static\image\svg\gold.svg" width="18" height="18"></object> + <object type="image/png" data="\static\image\svg\scroll.svg" width="18" height="18"></object><br>
-									7<object type="image/png" data="\static\image\svg\star-qua5.svg" width="14" height="14"></object> to Legendary => 2 Perfect Epic</li>
-								
-									<li>Legendary 1<object type="image/png" data="\static\image\svg\star-qua6.svg" width="14" height="14"></object> --> Legendary 2<object type="image/png" data="\static\image\svg\star-qua6.svg" width="14" height="14"></object> = 1 Perfect Epic Item + <object type="image/png" data="\static\image\svg\gold.svg" width="18" height="18"></object> + <object type="image/png" data="\static\image\svg\scroll.svg" width="18" height="18"></object><br>
-									7<object type="image/png" data="\static\image\svg\star-qua6.svg" width="14" height="14"></object> to ALE  => 2 Legendary</li>
-								
-									<li>Ancient Legendary 1<object type="image/png" data="\static\image\svg\star-qua7.svg" width="14" height="14"></object> --> Ancient Legendary 2<object type="image/png" data="\static\image\svg\star-qua7.svg" width="14" height="14"></object> = 1 Legendary Item + <object type="image/png" data="\static\image\svg\gold.svg" width="18" height="18"></object> + <object type="image/png" data="\static\image\svg\scroll.svg" width="18" height="18"></object><br>
-									7<object type="image/png" data="\static\image\svg\star-qua7.svg" width="14" height="14"></object> to Mythic => 2 Legendary</li>
-								
-									<li>Mythic 1<object type="image/png" data="\static\image\svg\star-qua8.svg" width="14" height="14"></object> --> 2<object type="image/png" data="\static\image\svg\star-qua8.svg" width="14" height="14"></object> = 2 Legendary Items + <object type="image/png" data="\static\image\svg\gold.svg" width="18" height="18"></object> + <object type="image/png" data="\static\image\svg\scroll.svg" width="18" height="18"></object></li><br>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button id="quickraid" type="button" class="collapsible quickraid">quickraid<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="quickraid content">
-							<p><a href="https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w" target="_blank">Google Sheets Quickraid Drop</a></p>
-							<img src="{% static 'image/wiki-image/qr_chart.png' %}?version=1.3.1" class="qr-chart-img" alt="quickraid drop">
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button id="altar_cost" type="button" class="collapsible altar_cost">altar cost<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="altar_cost_content content">
-							<u><b>ALTAR lvl0 to 120<br>BS ==> bloodstone</b></u><br>
-							<div class="first-half-altar">
-								<h class="xtox">0 <i class="fa-solid fa-arrow-right"></i> 5</h>   =   <h class="xtoxresult">5 x 5 BS</h><br>
-								<h class="xtox">5 <i class="fa-solid fa-arrow-right"></i> 10</h>   =   <h class="xtoxresult">5 x 10 BS</h><br>
-								ascension n°10 = 100 BS<br>
-								<h class="xtox">10 <i class="fa-solid fa-arrow-right"></i> 15</h>   =   <h class="xtoxresult">5 x 20 BS</h><br>
-								<h class="xtox">15 <i class="fa-solid fa-arrow-right"></i> 20</h>   =   <h class="xtoxresult">5 x 30 BS</h><br>
-								ascension n°20 = 250 BS<br>
-								<h class="xtox">20 <i class="fa-solid fa-arrow-right"></i> 25</h>   =   <h class="xtoxresult">5 x 50 BS</h><br>
-								<h class="xtox">25 <i class="fa-solid fa-arrow-right"></i> 30</h>   =   <h class="xtoxresult">5 x 70 BS</h><br>
-								ascension n°30 = 450 BS<br>
-								<h class="xtox">30 <i class="fa-solid fa-arrow-right"></i> 35</h>   =   <h class="xtoxresult">5 x 100 BS</h><br>
-								<h class="xtox">35 <i class="fa-solid fa-arrow-right"></i> 40</h>   =   <h class="xtoxresult">5 x 150 BS</h><br>
-								ascension n°40 = 750 BS<br>
-								<h class="xtox">40 <i class="fa-solid fa-arrow-right"></i> 45</h>   =   <h class="xtoxresult">5 x 200 BS</h><br>
-								<h class="xtox">45 <i class="fa-solid fa-arrow-right"></i> 50</h>   =   <h class="xtoxresult">5 x 250 BS</h><br>
-								ascension n°50 = 1250 BS<br>
-								<h class="xtox">50 <i class="fa-solid fa-arrow-right"></i> 55</h>   =   <h class="xtoxresult">5 x 300 BS</h><br>
-								<h class="xtox">55 <i class="fa-solid fa-arrow-right"></i> 60</h>   =   <h class="xtoxresult">5 x 350 BS</h><br>
-								ascension n°60 = 2000 BS<br>
-							</div>
-							<div class="sec-half-altar">
-								<h class="xtox">60 <i class="fa-solid fa-arrow-right"></i> 65</h>   =   <h class="xtoxresult">5 x 400 BS</h><br> 
-								<h class="xtox">65 <i class="fa-solid fa-arrow-right"></i> 70</h>   =   <h class="xtoxresult">5 x 450 BS</h><br>
-								ascension n°70 = 3000 BS<br>
-								<h class="xtox">70 <i class="fa-solid fa-arrow-right"></i> 75</h>   =   <h class="xtoxresult">5 x 500 BS</h><br>
-								<h class="xtox">75 <i class="fa-solid fa-arrow-right"></i> 80</h>   =   <h class="xtoxresult">5 x 600 BS</h><br>
-								ascension n°80 = 4000 BS<br>
-								<h class="xtox">80 <i class="fa-solid fa-arrow-right"></i> 85</h>   =   <h class="xtoxresult">5 x 700 BS</h><br>
-								<h class="xtox">85 <i class="fa-solid fa-arrow-right"></i> 90</h>   =   <h class="xtoxresult">5 x 800 BS</h><br>
-								ascension n°90 = 5000 BS<br>
-								<h class="xtox">90 <i class="fa-solid fa-arrow-right"></i> 95</h>   =   <h class="xtoxresult">5 x 900 BS</h><br>
-								<h class="xtox">95 <i class="fa-solid fa-arrow-right"></i> 100</h>   =   <h class="xtoxresult">5 x 1000 BS</h><br>
-								ascension n°100 = 7500 BS<br>
-								<h class="xtox">100 <i class="fa-solid fa-arrow-right"></i> 105</h>   =   <h class="xtoxresult">5 x 1200 BS</h><br>
-								<h class="xtox">105 <i class="fa-solid fa-arrow-right"></i> 110</h>   =   <h class="xtoxresult">5 x 1400 BS</h><br> 
-								ascension n°110 = 10000 BS<br>
-								<h class="xtox">110 <i class="fa-solid fa-arrow-right"></i> 115</h>   =   <h class="xtoxresult">5 x 1600 BS</h><br>
-								<h class="xtox">115 <i class="fa-solid fa-arrow-right"></i> 120</h>   =   <h class="xtoxresult">5 x 1800 BS</h><br>
-								ascension n°120 = 12500 BS<br>
-							</div>
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button id="egg_stats" type="button" class="collapsible egg_stats">egg stats<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="egg_stats_content content">
-							<b><u>Archero Hatchery and Egg Farming Compilation  (edited by @Abstrusity, @Luhcaran, @Shusaku, @𝗺𝗿𝗯 from LanderZ's one):</u></b><br>
-								Includes:<br>
-								• List of available Monsters<br>
-								• Numbers of kills required to hatch or complete quests<br>
-								• Completed quest dialogue<br>
-								• Automated hatch timers<br>
-								• Where to find each Monster and which locations are recommended<br>
-								• Monster training bonuses and costs (still Work in Progress)<br>
-								<a href="https://docs.google.com/spreadsheets/d/1p0xAb6ZrgwqhynromVXTqJSsfWlK1W8EDDt2HyvmRKE" target="_blank">Google Sheets with all information about egg</a>
-						</div>
-					</div>
-					<div class="container-btn-flexbox" style="width: 100%;">
-						<button id="hidden_stats" type="button" class="collapsible cost_upgrade_hero">Hidden Stats<a onclick="createModale(this)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
-						<div class="hidden_stats_content content">
-							<u>Stats unlocked when reaching Mythic Refinement :</u><br><br>
-
-							•  Weapon => For a brief while after taking damage, the next hit fires an extra shot.<br>
-							•  Armor => The Higher the HP, the higher the Attack.<br>
-							•  Ring n°1 => While Standing still reduces incomming Bullets Damage.<br>
-							•  Ring n°2 => While Standing still reduces incomming Colision Damage.<br>
-							•  Bracelet => When recovering HP in the Angel room, there is a chance to receive 3x healing.<br>
-							•  Pets n°1 & Pets n°2 => After 2 attacks, the next attack deals double damage. <br>
-							•  Locket => For the first 3s after entering a room, increases movement speed.<br>
-							•  SpellBook => SpellBook can gain energy from Hearts<br><br>
-
-							<u>Comments :</u><br>
-							•  Pets n°1 & Pets n°2 => Works only for the pet attack.<br>
-						</div>
-					</div>
-				</div>
-			</div>
-		</main>
-		<footer style="margin-top: 30px;">
-			<div class="footer-content">
-				<div class="footer-about">
-					<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.3.1" alt="image game icon">
-					<div class="about-content">
-						<h2>Archero :</h2>
-						<div>Archero Update will be added with a certains delay</div>
-						<div class="contact-me">
-							<div>If you encounter any bugs / anomaly please contact me on discord</div>
-							<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
-						</div>
-					</div>
-				</div>
-				<div class="discord_link">
-					<div class="container_dlink">
-						<h2>Community Link:</h2> 
-						<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMutique's Server</li></a>
-						<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
-					</div>
-					<div class="container_rlink">
-						<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
-					</div>
-					<div class="container_flink">
-						<a href="https://www.facebook.com/archerogame/" target="_blank"><li> FB Archero</li></a>
-					</div>
-				</div>
-				<div class="thanks">
-					<h2>Shout-out :</h2>
-					<div class="shout-out">SonHaon, Deth, TigerShark14</div>
-					<div class="shout-out">Ktaplouf, Pew, Lorenz, RedsMeName</div>
-					<div class="shout-out">Everyone who helped me getting data</div>
-				</div>
-			</div>
-		</footer>
-	</div>
-</body>
+</div>
+{% endblock %}
+{% block javascript %}
 <script>
 	function toggleContent(content) {
 		if (content.style.maxHeight) {
@@ -452,92 +376,6 @@
 	}
 </script>
 <script>
-	const traveling = document.getElementById("traveling")
-
-	for(const item of sidebar){
-		const parentContainer = document.createElement("div")
-		const leftSidebar = document.createElement("div")
-		const childLeftSidebar = document.createElement("div")
-		const rightSidebar = document.createElement("div")
-		const childRightSidebar = document.createElement("a")
-		const image = document.createElement("img")
-
-		traveling.appendChild(parentContainer)
-		parentContainer.appendChild(leftSidebar)
-		parentContainer.appendChild(rightSidebar)
-		leftSidebar.appendChild(childLeftSidebar)
-		rightSidebar.appendChild(childRightSidebar)
-		childRightSidebar.appendChild(image)
-
-		parentContainer.className = item['container']['class']
-		parentContainer.id = item['container']['_name'] + "-sidebar-image"
-		parentContainer.addEventListener('click', function windowHref(){
-			window.location.href = item['container']['onclick']
-		})
-		leftSidebar.className = item['container']['childs_container']['leftsidebar']['self_class']
-		childLeftSidebar.className = item['container']['childs_container']['leftsidebar']['child_class']
-		childLeftSidebar.innerHTML = item['container']['childs_container']['leftsidebar']['child_content']
-		rightSidebar.className = item['container']['childs_container']['rightsidebar']['self_class']
-		childRightSidebar.className = item['container']['childs_container']['rightsidebar']['child_class']
-		image.id = item['container']['childs_container']['rightsidebar']['child_content']['image_id']
-		image.src = item['container']['childs_container']['rightsidebar']['child_content']['image_src']
-		image.width = item['container']['childs_container']['rightsidebar']['child_content']['image_width']
-		image.height = item['container']['childs_container']['rightsidebar']['child_content']['image_height']
-	}
-
-	const themeParentContainer = document.createElement("div")
-	const themeLeftSidebar = document.createElement("div")
-	const themeChildLeftSidebar = document.createElement("div")
-	const themeRightSidebar = document.createElement("div")
-	const themeImg = document.createElement("img")
-
-	traveling.appendChild(themeParentContainer)
-	themeParentContainer.appendChild(themeLeftSidebar)
-	themeParentContainer.appendChild(themeRightSidebar)
-	themeLeftSidebar.appendChild(themeChildLeftSidebar)
-	themeRightSidebar.appendChild(themeImg)
-
-	themeParentContainer.className = "traveling-inline-div"
-	themeParentContainer.id = "switch_dark_mode"
-	themeLeftSidebar.className = "leftsidebarc traveling-left"
-	themeChildLeftSidebar.className = "shcl"
-	themeChildLeftSidebar.innerHTML = "Theme"
-	themeRightSidebar.className = "rightsidebarc traveling-right"
-	themeImg.id = "darkmodeSWITCH" 
-	themeImg.width = "21"
-	themeImg.height = "21"
-
-	var darkmode = "{{ darkmode }}"
-	if(darkmode == "yes"){
-		themeImg.src = "\\static\\image\\img-sidebar\\moon.png"
-	}else if(darkmode == "no"){
-		themeImg.src = "\\static\\image\\img-sidebar\\sun.png"
-	}
-
-	var switchModeBtn = document.getElementById('switch_dark_mode');
-	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
-		var date = new Date()
-		var darkmodeSWITCH = document.getElementById('darkmodeSWITCH')
-		date.setTime(date.getTime() + (365*24*60*60*1000));
-		var body = document.body;
-		body.classList.toggle("body_dark_mode");
-		if(body.className == "body_dark_mode"){
-			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
-			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\moon.png"
-		}else{
-			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\sun.png"
-		}
-	})
-
-	var sidebarBtn = document.getElementById('sidebar-icon');
-	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
-		var sidebar = document.getElementById("sidebar")
-		sidebar.classList.toggle('sidebar-active')
-		sidebar.classList.toggle('sidebar-open')		
-	})
-</script>
-<script>
 	const tags_og_title = document.querySelector('meta[property="og:title"]')
 	const tags_og_url = document.querySelector('meta[property="og:url"]')
 	const tags_og_description = document.querySelector('meta[property="og:description"]')
@@ -565,7 +403,8 @@
 	function navigateUrl(){
 		var url = window.location.href
 		var postSearch = url.split("?")
-		var postSearchParam = postSearch[1].split('=')[1].toLowerCase().replaceAll(" ","_");
+		console.log(postSearch);
+		var postSearchParam = postSearch[1].toLowerCase().replaceAll(" ","_");
 		if(postSearchParam[1] != null){
 			var output4dict = urlDict[postSearchParam]
 			var elementColaps = document.getElementById(output4dict)
@@ -589,4 +428,4 @@
 	const self_inline_div_traveling = document.getElementById('Wiki-sidebar-image')
 	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
-</html>
+{% endblock %}

@@ -1,3 +1,7 @@
+# Wiki Actual Version : v1.3.6
+
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 # README
 ## Description
 This is a web application built using the Django framework in Python, designed to help the Archero gaming community. Archero is a popular game that involves battling through levels while upgrading your character's abilities and equipment. The application offers a range of tools to help players improve their gameplay, including an advanced stats calculator, tier lists, and other useful information.
@@ -27,7 +31,6 @@ Once the application is up and running, you can access it by navigating to the a
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 
-## Wiki Actual Version : v1.3.2.2
 ____
 ## Naming convention rule for calculation variables :
 - type : var (+x%) / flat (+x)
