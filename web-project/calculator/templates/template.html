@@ -3,11 +3,11 @@
 	<head>
 		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.3.7">
+		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.5">
 		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-		<script src="{% static 'main.js' %}?version=1.3.7"></script>
+		<script src="{% static 'main.js' %}?version=1.5"></script>
 		{% block head %}
 		{% endblock %}
 	</head>
@@ -30,7 +30,7 @@
 		</div>
 		<div class="traveling" id="traveling">
 			{% for key,value in sidebarContent.items %}
-			<div class="traveling-inline-div" id="{{ key }}-sidebar-image" onclick="window.location.href = '{{ value.onclick }}'">
+			<a href="{{ value.onclick }}" class="traveling-inline-div" id="{{ key }}-sidebar-image">
 				<div class="leftsidebarc traveling-left">
 					<div class="shcl">{{ value.childs_container.leftsidebar.child_content }}</div>
 				</div>
@@ -39,7 +39,7 @@
 						<img alt="{{ key }}" id="{{ value.childs_container.rightsidebar.child_content.image_id }}" src="{{ value.childs_container.rightsidebar.child_content.image_src }}" width="{{ value.childs_container.rightsidebar.child_content.image_width }}" height="{{ value.childs_container.rightsidebar.child_content.image_height }}">
 					</div>
 				</div>
-			</div>
+			</a>
 			{% endfor %}
 		</div>
 	</aside>
@@ -52,16 +52,11 @@
 					<div class="leftsidebarc traveling-left">
 						<div class="shcl">Theme</div>
 					</div>
-					{% if darkmode == "yes" %}
-					<body class="body_dark_mode">
-					{% elif darkmode == "no" %}
-					<body>
-					{% endif %}
 					<div class="rightsidebarc traveling-right">
 						{% if darkmode == "yes" %}
-						<img alt="button switch theme" id="darkmodeSWITCH" width="21" height="21" src="\static\image\img-sidebar\moon.png">
+						<img alt="button switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/moon.png">
 						{% elif darkmode == "no" %}
-						<img alt="button switch theme" id="darkmodeSWITCH" width="21" height="21" src="\static\image\img-sidebar\sun.png">
+						<img alt="button switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/sun.png">
 						{% endif %}
 					</div>
 				</div>
@@ -79,16 +74,16 @@
 			<footer>
 				<div class="footer-content">
 					<div class="footer-about">
-						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.3.7" alt="image game icon">
+						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.5" alt="image game icon">
 						<div class="about-content">
 							<h2>Archero :</h2>
 							<div>Archero Update will be added with a certains delay</div>
 							<div class="contact-me">
-								<div>If you encounter any bugs / anomaly please contact me on discord</div>
-								<div><b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+								<div>Contact <b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
 							</div>
-							<div class="tos"><a href="/Terms-of-Use/">Terms of Use</a></div>
-							<div class="tos">Build v1.3.7</div>
+							<div class="f_content_info"><a href="/Terms-of-Use/">Terms of Use</a></div>
+							<div class="f_content_info"><a href="/changelog/">ChangeLog</a></div>
+							<div class="f_content_info">Build v1.5</div>
 						</div>
 					</div>
 					<div class="discord_link">
@@ -106,9 +101,10 @@
 					</div>
 					<div class="thanks">
 						<h2>Shout-out :</h2>
-						<div class="shout-out">SonHaon, Deth, TigerShark14</div>
+						<div class="shout-out">Special thanks : <b>SonHaon, Deth, TigerShark14</b></div>
 						<div class="shout-out">Ktaplouf, Pew, Lorenz, RedsMeName</div>
-						<div class="shout-out">Everyone who helped me getting data</div>
+						<div class="shout-out">KeithShade, Craggy94, Kang Greenstrider</div>
+						<div class="shout-out">Chaos, Lovii, Pelmens, PNE241</div>
 					</div>
 				</div>
 			</footer>
@@ -122,7 +118,6 @@
 		</script>
 		{% endfor %}
 	{% endif %}
-</body>
 <script>
 	var switchModeBtn = document.getElementById('switch_dark_mode');
 	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
@@ -149,4 +144,5 @@
 </script>
 {% block javascript %}
 {% endblock %}
+</body>
 </html>

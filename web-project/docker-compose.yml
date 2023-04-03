@@ -2,46 +2,32 @@ version: '3.9'
 
 services:
   db:
-    image: ######
-    container_name: ######
-    restart: ######
+    image: postgres
+    container_name: archero-db
+    restart: always
     volumes: 
-      - ######:######
+      - path_local_db_data_store:/var/lib/postgresql/data
     environment:
-      - ###### = ######
-      - ###### = ######
-      - ###### = ######
-      - ###### = ######
-      - ###### = ######
-      - ###### = ######
-      - ###### = ######
+      # - POSTGRES_NAME=##
+      # - POSTGRES_DB=##
+      # - POSTGRES_USER=##
+      # - POSTGRES_PASSWORD=##
+      # - POSTGRES_HOST=##
+      # - POSTGRES_HOST_AUTH_METHOD=##
+      # - ALLOWED_HOSTS = ##
     networks:
-      - ######
+      - internal
 
   web:
-    image: ######
-    restart: ######
-    container_name: ######
-    command: ######
-    environment:
-      - ###### = ######
-      - ###### = ######
-      - ###### = ######
-      - ###### = ######
-      - ###### = ######
-      - ###### = ######
-      - ###### = ######
+    image: archero
+    restart: always
+    container_name: archero-web
+    command: gunicorn app.wsgi:application --bind=0.0.0.0:8000
+    ports:
+      - "8000:8000"
     networks:
-      - ######
-      - ######
-    labels:
-      - ######
-      - ######
-      - ######
-    logging:
-      driver: ######
-      options:
-        fluentd-address: ######
+      - internal
+      - web
 
 
 volumes:
@@ -50,5 +36,4 @@ volumes:
 networks:
   internal:
   web:
-    external: ######
-  
+    external: false

@@ -19,15 +19,6 @@
 	.sgp62q-1{
         display: none;
     }
-    .ezpxFx{
-        padding: 1px 16px 0px 4px;
-    }
-}
-
-@media screen and (min-width : 340px){ /* pour résolution supérieur à 340px */
-    .ezpxFx{
-        padding: 0.125em 16px 0px 4.5em;
-    }
 }
 
 @media screen and (max-width : 320px){ /* pour résolution inf à 320px */
@@ -53,15 +44,12 @@
     justify-content: center;
     margin-top: 1em;
     min-height: 2.75em;
+    margin: 10px;
 }
 
 .dLWNvE {
-    height: 2.5em;
-    width: 2.5em;
-    position: absolute;
-    left: 0px;
-    top: 0.125em;
-    margin: 0px 1em;
+    height: 1.3em;
+    width: 1.3em;
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
@@ -184,6 +172,8 @@
     color: rgb(220, 221, 222);
     line-height: 1em;
     white-space: break-spaces;
+    display: flex;
+    align-items: center;
 }
 
 .hXMbfy > .sc-27l7o2-0 {

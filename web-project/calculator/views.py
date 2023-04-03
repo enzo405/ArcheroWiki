@@ -39,7 +39,7 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	relics_table_stats = other_model['relics_table']
 	weapon_skins_table_stats = other_model['weapon_skins_table']
 	try:
-		os.remove(f"calculator/static/image/stuff_save/stuff_{ingame_name}.png")
+		os.remove(f"calculator/static/image/stuff_save/{pbid}.png")
 	except:
 		pass
 	################################# REQUÊTE DES ENTRÉES DE L'USERS #######################################################
@@ -309,12 +309,12 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	global_all_damage_flat = 0
 	global_all_damage_var = 0
 
-	global_stats_atk_flat = hero_modified_base_atk + int(cumul_old_flat_passiv_atk) + int(cumul_stuff_flat_activ_atk) + int(int(activ_egg_stats["Attack"])) + int(cumul_altar_flat_passiv_atk) + int(cumul_dragon_flat_activ_atk) + int(brave_privileges_stats['Attack Flat']) + int(medal_stats['attack']) + int(relics_stats['attack'])
-	global_stats_hp_flat = hero_modified_base_hp + int(cumul_old_flat_passiv_hp) + int(cumul_stuff_flat_activ_hp) + int(int(activ_egg_stats["Max Hp"])) + int(cumul_altar_flat_passiv_hp) + int(cumul_dragon_flat_activ_hp) + int(brave_privileges_stats['Hp Flat']) + int(medal_stats['hp']) + int(relics_stats['hp'])
+	global_stats_atk_flat = hero_modified_base_atk + int(cumul_old_flat_passiv_atk) + int(cumul_stuff_flat_activ_atk) + int(activ_egg_stats["Attack"]) + int(cumul_altar_flat_passiv_atk) + int(cumul_dragon_flat_activ_atk) + int(brave_privileges_stats['Attack Flat']) + int(medal_stats['attack']) + int(relics_stats['attack'])
+	global_stats_hp_flat = hero_modified_base_hp + int(cumul_old_flat_passiv_hp) + int(cumul_stuff_flat_activ_hp) + int(activ_egg_stats["Max Hp"]) + int(cumul_altar_flat_passiv_hp) + int(cumul_dragon_flat_activ_hp) + int(brave_privileges_stats['Hp Flat']) + int(medal_stats['hp']) + int(relics_stats['hp'])
 	global_stats_atk = global_stats_atk_flat + (global_stats_atk_flat*float(cumul_var_atk)) + (global_stats_atk_flat*float(cumul_stuff_var_activ_atk)) + (global_stats_atk_flat*float(cumul_jewel_var_activ_atk)) + cumul_jewel_flat_activ_atk + cumul_refine_flat_activ_atk
 	global_stats_hp = global_stats_hp_flat + (global_stats_hp_flat*float(cumul_var_hp)) + (global_stats_hp_flat*float(cumul_stuff_var_activ_hp)) + (global_stats_hp_flat*float(cumul_jewel_var_activ_hp)) + cumul_jewel_flat_activ_hp + cumul_refine_flat_activ_hp
 	###################### CREATION IMAGE STUFF#############################################################
-	create_image(str(ingame_name),str(stuff_table_stats.dictionnaire()['weapon_choosen'].lower().replace(" ","_")),
+	create_image(pbid,str(stuff_table_stats.dictionnaire()['weapon_choosen'].lower().replace(" ","_")),
 		str(stuff_table_stats.dictionnaire()['weapon_rarity'].lower().replace(" ","_")),int(stuff_table_stats.dictionnaire()['weapon_level']),
 		str(stuff_table_stats.dictionnaire()['armor_choosen'].lower().replace(" ","_")),str(stuff_table_stats.dictionnaire()['armor_rarity'].lower().replace(" ","_")),int(stuff_table_stats.dictionnaire()['armor_level']),str(stuff_table_stats.dictionnaire()['ring1_choosen'].lower().replace(" ","_")),
 		str(stuff_table_stats.dictionnaire()['ring1_rarity'].lower().replace(" ","_")),int(stuff_table_stats.dictionnaire()['ring1_level']),
@@ -370,16 +370,17 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	messages.success(request=request,message=f"{ingame_name.capitalize()} updated with success")
 	return HttpResponseRedirect(f'{dict_Link[redirectPath]}')
 
-
+@login_required
 def affiche_calc(request, pbid):
-	darkmode = checkTheme_Request(request)
+	user_credential = request.session['user_credential']
+	darkmode = checkTheme_Request(request,user_credential)
 	try: ## handle error if pbid doesn't exist
 		user_stats = models.user.objects.get(public_id=pbid)
 		try:
 			dmg_calc_table_stats = models.dmg_calc_table.objects.get(user_profile=user_stats)
 		except:
 			return HttpResponseRedirect(f"/stats/calc/{pbid}/1/")
-		if not os.path.exists(f"calculator/static/image/stuff_save/stuff_{user_stats.ingame_name}.png"):
+		if not os.path.exists(f"calculator/static/image/stuff_save/{pbid}.png"):
 			return HttpResponseRedirect(f"/stats/calc/{pbid}/0/")
 		valueError = "no"
 		if dmg_calc_table_stats.missing_data != "" and dmg_calc_table_stats.missing_data != "none":
@@ -418,70 +419,63 @@ def affiche_calc(request, pbid):
 		messages.error(request,e)
 		return HttpResponseRedirect("/")
 
-
+@login_required
 def index_calc(request):
-	darkmode = checkTheme_Request(request)
-	cookie_value = checkCookie(request.COOKIES)
-	if len(cookie_value) >= 1:
-		try_access = False
-		try:
-			ingame_id_cookie = list(cookie_value.values())[0]
-			ingame_name_cookie = list(cookie_value.keys())[0]
-			if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
-				show_table = "visitor"
-				user_stats = ""
-				self_ingame_name = ""
-				self_public_id = ""
-				self_global_atk_save = ""
-				self_global_hp_save = ""
-			else:
-				user_stats = models.user.objects.get(ingame_id=ingame_id_cookie)
-				self_ingame_name = user_stats.ingame_name
-				self_public_id = user_stats.public_id
-				self_global_atk_save = user_stats.global_atk_save
-				self_global_hp_save = user_stats.global_hp_save
-				resultSimilar = similar(self_ingame_name.lower(),str(ingame_name_cookie).lower())
-				if resultSimilar >= 0.65 and self_global_atk_save > 2800:
-					show_table = "yes"
-				elif resultSimilar >= 0.65 and self_global_atk_save <= 2800:
-					show_table = "no_show"
-				else:
-					show_table = "visitor"
-					try_access = True
-					send_webhook(f"{str(ingame_name_cookie).lower()} tried to acces {self_ingame_name.lower()} and the similitude was at {similar(self_ingame_name.lower(),str(ingame_name_cookie).lower())}")
-		except:
-			show_table = "no_profile"
+	user_credential = request.session['user_credential']
+	darkmode = checkTheme_Request(request,user_credential)
+	try_access = False	
+	try:
+		ingame_id_cookie = list(user_credential.values())[0]
+		ingame_name_cookie = list(user_credential.keys())[0]
+		if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
+			show_table = "visitor"
+			user_stats = ""
 			self_ingame_name = ""
 			self_public_id = ""
 			self_global_atk_save = ""
 			self_global_hp_save = ""
-		user_liste = list(models.user.objects.all().order_by('-global_atk_save'))
-		number_user = len(user_liste)
-		notuserlist = ['0-000001','0-000002','0-000003','0-000004'] ## pas besoin de mettre le user_init, il a déjà moins de 2800 atk
-		notuserlist.extend(models.user.objects.filter(global_atk_save__lt=2800).values_list('ingame_id', flat=True))
-		for i in notuserlist:
-			profile = models.user.objects.get(ingame_id=i)
-			user_liste.remove(profile)
-		return render(request,"calculator/index.html",{"listALL": user_liste, "self_ingame_name":self_ingame_name,"self_global_atk_save":self_global_atk_save,"self_global_hp_save":self_global_hp_save, "self_public_id":self_public_id, "show_table": show_table,"darkmode": darkmode, "header_msg": "Stats Calculator","lang":lang, "number_user":number_user, "try_access":try_access, "ingame_name_cookie":ingame_name_cookie,"sidebarContent":SidebarContent})
-	else:
-		return redirect("/login")
-
-
-def formulaire_calc(request):
-	darkmode = checkTheme_Request(request)
-	cookie_value = checkCookie(request.COOKIES)
-	if len(cookie_value) >= 1:
-		cookie_request_id = list(cookie_value.values())[0]
-		cookie_request_name = list(cookie_value.keys())[0]
-	else:
-		messages.warning(request, f"You need to login first")
-		return render(request, "login.html", {"darkmode":darkmode})
-	try:
-		models.user.objects.get(ingame_id=cookie_request_id)
-		already_Profile = True
+		else:
+			user_stats = models.user.objects.get(ingame_id=ingame_id_cookie)
+			self_ingame_name = user_stats.ingame_name
+			self_public_id = user_stats.public_id
+			self_global_atk_save = user_stats.global_atk_save
+			self_global_hp_save = user_stats.global_hp_save
+			resultSimilar = similar(self_ingame_name.lower(),str(ingame_name_cookie).lower())
+			if resultSimilar >= 0.65 and self_global_atk_save > 2800:
+				show_table = "yes"
+			elif resultSimilar >= 0.65 and self_global_atk_save <= 2800:
+				show_table = "no_show"
+			else:
+				show_table = "visitor"
+				try_access = True
+				send_webhook(f"{str(ingame_name_cookie).lower()} tried to acces {self_ingame_name.lower()} and the similitude was at {similar(self_ingame_name.lower(),str(ingame_name_cookie).lower())}")
 	except:
-		already_Profile = False
-	if request.method == "POST" or already_Profile:
+		show_table = "no_profile"
+		self_ingame_name = ""
+		self_public_id = ""
+		self_global_atk_save = ""
+		self_global_hp_save = ""
+	user_liste = list(models.user.objects.all().order_by('-global_atk_save'))
+	number_user = len(user_liste)
+	notuserlist = ['0-000001','0-000002','0-000003','0-000004'] ## pas besoin de mettre le user_init, il a déjà moins de 2800 atk
+	notuserlist.extend(models.user.objects.filter(global_atk_save__lt=2800).values_list('ingame_id', flat=True))
+	for i in notuserlist:
+		profile = models.user.objects.get(ingame_id=i)
+		user_liste.remove(profile)
+	return render(request,"calculator/index.html",{"listALL": user_liste, "self_ingame_name":self_ingame_name,"self_global_atk_save":self_global_atk_save,"self_global_hp_save":self_global_hp_save, "self_public_id":self_public_id, "show_table": show_table,"darkmode": darkmode, "header_msg": "Stats Calculator","lang":lang, "number_user":number_user, "try_access":try_access, "ingame_name_cookie":ingame_name_cookie,"sidebarContent":SidebarContent})
+
+@login_required
+def formulaire_calc(request):
+	user_credential = request.session['user_credential']
+	darkmode = checkTheme_Request(request,user_credential)
+	cookie_request_id = list(user_credential.values())[0]
+	cookie_request_name = list(user_credential.keys())[0]
+	try:
+		profile = models.user.objects.get(ingame_id=cookie_request_id)
+	except:
+		profile = False
+	if request.method == "POST" or profile != False:
+		messages.info(request, f"{profile.ingame_name}'s Profile already exists")
 		return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
 	else :
 		form_User = User()
@@ -531,9 +525,10 @@ def formulaire_calc(request):
 		}
 	return render(request,"calculator/formulaire.html",ctx)
 
-
+@login_required
 def traitement_calc(request):
-	darkmode = checkTheme_Request(request)
+	user_credential = request.session['user_credential']
+	darkmode = checkTheme_Request(request,user_credential)
 	form_User = User(request.POST)
 	form_StuffTable = StuffTable(request.POST)
 	form_HeroTable = HeroTable(request.POST)
@@ -638,9 +633,10 @@ def traitement_calc(request):
 			'form_WeaponSkinTable' :form_WeaponSkinTable,'darkmode': darkmode, 'header_msg': 'Create Profile','lang':lang, "public_id":pbid,"cookie_request_id":ingame_id,
 			"cookie_request_name":ingame_name,"pk_id":pk_id,"sidebarContent":SidebarContent})
 
-
+@login_required
 def update_calc(request, pbid):
-	darkmode = checkTheme_Request(request)
+	user_credential = request.session['user_credential']
+	darkmode = checkTheme_Request(request,user_credential)
 	try:
 		user_stats = models.user.objects.get(public_id=pbid)
 	except:
@@ -663,13 +659,8 @@ def update_calc(request, pbid):
 	relics_table_stats = models.relics_table.objects.get(user_profile=user_stats)
 	weapon_skins_table_stats = models.weapon_skins_table.objects.get(user_profile=user_stats)
 	user_name = user_stats.ingame_name.lower()
-	cookie_value = checkCookie(request.COOKIES)
-	try:
-		ingame_name_cookie = list(cookie_value.keys())[0]
-		ingame_id_cookie = list(cookie_value.values())[0]
-	except:
-		ingame_name_cookie = ""
-		ingame_id_cookie = ""
+	ingame_name_cookie = list(user_credential.keys())[0]
+	ingame_id_cookie = list(user_credential.values())[0]
 	if request.method == "GET" and similar(user_name,str(ingame_name_cookie).lower()) >= 0.65 and ingame_id_cookie == user_id:
 		username_unlowered = user_stats.ingame_name
 		public_id = user_stats.public_id
@@ -725,7 +716,7 @@ def update_calc(request, pbid):
 	else:
 		return HttpResponseRedirect("/calculator/index/")
 
-
+@login_required
 def updatetraitement_calc(request, pbid):
 	user_ingame_id = models.user.objects.get(public_id=pbid)
 	stuff_table_stats = models.stuff_table.objects.get(user_profile=user_ingame_id)
@@ -744,7 +735,8 @@ def updatetraitement_calc(request, pbid):
 	medal_table_stats = models.medals_table.objects.get(user_profile=user_ingame_id)
 	relics_table_stats = models.relics_table.objects.get(user_profile=user_ingame_id)
 	weapon_skins_table_stats = models.weapon_skins_table.objects.get(user_profile=user_ingame_id)
-	darkmode = checkTheme_Request(request)
+	user_credential = request.session['user_credential']
+	darkmode = checkTheme_Request(request,user_credential)
 	form_User = User(request.POST,instance=user_ingame_id)
 	form_StuffTable = StuffTable(request.POST,instance=stuff_table_stats)
 	form_HeroTable = HeroTable(request.POST,instance=hero_table_stats)
@@ -852,7 +844,6 @@ def updatetraitement_calc(request, pbid):
 			"id_token": pbid, "value_error": value_error_msg,"darkmode": darkmode, "header_msg": "Stats Calculator", "lang":lang,"sidebarContent":SidebarContent
 		}
 		return render(request,"calculator/formulaire.html",ctx)
-
 
 def delete_user(request, pbid):
 	user = models.user.objects.get(public_id=pbid)

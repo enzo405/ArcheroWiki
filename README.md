@@ -52,7 +52,7 @@ ___
 - `python manage.py makemigrations`
 - `python manage.py migrate`
 - `python manage.py loaddata data.json`
-
+<!-- Remind to fill up the data.json -->
 ---
 
 

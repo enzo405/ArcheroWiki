@@ -1,5 +1,6 @@
 from django.forms import ModelForm
 from . import models
+from django import forms
 
 
 
@@ -395,3 +396,13 @@ class WeaponSkinTable(ModelForm):
 				"brave_bow_1",
 				"stalker_staff_1"
 		)
+
+
+RUNE_CHOICES = [('power', 'Power'), ('courage', 'Courage')]
+class DamageCalculatorForm(forms.Form):
+	runes = forms.ChoiceField(choices=RUNE_CHOICES, widget=forms.RadioSelect)
+	firstInput = forms.DecimalField(max_digits=6, decimal_places=2)
+	secondInput = forms.DecimalField(max_digits=6, decimal_places=2)
+	thirdInput = forms.DecimalField(max_digits=6, decimal_places=2)
+	fourthInput = forms.DecimalField(max_digits=6, decimal_places=2)
+	fifthInput = forms.DecimalField(max_digits=6, decimal_places=2)

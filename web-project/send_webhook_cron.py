@@ -17,7 +17,6 @@ def clearFile():
 		json.dump(data_init, f)
 		f.close()
 
-
 WEBHOOK_URL = "https://discord.com/api/webhooks/#########/#############################################"
 webhook = DiscordWebhook(url=WEBHOOK_URL, content="", rate_limit_retry=True)
 with open('calculator/static/json/requetes.json','r', encoding='utf-8') as f:

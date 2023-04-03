@@ -1,24 +1,21 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.7">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.3.7">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.5">
 <title>Archero - Wiki</title>
 <meta property="og:type" content="website">
 <meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
 {% if hero == "yes" %}
 <meta property="og:title" content="{{ name_hero }}">
 <meta property="og:url" content="{{ url_cpy }}">
-<meta property="og:description" content="{{ hero_description|safe }}
-{{ skill|safe }}
-{{ skill_details|safe }}">
-<meta property="og:image" content="{% static hero_image %}?version=1.3.7">
+<meta property="og:description" content="{{ hero_data.hero_description|safe }} {{ hero_data.skill|safe }} {{ hero_data.skill_details|safe }}">
+<meta property="og:image" content="{% static hero_image %}?version=1.5">
 {% else %}
 <meta property="og:title" content="Archero - Heroes Description">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/heroes">
 <meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.7">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -43,37 +40,11 @@
 				}
 			}
 		</script>
-		{% if hero == "yes" %}
 		<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for hero.." value="{{ name_hero }}">
-		{% else %}
-		<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for hero..">
-		{% endif %}
 		<ul id="myUL" class="searchbar-ul-hero" style="display: none;">
-			<li value="Atreus"><a id="toggle-display-list" href="/wiki/heroes/Atreus/"><div class="item_name">Atreus</div><div class="siimg"><img src="/static/image/hero_icon/icon_atreus.png" width="26px"></div></a></li>
-			<li value="Urasil"><a id="toggle-display-list" href="/wiki/heroes/Urasil/"><div class="item_name">Urasil</div><div class="siimg"><img src="/static/image/hero_icon/icon_urasil.png" width="26px"></div></a></li>
-			<li value="Phoren"><a id="toggle-display-list" href="/wiki/heroes/Phoren/"><div class="item_name">Phoren</div><div class="siimg"><img src="/static/image/hero_icon/icon_phoren.png" width="26px"></div></a></li>
-			<li value="Taranis"><a id="toggle-display-list" href="/wiki/heroes/Taranis/"><div class="item_name">Taranis</div><div class="siimg"><img src="/static/image/hero_icon/icon_taranis.png" width="26px"></div></a></li>
-			<li value="Helix"><a id="toggle-display-list" href="/wiki/heroes/Helix/"><div class="item_name">Helix</div><div class="siimg"><img src="/static/image/hero_icon/icon_helix.png" width="26px"></div></a></li>
-			<li value="Meowgik"><a id="toggle-display-list" href="/wiki/heroes/Meowgik/"><div class="item_name">Meowgik</div><div class="siimg"><img src="/static/image/hero_icon/icon_meowgik.png" width="26px"></div></a></li>
-			<li value="Shari"><a id="toggle-display-list" href="/wiki/heroes/Shari/"><div class="item_name">Shari</div><div class="siimg"><img src="/static/image/hero_icon/icon_shari.png" width="26px"></div></a></li>
-			<li value="Ayana"><a id="toggle-display-list" href="/wiki/heroes/Ayana/"><div class="item_name">Ayana</div><div class="siimg"><img src="/static/image/hero_icon/icon_ayana.png" width="26px"></div></a></li>
-			<li value="Onir"><a id="toggle-display-list" href="/wiki/heroes/Onir/"><div class="item_name">Onir</div><div class="siimg"><img src="/static/image/hero_icon/icon_onir.png" width="26px"></div></a></li>
-			<li value="Rolla"><a id="toggle-display-list" href="/wiki/heroes/Rolla/"><div class="item_name">Rolla</div><div class="siimg"><img src="/static/image/hero_icon/icon_rolla.png" width="26px"></div></a></li>
-			<li value="Bonnie"><a id="toggle-display-list" href="/wiki/heroes/Bonnie/"><div class="item_name">Bonnie</div><div class="siimg"><img src="/static/image/hero_icon/icon_bonnie.png" width="26px"></div></a></li>
-			<li value="Sylvan"><a id="toggle-display-list" href="/wiki/heroes/Sylvan/"><div class="item_name">Sylvan</div><div class="siimg"><img src="/static/image/hero_icon/icon_sylvan.png" width="26px"></div></a></li>
-			<li value="Shade"><a id="toggle-display-list" href="/wiki/heroes/Shade/"><div class="item_name">Shade</div><div class="siimg"><img src="/static/image/hero_icon/icon_shade.png" width="26px"></div></a></li>
-			<li value="Ophelia"><a id="toggle-display-list" href="/wiki/heroes/Ophelia/"><div class="item_name">Ophelia</div><div class="siimg"><img src="/static/image/hero_icon/icon_ophelia.png" width="26px"></div></a></li>
-			<li value="Ryan"><a id="toggle-display-list" href="/wiki/heroes/Ryan/"><div class="item_name">Ryan</div><div class="siimg"><img src="/static/image/hero_icon/icon_ryan.png" width="26px"></div></a></li>
-			<li value="Lina"><a id="toggle-display-list" href="/wiki/heroes/Lina/"><div class="item_name">Lina</div><div class="siimg"><img src="/static/image/hero_icon/icon_lina.png" width="26px"></div></a></li>
-			<li value="Aquea"><a id="toggle-display-list" href="/wiki/heroes/Aquea/"><div class="item_name">Aquea</div><div class="siimg"><img src="/static/image/hero_icon/icon_aquea.png" width="26px"></div></a></li>
-			<li value="Shingen"><a id="toggle-display-list" href="/wiki/heroes/Shingen/"><div class="item_name">Shingen</div><div class="siimg"><img src="/static/image/hero_icon/icon_shingen.png" width="26px"></div></a></li>
-			<li value="Gugu"><a id="toggle-display-list" href="/wiki/heroes/Gugu/"><div class="item_name">Gugu</div><div class="siimg"><img src="/static/image/hero_icon/icon_gugu.png" width="26px"></div></a></li>
-			<li value="Iris"><a id="toggle-display-list" href="/wiki/heroes/Iris/"><div class="item_name">Iris</div><div class="siimg"><img src="/static/image/hero_icon/icon_iris.png" width="26px"></div></a></li>
-			<li value="Blazo"><a id="toggle-display-list" href="/wiki/heroes/Blazo/"><div class="item_name">Blazo</div><div class="siimg"><img src="/static/image/hero_icon/icon_blazo.png" width="26px"></div></a></li>
-			<li value="Melinda"><a id="toggle-display-list" href="/wiki/heroes/Melinda/"><div class="item_name">Melinda</div><div class="siimg"><img src="/static/image/hero_icon/icon_melinda.png" width="26px"></div></a></li>
-			<li value="Elaine"><a id="toggle-display-list" href="/wiki/heroes/Elaine/"><div class="item_name">Elaine</div><div class="siimg"><img src="/static/image/hero_icon/icon_elaine.png" width="26px"></div></a></li>
-			<li value="Bobo"><a id="toggle-display-list" href="/wiki/heroes/Bobo/"><div class="item_name">Bobo</div><div class="siimg"><img src="/static/image/hero_icon/icon_bobo.png" width="26px"></div></a></li>
-			<li value="Bobo"><a id="toggle-display-list" href="/wiki/heroes/Stella/"><div class="item_name">Stella</div><div class="siimg"><img src="/static/image/hero_icon/icon_stella.png" width="26px"></div></a></li>
+			{% for k in HeroData %}
+			<li value="{{ k }}"><a id="toggle-display-list" href="/wiki/heroes/{{ k }}/"><div class="item_name">{{ k }}</div><div class="siimg"><img src="/static/image/hero_icon/icon_{{ k }}.png" width="26px"></div></a></li>
+			{% endfor %}
 		</ul>
 	</div>
 	<div class="embed-container">
@@ -85,28 +56,16 @@
 					<span class="sgp62q-3 cTBPsI">BOT</span>
 					<span class="sc-1idsap7-0 dyOqmJ" id="date"></span>
 				</a>
-				{% if hero == "yes" %}
 				<span class="span-share" id="{{ name_hero }}"><a onclick="createModale(this,false)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
-				{% else %}
-				<span class="span-share" id="Stella"><a onclick="createModale(this,false)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
-				{% endif %}
 			</div>
 			<div class="kn3fae-2 eKjosW">
 				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
 					<div class="sc-3qrykn-0 bdFBtt">
 						<span class="sc-3qrykn-1 bsDYtY">
-							{% if hero == "yes" %}
 							<div class="sc-27l7o2-0 heOpKb" id="name_hero">{{ name_hero }}</div>
-							{% else %}
-							<div class="sc-27l7o2-0 heOpKb" id="name_hero">Stella</div>
-							{% endif %}
 						</span>
 						<div class="sc-3qrykn-3 hXMbfy">
-							{% if hero == "yes" %}
-							<div class="sc-27l7o2-0 heOpKb" id="hero_description">{{ hero_description|safe }}</div>
-							{% else %}
-							<div class="sc-27l7o2-0 heOpKb" id="hero_description">Princess of the Sky City, able to wield the power of the astral realm since birth.</div>
-							{% endif %}
+							<div class="sc-27l7o2-0 heOpKb" id="hero_description">{{ hero_data.hero_description|safe }}</div>
 						</div>
 						<div class="sc-3qrykn-4 hQKgZF">
 							<div class="rgqgux-0 dQAxvm">
@@ -117,13 +76,8 @@
 								</div>
 								<div class="rgqgux-2 jFcAhO">
 									<div class="sc-27l7o2-0 heOpKb">
-										{% if hero == "yes" %}
-										<div id="base_atk">{{ base_atk }}</div>
-										<div id="base_hp">{{ base_hp }}</div><br>
-										{% else %}
-										<div id="base_atk"> • Base Attack: 225 [+18]</div>
-										<div id="base_hp"> • Base Hp: 950 [+ 50]</div><br>
-										{% endif %}
+										<div id="base_atk">• Base Attack: {{ hero_data.base_atk }}</div>
+										<div id="base_hp">• Base Hp: {{ hero_data.base_hp }}</div><br>
 									</div>
 								</div>
 								<div class="rgqgux-1 dHYyKL">
@@ -134,15 +88,7 @@
 								<div class="rgqgux-2 jFcAhO">
 									<div class="sc-27l7o2-0 heOpKb">
 										<div id="lvl_stats">
-											{% if hero == "yes" %}
-											{{ attributes|safe }}
-											{% else %}
-											• Lvl 20: Attack +125 [All Heroes]<br>
-											• Lvl 40: Crit Chance + 6%<br>
-											• Lvl 60: Attack + 6% [All Heroes]<br>
-											• Lvl 80: Attack Speed + 7%<br>
-											• Lvl 120: HP drops + 7% [All Heroes]
-											{% endif %}
+											{{ hero_data.attributes|safe }}
 										</div><br>
 									</div>
 								</div>
@@ -154,44 +100,28 @@
 								<div class="rgqgux-2 jFcAhO">
 									<div class="sc-27l7o2-0 heOpKb">
 										<div id="price">
-											{% if hero == "yes" %}
-											{{ price|safe }}
-											{% else %}
-											40 USD or 50 Stella Shards
-											{% endif %}
+											{{ hero_data.price|safe }}
 										</div>
 									</div>
 								</div>
 								<div class="rgqgux-2 jFcAhO">
 									<div class="sc-27l7o2-0 heOpKb">
 										<div id="skill_details">
-											{% if hero == "yes" %}
-											{{ skill_details|safe }}
-											{% else %}
-											<br>
-											{% endif %}
+											{{ hero_data.skill_details|safe }}
 										</div>
 									</div>
 								</div>
 								<div class="rgqgux-2 jFcAhO">
 									<div class="sc-27l7o2-0 heOpKb">
 										<div id="skill">
-											{% if hero == "yes" %}
-											{{ skill|safe }}
-											{% else %}
-											Master of starlight and lightning. Attacks with guardian spirit. Possesses strong weapon damage and knockback.
-											{% endif %}
+											{{ hero_data.skill|safe }}
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="sc-3qrykn-6 fTOqMH">
-							{% if hero == "yes" %}
 							<img src="/static/{{ hero_image }}" alt="Thumbnail" class="sc-3qrykn-7 fUliQq" id="hero_image">
-							{% else %}
-							<img src="/static/image/hero_icon/icon_stella.png" alt="Thumbnail" class="sc-3qrykn-7 fUliQq" id="hero_image">
-							{% endif %}
 						</div>
 					</div>
 				</div>
@@ -203,70 +133,12 @@
 							<div class="rgqgux-0 dQAxvm">
 								<div class="rgqgux-2 jFcAhO">
 									<div class="content-embed-star sc-27l7o2-0 heOpKb">
-										<b>1 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
+										{% for k,v in hero_data.star.items %}
+										<b>{{ k }} <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
 										<div id="star_1">
-											{% if hero == "yes" %}
-											{{ star_1|safe }}
-											{% else %}
-											Patrol Armor Scroll Earnings + 5%
-											{% endif %}
+											{{ v|safe }}
 										</div><br>
-										<b>2 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
-										<div id="star_2">
-											{% if hero == "yes" %}
-											{{ star_2|safe }}
-											{% else %}
-											Rear Damage Resistance +3% [All Heroes]
-											{% endif %}
-										</div><br>
-										<b>3 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
-										<div id="star_3">
-											{% if hero == "yes" %}
-											{{ star_3|safe }}
-											{% else %}
-											Starlight and Thunder - Dazzle: Increases Starlight damage, summon chance and max summons
-											{% endif %}
-										</div><br>
-										<b>4 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
-										<div id="star_4">
-											{% if hero == "yes" %}
-											{{ star_4|safe }}
-											{% else %}
-											Trait - Mischievous: Chance to use lightning to attack surrounding enemies when moving
-											{% endif %}
-										</div><br>
-										<b>5 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
-										<div id="star_5">
-											{% if hero == "yes" %}
-											{{ star_5|safe }}
-											{% else %}
-											Spirit - Enhance: When spirit attacks enemies, they take more damage when attacked by lightning and spirit.
-											{% endif %}
-										</div><br>
-										<b>6 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
-										<div id="star_6">
-											{% if hero == "yes" %}
-											{{ star_6|safe }}
-											{% else %}
-											Starlight and Thunder - Eon Ward: Guardian spirit's weapon damage increased. Successive attacks on enemies increase Attack Speed
-											{% endif %}
-										</div><br>
-										<b>7 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
-										<div id="star_7">
-											{% if hero == "yes" %}
-											{{ star_7|safe }}
-											{% else %}
-											Meteor and Star damage + 10% [All Heroes]
-											{% endif %}
-										</div><br>
-										<b>8 <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
-										<div id="star_8">
-											{% if hero == "yes" %}
-											{{ star_8|safe }}
-											{% else %}
-											Weapon Damage + 8% [All Heroes]
-											{% endif %}
-										</div>
+										{% endfor %}
 									</div>
 								</div>
 							</div>

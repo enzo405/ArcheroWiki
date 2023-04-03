@@ -1,106 +1,118 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.7">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5">
 <title>Archero - Wiki</title>
 <meta property="og:title" content="Archero Emulator Runes">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/damage-calculator">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
 <meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.7">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
-<div class="container_runes_input">
-	<div class="runes-choice">
-		<div onclick="runesClicked('power')" class="rchrch power"><img src="/static/image/wiki-image/rune_101.png" alt="runes power"></div>
-		<div class="rchrch saviour"><img src="/static/image/wiki-image/rune_102.png" alt="runes saviour"></div>
-		<div class="rchrch recovery"><img src="/static/image/wiki-image/rune_103.png" alt="runes recovery"></div>
-		<div onclick="runesClicked('courage')" class="rchrch courage"><img src="/static/image/wiki-image/rune_104.png" alt="runes courage"></div>
-		<div class="rchrch luck"><img src="/static/image/wiki-image/rune_105.png" alt="runes luck"></div>
-	</div>
-	<div class="runes_input">
-		<div class="select-runes">
-			<select id="firstSelect" class="runes-line">
-				<option id="firstOption" value="none">--Choose a Runes--</option>
-			</select>
-			<select id="secondSelect" class="runes-line">
-				<option id="firstOption" value="none"></option>
-			</select>
-			<select id="thirdSelect" class="runes-line">
-				<option id="firstOption" value="none"></option>
-			</select>
-			<select id="fourthSelect" class="runes-line">
-				<option id="firstOption" value="none"></option>
-			</select>
-			<select id="fifthSelect" class="runes-line">
-				<option id="firstOption" value="none"></option>
-			</select>
-		</div>
-		<div class="input-runes">
-			<input id="firstInput" type="text" pattern="^[0-9]{1,4}([.][0-9]{1,2})?$">
-			<input id="secondInput" type="text" pattern="^[0-9]{1,4}([.][0-9]{1,2})?$">
-			<input id="thirdInput" type="text" pattern="^[0-9]{1,4}([.][0-9]{1,2})?$">
-			<input id="fourthInput" type="text" pattern="^[0-9]{1,4}([.][0-9]{1,2})?$">
-			<input id="fifthInput" type="text" pattern="^[0-9]{1,4}([.][0-9]{1,2})?$">
-		</div>
-	</div>
-</div>
-<div class="ingame_damage_result" id="ingame_damage_result">
-	<div class="btn-generate-damage" onclick="generateDamage()">Generate Damage</div>
-	<table class="table-damage-result">
-		<tr>
-			<th colspan="1" class="table-outrow popup-dmgcalc" onclick="damagePopupFunction()"><i class="fa fa-info-circle" aria-hidden="true"></i></th>
-				<div class="popup_container" id="damage_popup">
-					• Generate Damage show damage with the runes input above<br>
-					• Here you see a table with the damage in game<br>
+<div class="content_container">
+	<div class="container_runes_input">
+		<form method="POST" action="">
+			{% csrf_token %}
+			<div class="runes-choice">
+				<div id="power" class="fieldset_container" onclick="runesClicked('power')">
+					<input type="radio" id="power_rune" name="runes" value="power" style="display: none;">
+					<label class="label_fieldset" for="power_rune"><img class="rchrch" src="/static/image/wiki-image/rune_101.png" alt="runes power"></label>
 				</div>
-			<th colspan="2" class="distance-type-th">Melee</th>
-			<th colspan="2" class="distance-type-th">Range</th>
-		</tr>
-		<tr>
-			<th class="table-outrow"><div class="btn-reset" onclick="reset()">Reset</div></th>
-			<th class="damage-type-th">Normal Dmg</th>
-			<th class="damage-type-th">Critical Dmg</th>
-			<th class="damage-type-th">Normal Dmg</th>
-			<th class="damage-type-th">Critical Dmg</th>
-		</tr>
-		<tr>
-			<td class="mobs-type-td">Ground Mobs</td>
-			<td class="td-value-damage" id="damageMeleeNormalGroundM">{{ mob_ground_melee_damage.0 }}</td>
-			<td class="td-value-damage" id="damageMeleeCriticGroundM">{{ mob_ground_melee_damage.1 }}</td>
-			<td class="td-value-damage" id="damageRangeNormalGroundM">{{ mob_ground_range_damage.0 }}</td>
-			<td class="td-value-damage" id="damageRangeCriticGroundM">{{ mob_ground_range_damage.1 }}</td>
-		</tr>
-		<tr>
-			<td class="mobs-type-td">Airborne Mobs</td>
-			<td class="td-value-damage" id="damageMeleeNormalAirborneM">{{ mob_airborne_melee_damage.0 }}</td>
-			<td class="td-value-damage" id="damageMeleeCriticAirborneM">{{ mob_airborne_melee_damage.1 }}</td>
-			<td class="td-value-damage" id="damageRangeNormalAirborneM">{{ mob_airborne_range_damage.0 }}</td>
-			<td class="td-value-damage" id="damageRangeCriticAirborneM">{{ mob_airborne_range_damage.1 }}</td>
-		</tr>
-		<tr>
-			<td class="mobs-type-td">Ground Boss</td>
-			<td class="td-value-damage" id="damageMeleeNormalGroundB">{{ boss_ground_melee_damage.0 }}</td>
-			<td class="td-value-damage" id="damageMeleeCriticGroundB">{{ boss_ground_melee_damage.1 }}</td>
-			<td class="td-value-damage" id="damageRangeNormalGroundB">{{ boss_ground_range_damage.0 }}</td>
-			<td class="td-value-damage" id="damageRangeCriticGroundB">{{ boss_ground_range_damage.1 }}</td>
-		</tr>
-		<tr>
-			<td class="mobs-type-td">Airborne Boss</td>
-			<td class="td-value-damage" id="damageMeleeNormalAirborneB">{{ boss_airborne_melee_damage.0 }}</td>
-			<td class="td-value-damage" id="damageMeleeCriticAirborneB">{{ boss_airborne_melee_damage.1 }}</td>
-			<td class="td-value-damage" id="damageRangeNormalAirborneB">{{ boss_airborne_range_damage.0 }}</td>
-			<td class="td-value-damage" id="damageRangeCriticAirborneB">{{ boss_airborne_range_damage.1 }}</td>
-		</tr>
-	</table><br>
-	<div class="averageDamage">
-		This is average damage with:
-		<li><b id="critdmg">{{ crit_dmg }}</b>% of Critical Damage</li>
-		<li><b id="critrate">{{ crit_rate }}</b>% chance of Critical Hit</li>
-		Your average Damage is : <b id="averageDamage">{{ averageDamage }}</b>
+				<div id="courage" class="fieldset_container" onclick="runesClicked('courage')">
+					<input type="radio" id="courage_rune" name="runes" value="courage" style="display: none;">
+					<label class="label_fieldset" for="courage_rune"><img class="rchrch" src="/static/image/wiki-image/rune_104.png" alt="runes courage"></label>
+				</div>
+			</div>
+			<script>
+				document.cookie = " csrftoken= "+document.querySelector('[name=csrfmiddlewaretoken]').value + ";path=/";
+			</script>
+			<div class="runes_input">
+				<div class="select-runes">
+					<select id="id_firstSelect" class="runes-line" name="firstSelect">
+						<option value="none">--Choose a Runes--</option>
+					</select>
+					<select id="id_secondSelect" class="runes-line" name="secondSelect">
+						<option value="none">--Choose a Runes--</option>
+					</select>
+					<select id="id_thirdSelect" class="runes-line" name="thirdSelect">
+						<option value="none">--Choose a Runes--</option>
+					</select>
+					<select id="id_fourthSelect" class="runes-line" name="fourthSelect">
+						<option value="none">--Choose a Runes--</option>
+					</select>
+					<select id="id_fifthSelect" class="runes-line" name="fifthSelect">
+						<option value="none">--Choose a Runes--</option>
+					</select>
+				</div>
+				<div class="input-runes">
+					<input type="number" step="0.01" id="id_firstInput" name="firstInput" />
+					<input type="number" step="0.01" id="id_secondInput" name="secondInput" />
+					<input type="number" step="0.01" id="id_thirdInput" name="thirdInput" />
+					<input type="number" step="0.01" id="id_fourthInput" name="fourthInput" />
+					<input type="number" step="0.01" id="id_fifthInput" name="fifthInput" />
+				</div>
+			</div>
+			<div class="container-submit-form">
+				<button type="submit" class="btn-generate-damage">Generate Damage</button>
+			</div>
+		</form>
+	</div>
+	<div class="ingame_damage_result" id="ingame_damage_result">
+		<table class="table-damage-result">
+			<tr>
+				<th colspan="1" class="table-outrow popup-dmgcalc" onclick="damagePopupFunction()"><i class="fa fa-info-circle" aria-hidden="true"></i></th>
+					<div class="popup_container" id="damage_popup">
+						• Generate Damage show damage with the runes input above<br>
+						• Here you see a table with the damage in game<br>
+					</div>
+				<th colspan="2" class="distance-type-th">Melee</th>
+				<th colspan="2" class="distance-type-th">Range</th>
+			</tr>
+			<tr>
+				<th class="table-outrow"><a class="btn-reset" href="">Reset</a></th>
+				<th class="damage-type-th">Normal Dmg</th>
+				<th class="damage-type-th">Critical Dmg</th>
+				<th class="damage-type-th">Normal Dmg</th>
+				<th class="damage-type-th">Critical Dmg</th>
+			</tr>
+			<tr>
+				<td class="mobs-type-td">Ground Mobs</td>
+				<td class="td-value-damage" id="damageMeleeNormalGroundM">{{ mob_ground_melee_damage.0 }}</td>
+				<td class="td-value-damage" id="damageMeleeCriticGroundM">{{ mob_ground_melee_damage.1 }}</td>
+				<td class="td-value-damage" id="damageRangeNormalGroundM">{{ mob_ground_range_damage.0 }}</td>
+				<td class="td-value-damage" id="damageRangeCriticGroundM">{{ mob_ground_range_damage.1 }}</td>
+			</tr>
+			<tr>
+				<td class="mobs-type-td">Airborne Mobs</td>
+				<td class="td-value-damage" id="damageMeleeNormalAirborneM">{{ mob_airborne_melee_damage.0 }}</td>
+				<td class="td-value-damage" id="damageMeleeCriticAirborneM">{{ mob_airborne_melee_damage.1 }}</td>
+				<td class="td-value-damage" id="damageRangeNormalAirborneM">{{ mob_airborne_range_damage.0 }}</td>
+				<td class="td-value-damage" id="damageRangeCriticAirborneM">{{ mob_airborne_range_damage.1 }}</td>
+			</tr>
+			<tr>
+				<td class="mobs-type-td">Ground Boss</td>
+				<td class="td-value-damage" id="damageMeleeNormalGroundB">{{ boss_ground_melee_damage.0 }}</td>
+				<td class="td-value-damage" id="damageMeleeCriticGroundB">{{ boss_ground_melee_damage.1 }}</td>
+				<td class="td-value-damage" id="damageRangeNormalGroundB">{{ boss_ground_range_damage.0 }}</td>
+				<td class="td-value-damage" id="damageRangeCriticGroundB">{{ boss_ground_range_damage.1 }}</td>
+			</tr>
+			<tr>
+				<td class="mobs-type-td">Airborne Boss</td>
+				<td class="td-value-damage" id="damageMeleeNormalAirborneB">{{ boss_airborne_melee_damage.0 }}</td>
+				<td class="td-value-damage" id="damageMeleeCriticAirborneB">{{ boss_airborne_melee_damage.1 }}</td>
+				<td class="td-value-damage" id="damageRangeNormalAirborneB">{{ boss_airborne_range_damage.0 }}</td>
+				<td class="td-value-damage" id="damageRangeCriticAirborneB">{{ boss_airborne_range_damage.1 }}</td>
+			</tr>
+		</table><br>
+		<div class="averageDamage">
+			This is average damage with:
+			<li><b id="critdmg">{{ crit_dmg }}</b>% of Critical Damage</li>
+			<li><b id="critrate">{{ crit_rate }}</b>% chance of Critical Hit</li>
+			Your average Damage is : <b id="averageDamage">{{ averageDamage }}</b>
+		</div>
 	</div>
 </div>
 {% endblock %}
@@ -115,193 +127,27 @@
 	})
 </script>
 <script>
-	const averageDamageContainer = document.getElementById('averageDamage')
-	const critdmgElement = document.getElementById('critdmg')
-	const critrateElement = document.getElementById('critrate')
-	function calculationDamage(GAtype, RMtype, MBtype) {
-		if(GAtype == "ground"){
-			var typeUnitGAF = "{{flat_dmg_vs_ground}}";
-			var typeUnitGAV = "{{var_dmg_vs_ground}}";
-		}else if(GAtype == "airborne"){
-			var typeUnitGAF = "{{flat_dmg_vs_airborne}}";
-			var typeUnitGAV = "{{var_dmg_vs_airborne}}";
-		}
-		if(RMtype == "melee"){
-			var typeUnitRMF = "{{flat_dmg_vs_melee}}";
-			var typeUnitRMV = "{{var_dmg_vs_melee}}";
-		}else if(RMtype == "range"){
-			var typeUnitRMF = "{{flat_dmg_vs_range}}";
-			var typeUnitRMV = "{{var_dmg_vs_range}}";
-		}
-		if(MBtype == "mobs"){
-			var typeUnitMBF = "{{flat_dmg_vs_mobs}}";
-			var typeUnitMBV = "{{var_dmg_vs_mobs}}";
-		}else if(MBtype == "boss"){
-			var typeUnitMBF = "{{flat_dmg_vs_boss}}";
-			var typeUnitMBV = "{{var_dmg_vs_boss}}";
-		}
-		var HeroFlat = parseInt(eval("{{paramDmgTable}}")[0]) + parseInt(typeUnitGAF) + parseInt(typeUnitMBF) + parseInt(typeUnitRMF) + parseInt("{{flat_dmg_all}}")
-		var GaMrVar = parseFloat(typeUnitRMV/100) + parseFloat(typeUnitGAV/100) + parseFloat(1)
-		var MBvar = parseFloat(typeUnitMBV/100) + parseFloat(1)
-		var allDMGvar = parseFloat("{{var_dmg_all}}"/100) + parseFloat(1)
-		var weaponDmgMult = parseFloat("{{weapon_coeff}}")
-		var dmgResult = HeroFlat * GaMrVar * MBvar * allDMGvar * weaponDmgMult
-		return Math.round(dmgResult)
-	}
-
-	function reset(){
-		damageMeleeNormalGroundM.innerHTML = calculationDamage("ground","melee","mobs");
-		damageMeleeCriticGroundM.innerHTML = Math.round(parseInt(damageMeleeNormalGroundM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-		damageMeleeNormalGroundB.innerHTML = calculationDamage("ground","melee","boss");
-		damageMeleeCriticGroundB.innerHTML = Math.round(parseInt(damageMeleeNormalGroundB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-		damageMeleeNormalAirborneM.innerHTML = calculationDamage("airborne","melee","mobs");
-		damageMeleeCriticAirborneM.innerHTML = Math.round(parseInt(damageMeleeNormalAirborneM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-		damageMeleeNormalAirborneB.innerHTML = calculationDamage("airborne","melee","boss");
-		damageMeleeCriticAirborneB.innerHTML = Math.round(parseInt(damageMeleeNormalAirborneB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-		damageRangeNormalGroundM.innerHTML = calculationDamage("ground","range","mobs");
-		damageRangeCriticGroundM.innerHTML = Math.round(parseInt(damageRangeNormalGroundM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-		damageRangeNormalGroundB.innerHTML = calculationDamage("ground","range","boss");
-		damageRangeCriticGroundB.innerHTML = Math.round(parseInt(damageRangeNormalGroundB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-		damageRangeNormalAirborneM.innerHTML = calculationDamage("airborne","range","mobs");
-		damageRangeCriticAirborneM.innerHTML = Math.round(parseInt(damageRangeNormalAirborneM.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-		damageRangeNormalAirborneB.innerHTML = calculationDamage("airborne","range","boss");
-		damageRangeCriticAirborneB.innerHTML = Math.round(parseInt(damageRangeNormalAirborneB.innerHTML) * (parseFloat("{{ crit_dmg }}")/100));
-		critdmgElement.innerHTML = "{{ crit_dmg }}"
-		critrateElement.innerHTML = "{{ crit_rate }}"
-		averageDamageContainer.innerHTML = "{{ averageDamage }}"
-	}
-
-	function generateDamage(){
-		var inputRuneContainer = document.getElementsByClassName('runes_input');
-		var listHeroStepAtk = eval("{{paramDmgTable}}")
-		var param_runes_display = eval("{{ param_runes_display }}");
-		var inputRune = {
-			'Attack (Power)':0,
-			'Attack% (Power)':0,
-			'Attack (Courage)':0,
-			'Attack% (Courage)':0,
-			'Damage To Airborne Units':0,
-			'Damage To Airborne Units%':0.0,
-			'Damage To Ground Units':0,
-			'Damage To Ground Units%':0.0,
-			'Damage To Melee Units':0,
-			'Damage To Melee Units%':0.0,
-			'Damage To Ranged Units':0,
-			'Damage To Ranged Units%':0.0,
-			'Damage To Bosses':0,
-			'Damage To Bosses%':0.0,
-			'Damage To Mobs':0,
-			'Damage To Mobs%':0.0,
-			'All Damage Increased':0,
-			'All Damage Increased%':0,
-			'Attack Speed':0,
-			'Crit Chance':0,
-			'Crit Damage':0,
-			'Level-Up to increase Damage in Battle':0,
-			'none':0,
-			"Hero Base ATK":0,
-			"Hero Base ATK%":0,
-
-			[document.getElementById('firstSelect').value]:document.getElementById('firstInput').value,
-			[document.getElementById('secondSelect').value]: document.getElementById('secondInput').value,
-			[document.getElementById('thirdSelect').value]: document.getElementById('thirdInput').value,
-			[document.getElementById('fourthSelect').value]: document.getElementById('fourthInput').value,
-			[document.getElementById('fifthSelect').value]: document.getElementById('fifthInput').value,
-		}
-		if(inputRuneContainer[0].id == "power"){
-			var atk_power_flat = inputRune['Attack (Power)']
-			var atk_courage_flat = param_runes_display[2]
-			var atk_power_var = inputRune['Attack% (Power)']
-			var atk_courage_var = param_runes_display[3]
-			var courage_hero_atk_flat = param_runes_display[4]
-			var courage_hero_atk_var = param_runes_display[5]
-		}else if(inputRuneContainer[0].id == "courage"){
-			var atk_power_flat = param_runes_display[0]
-			var atk_courage_flat = inputRune['Attack (Courage)']
-			var atk_power_var = param_runes_display[1]
-			var atk_courage_var = inputRune['Attack% (Courage)']
-			var courage_hero_atk_flat = inputRune['Hero Base ATK']
-			var courage_hero_atk_var = inputRune['Hero Base ATK%']
-		}
-		var coeff1_atk = parseFloat(atk_courage_var)/100 + parseFloat(atk_power_var)/100 + parseFloat(listHeroStepAtk[2])
-		var cumul_all_bonus_passiv_atk = Math.round(listHeroStepAtk[1] + parseInt(atk_courage_flat) + parseInt(atk_power_flat))
-		var hero_base_modified_stats_atk = Math.round((parseInt(listHeroStepAtk[3]) - parseInt(courage_hero_atk_flat)) * (parseFloat(courage_hero_atk_var)/100 + parseFloat(listHeroStepAtk[4]) + 1) + parseInt(courage_hero_atk_flat))
-		var global_stats_atk_flat = Math.round(parseInt(Math.floor(hero_base_modified_stats_atk)) + parseInt(cumul_all_bonus_passiv_atk) + parseInt(listHeroStepAtk[5]))
-		var hero_atk = global_stats_atk_flat + (global_stats_atk_flat*parseFloat(coeff1_atk)) + (global_stats_atk_flat*parseFloat(listHeroStepAtk[6])) + (global_stats_atk_flat*parseFloat(listHeroStepAtk[7])) + listHeroStepAtk[8] + listHeroStepAtk[9]
-		var weapon_coeff = parseFloat("{{weapon_coeff}}")
-		if(parseFloat(inputRune['Crit Damage']) == 0){
-			var crit_dmg = "{{ crit_dmg }}"
-		}else{
-			var crit_dmg = (parseInt("{{ crit_dmg }}") + parseFloat(inputRune['Crit Damage']))
-		}
-		if(parseFloat(inputRune['Crit Chance']) == 0){
-			var crit_rate = "{{ crit_rate }}"
-		}else{
-			var crit_rate = (parseInt("{{ crit_rate }}") + parseFloat(inputRune['Crit Chance']))
-		}
-
-		var airborne_dmg_flat = parseInt(inputRune['Damage To Airborne Units']) + parseInt("{{ flat_dmg_vs_airborne }}");
-		var airborne_dmg_var = parseFloat(inputRune['Damage To Airborne Units%']) + parseFloat("{{ var_dmg_vs_airborne }}");
-		var ground_dmg_flat = parseInt(inputRune['Damage To Ground Units']) + parseInt("{{ flat_dmg_vs_ground }}");
-		var ground_dmg_var = parseFloat(inputRune['Damage To Ground Units%']) + parseFloat("{{ var_dmg_vs_ground }}");
-		var melee_dmg_flat = parseInt(inputRune['Damage To Melee Units']) + parseInt("{{ flat_dmg_vs_melee }}");
-		var melee_dmg_var = parseFloat(inputRune['Damage To Melee Units%']) + parseFloat("{{ var_dmg_vs_melee }}");
-		var ranged_dmg_flat = parseInt(inputRune['Damage To Ranged Units']) + parseInt("{{ flat_dmg_vs_range }}");
-		var ranged_dmg_var = parseFloat(inputRune['Damage To Ranged Units%']) + parseFloat("{{ var_dmg_vs_range }}");
-		var bosses_dmg_flat = parseInt(inputRune['Damage To Bosses']) + parseInt("{{ flat_dmg_vs_boss }}");
-		var bosses_dmg_var = parseFloat(inputRune['Damage To Bosses%']) + parseFloat("{{ var_dmg_vs_boss }}");
-		var mobs_dmg_flat = parseInt(inputRune['Damage To Mobs']) + parseInt("{{ flat_dmg_vs_mobs }}");
-		var mobs_dmg_var = parseFloat(inputRune['Damage To Mobs%']) + parseFloat("{{ var_dmg_vs_mobs }}");
-		var all_dmg_flat = parseInt(inputRune['All Damage Increased']) + parseInt("{{ flat_dmg_all }}");
-		var all_dmg_var = parseFloat(inputRune['All Damage Increased%']);
-		damageMeleeNormalGroundM.innerHTML = Math.round((parseInt(hero_atk) + parseInt(ground_dmg_flat) + parseInt(mobs_dmg_flat) + parseInt(melee_dmg_flat) + parseInt(all_dmg_flat))*(parseFloat(melee_dmg_var/100) + parseFloat(ground_dmg_var/100) + parseFloat(1))*(parseFloat(mobs_dmg_var/100) + parseFloat(1))*(parseFloat(all_dmg_var/100) + parseFloat(1))*(parseFloat(weapon_coeff)))
-		damageMeleeCriticGroundM.innerHTML = Math.round(parseInt(damageMeleeNormalGroundM.innerHTML) * (crit_dmg/100))
-		damageMeleeNormalGroundB.innerHTML = Math.round((parseInt(hero_atk) + parseInt(ground_dmg_flat) + parseInt(bosses_dmg_flat) + parseInt(melee_dmg_flat) + parseInt(all_dmg_flat))*(parseFloat(melee_dmg_var/100) + parseFloat(ground_dmg_var/100) + parseFloat(1))*(parseFloat(bosses_dmg_var/100) + parseFloat(1))*(parseFloat(all_dmg_var/100) + parseFloat(1))*(parseFloat(weapon_coeff)))
-		damageMeleeCriticGroundB.innerHTML = Math.round(parseInt(damageMeleeNormalGroundB.innerHTML) * (crit_dmg/100))
-		damageMeleeNormalAirborneM.innerHTML = Math.round((parseInt(hero_atk) + parseInt(airborne_dmg_flat) + parseInt(mobs_dmg_flat) + parseInt(melee_dmg_flat) + parseInt(all_dmg_flat))*(parseFloat(melee_dmg_var/100) + parseFloat(airborne_dmg_var/100) + parseFloat(1))*(parseFloat(mobs_dmg_var/100) + parseFloat(1))*(parseFloat(all_dmg_var/100) + parseFloat(1))*(parseFloat(weapon_coeff)))
-		damageMeleeCriticAirborneM.innerHTML = Math.round(parseInt(damageMeleeNormalAirborneM.innerHTML) * (crit_dmg/100))
-		damageMeleeNormalAirborneB.innerHTML = Math.round((parseInt(hero_atk) + parseInt(airborne_dmg_flat) + parseInt(bosses_dmg_flat) + parseInt(melee_dmg_flat) + parseInt(all_dmg_flat))*(parseFloat(melee_dmg_var/100) + parseFloat(airborne_dmg_var/100) + parseFloat(1))*(parseFloat(bosses_dmg_var/100) + parseFloat(1))*(parseFloat(all_dmg_var/100) + parseFloat(1))*(parseFloat(weapon_coeff)))
-		damageMeleeCriticAirborneB.innerHTML = Math.round(parseInt(damageMeleeNormalAirborneB.innerHTML) * (crit_dmg/100))
-		damageRangeNormalGroundM.innerHTML = Math.round((parseInt(hero_atk) + parseInt(ground_dmg_flat) + parseInt(mobs_dmg_flat) + parseInt(ranged_dmg_flat) + parseInt(all_dmg_flat))*(parseFloat(ranged_dmg_var/100) + parseFloat(ground_dmg_var/100) + parseFloat(1))*(parseFloat(mobs_dmg_var/100) + parseFloat(1))*(parseFloat(all_dmg_var/100) + parseFloat(1))*(parseFloat(weapon_coeff)))
-		damageRangeCriticGroundM.innerHTML = Math.round(parseInt(damageRangeNormalGroundM.innerHTML) * (crit_dmg/100))
-		damageRangeNormalGroundB.innerHTML = Math.round((parseInt(hero_atk) + parseInt(ground_dmg_flat) + parseInt(bosses_dmg_flat) + parseInt(ranged_dmg_flat) + parseInt(all_dmg_flat))*(parseFloat(ranged_dmg_var/100) + parseFloat(ground_dmg_var/100) + parseFloat(1))*(parseFloat(bosses_dmg_var/100) + parseFloat(1))*(parseFloat(all_dmg_var/100) + parseFloat(1))*(parseFloat(weapon_coeff)))
-		damageRangeCriticGroundB.innerHTML = Math.round(parseInt(damageRangeNormalGroundB.innerHTML) * (crit_dmg/100))
-		damageRangeNormalAirborneM.innerHTML = Math.round((parseInt(hero_atk) + parseInt(airborne_dmg_flat) + parseInt(mobs_dmg_flat) + parseInt(ranged_dmg_flat) + parseInt(all_dmg_flat))*(parseFloat(ranged_dmg_var/100) + parseFloat(airborne_dmg_var/100) + parseFloat(1))*(parseFloat(mobs_dmg_var/100) + parseFloat(1))*(parseFloat(all_dmg_var/100) + parseFloat(1))*(parseFloat(weapon_coeff)))
-		damageRangeCriticAirborneM.innerHTML = Math.round(parseInt(damageRangeNormalAirborneM.innerHTML) * (crit_dmg/100))
-		damageRangeNormalAirborneB.innerHTML = Math.round((parseInt(hero_atk) + parseInt(airborne_dmg_flat) + parseInt(bosses_dmg_flat) + parseInt(ranged_dmg_flat) + parseInt(all_dmg_flat))*(parseFloat(ranged_dmg_var/100) + parseFloat(airborne_dmg_var/100) + parseFloat(1))*(parseFloat(bosses_dmg_var/100) + parseFloat(1))*(parseFloat(all_dmg_var/100) + parseFloat(1))*(parseFloat(weapon_coeff)))
-		damageRangeCriticAirborneB.innerHTML = Math.round(parseInt(damageRangeNormalAirborneB.innerHTML) * (crit_dmg/100))
-		
-		var averageDamage =  Math.round((parseInt(damageMeleeNormalGroundM.innerHTML) + parseInt(damageMeleeNormalGroundB.innerHTML) + parseInt(damageMeleeNormalAirborneM.innerHTML) + parseInt(damageMeleeNormalAirborneB.innerHTML) + parseInt(damageRangeNormalGroundM.innerHTML) + parseInt(damageRangeNormalGroundB.innerHTML) + parseInt(damageRangeNormalAirborneM.innerHTML) + parseInt(damageRangeNormalAirborneB.innerHTML))/8)
-		averageDamageContainer.innerHTML = Math.round(averageDamage * (1 + (crit_rate/100) * (crit_dmg/100 - 1)))
-		critdmgElement.innerHTML = crit_dmg
-		critrateElement.innerHTML = crit_rate
-	}
-</script>
-<script>
-	var powerRunesLines = ['','Attack (Power)','Attack% (Power)', 'Damage To Airborne Units', 'Damage To Airborne Units%', 'Damage To Ground Units', 'Damage To Ground Units%', 'Damage To Melee Units', 'Damage To Melee Units%', 'Damage To Ranged Units', 'Damage To Ranged Units%', 'Damage To Bosses', 'Damage To Bosses%', 'Damage To Mobs', 'Damage To Mobs%', 'All Damage Increased%', 'Attack Speed', 'Crit Chance', 'Crit Damage', 'Level-Up to increase Damage in Battle']
-	var courageRunesLines = ['','Attack (Courage)','Attack% (Courage)','Hero base ATK','Hero base ATK %','other ...']
-
+	var powerRunesLines = [["none", "None"],['attack_flat','Attack'],['attack_var','Attack%'],["flat_dmg_airborne", "Damage to Airborne Units"],["var_dmg_airborne", "Damage to Airborne Units %"],["flat_dmg_ground", "Damage to Ground Units"],["var_dmg_ground", "Damage to Ground Units %"],["flat_dmg_melee", "Damage to Melee Units"],["var_dmg_melee", "Damage to Melee Units %"],["flat_dmg_ranged", "Damage to Ranged Units"],["var_dmg_ranged", "Damage to Ranged Units %"],["flat_dmg_boss", "Damage to Bosses Units"],["var_dmg_boss", "Damage to Bosses Units %"],["flat_dmg_mob", "Damage to Mobs Units"],["var_dmg_mob", "Damage to Mobs Units %"],["var_dmg_hero", "Damage to Heroes %"],["var_all_dmg", "All Damage %"],["var_elemental_dmg", "Elemental Damage %"],["var_atk_speed", "Attack Speed %"],["var_crit_rate", "Critic Chance %"],["var_crit_dmg", "Critic Damage %"]]
+	var courageRunesLines = [["none", "None"],['attack_flat','Attack'],['attack_var','Attack%'],['courage_hero_atk_flat','Hero base ATK'],['courage_hero_atk_var','Hero base ATK %'],['other','other ...']]
 	function runesClicked(runesType) {
 		var allSelect = document.getElementsByClassName('runes-line');
 		var inputRuneContainer = document.getElementsByClassName('runes_input');
 		var runesLine = Object.values(allSelect);
-		var firstSelect = document.getElementById('firstSelect');
-		var secondSelect = document.getElementById('secondSelect');
-		var thirdSelect = document.getElementById('thirdSelect');
-		var fourthSelect = document.getElementById('fourthSelect');
-		var fifthSelect = document.getElementById('fifthSelect');
-		var firstInput = document.getElementById('firstInput');
-		var secondInput = document.getElementById('secondInput');
-		var thirdInput = document.getElementById('thirdInput');
-		var fourthInput = document.getElementById('fourthInput');
-		var fifthInput = document.getElementById('fifthInput');
+		var firstSelect = document.getElementById('id_firstSelect');
+		var secondSelect = document.getElementById('id_secondSelect');
+		var thirdSelect = document.getElementById('id_thirdSelect');
+		var fourthSelect = document.getElementById('id_fourthSelect');
+		var fifthSelect = document.getElementById('id_fifthSelect');
+		var firstInput = document.getElementById('id_firstInput');
+		var secondInput = document.getElementById('id_secondInput');
+		var thirdInput = document.getElementById('id_thirdInput');
+		var fourthInput = document.getElementById('id_fourthInput');
+		var fifthInput = document.getElementById('id_fifthInput');
 		firstInput.value = '';
 		secondInput.value = '';
 		thirdInput.value = '';
 		fourthInput.value = '';
 		fifthInput.value = '';
-		var param_runes_display = eval("{{ param_runes_display }}");
-		// [power_attack_flat,power_attack_var,courage_attack_flat,courage_attack_var,courage_hero_attack_flat,courage_hero_attack_var]
 		if(runesType === "power"){
 			inputRuneContainer[0].id = 'power'
 			runesLine.forEach(select => {
@@ -313,16 +159,27 @@
 				}else{
 					powerRunesLines.forEach(e => {
 						var newOption = document.createElement('option');
-						newOption.innerHTML = e
-						newOption.setAttribute("value",e)
+						newOption.innerHTML = e[1]
+						newOption.setAttribute("value",e[0])
 						select.appendChild(newOption)
 					});
 				}
 			});
-			firstSelect.value = 'Attack (Power)'
-			secondSelect.value = 'Attack% (Power)'
-			firstInput.value = param_runes_display[0]
-			secondInput.value = param_runes_display[1]
+			firstSelect.value = 'attack_flat'
+			firstInput.value = "{{ vars_dict.atk_power_flat }}";
+			if("{{ vars_dict.atk_power_var }}" != 0){
+				secondSelect.value = 'Attack% (Power)';
+				secondInput.value = "{{ vars_dict.atk_power_var }}";
+			}else{
+				secondSelect.value = "{{ vars_dict.power_second_select }}";
+				secondInput.value = "{{ vars_dict.power_second_input }}";
+			}
+			thirdSelect.value = "{{ vars_dict.power_third_select }}"
+			thirdInput.value = "{{ vars_dict.power_third_input }}";
+			fourthSelect.value = "{{ vars_dict.power_fourth_select }}"
+			fourthInput.value = "{{ vars_dict.power_fourth_input }}";
+			fifthSelect.value = "{{ vars_dict.power_fifth_select }}"
+			fifthInput.value = "{{ vars_dict.power_fifth_input }}";
 		} else if(runesType === "courage"){
 			inputRuneContainer[0].id = 'courage'
 			runesLine.forEach(select => {
@@ -334,20 +191,28 @@
 				}else{
 					courageRunesLines.forEach(e => {
 						var newOption = document.createElement('option');
-						newOption.innerHTML = e
-						newOption.setAttribute("value",e)
+						newOption.innerHTML = e[1]
+						newOption.setAttribute("value",e[0])
 						select.appendChild(newOption)
 					});
 				}
 			});
-			firstSelect.value = 'Attack (Courage)'
-			secondSelect.value = 'Attack% (Courage)'
-			thirdSelect.value = 'Hero base ATK'
-			fourthSelect.value = 'Hero base ATK %'
-			firstInput.value = param_runes_display[2]
-			secondInput.value = param_runes_display[3]
-			thirdInput.value = param_runes_display[4]
-			fourthInput.value = param_runes_display[5]
+			firstSelect.value = 'attack_flat'
+			secondSelect.value = 'attack_var'
+			thirdSelect.value = 'courage_hero_atk_flat'
+			fourthSelect.value = 'courage_hero_atk_var'
+			firstInput.value = "{{ vars_dict.atk_courage_flat }}";
+			secondInput.value = "{{ vars_dict.atk_courage_var }}";
+			thirdInput.value = "{{ vars_dict.courage_hero_atk_flat }}";
+			fourthInput.value = "{{ vars_dict.courage_hero_atk_var }}";
+		}
+	}
+	if("{{ method }}" === "POST"){
+		runesClicked('{{ runes }}')
+		if('{{ runes }}' == "power"){
+			document.getElementsByClassName('label_fieldset')[0].click()
+		}else if('{{ runes }}' == "courage"){
+			document.getElementsByClassName('label_fieldset')[1].click()
 		}
 	}
 </script>

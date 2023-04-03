@@ -23,11 +23,13 @@ WEBHOOK_URL = "https://discord.com/api/webhooks/#########/######################
 WEBHOOK_URL2 = "https://discord.com/api/webhooks/#########/#############################################"
 
 def menu(request):
-	darkmode = checkTheme_Request(request)
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
 	return render(request, 'menu.html', {"darkmode": darkmode, "header_msg": "Menu Archero Wiki", 'lang':lang, "sidebarContent":SidebarContent})
 
 def maze(request):
-	darkmode = checkTheme_Request(request)
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
 	with urlopen("https://config-archero.habby.mobi/data/config/MazeConfig.json") as url:
 		data_json = json.load(url)
 	return render(request, 'wiki/get_maze.html', {"data_json":data_json, "darkmode": darkmode, "header_msg": "maze","lang":lang, "sidebarContent":SidebarContent})
@@ -48,30 +50,20 @@ def csrf_failure(request, reason=""):
 	except:
 		profil = "no"
 		public_id =''
-	darkmode = checkTheme_Request(request)
+	darkmode = checkTheme_Request(request,cookie_value)
 	return render(request,'base/csrf_failure.html', {"darkmode": darkmode, "header_msg": "CSRF FAILURE","lang":lang, "profil":profil, "public_id":public_id, "sidebarContent":SidebarContent})
 
 
 def login(request):
-	darkmode = checkTheme_Request(request)
-	cookiePopList = ['csrftoken','sessionid','windowInnerWidth','windowInnerHeight', 'modeDisplay','messages']
-	cookie_value = request.COOKIES
-	for i in cookiePopList:
-		try:
-			cookie_value.pop(i)
-		except:
-			pass
-	try:
-		ingame_id_cookie = list(cookie_value.values())[0]
-		user_stats = models.user.objects.get(ingame_id=ingame_id_cookie)
-	except:
-		user_stats = "no"
-	if len(cookie_value) >= 1 and user_stats != "no" and "visitor" not in list(cookie_value):
-		send_webhook(f'{cookie_value} tried to acces Login but was redirected to Home')
-		messages.warning(request, f"You cannot go to Login : {list(cookie_value.keys())[0]}")
-		return render(request, "menu.html" , {"darkmode":darkmode})
+	cookie_value = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_value)
+	if (len(cookie_value) >= 1 and "visitor" not in list(cookie_value)):
+		username = list(cookie_value.keys())[0]
+		send_webhook(f'{cookie_value} tried to access Login but was redirected to Home')
+		messages.warning(request, f"You cannot go to Login : {username}")
+		return HttpResponseRedirect("/")
 	else:
-		return render(request, "login.html", {"darkmode":darkmode})
+		return render(request, "login.html", {"darkmode":darkmode, "sidebarContent":SidebarContent})
 
 def login_processing(request, username_raw, id_raw):
 	username_legal = checkIllegalKey(username_raw)
@@ -86,111 +78,107 @@ def login_processing(request, username_raw, id_raw):
 			response.set_cookie(key=boolCheck[1], value=boolCheck[2], expires=expires, httponly=True, samesite="Strict")
 		except CookieError as e:
 			send_webhook(f"<@382930544385851392> : {e}")
-			messages.error(request, f'Login Failed (forbidden character {username_legal})')
+			messages.error(request, f'Login Failed (forbidden character "{username_legal}")')
 			return response
 		messages.success(request, f'Successful Login ({boolCheck[1]})')
-		send_embed(boolCheck[1],"Successful Login",description_embed=f"",field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck[1]}`|`{boolCheck[2]}`",e_color="32ec08",request=request, ping_me=False)
+		send_embed(boolCheck[1],"Successful Login",description_embed=f"",field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck[1]}`|`{boolCheck[2]}`",e_color="32ec08",request=request, alert=False)
 	else:
 		messages.error(request, f'Login Failed : {boolCheck[3]}')
-		send_embed(boolCheck[1],"Login Failed",description_embed=boolCheck[3],field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck[1]}`|`{boolCheck[2]}`",e_color="d50400",request=request, ping_me=True)
+		send_embed(boolCheck[1],"Login Failed",description_embed=boolCheck[3],field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck[1]}`|`{boolCheck[2]}`",e_color="d50400",request=request, alert=True)
 	return response
 
 def wiki_theorycrafting(request):
-	darkmode = checkTheme_Request(request)
-	return render(request, "wiki/theorycraft.html", {"darkmode": darkmode, "header_msg": "TheoryCrafting","lang":lang, "sidebarContent":SidebarContent})
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
+	return render(request, "wiki/theorycraft.html", {"darkmode": darkmode, "header_msg": "TheoryCrafting","lang":lang, "sidebarContent":SidebarContent, "TheoryCraftingContent":TheoryCraftingContent})
 
 def item_description(request, item=None):
-	darkmode = checkTheme_Request(request)
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
 	ctx = {
 		"darkmode": darkmode,
 		"header_msg": "Item Description",
 		"lang":lang,
 		"item":"no",
-		"sidebarContent":SidebarContent
+		"sidebarContent":SidebarContent,
+		"ItemData":ItemData
 	}
-	if item != None:
-		try:
-			item_data = ItemData[str(item).replace('_',' ')]
-			ctx.update({
-				"name":str(item).replace('_',' '),
-				"item_description":item_data["description"],
-				"item_image":item_data["image"],
-				"item_base":item_data["base"],
-				"item_great":item_data["great"],
-				"item_rare":item_data["rare"],
-				"item_epic":item_data["epic"],
-				"item_perfect_epic":item_data["pe"],
-				"item_legendary":item_data["legendary"],
-				"item_ancient_legendary":item_data["ale"],
-				"item_mythic":item_data["mythic"],
-				"url_cpy":request.build_absolute_uri(),
-				"item":"yes"
-			})
-		except Exception as e:
-			messages.warning(request, message=f"{e} isn't an item")
+	if item is None:
+		item = "Brave_Bow"
+	else:
+		ctx.update({"item":"yes"})
+	try:
+		item_data = ItemData[str(item).replace('_',' ')]
+		ctx.update({
+			"name":str(item).replace('_',' '),
+			"item_data":item_data,
+			"url_cpy":request.build_absolute_uri(),
+		})
+	except Exception as e:
+		messages.warning(request, message=f"{e} isn't an item")
 	return render(request, "wiki/item_description.html", ctx)
 
 
 def skill_description(request, skill=None):
-	darkmode = checkTheme_Request(request)
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
 	ctx = {
 		"darkmode": darkmode,
 		"header_msg": "Skill Description",
 		"lang":lang,
 		"skill":"no",
-		"sidebarContent":SidebarContent
+		"sidebarContent":SidebarContent,
+		"SkillData":SkillData
 	}
-	if skill != None:
-		try:
-			skill_data = SkillData[skill.replace("_"," ")]
-			image_skill = f"image/skill/{str(skill).lower().replace(' - ', '_').replace(' ', '_').replace('one-eyed', 'one_eyed')}.png"
-			skill_description = skill_data['description']
-			skill_base = skill_data['stats']
-			url_cpy = request.build_absolute_uri()
-			ctx.update({"name":skill.replace("_"," "),"image_skill":image_skill,"skill_description":skill_description,"skill_base":skill_base,"url_cpy":url_cpy,"skill":"yes"})
-		except Exception as e:
-			messages.warning(request, message=f"{e} isn't an skill")
+	if skill is None:
+		skill = "Bouncy_Wall"
+	else:
+		ctx.update({"skill":"yes"})
+	try:
+		skill_name = skill.replace("_"," ")
+		skill_data = SkillData[skill_name]
+		image_skill = f"image/skill/{str(skill).lower().replace(' - ', '_').replace(' ', '_').replace('one-eyed', 'one_eyed')}.png"
+		url_cpy = request.build_absolute_uri()
+		ctx.update({
+			"name":skill_name,
+			"skill_data": skill_data,
+			"image_skill":image_skill,
+			"url_cpy":url_cpy,
+		})
+	except Exception as e:
+		messages.warning(request, message=f"{e} isn't an skill")
 	return render(request, "wiki/skill_description.html", ctx)
 
 def heros_description(request, hero=None):
-	darkmode = checkTheme_Request(request)
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
 	ctx = {
 		"darkmode": darkmode,
 		"header_msg": "Heroes Description",
 		"lang":lang,
-		"hero":"no",
-		"sidebarContent":SidebarContent
+		"hero":"no", ## keep this for the meta tag
+		"sidebarContent":SidebarContent,
+		"HeroData":HeroData
 	}
-	if hero != None:
-		try:
-			hero_data = HeroData[hero]
-			ctx.update({
-				"name_hero": hero,
-				"hero_description": hero_data['description'],
-				"hero_image": f'image/hero_icon/icon_{str(hero).lower()}.png',
-				"base_atk": f'• Base Attack: {hero_data["base_atk"]}',
-				"base_hp": f'• Base Hp: {hero_data["base_hp"]}',
-				"attributes": hero_data['attributes'],
-				"price": hero_data['price'],
-				"skill": hero_data['skill'],
-				"skill_details": hero_data['skill_details'],
-				"star_1": hero_data['star_1'],
-				"star_2": hero_data['star_2'],
-				"star_3": hero_data['star_3'],
-				"star_4": hero_data['star_4'],
-				"star_5": hero_data['star_5'],
-				"star_6": hero_data['star_6'],
-				"star_7": hero_data['star_7'],
-				"star_8": hero_data['star_8'],
-				"url_cpy": request.build_absolute_uri(),
-				"hero":"yes"
-			})
-		except Exception as e:
-			messages.warning(request, message=f"{e} isn't a hero")
+	if hero is None:
+		hero = "Atreus"
+	else:
+		ctx.update({"hero":"yes"})
+	try:
+		hero_data = HeroData[hero]
+		ctx.update({
+			"name_hero": hero,
+			"hero_data": hero_data,
+			"hero_image": f'image/hero_icon/icon_{str(hero)}.png',
+			"url_cpy": request.build_absolute_uri(),
+		})
+	except Exception as e:
+		messages.warning(request, message=f"{e} isn't a hero")
 	return render(request, "wiki/heros_description.html",ctx)
 
 def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str="None"):
-	darkmode = checkTheme_Request(request)
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
 	all_rank = ["A","S","SS"]
 	content = ""
 	ctx = {
@@ -204,7 +192,12 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 		"sidebarContent":SidebarContent
 	}
 	if cost_type == "items":
-		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
+		max_lvl = 170
+		if (0 <= lvl1 <= max_lvl) and (0 <= lvl2 <= max_lvl):
+			if lvl1 > lvl2:
+				temp = lvl1
+				lvl1 = lvl2
+				lvl2 = temp
 			price = calculatePrice(lvl1,lvl2,cost_type)
 			content = {
 				"eTitle": "Equipment Upgrade Cost",
@@ -216,7 +209,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 				"currency2": ['Scrolls :','scroll'],
 			}
 		else:
-			messages.error(request, message="The levels need to be between 0 and 120")
+			messages.error(request, message=f"The levels need to be between 0 and {max_lvl}")
 			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "heroes":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
@@ -291,7 +284,8 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 
 
 def ghssetGrid(request):
-	darkmode = checkTheme_Request(request)
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
 	ctx = {
 		'darkmode':darkmode,
 		"header_msg": "Google Sheet Wiki",
@@ -302,7 +296,8 @@ def ghssetGrid(request):
 	return render(request, "wiki/gsheet.html", ctx)
 
 def promocode(request):
-	darkmode = checkTheme_Request(request)
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
 	all_active_code = []
 	promo_codes = models.promo_code.objects.all().filter(is_active=True)
 	for i in promo_codes:
@@ -334,20 +329,22 @@ def promocode(request):
 
 
 def damage(request):
-	darkmode = checkTheme_Request(request)
 	cookie_value = checkCookie(request.COOKIES)
-	try:
+	darkmode = checkTheme_Request(request,cookie_value)
+	user_stats = ""
+	if len(cookie_value) != 0:
 		ingame_id_cookie = list(cookie_value.values())[0]
 		ingame_name_cookie = list(cookie_value.keys())[0]
-		user_stats = ""
 		if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
-			selfHasProfil = "no"
+			selfHasProfil = "login"
 		else:
-			user_stats = models.user.objects.get(ingame_id=ingame_id_cookie)	
-			selfHasProfil = "yes"
-	except:
-		user_stats = ""
-		selfHasProfil = "no"
+			try:
+				user_stats = models.user.objects.get(ingame_id=ingame_id_cookie)
+				selfHasProfil = "yes"
+			except:
+				selfHasProfil = "no"
+	else:
+		selfHasProfil = "login"
 	chapter_1_to_21 =  models.user.objects.get(ingame_id="0-000001").public_id
 	chapter_22_to_34 = models.user.objects.get(ingame_id="0-000002").public_id
 	chapter_34_to_42 = models.user.objects.get(ingame_id="0-000003").public_id
@@ -503,6 +500,9 @@ def dmgCalc_processing(request,pbid):
 	## Get All Stats of Equipped Egg
 	activ_egg_stats = egg_equipped_table_stats.GetEggStats(missing_data)
 	## Get Reforge Stats
+	reforge_atk_power = reforge_table_stats.ReforgePowerCourage("power")
+	reforge_atk_courage = reforge_table_stats.ReforgePowerCourage("courage")
+	## Get Reforge Stats
 	rune_courage_hero = runes_table_stats.CourageBoostHero(user_stats.choosen_hero)
 	## Get Rune Line Stats
 	rune_line_stats = runes_table_stats.getValueLine()
@@ -523,13 +523,13 @@ def dmgCalc_processing(request,pbid):
 	stuff_activ_stats = stuff_table_stats.getStuffStats(cumul_var_passiv_enhanced_equipment,refine_weapon_enhanced_equipment,refine_armor_enhanced_equipment,refine_ring1_enhanced_equipment,refine_ring2_enhanced_equipment,refine_bracelet_enhanced_equipment,refine_locket_enhanced_equipment,refine_book_enhanced_equipment,weapon_skin_stats)
 	
 	cumul_talent_flat_passiv_atk = int(talent_stats_dict['talents_power'])
-	# cumul_runes_flat_passiv_atk = int(reforge_atk_power) + int(reforge_atk_courage) + int(runes_power_attack_flat) + int(runes_courage_attack_flat)
+	cumul_runes_flat_passiv_atk = int(reforge_atk_power) + int(reforge_atk_courage) # + int(runes_power_attack_flat) + int(runes_courage_attack_flat)
 	cumul_hero_flat_passiv_atk = int(hero_Atreus[5]) + int(hero_Urasil[0]) + int(hero_Phoren[6]) + int(hero_Helix[5]) + int(hero_Meowgik[0]) + int(hero_Ayana[6]) + int(hero_Rolla[0]) + int(hero_Bonnie[5]) + int(hero_Shade[6]) + int(hero_Ophelia[0]) + int(hero_Ophelia[2]) + int(hero_Lina[0]) + int(hero_Lina[5]) + int(hero_Aquea[5]) + int(hero_Iris[5]) + int(hero_Melinda[6]) + int(hero_Iris[1]) + int(hero_Blazo[1]) + int(hero_Stella[0])
 	cumul_skin_flat_passiv_atk = int(skin_atk_boost)
 	cumul_egg_flat_passiv_atk = int(egg_bomb_ghost_passiv[1]) + int(egg_green_bat_passiv[1]) + int(egg_piranha_passiv[1]) + int(egg_crazy_spider_passiv[1]) + int(egg_fire_mage_passiv[1]) + int(egg_skeleton_archer_passiv[1]) + int(egg_skeleton_soldier_passiv[1]) + int(egg_fire_element_passiv[1]) + int(egg_flame_ghost_passiv[1]) + int(egg_ice_mage_passiv[1]) + int(egg_pea_shooter_passiv[1]) + int(egg_shadow_assassin_passiv[1]) + int(egg_skull_wizard_passiv[1]) + int(egg_tornado_demon_passiv[1]) + int(egg_savage_spider_passiv[1]) + int(egg_flaming_bug_passiv[1]) + int(egg_one_eyed_bat_passiv[1]) + int(egg_elite_archer_passiv[1]) + int(egg_icefire_phantom_passiv[1]) + int(egg_purple_phantom_passiv[1]) + int(egg_scarlet_mage_passiv[1]) + int(egg_arch_leader_passiv[0]) + int(egg_crimson_witch_passiv[0]) + int(egg_medusa_boss_passiv[0]) + int(egg_ice_worm_passiv[0]) + int(egg_desert_goliath_passiv[0]) + int(egg_ice_demon_passiv[0]) + int(egg_fire_demon_passiv[1]) + int(egg_crimson_zombie_passiv[1]) + int(egg_scythe_pharoah_passiv[1]) + int(egg_infernal_demon_passiv[0]) + int(egg_fireworm_queen_passiv[0])
 	cumul_altar_flat_passiv_atk = int(altar_stuff_atk) + int(altar_hero_atk)
 	cumul_jewel_flat_activ_atk = int(stats_jewel_dict['attack_ruby']) + int(stats_jewel_dict['attack_kunzite']) + int(stats_jewel_dict['attack_tourmaline']) + int(BonusSpe_jewel_weapon[0]) + int(BonusSpe_jewel_weapon[4]) + int(BonusSpe_jewel_bracelet[0]) + int(BonusSpe_jewel_bracelet[2]) + int(BonusSpe_jewel_bracelet[4])
-	cumul_old_flat_passiv_atk = int(cumul_talent_flat_passiv_atk) + int(cumul_hero_flat_passiv_atk) + int(cumul_skin_flat_passiv_atk) + int(cumul_egg_flat_passiv_atk)
+	cumul_old_flat_passiv_atk = int(cumul_runes_flat_passiv_atk) + int(cumul_talent_flat_passiv_atk) + int(cumul_hero_flat_passiv_atk) + int(cumul_skin_flat_passiv_atk) + int(cumul_egg_flat_passiv_atk)
 	cumul_refine_flat_activ_atk =  int(refine_weapon_atk) + int(refine_ring1_atk) + int(refine_ring2_atk) + int(refine_bracelet_atk)
 	cumul_dragon_flat_activ_atk = int(dragon_1_stats_dict["Attack"]) + int(dragon_2_stats_dict["Attack"]) + int(dragon_3_stats_dict["Attack"])
 	cumul_stuff_flat_activ_atk = round(stuff_activ_stats['weapon_total'] + stuff_activ_stats['bracelet_total'])
@@ -571,70 +571,151 @@ def dmgCalc_processing(request,pbid):
 			calc_user_dmg = models.dmg_calc_table.objects.get(user_profile=user_stats)
 			calc_user_dmg.hero_atk = hero_atk_step
 			calc_user_dmg.save()
-			return redirect(f"/wiki/damage-calculator/{pbid}/")
+			return HttpResponseRedirect(f"/wiki/damage-calculator/{pbid}/")
 		except Exception:
 			return HttpResponseRedirect(f"/stats/calc/{pbid}/2/")
 	else :
-		return redirect("/wiki/damage-calculator/")
+		return HttpResponseRedirect("/wiki/damage-calculator/")
 
 
 def damageCalc(request,pbid):
-	darkmode = checkTheme_Request(request)
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
 	try:
 		user_stats = models.user.objects.get(public_id=pbid)
 		calc_user_dmg = models.dmg_calc_table.objects.get(user_profile=user_stats.pk)
+		runes_table_stats = models.runes_table.objects.get(user_profile=user_stats.pk)
 	except:	
 		return HttpResponseRedirect("/")
-	runes_table_stats = models.runes_table.objects.get(user_profile=user_stats.pk)
-	runes_power_attack_flat = runes_table_stats.power_attack_flat
-	runes_power_attack_var = runes_table_stats.power_attack_var
-	runes_courage_attack_flat = runes_table_stats.courage_attack_flat
-	runes_courage_attack_var = runes_table_stats.courage_attack_var
-	runes_courage_hero_attack_flat = runes_table_stats.courage_hero_attack_flat
-	runes_courage_hero_attack_var = runes_table_stats.courage_hero_attack_var
-	param_runes_display = [runes_power_attack_flat,runes_power_attack_var,runes_courage_attack_flat,runes_courage_attack_var,runes_courage_hero_attack_flat,runes_courage_hero_attack_var]
 	ctx = {
-		"paramDmgTable": calc_user_dmg.hero_atk,
-		"weapon_coeff": calc_user_dmg.weapon_coeff,
-		"flat_dmg_vs_ground": calc_user_dmg.flat_dmg_vs_ground,
-		"flat_dmg_vs_airborne": calc_user_dmg.flat_dmg_vs_airborne,
-		"flat_dmg_vs_melee": calc_user_dmg.flat_dmg_vs_melee,
-		"flat_dmg_vs_range": calc_user_dmg.flat_dmg_vs_range,
-		"flat_dmg_vs_mobs": calc_user_dmg.flat_dmg_vs_mobs,
-		"flat_dmg_vs_boss": calc_user_dmg.flat_dmg_vs_boss,
-		"flat_dmg_element": calc_user_dmg.flat_dmg_element,
-		"flat_dmg_all": calc_user_dmg.flat_dmg_all,
-		"var_dmg_vs_ground": calc_user_dmg.var_dmg_vs_ground,
-		"var_dmg_vs_airborne": calc_user_dmg.var_dmg_vs_airborne,
-		"var_dmg_vs_melee": calc_user_dmg.var_dmg_vs_melee,
-		"var_dmg_vs_range": calc_user_dmg.var_dmg_vs_range,
-		"var_dmg_vs_mobs": calc_user_dmg.var_dmg_vs_mobs,
-		"var_dmg_vs_boss": calc_user_dmg.var_dmg_vs_boss,
-		"var_dmg_element": calc_user_dmg.var_dmg_element,
-		"var_dmg_all": calc_user_dmg.var_dmg_all,
-		"crit_dmg": calc_user_dmg.crit_dmg,
-		"crit_rate": calc_user_dmg.crit_rate,
-		"param_runes_display": param_runes_display,
 		'darkmode':darkmode,
 		"header_msg": "Damage Calc",
 		"lang":lang,
 		"sidebarContent":SidebarContent
 	}
-	resultCalcDamg = calc_user_dmg.calculDamage()
-	ctx['averageDamage'] = resultCalcDamg['averageDamageAll']
-	ctx["mob_ground_melee_damage"] = resultCalcDamg['mob_ground_melee_damage']
-	ctx["mob_ground_range_damage"] = resultCalcDamg['mob_ground_range_damage']
-	ctx["mob_airborne_melee_damage"] = resultCalcDamg['mob_airborne_melee_damage']
-	ctx["mob_airborne_range_damage"] = resultCalcDamg['mob_airborne_range_damage']
-	ctx["boss_ground_melee_damage"] = resultCalcDamg['boss_ground_melee_damage']
-	ctx["boss_ground_range_damage"] = resultCalcDamg['boss_ground_range_damage']
-	ctx["boss_airborne_melee_damage"] = resultCalcDamg['boss_airborne_melee_damage']
-	ctx["boss_airborne_range_damage"] = resultCalcDamg['boss_airborne_range_damage']
+	if request.method == "GET":
+		damage_calc_form = DamageCalculatorForm()
+		resultCalcDamg = calc_user_dmg.calculDamage()
+		ctx['averageDamage'] = resultCalcDamg['averageDamageAll']
+		ctx['crit_dmg'] = calc_user_dmg.crit_dmg
+		ctx['crit_rate'] = calc_user_dmg.crit_rate
+		ctx["mob_ground_melee_damage"] = resultCalcDamg['mob_ground_melee_damage']
+		ctx["mob_ground_range_damage"] = resultCalcDamg['mob_ground_range_damage']
+		ctx["mob_airborne_melee_damage"] = resultCalcDamg['mob_airborne_melee_damage']
+		ctx["mob_airborne_range_damage"] = resultCalcDamg['mob_airborne_range_damage']
+		ctx["boss_ground_melee_damage"] = resultCalcDamg['boss_ground_melee_damage']
+		ctx["boss_ground_range_damage"] = resultCalcDamg['boss_ground_range_damage']
+		ctx["boss_airborne_melee_damage"] = resultCalcDamg['boss_airborne_melee_damage']
+		ctx["boss_airborne_range_damage"] = resultCalcDamg['boss_airborne_range_damage']
+		ctx["vars_dict"] =  runes_table_stats.getRunesDmgCalc()
+	elif request.method == "POST":
+		damage_calc_form = DamageCalculatorForm(request.POST)
+		if damage_calc_form.is_valid() and 'runes' in request.POST:
+			listHeroStepAtk = calc_user_dmg.hero_atk
+			param_runes_display = runes_table_stats.getRunesDmgCalc()
+			runes = damage_calc_form.cleaned_data['runes']
+			first_select = request.POST.get('firstSelect',None)
+			second_select = request.POST.get('secondSelect',None)
+			third_select = request.POST.get('thirdSelect',None)
+			fourth_select = request.POST.get('fourthSelect',None)
+			fifth_select = request.POST.get('fifthSelect',None)
+			first_input = damage_calc_form.cleaned_data['firstInput']
+			second_input = damage_calc_form.cleaned_data['secondInput']
+			third_input = damage_calc_form.cleaned_data['thirdInput']
+			fourth_input = damage_calc_form.cleaned_data['fourthInput']
+			fifth_input = damage_calc_form.cleaned_data['fifthInput']
+			inputRune = {"none":0,'attack_flat':0,'attack_var':0.0,"flat_dmg_airborne":0,"var_dmg_airborne":0.0,
+				"flat_dmg_ground":0,"var_dmg_ground":0.0,"flat_dmg_melee":0.0,"var_dmg_melee":0.0,
+				"flat_dmg_ranged":0,"var_dmg_ranged":0.0,"flat_dmg_boss":0,"var_dmg_boss":0.0,"flat_dmg_mob":0,
+				"var_dmg_mob":0.0,"var_dmg_hero":0.0,"flat_all_dmg":0.0,"var_all_dmg":0.0,"var_elemental_dmg":0.0,
+				"var_atk_speed":0.0,"var_crit_rate":0.0,"var_crit_dmg":0.0,'Attack (Courage)':0,'Attack% (Courage)':0.0,
+				'Hero base ATK':0,'Hero base ATK %':0.0,first_select: first_input,second_select: second_input,
+				third_select: third_input,fourth_select: fourth_input,fifth_select: fifth_input}
+
+			power_vars = {
+				'atk_power_flat': inputRune['attack_flat'],
+				'atk_power_var': inputRune['attack_var'],
+				'atk_courage_flat': param_runes_display["atk_courage_flat"],
+				'atk_courage_var': param_runes_display["atk_courage_var"],
+				'courage_hero_atk_flat': param_runes_display["courage_hero_atk_flat"],
+				'courage_hero_atk_var': param_runes_display["courage_hero_atk_var"],
+				"power_second_select":second_select,
+				"power_second_input":second_input,
+				"power_third_select":third_select,
+				"power_third_input":third_input,
+				"power_fourth_select":fourth_select,
+				"power_fourth_input":fourth_input,
+				"power_fifth_select":fifth_select,
+				"power_fifth_input":fifth_input
+			}
+			courage_vars = {
+				'atk_power_flat': param_runes_display["atk_power_flat"],
+				'atk_power_var': param_runes_display["atk_power_var"],
+				'atk_courage_flat': inputRune['Attack (Courage)'],
+				'atk_courage_var': inputRune['Attack% (Courage)'],
+				'courage_hero_atk_flat': inputRune['Hero base ATK'],
+				'courage_hero_atk_var': inputRune['Hero base ATK %'],
+				"power_second_select":param_runes_display["power_second_select"],
+				"power_second_input":param_runes_display["power_second_input"],
+				"power_third_select":param_runes_display["power_third_select"],
+				"power_third_input":param_runes_display["power_third_input"],
+				"power_fourth_select":param_runes_display["power_fourth_select"],
+				"power_fourth_input":param_runes_display["power_fourth_input"],
+				"power_fifth_select":param_runes_display["power_fifth_select"],
+				"power_fifth_input":param_runes_display["power_fifth_input"]
+			}
+			vars_dict = power_vars if runes == 'power' else courage_vars
+
+			cumul_var_atk = (float(vars_dict['atk_power_var'])/100 + float(vars_dict['atk_courage_var'])/100 + float(listHeroStepAtk[2]))
+			hero_modified_base_atk = (int(listHeroStepAtk[3]) - int(vars_dict['courage_hero_atk_flat'])) * (float(vars_dict['courage_hero_atk_var']) + float(listHeroStepAtk[4]) + 1) + int(vars_dict['courage_hero_atk_flat'])
+			cumul_flat_atk = int(listHeroStepAtk[1]) + int(vars_dict['atk_power_flat']) + int(vars_dict['atk_courage_flat'])
+			global_stats_atk_flat = round(int(hero_modified_base_atk) + int(cumul_flat_atk) + int(listHeroStepAtk[5]))
+			global_stats_atk = global_stats_atk_flat + (global_stats_atk_flat*float(cumul_var_atk)) + (global_stats_atk_flat*float(listHeroStepAtk[6])) + (global_stats_atk_flat*float(listHeroStepAtk[7])) + listHeroStepAtk[8] + listHeroStepAtk[9]
+
+			resultCalcDamg = calc_user_dmg.calculDamage(
+				global_atk_save=global_stats_atk,
+				crit_dmg=float(inputRune['var_crit_dmg'])+calc_user_dmg.crit_dmg,
+				crit_rate=float(inputRune['var_crit_rate'])+calc_user_dmg.crit_rate,
+				flat_dmg_vs_mobs=float(inputRune['flat_dmg_mob'])+calc_user_dmg.flat_dmg_vs_mobs,
+				var_dmg_vs_mobs=float(inputRune['var_dmg_mob'])+calc_user_dmg.var_dmg_vs_mobs,
+				flat_dmg_vs_ground=float(inputRune['flat_dmg_ground'])+calc_user_dmg.flat_dmg_vs_ground,
+				var_dmg_vs_ground=float(inputRune['var_dmg_ground'])+calc_user_dmg.var_dmg_vs_ground,
+				flat_dmg_vs_melee=float(inputRune['flat_dmg_melee'])+calc_user_dmg.flat_dmg_vs_melee,
+				var_dmg_vs_melee=float(inputRune['var_dmg_melee'])+calc_user_dmg.var_dmg_vs_melee,
+				flat_dmg_vs_airborne=float(inputRune['flat_dmg_airborne'])+calc_user_dmg.flat_dmg_vs_airborne,
+				var_dmg_vs_airborne=float(inputRune['var_dmg_airborne'])+calc_user_dmg.var_dmg_vs_airborne,
+				flat_dmg_vs_boss=float(inputRune['flat_dmg_boss'])+calc_user_dmg.flat_dmg_vs_boss,
+				var_dmg_vs_boss=float(inputRune['var_dmg_boss'])+calc_user_dmg.var_dmg_vs_boss,
+				flat_dmg_vs_range=float(inputRune['flat_dmg_ranged'])+calc_user_dmg.flat_dmg_vs_range,
+				var_dmg_vs_range=float(inputRune['var_dmg_ranged'])+calc_user_dmg.var_dmg_vs_range,
+				flat_dmg_all=float(inputRune['flat_all_dmg'])+calc_user_dmg.flat_dmg_all,
+				var_dmg_all=float(inputRune['var_all_dmg'])+calc_user_dmg.var_dmg_all
+			)
+			ctx.update({
+				"method": request.method,"runes": runes,"vars_dict":vars_dict,
+				"firstSelect": first_select,"firstInput": first_input,"secondSelect": second_select,"secondInput": second_input,
+				"thirdSelect": third_select,"thirdInput": third_input,"fourthSelect": fourth_select,"fourthInput": fourth_input,
+				"fifthSelect": fifth_select,"fifthInput": fifth_input,"averageDamage": resultCalcDamg['averageDamageAll'],"crit_dmg": resultCalcDamg['crit_dmg'],
+				"crit_rate": resultCalcDamg['crit_rate'],"mob_ground_melee_damage": resultCalcDamg['mob_ground_melee_damage'],"mob_ground_range_damage": resultCalcDamg['mob_ground_range_damage'],
+				"mob_airborne_melee_damage": resultCalcDamg['mob_airborne_melee_damage'],"mob_airborne_range_damage": resultCalcDamg['mob_airborne_range_damage'],
+				"boss_ground_melee_damage": resultCalcDamg['boss_ground_melee_damage'],"boss_ground_range_damage": resultCalcDamg['boss_ground_range_damage'],
+				"boss_airborne_melee_damage": resultCalcDamg['boss_airborne_melee_damage'],"boss_airborne_range_damage": resultCalcDamg['boss_airborne_range_damage'],
+			})
+		else:
+			form_error = damage_calc_form.errors.items()
+			for k,v in form_error:
+				error_msg = f"{k} : {str(v[0])}"
+			messages.error(request, error_msg)
+			return HttpResponseRedirect(f"/wiki/damage-calculator/{pbid}/")
+	else:
+		return HttpResponseRedirect(f"/wiki/damage-calculator/{pbid}/")
+	ctx['damage_calc_form'] = damage_calc_form
 	return render(request, "wiki/dmg_calc.html", ctx)
 
 
 def handler404(request, exception):
-	darkmode = checkTheme_Request(request)
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
 	ctx = {
 		'darkmode':darkmode,
 		"header_msg":"Page Not Found",
@@ -644,7 +725,8 @@ def handler404(request, exception):
 	return render(request,'base/404.html', ctx, status=404)
 
 def handler500(request):
-	darkmode = checkTheme_Request(request)
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
 	allfile = os.listdir('calculator/static/traceback_file/')
 	for file in allfile:
 		os.remove(f'calculator/static/traceback_file/{file}')
@@ -658,7 +740,7 @@ def handler500(request):
 	with open(f'calculator/static/traceback_file/{username}.txt','a', encoding='utf-8') as exc_value:
 		for i in exc_output:
 			exc_value.write(i)
-	webhook = DiscordWebhook(url=WEBHOOK_URL, content="<@382930544385851392>", rate_limit_retry=True, allowed_mentions={"users": ["382930544385851392"]})
+	webhook = DiscordWebhook(url=WEBHOOK_URL, content="<@&1091459966319198258>", rate_limit_retry=True, allowed_mentions={"users": ["382930544385851392"]})
 	embed = DiscordEmbed(title='Error 500 - Internal Server Error', description='', color='963e3e')
 	embed.set_author(
 		name=username.capitalize(),
@@ -673,12 +755,19 @@ def handler500(request):
 	return render(request,'base/500.html', {'darkmode':darkmode,"header_msg":"Internal Error Server", 'lang':lang,"sidebarContent":SidebarContent},status=500)
 
 
-## View Troll
 def rickroll(request):
-	send_webhook(f'Someone has been rickrolled <:yraew:1084566603745742928> ')	
-	return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+	send_webhook(f'Someone has been rickrolled')	
+	return HttpResponseRedirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
-	
+
 def tos(request):
-	darkmode = checkTheme_Request(request)
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
 	return render(request,'tos.html',{"darkmode": darkmode})
+
+def changelog(request):
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
+	with open(f'calculator/static/json/commits.json','r', encoding='utf-8') as commit:
+		commit_json = json.load(commit)
+	return render(request,'changelog.html',{"commit_json":commit_json,"darkmode": darkmode, "header_msg": "Change Log", 'lang':lang, "sidebarContent":SidebarContent})

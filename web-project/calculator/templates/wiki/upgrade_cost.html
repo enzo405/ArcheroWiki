@@ -1,9 +1,8 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.3.7">
-	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.3.7">
+	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5">
+	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.5">
 	<title>Archero - Wiki</title>
 	<meta property="og:type" content="website">
 	<meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
@@ -18,7 +17,7 @@
 		<meta property="og:title" content="Archero - Upgrade Cost">
 		<meta property="og:url" content="https://stats.wiki-archero.com/wiki/upgrade">
 		<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.3.7">
+		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5">
 	{% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -50,7 +49,7 @@
 		Insert the level (from x to y)
 		<div class="cost_input_container">
 			{% if content != "" %}
-			<input id="level1" class="cost_input" type="number" value="{{ lvl1 }}" placeholder="level 100" required>
+			<input id="level1" class="cost_input" type="number" value="{{ lvl1 }}" placeholder="level 1" required>
 			<input id="level2" class="cost_input" type="number" value="{{ lvl2 }}" placeholder="level 2" required>
 			{% else %}
 			<input id="level1" class="cost_input" type="number" placeholder="level 1" required>

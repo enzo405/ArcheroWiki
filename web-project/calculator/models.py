@@ -108,22 +108,22 @@ class user(models.Model):
 
 	def getOtherModels(self):
 			return {
-				"stuff_table":stuff_table(self.stuff_table_set.get()),
-				"hero_table":hero_table(self.hero_table_set.get()),
-				"talent_table":talent_table(self.talent_table_set.get()),
-				"skin_table":skin_table(self.skin_table_set.get()),
-				"altar_table":altar_table(self.altar_table_set.get()),
-				"jewel_type_table":jewel_type_table(self.jewel_type_table_set.get()),
-				"jewel_level_table":jewel_level_table(self.jewel_level_table_set.get()),
-				"egg_table":egg_table(self.egg_table_set.get()),
-				"egg_equipped_table":egg_equipped_table(self.egg_equipped_table_set.get()),
-				"dragon_table":dragon_table(self.dragon_table_set.get()),
-				"runes_table":runes_table(self.runes_table_set.get()),
-				"reforge_table":reforge_table(self.reforge_table_set.get()),
-				"refine_table":refine_table(self.refine_table_set.get()),
-				"medals_table":medals_table(self.medals_table_set.get()),
-				"relics_table":relics_table(self.relics_table_set.get()),
-				"weapon_skins_table":weapon_skins_table(self.weapon_skins_table_set.get()),
+				"stuff_table":self.stuff_table_set.get(),
+				"hero_table":self.hero_table_set.get(),
+				"talent_table":self.talent_table_set.get(),
+				"skin_table":self.skin_table_set.get(),
+				"altar_table":self.altar_table_set.get(),
+				"jewel_type_table":self.jewel_type_table_set.get(),
+				"jewel_level_table":self.jewel_level_table_set.get(),
+				"egg_table":self.egg_table_set.get(),
+				"egg_equipped_table":self.egg_equipped_table_set.get(),
+				"dragon_table":self.dragon_table_set.get(),
+				"runes_table":self.runes_table_set.get(),
+				"reforge_table":self.reforge_table_set.get(),
+				"refine_table":self.refine_table_set.get(),
+				"medals_table":self.medals_table_set.get(),
+				"relics_table":self.relics_table_set.get(),
+				"weapon_skins_table":self.weapon_skins_table_set.get(),
 			}
 
 	def __str__(self):
@@ -1540,19 +1540,37 @@ class runes_table(models.Model):
 				courage_hero.update({k:0})
 		return courage_hero
 	
+	def getRunesDmgCalc(self):
+		return {
+			"atk_power_flat": self.power_attack_flat,
+			"atk_power_var": self.power_attack_var,
+			"atk_courage_flat": self.courage_attack_flat,
+			"atk_courage_var": self.courage_attack_var,
+			"courage_hero_atk_flat": self.courage_hero_attack_flat,
+			"courage_hero_atk_var": self.courage_hero_attack_var,
+			"power_second_select": self.power_line_2,
+			"power_second_input": self.value_power_line_2,
+			"power_third_select": self.power_line_3,
+			"power_third_input": self.value_power_line_3,
+			"power_fourth_select": self.power_line_4,
+			"power_fourth_input": self.value_power_line_4,
+			"power_fifth_select": self.power_line_5,
+			"power_fifth_input": self.value_power_line_5
+		}
+
 	def getValueLine(self):
 		return {
-			"flat_dmg_airborne":0.0,
+			"flat_dmg_airborne":0,
 			"var_dmg_airborne":0.0,
-			"flat_dmg_ground":0.0,
+			"flat_dmg_ground":0,
 			"var_dmg_ground":0.0,
-			"flat_dmg_melee":0.0,
+			"flat_dmg_melee":0,
 			"var_dmg_melee":0.0,
-			"flat_dmg_ranged":0.0,
+			"flat_dmg_ranged":0,
 			"var_dmg_ranged":0.0,
-			"flat_dmg_boss":0.0,
+			"flat_dmg_boss":0,
 			"var_dmg_boss":0.0,
-			"flat_dmg_mob":0.0,
+			"flat_dmg_mob":0,
 			"var_dmg_mob":0.0,
 			"var_dmg_hero":0.0,
 			"var_all_dmg":0.0,
@@ -1561,9 +1579,9 @@ class runes_table(models.Model):
 			"var_crit_dmg":0.0,
 			"dodge":0.0,
 			"var_enhanced_eqpm":0.0,
-			"flat_heal_red_heart":0.0,
+			"flat_heal_red_heart":0,
 			"var_heal_red_heart":0.0,
-			"flat_hp_drop":0.0,
+			"flat_hp_drop":0,
 			"var_hp_drop":0.0,
 			self.power_line_2: self.value_power_line_2,
 			self.power_line_3: self.value_power_line_3,
@@ -1696,17 +1714,29 @@ class dmg_calc_table(models.Model):
 		chaine = f"{self.user_profile.ingame_id} | {self.user_profile.ingame_name}"
 		return chaine
 
-	def calculDamage(self):
-		crit_dmg = int(self.crit_dmg)/100
-		mob_ground_melee = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_ground) + int(self.flat_dmg_vs_mobs) + int(self.flat_dmg_vs_melee) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_melee/100) + float(self.var_dmg_vs_ground/100) + float(1))*(float(self.var_dmg_vs_mobs/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-		mob_ground_range = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_ground) + int(self.flat_dmg_vs_mobs) + int(self.flat_dmg_vs_range) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_range/100) + float(self.var_dmg_vs_ground/100) + float(1))*(float(self.var_dmg_vs_mobs/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-		mob_airborne_melee = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_airborne) + int(self.flat_dmg_vs_mobs) + int(self.flat_dmg_vs_melee) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_melee/100) + float(self.var_dmg_vs_airborne/100) + float(1))*(float(self.var_dmg_vs_mobs/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-		mob_airborne_range = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_airborne) + int(self.flat_dmg_vs_mobs) + int(self.flat_dmg_vs_range) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_range/100) + float(self.var_dmg_vs_airborne/100) + float(1))*(float(self.var_dmg_vs_mobs/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-		boss_ground_melee = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_ground) + int(self.flat_dmg_vs_boss) + int(self.flat_dmg_vs_melee) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_melee/100) + float(self.var_dmg_vs_ground/100) + float(1))*(float(self.var_dmg_vs_boss/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-		boss_ground_range = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_ground) + int(self.flat_dmg_vs_boss) + int(self.flat_dmg_vs_range) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_range/100) + float(self.var_dmg_vs_ground/100) + float(1))*(float(self.var_dmg_vs_boss/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-		boss_airborne_melee = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_airborne) + int(self.flat_dmg_vs_boss) + int(self.flat_dmg_vs_melee) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_melee/100) + float(self.var_dmg_vs_airborne/100) + float(1))*(float(self.var_dmg_vs_boss/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-		boss_airborne_range = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_airborne) + int(self.flat_dmg_vs_boss) + int(self.flat_dmg_vs_range) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_range/100) + float(self.var_dmg_vs_airborne/100) + float(1))*(float(self.var_dmg_vs_boss/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-
+	def calculDamage(self, **kwargs):
+		if len(list(kwargs)) == 0:
+			crit_dmg = int(self.crit_dmg)/100
+			crit_rate = self.crit_rate
+			mob_ground_melee = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_ground) + int(self.flat_dmg_vs_mobs) + int(self.flat_dmg_vs_melee) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_melee/100) + float(self.var_dmg_vs_ground/100) + float(1))*(float(self.var_dmg_vs_mobs/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
+			mob_ground_range = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_ground) + int(self.flat_dmg_vs_mobs) + int(self.flat_dmg_vs_range) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_range/100) + float(self.var_dmg_vs_ground/100) + float(1))*(float(self.var_dmg_vs_mobs/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
+			mob_airborne_melee = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_airborne) + int(self.flat_dmg_vs_mobs) + int(self.flat_dmg_vs_melee) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_melee/100) + float(self.var_dmg_vs_airborne/100) + float(1))*(float(self.var_dmg_vs_mobs/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
+			mob_airborne_range = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_airborne) + int(self.flat_dmg_vs_mobs) + int(self.flat_dmg_vs_range) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_range/100) + float(self.var_dmg_vs_airborne/100) + float(1))*(float(self.var_dmg_vs_mobs/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
+			boss_ground_melee = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_ground) + int(self.flat_dmg_vs_boss) + int(self.flat_dmg_vs_melee) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_melee/100) + float(self.var_dmg_vs_ground/100) + float(1))*(float(self.var_dmg_vs_boss/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
+			boss_ground_range = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_ground) + int(self.flat_dmg_vs_boss) + int(self.flat_dmg_vs_range) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_range/100) + float(self.var_dmg_vs_ground/100) + float(1))*(float(self.var_dmg_vs_boss/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
+			boss_airborne_melee = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_airborne) + int(self.flat_dmg_vs_boss) + int(self.flat_dmg_vs_melee) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_melee/100) + float(self.var_dmg_vs_airborne/100) + float(1))*(float(self.var_dmg_vs_boss/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
+			boss_airborne_range = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_airborne) + int(self.flat_dmg_vs_boss) + int(self.flat_dmg_vs_range) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_range/100) + float(self.var_dmg_vs_airborne/100) + float(1))*(float(self.var_dmg_vs_boss/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
+		else:
+			crit_dmg = int(kwargs['crit_dmg'])/100
+			crit_rate = kwargs['crit_rate']
+			mob_ground_melee = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_ground']) + int(kwargs['flat_dmg_vs_mobs']) + int(kwargs['flat_dmg_vs_melee']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_melee']/100) + float(kwargs['var_dmg_vs_ground']/100) + float(1))*(float(kwargs['var_dmg_vs_mobs']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
+			mob_ground_range = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_ground']) + int(kwargs['flat_dmg_vs_mobs']) + int(kwargs['flat_dmg_vs_range']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_range']/100) + float(kwargs['var_dmg_vs_ground']/100) + float(1))*(float(kwargs['var_dmg_vs_mobs']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
+			mob_airborne_melee = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_airborne']) + int(kwargs['flat_dmg_vs_mobs']) + int(kwargs['flat_dmg_vs_melee']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_melee']/100) + float(kwargs['var_dmg_vs_airborne']/100) + float(1))*(float(kwargs['var_dmg_vs_mobs']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
+			mob_airborne_range = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_airborne']) + int(kwargs['flat_dmg_vs_mobs']) + int(kwargs['flat_dmg_vs_range']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_range']/100) + float(kwargs['var_dmg_vs_airborne']/100) + float(1))*(float(kwargs['var_dmg_vs_mobs']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
+			boss_ground_melee = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_ground']) + int(kwargs['flat_dmg_vs_boss']) + int(kwargs['flat_dmg_vs_melee']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_melee']/100) + float(kwargs['var_dmg_vs_ground']/100) + float(1))*(float(kwargs['var_dmg_vs_boss']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
+			boss_ground_range = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_ground']) + int(kwargs['flat_dmg_vs_boss']) + int(kwargs['flat_dmg_vs_range']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_range']/100) + float(kwargs['var_dmg_vs_ground']/100) + float(1))*(float(kwargs['var_dmg_vs_boss']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
+			boss_airborne_melee = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_airborne']) + int(kwargs['flat_dmg_vs_boss']) + int(kwargs['flat_dmg_vs_melee']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_melee']/100) + float(kwargs['var_dmg_vs_airborne']/100) + float(1))*(float(kwargs['var_dmg_vs_boss']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
+			boss_airborne_range = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_airborne']) + int(kwargs['flat_dmg_vs_boss']) + int(kwargs['flat_dmg_vs_range']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_range']/100) + float(kwargs['var_dmg_vs_airborne']/100) + float(1))*(float(kwargs['var_dmg_vs_boss']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
 		mob_ground_melee_damage = [mob_ground_melee,int(mob_ground_melee*crit_dmg)]
 		mob_ground_range_damage = [mob_ground_range,int(mob_ground_range*crit_dmg)]
 		mob_airborne_melee_damage = [mob_airborne_melee,int(mob_airborne_melee*crit_dmg)]
@@ -1725,7 +1755,7 @@ class dmg_calc_table(models.Model):
 			int(boss_airborne_melee_damage[0])+
 			int(boss_airborne_range_damage[0])
 		)/8
-		averageDamageAll = round(averageDamage * (1 + (self.crit_rate/100) * (crit_dmg - 1)))
+		averageDamageAll = round(averageDamage * (1 + (crit_rate/100) * (crit_dmg - 1)))
 		return {
 			"averageDamageAll": averageDamageAll,
 			"mob_ground_melee_damage": [mob_ground_melee,int(mob_ground_melee*crit_dmg)],
@@ -1736,6 +1766,8 @@ class dmg_calc_table(models.Model):
 			"boss_ground_range_damage": [boss_ground_range,int(boss_ground_range*crit_dmg)],
 			"boss_airborne_melee_damage": [boss_airborne_melee,int(boss_airborne_melee*crit_dmg)],
 			"boss_airborne_range_damage": [boss_airborne_range,int(boss_airborne_range*crit_dmg)],
+			"crit_dmg": crit_dmg*100,
+			"crit_rate": crit_rate,
 		}
 
 

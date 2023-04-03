@@ -371,7 +371,7 @@ dragon = {
 button_jewel = Path("calculator/static/image/round_jewel/button.png")
 
 
-def create_image(ingame_name_unlowered:str,weapon_name:str,weapon_rarity:str,weapon_lvl:int,
+def create_image(pbid:str,weapon_name:str,weapon_rarity:str,weapon_lvl:int,
     armor_name:str,armor_rarity:str,armor_lvl:int,ring_name1:str,ring_rarity1:str,ring_lvl1:int,
     ring_name2:str,ring_rarity2:str,ring_lvl2:int,pet_name1:str,pet_rarity1:str,pet_lvl1:int,
     pet_name2:str,pet_rarity2:str,pet_lvl2:int,bracelet_name:str,bracelet_rarity:str,bracelet_lvl:int,
@@ -563,7 +563,7 @@ def create_image(ingame_name_unlowered:str,weapon_name:str,weapon_rarity:str,wea
         dragon_image.paste(Image.open(dragon[letter_dragon[dragon_name1]]).resize((round(114/1.6),round(101/1.6))),box=(20,150),mask=Image.open(dragon[letter_dragon[dragon_name1]]).resize((round(114/1.6),round(101/1.6))))
     else:
         dragon_image = Image.open(dragon["none"]).resize((round(375/2.1),round(456/2.1)))
-    dragon_image.resize((83,101)).save(f"calculator/static/image/stuff_save/dragon_save/dragon_{ingame_name_unlowered}.png")
+    dragon_image.resize((83,101)).save(f"calculator/static/image/stuff_save/dragon_save/{pbid}.png")
 
 
     draw = ImageDraw.Draw(base)
@@ -611,4 +611,4 @@ def create_image(ingame_name_unlowered:str,weapon_name:str,weapon_rarity:str,wea
     draw.text((995,1200),str(pv),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",65))
     draw.text((995,1200),str(pv),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",65))
 
-    base.save(f"calculator/static/image/stuff_save/stuff_{ingame_name_unlowered}.png")
+    base.save(f"calculator/static/image/stuff_save/{pbid}.png")

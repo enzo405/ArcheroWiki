@@ -1,0 +1,302 @@
+{
+    "317": {
+        "nom": "Theorycrafting : loading from local api + fix Login from Damage Calc",
+        "date": "2023-04-03"
+    },
+    "316": {
+        "nom": "Item Description : Added Mythic+ boosts + new data for Armor/Weapon/Bracelet",
+        "date": "2023-03-31"
+    },
+    "314": {
+        "nom": "Theorycrafting : Reddit Link",
+        "date": "2023-03-30"
+    },
+    "311": {
+        "nom": "Better Referencement (SEO)",
+        "date": "2023-03-29"
+    },
+    "318": {
+        "nom": "New chaos data bracelet,armor,weapon",
+        "date": "2023-03-28"
+    },
+    "315": {
+        "nom": "Item & hero & skill : loading from local api",
+        "date": "2023-03-28"
+    },
+    "312": {
+        "nom": "Added changelog",
+        "date": "2023-03-28"
+    },
+    "322": {
+        "nom": "Damage Calc Improvement",
+        "date": "2023-03-26"
+    },
+    "321": {
+        "nom": "Upgrade cost : item level 120 -> 140",
+        "date": "2023-03-26"
+    },
+    "332": {
+        "nom": "Brand new darkmode theme",
+        "date": "2023-03-23"
+    },
+    "330": {
+        "nom": "Added bobo skill detail + moved theme icon header",
+        "date": "2023-03-23"
+    },
+    "327": {
+        "nom": "Remove all dead code",
+        "date": "2023-03-23"
+    },
+    "337": {
+        "nom": "fix theorycrafting share link",
+        "date": "2023-03-20"
+    },
+    "343": {
+        "nom": "More comprehensive code for futur contributor",
+        "date": "2023-03-19"
+    },
+    "342": {
+        "nom": "Added Therm of Use + Sidebar : loading from local api",
+        "date": "2023-03-19"
+    },
+    "352": {
+        "nom": "Remove whitespace meta tag + new system \"api\" for calculating stats & saving",
+        "date": "2023-03-17"
+    },
+    "350": {
+        "nom": "Gsheet Archive page : loading from local api",
+        "date": "2023-03-17"
+    },
+    "354": {
+        "nom": "fix promocode expire : if date = nothing",
+        "date": "2023-03-16"
+    },
+    "353": {
+        "nom": "Meta tags update for discord link + add / at the end of urls",
+        "date": "2023-03-16"
+    },
+    "357": {
+        "nom": "Add relics & dragon cost + resize too big image",
+        "date": "2023-03-14"
+    },
+    "371": {
+        "nom": "Add share btn item/hero/skill",
+        "date": "2023-03-04"
+    },
+    "374": {
+        "nom": "Theorycrafting update item fusion mythic+",
+        "date": "2023-03-03"
+    },
+    "383": {
+        "nom": "fix Form Stats Calc : medals system & weapon skin",
+        "date": "2023-02-27"
+    },
+    "385": {
+        "nom": "Added stella & dragon tierlist update",
+        "date": "2023-02-26"
+    },
+    "389": {
+        "nom": "New database models",
+        "date": "2023-02-24"
+    },
+    "397": {
+        "nom": "Added dragon passiv skill + new dragon form & runes form + dragon fusion chart",
+        "date": "2023-02-20"
+    },
+    "404": {
+        "nom": "Naming Convention for calculation variable",
+        "date": "2023-02-17"
+    },
+    "403": {
+        "nom": "Added more detailed stats + elemental damage stats",
+        "date": "2023-02-17"
+    },
+    "406": {
+        "nom": "Added popup (modale) login success/error + Added Feedback in menu",
+        "date": "2023-02-16"
+    },
+    "407": {
+        "nom": "fix gap in stats calculator (relics)",
+        "date": "2023-02-15"
+    },
+    "410": {
+        "nom": "fix login username length > 3 + added dodge stats",
+        "date": "2023-02-14"
+    },
+    "416": {
+        "nom": "When no active promo code : 'There are no promocodes available at this time'",
+        "date": "2023-02-10"
+    },
+    "420": {
+        "nom": "Added bobo + new rarity",
+        "date": "2023-02-08"
+    },
+    "419": {
+        "nom": "Searchbar Description page Aligned image",
+        "date": "2023-02-08"
+    },
+    "424": {
+        "nom": "Meta tags for discord link",
+        "date": "2023-02-06"
+    },
+    "429": {
+        "nom": "Login Page : better user experience",
+        "date": "2023-02-05"
+    },
+    "427": {
+        "nom": "Fix login illegal Character ('\u55b5\u55b5\u55b5','\u674e\u516c\u5b50','\ud50c\ub808\uc774\uc5b4','\u767d\u5ddd\u51cc\u82b1','bird\u00c3\u00bcnyadevi','\uad81\uc804-\ud1a0\ud1a0','\u00f6')",
+        "date": "2023-02-05"
+    },
+    "432": {
+        "nom": "Added noscript message + Added relics in stats calculator",
+        "date": "2023-02-04"
+    },
+    "433": {
+        "nom": "Added new egg and new choice field (mobs/boss) + show stuff : new detailed stats",
+        "date": "2023-02-03"
+    },
+    "437": {
+        "nom": "Added Promotion code Page",
+        "date": "2023-02-01"
+    },
+    "442": {
+        "nom": "Public id for profile + fix dark theme + fix upgrade cost",
+        "date": "2023-01-29"
+    },
+    "6": {
+        "nom": "Added security to login + confirmation message",
+        "date": "2023-01-25"
+    },
+    "9": {
+        "nom": "Renamed heros => heroes + tutorial maze",
+        "date": "2023-01-22"
+    },
+    "448": {
+        "nom": "Fix bug user can't access to their profile",
+        "date": "2023-01-21"
+    },
+    "11": {
+        "nom": "Added new tierlist + message on sidebar",
+        "date": "2023-01-21"
+    },
+    "451": {
+        "nom": "Updated Theorycrafting mythic refinment hidden stats",
+        "date": "2023-01-20"
+    },
+    "16": {
+        "nom": "Damage Calc 99% reliable stats + Added medals system",
+        "date": "2023-01-20"
+    },
+    "15": {
+        "nom": "Added Upgrade Cost (item, talent, heroes)",
+        "date": "2023-01-20"
+    },
+    "14": {
+        "nom": "Fix display bug on firefox",
+        "date": "2023-01-20"
+    },
+    "467": {
+        "nom": "Update Theorycrafting with new article",
+        "date": "2023-01-12"
+    },
+    "37": {
+        "nom": "Discord log when website down",
+        "date": "2023-01-03"
+    },
+    "47": {
+        "nom": "Added Damage Calc + Google sheet Archives",
+        "date": "2022-12-23"
+    },
+    "58": {
+        "nom": "Added Share link skill/item description",
+        "date": "2022-12-12"
+    },
+    "60": {
+        "nom": "Added Sidebar image clickable",
+        "date": "2022-12-11"
+    },
+    "70": {
+        "nom": "New user interface + fix bug + cookie management",
+        "date": "2022-12-01"
+    },
+    "74": {
+        "nom": "Skill description : added image icon in dropdown",
+        "date": "2022-11-25"
+    },
+    "79": {
+        "nom": "1st version Dark theme",
+        "date": "2022-11-24"
+    },
+    "85": {
+        "nom": "Added Skill description page",
+        "date": "2022-11-18"
+    },
+    "96": {
+        "nom": "Theorycrafting : new article glyphs & refinement",
+        "date": "2022-11-11"
+    },
+    "99": {
+        "nom": "Added visitor in login",
+        "date": "2022-11-09"
+    },
+    "508": {
+        "nom": "New quickraid chart + new header style",
+        "date": "2022-11-08"
+    },
+    "116": {
+        "nom": "Finish collect new jewel & dragon",
+        "date": "2022-11-04"
+    },
+    "122": {
+        "nom": "New footer",
+        "date": "2022-11-02"
+    },
+    "119": {
+        "nom": "Added Item Description + Wiki Theorycrafting update",
+        "date": "2022-11-02"
+    },
+    "129": {
+        "nom": "Added new dragon, brave privileges, elaine stats, jewel",
+        "date": "2022-11-06"
+    },
+    "515": {
+        "nom": "Show stuff : added ingame damage stats",
+        "date": "2022-10-23"
+    },
+    "149": {
+        "nom": "Added wiki theorycrafting",
+        "date": "2022-10-19"
+    },
+    "523": {
+        "nom": "Finish collect new stuff stats",
+        "date": "2022-10-16"
+    },
+    "526": {
+        "nom": "Discord send alert on error 500",
+        "date": "2022-10-15"
+    },
+    "159": {
+        "nom": "Added login page",
+        "date": "2022-10-14"
+    },
+    "550": {
+        "nom": "Added maze soluce",
+        "date": "2022-10-04"
+    },
+    "559": {
+        "nom": "Global Release",
+        "date": "2022-10-02"
+    },
+    "586": {
+        "nom": "Added update game + data.py + Stats gap 0",
+        "date": "2022-09-25"
+    },
+    "264": {
+        "nom": "Working initialize version web beta",
+        "date": "2022-09-09"
+    },
+    "308": {
+        "nom": "init 0.0",
+        "date": "2022-06-25"
+    }
+}

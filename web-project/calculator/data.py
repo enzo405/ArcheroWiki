@@ -13,80 +13,80 @@
 
 StatsWeapon =  {
     "antiquated_sword": {
-        "inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
-        "base": [70,100,125,170,215,265,325,390,460,540,760,880,1000,1100,1200],
+        "inc": [8,9,10,12,14,16,18,20,22,24,26,28,30,32,34],
+        "base": [70,100,125,170,215,265,325,390,460,540,650,760,880,1020,1200],
         "var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
         "crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         "weapon_damage": [0,0,0,0,0,0,0,0,0,0,12,12,12,12,12],
         "basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
     },
     "demon_blade_rain": {
-		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
-		"base": [70,100,125,170,215,265,325,390,460,540,760,880,1000,1100,1200],
+		"inc": [8,9,10,12,14,16,18,20,22,24,26,28,30,32,34],
+		"base": [70,100,125,170,215,265,325,390,460,540,650,760,880,1020,1200],
 		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
 		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,11,11,11,11,11],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"brave_bow": {
-		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
-		"base": [50,70,90,120,150,200,250,300,350,410,490,490,490,490,490],
+		"inc": [8,9,10,12,14,16,18,20,22,24,26,28,30,32,34],
+		"base": [50,70,90,120,150,200,250,300,350,410,490,570,670,780,900],
 		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
 		"crit": [0,0,0,50,50,50,50,50,50,75,75,75,75,75,75],
 		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,8,8,8,8,8],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"saw_blade": {
-		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
-		"base": [50,70,90,120,150,200,250,300,350,410,490,490,490,490,490],
+		"inc": [8,9,10,12,14,16,18,20,22,24,26,28,30,32,34],
+		"base": [50,70,90,120,150,200,250,300,350,410,490,570,670,780,900],
 		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
 		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,8,8,8,8,8],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"tornado": {
-		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
-		"base": [50,70,90,120,150,200,250,300,350,410,490,490,490,490,490],
+		"inc": [8,9,10,12,14,16,18,20,22,24,26,28,30,32,34],
+		"base": [50,70,90,120,150,200,250,300,350,410,490,570,670,780,900],
 		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
 		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,8,8,8,8,8],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"gale_force": {
-		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
-		"base": [60,85,110,150,190,240,300,360,0,0,0,0,0,0,0],
+		"inc": [8,9,10,12,14,16,18,20,22,24,26,28,30,32,34],
+		"base": [60,85,110,150,190,240,300,360,435,510,600,690,800,910,1045],
 		"var_atk": [0,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
 		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"stalker_staff": {
-		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
-		"base": [50,70,90,120,150,200,250,300,350,410,490,490,490,490,490],
+		"inc": [8,9,10,12,14,16,18,20,22,24,26,28,30,32,34],
+		"base": [50,70,90,120,150,200,250,300,350,410,490,570,670,780,900],
 		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
 		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,9,9,9,9,9],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"death_scythe": {
-		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
-		"base": [50,70,90,120,150,200,250,300,350,410,490,490,490,490,490],
+		"inc": [8,9,10,12,14,16,18,20,22,24,26,28,30,32,34],
+		"base": [50,70,90,120,150,200,250,300,350,410,490,570,670,780,900],
 		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
 		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,8,8,8,8,8],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"brightspear": {
-		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
-		"base": [50,70,90,120,150,200,250,300,350,410,490,490,490,490,490],
+		"inc": [8,9,10,12,14,16,18,20,22,24,26,28,30,32,34],
+		"base": [50,70,90,120,150,200,250,300,350,410,490,570,670,780,900],
 		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
 		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,9,9,9,9,9],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"mini_atreus": {
-		"inc": [8,9,10,12,14,16,18,20,20,20,20,20,20,20,20],
-		"base": [70,100,125,170,215,265,325,390,460,540,760,880,1000,1100,1200],
+		"inc": [8,9,10,12,14,16,18,20,22,24,26,28,30,32,34],
+		"base": [70,100,125,170,215,265,325,390,460,540,650,760,880,1020,1200],
 		"var_atk": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
 		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"weapon_damage": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
@@ -111,8 +111,8 @@ StatsWeapon =  {
 StatsArmor =  {
     "golden_chestplate": {
         "resistance_type":"damage resistance",
-        "inc": [25,30,35,40,50,60,70,80,87,87,87,87,87,87,87],
-        "base": [200,280,360,480,600,800,1000,1200,1420,1680,1960,2260,2580,3150,3770],
+        "inc": [25,30,35,40,50,60,70,80,90,100,120,140,160,180,200],
+        "base": [200,280,360,480,600,800,1000,1200,1420,1670,2010,2350,2720,3150,3770],
         "var_hp": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
         "dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         "resistance": [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
@@ -120,8 +120,8 @@ StatsArmor =  {
 	},
 	"void_robe": {
         "resistance_type":"collision damage resistance",
-		"inc": [25,30,35,40,50,60,70,80,87,87,87,87,87,87,87],
-		"base": [200,280,360,480,600,800,1000,1200,1420,1680,1960,2260,2580,3150,3770],
+		"inc": [25,30,35,40,50,60,70,80,90,100,120,140,160,180,200],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1670,2010,2350,2720,3150,3770],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],
@@ -129,8 +129,8 @@ StatsArmor =  {
 	},
 	"phantom_cloak": {
         "resistance_type":"projectile damage resistance",
-		"inc": [25,30,35,40,50,60,70,80,87,87,87,87,87,87,87],
-		"base": [200,280,360,480,600,800,1000,1200,1420,1680,1960,2260,2580,3150,3770],
+		"inc": [25,30,35,40,50,60,70,80,90,100,120,140,160,180,200],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1670,2010,2350,2720,3150,3770],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],
@@ -138,8 +138,8 @@ StatsArmor =  {
 	},
 	"vest_of_dexterity": {
         "resistance_type":"none",
-		"inc": [25,30,35,40,50,60,70,80,87,87,87,87,87,87,87],
-		"base": [200,280,360,480,600,800,1000,1200,1420,1680,1960,2260,2580,3150,3770],
+		"inc": [25,30,35,40,50,60,70,80,90,100,120,140,160,180,200],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1670,2010,2350,2720,3150,3770],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,10,10,10,10,10],
 		"dodge": [7,7,7,7,7,7,7,7,0,0,0,0,0,0,0],
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -148,7 +148,7 @@ StatsArmor =  {
 	"bright_robe": {
         "resistance_type":"front damage resistance",
 		"inc": [28,33,38,43,54,64,75,87,87,87,87,87,87,87,87],
-		"base": [200,280,360,480,600,800,1000,1200,1420,1680,1960,2260,2580,3150,3770],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1670,2010,2350,2720,3150,3770],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,12,12,12,12,12],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
@@ -157,7 +157,7 @@ StatsArmor =  {
 	"shadow_robe": {
         "resistance_type":"rear damage resistance",
 		"inc": [28,33,38,43,54,64,75,87,87,87,87,87,87,87,87],
-		"base": [200,280,360,480,600,800,1000,1200,1420,1680,1960,2260,2580,3150,3770],
+		"base": [200,280,360,480,600,800,1000,1200,1420,1670,2010,2350,2720,3150,3770],
 		"var_hp": [0,0,0,7,7,7,7,7,7,7,19,19,19,19,19],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [22,22,22,22,22,22,22,22,22,22,22,22,22,22,22],
@@ -326,51 +326,51 @@ StatsRing =  {
 
 StatsBracelet =  {
     "quickshot_bracelet": {
-		"inc": [5,6,7,8,9,11,13,15,16,16,16,16,16,16,16],
-		"base": [30,40,55,70,90,120,150,180,210,210,210,210,210,210,210],
+		"inc": [5,6,7,8,9,11,13,15,17,19,21,23,25,27,29],
+		"base": [30,40,55,70,90,120,150,180,210,250,300,350,410,480,560],
 		"var_atk": [0,0,0,6,6,6,6,6,6,8,18,18,18,18,18],
 		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"shield_bracelet": {
-		"inc": [6,7,8,9,11,12,14,16,16,16,16,16,16,16,16],
-		"base": [35,48,65,85,105,145,180,215,250,290,290,290,290,290,290],
+		"inc": [6,7,8,9,11,12,14,16,18,20,22,24,26,28,30],
+		"base": [35,48,65,85,105,145,180,215,250,290,350,410,470,540,650],
 		"var_atk": [0,0,0,7,7,7,7,7,7,9,21,21,21,21,21],
 		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"invincible_bracelet": {
-		"inc": [5,6,7,8,9,11,13,15,16,16,16,16,16,16,16],
-		"base": [30,40,55,70,90,120,150,180,210,210,210,210,210,210,210],
+		"inc": [5,6,7,8,9,11,13,15,17,19,21,23,25,27,29],
+		"base": [30,40,55,70,90,120,150,180,210,250,300,350,410,480,560],
 		"var_atk": [0,0,0,6,6,6,6,6,6,8,18,18,18,18,18],
 		"crit": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"frozen_bracelet": {
-		"inc": [4,5,6,7,8,10,12,14,14,14,14,14,14,14,14],
-		"base": [30,40,55,70,90,120,150,180,210,210,210,210,210,210,210],
-		"var_atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"inc": [4,5,6,7,8,10,12,14,16,18,20,22,24,26,28],
+		"base": [30,40,55,70,90,120,150,180,210,250,300,350,410,480,560],
+		"var_atk": [0,0,0,0,0,0,0,0,0,0,8,8,8,8,8],
 		"crit": [0,0,0,15,15,15,15,15,15,20,20,20,20,20,20],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"thunder_bracelet": {
-		"inc": [4,5,6,7,8,10,12,14,14,14,14,14,14,14,14],
-		"base": [30,40,55,70,90,120,150,180,210,210,210,210,210,210,210],
-		"var_atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"inc": [4,5,6,7,8,10,12,14,16,18,20,22,24,26,28],
+		"base": [30,40,55,70,90,120,150,180,210,250,300,350,410,480,560],
+		"var_atk": [0,0,0,0,0,0,0,0,0,0,8,8,8,8,8],
 		"crit": [0,0,0,15,15,15,15,15,15,20,20,20,20,20,20],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"blazing_bracelet": {
-		"inc": [4,5,6,7,8,10,12,14,14,14,14,14,14,14,14],
-		"base": [30,40,55,70,90,120,150,180,210,210,210,210,210,210,210],
-		"var_atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"inc": [4,5,6,7,8,10,12,14,16,18,20,22,24,26,28],
+		"base": [30,40,55,70,90,120,150,180,210,250,300,350,410,480,560],
+		"var_atk": [0,0,0,0,0,0,0,0,0,0,8,8,8,8,8],
 		"crit": [0,0,0,15,15,15,15,15,15,20,20,20,20,20,20],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
 	"split_bracelet": {
-		"inc": [4,5,6,7,8,10,12,14,14,14,14,14,14,14,14],
-		"base": [30,40,55,70,90,120,150,180,210,210,210,210,210,210,210],
-		"var_atk": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"inc": [4,5,6,7,8,10,12,14,16,18,20,22,24,26,28],
+		"base": [30,40,55,70,90,120,150,180,210,250,300,350,410,480,560],
+		"var_atk": [0,0,0,0,0,0,0,0,0,0,8,8,8,8,8],
 		"crit": [0,0,0,15,15,15,15,15,15,20,20,20,20,20,20],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25]
 	},
@@ -393,7 +393,7 @@ StatsLocket =  {
     "angel_locket": {
         "resistance_type":"none",
 		"inc": [15,18,20,25,30,35,40,45,50,55,60,65,70,75,80],
-		"base": [120,170,220,290,360,480,600,720,720,720,720,720,720,720,720],
+		"base": [120,170,220,290,360,480,600,720,870,1020,1170,1380,1590,1800,2010],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -402,7 +402,7 @@ StatsLocket =  {
 	"counterattack_locket": {
         "resistance_type":"none",
 		"inc": [19,23,26,32,40,45,52,60,70,80,90,100,110,120,130],
-		"base": [145,205,265,350,430,575,720,865,865,865,865,865,865,865,865],
+		"base": [145,205,265,350,430,575,720,865,1040,1215,1390,1645,1900,2155,2410],
 		"var_hp": [0,0,0,0,0,4,4,4,4,4,4,4,4,4,4],
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -411,7 +411,7 @@ StatsLocket =  {
 	"agile_locket": {
         "resistance_type":"none",
 		"inc": [15,18,20,25,30,35,40,45,50,55,60,65,70,75,80],
-		"base": [120,170,220,290,360,480,600,720,720,720,720,720,720,720,720],
+		"base": [120,170,220,290,360,480,600,720,870,1020,1170,1380,1590,1800,2010],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"dodge": [0,0,0,0,0,0,0,6,6,6,6,6,6,8,8],
@@ -420,7 +420,7 @@ StatsLocket =  {
 	"iron_locket": {
         "resistance_type":"none",
 		"inc": [15,18,20,25,30,35,40,45,50,55,60,65,70,75,80],
-		"base": [120,170,220,290,360,480,600,720,720,720,720,720,720,720,720],
+		"base": [120,170,220,290,360,480,600,720,870,1020,1170,1380,1590,1800,2010],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -429,7 +429,7 @@ StatsLocket =  {
 	"bulletproof_locket": {
         "resistance_type":"projectile resistance",
 		"inc": [15,18,20,25,30,35,40,45,50,55,60,65,70,75,80],
-		"base": [120,170,220,290,360,480,600,720,720,720,720,720,720,720,720],
+		"base": [120,170,220,290,360,480,600,720,870,1020,1170,1380,1590,1800,2010],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [0,0,0,0,0,0,0,8,8,8,8,8,8,10,10],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -438,7 +438,7 @@ StatsLocket =  {
 	"piercer_locket": {
         "resistance_type":"none",
 		"inc": [16,19,22,27,33,38,44,50,55,60,65,70,75,80,85,90],
-		"base": [120,170,220,290,360,480,600,720,720,720,720,720,720,720,720],
+		"base": [120,170,220,290,360,480,600,720,870,1020,1170,1380,1590,1800,2010],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -447,7 +447,7 @@ StatsLocket =  {
 	"bloodthirsty_locket": {
         "resistance_type":"none",
 		"inc": [16,19,22,27,33,38,44,50,55,60,65,70,75,80,85,90],
-		"base": [120,170,220,290,360,480,600,720,720,720,720,720,720,720,720,720],
+		"base": [120,170,220,290,360,480,600,720,870,1020,1170,1380,1590,1800,2010],
 		"var_hp": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"dodge": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -480,7 +480,7 @@ StatsBook =  {
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance2": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
-		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.135,0.135,0.135,0.135,0.135,0.135,0.135]
 	},
 	"arcane_archer": {
         "resistance_type":"none",
@@ -491,7 +491,7 @@ StatsBook =  {
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance2": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
-		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.085,0.085,0.085,0.085,0.085,0.085,0.085]
 	},
 	"art_of_combat": {
         "resistance_type":"none",
@@ -502,7 +502,7 @@ StatsBook =  {
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance2": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
-		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.085,0.085,0.085,0.085,0.085,0.085,0.085]
 	},
 	"ice_realm": {
         "resistance_type":"none",
@@ -513,7 +513,7 @@ StatsBook =  {
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance2": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
-		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.085,0.085,0.085,0.085,0.085,0.085,0.085]
 	},
 	"enlightenment": {
         "resistance_type":"colission resistance",
@@ -524,7 +524,7 @@ StatsBook =  {
 		"resistance": [0,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
 		"resistance2": [0,0,5,5,5,5,5,5,5,5,5,5,5,5,5],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
-		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.085,0.085,0.085,0.085,0.085,0.085,0.085]
 	},
 	"giants_contract": {
         "resistance_type":"none",
@@ -535,7 +535,7 @@ StatsBook =  {
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance2": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
-		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.11,0.11,0.11,0.11,0.11,0.11,0.11]
 	},
 	"spectre_book": {
         "resistance_type":"none",
@@ -546,7 +546,7 @@ StatsBook =  {
 		"resistance": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"resistance2": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"basic_stats": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.15,0.25,0.25,0.25],
-		"enhance_eqm": [0,0,0,0,0,0,0,0,0.05,0.05,0.05,0.05,0.05,0.05,0.05]
+		"enhance_eqm": [0,0,0,0,0,0,0,0,0.11,0.11,0.11,0.11,0.11,0.11,0.11]
 	},
 	"none": {
         "resistance_type":"none",
@@ -2575,418 +2575,522 @@ WeaponSkinData = {
 
 SkillData = {
         "Agility" :{
+            "value": "Agility",
             "description": "Your Dodge chance increase the lower your HP is",       
             "stats": "+0.3% chance to dodge each 1% of life missing. (Additive)"
         },
         "Attack Boost" :{
+            "value": "Attack_Boost",
             "description": "Increase your damage",
             "stats": "[Major] Damage + 30%<br>[Minor] Damage + 15%<br>Additive"
         },
         "Attack Plus" :{
+            "value": "Attack_Plus",
             "description": "Increases your attack when you don't take damage in a stage",
             "stats": "Increases your attack by 2.25% when you don't take damage in a room.<br> 18 times max [40%]"
         },
         "Attack Speed Boost" :{
+            "value": "Attack_Speed_Boost",
             "description": "Increase your attack speed",
             "stats": "• [Major] Attack Speed +25%<br>• [Minor] Attack Speed +12.5%<br>• Additive"
         },
         "Angelic Blessing" :{
+            "value": "Angelic_Blessing",
             "description": "Angel room has chance to heal 2x 4x HP",
             "stats": "<br>"
         },
         "Berserker" :{
+            "value": "Berserker",
             "description": "Increases Max Fury by 50%",
             "stats": "Increases Max Fury by 50%. Fury charges faster at low HP. Upon taking damage, Fury charges by a lot."
         },
         "Blade Storm" :{
+            "value": "Blade_Storm",
             "description": "Whirldwind storm of blades that blocks projectiles.",
             "stats": "<br>"
         },
         "Blaze" :{
+            "value": "Blaze",
             "description": "Your attacks cause a Flame effect",
             "stats": "Deals 18% equipment damage every 0.25s to enemies hit by weapon projectile after initial hit up to 7 ticks (2s)"
         },
         "Blazing Meteor" :{
+            "value": "Blazing_Meteor",
             "description": "Summon a flame meteor to attack enemies",
             "stats": "Burn chips off enemy HP for 2 seconds.<br>  225% modifiable damage, Partial hit: 80% damage.<br> Unlocks in Chapter 9. <br>Not affected by Rage ability."
         },
         "Blazing Star" :{
+            "value": "Blazing_Star",
             "description": "Summon a flame star to attack enemies",
             "stats": "Burn chips off enemy HP for 2 seconds.<br>  90% modifiable damage. <br>Not affected by Rage ability.<br>Stars are affected by ricochet and will bounce between enemies just like ricochet."
         },
         "Blazing Strike" :{
+            "value": "Blazing_Strike",
             "description": "Summon a flame sword to attack enemies",
             "stats": "Burn chips off enemy HP for 2 seconds.<br>  165% modifiable damage.<br>Not affected by Rage ability.<br>  The faster the attack speed, the shorter the summoning time."
         },
         "Blazing Sword" :{
+            "value": "Blazing_Sword",
             "description": "Summons 2 flame swords to spin around you",
             "stats": "Burn chips off enemy HP for 2 seconds.<br>132% modifiable damage.<br>Unlocks in Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
         },
         "Bloodthirst" :{
+            "value": "Bloodthirst",
             "description": "Restores HP when you kill enemies!",
             "stats": "Gain 1.5% of base Max HP on enemy kills."
         },
         "Bolt" :{
+            "value": "Bolt",
             "description": "Your attacks cause Lightning effect",
             "stats": "Deal 25% equipment damage to enemies within a few tiles of enemies hit by weapon projectile.<br> Deals 30% (Up to 45%) damage to the initial target, with an additional 5% damage per enemy chained by the lightning bolt.<br>Works well with Ricochet<br>Maximum of one spark per enemy per tick.<br> i.e. doesn't hit twice with Front Arrow or extremely high attack speed."
         },
         "Bolt Circle" :{
+            "value": "Bolt_Circle",
             "description": "Two lightning orbs circle around you",
             "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br>  Affected by rage.<br>  Spins faster with attack speed boosts."
         },
         "Bolt Meteor" :{
+            "value": "Bolt_Meteor",
             "description": "Summon a bolt meteor to attack enemies",
             "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  225% modifiable damage, Partial hit: 80% damage.<br>  Unlocks in Chapter 9.<br>Not affected by Rage ability."
         },
         "Bolt Star" :{
+            "value": "Bolt_Star",
             "description": "Summon a bolt star to attack enemies",
             "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  90% modifiable damage.<br>Not affected by Rage ability.<br>  Stars are affected by ricochet and will bounce between enemies just like ricochet."
         },
         "Bolt Strike" :{
+            "value": "Bolt_Strike",
             "description": "Summon a bolt sword to attack enemies",
             "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  165% modifiable damage.<br>Not affected by Rage ability.<br>  The faster the attack speed, the shorter the summoning time."
         },
         "Bolt Sword" :{
+            "value": "Bolt_Sword",
             "description": "Summons 2 bolt swords to spin around you",
             "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>132% modifiable damage.<br>Unlocks in Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
         },
         "Bouncy Wall" :{
+            "value": "Bouncy_Wall",
             "description": "Your arrows bounce up to 2 times against walls.",
-            "stats": "-50% damage after the first bounce"
+            "stats": "-50% damage for each bounce"
         },
         "Chilling Blast" :{
+            "value": "Chilling_Blast",
             "description": "Enemies blast a cold wave on death",
             "stats": "Enemies explode on death causing an explosive ice effect.<br>  Unlocks in Chapter 3."
         },
         "Crit Aura" :{
+            "value": "Crit_Aura",
             "description": "Increases Crit Chance for a short time",
             "stats": "Increases your crit chance by 47.5% for 2 seconds.<br> 8 second cooldown"
         },
         "Crit Master" :{
+            "value": "Crit_Master",
             "description": "Increase your critical damage & chance",
             "stats": "[Major] Crit Damage + 40% & Crit chance + 10%<br>[Minor] Crit Damage + 20% & Crit chance + 5%<br>Additive"
         },
         "Crit Plus" :{
+            "value": "Crit_Plus",
             "description": "Increases your crit chance when you don't take damage in a stage",
             "stats": "Increases your crit chance by 1.3% when you don't take damage in a room.<br> 17 times max [22%]"
         },
         "Dauntless Greatsword" :{
+            "value": "Dauntless_Greatsword",
             "description": "Reduced greatsword rage cost. Forms can be freely changed.",
             "stats": "<br>"
         },
         "Dark Touch" :{
+            "value": "Dark_Touch",
             "description": "Your attacks cause a Dark effect",
             "stats": "Dark touch places a bomb on a struck target for 1 second, the explosion deals 90% of modified damage from ATK boosts in an area of effect around the targeted mob.<br>Base damage does not affect damage.<br> Multiple darks will not stack on an enemy."
         },
         "Death Bomb" :{
+            "value": "Death_Bomb",
             "description": "Cause enemies to explode on death",
             "stats": "Enemies explode on death causing an area of effect damage (2/3 of base damage).<br>  Unlocks in Chapter 3."
         },
         "Death Nova" :{
+            "value": "Death_Nova",
             "description": "Enemies explode into lightning bolts upon death",
             "stats": "When an enemy is killed, enemies create holy projectiles, shooting out in 8 equidistant directions dealing 30% current damage on contact."
         },
         "Diagonal Arrows" :{
+            "value": "Diagonal_Arrows",
             "description": "Fire 2 additional projectile diagonally.",
             "stats": "You fire an additional projectile diagonally forward to the left and right<br>Deal 100% of damage per projectile<br>Up to 3 diagonal arrow."
         },
         "Dodge Aura" :{
+            "value": "Dodge_Aura",
             "description": "Greatly increases Dodge once in a while.",
             "stats": "<br>"
         },
         "Dodge Burst" :{
+            "value": "Dodge_Burst",
             "description": "Greatly increases Attack once in a while after dodging.",
             "stats": "<br>"
         },
         "Dodge Challenge" :{
+            "value": "Dodge_Challenge",
             "description": "Increases Dodge if no damage taken when clearing a room.",
             "stats": "<br>"
         },
         "Dodge Master" :{
+            "value": "Dodge_Master",
             "description": "Your Dodge Chance is increased",
             "stats": "Dodge Chance +20%<br>  Dodge is multiplicative when combining dodge from different items and abilities"
         },
         "Dwarf" :{
+            "value": "Dwarf",
             "description": "Transform into a dwarf with a smaller body",
             "stats": "Reduces your hitbox by 15%.<br>Crit Chance + 10%.<br>Defeat Chapter 10"
         },
         "Enhanced Summon" :{
+            "value": "Enhanced_Summon",
             "description": "Greatly increases summoned creature duration and attack",
             "stats": "<br>"
         },
         "Element Burst" :{
+            "value": "Element_Burst",
             "description": "Various elemental stats, elemental damage has chance for Crit.",
             "stats": "<em>Elemental damage crit chance/damage TBC</em>"
         },
         "Element Upgrade" :{
+            "value": "Element_Upgrade",
             "description": "Elemental damage increased greatly.",
-            "stats": "     Freeze Damage +100%<br>     Bolt Damage +150%<br>     Poison Damage +250%<br>     Blaze Damage +100%<br>     Dark Touch Damage +100%"
+            "stats": "Freeze Damage +100%<br>Bolt Damage +150%<br>Poison Damage +250%<br>Blaze Damage +100%<br>Dark Touch Damage +100%"
         },
         "Explosive Arrow" :{
+            "value": "Explosive_Arrow",
             "description": "Store explosive arrow when moving.<br> Explodes when enemies or walls are hit",
             "stats": "Can stack up to 4 explosive arrow.<br>Each explosion does x1.5 damage to mobs close to the wall"
         },
         "Extra Life" :{
+            "value": "Extra_Life",
             "description": "Provides you an automatic free revival after death",
             "stats": "Revives you once after death.<br>  Reduces your Max HP by 30% (Devil Tax).<br>  Can only be recieved by the devil<br>  There is no invincibility when reviving from the extra life', Does not use up your revive.<br> When you exclude reviving, Extra Life provides you with 40% more HP overall. However if you choose to revive, Extra Life only provides you with a 5% increase overall in HP compared to if you didn't accept the deal from the Devil"
         },
         "Fatal Excitement" :{
+            "value": "Fatal_Excitement",
             "description": "The lower your HP, the faster circling objects spin",
             "stats": "<br>"
         },
         "Fire Circle" :{
+            "value": "Fire_Circle",
             "description": "Two flame orbs circle around you",
             "stats": "Burn chips off enemy HP for 2 seconds.<br> Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br> Affected by rage.<br> Spins faster with attack speed boosts."
         },
         "Freeze" :{
+            "value": "Freeze",
             "description": "Slows enemies down",
             "stats": "Freezes enemies until attacked or for 2 seconds.<br> Only freezes enemies; does not slow enemies. Mobs will be unfrozen by next hit, including pets hits. Freeze changes the behavior of mobs"
         },
         "Front Arrow" :{
+            "value": "Front_Arrow",
             "description": "Shoot 2 arrows in one shot.",
             "stats": "  Additional Front Arrow.<br>  -25% damage per arrow<br><br><b>Devil Stats</b><br>  Additional Front Arrow.<br>  -20% damage per arrow"
         },
         "Frost Meteor" :{
+            "value": "Frost_Meteor",
             "description": "Summon a frost meteor to attack enemies",
             "stats": "Freeze or slows enemies for 2 seconds.<br>  225% modifiable damage, Partial hit: 80% damage.<br>  Unlocks in Chapter 9.<br>Not affected by Rage ability."
         },
         "Frost Star" :{
+            "value": "Frost_Star",
             "description": "Summon a frost star to attack enemies",
             "stats": "Freeze or slows enemies for 2 seconds.<br>  90% modifiable damage.<br>Not affected by Rage ability.<br>  Stars are affected by ricochet and will bounce between enemies just like ricochet."
         },
         "Frost Strike" :{
+            "value": "Frost_Strike",
             "description": "Summon a frost sword to attack enemies",
             "stats": "Freeze or slows enemies for 2 seconds.<br>  165% modifiable damage.<br>Not affected by Rage ability.<br>  The faster the attack speed, the shorter the summoning time."
         },
         "Frost Sword" :{
+            "value": "Frost_Sword",
             "description": "Summons 2 frost swords to spin around you",
             "stats": "Freeze or slows enemies for 2 seconds.<br>132% modifiable damage.<br>Unlocks in Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
         },
         "Furious" :{
+            "value": "Furious",
             "description": "When wielding the Broadsword, it deals more damage at higher Fury.",
             "stats": "<br>"
         },
         "Fury" :{
+            "value": "Fury",
             "description": "Your Attack Speed increase the lower your HP is",
             "stats": "+0.4% Attack Speed per 1% of life missing. (Additive)"
         },
         "Fury Command" :{
+            "value": "Fury_Command",
             "description": "Spirits enters a fury state within 5s of entering a room",
             "stats": "<br>"
         },
         "Giant" :{
+            "value": "Giant",
             "description": "Transform into a giant with increased damage",
             "stats": "Increases your hitbox by 10%.<br>  Attack + 40%<br>  Max HP + 5%<br>  Unlocks in Chapter 11"
         },
         "Grace" :{
+            "value": "Grace",
             "description": "Heal from red heart increase the lower your HP is",
             "stats": "+0.6% of heal for red heart each 1% of life missing. (Additive)"
         },
         "Greed" :{
+            "value": "Greed",
             "description": "Collect more coins, but also receive more damage",
             "stats": "Coin drop chance +25%<br>  Enemy damage +20%"
         },
         "Headshot" :{
+            "value": "Headshot",
             "description": "Small chance to kill mobs instantly",
             "stats": "12% chance to kill mobs instantly<br>  Ricochet, pierce, and spirit shots can trigger the effect."
         },
         "Heal" :{
+            "value": "Heal",
             "description": "Restores HP partially",
             "stats": "Restores 40% of your HP<br><b>Notes</b><br>Can only be recieved via an Angel and lucky wheel"
         },
         "Hermes Shoes" :{
+            "value": "Hermes_Shoes",
             "description": "Increases movement speed and some dodge rate.",
             "stats": "Movement Speed +12%<br>Dodge Chance +15%"
         },
         "Heal Overflow" :{
+            "value": "Heal_Overflow",
             "description": "Excess healing increases Max HP",
             "stats": "<br>"
         },
         "Heroic Fightback" :{
+            "value": "Heroic_Fightback",
             "description": "Once the hero falls, huge amounts of damage is dealt to all enemies",
             "stats": "<br>"
         },
         "Holy Touch" :{
+            "value": "Holy_Touch",
             "description": "Your attacks cause Holy effect",
             "stats": "All arrows that hit an enemy create two perpendicular holy projectiles that deals 70% of your modified projectile damage each.<br>Piercing."
         },
         "HP Boost" :{
+            "value": "HP_Boost",
             "description": "Max HP increased!",
             "stats": "Increases HP by 20% of base max HP"
         },
         "Bloodthirst Aura" :{
+            "value": "Bloodthirst_Aura",
             "description": "Bloodthirst Aura increases health once in a while (cooldown of 8s)",
             "stats": "Mob/Boss kill heal 15% of Max HP."
         },
         "HP Plus" :{
+            "value": "HP_Plus",
             "description": "Increases your Max HP when you don't take damage in a stage",
             "stats": "Increases your max HP by 2.2% when you don't take damage in a room.<br> 14 times max [30%]"
         },
         "Ice Circle" :{
+            "value": "Ice_Circle",
             "description": "Two ice orbs circle around you",
             "stats": "Freeze or slows enemies for 2 seconds.<br> Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br>  Affected by rage.<br>  Spins faster with attack speed boosts."
         },
         "Inherited Summon" :{
+            "value": "Inherited_Summon",
             "description": "Summon creature inherits portion of own stats",
             "stats": "<br>"
         },
         "Inspire" :{
+            "value": "Inspire",
             "description": "Increases attack speed and effect is doubled once enemy is killed.",
             "stats": "Attack Speed +25% (Effect doubled when enemy killed)"
         },
         "Invincibility Star" :{
+            "value": "Invincibility_Star",
             "description": "Become invincible for 2 seconds once a while",
             "stats": "Become invincible for 2 seconds every 10 seconds (1/6th of total time)"
         },
         "Multishot" :{
+            "value": "Multishot",
             "description": "Shoot 2 consecutive arrows in a row.",
             "stats": "-10% damage per arrow<br>-15% attack speed<br><br><b>Devil Stats</b><br>-10% damage per arrow<br>-10% attack speed"
         },
         "Obsidian Circle" :{
+            "value": "Obsidian_Circle",
             "description": "Two dark orbs circle around you",
             "stats": "Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br>  Affected by rage.<br>  Spins faster with attack speed boosts."
         },
         "Overdraft" :{
+            "value": "Overdraft",
             "description": "Massive boost to attack speed, but gain experience slower.",
             "stats": "Attack Speed +45%<br> XP gain -20%."
         },
         "Phantom Sword" :{
+            "value": "Phantom_Sword",
             "description": "Melee attacks will split the sword into two",
             "stats": "<br>"
         },
         "Piercing Shot" :{
+            "value": "Piercing_Shot",
             "description": "Your arrows pierce enemies.",
             "stats": "-33% damage after each enemy pierced"
         },
         "Poison Circle" :{
+            "value": "Poison_Circle",
             "description": "Two poisonous orbs circle around you",
             "stats": "Poison slowly chips off enemy HP till it dies<br>  Deals 90% modifiable damage.<br>Proportional to damage of a single projectile.<br>  Affected by rage.<br>  Spins faster with attack speed boosts."
         },
         "Poisoned Touch" :{
+            "value": "Poisoned_Touch",
             "description": "Your attacks cause Poison effect",
             "stats": "Poison deals 30% equipment damage per sec utill mob dies.<br>Works well with Ricochet.<br> Does not stack."
         },
         "Price of Strength" :{
+            "value": "Price_of_Strength",
             "description": "Get greatly enhanced when entering a room.<br>Weakened for a time when durations ends",
             "stats": "Pros: Increases Attack, Attack Speed,  Movement Speed and Crit Rate, Increase hero size for 10 seconds.<br>Cons: Weakened for 5 seconds after buff ends: Slower Attack Speed, Movement speed and Hero size back to normal."
         },
         "Rage" :{
+            "value": "Rage",
             "description": "Your Attack Speed increase the lower your HP is",
             "stats": "+1% Damage each 1% of life missing. (Additive)<br>At 20% of your HP you'll have +80% damage (multiplicative with the other abilities)"
         },
         "Red-Hearted Grace" :{
+            "value": "Red-Hearted_Grace",
             "description": "Chance for enemies to drop a heart when they are hit.",
             "stats": "<br>"
         },
         "Rear Arrow" :{
+            "value": "Rear_Arrow",
             "description": "Fire 1 additional projectile backward.",
             "stats": "You fire an additional projectile backwards<br>Deal 100% of damage per projectile"
         },
         "Ricochet" :{
+            "value": "Ricochet",
             "description": "Your arrows bounce up to 3 times between nearby enemies.",
             "stats": "You fire an additional projectile to the left and right<br>-30% damage after each bounce<br> Allows your shot to rebound between enemies up to 3 times in total"
         },
         "Side Arrow" :{
+            "value": "Side_Arrow",
             "description": "Fire 2 additional projectile on your both sides.",
             "stats": "You fire an additional projectile to the left and right <br> Deal 100% of damage per projectile"        
         },
         "Shadow Samurai" :{
+            "value": "Shadow_Samurai",
             "description": "Summon a Samurai to help you in Melee attacks.",
             "stats": "<br>"
         },
         "Shadow Clone" :{
+            "value": "Shadow_Clone",
             "description": "Summons a shadow clone of yours.",
             "stats": "15% chance to spawn.<br>Max 1 per enemy.<br>Max 3 per boss.<br>Up to 15 clones can be spawned at once.<br>Lasts up to 8 seconds.<br>Deals 100% equipment damage every second.<br>Defeat chapter 2."        
         },
         "Shield Guard" :{
+            "value": "Shield_Guard",
             "description": "A shield circles around you",
             "stats": "Two shields rotate around you, blocking incoming projectiles<br>Up to 3 shield rotating"
         },
         "Slow Projectile" :{
+            "value": "Slow_Projectile",
             "description": "Slow enemy projectiles",
             "stats": "Effect : -50% projectile speed"
         },
         "Smart" :{
+            "value": "Smart",
             "description": "Level-up faster, Max level increased by 2.",
             "stats": "30% increased experience (XP).<br>2 Additional levels<br>This ability does not appear in hero adventure.<br>     The extra level provides you with only 1 additional extra skill besides smart.<br>     Chapters where there are only 10 stages (chapterd 7 and 14) don't give much xp. On these stages you don't usually recieve enough xp to get anywhere close to max level."
         },
         "Speed Aura" :{
+            "value": "Speed_Aura",
             "description": "Increases Attack Speed for a short time",
             "stats": "+62.5% Attack Speed for 2s.<br> 8 second cooldown"
         },
         "Speed Plus" :{
+            "value": "Speed_Plus",
             "description": "Increases speed by a small percent if no damage is taken",
             "stats": "Increases your attack speed by 2.1% when you don't take damage in a room.<br> 17 times max [35%]"
         },
         "Spirit - Blaze" :{
+            "value": "Spirit_Blaze",
             "description": "Your spirit's attacks cause a flame effect",
             "stats": "Hero Attack + 22%.<br>  Unlocks in Chapter 8."
         },
         "Spirit - Bolt" :{
+            "value": "Spirit_Bolt",
             "description": "Your spirit's attacks cause a lightning effect",
             "stats": "Hero Crit Chance + 3%<br>  Unlocks in Chapter 8."
         },
         "Spirit - Freeze" :{
+            "value": "Spirit_Freeze",
             "description": "Your spirit's attacks slows enemies down",
             "stats": "Hero Attack Speed + 18%<br>  Unlocks in Chapter 8."
         },
         "Spirit - Front Arrow" :{
+            "value": "Spirit_Front_Arrow",
             "description": "Your spirit Front Arrow +1",
             "stats": "Scales with hero attack and crit damage.<br>  Your spirit's attack can receive a maximum of 80% in boosts, whereas the spirit's crit damage can receive a maximum of 200%. Does not boost your hero, in-game description is incorrect."
         },
         "Spirit - Multishot" :{
+            "value": "Spirit_Multishot",
             "description": "Your spirit fire one more arrow",
             "stats": "Scales with hero attack speed and crit rate.<br>  Your spirit's attack speed can receive a maximum of 95% in boosts, whereas the spirit's crit rate can receive a maximum of 30%. Does not boost your hero, in-game description is incorrect."
         },
         "Spirit - Poisoned Touch" :{
+            "value": "Spirit_Poisoned_Touch",
             "description": "Your spirit's attacks cause a poison effect",
             "stats": "Hero HP Boost + 15%<br>  Unlocks in Chapter 8."
         },
         "Strong Heart" :{
+            "value": "Strong_Heart",
             "description": "You restore more HP when healed",
             "stats": "Increases red heart heal power by 40% of the base heal.<br>  40% more red hearts spawn<br>When receiving this ability from the Angel, heal power of heart crystal is only increased by 20%. (Half the strength of the regular Strong Heart ability)"
         },
         "Strong Strong Heart" :{
+            "value": "Strong_Strong_Heart",
             "description": "Strong Heart increases attack speed and can be stacked",
             "stats": "Attack Speed +2% every time you get a crystal heart (Max 60%) (Requires Strong Heart)"
         },
         "Summon Bone Warrior" :{
+            "value": "Summon_Bone_Warrior",
             "description": "Chance to summon bone warrior when attacking enemies",
             "stats": "<br>"
         },
         "Summon One-Eyed Bat" :{
+            "value": "Summon_One_Eyed_Bat",
             "description": "Summon a One-Eyed Bat",
             "stats": "15% chance to spawn<br>  Max 1 per enemy<br>  Max 3 per boss<br>  Up to 15 clones can be spawned at once.<br>  Lasts up to 8 seconds.<br>  Each bat shoots 1 laser per second dealing 65% of player damage.<br>  Unlocks in Chapter 3."
         },
         "Summon Wolfhound" :{
+            "value": "Summon_Wolfhound",
             "description": "Chance to summon wolfhound when attacking enemies",
             "stats": "<br>"
         },
         "Toxic Meteor" :{
+            "value": "Toxic_Meteor",
             "description": "Summon a toxic meteor to attack enemies",
             "stats": "Poison slowly chips off enemy HP till it dies<br>  225% modifiable damage, Partial hit: 80% damage.<br>  Unlocks in Chapter 9.<br>Not affected by Rage ability."
         },
         "Toxic Star" :{
+            "value": "Toxic_Star",
             "description": "Summon a toxic star to attack enemies",
             "stats": "Poison slowly chips off enemy HP until it dies<br>  95% modifiable damage.<br>Not affected by Rage ability.<br>  Stars are affected by ricochet and will bounce between enemies just like ricochet."
         },
         "Toxic Strike" :{
+            "value": "Toxic_Strike",
             "description": "Summon a toxic sword to attack enemies",
             "stats": "Poison slowly chips off enemy HP till it dies<br>  168% modifiable damage.<br>Not affected by Rage ability.<br>  The faster the attack speed, the shorter the summoning time."
         },
         "Toxic Sword" :{
+            "value": "Toxic_Sword",
             "description": "Summons 2 toxic swords to spin around you",
             "stats": "Poison slowly chips off enemy HP till it dies<br>132% modifiable damage.<br>Unlocks in Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
         },
         "Through The Wall" :{
+            "value": "Through_The_Wall",
             "description": "Allows the player to walk through walls",
             "stats": "Increases attack damage by 15%"
         },
         "Water Walker" :{
+            "value": "Water_Walker",
             "description": "Allows the player to walk across water",
             "stats": "Increases attack damage by 15%"
         },
         "Wingman" :{
+            "value": "Wingman",
             "description": "Your spirit can block projectiles for you.",
             "stats": "Pets block projectiles.<br>  Unlocks in Chapter 4."
         }
@@ -3004,628 +3108,1148 @@ SkillData = {
 
 ItemData = {
         "Brave Bow":{
+            "value":"Brave_Bow",
             "description":"Only the worthly can use this bow, with balanced performance.<br><br><b>Hidden</b><br>Damage Multiplier x 1<br>Base Attack Speed x 1.73",
             "image":"image/items/brave_bow_mythic.png",
-            "base":"A well-balanced weapon<br>Attack + x",
-            "great":"",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] Crit Damage + 50%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Attack increased temporarily after moving"
+            "rarity": {
+                "common":"A well-balanced weapon<br>Attack + x",
+                "great":"",
+                "rare":"[Rare] Attack + 5%",
+                "epic":"[Epic] Crit Damage + 50%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Attack increased temporarily after moving",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Weapon damage : +8%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Critic rate +5%, increase attack speed after dealing crit damage",
+            }
         },
         "Brightspear":{
+            "value":"Brightspear",
             "description":"Contains immense energy, you're defeated before you know it!<br><br><b>Hidden</b><br>Damage Multiplier x 1.2<br>Base Attack Speed x 1.63",
-            "image":"\\static\\image\\items\\brightspear_mythic.png",
-            "base":"Can suddenly attack enemies<br>Attack + [x]",
-            "great":"",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] When attacking a similar target (same mob), damage dealt will increase.",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Landing crits increases Attack Speed"
+            "image":"image/items/brightspear_mythic.png",
+            "rarity": {
+                "common":"Can suddenly attack enemies<br>Attack + [x]",
+                "great":"",
+                "rare":"[Rare] Attack + 5%",
+                "epic":"[Epic] When attacking a similar target (same mob), damage dealt will increase.",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Landing crits increases Attack Speed",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Weapon damage : +9%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Bullet penetrate enemy",
+            }
         },
         "Death Scythe":{
+            "value":"Death_Scythe",
             "description":"Powerful scythe, very heavy with slow attack speed.<br><br><b>Hidden</b><br>Damage Multiplier x 1.45<br>Base Attack Speed x 0.85<br>50% chance to kill enemies under 30% Hp",
             "image":"image/items/death_scythe_mythic.png",
-            "base":"High attack with low speed<br>Attack + [x]",
-            "great":"",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] High chance to kill mobs with less than 30% of HP",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] The closer, the higher the damage"
+            "rarity": {
+                "common":"High attack with low speed<br>Attack + [x]",
+                "great":"",
+                "rare":"[Rare] Attack + 5%",
+                "epic":"[Epic] High chance to kill mobs with less than 30% of HP",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] The closer, the higher the damage",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Weapon damage : +8%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] After headshot, increase atk and there is a chance it cause explosion",
+            }
         },
         "Demon Blade Rain":{
+            "value":"Demon_Blade_Rain",
             "description":"Legendary demon blade can devour the soul of the enemy.<br><br><b>Hidden</b><br>Damage Multiplier<br>x 1.5 (Ranged)<br>x 1.85 (Melee)<br>Base Attack Speed x ?",
             "image":"image/items/demon_blade_rain_mythic.png",
-            "base":"Unsheathing deals melee damage, also deals long-range damage.<br>Attack + [x]<br>Immune to front collision damage in melee attacks",
-            "great":"[Great] When low HP, kill enemies in melee can recover HP",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] The higher the enemy's HP, the more damage dealt",
-            "pe":"[Perfect Epic] Lost HP will increase Crit damage",
-            "legendary":"[Legendary] When moving, dodge rate slightly increased",
-            "ale":"",
-            "mythic":"[Mythic] Taking damage increases Crit Chance temporarily"
+            "rarity": {
+                "common":"Unsheathing deals melee damage, also deals long-range damage.<br>Attack + [x]<br>Immune to front collision damage in melee attacks",
+                "great":"[Great] When low HP, kill enemies in melee can recover HP",
+                "rare":"[Rare] Attack + 5%",
+                "epic":"[Epic] The higher the enemy's HP, the more damage dealt",
+                "perfect_epic":"[Perfect Epic] Lost HP will increase Crit damage",
+                "legendary":"[Legendary] When moving, dodge rate slightly increased",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Taking damage increases Crit Chance temporarily",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Weapon damage : +11%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] The less health, the higher dodge rate and movement speed",
+            }
         },
         "Antiquated Sword":{
+            "value":"Antiquated_Sword",
             "description":"Ancient Sword that becomes bigger when empowered. Named 'Giantkiller' for its history of slaying titans<br><br><b>Hidden</b><br>Damage Multiplier x 1.5<br>Base Attack Speed x ?",
             "image":"image/items/antiquated_sword_mythic.png",
-            "base":"Allows change of forms: one-handed swords attack faster; increases two-handed sword attack range<br>Attack + [x]<br>Broadsword deals more damage to bigger enemies",
-            "great":"[Great] Broadsword bullets can go through enemies",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] Unlock active skill: Whirlwind<br>[Epic] Upon hitting an enemy, Attack Speed becomes higher",
-            "pe":"[Perfect Epic] Upon killing an enemy, Attack becomes higher.",
-            "legendary":"[Legendary] Increases Max HP and reduces Whirlwind cost. At low HP, Fury cost is significantly reduced",
-            "ale":"",
-            "mythic":"[Mythic] Upon taking damage, increases Attack Speed and Crit Chance"
+            "rarity": {
+                "common":"Allows change of forms: one-handed swords attack faster; increases two-handed sword attack range<br>Attack + [x]<br>Broadsword deals more damage to bigger enemies",
+                "great":"[Great] Broadsword bullets can go through enemies",
+                "rare":"[Rare] Attack + 5%",
+                "epic":"[Epic] Unlock active skill: Whirlwind<br>[Epic] Upon hitting an enemy, Attack Speed becomes higher",
+                "perfect_epic":"[Perfect Epic] Upon killing an enemy, Attack becomes higher.",
+                "legendary":"[Legendary] Increases Max HP and reduces Whirlwind cost. At low HP, Fury cost is significantly reduced",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Upon taking damage, increases Attack Speed and Crit Chance",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Weapon damage : +12%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] When in dual form, a 3rd attack is added to successive ranged attacks",
+            }
         },
         "Gale Force":{
+            "value":"Gale_Force",
             "description":"A crossbow infused with the power of the wind, shooting out charged arrows.<br><br><b>Hidden</b><br>Damage Multiplier x 1.55<br>Base Attack Speed x 0.75<br>Charged Attack x 2<br>Penetrating Attack x 1.35",
             "image":"image/items/gale_force_mythic.png",
-            "base":"High attack, slow attack speed. It automatically reloads and shoots a charged arrow.<br>Attack + [x]",
-            "great":"[Great] Attack + 5%",
-            "rare":"[Rare] Charged attacks carry a penetrating effect.",
-            "epic":"[Epic] Penetrating attacks have multiple damage effects, normal attack crit rate increases over distance.",
-            "pe":"",
-            "legendary":"[Legendary] After a Crit attack, charging speed can be increased.",
-            "ale":"[Ancient Legendary] After a Crit Attack, charging speed can be increased.",
-            "mythic":"[Mythic] Charged attacks deal increased damage and slow enemies."
+            "rarity": {
+                "common":"High attack, slow attack speed. It automatically reloads and shoots a charged arrow.<br>Attack + [x]",
+                "great":"[Great] Attack + 5%",
+                "rare":"[Rare] Charged attacks carry a penetrating effect.",
+                "epic":"[Epic] Penetrating attacks have multiple damage effects, normal attack crit rate increases over distance.",
+                "perfect_epic":"",
+                "legendary":"[Legendary] After a Crit attack, charging speed can be increased.",
+                "ancient_legendary":"[Ancient Legendary] After a Crit Attack, charging speed can be increased.",
+                "mythic":"[Mythic] Charged attacks deal increased damage and slow enemies.",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Weapon damage : +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] After critical hit, it can temporarily increase it's own attack",
+            }
         },
         "Mini Atreus":{
+            "value":"Mini_Atreus",
             "description":"An exquisite Atreus puppet that can be used for battle in times of danger.<br>Damage Multiplier x 1.25<br>Base Attack Speed x ?",
             "image":"image/items/mini_atreus.png",
-            "base":"Slows enemies on hit<br>Attack + [x]",
-            "great":"[Great] Attack + 5%",
-            "rare":"",
-            "epic":"[Epic] Hitting the enemy has a chance to summon an Atreus to assist in battle",
-            "pe":"",
-            "legendary":"[Legendary] Chance to summon 2 Atreus Rotating Shields after hitting an enemy",
-            "ale":"",
-            "mythic":"[Mythic] Coins from Battle + 10%"
+            "rarity": {
+                "common":"Slows enemies on hit<br>Attack + [x]",
+                "great":"[Great] Attack + 5%",
+                "rare":"",
+                "epic":"[Epic] Hitting the enemy has a chance to summon an Atreus to assist in battle",
+                "perfect_epic":"",
+                "legendary":"[Legendary] Chance to summon 2 Atreus Rotating Shields after hitting an enemy",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Coins from Battle + 10%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Weapon damage : +12%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Deals more damage to enemies that slow you down or have freeze effect",
+            }
         },
         "Saw Blade":{
+            "value":"Saw_Blade",
             "description":"A serrated throwing knife from the mysterious Orient.<br>Damage Multiplier x 0.8<br>Base Attack Speed x 2.6",
             "image":"image/items/saw_blade_mythic.png",
-            "base":"Low Attack with high speed<br>Attack + [x]",
-            "great":"",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] Increases your Attack Speed for 3 sec after entering a room",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Hitting enemies has a chance to increase Dodge and Attack (Stackable)"
+            "rarity": {
+                "common":"Low Attack with high speed<br>Attack + [x]",
+                "great":"",
+                "rare":"[Rare] Attack + 5%",
+                "epic":"[Epic] Increases your Attack Speed for 3 sec after entering a room",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Hitting enemies has a chance to increase Dodge and Attack (Stackable)",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Weapon damage : +8%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] After hitting enemy, there is a chance to increase the damage of bullet (can be stack)",
+            }
         },
         "Stalker Staff":{
+            "value":"Stalker_Staff",
             "description":"The staff of all staffs, no one can escape!<br>Damage Multiplier x 1<br>Base Attack Speed x 2",
             "image":"image/items/stalker_staff_mythic.png",
-            "base":"The Bullets will follow enemies and attack<br>Attack + [x]",
-            "great":"",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] The lower the target's HP, the higher the Crit rate.",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Projectile charge time -50%"
+            "rarity": {
+                "common":"The Bullets will follow enemies and attack<br>Attack + [x]",
+                "great":"",
+                "rare":"[Rare] Attack + 5%",
+                "epic":"[Epic] The lower the target's HP, the higher the Crit rate.",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Projectile charge time -50%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Weapon damage : +9%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] The bigger the turn radius of own projectile, the higher the damage",
+            }
         },
         "Tornado":{
+            "value":"Tornado",
             "description":"A sharp boomerang that can fly back and forth.<br>Damage Multiplier x 1.24<br>Base Attack Speed x 1.73",
             "image":"image/items/tornado_mythic.png",
-            "base":"It returns to your hand<br>Attack + [x]",
-            "great":"",
-            "rare":"[Rare] Attack + 5%",
-            "epic":"[Epic] Boomerang deals increased damage when it returns",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] The further projectiles travel, the higher the damage"
+            "rarity": {
+                "common":"It returns to your hand<br>Attack + [x]",
+                "great":"",
+                "rare":"[Rare] Attack + 5%",
+                "epic":"[Epic] Boomerang deals increased damage when it returns",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] The further projectiles travel, the higher the damage",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Weapon damage : +8%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] The more enemies hit by the boomerang, the higher bullet damage",
+            }
         },
         "Phantom Cloak":{
+            "value":"Phantom_Cloak",
             "description":"An awesome-looking cloak.<br><br><b>Hidden</b><br>Thorn attacks are x2 your base damage",
             "image":"image/items/phantom_cloak.png",
-            "base":"Max HP + [x]<br>[Common] Projectile Resistance +10%",
-            "great":"",
-            "rare":"[Rare] Healing from red hearts + 20%",
-            "epic":"[Epic] Freezes enemies who hit you for 1-2s and deal thorn damage",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Enemies frozen by Phantom Cloak take more damage"
+            "rarity": {
+                "common":"Max HP + [x]<br>[Common] Projectile Resistance +10%",
+                "great":"",
+                "rare":"[Rare] Healing from red hearts + 20%",
+                "epic":"[Epic] Freezes enemies who hit you for 1-2s and deal thorn damage",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Enemies frozen by Phantom Cloak take more damage",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Max Hp : +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Chance to drop a Hearts when taking projectile damage",
+            }
         },
         "Golden Chestplate":{
+            "value":"Golden_Chestplate",
             "description":"A chestplate made of pure gold. It's as solid as a rock.",
             "image":"image/items/golden_chestplate.png",
-            "base":"Max HP + [x]<br>[Common] Damage Resistance + 5%",
-            "great":"",
-            "rare":"[Rare] Healing from red hearts + 20%",
-            "epic":"[Epic] Deals 8% of base damage per tick as flame damage to close enemies",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Damage taken is greatly reduced for 2s after taking damage (30% damage reduction)"
+            "rarity": {
+                "common":"Max HP + [x]<br>[Common] Damage Resistance + 5%",
+                "great":"",
+                "rare":"[Rare] Healing from red hearts + 20%",
+                "epic":"[Epic] Deals 8% of base damage per tick as flame damage to close enemies",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Damage taken is greatly reduced for 2s after taking damage (30% damage reduction)",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Max Hp : +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] The lower your health the higher the recovery",
+            }
         },
         "Vest of Dexterity":{
+            "value":"Vest_of_Dexterity",
             "description":"Light and durable. Wear it to dodge enemy attacks.",
             "image":"image/items/vest_of_dexterity.png",
-            "base":"Max HP + [x]<br>[Common] Dodge Chance + 7%",
-            "great":"",
-            "rare":"[Rare] Healing from red hearts + 20%",
-            "epic":"[Epic] Deals 80% base damage (affected by attack boost) and applies Lightning effect to nearest enemy",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Increased Dodge while moving"
+            "rarity": {
+                "common":"Max HP + [x]<br>[Common] Dodge Chance + 7%",
+                "great":"",
+                "rare":"[Rare] Healing from red hearts + 20%",
+                "epic":"[Epic] Deals 80% base damage (affected by attack boost) and applies Lightning effect to nearest enemy",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Increased Dodge while moving",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Max Hp : +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Void Robe":{
+            "value":"Void_Robe",
             "description":"A robe from a demonic realm.<br><br><b>Hidden</b><br>[Epic] Poison effect is 30%",
             "image":"image/items/void_robe.png",
-            "base":"Max HP + [x]<br>[Common] Collision Resistance + 10%",
-            "great":"",
-            "rare":"[Rare] Healing from red hearts + 20%",
-            "epic":"[Epic] Poisons all enemies in the room.",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Dropped Hearts restore more HP"
+            "rarity": {
+                "common":"Max HP + [x]<br>[Common] Collision Resistance + 10%",
+                "great":"",
+                "rare":"[Rare] Healing from red hearts + 20%",
+                "epic":"[Epic] Poisons all enemies in the room.",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Dropped Hearts restore more HP",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Max Hp : +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Bright Robe":{
+            "value":"Bright_Robe",
             "description":"A robe that's full of light, reduces front damage during battle.<br><br><b>Hidden</b><br>[Epic] HP limit increases by +3% per skill/ability received from levelling up",
             "image":"image/items/bright_robe.png",
-            "base":"Max HP + [x]<br>[Common] Front Damage Resistance + 12%",
-            "great":"",
-            "rare":"[Rare] Battle XP Gain + 25%",
-            "epic":"[Epic] Each upgrade will increase HP limit.",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] HP Drops +10%"
+            "rarity": {
+                "common":"Max HP + [x]<br>[Common] Front Damage Resistance + 12%",
+                "great":"",
+                "rare":"[Rare] Battle XP Gain + 25%",
+                "epic":"[Epic] Each upgrade will increase HP limit.",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] HP Drops +10%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Max Hp : +12%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Obtained Hearts increase Max Hp and Damage reduction",
+            }
         },
         "Shadow Robe":{
+            "value":"Shadow_Robe",
             "description":"An assassin's special robe, reduces rear damage during battle.<br><br><b>Hidden</b><br>[Epic] Deals 135% modifiable base damage",
             "image":"image/items/shadow_robe.png",
-            "base":"Max HP + [x]<br>[Common] Rear Damage Resistance + 20%",
-            "great":"",
-            "rare":"[Rare] Max HP + 7%",
-            "epic":"[Epic] Causes strong dark damage (Dark Touch) to nearby enemies.",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] In case of many enemies, damage taken is reduced"
+            "rarity": {
+                "common":"Max HP + [x]<br>[Common] Rear Damage Resistance + 20%",
+                "great":"",
+                "rare":"[Rare] Max HP + 7%",
+                "epic":"[Epic] Causes strong dark damage (Dark Touch) to nearby enemies.",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] In case of many enemies, damage taken is reduced",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Max Hp : +12%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Laser Bat":{
+            "value":"Laser_Bat",
             "description":"Bat from a mysterious cave. Its laser could easily penetrate obsticles.",
             "image":"image/items/laser_bat.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's attack +10%",
-            "legendary":"[Legendary] Attacked enemies will be poisoned",
-            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+            "rarity": {
+                "common":"Own Attack + x",
+                "great":"[Great] Own Attack Speed + 10%",
+                "rare":"[Rare] Own crit + 20%",
+                "epic":"[Epic] 50% chance for new ability after adventure level-up",
+                "perfect_epic":"[Perfect Epic] Inherit Leader's attack +10%",
+                "legendary":"[Legendary] Attacked enemies will be poisoned",
+                "ancient_legendary":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
+                "mythic":"[Mythic] Enemies hit lose more HP when taking damage",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Gain hero's attack speed",
+            }
         },
         "Scythe Mage":{
+            "value":"Scythe_Mage",
             "description":"Like the Grim Reaper, he can slice through enemies with his sharpened scythe.",
             "image":"image/items/scythe_mage.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
-            "legendary":"[Legendary] Crit Damage increased greatly",
-            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+            "rarity": {
+                "common":"Own Attack + x",
+                "great":"[Great] Own Attack Speed + 10%",
+                "rare":"[Rare] Own crit + 20%",
+                "epic":"[Epic] 50% chance for new ability after adventure level-up",
+                "perfect_epic":"[Perfect Epic] Inherit Leader's Attack + 10%",
+                "legendary":"[Legendary] Crit Damage increased greatly",
+                "ancient_legendary":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
+                "mythic":"[Mythic] Enemies hit lose more HP when taking damage",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Gain hero's attack speed",
+            }
         },
         "Elf":{
+            "value":"Elf",
             "description":"Elf of the Dark Forest. Fires projectiles.",
             "image":"image/items/elf.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
-            "legendary":"[Legendary] Attack Speed increased greatly from time to time",
-            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+            "rarity": {
+                "common":"Own Attack + x",
+                "great":"[Great] Own Attack Speed + 10%",
+                "rare":"[Rare] Own crit + 20%",
+                "epic":"[Epic] 50% chance for new ability after adventure level-up",
+                "perfect_epic":"[Perfect Epic] Inherit Leader's Attack + 10%",
+                "legendary":"[Legendary] Attack Speed increased greatly from time to time",
+                "ancient_legendary":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
+                "mythic":"[Mythic] Enemies hit lose more HP when taking damage",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Gain hero's attack speed",
+            }
         },
         "Bone Warrior":{
+            "value":"Bone_Warrior",
             "description":"Once a powerful warrior, now it pledges its blade to you",
             "image":"image/items/bone_warrior.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own Crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's attack +10%",
-            "legendary":"[Legendary] Trigger Fury State for a short duration after a Crit",
-            "ale":"[Ancient Legendary] Chance to block a lethal attack and die for Hero 1 time",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+            "rarity": {
+                "common":"Own Attack + x",
+                "great":"[Great] Own Attack Speed + 10%",
+                "rare":"[Rare] Own Crit + 20%",
+                "epic":"[Epic] 50% chance for new ability after adventure level-up",
+                "perfect_epic":"[Perfect Epic] Inherit Leader's attack +10%",
+                "legendary":"[Legendary] Trigger Fury State for a short duration after a Crit",
+                "ancient_legendary":"[Ancient Legendary] Chance to block a lethal attack and die for Hero 1 time",
+                "mythic":"[Mythic] Enemies hit lose more HP when taking damage",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Gain hero's attack speed",
+            }
         },
         "Living Bomb":{
+            "value":"Living_Bomb",
             "description":"Keeps throwing bombs that deal splash damage.",
             "image":"image/items/living_bomb.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
-            "legendary":"[Legendary] The bomb will split into 3 mini bombs once it hits the floor",
-            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+            "rarity": {
+                "common":"Own Attack + x",
+                "great":"[Great] Own Attack Speed + 10%",
+                "rare":"[Rare] Own crit + 20%",
+                "epic":"[Epic] 50% chance for new ability after adventure level-up",
+                "perfect_epic":"[Perfect Epic] Inherit Leader's Attack + 10%",
+                "legendary":"[Legendary] The bomb will split into 3 mini bombs once it hits the floor",
+                "ancient_legendary":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
+                "mythic":"[Mythic] Enemies hit lose more HP when taking damage",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Gain hero's attack speed",
+            }
         },
         "Noisy Owl":{
+            "value":"Noisy_Owl",
             "description":"Part of the gale force, this owl can summon a strong gale which can knockback enemies.<br><br><b>Hidden</b><br>Sends 2 forward-facing tornado projectiles that can knockback enemies",
             "image":"image/items/noisy_owl.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
-            "legendary":"[Legendary] Projectiles split into 2 after some distance",
-            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+            "rarity": {
+                "common":"Own Attack + x",
+                "great":"[Great] Own Attack Speed + 10%",
+                "rare":"[Rare] Own crit + 20%",
+                "epic":"[Epic] 50% chance for new ability after adventure level-up",
+                "perfect_epic":"[Perfect Epic] Inherit Leader's Attack + 10%",
+                "legendary":"[Legendary] Projectiles split into 2 after some distance",
+                "ancient_legendary":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
+                "mythic":"[Mythic] Enemies hit lose more HP when taking damage",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Gain hero's attack speed",
+            }
         },
         "Flaming Ghost":{
+            "value":"Flaming_Ghost",
             "description":"A ghost burning with blue flames that can shoot fireballs which split.<br><br><b>Hidden</b><br>Sends a single forward-facing projectile that splits into two, similar to the purple ghost projectile",
             "image":"image/items/flaming_ghost.png",
-            "base":"Own Attack + x",
-            "great":"[Great] Own Attack Speed + 10%",
-            "rare":"[Rare] Own crit + 20%",
-            "epic":"[Epic] 50% chance for new ability after adventure level-up",
-            "pe":"[Perfect Epic] Inherit Leader's Attack + 10%",
-            "legendary":"[Legendary] Projectiles rebound once",
-            "ale":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
-            "mythic":"[Mythic] Enemies hit lose more HP when taking damage"
+            "rarity": {
+                "common":"Own Attack + x",
+                "great":"[Great] Own Attack Speed + 10%",
+                "rare":"[Rare] Own crit + 20%",
+                "epic":"[Epic] 50% chance for new ability after adventure level-up",
+                "perfect_epic":"[Perfect Epic] Inherit Leader's Attack + 10%",
+                "legendary":"[Legendary] Projectiles rebound once",
+                "ancient_legendary":"[Ancient Legendary] 80% chance for new ability after adventure level-up",
+                "mythic":"[Mythic] Enemies hit lose more HP when taking damage",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Gain hero's attack speed",
+            }
         },
         "Bear Ring":{
+            "value":"Bear_Ring",
             "description":"Bestowed with the Power of a Bear.",
             "image":"image/items/bear_ring_epic.png",
-            "base":"Increases damage to ground units + x",
-            "great":"",
-            "rare":"[Rare] Max HP + 5%",
-            "epic":"[Epic] Coins From Battle + 10%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Ground Units damage reduced +7%"
+            "rarity": {
+                "common":"Increases damage to ground units + x",
+                "great":"",
+                "rare":"[Rare] Max HP + 5%",
+                "epic":"[Epic] Coins From Battle + 10%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Ground Units damage reduced +7%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Damage Ground Units +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Wolf Ring":{
+            "value":"Wolf_Ring",
             "description":"Bestowed with the Power of a Wolf.",
             "image":"image/items/wolf_ring_epic.png",
-            "base":"Increases damage to melee units + x",
-            "great":"",
-            "rare":"[Rare] Crit Chance + 5%",
-            "epic":"[Epic] Coins From Battle + 10%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Melee Units damage reduced+7%"
+            "rarity": {
+                "common":"Increases damage to melee units + x",
+                "great":"",
+                "rare":"[Rare] Crit Chance + 5%",
+                "epic":"[Epic] Coins From Battle + 10%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Melee Units damage reduced+7%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Damage Melee Units +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Falcon Ring":{
+            "value":"Falcon_Ring",
             "description":"Bestowed with the Power of a Falcon.",
             "image":"image/items/falcon_ring_epic.png",
-            "base":"Increases damage to airborne units + x",
-            "great":"",
-            "rare":"[Rare] Attack Speed + 5%",
-            "epic":"[Epic] Coins From Battle + 10%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Airborne damage resistance + 7%"
+            "rarity": {
+                "common":"Increases damage to airborne units + x",
+                "great":"",
+                "rare":"[Rare] Attack Speed + 5%",
+                "epic":"[Epic] Coins From Battle + 10%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Airborne damage resistance + 7%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Damage Airborne Units +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Serpent Ring":{
+            "value":"Serpent_Ring",
             "description":"Bestowed with the Power of a Serpent.",
             "image":"image/items/serpent_ring_epic.png",
-            "base":"Increases damage to ranged units + x",
-            "great":"",
-            "rare":"[Rare] Dodge + 7%",
-            "epic":"[Epic] Coins From Battle + 10%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Ranged Units damage reduced + 7%"
+            "rarity": {
+                "common":"Increases damage to ranged units + x",
+                "great":"",
+                "rare":"[Rare] Dodge + 7%",
+                "epic":"[Epic] Coins From Battle + 10%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Ranged Units damage reduced + 7%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Damage Range Units +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Bull Ring":{
+            "value":"Bull_Ring",
             "description":"Contains the power of bulls, use it to increase attacks on all mobs.",
             "image":"image/items/bull_ring_epic.png",
-            "base":"Increases damage to mobs + x",
-            "great":"",
-            "rare":"[Rare] Damage Resistance + 10%",
-            "epic":"[Epic] Coins From Battle + 10%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Mobs damage resistance +5%"
+            "rarity": {
+                "common":"Increases damage to mobs + x",
+                "great":"",
+                "rare":"[Rare] Damage Resistance + 10%",
+                "epic":"[Epic] Coins From Battle + 10%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Mobs damage resistance +5%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Damage Mob Units +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Increase Melee Damage",
+            }
         },
         "Lion Ring":{
+            "value":"Lion_Ring",
             "description":"Contains the power of a berserk lion, use it to increase attacks on boss monsters.",
             "image":"image/items/lion_ring_epic.png",
-            "base":"Increases damage to bosses + x",
-            "great":"",
-            "rare":"[Rare] Crit Damage + 20%",
-            "epic":"[Epic] Attack + 5%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Boss Damage Resistance + 5%"
+            "rarity": {
+                "common":"Increases damage to bosses + x",
+                "great":"",
+                "rare":"[Rare] Crit Damage + 20%",
+                "epic":"[Epic] Attack + 5%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Boss Damage Resistance + 5%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Damage Boss Units +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Increases ranged damage",
+            }
         },
         "Dragon Ring":{
+            "value":"Dragon_Ring",
             "description":"Contains draconic power, and increases attack effects on Hero Mode monsters.",
             "image":"image/items/dragon_ring_epic.png",
-            "base":"Deals damage to elite enemies + x",
-            "great":"",
-            "rare":"[Rare] Projectile Resistance + 12%",
-            "epic":"[Epic] Crit Chance + 6%",
-            "pe":"",
-            "legendary":"[Legendary] MP Strength + 15%",
-            "ale":"",
-            "mythic":"[Mythic] Damage dealt to Humanoid enemies + 10%"
+            "rarity": {
+                "common":"Deals damage to elite enemies + x",
+                "great":"",
+                "rare":"[Rare] Projectile Resistance + 12%",
+                "epic":"[Epic] Crit Chance + 6%",
+                "perfect_epic":"",
+                "legendary":"[Legendary] MP Strength + 15%",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Damage dealt to Humanoid enemies + 10%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Damage Elite Units +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Vilebat Ring":{
+            "value":"Vilebat_Ring",
             "description":"Contains the ability of vampiric bats, and increases attack effects on Normal Mode monsters.",
             "image":"image/items/vilebat_ring_epic.png",
-            "base":"Increases damage to normal enemies + x",
-            "great":"",
-            "rare":"[Rare] Healing Effect of Red Heart + 20%",
-            "epic":"[Epic] Killing enemies restores HP. Heal is stronger for boss kills",
-            "pe":"",
-            "legendary":"[Legendary] Heart drops + 20%",
-            "ale":"",
-            "mythic":"[Mythic] Collision Damage Resistance + 12%"
+            "rarity": {
+                "common":"Increases damage to normal enemies + x",
+                "great":"",
+                "rare":"[Rare] Healing Effect of Red Heart + 20%",
+                "epic":"[Epic] Killing enemies restores HP. Heal is stronger for boss kills",
+                "perfect_epic":"",
+                "legendary":"[Legendary] Heart drops + 20%",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Collision Damage Resistance + 12%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Damage Normal Units +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Agile Locket":{
+            "value":"Agile_Locket",
             "description":"Locket created with agility to dodge enemies easily.",
             "image":"image/items/agile_locket.png",
-            "base":"Max HP + x<br>When HP is lower than 20%, Dodge increases by y %.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Dodge + 6%"
+            "rarity": {
+                "common":"Max HP + x<br>When HP is lower than 20%, Dodge increases by y %.",
+                "great":"",
+                "rare":"",
+                "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Dodge + 6%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] ??",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Iron Locket":{
+            "value":"Iron_Locket",
             "description":"Locket engraved with iron to reduce damage from contact with enemies.",
             "image":"image/items/iron_locket.png",
-            "base":"Max HP + x<br>When HP is lower than 20%, Damage dealt by bumping into enemies is reduced by y %.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Collision damage resistance + 8%"
+            "rarity": {
+                "common":"Max HP + x<br>When HP is lower than 20%, Damage dealt by bumping into enemies is reduced by y %.",
+                "great":"",
+                "rare":"",
+                "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Collision damage resistance + 8%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] ??",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Angel Locket":{
+            "value":"Angel_Locket",
             "description":"Locket blessed by the angels to be invincible in times of dispair.",
             "image":"image/items/angel_locket.png",
-            "base":"Max HP + x<br>There's a y% chance to revive and be invincible for t seconds when dying; available once only.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Chance to Revive + 5%"
+            "rarity": {
+                "common":"Max HP + x<br>There's a y% chance to revive and be invincible for t seconds when dying; available once only.",
+                "great":"",
+                "rare":"",
+                "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Chance to Revive + 5%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] ??",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Bulletproof Locket":{
+            "value":"Bulletproof_Locket",
             "description":"Locket crafted with bulletproof in mind to reduce projectile damage.",
             "image":"image/items/bulletproof_locket.png",
-            "base":"Max HP + x<br>Projectile damage decreased y % when HP is lower than 20%.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Projectile Resistance + 8%"
+            "rarity": {
+                "common":"Max HP + x<br>Projectile damage decreased y % when HP is lower than 20%.",
+                "great":"",
+                "rare":"",
+                "epic":"[Epic] Chance of Angel's Healing x2 + 30%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Projectile Resistance + 8%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Angel Healing +30%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Bloodthirsty Locket":{
+            "value":"Bloodthirsty_Locket",
             "description":"An engraved locket which allows you to restore HP after kill.",
             "image":"image/items/bloodthirsty_locket.png",
-            "base":"Max HP + x<br>Can recover HP on kills when HP is lower than y%",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] HP drops + 20%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Enhanced Recovery Effects of Bloodthirst"
+            "rarity": {
+                "common":"Max HP + x<br>Can recover HP on kills when HP is lower than y%",
+                "great":"",
+                "rare":"",
+                "epic":"[Epic] HP drops + 20%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Enhanced Recovery Effects of Bloodthirst",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Healing Effect of Red Heart",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Piercer Locket":{
+            "value":"Piercer_Locket",
             "description":"An engraved locket which allows you to climb over walls.",
             "image":"image/items/piercer_locket.png",
-            "base":"Max HP + x<br>Can penetrate walls when HP is lower than y%",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] HP drops + 20%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Movement Speed + 3%"
+            "rarity": {
+                "common":"Max HP + x<br>Can penetrate walls when HP is lower than y%",
+                "great":"",
+                "rare":"",
+                "epic":"[Epic] HP drops + 20%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Movement Speed + 3%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] ??",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Counterattack Locket":{
+            "value":"Counterattack_Locket",
             "description":"Etched with a Counterattack. Performs Counterattacks on enemies each time damage is taken.",
             "image":"image/items/counterattack_locket.png",
-            "base":"Max HP + x",
-            "great":"",
-            "rare":"[Rare] x% chance to counter (increases with quality) enemies after taking damage (does 5x the damage taken to the enemy)",
-            "epic":"[Epic] More Hearts equal better recovery effect, up to 100%",
-            "pe":"",
-            "legendary":"[Legendary] Max HP + 4%",
-            "ale":"",
-            "mythic":"[Mythic] Counterattack damage to bosses is increased by 120%."
+            "rarity": {
+                "common":"Max HP + x",
+                "great":"",
+                "rare":"[Rare] x% chance to counter (increases with quality) enemies after taking damage (does 5x the damage taken to the enemy)",
+                "epic":"[Epic] More Hearts equal better recovery effect, up to 100%",
+                "perfect_epic":"",
+                "legendary":"[Legendary] Max HP + 4%",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Counterattack damage to bosses is increased by 120%.",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Counterattack Rate +15%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] The more HP lost, the higher the reflected damage",
+            }
         },
         "Thunder Bracelet":{
+            "value":"Thunder_Bracelet",
             "description":"Bracelet containing thunder, bring down their wrath upon enemies.",
             "image":"image/items/thunder_bracelet.png",
-            "base":"Attack + x<br>Deals y times random Lightning damage to nearby enemies; damage amount is random too.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Crit Damage + 15%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Elemental Lightning damage increased"
+            "rarity": {
+                "common":"Attack + x<br>Deals y times random Lightning damage to nearby enemies; damage amount is random too.",
+                "great":"",
+                "rare":"",
+                "epic":"[Epic] Crit Damage + 15%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Elemental Lightning damage increased",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Attack +8%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Frozen Bracelet":{
+            "value":"Frozen_Bracelet",
             "description":"Bracelet containing ice, freeze enemies on the spot.",
             "image":"image/items/frozen_bracelet.png",
-            "base":"Attack + x<br>Randomly freezes y enemies for t seconds.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Crit Damage + 15%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Elemental Freezing damage increased"
+            "rarity": {
+                "common":"Attack + x<br>Randomly freezes y enemies for t seconds.",
+                "great":"",
+                "rare":"",
+                "epic":"[Epic] Crit Damage + 15%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Elemental Freezing damage increased",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Attack +8%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Blazing Bracelet":{
+            "value":"Blazing_Bracelet",
             "description":"Bracelet containing fire, burn enemies while they live.",
             "image":"image/items/blazing_bracelet.png",
-            "base":"Attack + x<br>Burns y enemies lasting t seconds.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Crit Damage + 15%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Elemental Fire damage increased"
+            "rarity": {
+                "common":"Attack + x<br>Burns y enemies lasting t seconds.",
+                "great":"",
+                "rare":"",
+                "epic":"[Epic] Crit Damage + 15%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Elemental Fire damage increased",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Attack +8%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Split Bracelet":{
+            "value":"Split_Bracelet",
             "description":"Bracelet containing a copy, brings out a copy when fighting enemies.",
             "image":"image/items/split_bracelet.png",
-            "base":"Attack + x<br>Summons y copy to help battle, lasting t seconds.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Crit Damage + 15%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] The lower the HP, the higher the clones attack"
+            "rarity": {
+                "common":"Attack + x<br>Summons y copy to help battle, lasting t seconds.",
+                "great":"",
+                "rare":"",
+                "epic":"[Epic] Crit Damage + 15%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] The lower the HP, the higher the clones attack",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Attack +8%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Invincible Bracelet":{
+            "value":"Invincible_Bracelet",
             "description":"A bracelet which triggers an invincible star when enemies appear.",
             "image":"image/items/invincible_bracelet.png",
-            "base":"Attack + x<br>Be protected by Invincible Star lasting t seconds when encountering enemies.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Attack + 6%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] When the bracelet triggers Invincible, Crit Damage is increased"
+            "rarity": {
+                "common":"Attack + x<br>Be protected by Invincible Star lasting t seconds when encountering enemies.",
+                "great":"",
+                "rare":"",
+                "epic":"[Epic] Attack + 6%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] When the bracelet triggers Invincible, Crit Damage is increased",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Attack +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Greatly increases Attack Speed when invincible shield is active",
+            }
         },
         "Quickshot Bracelet":{
+            "value":"Quickshot_Bracelet",
             "description":"A bracelet which magically shoots multiple arrows when enemies appear.",
             "image":"image/items/quickshot_bracelet.png",
-            "base":"Attack + x<br>Shoot more arrows continuously lasting t seconds encountering enemies.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Attack + 6%",
-            "pe":"",
-            "legendary":"",
-            "ale":"",
-            "mythic":"[Mythic] Projectiles travel faster"
+            "rarity": {
+                "common":"Attack + x<br>Shoot more arrows continuously lasting t seconds encountering enemies.",
+                "great":"",
+                "rare":"",
+                "epic":"[Epic] Attack + 6%",
+                "perfect_epic":"",
+                "legendary":"",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Projectiles travel faster",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Attack +10%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Shield Bracelet":{
+            "value":"Shield_Bracelet",
             "description":"Bracelet inscribed with Shield Guard, used to protect oneself when enemies appear.",
             "image":"image/items/shield_bracelet.png",
-            "base":"Attack + x<br>Gain x-y Shield Guards that add damage for t seconds in battle.<br>Gain Crit Rate when blocking shots.",
-            "great":"",
-            "rare":"",
-            "epic":"[Epic] Attack + 7%",
-            "pe":"",
-            "legendary":"[Legendary] Shield Size + 25%",
-            "ale":"",
-            "mythic":"[Mythic] Chance to gain Shield Guard after a Crit hit"
+            "rarity": {
+                "common":"Attack + x<br>Gain x-y Shield Guards that add damage for t seconds in battle.<br>Gain Crit Rate when blocking shots.",
+                "great":"",
+                "rare":"",
+                "epic":"[Epic] Attack + 7%",
+                "perfect_epic":"",
+                "legendary":"[Legendary] Shield Size + 25%",
+                "ancient_legendary":"",
+                "mythic":"[Mythic] Chance to gain Shield Guard after a Crit hit",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Attack +12%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] Increases shield spin speed, Shield also deals damage",
+            }
         },
         "Arcane Archer":{
+            "value":"Arcane_Archer",
             "description":"A book that has all powers and experiences of an Archer. Use it to get an active Ultimate skill.",
             "image":"image/items/arcane_archer.png",
-            "base":"Increases projectile frequency and own attack<br>Max HP + x<br>Attack + y (ULT)",
-            "great":"[Great] Attack Speed + 10% (ULT)",
-            "rare":"[Rare] Side Arrow + 1 (ULT)",
-            "epic":"[Epic] Front Arrow + 1 (ULT)",
-            "pe":"[Perfect Epic] Rear Arrow + 1 (ULT)",
-            "legendary":"[Legendary] Time Span + 1.2seconds (ULT)",
-            "ale":"[Ancient Legendary] Crit Damage + 25% (ULT)",
-            "mythic":"[Mythic] Time Span + 1"
+            "rarity": {
+                "common":"Increases projectile frequency and own attack<br>Max HP + x<br>Attack + y (ULT)",
+                "great":"[Great] Attack Speed + 10% (ULT)",
+                "rare":"[Rare] Side Arrow + 1 (ULT)",
+                "epic":"[Epic] Front Arrow + 1 (ULT)",
+                "perfect_epic":"[Perfect Epic] Rear Arrow + 1 (ULT)",
+                "legendary":"[Legendary] Time Span + 1.2seconds (ULT)",
+                "ancient_legendary":"[Ancient Legendary] Crit Damage + 25% (ULT)",
+                "mythic":"[Mythic] Time Span + 1",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Enhance Equipement +8.5%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Art of Combat":{
+            "value":"Art_of_Combat",
             "description":"A book containing the arts of powerful combat. Use it to get an auto Ultimate skill.",
             "image":"image/items/art_of_combat.png",
-            "base":"Increased projectile knockback effect when full<br>Max HP + x<br>Attack + y (ULT)",
-            "great":"[Great] Increases projectile knockback effect (ULT)",
-            "rare":"[Rare] Power Speed + 25% (ULT)",
-            "epic":"[Epic] Increases projectile speed (ULT)",
-            "pe":"[Perfect Epic] Attack Speed + 25% (ULT)",
-            "legendary":"[Legendary] Attack contains Random Elemental (ULT)",
-            "ale":"[Ancient Legendary] Crit Chance + 15% (ULT)",
-            "mythic":"[Mythic] Max HP + 8%"
+            "rarity": {
+                "common":"Increased projectile knockback effect when full<br>Max HP + x<br>Attack + y (ULT)",
+                "great":"[Great] Increases projectile knockback effect (ULT)",
+                "rare":"[Rare] Power Speed + 25% (ULT)",
+                "epic":"[Epic] Increases projectile speed (ULT)",
+                "perfect_epic":"[Perfect Epic] Attack Speed + 25% (ULT)",
+                "legendary":"[Legendary] Attack contains Random Elemental (ULT)",
+                "ancient_legendary":"[Ancient Legendary] Crit Chance + 15% (ULT)",
+                "mythic":"[Mythic] Max HP + 8%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Enhance Equipement +8.5%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Ice Realm":{
+            "value":"Ice_Realm",
             "description":"A book containing powerful Frost magic. Use it to get an active Ultimate skill.",
             "image":"image/items/ice_realm.png",
-            "base":"Freezes surrounding enemies and increases own attack<br>Max HP + x<br>Attack + x (ULT)",
-            "great":"[Great] Attack Speed + 20% (ULT)",
-            "rare":"[Rare] Power Speed + x% (ULT)",
-            "epic":"[Epic] Frost Damage + x (ULT)<br>Frost area increased by 100% (ULT)",
-            "pe":"[Perfect Epic] Time Span + t seconds (ULT)",
-            "legendary":"[Legendary] Crit Chance + 20% (ULT)",
-            "ale":"[Ancient Legendary] Initial Power + 35% (ULT)",
-            "mythic":"[Mythic] When used, it may return 50% of the power (ULT.)"
+            "rarity": {
+                "common":"Freezes surrounding enemies and increases own attack<br>Max HP + x<br>Attack + x (ULT)",
+                "great":"[Great] Attack Speed + 20% (ULT)",
+                "rare":"[Rare] Power Speed + x% (ULT)",
+                "epic":"[Epic] Frost Damage + x (ULT)<br>Frost area increased by 100% (ULT)",
+                "perfect_epic":"[Perfect Epic] Time Span + t seconds (ULT)",
+                "legendary":"[Legendary] Crit Chance + 20% (ULT)",
+                "ancient_legendary":"[Ancient Legendary] Initial Power + 35% (ULT)",
+                "mythic":"[Mythic] When used, it may return 50% of the power (ULT.)",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Enhance Equipement +8.5%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Enlightenment":{
+            "value":"Enlightenment",
             "description":"A book with magic that will help you learn new skills in battle. Use it to get an auto Ultimate skill.",
             "image":"image/items/enlightenment.png",
-            "base":"Grant a new skill when full<br>Max HP + x<br>Power Speed + y (ULT)",
-            "great":"[Great] Collision Damage Resistance + 5%",
-            "rare":"[Rare] Projectile Damage Resistance + 5%",
-            "epic":"[Epic] Multi-Skill + 1 (ULT)",
-            "pe":"[Perfect Epic] Initial Power + 40% (ULT)",
-            "legendary":"[Legendary] Multi-Skill + 1 (ULT)",
-            "ale":"[Ancient Legendary] Max HP + 7%",
-            "mythic":"[Mythic] Battle XP Gain + 8%"
+            "rarity": {
+                "common":"Grant a new skill when full<br>Max HP + x<br>Power Speed + y (ULT)",
+                "great":"[Great] Collision Damage Resistance + 5%",
+                "rare":"[Rare] Projectile Damage Resistance + 5%",
+                "epic":"[Epic] Multi-Skill + 1 (ULT)",
+                "perfect_epic":"[Perfect Epic] Initial Power + 40% (ULT)",
+                "legendary":"[Legendary] Multi-Skill + 1 (ULT)",
+                "ancient_legendary":"[Ancient Legendary] Max HP + 7%",
+                "mythic":"[Mythic] Battle XP Gain + 8%",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Enhance Equipement +8.5%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] When HP is below 50%, upgrade speed +25%",
+            }
         },
         "Giants Contract":{
+            "value":"Giants_Contract",
             "description":"The contract with 7 Giants, allowing the user the power of the Giants. Wear it to get an auto skill",
             "image":"image/items/giants_contract.png",
-            "base":"Once the energy is fully charged, transform with the Courage Giant power<br>Max HP + x<br>Attack + y (ULT)",
-            "great":"[Great] Crit Damage + z (ULT)<br>[Great] Wild Giant - Deals collision damage to enemy (ULT)",
-            "rare":"[Rare] Stone Giant - Defence increased greatly (ULT)",
-            "epic":"[Epic] Sword Giant - Receive all spinning sword skills (ULT)",
-            "pe":"[Perfect Epic] Flaming Giant - Leaves behind a blaze when moving (ULT)",
-            "legendary":"[Legendary] Gale Giant - Increased movement and attack speed (ULT)",
-            "ale":"[Ancient Legendary] Bolt Giant - Surrounding enemies will be hit by lightning (ULT)",
-            "mythic":"[Mythic] Rage Giant - Skill can be released earlier if losing HP (ULT.)"
+            "rarity": {
+                "common":"Once the energy is fully charged, transform with the Courage Giant power<br>Max HP + x<br>Attack + y (ULT)",
+                "great":"[Great] Crit Damage + z (ULT)<br>[Great] Wild Giant - Deals collision damage to enemy (ULT)",
+                "rare":"[Rare] Stone Giant - Defence increased greatly (ULT)",
+                "epic":"[Epic] Sword Giant - Receive all spinning sword skills (ULT)",
+                "perfect_epic":"[Perfect Epic] Flaming Giant - Leaves behind a blaze when moving (ULT)",
+                "legendary":"[Legendary] Gale Giant - Increased movement and attack speed (ULT)",
+                "ancient_legendary":"[Ancient Legendary] Bolt Giant - Surrounding enemies will be hit by lightning (ULT)",
+                "mythic":"[Mythic] Rage Giant - Skill can be released earlier if losing HP (ULT.)",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Enhance Equipement +11%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Spectre Book":{
+            "value":"Spectre_Book",
             "description":"Holds the magic of the undead; you can use it to summon undead soldiers. Where it to get an active skill.",
             "image":"image/items/spectre_book.png",
-            "base":"Summon undead enemies to help you battle<br>Max HP + x<br>Attack + y (ULT)<br>Undead Attack + z (ULT)",
-            "great":"[Great] Higher the quality, the faster the release (ULT)",
-            "rare":"[Rare] Higher the quality, the longer the duration (ULT)",
-            "epic":"[Epic] Summon new warrior - Flame Mage (ULT)",
-            "pe":"[Perfect Epic] Enter a short state of Rage",
-            "legendary":"[Legendary] Summon an Ultimate warrior - Skeleton King (ULT)",
-            "ale":"[Ancient Legendary] Kill enemies to extend summon time (ULT)",
-            "mythic":"[Mythic] When the undead disappears, it may drop a heart (ULT)"
+            "rarity": {
+                "common":"Summon undead enemies to help you battle<br>Max HP + x<br>Attack + y (ULT)<br>Undead Attack + z (ULT)",
+                "great":"[Great] Higher the quality, the faster the release (ULT)",
+                "rare":"[Rare] Higher the quality, the longer the duration (ULT)",
+                "epic":"[Epic] Summon new warrior - Flame Mage (ULT)",
+                "perfect_epic":"[Perfect Epic] Enter a short state of Rage",
+                "legendary":"[Legendary] Summon an Ultimate warrior - Skeleton King (ULT)",
+                "ancient_legendary":"[Ancient Legendary] Kill enemies to extend summon time (ULT)",
+                "mythic":"[Mythic] When the undead disappears, it may drop a heart (ULT)",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Enhance Equipement +11%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         },
         "Arcanum of Time":{
+            "value":"Arcanum_of_Time",
             "description":"Perceive the mysteries of time that let you slow or speed up time. Gain an active Ultimate skill when equipped<br><br><b>Hidden</b><br>Recovers 1.5% HP for 3s after ULT ends.",
             "image":"image/items/arcanum_of_time.png",
-            "base":"Max HP +<br>Attack + x (ULT)",
-            "great":"[Great] Slow effect +x% (ULT)<br>[Great] Slow: Enemy attacks and movement are slowed (ULT)",
-            "rare":"[Rare] Gain Crit Rate (ULT)",
-            "epic":"[Epic] Effect range doubled. Ultimate skill duration increased (ULT)",
-            "pe":"[Perfect Epic] Haste: Gain Crit Rate, increased buff duration and summoned creature duration (ULT)",
-            "legendary":"[Legendary] Haste: Speed of attacks, movement, spins, shots, magic casts increased (ULT)",
-            "ale":"[Ancient Legendary] Manipulate Time: Reduces continuous damage intervals on enemies. Increases enemy debuff duration (ULT)",
-            "mythic":"[Mythic] Greatly increase damage immunity after taking damage. Effect reduces time (ULT)"
+            "rarity": {
+                "common":"Max HP +<br>Attack + x (ULT)",
+                "great":"[Great] Slow effect +x% (ULT)<br>[Great] Slow: Enemy attacks and movement are slowed (ULT)",
+                "rare":"[Rare] Gain Crit Rate (ULT)",
+                "epic":"[Epic] Effect range doubled. Ultimate skill duration increased (ULT)",
+                "perfect_epic":"[Perfect Epic] Haste: Gain Crit Rate, increased buff duration and summoned creature duration (ULT)",
+                "legendary":"[Legendary] Haste: Speed of attacks, movement, spins, shots, magic casts increased (ULT)",
+                "ancient_legendary":"[Ancient Legendary] Manipulate Time: Reduces continuous damage intervals on enemies. Increases enemy debuff duration (ULT)",
+                "mythic":"[Mythic] Greatly increase damage immunity after taking damage. Effect reduces time (ULT)",
+                "mythic+1":"[Mythic+1] 5% Basic Stats",
+                "mythic+2":"[Mythic+2] Enhance Epic Skill",
+                "titan_tales":"[Titan Tales] Enhance Equipement +13.5%",
+                "titan_tales+1":"[Titan Tales+1] 10% Basic Stats",
+                "titan_tales+2":"[Titan Tales+2] 10% Basic Stats",
+                "titan_tales+3":"[Titan Tales+3] Enhanced Mythic skill",
+                "chaos":"[Chaos] ??",
+            }
         }
     }
 
@@ -3648,14 +4272,16 @@ HeroData = {
             "price":"Free",
             "skill":"Skill: Atreus does not have a unique ability",
             "skill_details":"<br>",
-            "star_1":"Patrol Gold Earnings + 4%",
-            "star_2":"Attack + 30 [All Heroes]",
-            "star_3":"Skill - Growth: Acquire a new skill - Growth",
-            "star_4":"Trait - Stubborn: When HP is lower than 20%, HP is restored for a while",
-            "star_5":"Spirit - Upgrade: During Spirit's crit attack, Atreus's attack speed is increased for a while",
-            "star_6":"Growth - Insight: Upgrade speed and Heart droprate increased",
-            "star_7":"Max HP + 800 [All Heroes]",
-            "star_8":"Max HP + 5% [All Heroes]"
+            "star":{
+                "1":"Patrol Gold Earnings + 4%",
+                "2":"Attack + 30 [All Heroes]",
+                "3":"Skill - Growth: Acquire a new skill - Growth",
+                "4":"Trait - Stubborn: When HP is lower than 20%, HP is restored for a while",
+                "5":"Spirit - Upgrade: During Spirit's crit attack, Atreus's attack speed is increased for a while",
+                "6":"Growth - Insight: Upgrade speed and Heart droprate increased",
+                "7":"Max HP + 800 [All Heroes]",
+                "8":"Max HP + 5% [All Heroes]"
+            }
         },
         "Urasil":{
             "description":"Proficient in the study of Medicine, an invisible killer allowing him to be skilled in Poison.",
@@ -3665,82 +4291,92 @@ HeroData = {
             "price":"Free (Unlocked after clearing stage 1 of chapter 2)",
             "skill":"Skill: Your attacks cause an enhanced Poison effect",
             "skill_details":"<br><b>Skill Details:</b><br>40% of base damage per second<br><br>",
-            "star_1":"Patrol Ring Scroll Earnings + 4%",
-            "star_2":"Max HP + 120 [All heroes]",
-            "star_3":"Poison - Feeble: Enemy movement speed reduced 10% when poisoned",
-            "star_4":"Trait - Low-key: Toxic damaged + 35% after killing enemy for a while",
-            "star_5":"Spirit - Upgrade: Whenever an enemy dies of poison, Spirit's attack is increased by a little",
-            "star_6":"Poison - Lethal: Toxic attack, chance to deal 3x more damage",
-            "star_7":"Crit Chance + 2% [All heroes]",
-            "star_8":"Healing Effect of Red Heart + 7% [All Heroes]"
+            "star":{
+                "1":"Patrol Ring Scroll Earnings + 4%",
+                "2":"Max HP + 120 [All heroes]",
+                "3":"Poison - Feeble: Enemy movement speed reduced 10% when poisoned",
+                "4":"Trait - Low-key: Toxic damaged + 35% after killing enemy for a while",
+                "5":"Spirit - Upgrade: Whenever an enemy dies of poison, Spirit's attack is increased by a little",
+                "6":"Poison - Lethal: Toxic attack, chance to deal 3x more damage",
+                "7":"Crit Chance + 2% [All heroes]",
+                "8":"Healing Effect of Red Heart + 7% [All Heroes]"
+            }
         },
         "Phoren":{
             "description":"Born from Fire, and Fire answers to no one but him.",
             "base_atk":"130 [+9]",
             "base_hp":"500 [+35]",
             "attributes":" • Lvl 20: Critical Chance + 2% [All Heroes]<br> • Lvl 40: Projectile Resistance: + 15%<br> • Lvl 60: Critical Chance + 2% [All Heroes]<br> • Lvl 80: Critical Chance + 5%<br> • Lvl 120: Damage to Ranged Units + 9% [All Heroes]",
-            "price":"50,000 <object type='image/png' data='\\static\\image\\svg\\gold.svg' width='16' height='16'></object>",
+            "price":"50,000 <object type='image/png' data='/static/image/svg/gold.svg' width='16' height='16'></object>",
             "skill":"Skill: Your attacks cause an enhanced Flame effect",
             "skill_details":"<br>",
-            "star_1":"Patrol Sapphires Earnings + 4%",
-            "star_2":"Damage to Airborne Units + 75 [All heroes]",
-            "star_3":"Red Flame - Super Fire: Fire damage is increased",
-            "star_4":"Trait - Passion: When entering a room, a random enemy will be ignited",
-            "star_5":"Spirit - Upgrade: Extra damage is dealt when Spirit attacks burning enemy",
-            "star_6":"Red Flame - Flame Star: Enemies that are burning will cause reduced damage to hero",
-            "star_7":"Attack + 200 [All heroes]",
-            "star_8":"Ground Units damage reduced + 6% [All Heroes]"
+            "star":{
+                "1":"Patrol Sapphires Earnings + 4%",
+                "2":"Damage to Airborne Units + 75 [All heroes]",
+                "3":"Red Flame - Super Fire: Fire damage is increased",
+                "4":"Trait - Passion: When entering a room, a random enemy will be ignited",
+                "5":"Spirit - Upgrade: Extra damage is dealt when Spirit attacks burning enemy",
+                "6":"Red Flame - Flame Star: Enemies that are burning will cause reduced damage to hero",
+                "7":"Attack + 200 [All heroes]",
+                "8":"Ground Units damage reduced + 6% [All Heroes]"
+            }
         },
         "Taranis":{
             "description":"Born of the Thunder, and naturally able to control and wield Thunder.",
             "base_atk":"130 [+10]",
             "base_hp":"550 [+40]",
             "attributes":" • Lvl 20: Crit Chance + 2% [All Heroes]<br> • Lvl 40: Damage to Airborne Units + 20%<br> • Lvl 60: Attack + 4% [All Heroes]<br> • Lvl 80: Crit Damage + 50%<br> • Lvl 120: Damage to Airborne Units + 9% [All Heroes]",
-            "price":"1000 <object type='image/png' data='\\static\\image\\svg\\gem.svg' width='16' height='16'></object> or 30 Taranis Shards",
+            "price":"1000 <object type='image/png' data='/static/image/svg/gem.svg' width='16' height='16'></object> or 30 Taranis Shards",
             "skill":"Skill: Your attacks cause an enhanced Lightning effect",
             "skill_details":"<br>",
-            "star_1":"Patrol XP Earnings + 4%",
-            "star_2":"Max HP + 150 [All heroes]",
-            "star_3":"Thunderstorm - Distance: Lightning range increased",
-            "star_4":"Trait - Rapid: Hitting the enemy continuously will gradually increase movement speed",
-            "star_5":"Spirit - Upgrade: Attacks have a Lightning Element in the first 15s after entering a room",
-            "star_6":"Thunderstorm - Damage: Lightning damage increased by 20%",
-            "star_7":"Damage to Airborne Units + 300 [All heroes]",
-            "star_8":"Airborne Units Damage Resistance + 7% [All Heroes]"
+            "star":{
+                "1":"Patrol XP Earnings + 4%",
+                "2":"Max HP + 150 [All heroes]",
+                "3":"Thunderstorm - Distance: Lightning range increased",
+                "4":"Trait - Rapid: Hitting the enemy continuously will gradually increase movement speed",
+                "5":"Spirit - Upgrade: Attacks have a Lightning Element in the first 15s after entering a room",
+                "6":"Thunderstorm - Damage: Lightning damage increased by 20%",
+                "7":"Damage to Airborne Units + 300 [All heroes]",
+                "8":"Airborne Units Damage Resistance + 7% [All Heroes]"
+            }
         },
         "Helix":{
             "description":"A tribe warrior, a hunter; even the strong admire his power!",
             "base_atk":"125 [+10]",
             "base_hp":"620 [+43]",
             "attributes":" • Lvl 20: Crit Damage + 20% [All Heroes]<br> • Lvl 40: Healing Effect of Red Heart + 20%<br> • Lvl 60: Max HP + 5% [All Heroes]<br> • Lvl 80: Crit Chance + 5%<br> • Lvl 120: Healing Effect + 10% [All Heroes]",
-            "price":"1500 <object type='image/png' data='\\static\\image\\svg\\gem.svg' width='16' height='16'></object> or 30 Helix Shards",
+            "price":"1500 <object type='image/png' data='/static/image/svg/gem.svg' width='16' height='16'></object> or 30 Helix Shards",
             "skill":"Skill: Your attacks deal more damage at low HP.",
             "skill_details":"<br><b>Skill Details:</b><br>Fury Command: +1.2% attack for every 1% of player HP lost.<br><br>",
-            "star_1":"Patrol Gold Earnings + 4%",
-            "star_2":"Attack + 40 [All heroes]",
-            "star_3":"Rage - Fury: When losing HP, attack is increased",
-            "star_4":"Trait - Irritant: After losing HP, damage is increased on next attack",
-            "star_5":"Spirit - Upgrade: Spirit has faster attack speed",
-            "star_6":"Rage - Nimble: When HP is lower than 25%, movement speed increased slightly",
-            "star_7":"Damage to Ranged Units + 300 [All heroes]",
-            "star_8":"Ranged Units Damage Resistance + 8% [All Heroes]"
+            "star":{
+                "1":"Patrol Gold Earnings + 4%",
+                "2":"Attack + 40 [All heroes]",
+                "3":"Rage - Fury: When losing HP, attack is increased",
+                "4":"Trait - Irritant: After losing HP, damage is increased on next attack",
+                "5":"Spirit - Upgrade: Spirit has faster attack speed",
+                "6":"Rage - Nimble: When HP is lower than 25%, movement speed increased slightly",
+                "7":"Damage to Ranged Units + 300 [All heroes]",
+                "8":"Ranged Units Damage Resistance + 8% [All Heroes]"
+            }
         },
         "Meowgik":{
             "description":"The spirit of the cat combined with magic; not to be underestimated.",
             "base_atk":"135 [+11]",
             "base_hp":"550 [+40]",
             "attributes":" • Lvl 20: Attack + 50 [All Heroes]<br> • Lvl 40: Dodge + 5%<br> • Lvl 60: Attack + 4% [All Heroes]<br> • Lvl 80: Healing Effect of Red Heart + 30%<br> • Lvl 120: Dodge + 3% [All Heroes]",
-            "price":"1800 <object type='image/png' data='\\static\\image\\svg\\gem.svg' width='16' height='16'></object> or 30 Meowgik Shards",
+            "price":"1800 <object type='image/png' data='/static/image/svg/gem.svg' width='16' height='16'></object> or 30 Meowgik Shards",
             "skill":"Skill: A chance to summon an auto-attacking kitty when attacking enemies",
             "skill_details":"<br>",
-            "star_1":"Patrol Spirit Scroll Earnings + 4%",
-            "star_2":"Healing Effect of Red Heart + 10% [All heroes]",
-            "star_3":"Meow - Giant: Meowing increases, attack and attack range increased",
-            "star_4":"Trait - Lazy: Crit rate increased after standing still",
-            "star_5":"Spirit - Upgrade: Spirit's crit damage increased",
-            "star_6":"Meow - Tracking: Meowspirit becomes better at tracking and has its Attack increased",
-            "star_7":"Max HP +1000 [All heroes]",
-            "star_8":"Dodge + 7% [All Heroes]"
+            "star":{
+                "1":"Patrol Spirit Scroll Earnings + 4%",
+                "2":"Healing Effect of Red Heart + 10% [All heroes]",
+                "3":"Meow - Giant: Meowing increases, attack and attack range increased",
+                "4":"Trait - Lazy: Crit rate increased after standing still",
+                "5":"Spirit - Upgrade: Spirit's crit damage increased",
+                "6":"Meow - Tracking: Meowspirit becomes better at tracking and has its Attack increased",
+                "7":"Max HP +1000 [All heroes]",
+                "8":"Dodge + 7% [All Heroes]"
+            }
         },
         "Shari":{
             "description":"Born of the magical woodlands, she is in touch with nature.",
@@ -3750,31 +4386,35 @@ HeroData = {
             "price":"30 Shari Shards",
             "skill":"Skill:  Summons a thorned vine to attack enemies.",
             "skill_details":"<br>",
-            "star_1":"Patrol Gold Earnings + 4%",
-            "star_2":"Max HP + 120 [All heroes]",
-            "star_3":"Entangle - Vine: Vine has increased attack",
-            "star_4":"Trait - Active: When moving, dodge rate slightly increased",
-            "star_5":"Spirit - Upgrade: When Spirit is near Vine, attack speed is increased",
-            "star_6":"Entangle - Auto Track: Vines will follow and attack enemies",
-            "star_7":"Damage to Melee Units + 300 [All heroes]",
-            "star_8":"Melee Units Damage Resistance + 7% [All Heroes]"
+            "star":{
+                "1":"Patrol Gold Earnings + 4%",
+                "2":"Max HP + 120 [All heroes]",
+                "3":"Entangle - Vine: Vine has increased attack",
+                "4":"Trait - Active: When moving, dodge rate slightly increased",
+                "5":"Spirit - Upgrade: When Spirit is near Vine, attack speed is increased",
+                "6":"Entangle - Auto Track: Vines will follow and attack enemies",
+                "7":"Damage to Melee Units + 300 [All heroes]",
+                "8":"Melee Units Damage Resistance + 7% [All Heroes]"
+            }
         },
         "Ayana":{
             "description":"Hailing from a magical city, a witch with powerful magic!",
             "base_atk":"160 [+11]",
             "base_hp":"550 [+42]",
             "attributes":" • Lvl 20: Damage to Airborne Units + 80 [All Heroes]<br> • Lvl 40: Damage to Ranged Units + 15%<br> • Lvl 60: Attack + 4% [All Heroes]<br> • Lvl 80: Dodge + 10%<br> • Lvl 120: Damage to Ranged Units + 9% [All Heroes]",
-            "price":"2500 <object type='image/png' data='\\static\\image\\svg\\gem.svg' width='16' height='16'></object> or 30 Ayana Shards",
+            "price":"2500 <object type='image/png' data='/static/image/svg/gem.svg' width='16' height='16'></object> or 30 Ayana Shards",
             "skill":"Skill: Attacks can charm the enemy, with a chance to summon a portal",
             "skill_details":"<br><b>Skill Details:</b><br>Charm: Charmed enemies will receive additional damage with reduced movement speed and loss of health.<br><br><b>Additional Skill Notes:</b><br> • Applies a 'Charm' when targetting an enemy every 10 seconds, or applies it instantly when attacking an enemy.<br> • Deals 48% of non-modifiable base damage (includes rune ATK% boosts) for 2 ticks.<br> • The damage ticked increases by 0.4% of your base damage each time you level up, maximum of 49.6%.<br> • Creates a portal that lasts 5 seconds at a time until used.<br><br>",
-            "star_1":"Patrol Locket Scroll Earnings + 4%",
-            "star_2":"Crit Damage + 15% [All heroes]",
-            "star_3":"Witchcraft - Dodger: After leaving the portal, dodge rate increased by 75% for a while",
-            "star_4":"Trait - Elegance: After using the portal, enemies around the portal will be Charmed",
-            "star_5":"Spirit - Upgrade: Damage towards furthest enemies is increased",
-            "star_6":"Witchcraft - Charm: Strengthen Charmed effect",
-            "star_7":"Attack + 250 [All heroes]",
-            "star_8":"Damage to Bosses + 7% [All Heroes]"
+            "star":{
+                "1":"Patrol Locket Scroll Earnings + 4%",
+                "2":"Crit Damage + 15% [All heroes]",
+                "3":"Witchcraft - Dodger: After leaving the portal, dodge rate increased by 75% for a while",
+                "4":"Trait - Elegance: After using the portal, enemies around the portal will be Charmed",
+                "5":"Spirit - Upgrade: Damage towards furthest enemies is increased",
+                "6":"Witchcraft - Charm: Strengthen Charmed effect",
+                "7":"Attack + 250 [All heroes]",
+                "8":"Damage to Bosses + 7% [All Heroes]"
+            }
         },
         "Onir":{
             "description":"The son of Light, possessing all the powers from the Light like his shiny hair.",
@@ -3784,14 +4424,16 @@ HeroData = {
             "price":"$9.99 USD or 30 Onir Shards",
             "skill":"Skill: Your attacks cause an enhanced Holy effect",
             "skill_details":"<br>",
-            "star_1":"Patrol Weapon Scroll Earnings + 4%",
-            "star_2":"Max HP + 200 [All heroes]",
-            "star_3":"Aurora - Shine: Light repeatedly attacks enemies, with increased damage",
-            "star_4":"Trait - Justice: When only one enemy remains, own crit rate is increased by 10%",
-            "star_5":"Spirit - Upgrade: Attack speed and projectile speed increased",
-            "star_6":"Aurora - Re-Shine: When enemy dies, another powerful light is released",
-            "star_7":"Projectile Resistance + 10% [All heroes]",
-            "star_8":"Damage to Mobs + 7% [All Heroes]"
+            "star":{
+                "1":"Patrol Weapon Scroll Earnings + 4%",
+                "2":"Max HP + 200 [All heroes]",
+                "3":"Aurora - Shine: Light repeatedly attacks enemies, with increased damage",
+                "4":"Trait - Justice: When only one enemy remains, own crit rate is increased by 10%",
+                "5":"Spirit - Upgrade: Attack speed and projectile speed increased",
+                "6":"Aurora - Re-Shine: When enemy dies, another powerful light is released",
+                "7":"Projectile Resistance + 10% [All heroes]",
+                "8":"Damage to Mobs + 7% [All Heroes]"
+            }
         },
         "Rolla":{
             "description":"The goddess of Ice, wielder of the power of ice and snow with virtuous heart.",
@@ -3801,14 +4443,16 @@ HeroData = {
             "price":"$16.99 USD or 30 Rolla Shards",
             "skill":"Skill: Your attacks freeze enemies for a longer time",
             "skill_details":"<br><br><br>",
-            "star_1":"Patrol XP Earnings + 5%",
-            "star_2":"Damage to Melee Units + 75 [All heroes]",
-            "star_3":"Frost - Sub-Zero: Frozen damage increased, frozen time increased",
-            "star_4":"Trait - Ice Snow: Upgrade quicker during battle, Spellbook mana increased",
-            "star_5":"Spirit - Upgrade: Attack is reduced for a while for the enemy the Spirit attacks",
-            "star_6":"Frost - Ice Spike: Frozen enemies will have their first received damage increased",
-            "star_7":"Crit Damage + 20% [All heroes]",
-            "star_8":"Max HP + 7% [All Heroes]"
+            "star":{
+                "1":"Patrol XP Earnings + 5%",
+                "2":"Damage to Melee Units + 75 [All heroes]",
+                "3":"Frost - Sub-Zero: Frozen damage increased, frozen time increased",
+                "4":"Trait - Ice Snow: Upgrade quicker during battle, Spellbook mana increased",
+                "5":"Spirit - Upgrade: Attack is reduced for a while for the enemy the Spirit attacks",
+                "6":"Frost - Ice Spike: Frozen enemies will have their first received damage increased",
+                "7":"Crit Damage + 20% [All heroes]",
+                "8":"Max HP + 7% [All Heroes]"
+            }
         },
         "Bonnie":{
             "description":"Heroic and kind woman of the sea! She robs the rich and helps the poor.",
@@ -3818,14 +4462,16 @@ HeroData = {
             "price":"$9.99 USD or 30 Bonnie Shards",
             "skill":"Chance to summon Clone when attacking",
             "skill_details":"<br>",
-            "star_1":"Patrol Gold Earnings + 5%",
-            "star_2":"Attack + 50 [All heroes]",
-            "star_3":"Clone - Emergency: Chance to summon 2 clones",
-            "star_4":"Trait - Fearless: When there are too many enemies, own attack speed increased",
-            "star_5":"Spirit - Upgrade: The more coins on the floor, the quicker the attack speed",
-            "star_6":"Clone - Crowd: Clone max limit increased",
-            "star_7":"Max HP + 1200 [All heroes]",
-            "star_8":"Summoned Creature Damage + 15% [All Heroes]"
+            "star":{
+                "1":"Patrol Gold Earnings + 5%",
+                "2":"Attack + 50 [All heroes]",
+                "3":"Clone - Emergency: Chance to summon 2 clones",
+                "4":"Trait - Fearless: When there are too many enemies, own attack speed increased",
+                "5":"Spirit - Upgrade: The more coins on the floor, the quicker the attack speed",
+                "6":"Clone - Crowd: Clone max limit increased",
+                "7":"Max HP + 1200 [All heroes]",
+                "8":"Summoned Creature Damage + 15% [All Heroes]"
+            }
         },
         "Sylvan":{
             "description":"An elf prince, master of the elements and loves nature.",
@@ -3835,14 +4481,16 @@ HeroData = {
             "price":"$18.99 USD or 30 Sylvan Shards",
             "skill":"Skill: When attacking, there's a chance to trigger a random powerful elemental attack.",
             "skill_details":"<br><b>Skill Details:</b><br>Every time an enemy is attacked, a random effect from fire, toxic, bolt or ice is used.<br><br>",
-            "star_1":"Patrol Locket Scroll Earnings + 4%",
-            "star_2":"Damage to Ranged Units + 75 [All heroes]",
-            "star_3":"Elemental - Damage: Elemental damage increased",
-            "star_4":"Trait - Pride: When HP is higher than 75%, get extra attack speed",
-            "star_5":"Spirit - Upgrade: Enemy gets a second Elemental attack",
-            "star_6":"Elemental - Critical Strike: Elemental damage has a chance to deal crit attack",
-            "star_7":"Damage to Ground Units + 400 [All heroes]",
-            "star_8":"Elemental Damage + 25% [All Heroes]"
+            "star":{
+                "1":"Patrol Locket Scroll Earnings + 4%",
+                "2":"Damage to Ranged Units + 75 [All heroes]",
+                "3":"Elemental - Damage: Elemental damage increased",
+                "4":"Trait - Pride: When HP is higher than 75%, get extra attack speed",
+                "5":"Spirit - Upgrade: Enemy gets a second Elemental attack",
+                "6":"Elemental - Critical Strike: Elemental damage has a chance to deal crit attack",
+                "7":"Damage to Ground Units + 400 [All heroes]",
+                "8":"Elemental Damage + 25% [All Heroes]"
+            }
         },
         "Shade":{
             "description":"Killer of shadows, queen of the night, she can switch between her real and shadow self in battle.",
@@ -3852,14 +4500,16 @@ HeroData = {
             "price":"$18.99 USD or 30 Shade Shards",
             "skill":"Skill: You can enjoy different effects with real and shadow forms, which switch automatically during battle.",
             "skill_details":"<br><b>Skill Details:</b><br><b><em>Real Self</em></b>: Attacks have strong dark powers, and deal continued damage.<br><b><em>Shadow Self:</em></b> Increased attack, attack speed and dodge rate.<br><br><b>Additional Skill Notes:</b><br> • Switches between her 2 forms every 4 seconds.<br> • Normal form: 135% Damage on hit, 30% damage for 2 ticks, and 135% Dark Touch Explosion.<br> • Shadow form: 75% Attack, 15% Attack Speed, ~15% Dodge Chance.<br><br>",
-            "star_1":"Patrol Sapphire Earnings + 5%",
-            "star_2":"Crit Chance + 2% [All heroes]",
-            "star_3":"Twin Shadows - Cold Blood: Chance for Dark stats increased",
-            "star_4":"Trait - Calm: HP max limit is increased with each kill",
-            "star_5":"Spirit - Upgrade: When switching forms, Spirit gets a new combat power",
-            "star_6":"Twin Shadows - Cruel: Increases crit attack when in Dark form",
-            "star_7":"Attack + 300 [All heroes]",
-            "star_8":"Attack + 8% [All Heroes]"
+            "star":{
+                "1":"Patrol Sapphire Earnings + 5%",
+                "2":"Crit Chance + 2% [All heroes]",
+                "3":"Twin Shadows - Cold Blood: Chance for Dark stats increased",
+                "4":"Trait - Calm: HP max limit is increased with each kill",
+                "5":"Spirit - Upgrade: When switching forms, Spirit gets a new combat power",
+                "6":"Twin Shadows - Cruel: Increases crit attack when in Dark form",
+                "7":"Attack + 300 [All heroes]",
+                "8":"Attack + 8% [All Heroes]"
+            }
         },
         "Ophelia":{
             "description":"Huntress walking between darkness and light, adept at hunting evil monsters.",
@@ -3869,14 +4519,16 @@ HeroData = {
             "price":"$9.99 USD or 30 Ophelia Shards",
             "skill":"Skill (Demon Soul): Chance to suck and absorb the enemy's soul, increasing own strength.",
             "skill_details":"<br><b>Skill Details:</b><br>Souls are absorbed into different colors in the formation.<br><br><b>Green</b>: Increase attack speed and projectile speed.<br><b>Yellow</b>: Chance to recover HP during crit attacks.<br><b>Blue</b>: Attacked enemy will explode.<br><b>Red</b>: Increase attack and add knockback effect.<br><br>",
-            "star_1":"Patrol Armor Scroll Earnings + 4%",
-            "star_2":"Damage to Ground Units + 75 [All heroes]",
-            "star_3":"Demon Soul - Amplify: Soul absorption effect increases",
-            "star_4":"Trait - Tranquil: Each kill increases HP limit",
-            "star_5":"Spirit - Upgrade: Spirit will provide own attack stats to Hero",
-            "star_6":"Demon Soul - Distort: Get a new strengthening effect",
-            "star_7":"Attack Speed + 3% [All heroes]",
-            "star_8":"MP Cast Speed + 25% [All Heroes]"
+            "star":{
+                "1":"Patrol Armor Scroll Earnings + 4%",
+                "2":"Damage to Ground Units + 75 [All heroes]",
+                "3":"Demon Soul - Amplify: Soul absorption effect increases",
+                "4":"Trait - Tranquil: Each kill increases HP limit",
+                "5":"Spirit - Upgrade: Spirit will provide own attack stats to Hero",
+                "6":"Demon Soul - Distort: Get a new strengthening effect",
+                "7":"Attack Speed + 3% [All heroes]",
+                "8":"MP Cast Speed + 25% [All Heroes]"
+            }
         },
         "Ryan":{
             "description":"A traveling red panda that loves to sing, dance, and meet new people",
@@ -3886,14 +4538,16 @@ HeroData = {
             "price":"50 Ryan Shards",
             "skill":"Skill: Revive upon death, with Invincibility for 1s. Invincibility increases with the amount of monsters killed.",
             "skill_details":"<br><b>Skill Details:</b><br> • Defeating enemies increase invincibilty time after revive. The time limit for invincibility is 6 seconds.<br> • Defeating bosses gives 10 times the amount extra invincibility time compared to normal monsters.<br><br>",
-            "star_1":"Patrol Ring Scroll Earnings + 4%",
-            "star_2":"Damage to Ranged Units + 75 [All heroes]",
-            "star_3":"Luck - Counterattack: When invincible, attack and crit rate increased greatly",
-            "star_4":"Trait - Leisure: Enemy projectiles will slow down near Ryan",
-            "star_5":"Spirit - Power: Get a Front Arrow + 1",
-            "star_6":"Luck - Haven: After revival, doge rate, movement speed and crit attack increased during this game",
-            "star_7":"Damage to Airborne Units + 400 [All heroes]",
-            "star_8":"Coin Drops + 10% [All Heroes]"
+            "star":{
+                "1":"Patrol Ring Scroll Earnings + 4%",
+                "2":"Damage to Ranged Units + 75 [All heroes]",
+                "3":"Luck - Counterattack: When invincible, attack and crit rate increased greatly",
+                "4":"Trait - Leisure: Enemy projectiles will slow down near Ryan",
+                "5":"Spirit - Power: Get a Front Arrow + 1",
+                "6":"Luck - Haven: After revival, doge rate, movement speed and crit attack increased during this game",
+                "7":"Damage to Airborne Units + 400 [All heroes]",
+                "8":"Coin Drops + 10% [All Heroes]"
+            }
         },
         "Lina":{
             "description":"A mysterious dancer who loves to travel and dance gracefully for strangers she meets.",
@@ -3903,14 +4557,16 @@ HeroData = {
             "price":"50 Lina Shards",
             "skill":"Skill: Hitting an enemy deals extra damage and summons a phantom dancer who attacks enemies and causes a negative effect.",
             "skill_details":"<br><b>Skill Details:</b><br>Enemies around the Phantom Dancer will slow down and reduce HP.<br><br>",
-            "star_1":"Patrol Sapphire Earnings + 5%",
-            "star_2":"Attack + 60 [All heroes]",
-            "star_3":"Dream Dance - Enlarge: Range increased 50%",
-            "star_4":"Trait - Tender: Red hearts droprate + 20%, HP Recovery + 20%",
-            "star_5":"Spirit - Strengthen: Attack increased 25%",
-            "star_6":"Dream Dance - Freeze: Enemies in the range will be frozen after 5s",
-            "star_7":"Max HP + 1500 [All heroes]",
-            "star_8":"Max MP + 15% [All Heroes]"
+            "star":{
+                "1":"Patrol Sapphire Earnings + 5%",
+                "2":"Attack + 60 [All heroes]",
+                "3":"Dream Dance - Enlarge: Range increased 50%",
+                "4":"Trait - Tender: Red hearts droprate + 20%, HP Recovery + 20%",
+                "5":"Spirit - Strengthen: Attack increased 25%",
+                "6":"Dream Dance - Freeze: Enemies in the range will be frozen after 5s",
+                "7":"Max HP + 1500 [All heroes]",
+                "8":"Max MP + 15% [All Heroes]"
+            }
         },
         "Aquea":{
             "description":"Princess of the seas, loved by all underwater.",
@@ -3920,14 +4576,16 @@ HeroData = {
             "price":"50 Aquea Shards or $24.99 USD",
             "skill":"Skill: Attack carries a strong freezing effect which slows down enemies. When HP is lower than 35%, combat mode is entered.",
             "skill_details":"<br><b>Skill Details:</b><br><b><em>Combat Form:</em></b> Body size reduced 15%, crit rate increased 10%, dodge rate increased 15%, freezing damage increased.<br><br>",
-            "star_1":"Patrol Bracelet Scroll Earnings + 5%",
-            "star_2":"Attack + 70 [All heroes]",
-            "star_3":"Duel Form - Freeze: Freezing effect is greatly increased",
-            "star_4":"Trait - Optimism: When HP is lower than 10%, 20% HP is recovered",
-            "star_5":"Spirit - Upgrade: Attack speed increased 20%",
-            "star_6":"Duel Form - Bloodthirst: Get a bloodthirst effect in combat form",
-            "star_7":"Max HP + 1800 [All heroes]",
-            "star_8":"Movement Speed + 4% [All Heroes]"
+            "star":{
+                "1":"Patrol Bracelet Scroll Earnings + 5%",
+                "2":"Attack + 70 [All heroes]",
+                "3":"Duel Form - Freeze: Freezing effect is greatly increased",
+                "4":"Trait - Optimism: When HP is lower than 10%, 20% HP is recovered",
+                "5":"Spirit - Upgrade: Attack speed increased 20%",
+                "6":"Duel Form - Bloodthirst: Get a bloodthirst effect in combat form",
+                "7":"Max HP + 1800 [All heroes]",
+                "8":"Movement Speed + 4% [All Heroes]"
+            }
         },
         "Shingen":{
             "description":"The only heir of an ancient clan, owning their curse and gifts. (Owns their family heirloom: Demon Blade - Rain)",
@@ -3937,14 +4595,16 @@ HeroData = {
             "price":"25.99€ or 50 Shingen Shards",
             "skill":"Skill: Lower the HP, higher the attack speed. Has high Crit damage.",
             "skill_details":"<br><b>Skill Details:</b><br>Lower the HP, higher the attack speed. Has high Crit Damage.<br><br><b>Hidden Skill Details:</b><br>Able to cast Slash when equipped with an Epic or above Demon Blade<br><br>",
-            "star_1":"Patrol Gold Earnings + 5%",
-            "star_2":"Damage to Melee Units + 80 [All heroes]",
-            "star_3":"Charge - Strengthen: Melee damage +12%, long range damage +7%, Crit damage +20%",
-            "star_4":"Trait - Persevere: Hitting the same target consecutively increases damage dealt",
-            "star_5":"Spirit - Upgrade: Attack increased 15%, Crit damage increased 25%",
-            "star_6":"Charge - Souleater: The more enemies killed, the higher the attack (Max limit 10%)",
-            "star_7":"Max HP +1800 [All Heroes]",
-            "star_8":"Weapon Melee Damage + 11% [All Heroes]"
+            "star":{
+                "1":"Patrol Gold Earnings + 5%",
+                "2":"Damage to Melee Units + 80 [All heroes]",
+                "3":"Charge - Strengthen: Melee damage +12%, long range damage +7%, Crit damage +20%",
+                "4":"Trait - Persevere: Hitting the same target consecutively increases damage dealt",
+                "5":"Spirit - Upgrade: Attack increased 15%, Crit damage increased 25%",
+                "6":"Charge - Souleater: The more enemies killed, the higher the attack (Max limit 10%)",
+                "7":"Max HP +1800 [All Heroes]",
+                "8":"Weapon Melee Damage + 11% [All Heroes]"
+            }
         },
         "Gugu":{
             "description":"A brave warrior owl, with a gleam of wisdom in its eyes.",
@@ -3954,14 +4614,16 @@ HeroData = {
             "price":"50 Gugu Shards",
             "skill":"Small chance to summon an owl guardian on hitting enemies. Owl guardians can resist damage and strengthen their hero.",
             "skill_details":"<br><b>Skill Details:</b><br>Small chance to summon an owl guardian on hitting enemies. Owl guardians can resist damage and strengthen their hero.<br><br><FONT color='red'>Red Owl</FONT>: Increased attack, can be stacked.(Increases Attack by 0.1%. Attack is doubled [0.2%] when there are two red owls)<br><FONT color='yellow'>Yellow Owl</FONT>: Killing enemies can restore HP, can be stacked.(Gain 0.7% of Base HP on enemy kills. The amount of Healing is doubled [1.4%] when there are two yellow owls)<br><FONT color='blue'>Blue Owl</FONT>: Increased attack speed, can be stacked. (No data)<br><FONT color='green'>Green Owl</FONT>: Increased attack crit rate, can be stacked. (No data)<br><br>",
-            "star_1":"Patrol Sapphire Earnings + 10%",
-            "star_2":"Damage to Airborne Units + 60 [All Heroes]",
-            "star_3":"Guardian Spirit - Hope: When own HP is low, chance for summon is higher",
-            "star_4":"Trait - Intelligence: Level-up Speed is increased 15% during battle",
-            "star_5":"Spirit - Upgrade: Noisy Owl's projectiles can penetrate walls",
-            "star_6":"Guardian Spirit - Strength: Owl Guardian's stats increased",
-            "star_7":"Damage to Ranged Units + 400 [All Heroes]",
-            "star_8":"Spin Speed + 15% [All Heroes]"
+            "star":{
+                "1":"Patrol Sapphire Earnings + 10%",
+                "2":"Damage to Airborne Units + 60 [All Heroes]",
+                "3":"Guardian Spirit - Hope: When own HP is low, chance for summon is higher",
+                "4":"Trait - Intelligence: Level-up Speed is increased 15% during battle",
+                "5":"Spirit - Upgrade: Noisy Owl's projectiles can penetrate walls",
+                "6":"Guardian Spirit - Strength: Owl Guardian's stats increased",
+                "7":"Damage to Ranged Units + 400 [All Heroes]",
+                "8":"Spin Speed + 15% [All Heroes]"
+            }
         },
         "Iris":{
             "description":"A powerful archer and the guardian of the forest.",
@@ -3971,14 +4633,16 @@ HeroData = {
             "price":"50 Iris Shards",
             "skill":"High Movement Speed and Dodge. Each ranged attack has a chance to shoot an extra projectile. (Front Arrow)",
             "skill_details":"<br>",
-            "star_1":"Patrol Gold Earnings + 15%",
-            "star_2":"Attack + 70 [All Heroes]",
-            "star_3":"Sharpshooter - Power Attack: Increase damage of extra projectiles and knockback effect.",
-            "star_4":"Trait - Lively: Each successful dodge will increase Attack Speed temporarily.",
-            "star_5":"Spirit - Upgrade: Enemies hit by Spirits will have reduced Movement Speed.",
-            "star_6":"Sharpshooter - Charged Attack: Moving increases Crit Chance temporarily.",
-            "star_7":"Damage to Airborne Units + 400 [All Heroes]",
-            "star_8":"Weapon Ranged Damage + 10% [All Heroes]"
+            "star":{
+                "1":"Patrol Gold Earnings + 15%",
+                "2":"Attack + 70 [All Heroes]",
+                "3":"Sharpshooter - Power Attack: Increase damage of extra projectiles and knockback effect.",
+                "4":"Trait - Lively: Each successful dodge will increase Attack Speed temporarily.",
+                "5":"Spirit - Upgrade: Enemies hit by Spirits will have reduced Movement Speed.",
+                "6":"Sharpshooter - Charged Attack: Moving increases Crit Chance temporarily.",
+                "7":"Damage to Airborne Units + 400 [All Heroes]",
+                "8":"Weapon Ranged Damage + 10% [All Heroes]"
+            }
         },
         "Blazo":{
             "description":"A furious avenger, and an inquisitor against evil.",
@@ -3988,14 +4652,16 @@ HeroData = {
             "price":"28.99€ or 50 Blazo Shards",
             "skill":"Skill: Attacks have a chance to be judged; repeated hits inflicts justice.",
             "skill_details":"<br><b>Skill Details:</b><br>Greatly increases its own attack, and reduces the enemy's movement speed and attack. Enemies lose more HP when injured.<br><br>",
-            "star_1":"Patrol Gold Earnings + 25%",
-            "star_2":"Damage to Ground Units +80 [All Heroes]",
-            "star_3":"Judge - Ghast: Increases Crit Chance for killing enemies when justice",
-            "star_4":"Trait - Revenge: Chance to deal Revenge damage when receiving damage",
-            "star_5":"Spirit - Enhance: Doubles spirit's attack when hero's HP is reduced",
-            "star_6":"Judge - Execution: Performs Judgement more quickly with greater effect",
-            "star_7":"Max HP + 1800 [All Heroes]",
-            "star_8":"Free Magic Cast Rate + 12% [All Heroes]"
+            "star":{
+                "1":"Patrol Gold Earnings + 25%",
+                "2":"Damage to Ground Units +80 [All Heroes]",
+                "3":"Judge - Ghast: Increases Crit Chance for killing enemies when justice",
+                "4":"Trait - Revenge: Chance to deal Revenge damage when receiving damage",
+                "5":"Spirit - Enhance: Doubles spirit's attack when hero's HP is reduced",
+                "6":"Judge - Execution: Performs Judgement more quickly with greater effect",
+                "7":"Max HP + 1800 [All Heroes]",
+                "8":"Free Magic Cast Rate + 12% [All Heroes]"
+            }
         },
         "Melinda":{
             "description":"A beautiful and brave noble who has embarked on a journey to become a renowned ranger.",
@@ -4005,14 +4671,16 @@ HeroData = {
             "price":"29.99€ or 50 Shards",
             "skill":"Chance to fire a projectile barrage with each attack. The lower the HP, the stronger the barrage.",
             "skill_details":"<br>",
-            "star_1":"Patrol XP Earnings + 25%",
-            "star_2":"Damage to Ranged Units + 100 [All Heroes]",
-            "star_3":"Ranger's Heart - Inspire: Chance to increase attack when projectile barrage is hitting enemies; can stack",
-            "star_4":"Trait - Righteous: Surrounding enemies; more and closer will increase hero's attack",
-            "star_5":"Spirit - Upgrade: Spirit gains multi-attacks",
-            "star_6":"Ranger's Heart - Composure: Increased leveling speed at a higher level cap",
-            "star_7":"Attack + 400 [All Heroes]",
-            "star_8":"Attack + 9% [All Heroes]"
+            "star":{
+                "1":"Patrol XP Earnings + 25%",
+                "2":"Damage to Ranged Units + 100 [All Heroes]",
+                "3":"Ranger's Heart - Inspire: Chance to increase attack when projectile barrage is hitting enemies; can stack",
+                "4":"Trait - Righteous: Surrounding enemies; more and closer will increase hero's attack",
+                "5":"Spirit - Upgrade: Spirit gains multi-attacks",
+                "6":"Ranger's Heart - Composure: Increased leveling speed at a higher level cap",
+                "7":"Attack + 400 [All Heroes]",
+                "8":"Attack + 9% [All Heroes]"
+            }
         },
         "Elaine":{
             "description":"An adorable butterfly maiden blessed by elven gods since her birth",
@@ -4022,31 +4690,35 @@ HeroData = {
             "price":"50 Elaine Shards",
             "skill":"Gain invincibility shield at intervals that also increases Attack Speed. When shield fades, attack is greatly increased.",
             "skill_details":"<br>",
-            "star_1":"Patrol Weapon Scroll Earnings + 5%",
-            "star_2":"Max HP + 350 [All Heroes]",
-            "star_3":"Invincible Elaine - Counter: Shots blocked by invincibility shield are converted into attack when shield fades.",
-            "star_4":"Trait - Outgoing: Great at making friends, reducing hostility of surrounding enemies (reduces attack)",
-            "star_5":"Spirit - Upgrade: Attack increases for every room cleared. Flying Spirits gain + 20%",
-            "star_6":"Invincible Elaine - Enhanced Shield: Shield's duration increased. Also increases Crit Rate and summoned creature attack.",
-            "star_7":"Max HP + 2000 [All Heroes]",
-            "star_8":"Max HP + 9% [All Heroes]"
+            "star":{
+                "1":"Patrol Weapon Scroll Earnings + 5%",
+                "2":"Max HP + 350 [All Heroes]",
+                "3":"Invincible Elaine - Counter: Shots blocked by invincibility shield are converted into attack when shield fades.",
+                "4":"Trait - Outgoing: Great at making friends, reducing hostility of surrounding enemies (reduces attack)",
+                "5":"Spirit - Upgrade: Attack increases for every room cleared. Flying Spirits gain + 20%",
+                "6":"Invincible Elaine - Enhanced Shield: Shield's duration increased. Also increases Crit Rate and summoned creature attack.",
+                "7":"Max HP + 2000 [All Heroes]",
+                "8":"Max HP + 9% [All Heroes]"
+            }
         },
         "Bobo":{
             "description":"A brainy bear from a faraway city",
             "base_atk":"160 (+12)",
             "base_hp":"700 (+ 47)",
             "attributes":" • Lvl 20: Damage to mobs + 150 [All Heroes]<br> • Lvl 40: Attack + 5%<br> • Lvl 60: Damage to Ranged Units + 5% [All Heroes]<br> • Lvl 80: MP Strength + 20%<br> • Lvl 120: Attack + 6% [All Heroes]",
-            "price":"4000 <object type='image/png' data='\\static\\image\\svg\\gem.svg' width='16' height='16'></object>",
+            "price":"4000 <object type='image/png' data='/static/image/svg/gem.svg' width='16' height='16'></object>",
             "skill":"Increases leveling speed. Attack increases with level in a chamber",
             "skill_details":"<br><b>Skill Details:</b><br>Bobo has 12.5% atk boost at start, and gains around 8.5% attack per lvl (credit to Chaos)<br><br>",
-            "star_1":"Patrol XP Earnings + 4%",
-            "star_2":"Max HP + 240 [All Heroes]",
-            "star_3":"Wisdom's Might - Upgrade: Gain higher Attack and leveling speed",
-            "star_4":"Trait - Learner: Loot Hearts to increase slight Attack Speed (Max 10%)",
-            "star_5":"Spirit - Upgrade: Inherits 10% of Hero's Attack",
-            "star_6":"Wisdom's Might - Insight: Inflicts weakness on enemies. Hitting the same enemy repeatedly deals more damage",
-            "star_7":"Max HP + 1800 [All Heroes]",
-            "star_8":"Battle XP Gain + 5% [All Heroes]"
+            "star":{
+                "1":"Patrol XP Earnings + 4%",
+                "2":"Max HP + 240 [All Heroes]",
+                "3":"Wisdom's Might - Upgrade: Gain higher Attack and leveling speed",
+                "4":"Trait - Learner: Loot Hearts to increase slight Attack Speed (Max 10%)",
+                "5":"Spirit - Upgrade: Inherits 10% of Hero's Attack",
+                "6":"Wisdom's Might - Insight: Inflicts weakness on enemies. Hitting the same enemy repeatedly deals more damage",
+                "7":"Max HP + 1800 [All Heroes]",
+                "8":"Battle XP Gain + 5% [All Heroes]"
+            }
         },
         "Stella":{
             "description":"Princess of the Sky City, able to wield the power of the astral realm since birth.",
@@ -4056,14 +4728,16 @@ HeroData = {
             "price":"40 USD or 50 Stella Shards",
             "skill":"Master of starlight and lightning. Attacks with guardian spirit. Possesses strong weapon damage and knockback.",
             "skill_details":"<br>",
-            "star_1":"Patrol Armor Scroll Earnings + 5%",
-            "star_2":"Rear Damage Resistance +3% [All Heroes]",
-            "star_3":"Starlight and Thunder - Dazzle: Increases Starlight damage, summon chance and max summons",
-            "star_4":"Trait - Mischievous: Chance to use lightning to attack surrounding enemies when moving",
-            "star_5":"Spirit - Enhance: When spirit attacks enemies, they take more damage when attacked by lightning and spirit.",
-            "star_6":"Starlight and Thunder - Eon Ward: Guardian spirit's weapon damage increased. Successive attacks on enemies increase Attack Speed",
-            "star_7":"Meteor and Star damage + 10% [All Heroes]",
-            "star_8":"Weapon Damage + 8% [All Heroes]"
+            "star":{
+                "1":"Patrol Armor Scroll Earnings + 5%",
+                "2":"Rear Damage Resistance +3% [All Heroes]",
+                "3":"Starlight and Thunder - Dazzle: Increases Starlight damage, summon chance and max summons",
+                "4":"Trait - Mischievous: Chance to use lightning to attack surrounding enemies when moving",
+                "5":"Spirit - Enhance: When spirit attacks enemies, they take more damage when attacked by lightning and spirit.",
+                "6":"Starlight and Thunder - Eon Ward: Guardian spirit's weapon damage increased. Successive attacks on enemies increase Attack Speed",
+                "7":"Meteor and Star damage + 10% [All Heroes]",
+                "8":"Weapon Damage + 8% [All Heroes]"
+            }
         }
     }
 
@@ -4105,6 +4779,11 @@ GsheetData = {
 		"thumbnail":"https://images-ext-1.discordapp.net/external/O49IU7I7N0xrxgeEv4_olqJXCTCuzbP0o8MdDSvoNsI/https/lh4.googleusercontent.com/E-QN8HZJy2uCkSHmt9_Q-KQ2IXLUafedztTrXxtWsfqN_Z3CO9Vx3qoYO5UygUIjQIlYuvAQJq5cTw%3Dw1200-h630-p",
 		"description":"Please don't change the formula, if you did it by accident just @ me on discord (LuhCaran#9802)\nMode,Heroic Mode\nN° de Chapitre / Chapter LVL,35",
 		"url":"https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w"
+	},
+	"Item Description (mythic+)":{
+		"thumbnail":"https://images-ext-1.discordapp.net/external/czQ0LN7etS2v5FIfmopYfX14sWgDx4_gl4Pa5-jbRrE/https/lh3.googleusercontent.com/dBzSz7clcARHTP_G2zKF0k70DsUx__lbzUtrL5ADqT5RpQRCS7ukWRffTXCU0_11MYiJxPn7NjO7oQ%3Dw1200-h630-p",
+		"description":"Item Description for mythic and plus rarity (Source: Cheaters)",
+		"url":"https://docs.google.com/spreadsheets/d/1ftmm6he4cP_3bt8il8gq7DYTUh0ml2gLphjTOWB9s04"
 	},
 	"Archero Damage Calculator (u/raytheblue)":{
 		"thumbnail":"https://images-ext-1.discordapp.net/external/Tn91MQaYwILZoP4sgFgb0LvCvQQx4Zz5CvqdaLpYSos/https/lh5.googleusercontent.com/j8pbCp_DWmtcBd4eUppd8Iw4B9U6m8ID0nHvxERjhMjckFNhFyCPxCnMDPHten5nkId9c785-8smHw%3Dw1200-h630-p",
@@ -4160,7 +4839,7 @@ SidebarContent = {
                 "self_class":"rightsidebarc traveling-right ",
                 "child_class":"shcr",
                 "child_content":{
-                    "image_src":"\\static\\image\\img-sidebar\\home.png",
+                    "image_src":"/static/image/img-sidebar/home.png",
                     "image_width":"21",
                     "image_id":"svg-filter-home",
                     "image_height":"21"
@@ -4181,9 +4860,9 @@ SidebarContent = {
                 "self_class":"rightsidebarc traveling-right ",
                 "child_class":"shcr",
                 "child_content":{                        
-                    "image_src":"\\static\\image\\img-sidebar\\stats.png",
+                    "image_src":"/static/image/img-sidebar/stats.png",
                     "image_width":"21",
-                    "image_id":"",
+                    "image_id":"Stats",
                     "image_height":"21"
                 }
             }
@@ -4202,9 +4881,9 @@ SidebarContent = {
                 "self_class":"rightsidebarc traveling-right ",
                 "child_class":"shcr",
                 "child_content":{                        
-                    "image_src":"\\static\\image\\img-sidebar\\wiki.png",
+                    "image_src":"/static/image/img-sidebar/wiki.png",
                     "image_width":"21",
-                    "image_id":"",
+                    "image_id":"Wiki",
                     "image_height":"21"
                 }
             }
@@ -4223,9 +4902,9 @@ SidebarContent = {
                 "self_class":"rightsidebarc traveling-right ",
                 "child_class":"shcr",
                 "child_content":{                        
-                    "image_src":"\\static\\image\\img-sidebar\\hero.png",
+                    "image_src":"/static/image/img-sidebar/hero.png",
                     "image_width":"21",
-                    "image_id":"",
+                    "image_id":"Heroes",
                     "image_height":"21"
                 }
             }
@@ -4244,9 +4923,9 @@ SidebarContent = {
                 "self_class":"rightsidebarc traveling-right ",
                 "child_class":"shcr",
                 "child_content":{                        
-                    "image_src":"\\static\\image\\img-sidebar\\icon_stuff.png",
+                    "image_src":"/static/image/img-sidebar/icon_stuff.png",
                     "image_width":"21",
-                    "image_id":"",
+                    "image_id":"Item",
                     "image_height":"21"
                 }
             }
@@ -4265,9 +4944,9 @@ SidebarContent = {
                 "self_class":"rightsidebarc traveling-right ",
                 "child_class":"shcr",
                 "child_content":{                        
-                    "image_src":"\\static\\image\\img-sidebar\\skill.png",
+                    "image_src":"/static/image/img-sidebar/skill.png",
                     "image_width":"21",
-                    "image_id":"",
+                    "image_id":"Skill",
                     "image_height":"21"
                 }
             }
@@ -4286,9 +4965,9 @@ SidebarContent = {
                 "self_class":"rightsidebarc traveling-right ",
                 "child_class":"shcr",
                 "child_content":{                        
-                    "image_src":"\\static\\image\\img-sidebar\\damage.png",
+                    "image_src":"/static/image/img-sidebar/damage.png",
                     "image_width":"21",
-                    "image_id":"",
+                    "image_id":"Damage",
                     "image_height":"21"
                 }
             }
@@ -4307,9 +4986,9 @@ SidebarContent = {
                 "self_class":"rightsidebarc traveling-right",
                 "child_class":"shcr",
                 "child_content":{                        
-                    "image_src":"\\static\\image\\img-sidebar\\upgrade.png",
+                    "image_src":"/static/image/img-sidebar/upgrade.png",
                     "image_width":"21",
-                    "image_id":"",
+                    "image_id":"Upgrade",
                     "image_height":"21"
                 }
             }
@@ -4328,9 +5007,9 @@ SidebarContent = {
                 "self_class":"rightsidebarc traveling-right",
                 "child_class":"shcr",
                 "child_content":{                        
-                    "image_src":"\\static\\image\\img-sidebar\\promotion_code.png",
+                    "image_src":"/static/image/img-sidebar/promotion_code.png",
                     "image_width":"21",
-                    "image_id":"",
+                    "image_id":"Promos",
                     "image_height":"21"
                 }
             }
@@ -4349,9 +5028,9 @@ SidebarContent = {
                 "self_class":"rightsidebarc traveling-right ",
                 "child_class":"shcr",
                 "child_content":{                        
-                    "image_src":"\\static\\image\\img-sidebar\\sheet.png",
+                    "image_src":"/static/image/img-sidebar/sheet.png",
                     "image_width":"21",
-                    "image_id":"",
+                    "image_id":"Sheet",
                     "image_height":"21"
                 }
             }
@@ -4370,9 +5049,9 @@ SidebarContent = {
                     "self_class":"rightsidebarc traveling-right ",
                     "child_class":"shcr",
                     "child_content":{                        
-                        "image_src":"\\static\\image\\img-sidebar\\maze.png",
+                        "image_src":"/static/image/img-sidebar/maze.png",
                         "image_width":"21",
-                        "image_id":"",
+                        "image_id":"Maze",
                         "image_height":"21"
                     }
                 }
@@ -4394,8 +5073,8 @@ DataPrice = {
             "gold":[0,0,400,1200,2400,4000,6000,8400,11200,14400,18000,22000,26400,31200,36400,42000,48000,54400,61200,68400,76000,84000,92400,101200,110400,120000,130000,141000,153000,166000,180000,195000,211000,228000,246000,265000,285000,307000,331000,357000,385000,415000,447000,481000,517000,555000,595000,639000,687000,739000,795000,855000,919000,987000,1059000,1135000,1215000,1305000,1405000,1515000,1635000,1765000,1905000,2055000,2215000,2385000,2565000,2755000,2955000,3175000,3415000,3675000,3955000,4255000,4575000,4915000,5275000,5655000,6055000,6495000,6975000,7495000,8055000,8655000,9295000,9975000,10695000,11455000,12255000,13155000,14155000,15255000,16455000,17755000,19155000,20655000,22255000,23955000,25755000,27655000,29655000,31755000,33955000,36255000,38655000,41155000,43755000,46455000,49255000,52155000,55155000,58355000,61755000,65355000,69155000,73155000,77355000,81755000,86355000,91155000,96155000]
         },
         "item":{
-            "gold":[0,0,200,600,1200,2000,3000,4200,5600,7200,9000,11000,13200,15600,18200,21000,24000,27200,30600,34200,38000,42000,46200,50600,55200,60000,65000,70500,76500,83000,90000,97500,105500,115000,123000,132500,152500,153500,165500,178500,192500,207500,223500,240500,248500,277500,297500,319500,343500,369500,397500,427500,459500,493500,529500,567500,607500,652500,702500,757500,817500,882500,952500,1027500,1107500,1192500,1282500,1377500,1477500,1587500,1707500,1837500,1977500,2127500,2287500,2457500,2637500,2827500,3027500,3247500,3487500,3747500,4027500,4327500,4647500,4987500,5347500,5727500,6127500,6577500,7077500,7627500,8227500,8877500,9577500,10327500,11127500,11977500,12877500,13827500,14827500,15927500,17127500,18427500,19827500,21327500,22927500,24627500,26427500,28327500,30327500,32527500,34927500,37527500,40327500,43327500,46527500,49927500,53527500,57327500,61327500],
-            "scroll":[0,0,1,3,7,13,21,31,41,51,61,76,91,106,121,136,156,176,196,216,236,261,286,311,336,361,391,421,451,481,511,551,591,631,671,711,761,811,861,911,961,1031,1101,1171,1241,1311,1411,1511,1611,1711,1811,1961,2111,2261,2411,2561,2711,2961,3161,3361,3561,3811,4061,4311,4561,4811,5111,5411,5711,6011,6311,6711,7111,7511,7911,8311,8811,9311,9811,10311,10811,11411,12011,12611,13211,13811,14611,15411,16211,17011,17811,18811,19811,20811,21811,22811,24011,25211,26411,27611,28811,30311,31811,33311,34811,36311,38311,40311,42311,44311,46311,48811,51311,53811,56311,58811,61811,64811,67811,70811,73811]
+            "gold":[0,0,200,600,1200,2000,3000,4200,5600,7200,9000,11000,13200,15600,18200,21000,24000,27200,30600,34200,38000,42000,46200,50600,55200,60000,65000,70500,76500,83000,90000,97500,105500,115000,123000,132500,152500,153500,165500,178500,192500,207500,223500,240500,248500,277500,297500,319500,343500,369500,397500,427500,459500,493500,529500,567500,607500,652500,702500,757500,817500,882500,952500,1027500,1107500,1192500,1282500,1377500,1477500,1587500,1707500,1837500,1977500,2127500,2287500,2457500,2637500,2827500,3027500,3247500,3487500,3747500,4027500,4327500,4647500,4987500,5347500,5727500,6127500,6577500,7077500,7627500,8227500,8877500,9577500,10327500,11127500,11977500,12877500,13827500,14827500,15927500,17127500,18427500,19827500,21327500,22927500,24627500,26427500,28327500,30327500,32527500,34927500,37527500,40327500,43327500,46527500,49927500,53527500,57327500,61327500,65527500,69727500,73927500,78127500,82327500,86627500,90927500,95227500,99527500,103827500,108227500,112627500,117027500,121427500,125827500,130327500,134827500,139327500,143827500,148327500,152927500,157527500,162127500,166727500,171327500,176027500,180727500,185427500,190127500,194827500,199627500,204427500,209227500,214027500,218827500,223827500,228827500,233827500,238827500,243827500,249027500,254227500,259427500,264627500,269827500,275227500,280627500,286027500,291427500,296827500],
+            "scroll":[0,0,1,3,7,13,21,31,41,51,61,76,91,106,121,136,156,176,196,216,236,261,286,311,336,361,391,421,451,481,511,551,591,631,671,711,761,811,861,911,961,1031,1101,1171,1241,1311,1411,1511,1611,1711,1811,1961,2111,2261,2411,2561,2711,2961,3161,3361,3561,3811,4061,4311,4561,4811,5111,5411,5711,6011,6311,6711,7111,7511,7911,8311,8811,9311,9811,10311,10811,11411,12011,12611,13211,13811,14611,15411,16211,17011,17811,18811,19811,20811,21811,22811,24011,25211,26411,27611,28811,30311,31811,33311,34811,36311,38311,40311,42311,44311,46311,48811,51311,53811,56311,58811,61811,64811,67811,70811,73811,76911,80011,83111,86211,89311,92411,95511,98611,101711,104811,108011,111211,114411,117611,120811,124011,127211,130411,133611,136811,140111,143411,146711,150011,153311,156611,159911,163211,166511,169811,173211,176611,180011,183411,186811,190211,193611,197011,200411,203811,207311,210811,214311,217811,221311,224811,228311,231811,235311,238811]
         },
         "talent":{
             "gold":[0,200,450,750,1100,1500,1950,2450,3050,3750,4550,5450,6450,7650,9050,10650,12450,14450,16650,19050,21650,24450,27450,30950,34950,39450,44450,49950,55950,62450,69450,76950,84950,93450,102450,111950,121950,132950,144950,157950,171950,186950,202950,219950,237950,256950,276950,298950,322950,348950,376950,406950,438950,472950,508950,546950,586950,628950,672950,718950,766950,816950,871950,931950,996950,1066950,1141950,1221950,1306950,1396950,1491950,1591950,1696950,1806950,1921950,2041950,2166950,2296950,2431950,2571950,2716950,2866950,3026950,3196950,3376950,3566950,3766950,3976950,4196950,4426950,4666950,4916950,5176950,5446950,5726950,6016950,6316950,6636950,6976950,7336950,7716950,8116950,8536950,8976950,9436950,9916950,10416950,10936950,11476950,12036950,12616950,13216950,13836950,14476950,15146950,15846950,16576950,17336950,18126950,18946950,19796950,20676950,21586950,22526950,23496950,24496950,25536950,26616950,27736950,28896950,30096950,31336950,32616950,33936950,35296950,36696950,38136950,39616950,41136950,42696950,44296950,45946950,47646950,49396950,51196950,53046950,54946950,56896950,58896950,60996950,63196950,65496950,67896950,70396950,72996950,75696950,78496950,81396950,84396950,87596950,90996950,94596950,98396950,102396950,106596950,110996950,115596950,120396950,125396950,130896950,136896950,143396950,150096450,157596450,165596450,174096450,183196450,192596450,202596450,213096450,224096450,235596450,247596450,260096450,273096450,286596450,300596450,315096450,330096450,346096450,363096450,381096450,400096450,420096450,441096450,463096450,486096450,510096450,535096450,561096450,588096450,616096450,646096450,678096450,712096450,748096450,786096450]
@@ -4420,64 +5099,469 @@ DataPrice = {
 
 TheoryCraftingContent = {
     'fusion_item':{
-        "type":"block",
+        "type":"img",
         "displayName":"fusion item",
         "classButton":"collapsible fusion",
-        "linkButton":{
-            "innerHTML":'<a onclick="createModale(this,true)" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a>'
-        },
         "collapsible_container":{
             "class_content":"fusion content",
             "content":{
-                "type":"img",
-                "src":"image/wiki-image/Fusing_Hierarchy.png",
-                "class":"fusion_collaps_img"
+                "field":{
+                    "src":"image/wiki-image/Fusing_Hierarchy.png",
+                    "class":"fusion_collaps_img",
+                    "alt":"Fusion Archero Hierarchy"
+                }
             },
         }
     },
     'fusion_item2':{
-        "type":"block",
+        "type":"img",
+        "displayName":"fusion item mythic+",
+        "classButton":"collapsible fusion",
+        "collapsible_container":{
+            "class_content":"fusion content",
+            "content":{
+                "field":{
+                    "src":"image/wiki-image/Fusing_Hierarchy2.png",
+                    "class":"fusion_collaps_img",
+                    "alt":"Fusion Archero Hierarchy2"
+                }
+            },
+        }
     },
     'fusion_dragon':{
-        "type":"block",
+        "type":"img",
+        "displayName":"fusion dragon",
+        "classButton":"collapsible fusion",
+        "collapsible_container":{
+            "class_content":"fusion content",
+            "content":{
+                "field":{
+                    "src":"image/wiki-image/Dragon-Rarity-Guide.png",
+                    "class":"fusion_collaps_img",
+                    "alt":"Achero rarity guide"
+                }
+            },
+        }
     },
     'tierlist_item_1':{
-        "type":"block",
+        "type":"img",
+        "displayName":"tierlist item normal",
+        "classButton":"collapsible tierlist",
+        "collapsible_container":{
+            "class_content":"tierlist content",
+            "content":{
+                "field":{
+                    "src":"image/wiki-image/General-Tier-List_1.png",
+                    "class":"tierlist_img",
+                    "alt":"Tierlist Archero"
+                }
+            },
+        }
     },
     'tierlist_item_2':{
-        "type":"block",
+        "type":"img",
+        "displayName":"tierlist item mythic",
+        "classButton":"collapsible tierlist",
+        "collapsible_container":{
+            "class_content":"tierlist content",
+            "content":{
+                "field":{
+                    "src":"image/wiki-image/Mythic-Tier-List2023.png",
+                    "class":"tierlist_img_myt",
+                    "alt":"Tierlist 2023 Archero"
+                }
+            },
+        }
     },
     'faq':{
-        "type":"block",
+        "type":"embed",
+        "displayName": "Frequently Asked Questions",
+        "classButton": "collapsible faq-container",
+        "collapsible_container":{
+            "class_content": "faq content",
+            "border_color": "rgb(177,177,177);",
+            "content": {
+                "title":{
+                    "idTitle":"title_faq",
+                    "innerText":"Frequently Asked Questions",
+                },
+                "description":{
+                    "idDesc":"desc_faq",
+                    "innerText":"",
+                },
+                "field":[
+                    {
+                        "name": "• Frequently Asked Questions •",				
+                        "value": "<a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_should_i_dismantle_or_exchange_items.3F'>Should I dismantle or exchange items?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_loadout.3F'>What is the best loadout?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_are_the_best_abilities.3F'>What are the best abilities?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_stutterstepping.3F'>What is stutterstepping?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_eggs_of_certain_monsters.2Feggs.3F'>Where do I find eggs of certain monsters/eggs?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_can_i_transfer_my_progress_from_ios_to_android_or_from_android_to_ios.3F'>Can I transfer my progress from iOS ⟷ Android ?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_why_did_i_not_get_the_latest_archero_update_yet.3F'>Why did I not get the latest Archero update yet?</a>"
+                    },
+                    {
+                        "name": "• Farming •",
+                        "value": "<a href='#wiki_why_did_i_not_receive_my_loot_that_dropped_in_a_stage.3F'>Why did I not receive my loot ?</a><br><a href='#wiki_what_is_the_best_place_to_farm.3F'>What is the best place to farm?</a><br><a href='#wiki_what_is_the_best_place_to_farm_a_specific_item.3F'>What is the best place to farm a specific item?</a><br><a href='#wiki_where_do_i_find_bloodthirst_stones.3F'>Where do I find Bloodthirst Stones?</a>"
+                    },
+                    {
+                        "name": "• Progressing •",
+                        "value": "<a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_do_i_get_more_gems.3F'>How do I get more gems?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_i_can.27t_beat_chapter_x.2C_what_should_i_do.3F'>I can't beat chapter x, what should I do?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_do_i_get_more_atk_and_hp.3F'>How do I get more ATK and HP?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_far_can_i_upgrade_my_talents.3F'>How far can I upgrade my talents?</a>"
+                    },
+                    {
+                        "name": "• When do I unlock ... ?",
+                        "value": "<a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.ancient_maze'>Ancient Maze</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.expedition_hero_mode'>Expedition Hero mode</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.quick_raids'>Quick Raids</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.equipment_altar'>Equipment Altar</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.hero_altar'>Hero Altar</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.dragon_statues'>Dragon Statues</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.great_.28green.29_item_drops_in_chapters'>Great item drops</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.refining.2Fglyphs'>Refining/Glyphs</a>"
+                    },
+                ],
+                "footer":{
+                    "innerText": "Source : Reddit r/Archero"
+                },
+                "thumbnail":{
+                    "src": "",
+                    "alt": "",
+                    "class": "",
+                }
+            }
+        }
     },
     'evo_cost':{
-        "type":"block",
+        "type":"img",
+        "displayName":"evolution cost",
+        "classButton":"collapsible evo_cost",
+        "collapsible_container":{
+            "class_content":"evo_cost content",
+            "content":{
+                "field":{
+                    "src":"image/wiki-image/EvolutionCost.png",
+                    "class":"evo_cost_img",
+                    "alt":"Evolution cost Archero"
+                }
+            },
+        }
     },
     'gems_spending_guide':{
         "type":"embed",
+        "displayName": "Gems Spending guide",
+        "classButton": "collapsible gems_spending_guide",
+        "collapsible_container":{
+            "class_content": "gems_spending_guide_child content",
+            "border_color": "rgb(0,249,54);",
+            "content": {
+                "title":{
+                    "idTitle":"title_gems_guide",
+                    "innerText":"Gem Spending Guide",
+                },
+                "description":{
+                    "idDesc":"desc_gems_guide",
+                    "innerText":"",
+                },
+                "field":[
+                    {
+                        "name": "",
+                        "value": "• At least one main hero (Helix is recommended)<br>• Extra hatchery slots, to speed up egg hatching<br>• Extra monster book slots, to get more bonuses from monsters in use<br>• Extra attempt for Ancient Maze, if you can consistently finish it on Extreme/Misery difficulty<br>• Extra energy to farm Hero chapters or play events<br>• Extra attempt(s) for Up-Close Dangers, if you are at the point where you earn relatively high amounts of coins from it compared to chapter runs<br>• Mystery Chest in your Farm, if it shows up<br>• Extra attempt for Mystery Mine, if you can consistently reach the last stage<br>• The following Minerals in the Mineral Shop:<br>100 Gems: 100% 2-5x lvl 3 Jewel500 Gems: 100% 1x lvl 5 Jewel<br>• Discounted offers of meta items from Vendors<br>"
+                    }
+                ],
+                "footer":{
+                    "innerText": "Credit: zkn#4789"
+                },
+                "thumbnail":{
+                    "src": "/static/image/wiki-image/Gem.png",
+                    "alt": "Gems Spending Thumbnail",
+                    "class": "",
+                },
+            }
+        }
     },
     'gold_earning_guide':{
         "type":"embed",
+        "displayName": "gold earning guide",
+        "classButton": "collapsible gold_earning_guide",
+        "collapsible_container":{
+            "class_content": "gold_earning_guide_child content",
+            "border_color": "rgb(255,196,0);",
+            "content": {
+                "title":{
+                    "idTitle":"title_gold_guide",
+                    "innerText":"Gold Earning Guide",
+                },
+                "description":{
+                    "idDesc":"desc_gold_guide",
+                    "innerText":"",
+                },
+                "field":[
+                    {
+                        "name": "",
+                        "value": "• Use any other rings than Lion Rings for +10% coins from battle<br>• In your Spirit jewel slots, have an overall level of 8 or higher, for +5% Coins from battle<br>• Play the Up-close Dangers event every time it is active (Tuesday, Thursday, Saturday, Sunday)<br>• Play the clan event (Monster Treasure) every day<br>• Watch 3 ads per day at the bottom of the Shop tab<br>• Watch 4 ads per day for 5 energy each by clicking on your energy at the top, use this energy to play chapters<br><br><em>• Hero Mode Boss chapters (7, 14, 21, 28, 32)<br>- Quick Runs<br>- Highest amount of Gold possible</em><br>"
+                    }
+                ],
+                "footer":{
+                    "innerText": "Credit: zkn#4789"
+                },
+                "thumbnail":{
+                    "src": "/static/image/wiki-image/Gold.png",
+                    "alt": "Gold Farming Thumbnail",
+                    "class": "",
+                },
+            }
+        }
     },
     'gear_farming_guide':{
         "type":"embed",
+        "displayName": "gear farming guide",
+        "classButton": "collapsible gear_farming_guide",
+        "collapsible_container":{
+            "class_content": "gear_farming_guide_child content",
+            "border_color": "rgb(177,177,177);",
+            "content": {
+                "title":{
+                    "idTitle":"title_gear_guide",
+                    "innerText":"Gear Farming Guide",
+                },
+                "description":{
+                    "idDesc":"desc_gear_guide",
+                    "innerText":"TIP: Always wait for dropped items to reach your character! If you proceed to the next stage and the items did not reach your character, you will not get those items.",
+                },
+                "field":[
+                    {
+                        "name": "",
+                        "value": "<b>Flying Bullets</b><br>• Can drop more than 5 items per run<br>• Drops relatively many scrolls<br><br><b>Hero Mode wave chapters (3, 6, 10, 16, 20, 24, 31)</b><br>• Drops more Jewels on average<br>• Drops Bloodstone & runes<br><br><b>Best mob chapters for 'afk' farming</b><br>• Choose the highest Hero wave chapter that you can always finish without needing to dodge<br>⇒ you only need to pay attention to pick abilities and move to the next stage<br>• Choose a spot in each stage that lets your hero reach all spawning monsters"
+                    }
+                ],
+                "footer":{
+                    "innerText": "Credit: zkn#4789"
+                },
+                "thumbnail":{
+                    "src": "/static/image/wiki-image/CommonWeapon.png",
+                    "alt": "Gear Farming Thumbnail",
+                    "class": "",
+                },
+            }
+        }
     },
     'glyphs':{
-        "type":"block",
+        "type":"embed",
+        "displayName": "glyphs",
+        "classButton": "collapsible glyphs",
+        "collapsible_container":{
+            "class_content": "glyphs content",
+            "border_color": "rgb(177,177,177);",
+            "content": {
+                "title":{
+                    "idTitle":"title_glyph_guide",
+                    "innerText":"Glyphs: ",
+                },
+                "description":{
+                    "idDesc":"desc_glyph_guide",
+                    "innerText":"<a href='https://www.reddit.com/r/Archero/wiki/refinement_guide/' target='_blank'>reddit guide</a>",
+                },
+                "field":[
+                    {
+                        "name": "There is 2 type of glyphs :",
+                        "value": "• Base Glyphs (without rank)<br>• Special Glyphs (rank A / S)<br>"
+                    },
+                    {
+                        "name": "How to get glyphs ??",
+                        "value": "- you need to sacrifice stuff starting from epic to ancient legendary<br>- When you sacrificed your stuff you can get random rarity & number of the same glyphs<br>- There is a chance you will get duplicates of the same Glyphs.<br>- Each item gives different glyphs"
+                    }
+                ],
+                "footer":{
+                    "innerText": "Glyph System - Unlocked at Chapter 17, you will need a Legendary item in order to access it."
+                },
+                "thumbnail":{
+                    "src": "",
+                    "alt": "",
+                    "class": "",
+                },
+            }
+        }
     },
     'refinement':{
-        "type":"block",
+        "type":"embed",
+        "displayName": "refinements",
+        "classButton": "collapsible refinement",
+        "collapsible_container":{
+            "class_content": "refinement content",
+            "border_color": "rgb(177,177,177);",
+            "content": {
+                "title":{
+                    "idTitle":"title_refinement_guide",
+                    "innerText":"Refine: ",
+                },
+                "description":{
+                    "idDesc":"desc_refinement_guide",
+                    "innerText":"<a href='https://www.reddit.com/r/Archero/wiki/refinement_guide/' target='_blank'>reddit guide</a>",
+                },
+                "field":[
+                    {
+                        "name": "How to unlock them:",
+                        "value": "Refinement rarity starts at Epic, to unlock the second slot, Perfect Epic, you need to refine 8 times. Same goes for the next rarities.<br>• 1st Slot (Epic) => Can only equip Normal Glyphs<br>• 2nd Slot (Perfect Epic) => Unlocks Special Glyph slot<br>• 3rd Slot (Legendary) => Unlocks Normal Glyph slot<br>• 4th Slot (Ancient Legendary) => Unlocks Normal Glyph slot<br>"
+                    }
+                ],
+                "footer":{
+                    "innerText": "<a href='https://docs.google.com/spreadsheets/d/1Z0bGaCJ8EuKZQSqeW8q1eS5bWl_5z6E237-JAuf9pFk' target='_blank'>Glyph Sheets</a>"
+                },
+                "thumbnail":{
+                    "src": "",
+                    "alt": "",
+                    "class": "",
+                },
+            }
+        }
     },
     'quickraid':{
-        "type":"block",
+        "type":"img",
+        "displayName":"quickraid",
+        "classButton":"collapsible quickraid",
+        "collapsible_container":{
+            "class_content":"quickraid content",
+            "content":{
+                "field":{
+                    "src":"image/wiki-image/qr_chart.png",
+                    "class":"qr-chart-img",
+                    "alt":"Archero quickraid drop"
+                }
+            },
+        }
     },
     'altar_cost':{
-        "type":"block",
+        "type":"embed",
+        "displayName": "altar cost",
+        "classButton": "collapsible altar_cost",
+        "collapsible_container":{
+            "class_content": "altar_cost_content content",
+            "border_color": "rgb(177,177,177);",
+            "content": {
+                "title":{
+                    "idTitle":"altar_cost_title",
+                    "innerText":"Altar Cost lvl0 to 120",
+                },
+                "description":{
+                    "idDesc":"altar_cost_desc",
+                    "innerText":"",
+                },
+                "field":[
+                    {
+                        "name": "",
+                        "value": "0 <i class='fa-solid fa-arrow-right'></i> 5 = 5 x 5 BS<br>5 <i class='fa-solid fa-arrow-right'></i> 10 = 5 x 10 BS<br>ascension n°10 = 100 BS<br>"
+                    },
+                    {
+                        "name": "",
+                        "value": "10 <i class='fa-solid fa-arrow-right'></i> 15 = 5 x 20 BS<br>15 <i class='fa-solid fa-arrow-right'></i> 20 = 5 x 30 BS<br>ascension n°20 = 250 BS<br>"
+                    },
+                    {
+                        "name": "",
+                        "value": "20 <i class='fa-solid fa-arrow-right'></i> 25 = 5 x 50 BS<br>25 <i class='fa-solid fa-arrow-right'></i> 30 = 5 x 70 BS<br>ascension n°30 = 450 BS<br>"
+                    },
+                    {
+                        "name": "",
+                        "value": "30 <i class='fa-solid fa-arrow-right'></i> 35 = 5 x 100 BS<br>35 <i class='fa-solid fa-arrow-right'></i> 40 = 5 x 150 BS<br>ascension n°40 = 750 BS<br>"
+                    },
+                    {
+                        "name": "",
+                        "value": "40 <i class='fa-solid fa-arrow-right'></i> 45 = 5 x 200 BS<br>45 <i class='fa-solid fa-arrow-right'></i> 50 = 5 x 250 BS<br>ascension n°50 = 1250 BS<br>"
+                    },
+                    {
+                        "name": "",
+                        "value": "50 <i class='fa-solid fa-arrow-right'></i> 55 = 5 x 300 BS<br>55 <i class='fa-solid fa-arrow-right'></i> 60 = 5 x 350 BS<br>ascension n°60 = 2000 BS<br>"
+                    },
+                    {
+                        "name": "",
+                        "value": "60 <i class='fa-solid fa-arrow-right'></i> 65 = 5 x 400 BS<br>65 <i class='fa-solid fa-arrow-right'></i> 70 = 5 x 450 BS<br>ascension n°70 = 3000 BS<br>"
+                    },
+                    {
+                        "name": "",
+                        "value": "70 <i class='fa-solid fa-arrow-right'></i> 75 = 5 x 500 BS<br>75 <i class='fa-solid fa-arrow-right'></i> 80 = 5 x 600 BS<br>ascension n°80 = 4000 BS<br>"
+                    },
+                    {
+                        "name": "",
+                        "value": "80 <i class='fa-solid fa-arrow-right'></i> 85 = 5 x 700 BS<br>85 <i class='fa-solid fa-arrow-right'></i> 90 = 5 x 800 BS<br>ascension n°90 = 5000 BS<br>"
+                    },
+                    {
+                        "name": "",
+                        "value": "90 <i class='fa-solid fa-arrow-right'></i> 95 = 5 x 900 BS<br>95 <i class='fa-solid fa-arrow-right'></i> 100 = 5 x 1000 BS<br>ascension n°100 = 7500 BS<br>"
+                    },
+                    {
+                        "name": "",
+                        "value": "100 <i class='fa-solid fa-arrow-right'></i> 105 = 5 x 1200 BS<br>105 <i class='fa-solid fa-arrow-right'></i> 110 = 5 x 1400 BS<br>ascension n°110 = 10000 BS<br>"
+                    },
+                    {
+                        "name": "",
+                        "value": "110 <i class='fa-solid fa-arrow-right'></i> 115 = 5 x 1600 BS<br>115 <i class='fa-solid fa-arrow-right'></i> 120 = 5 x 1800 BS<br>ascension n°120 = 12500 BS<br>"
+                    }
+                ],
+                "footer":{
+                    "innerText": "BS <i class='fa-solid fa-arrow-right'></i> Bloodthirst Stones <object type='image/png' data='/static/image/svg/bloodthirst_stone.svg' width='16' height='16'></object> (<a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_bloodthirst_stones.3F'>what is bloodstone ?</a>)"
+                },
+                "thumbnail":{
+                    "src": "",
+                    "alt": "",
+                    "class": "",
+                },
+            }
+        }
     },
     'egg_stats':{
-        "type":"block",
+        "type":"embed",
+        "displayName": "egg stats",
+        "classButton": "collapsible egg_stats",
+        "collapsible_container":{
+            "class_content": "egg_stats_content content",
+            "border_color": "rgb(177,177,177);",
+            "content": {
+                "title":{
+                    "idTitle":"title_egg_stats",
+                    "innerText":"Archero Hatchery and Egg Farming Compilation (edited by @Abstrusity, @Luhcaran, @Shusaku, @𝗺𝗿𝗯)",
+                },
+                "description":{
+                    "idDesc":"desc_egg_stats",
+                    "innerText":"",
+                },
+                "field":[
+                    {
+                        "name": "Includes",
+                        "value": "• List of available Monsters<br>• Numbers of kills required to hatch or complete quests<br>• Completed quest dialogue<br>• Automated hatch timers<br>• Where to find each Monster and which locations are recommended<br>• Monster training bonuses and costs (still Work in Progress)<br><a href='https://docs.google.com/spreadsheets/d/1p0xAb6ZrgwqhynromVXTqJSsfWlK1W8EDDt2HyvmRKE' target='_blank'>Google Sheets</a>"
+                    }
+                ],
+                "footer":{
+                    "innerText": "Initialy made by LanderZ"
+                },
+                "thumbnail":{
+                    "src": "",
+                    "alt": "",
+                    "class": "",
+                },
+            }
+        }
     },
     'hidden_stats':{
-        "type":"block",
+        "type":"embed",
+        "displayName": "Hidden Stats",
+        "classButton": "collapsible hidden_stats",
+        "collapsible_container":{
+            "class_content": "hidden_stats_content content",
+            "border_color": "rgb(177,177,177);",
+            "content": {
+                "title":{
+                    "idTitle":"title_refine_stats",
+                    "innerText":"Stats unlocked when reaching Mythic Refinement",
+                },
+                "description":{
+                    "idDesc":"desc_refine_stats",
+                    "innerText":"",
+                },
+                "field":[
+                    {
+                        "name": "",
+                        "value": "•  Weapon => For a brief while after taking damage, the next hit fires an extra shot.<br>•  Armor => The Higher the HP, the higher the Attack.<br>•  Ring n°1 => While Standing still reduces incomming Bullets Damage.<br>•  Ring n°2 => While Standing still reduces incomming Colision Damage.<br>•  Bracelet => When recovering HP in the Angel room, there is a chance to receive 3x healing.<br>•  Pets n°1 & Pets n°2 => After 2 attacks, the next attack deals double damage. <br>•  Locket => For the first 3s after entering a room, increases movement speed.<br>•  SpellBook => SpellBook can gain energy from Hearts."
+                    },
+                    {
+                        "name": "Comments",
+                        "value": "•  Pets n°1 & Pets n°2 => Works only for the pet attack."
+                    }
+                ],
+                "footer":{
+                    "innerText": ""
+                },
+                "thumbnail":{
+                    "src": "",
+                    "alt": "",
+                    "class": "",
+                },
+            }
+        }
     },
 }

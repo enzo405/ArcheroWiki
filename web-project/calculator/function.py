@@ -1,7 +1,10 @@
 from datetime import datetime
 from PIL import Image
 from pathlib import Path
+from django.shortcuts import render, redirect
+from django.http import HttpResponseForbidden
 from discord_webhook import DiscordWebhook, DiscordEmbed
+from django.contrib import messages
 from .data import *
 from difflib import SequenceMatcher
 from . import models
@@ -16,6 +19,7 @@ import urllib.parse
 
 WEBHOOK_URL = "https://discord.com/api/webhooks/#########/#############################################"
 WEBHOOK_URL2 = "https://discord.com/api/webhooks/#########/#############################################"
+
 # def makeLog(request, myLog):
 # 	dict_log = {
 # 		"dateLog": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
@@ -98,14 +102,24 @@ def findFormError(valid_User, valid_StuffTable, valid_HeroTable, valid_TalentTab
 
 def checkCookie(cookie_value:dict):
 	requestCookie = cookie_value.copy()
-	cookiePopList = ['csrftoken','sessionid','windowInnerWidth','windowInnerHeight', 'modeDisplay', 'messages']
-	for i in cookiePopList:
-		try:
-			requestCookie.pop(i)
-		except:
-			pass
-	return requestCookie
+	result = {}
+	for k,v in requestCookie.items():
+		check_credential = checkUsernameCredentials(k,v)
+		if check_credential[0]:
+			result.update({k:v})
+	return result
 
+def login_required(func):
+	def wrapper(request, *args, **kwargs):
+		result = checkCookie(request.COOKIES)
+		if len(result) == 0:
+			messages.warning(request, f"You need to login first")
+			return render(request, "login.html")
+		elif len(result) >= 2:
+			send_webhook(f"Log : {result} \n{request.COOKIES}\n{request.build_absolute_uri()}")
+		request.session['user_credential'] = result
+		return func(request, *args, **kwargs)
+	return wrapper
 
 def userExist(json, user):
 	liste_username = []
@@ -116,10 +130,9 @@ def userExist(json, user):
 	else:
 		return True
 
-def requestJson(request):
+def requestJson(request,cookie):
 	with open('calculator/static/json/requetes.json', "r") as jsonFile:
 		request_json_file = json.load(jsonFile)
-	cookie = checkCookie(request.COOKIES)
 	try:
 		username = list(cookie)[0]
 		username_id = request.COOKIES[username]
@@ -138,36 +151,41 @@ def requestJson(request):
 		for i in request_json_file['user']:
 			if i['username'] == username:
 				i['number_request'] += 1
-
 	with open('calculator/static/json/requetes.json', "w") as jsonFile:
 		json.dump(request_json_file, jsonFile)
+
 
 def clearFile(f):
 	data_init = {"user": []}
 	json.dump(data_init, f)
 	f.close()
 
+
 def similar(a, b):
 	a = a.replace('*', '') ## pour ceux qui ont mis un character unterdis dans le cookie 
 	b = b.replace('*', '') ## vu que le character interdis est remplacé par un *
 	return SequenceMatcher(None, a, b).ratio()
 
+
 def create_unique_id():
 	unique_id = str(time.time()).replace('.','')
 	return unique_id
+
 
 def checkUsernameCredentials(username_raw,id_raw):
 	pattern = re.compile(r'^\d{1}-\d{6,12}$')    # Compile un motif de regex pour les identifiants de jeu valides
 	decoded_bytes = urllib.parse.unquote(username_raw).encode('utf-8') # Décode le nom d'utilisateur brut en octets et encode la chaîne de caractères décodée en octets
 	ingame_name = decoded_bytes.decode('utf-8') # Remplace tous les caractères illégaux par "*" après avoir converti la chaîne de bytes en une chaîne de caractères en utf-8
 	ingame_id = urllib.parse.unquote(id_raw)   # Décode l'identifiant de jeu brut
-	if 3 <= len(ingame_name) < 20:
+	unavailable_username = ['csrftoken','sessionid','windowInnerWidth','windowInnerHeight', 'modeDisplay', 'messages', 'sessionid']
+	if 3 <= len(ingame_name) < 20 and ingame_name not in unavailable_username:
 		if re.fullmatch(pattern, ingame_id) and ingame_id != "" and ingame_id != None and all(c.isdigit() or c == '-' for c in ingame_id):
 			return True, ingame_name, ingame_id
 		else:
 			return False, ingame_name, ingame_id,"Ingame id incorrect"
 	else:
-		return False, ingame_name, ingame_id,"Username length doesn't match"
+		return False, ingame_name, ingame_id,"Username not allowed"
+
 
 def checkIllegalKey(string:str):
 	for i in string:
@@ -182,12 +200,12 @@ def send_webhook(msg):
 	wh = DiscordWebhook(url=WEBHOOK_URL, content=msg, rate_limit_retry=True)
 	wh.execute()
 
-def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:str,field_value:str,e_color:int, request, ping_me:bool):
-	if ping_me:
-		content_msg = "<@382930544385851392>"
+def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:str,field_value:str,e_color:int, request, alert:bool):
+	if alert:
+		content_msg = "<@&1091459880700874882>"
 	else:
 		content_msg = ""
-	webhook = DiscordWebhook(url=WEBHOOK_URL, content=content_msg, rate_limit_retry=True, allowed_mentions={"users": ["382930544385851392"]})
+	webhook = DiscordWebhook(url=WEBHOOK_URL, content=content_msg, rate_limit_retry=True, allowed_mentions={"roles": ["<@&1091459880700874882>",]})
 	embed = DiscordEmbed(title=str(title_embed), description=str(description_embed), color=e_color)
 	embed.set_author(
 		name=str(author_name),
@@ -199,8 +217,8 @@ def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:
 	webhook.execute()
 
 
-def checkTheme_Request(request):
-	requestJson(request)
+def checkTheme_Request(request, cookie_result):
+	requestJson(request,cookie_result)
 	if "modeDisplay" in list(request.COOKIES):
 		return "yes"
 	else:

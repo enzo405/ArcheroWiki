@@ -248,17 +248,17 @@
 	--lt-footer-font-color-title: white;
 	--lt-footer-font-color-content: #CCCCCC;
 	--lt-sidebaropen-content-bg: white;
-	--lt-sidebaropen-content-broder: black;
+	--lt-sidebaropen-content-border: black;
 	--lt-footer-dlink-color: whitesmoke;
 	--lt-footer-tos-ahover-color: rgb(205, 182, 182);
 	--lt-noscript-msg-bg: #f2f2f2;
-	--lt-noscript-msg-broder: #ccc;
+	--lt-noscript-msg-border: #ccc;
 	--lt-modale-content-bg: white;
 	--lt-modale-content-boxshadow: rgba(0, 0, 0, 0.5);
 	--lt-modale-content-btn-bg: #007bff;
 	--lt-modale-content-btn-color: white;
-	--lt-messages-modales-broder: black;
-	--lt-messages-tags-broder: black;
+	--lt-messages-modales-border: black;
+	--lt-messages-tags-border: black;
 	--lt-messages-tags-color: white;
 	--lt-messages-success-color: #267612;
 	--lt-messages-error-color: #d50400;
@@ -268,6 +268,7 @@
 	--dt-sidebar-bg: #292929;
 	--dt-footer-bg: #292929;
 	--dt-section-main-bg: #191919 ;
+	--dt-section-main-color: #CCCCCC ;
 	--dt-header-font-color: ivory;
 	--dt-sidebar-content-font-color: aliceblue;
 	--dt-sidebar-traveling-bg: #161c1f;
@@ -288,6 +289,8 @@ body{
 footer{
 	background-color: var(--lt-footer-bg);
 	width: 100%;
+	padding-top: 22px;
+	padding-bottom: 22px;
 }
 footer h1, footer h2{
 	color: var(--lt-footer-font-color-title);
@@ -454,7 +457,6 @@ footer div, footer li{
 	justify-content: center;
 }
 .traveling-inline-div{
-	cursor: pointer;
 	max-height: 42px;
 	min-height: 42px;
 	display: flex;
@@ -466,6 +468,7 @@ footer div, footer li{
 	background-size: cover;
 	width: 100%;
 	user-select: none;
+	text-decoration: none;
 }
 #darkmodeSWITCH, #svg-filter-sidebar{
 	filter: invert(1) sepia(1) hue-rotate(172deg);
@@ -483,9 +486,12 @@ footer div, footer li{
 .sidebar-open #Promos-sidebar-image:hover::after{
 	position: fixed;
 	left: 75px;
-    border: var(--lt-sidebaropen-content-broder) 1px solid;
+    border: var(--lt-sidebaropen-content-border) 1px solid;
     background-color: var(--lt-sidebaropen-content-bg);
     padding: 4px;
+	color: black;
+    cursor: default;
+    text-decoration: none;
 }
 .sidebar-open #Menu-sidebar-image:hover::after{ content: "Menu";}
 .sidebar-open #Item-sidebar-image:hover::after{ content: "Item";}
@@ -554,11 +560,12 @@ footer div, footer li{
 	display: flex;
 	margin-right: 10px;
 }
-.tos a{
+.f_content_info a{
 	text-decoration: none;
-	color: var(--lt-footer-font-color-content);
+	font-weight: bold;
+	color: var(--lt-footer-dlink-color);
 }
-.tos a:hover{
+.f_content_info a:hover{
 	text-decoration: underline;
 	color: var(--lt-footer-tos-ahover-color);
 }
@@ -568,12 +575,16 @@ footer div, footer li{
 /* ALL DESC PAGE */
 /* PROMO CODE PAGE */
 /* THEORYCRAFTING PAGE */
+/* CHANGELOG PAGE */
 .content_container{
 	display: flex;
     flex-direction: column;
     align-items: center;
 	margin-bottom: 20px;
-	min-height: 70vh;
+	min-height: 75vh;
+}
+.content_container{
+	color: black;
 }
 
 /* NOSCRIPT MESSAGE */
@@ -584,7 +595,7 @@ footer div, footer li{
 	transform: translate(-50%, -50%);
 	background-color: var(--lt-noscript-msg-bg);
 	padding: 20px;
-	border: 1px solid var(--lt-noscript-msg-broder);
+	border: 1px solid var(--lt-noscript-msg-border);
 	text-align: center;
 	width: 50%;
 	max-width: 300px;
@@ -630,7 +641,7 @@ footer div, footer li{
 	top: 90%;
 	left: 52%;
 	transform: translate(-50%, -50%);
-	border: 0px solid var(--lt-messages-modales-broder);
+	border: 0px solid var(--lt-messages-modales-border);
 	border-radius: 10px;
 	z-index: 999;
 	opacity: 1;
@@ -638,7 +649,7 @@ footer div, footer li{
 }
 #messages #messages-tags{
 	padding: 15px 30px 15px 30px;
-	border: 0px solid var(--lt-messages-tags-broder);
+	border: 0px solid var(--lt-messages-tags-border);
 	border-radius: 10px;
 	margin: 0;
 	color: var(--lt-messages-tags-color);
@@ -708,4 +719,7 @@ footer div, footer li{
 }
 .body_dark_mode .modals-contenu a{
 	color: var(--dt-modale-content-a-color);
+}
+.body_dark_mode .content_container{
+	color: var(--dt-section-main-color);
 }
