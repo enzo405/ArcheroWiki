@@ -5252,7 +5252,7 @@ TheoryCraftingContent = {
                 "field":[
                     {
                         "name": "",
-                        "value": "• At least one main hero (Helix is recommended)<br>• Extra hatchery slots, to speed up egg hatching<br>• Extra monster book slots, to get more bonuses from monsters in use<br>• Extra attempt for Ancient Maze, if you can consistently finish it on Extreme/Misery difficulty<br>• Extra energy to farm Hero chapters or play events<br>• Extra attempt(s) for Up-Close Dangers, if you are at the point where you earn relatively high amounts of coins from it compared to chapter runs<br>• Mystery Chest in your Farm, if it shows up<br>• Extra attempt for Mystery Mine, if you can consistently reach the last stage<br>• The following Minerals in the Mineral Shop:<br>100 Gems: 100% 2-5x lvl 3 Jewel500 Gems: 100% 1x lvl 5 Jewel<br>• Discounted offers of meta items from Vendors<br>"
+                        "value": "• At least one main hero (Helix is recommended)<br>• Extra hatchery slots, to speed up egg hatching<br>• Extra monster book slots, to get more bonuses from monsters in use<br>• Extra attempt for Ancient Maze, if you can consistently finish it on Extreme/Misery difficulty<br>• Extra energy to farm Hero chapters or play events<br>• Extra attempt(s) for Up-Close Dangers, if you are at the point where you earn relatively high amounts of coins from it compared to chapter runs<br>• Mystery Chest in your Farm, if it shows up<br>• Extra attempt for Mystery Mine, if you can consistently reach the last stage<br>• The following Minerals in the Mineral Shop:<br>100 Gems: 100% 2-5x lvl 3 Jewel<br>500 Gems: 100% 1x lvl 5 Jewel<br>• Discounted offers of meta items from Vendors<br>"
                     }
                 ],
                 "footer":{
@@ -5517,7 +5517,7 @@ TheoryCraftingContent = {
                     }
                 ],
                 "footer":{
-                    "innerText": "Initialy made by LanderZ"
+                    "innerText": "Initially made by LanderZ"
                 },
                 "thumbnail":{
                     "src": "",

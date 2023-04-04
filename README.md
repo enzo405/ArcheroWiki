@@ -58,13 +58,7 @@ ___
 
 ```diff
 TODO :
-- add page for emulator skill in fight with skill you can check (don't forget medals boost)
-- details page add run boost from glyphs, dragon, stuff etc...
-- refacto code poo
-- centralize : theorycrafting page in data.py to make it editable with the futur API 
-- dmgcalc put the correct runes for it's matched line
-- README GitHub
-- font number stuff image
+
 ```
 ```diff
 Need to hack / datamine
@@ -73,14 +67,20 @@ Need to hack / datamine
 ```
 ```diff
 Future Release:
+- jewel/dragon guide
 - glyphs unlocked in form (new table)
-+ when patched : necklace attack base jewel stats
+- font number stuff image
 - form relics remake
++ when patched : necklace attack base jewel stats
 - add all heroes star for future information in profile page
+- add page for emulator skill in fight with skill you can check (don't forget medals boost)
+- details page add run boost from glyphs, dragon, stuff etc...
 ```
 ```diff
 Why not ?
 - system maintenance when changing db
+- header under msg, add credentials ?
+- FAQ section : directly put the content of reddit post instead of linking ?
 ```
 ```diff
 When TigerShark API finished :
