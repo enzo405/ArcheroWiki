@@ -1,9 +1,9 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5">
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5.1a">
 <title>{{ name }} Stats - Wiki</title>
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.1a">
 <meta name="description" content="{{ name }} Stats - Wiki">
 <meta property="og:url" content="https://stats.wiki-archero.com/calculator/show/{{pbid}}/">
 <meta property="og:type" content="website">
@@ -44,6 +44,9 @@
 			}
 		}
 	</script>
+	{% if DEV_MODE %}
+		<div class="go_to_details dev_div"><a href="/del_dev/{{ pbid }}/">Reload Stats (only dev mode)</a></div>
+	{% endif %}
 	<div class="go_to_details" onclick="toggleDetailStats()">Switch Stats/Details</div>
 	<div id="contain-image-stuff" class="contain-image-stuff" style="display: flex;">
 		<div class="image-div-stuff">
@@ -54,7 +57,7 @@
 				<img alt="dragon" class="button-dragon" src="/static/image/stuff_save/dragon_save/{{ pbid }}.png">
 			</div>
 			<div class="image-stuff-result-container">
-				<img alt="stuff image" class="image-stuff-result" src="{% static 'image/stuff_save/'|add:pbid|add:'.png' %}?version=1.5">
+				<img alt="stuff image" class="image-stuff-result" src="{% static 'image/stuff_save/'|add:pbid|add:'.png' %}?version=1.5.1a">
 				<div class="image-stuff-result-bg"></div>
 			</div>
 		</div>
@@ -97,7 +100,7 @@
 			</div>
 		</div>
 		<div class="stats-box monster_damage">
-			<h3>Monster damage</h3>
+			<h3>Mobs damage</h3>
 			<div class="damage_container_box">
 				<div class="stat-item">
 					<p title="Damage to Mob">+{{ global_mobs_damage }}</p>
@@ -177,6 +180,54 @@
 				</div>
 				<div class="stat-item">
 					<p title="Melee Damage %">+{{ global_melee_damage_var }}%</p>
+				</div>
+			</div>
+		</div>
+		<div class="stats-box elite_damage">
+			<h3>Elite Monsters Damage</h3>
+			<div class="damage_container_box">
+				<div class="stat-item">
+					<p title="Elite Monster Damage">+{{ global_elite_damage_flat }}</p>
+				</div>
+				<div class="stat-item">
+					<img class="image_damage_type_stats" title="Damage to Elite Monsters" alt="Damage to Elite Monsters" src="/static/image/wiki-image/EliteMonster.png">
+				</div>
+				<div class="stat-item">
+					<p title="Elite Monster Damage %">+{{ global_elite_damage_var }}%</p>
+				</div>
+			</div>
+		</div>
+		<div class="stats-box elite_damage">
+			<h3>Normal Monsters Damage</h3>
+			<div class="damage_container_box">
+				<div class="stat-item">
+					<p title="Normal Monster Damage">+{{ global_normal_damage_flat }}</p>
+				</div>
+				<div class="stat-item">
+					<img class="image_damage_type_stats" title="Damage to Normal Monsters" alt="Damage to Normal Monsters" src="/static/image/wiki-image/NormalMonster.png">
+				</div>
+				<div class="stat-item">
+					<p title="Normal Monster Damage %">+{{ global_normal_damage_var }}%</p>
+				</div>
+			</div>
+		</div>
+		<div class="stats-box elite_damage">
+			<h3>Weapon Damage</h3>
+			<div class="center_content">
+				<div class="stat-item">
+					<p title="Normal Monster Damage">+{{ weapon_damage }}%</p>
+				</div>
+			</div>
+			<h3>Melee Weapon Damage</h3>
+			<div class="center_content">
+				<div class="stat-item">
+					<p title="Normal Monster Damage">+{{ weapon_melee_damage }}%</p>
+				</div>
+			</div>
+			<h3>Ranged Weapon Damage</h3>
+			<div class="center_content">
+				<div class="stat-item">
+					<p title="Normal Monster Damage %">+{{ weapon_ranged_damage }}%</p>
 				</div>
 			</div>
 		</div>

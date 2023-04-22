@@ -1,0 +1,21 @@
+{% extends "template.html" %}
+{% load static %}
+	{% block head %}
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.1a">
+		<title>API - Create User Queue</title>
+	{% endblock %}
+	{% block header_content %}Form User Queue{% endblock %}
+	{% block content %}
+	<div class="content_container">
+	    <form method="post">
+    	    {% csrf_token %}
+			<script>
+				document.cookie = " csrftoken= "+ document.querySelector('[name=csrfmiddlewaretoken]').value + ";path=/";
+			</script>
+    	    {{ form.as_p }}
+   	    <button type="submit">Submit</button>
+		</form>
+	</div>
+	{% endblock %}
+	{% block javascript %}
+	{% endblock %}

@@ -1,27 +1,13 @@
-import os
 from pathlib import Path
-from django.core.exceptions import ImproperlyConfigured
-
-
-def get_env_variable(var_name):
-    try:
-        return os.environ[var_name]
-    except KeyError:
-        error_msg = f"Set the {var_name} environment variable"
-        raise ImproperlyConfigured(error_msg)
-
+import os
+from const import c_DEBUG, c_DATABASES, c_CSRF_FAILURE_VIEW, c_CSRF_USE_SESSION, c_CSRF_COOKIE_SECURE, c_CSRF_COOKIE_DOMAIN, c_CSRF_TRUSTED_ORIGINS, c_ALLOWED_HOSTS, c_SECRET_KEY
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = get_env_variable('SECRET_KEY')
-## create this SECRET KEY by using this command : 
-# python manage.py shell -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+SECRET_KEY = c_SECRET_KEY
+DEBUG = c_DEBUG
 
-
-# True dev / False prod
-DEBUG = False
-
-ALLOWED_HOSTS = ['yourdomain.com']  # Replace with your domain name
+ALLOWED_HOSTS = c_ALLOWED_HOSTS
 
 INSTALLED_APPS = [
     'calculator.apps.CalculatorConfig',
@@ -31,6 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -63,16 +50,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': get_env_variable('DB_NAME'),
-        'USER': get_env_variable('DB_USER'),
-        'PASSWORD': get_env_variable('DB_PASSWORD'),
-        'HOST': get_env_variable('DB_HOST'),
-        'PORT': get_env_variable('DB_PORT'),
-    }
-}
+DATABASES = c_DATABASES
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -94,11 +73,23 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-CSRF_COOKIE_SECURE = True
-CSRF_USE_SESSION = True
-CSRF_TRUSTED_ORIGINS = ["https://yourdomain.com"]
+
+#CSRF_FAILURE_VIEW = os.environ.get('CSRF_FAILURE_VIEW')
+#CSRF_USE_SESSION = os.environ.get('CSRF_USE_SESSION')
+#CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE')
+#CSRF_COOKIE_DOMAIN = os.environ.get('CSRF_COOKIE_DOMAIN')
+#CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS')
+
+
+CSRF_FAILURE_VIEW = c_CSRF_FAILURE_VIEW
+CSRF_USE_SESSION = c_CSRF_USE_SESSION
+CSRF_COOKIE_SECURE = c_CSRF_COOKIE_SECURE
+CSRF_COOKIE_DOMAIN = c_CSRF_COOKIE_DOMAIN
+CSRF_TRUSTED_ORIGINS = c_CSRF_TRUSTED_ORIGINS
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "calculator/static/")
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

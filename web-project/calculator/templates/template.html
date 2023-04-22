@@ -3,11 +3,11 @@
 	<head>
 		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.5">
+		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.5.1a">
 		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-		<script src="{% static 'main.js' %}?version=1.5"></script>
+		<script src="{% static 'main.js' %}?version=1.5.1a"></script>
 		{% block head %}
 		{% endblock %}
 	</head>
@@ -46,7 +46,7 @@
 	<main class="container-hcf">
 		<header class="header-container">
 			<div class="header-container-1"></div>
-			<div class="header-container-2 header_msg"><h1 class="header-h1">{% block header_content %}{% endblock %}</h1></div>
+			<div class="header-container-2 header_msg"><h1 class="header-h1">{% block header_content %}{% endblock %}</h1><span class="cookieUsername">{{ cookieUsername }}</span></div>
 			<div class="header-container-3 globe_header_icon">
 				<div class="traveling-inline-div" id="switch_dark_mode">
 					<div class="leftsidebarc traveling-left">
@@ -74,7 +74,7 @@
 			<footer>
 				<div class="footer-content">
 					<div class="footer-about">
-						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.5" alt="image game icon">
+						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.5.1a" alt="image game icon">
 						<div class="about-content">
 							<h2>Archero :</h2>
 							<div>Archero Update will be added with a certains delay</div>
@@ -83,7 +83,7 @@
 							</div>
 							<div class="f_content_info"><a href="/Terms-of-Use/">Terms of Use</a></div>
 							<div class="f_content_info"><a href="/changelog/">ChangeLog</a></div>
-							<div class="f_content_info">Build v1.5</div>
+							<div class="f_content_info">Build v1.5.1a</div>
 						</div>
 					</div>
 					<div class="discord_link">
@@ -104,7 +104,7 @@
 						<div class="shout-out">Special thanks : <b>Deth, SonHaon and TigerShark14</b></div>
 						<div class="shout-out">Thanks to : Pew, Lorenz, RedsMeName</div>
 						<div class="shout-out">KeithShade, Craggy94, Kang Greenstrider</div>
-						<div class="shout-out">Chaos, Lovii, Pelmens, PNE241, Ktaplouf</div>
+						<div class="shout-out">Chaos, Mahanaxar, Pelmens, PNE241, Lovii</div>
 					</div>
 				</div>
 			</footer>

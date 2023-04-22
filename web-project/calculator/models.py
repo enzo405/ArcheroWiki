@@ -1,9 +1,35 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.contrib.postgres.fields import ArrayField
-import datetime
-from .data import *
-import math
+import datetime, math, json
+from django.contrib.auth.models import User as BuiltinDjangoUser
+from django.utils.crypto import get_random_string
+
+
+
+class UserQueue(models.Model):
+	username = models.CharField(max_length=255)
+	email = models.EmailField()
+	password = models.CharField(max_length=255)
+	is_validated = models.BooleanField(default=False)
+	created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Token(models.Model):
+	user = models.OneToOneField(BuiltinDjangoUser, on_delete=models.CASCADE)
+	key = models.CharField(max_length=40, unique=True)
+	created_at = models.DateTimeField(auto_now_add=True)
+	discord_acc_rely = models.CharField(max_length=40, default=" ", blank=True, null=True)
+
+	def save(self, *args, **kwargs):
+		if not self.key:
+			self.key = self.generate_key()
+		return super(Token, self).save(*args, **kwargs)
+
+	def generate_key(self):
+		return get_random_string(40)
+
+	def __str__(self):
+		return self.key
 
 #(actual value, human readable name)
 all_heros = (("Atreus","Atreus"),("Urasil","Urasil"),("Phoren","Phoren"),("Taranis","Taranis"),("Helix","Helix"),("Meowgik","Meowgik"),("Shari","Shari"),("Ayana","Ayana"),("Onir","Onir"),("Rolla","Rolla"),("Bonnie","Bonnie"),("Sylvan","Sylvan"),("Shade","Shade"),("Ophelia","Ophelia"),("Ryan","Ryan"),("Lina","Lina"),("Aquea","Aquea"),("Shingen","Shingen"),("Gugu","Gugu"),("Iris","Iris"),("Blazo","Blazo"),("Melinda","Melinda"),("Elaine","Elaine"),("Bobo","Bobo"),("Stella","Stella"))
@@ -93,7 +119,11 @@ all_egg = (
 	('Mobs', (("Vase","Vase"),("Green Bat","Green Bat"),("Rock Puppet","Rock Puppet"),("Bomb Ghost","Bomb Ghost"),("Piranha","Piranha"),("Skeleton Archer","Skeleton Archer"),("Tornado Demon","Tornado Demon"),("Party Tree","Party Tree"),("Wasp","Wasp"),("Wolfhound","Wolfhound"),("Scarecrow","Scarecrow"),("Tornado Mage","Tornado Mage"),("Lava Golem","Lava Golem"),("Skull Wizard","Skull Wizard"),("Cactus","Cactus"),("Ice Mage","Ice Mage"),("Shadow Assassin","Shadow Assassin"),("Fire Lizard","Fire Lizard"),("Fire Mage","Fire Mage"),("Fallen Bat","Fallen Bat"),("Steel Dryad","Steel Dryad"),("Ice Golem","Ice Golem"),("Medusa","Medusa"),("Nether Puppet","Nether Puppet"),("Spitting Mushroom","Spitting Mushroom"),("Psionic Scarecrow","Psionic Scarecrow"),("Pea Shooter","Pea Shooter"),("Scythe Mage","Scythe Mage"),("Rolling Mushroom","Rolling Mushroom"),("Skeleton Swordsman","Skeleton Swordsman"),("Sandian","Sandian"),("Savage Spider","Savage Spider"),("Scarlet Mage","Scarlet Mage"),("Thorny Snake","Thorny Snake"),("Long Dragon","Long Dragon"),("Purple Phantom","Purple Phantom"),("Elite Archer","Elite Archer"),("Flaming Bug","Flaming Bug"),("One-eyed Bat","One-eyed Bat"),("Tundra Dragon","Tundra Dragon"),("Zombie","Zombie"),("Crazy Spider","Crazy Spider"),("Icefire Phantom","Icefire Phantom"),("Skeleton Soldier","Skeleton Soldier"),("Flame Ghost","Flame Ghost"),("Fire Element","Fire Element"),("Shark Bro","Shark Bro"),("Crimson Zombie","Crimson Zombie"),("Fat Bat","Fat Bat"),("Plainswolf","Plainswolf"),)),
  	('Boss', (("Little Dragon","Little Dragon"),("Rage Golem","Rage Golem"),("Arch Leader","Arch Leader"),("Krab Boss","Krab Boss"),("Ice Demon","Ice Demon"),("Crimson Witch","Crimson Witch"),("Skeleton King","Skeleton King"),("Giant Owl","Giant Owl"),("Fire Demon","Fire Demon"),("Medusa-Boss","Medusa-Boss"),("Desert Goliath","Desert Goliath"),("Queen Bee","Queen Bee"),("Ice Worm","Ice Worm"),("Sinister Touch","Sinister Touch"),("Scythe Pharoah","Scythe Pharoah"),("Fireworm Queen","Fireworm Queen"),("Infernal Demon","Infernal Demon"),)),)
 
-
+class parentModel():
+	def __init__(self):
+		with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+			local_data = json.load(f)
+		self.local_data = local_data
 
 class user(models.Model):
 	ingame_id = models.CharField(max_length=20,blank=False,unique=True)
@@ -141,7 +171,7 @@ class user(models.Model):
 					'health_base_stats_hero_choosen': self.health_base_stats_hero_choosen,
 					}
 
-class stuff_table(models.Model):
+class stuff_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	weapon_choosen = models.CharField(max_length=20 ,choices=stuff_weapon, default="None")
 	weapon_level = models.BigIntegerField(default=1, validators=[MaxValueValidator(170)]) 
@@ -183,14 +213,14 @@ class stuff_table(models.Model):
 					"bracelet_choosen":self.bracelet_choosen,"bracelet_level" : self.bracelet_level,"bracelet_rarity" : self.bracelet_rarity,
 					"locket_choosen":self.locket_choosen,"locket_level" : self.locket_level,"locket_rarity" : self.locket_rarity,
 					"book_choosen":self.book_choosen,"book_level" : self.book_level,"book_rarity" : self.book_rarity,
-					}
+				}
 
 	def __str__(self):
 		chaine = f"{self.user_profile.ingame_id} | {self.user_profile.ingame_name}"
 		return chaine
 
 	def getWeaponCoeff(self):
-		return int(WeaponHiddenStats[self.weapon_choosen.lower().replace(" ","_") + "_dmg_multiplier"])
+		return int(self.local_data["WeaponHiddenStats"][self.weapon_choosen.lower().replace(" ","_") + "_dmg_multiplier"])
 
 	def GetRawStats(self):
 		rarity_index = {
@@ -224,143 +254,135 @@ class stuff_table(models.Model):
 		bracelet_rarity = self.bracelet_rarity.replace(" ","_").lower()
 		locket_rarity = self.locket_rarity.replace(" ","_").lower()
 		book_rarity = self.book_rarity.replace(" ","_").lower()
-
 		return {
-			'weapon_inc_raw' : StatsWeapon[str(weapon_name)]["inc"][rarity_index[str(weapon_rarity)]],
-			'weapon_base_raw' : StatsWeapon[str(weapon_name)]["base"][rarity_index[str(weapon_rarity)]],
-			'weapon_var_raw' : StatsWeapon[str(weapon_name)]["var_atk"][rarity_index[str(weapon_rarity)]],
-			'weapon_crit_raw' : StatsWeapon[str(weapon_name)]["crit"][rarity_index[str(weapon_rarity)]],
-			'weapon_basic_stats' : StatsWeapon[str(weapon_name)]["basic_stats"][rarity_index[str(weapon_rarity)]],
+			'weapon_inc_raw' : self.local_data["StatsWeapon"][str(weapon_name)]["inc"][rarity_index[str(weapon_rarity)]],
+			'weapon_base_raw' : self.local_data["StatsWeapon"][str(weapon_name)]["base"][rarity_index[str(weapon_rarity)]],
+			'weapon_var_raw' : self.local_data["StatsWeapon"][str(weapon_name)]["var_atk"][rarity_index[str(weapon_rarity)]],
+			'weapon_crit_raw' : self.local_data["StatsWeapon"][str(weapon_name)]["crit"][rarity_index[str(weapon_rarity)]],
+			'weapon_basic_stats' : self.local_data["StatsWeapon"][str(weapon_name)]["basic_stats"][rarity_index[str(weapon_rarity)]],
+			'weapon_damage_stats' : self.local_data["StatsWeapon"][str(weapon_name)]["weapon_damage"][rarity_index[str(weapon_rarity)]],
 
-			'armor_inc_raw' : StatsArmor[str(armor_name)]["inc"][rarity_index[str(armor_rarity)]],
-			'armor_base_raw' : StatsArmor[str(armor_name)]["base"][rarity_index[str(armor_rarity)]],
-			'armor_var_raw' : StatsArmor[str(armor_name)]["var_hp"][rarity_index[str(armor_rarity)]],
-			'armor_dodge_raw' : StatsArmor[str(armor_name)]["dodge"][rarity_index[str(armor_rarity)]],
-			'armor_resistance_raw' : StatsArmor[str(armor_name)]["resistance"][rarity_index[str(armor_rarity)]],
-			'armor_basic_stats' : StatsArmor[str(armor_name)]["basic_stats"][rarity_index[str(armor_rarity)]],
-			'armor_resistance_type_raw' : StatsArmor[str(armor_name)]["resistance_type"],
+			'armor_inc_raw' : self.local_data["StatsArmor"][str(armor_name)]["inc"][rarity_index[str(armor_rarity)]],
+			'armor_base_raw' : self.local_data["StatsArmor"][str(armor_name)]["base"][rarity_index[str(armor_rarity)]],
+			'armor_var_raw' : self.local_data["StatsArmor"][str(armor_name)]["var_hp"][rarity_index[str(armor_rarity)]],
+			'armor_dodge_raw' : self.local_data["StatsArmor"][str(armor_name)]["dodge"][rarity_index[str(armor_rarity)]],
+			'armor_resistance_raw' : self.local_data["StatsArmor"][str(armor_name)]["resistance"][rarity_index[str(armor_rarity)]],
+			'armor_basic_stats' : self.local_data["StatsArmor"][str(armor_name)]["basic_stats"][rarity_index[str(armor_rarity)]],
+			'armor_resistance_type_raw' : self.local_data["StatsArmor"][str(armor_name)]["resistance_type"],
 
-			'ring1_inc_raw' : StatsRing[str(ring_1_name)]["inc"][rarity_index[str(ring1_rarity)]],
-			'ring1_base_raw' : StatsRing[str(ring_1_name)]["base"][rarity_index[str(ring1_rarity)]],
-			'ring1_hp_raw' : StatsRing[str(ring_1_name)]["hp"][rarity_index[str(ring1_rarity)]],
-			'ring1_atk_raw' : StatsRing[str(ring_1_name)]["atk"][rarity_index[str(ring1_rarity)]],
-			'ring1_dodge_raw' : StatsRing[str(ring_1_name)]["dodge"][rarity_index[str(ring1_rarity)]],
-			'ring1_resistance_raw' : StatsRing[str(ring_1_name)]["resistance"][rarity_index[str(ring1_rarity)]],
-			'ring1_crit_chance_raw' : StatsRing[str(ring_1_name)]["crit_chance"][rarity_index[str(ring1_rarity)]],
-			'ring1_crit_damage_raw' : StatsRing[str(ring_1_name)]["crit_damage"][rarity_index[str(ring1_rarity)]],
-			'ring1_mythic_resistance_raw' : StatsRing[str(ring_1_name)]["resistance_mythic"][rarity_index[str(ring1_rarity)]],
-			'ring1_basic_stats' : StatsRing[str(ring_1_name)]["basic_stats"][rarity_index[str(ring1_rarity)]],
-			'ring1_resistance_type_raw' : StatsRing[str(ring_1_name)]["resistance_type"],
-			'ring1_mythic_resistance_type_raw' : StatsRing[str(ring_1_name)]["mythic_resistance_type"],
-			'ring1_damage_type_raw' : StatsRing[str(ring_1_name)]["damage_type"],
+			'ring1_inc_raw' : self.local_data["StatsRing"][str(ring_1_name)]["inc"][rarity_index[str(ring1_rarity)]],
+			'ring1_base_raw' : self.local_data["StatsRing"][str(ring_1_name)]["base"][rarity_index[str(ring1_rarity)]],
+			'ring1_hp_raw' : self.local_data["StatsRing"][str(ring_1_name)]["hp"][rarity_index[str(ring1_rarity)]],
+			'ring1_atk_raw' : self.local_data["StatsRing"][str(ring_1_name)]["atk"][rarity_index[str(ring1_rarity)]],
+			'ring1_dodge_raw' : self.local_data["StatsRing"][str(ring_1_name)]["dodge"][rarity_index[str(ring1_rarity)]],
+			'ring1_resistance_raw' : self.local_data["StatsRing"][str(ring_1_name)]["resistance"][rarity_index[str(ring1_rarity)]],
+			'ring1_crit_chance_raw' : self.local_data["StatsRing"][str(ring_1_name)]["crit_chance"][rarity_index[str(ring1_rarity)]],
+			'ring1_crit_damage_raw' : self.local_data["StatsRing"][str(ring_1_name)]["crit_damage"][rarity_index[str(ring1_rarity)]],
+			'ring1_mythic_raw' : self.local_data["StatsRing"][str(ring_1_name)]["mythic_boost"][rarity_index[str(ring1_rarity)]],
+			'ring1_basic_stats' : self.local_data["StatsRing"][str(ring_1_name)]["basic_stats"][rarity_index[str(ring1_rarity)]],
+			'ring1_titan_tales_boost': self.local_data["StatsRing"][str(ring_1_name)]["titan_tales_boost"][rarity_index[str(ring1_rarity)]],
+			'ring1_chaos_boost': self.local_data["StatsRing"][str(ring_1_name)]["chaos_boost"][rarity_index[str(ring1_rarity)]],
+			'ring1_resistance_type_raw' : self.local_data['StatsRing'][str(ring_1_name)]['resistance_type'],
+			'ring1_mythic_type_raw' : self.local_data['StatsRing'][str(ring_1_name)]['mythic_type'],
+			'ring1_damage_type_raw' : self.local_data['StatsRing'][str(ring_1_name)]['damage_type'],
+			'ring1_titan_tales_type_raw': self.local_data['StatsRing'][str(ring_1_name)]['titan_tales_type'],
+			'ring1_chaos_type_raw': self.local_data['StatsRing'][str(ring_1_name)]['chaos_type'],
 
-			'ring2_inc_raw' : StatsRing[str(ring_2_name)]["inc"][rarity_index[str(ring2_rarity)]],
-			'ring2_base_raw' : StatsRing[str(ring_2_name)]["base"][rarity_index[str(ring2_rarity)]],
-			'ring2_hp_raw' : StatsRing[str(ring_2_name)]["hp"][rarity_index[str(ring2_rarity)]],
-			'ring2_atk_raw' : StatsRing[str(ring_2_name)]["atk"][rarity_index[str(ring2_rarity)]],
-			'ring2_dodge_raw' : StatsRing[str(ring_2_name)]["dodge"][rarity_index[str(ring2_rarity)]],
-			'ring2_resistance_raw' : StatsRing[str(ring_2_name)]["resistance"][rarity_index[str(ring2_rarity)]],
-			'ring2_crit_chance_raw' : StatsRing[str(ring_2_name)]["crit_chance"][rarity_index[str(ring2_rarity)]],
-			'ring2_crit_damage_raw' : StatsRing[str(ring_2_name)]["crit_damage"][rarity_index[str(ring2_rarity)]],
-			'ring2_mythic_resistance_raw' : StatsRing[str(ring_2_name)]["resistance_mythic"][rarity_index[str(ring2_rarity)]],
-			'ring2_basic_stats' : StatsRing[str(ring_2_name)]["basic_stats"][rarity_index[str(ring2_rarity)]],
-			'ring2_resistance_type_raw' : StatsRing[str(ring_2_name)]["resistance_type"],
-			'ring2_mythic_resistance_type_raw' : StatsRing[str(ring_2_name)]["mythic_resistance_type"],
-			'ring2_damage_type_raw' : StatsRing[str(ring_2_name)]["damage_type"],
-			
-			'bracelet_inc_raw' : StatsBracelet[str(bracelet_name)]["inc"][rarity_index[str(bracelet_rarity)]],
-			'bracelet_base_raw' : StatsBracelet[str(bracelet_name)]["base"][rarity_index[str(bracelet_rarity)]],
-			'bracelet_var_raw' : StatsBracelet[str(bracelet_name)]["var_atk"][rarity_index[str(bracelet_rarity)]],
-			'bracelet_crit_raw' : StatsBracelet[str(bracelet_name)]["crit"][rarity_index[str(bracelet_rarity)]],
-			'bracelet_basic_stats' : StatsBracelet[str(bracelet_name)]["basic_stats"][rarity_index[str(bracelet_rarity)]],
+			'ring2_inc_raw' : self.local_data["StatsRing"][str(ring_2_name)]["inc"][rarity_index[str(ring2_rarity)]],
+			'ring2_base_raw' : self.local_data["StatsRing"][str(ring_2_name)]["base"][rarity_index[str(ring2_rarity)]],
+			'ring2_hp_raw' : self.local_data["StatsRing"][str(ring_2_name)]["hp"][rarity_index[str(ring2_rarity)]],
+			'ring2_atk_raw' : self.local_data["StatsRing"][str(ring_2_name)]["atk"][rarity_index[str(ring2_rarity)]],
+			'ring2_dodge_raw' : self.local_data["StatsRing"][str(ring_2_name)]["dodge"][rarity_index[str(ring2_rarity)]],
+			'ring2_resistance_raw' : self.local_data["StatsRing"][str(ring_2_name)]["resistance"][rarity_index[str(ring2_rarity)]],
+			'ring2_crit_chance_raw' : self.local_data["StatsRing"][str(ring_2_name)]["crit_chance"][rarity_index[str(ring2_rarity)]],
+			'ring2_crit_damage_raw' : self.local_data["StatsRing"][str(ring_2_name)]["crit_damage"][rarity_index[str(ring2_rarity)]],
+			'ring2_mythic_raw' : self.local_data["StatsRing"][str(ring_2_name)]["mythic_boost"][rarity_index[str(ring2_rarity)]],
+			'ring2_basic_stats' : self.local_data["StatsRing"][str(ring_2_name)]["basic_stats"][rarity_index[str(ring2_rarity)]],
+			'ring2_titan_tales_boost': self.local_data["StatsRing"][str(ring_2_name)]["titan_tales_boost"][rarity_index[str(ring2_rarity)]],
+			'ring2_chaos_boost': self.local_data["StatsRing"][str(ring_2_name)]["chaos_boost"][rarity_index[str(ring2_rarity)]],
+			'ring2_resistance_type_raw' : self.local_data['StatsRing'][str(ring_2_name)]['resistance_type'],
+			'ring2_mythic_type_raw' : self.local_data['StatsRing'][str(ring_2_name)]['mythic_type'],
+			'ring2_damage_type_raw' : self.local_data['StatsRing'][str(ring_2_name)]['damage_type'],
+			'ring2_titan_tales_type_raw': self.local_data['StatsRing'][str(ring_2_name)]['titan_tales_type'],
+			'ring2_chaos_type_raw': self.local_data['StatsRing'][str(ring_2_name)]['chaos_type'],
 
-			'locket_inc_raw' : StatsLocket[str(locket_name)]["inc"][rarity_index[str(locket_rarity)]],
-			'locket_base_raw' : StatsLocket[str(locket_name)]["base"][rarity_index[str(locket_rarity)]],
-			'locket_dodge_raw' : StatsLocket[str(locket_name)]["dodge"][rarity_index[str(locket_rarity)]],
-			'locket_var_raw' : StatsLocket[str(locket_name)]["var_hp"][rarity_index[str(locket_rarity)]],
-			'locket_resistance_raw' : StatsLocket[str(locket_name)]["resistance"][rarity_index[str(locket_rarity)]],
-			'locket_basic_stats' : StatsLocket[str(locket_name)]["basic_stats"][rarity_index[str(locket_rarity)]],
-			'locket_resistance_type_raw' : StatsLocket[str(locket_name)]["resistance_type"],
+			'bracelet_inc_raw' : self.local_data["StatsBracelet"][str(bracelet_name)]["inc"][rarity_index[str(bracelet_rarity)]],
+			'bracelet_base_raw' : self.local_data["StatsBracelet"][str(bracelet_name)]["base"][rarity_index[str(bracelet_rarity)]],
+			'bracelet_var_raw' : self.local_data["StatsBracelet"][str(bracelet_name)]["var_atk"][rarity_index[str(bracelet_rarity)]],
+			'bracelet_crit_raw' : self.local_data["StatsBracelet"][str(bracelet_name)]["crit"][rarity_index[str(bracelet_rarity)]],
+			'bracelet_basic_stats' : self.local_data["StatsBracelet"][str(bracelet_name)]["basic_stats"][rarity_index[str(bracelet_rarity)]],
 
-			'book_inc_raw' : StatsBook[str(book_name)]["inc"][rarity_index[str(book_rarity)]],
-			'book_base_raw' : StatsBook[str(book_name)]["base"][rarity_index[str(book_rarity)]],
-			'book_var_raw' : StatsBook[str(book_name)]["var_hp"][rarity_index[str(book_rarity)]],
-			'book_resistance_raw' : StatsBook[str(book_name)]["resistance"][rarity_index[str(book_rarity)]],
-			'book_resistance2_raw' : StatsBook[str(book_name)]["resistance2"][rarity_index[str(book_rarity)]],
-			'book_basic_stats' : StatsBook[str(book_name)]["basic_stats"][rarity_index[str(book_rarity)]],
-			'book_enhance_eqm' : StatsBook[str(book_name)]["enhance_eqm"][rarity_index[str(book_rarity)]],
-			'book_resistance_type_raw' : StatsBook[str(book_name)]["resistance_type"],
-			'book_resistance2_type_raw' : StatsBook[str(book_name)]["resistance2_type"],
+			'locket_inc_raw' : self.local_data["StatsLocket"][str(locket_name)]["inc"][rarity_index[str(locket_rarity)]],
+			'locket_base_raw' : self.local_data["StatsLocket"][str(locket_name)]["base"][rarity_index[str(locket_rarity)]],
+			'locket_dodge_raw' : self.local_data["StatsLocket"][str(locket_name)]["dodge"][rarity_index[str(locket_rarity)]],
+			'locket_var_raw' : self.local_data["StatsLocket"][str(locket_name)]["var_hp"][rarity_index[str(locket_rarity)]],
+			'locket_resistance_raw' : self.local_data["StatsLocket"][str(locket_name)]["resistance"][rarity_index[str(locket_rarity)]],
+			'locket_basic_stats' : self.local_data["StatsLocket"][str(locket_name)]["basic_stats"][rarity_index[str(locket_rarity)]],
+			'locket_resistance_type_raw' : self.local_data["StatsLocket"][str(locket_name)]["resistance_type"],
+
+			'book_inc_raw' : self.local_data["StatsBook"][str(book_name)]["inc"][rarity_index[str(book_rarity)]],
+			'book_base_raw' : self.local_data["StatsBook"][str(book_name)]["base"][rarity_index[str(book_rarity)]],
+			'book_var_raw' : self.local_data["StatsBook"][str(book_name)]["var_hp"][rarity_index[str(book_rarity)]],
+			'book_resistance_raw' : self.local_data["StatsBook"][str(book_name)]["resistance"][rarity_index[str(book_rarity)]],
+			'book_resistance2_raw' : self.local_data["StatsBook"][str(book_name)]["resistance2"][rarity_index[str(book_rarity)]],
+			'book_basic_stats' : self.local_data["StatsBook"][str(book_name)]["basic_stats"][rarity_index[str(book_rarity)]],
+			'book_enhance_eqm' : self.local_data["StatsBook"][str(book_name)]["enhance_eqm"][rarity_index[str(book_rarity)]],
+			'book_resistance_type_raw' : self.local_data["StatsBook"][str(book_name)]["resistance_type"],
+			'book_resistance2_type_raw' : self.local_data["StatsBook"][str(book_name)]["resistance2_type"]
 		}
-	
+
 	def getStuffStats(self,enhanced_equipment_total,weapon_refine_basic_stats,armor_refine_basic_stats,ring1_refine_basic_stats,ring2_refine_basic_stats,bracelet_refine_basic_stats,locket_refine_basic_stats,book_refine_basic_stats,weapon_skin_stats):
 		all_raw_stats = self.GetRawStats()
-		enhance_eqm = enhanced_equipment_total + all_raw_stats['book_enhance_eqm']
-		weapon_inc = round((int(all_raw_stats['weapon_inc_raw']))*(float(all_raw_stats["weapon_basic_stats"])+enhance_eqm+float(weapon_refine_basic_stats)),2)
-		weapon_base = round((int(weapon_skin_stats['attack']) + int(all_raw_stats['weapon_base_raw']))*(float(all_raw_stats["weapon_basic_stats"])+enhance_eqm+float(weapon_refine_basic_stats)),2)
-		weapon_level = int(self.weapon_level)-1
+		global_enhance_eqm = enhanced_equipment_total + all_raw_stats['book_enhance_eqm']
+		weapon_eh_eq = global_enhance_eqm + float(weapon_refine_basic_stats) + float(all_raw_stats["weapon_basic_stats"])
+		weapon_base = math.floor((int(all_raw_stats['weapon_base_raw']) + int(all_raw_stats['weapon_inc_raw']) * ( self.weapon_level-1)) * (weapon_eh_eq))
+		weapon_total = math.floor(weapon_base + math.floor(int(weapon_skin_stats['attack']) * (weapon_eh_eq)))
 
-		armor_inc = round(int(all_raw_stats['armor_inc_raw'])*(float(all_raw_stats["armor_basic_stats"])+enhance_eqm+float(armor_refine_basic_stats)),2)
-		armor_base = round(int(all_raw_stats['armor_base_raw'])*(float(all_raw_stats["armor_basic_stats"])+enhance_eqm+float(armor_refine_basic_stats)),2)
-		armor_level = int(self.armor_level)-1
+		armor_eh_eq = global_enhance_eqm + float(all_raw_stats["armor_basic_stats"]) + float(armor_refine_basic_stats)
+		armor_base = math.floor((int(all_raw_stats['armor_base_raw']) + int(all_raw_stats['armor_inc_raw']) * ( self.armor_level-1)) * (armor_eh_eq))
 
-		ring1_inc = int(all_raw_stats['ring1_inc_raw'])*(1+float(all_raw_stats["ring1_basic_stats"])+float(ring1_refine_basic_stats))
-		ring1_base = int(all_raw_stats['ring1_base_raw'])*(1+float(all_raw_stats["ring1_basic_stats"])+float(ring1_refine_basic_stats))
-		ring1_level = int(self.ring1_level)-1
+		ring1_eh_eq = global_enhance_eqm + float(all_raw_stats["ring1_basic_stats"]) + float(ring1_refine_basic_stats)
+		ring1_base = math.floor((int(all_raw_stats['ring1_base_raw']) + int(all_raw_stats['ring1_inc_raw']) * ( self.ring1_level-1)) * (ring1_eh_eq))
+		
+		ring2_eh_eq = global_enhance_eqm + float(all_raw_stats["ring2_basic_stats"]) + float(ring2_refine_basic_stats)
+		ring2_base = math.floor((int(all_raw_stats['ring2_base_raw']) + int(all_raw_stats['ring2_inc_raw']) * ( self.ring2_level-1)) * (ring2_eh_eq))
 
-		ring2_inc = int(all_raw_stats['ring2_inc_raw'])*(1+float(all_raw_stats["ring2_basic_stats"])+float(ring2_refine_basic_stats))
-		ring2_base = int(all_raw_stats['ring2_base_raw'])*(1+float(all_raw_stats["ring2_basic_stats"])+float(ring2_refine_basic_stats))
-		ring2_level = int(self.ring2_level)-1
+		bracelet_eh_eq = global_enhance_eqm + float(all_raw_stats["bracelet_basic_stats"]) + float(bracelet_refine_basic_stats)
+		bracelet_base = math.floor((int(all_raw_stats['bracelet_base_raw']) + int(all_raw_stats['bracelet_inc_raw']) * ( self.bracelet_level-1)) * (bracelet_eh_eq))
 
-		bracelet_inc = round(int(all_raw_stats['bracelet_inc_raw'])*(float(all_raw_stats["bracelet_basic_stats"])+enhance_eqm+float(bracelet_refine_basic_stats)),2)
-		bracelet_base = round(int(all_raw_stats['bracelet_base_raw'])*(float(all_raw_stats["bracelet_basic_stats"])+enhance_eqm+float(bracelet_refine_basic_stats)),2)
-		bracelet_level = int(self.bracelet_level)-1
+		locket_eh_eq = global_enhance_eqm + float(all_raw_stats["locket_basic_stats"]) + float(locket_refine_basic_stats)
+		locket_base = math.floor((int(all_raw_stats['locket_base_raw']) + int(all_raw_stats['locket_inc_raw']) * ( self.locket_level-1)) * (locket_eh_eq))
 
-		locket_inc = round(int(all_raw_stats['locket_inc_raw'])*(float(all_raw_stats["locket_basic_stats"])+enhance_eqm+float(locket_refine_basic_stats)),2)
-		locket_base = round(int(all_raw_stats['locket_base_raw'])*(float(all_raw_stats["locket_basic_stats"])+enhance_eqm+float(locket_refine_basic_stats)),2)
-		locket_level = int(self.locket_level)-1
-
-		book_inc = round(int(all_raw_stats['book_inc_raw'])*(float(all_raw_stats["book_basic_stats"])+enhance_eqm+float(book_refine_basic_stats)),2)
-		book_base = round(int(all_raw_stats['book_base_raw'])*(float(all_raw_stats["book_basic_stats"])+enhance_eqm+float(book_refine_basic_stats)),2)
-		book_level = int(self.book_level)-1
+		book_eh_eq = global_enhance_eqm + float(all_raw_stats["book_basic_stats"]) + float(book_refine_basic_stats)
+		book_base = math.floor((int(all_raw_stats['book_base_raw']) + int(all_raw_stats['book_inc_raw']) * ( self.book_level-1)) * (book_eh_eq))
 		return {
 			"weapon_attack_var" : float(all_raw_stats['weapon_var_raw'])/100,
-			"weapon_total" : math.ceil(int(weapon_base)+(int(weapon_level)*float(weapon_inc))),
+			"weapon_total" : weapon_total,
 			"armor_hp_var" : float(all_raw_stats['armor_var_raw'])/100,
-			"armor_total" : math.ceil(int(armor_base)+(int(armor_level)*float(armor_inc))),
+			"armor_total" : armor_base,
 			"ring1_atk_var" : float(all_raw_stats['ring1_atk_raw'])/100,
 			"ring1_hp_var" : float(all_raw_stats['ring1_hp_raw'])/100,
-			"ring1_total" : math.ceil(int(ring1_base)+(int(ring1_level)*float(ring1_inc))),
+			"ring1_total" : ring1_base,
 			"ring2_atk_var" : float(all_raw_stats['ring2_atk_raw'])/100,
 			"ring2_hp_var" : float(all_raw_stats['ring2_hp_raw'])/100,
-			"ring2_total" : math.ceil(int(ring2_base)+(int(ring2_level)*float(ring2_inc))),
+			"ring2_total" : ring2_base,
 			"bracelet_attack_var" : float(all_raw_stats['bracelet_var_raw'])/100,
-			"bracelet_total" : math.ceil(int(bracelet_base)+(int(bracelet_level)*float(bracelet_inc))),
+			"bracelet_total" : bracelet_base,
 			"locket_hp_var" : float(all_raw_stats['locket_var_raw'])/100,
-			"locket_total" : math.ceil(int(locket_base)+(int(locket_level)*float(locket_inc))),
+			"locket_total" : locket_base,
 			"book_hp_var" : float(all_raw_stats['book_var_raw'])/100,
-			"book_total" : math.ceil(int(book_base)+(int(book_level)*float(book_inc)))
+			"book_total" : book_base,
+			## RING ADDIOTIONNAL STATS
+			all_raw_stats['ring1_damage_type_raw']:ring1_base,
+			all_raw_stats['ring1_titan_tales_type_raw']:all_raw_stats['ring1_titan_tales_boost'],
+			all_raw_stats['ring1_chaos_type_raw']:all_raw_stats['ring1_chaos_boost'],
+			all_raw_stats['ring2_damage_type_raw']:ring2_base,
+			all_raw_stats['ring2_titan_tales_type_raw']:all_raw_stats['ring2_titan_tales_boost'],
+			all_raw_stats['ring2_chaos_type_raw']:all_raw_stats['ring2_chaos_boost'],
 		}
 
 
-	def GetRingDamage(self,ring_damage_type,total):
-		dict_result = {
-			"boss units dmg": 0,
-			"mobs units dmg": 0,
-			"ranged units dmg": 0,
-			"melee units dmg": 0,
-			"airborne units dmg": 0,
-			"ground units dmg": 0,
-			"elite mobs dmg": 0,
-			"non-elite mobs dmg": 0,
-			"0":0,  ## au cas où le ring choisi est none
-			ring_damage_type:total,
-		}
-		return dict_result
-	
-	
-
-class hero_table(models.Model):
+class hero_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	atreus_level = models.IntegerField(choices=hero_level, default=0)
 	atreus_star = models.IntegerField(choices=star_hero, default=0) 
@@ -452,8 +474,8 @@ class hero_table(models.Model):
 		choosen_hero = user.objects.get(ingame_id=self.user_profile.ingame_id).choosen_hero
 		heros_star = self.dictionnaire()
 		hero_lower = str(hero).lower()
-		stats_hero_star  = HerosStats[hero_lower + "_star_" + str(heros_star[f"{hero_lower}_star"]).replace("","")]
-		stats_hero_lvl  = HerosStats[hero_lower + "_" + str(heros_star[f"{hero_lower}_level"])]
+		stats_hero_star  = self.local_data["HerosStats"][hero_lower + "_star_" + str(heros_star[f"{hero_lower}_star"]).replace("","")]
+		stats_hero_lvl  = self.local_data["HerosStats"][hero_lower + "_" + str(heros_star[f"{hero_lower}_level"])]
 		if hero != "Shari":
 			Blvl20 = stats_hero_lvl[0]
 			Blvl60 = stats_hero_lvl[2]
@@ -483,7 +505,7 @@ class hero_table(models.Model):
 		return Blvl20, Blvl40, Blvl60, Blvl80, Blvl120, Bs2, Bs7, Bs8
 
 
-class talent_table(models.Model):
+class talent_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	strength_level = models.IntegerField(validators=[MaxValueValidator(25)], default=1)
 	power_level = models.IntegerField(validators=[MaxValueValidator(25)], default=1)
@@ -511,6 +533,7 @@ class talent_table(models.Model):
 		return chaine
 	
 	def getTalentStats(self):
+		TalentStats = self.local_data["TalentStats"]
 		return {
 			"talents_strength": TalentStats["strength_" + str(self.strength_level)],
 			"talents_power": TalentStats["power_" + str(self.power_level)],
@@ -522,10 +545,10 @@ class talent_table(models.Model):
 		}
 
 
-class skin_table(models.Model):
+class skin_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
-	skin_health = models.IntegerField(default=0, validators=[MaxValueValidator(11995)])
-	skin_attack = models.IntegerField(default=0, validators=[MaxValueValidator(2560)])
+	skin_health = models.IntegerField(default=0)
+	skin_attack = models.IntegerField(default=0)
 
 	def dictionnaire(self):
 			return {
@@ -539,7 +562,7 @@ class skin_table(models.Model):
 
 
 
-class altar_table(models.Model):
+class altar_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	stuff_altar_level = models.IntegerField(default=0, validators=[MaxValueValidator(120)]) 
 	stuff_altar_ascension = models.IntegerField(choices=altar_ascension_level, default=0)
@@ -568,9 +591,9 @@ class altar_table(models.Model):
 
 	def CalculAltar(self,type_altar,type_boost):
 		if type_altar == "stuff":
-			data = StuffAltar
+			data = self.local_data["StuffAltar"]
 		elif type_altar == "heros":
-			data = HerosAltar
+			data = self.local_data["HerosAltar"]
 		base = int(data[str(self.RoundTen(self.dictionnaire()[type_altar+'_altar_level'])) + '_' + type_boost])
 		level = int(self.dictionnaire()[type_altar+'_altar_level'])
 		levelRoundTen = int(self.RoundTen(self.dictionnaire()[type_altar+'_altar_level']))
@@ -583,7 +606,7 @@ class altar_table(models.Model):
 		return total
 
 
-class jewel_type_table(models.Model):
+class jewel_type_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	weapon_jewel1_type = models.CharField(max_length=10, choices=atk_jewel, default="none")
 	weapon_jewel2_type = models.CharField(max_length=10, choices=atk_jewel, default="none")
@@ -667,7 +690,7 @@ class jewel_type_table(models.Model):
 		return chaine
 
 
-class jewel_level_table(models.Model):
+class jewel_level_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	weapon_jewel1_level = models.IntegerField(default=0, validators=[MinValueValidator(0),MaxValueValidator(13)])
 	weapon_jewel2_level = models.IntegerField(default=0, validators=[MinValueValidator(0),MaxValueValidator(13)])
@@ -750,10 +773,11 @@ class jewel_level_table(models.Model):
 		chaine = f"{self.user_profile.ingame_id} | {self.user_profile.ingame_name}"
 		return chaine
 
-	def JewelStatsRecup(self):
+	def JewelStatsRecup(self,attack_jewel_base:float):
 		jewel_type = list(jewel_type_table.objects.get(user_profile=self.user_profile).dictionnaire().values())
 		jewel_level = list(self.dictionnaire().values())
 		list_type = []
+		JewelStats = self.local_data['JewelStats']
 		for i in range(0,len(jewel_type)):
 			list_type.append(str(jewel_type[i]) + "_" + str(jewel_level[i]))
 		try:
@@ -855,10 +879,10 @@ class jewel_level_table(models.Model):
 				mp_max_calaite = int(JewelStats["calaite_lvl" + str(x.split("_")[1]) + "_bonus2"])
 				pv_calaite += calaite_b1
 				mp_max_calaite +=  calaite_b2
-		dict_result = {
-			'attack_ruby':atk_ruby,
-			'attack_kunzite':atk_kunzite,
-			'attack_tourmaline':atk_tourmaline,
+		return {
+			'attack_ruby':math.floor(atk_ruby*(1+attack_jewel_base/100)),
+			'attack_kunzite':math.floor(atk_kunzite*(1+attack_jewel_base/100)),
+			'attack_tourmaline':math.floor(atk_tourmaline*(1+attack_jewel_base/100)),
 			'pv_lapis':pv_lapis,
 			'pv_emerald':pv_emerald,
 			'proj_res_topaz':proj_res_topaz,
@@ -877,9 +901,9 @@ class jewel_level_table(models.Model):
 			'weapon_ranged_damage':weapon_ranged_damage,
 			'counterattack_rate':counterattack_rate,
 		}
-		return dict_result
-	
+
 	def JewelSpeBonusStatsRecup(self,type_jewel,brave_boost):
+		JewelSpeBonus = self.local_data['JewelSpeBonus']
 		jewel_type = jewel_type_table.objects.get(user_profile=self.user_profile).dictionnaire()
 		jewel1_type = jewel_type[str(type_jewel)+"_jewel1_type"]
 		jewel2_type = jewel_type[str(type_jewel)+"_jewel2_type"]
@@ -960,7 +984,7 @@ class jewel_level_table(models.Model):
 
 
 
-class egg_table(models.Model):
+class egg_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	green_bat = models.IntegerField(choices=level_egg_mobs, default=0)
 	vase = models.IntegerField(choices=level_egg_mobs, default=0)
@@ -1107,6 +1131,7 @@ class egg_table(models.Model):
 	
 	def GetPassivEggStats1(self,egg,missing_data):
 		egg_level = self.dictionnaire()[str(egg)]
+		PassivMobsStats1 = self.local_data['PassivMobsStats1']
 		passiv_stats = [0,0,0,0]
 		if int(egg_level) >= 5:
 			passiv_stats = PassivMobsStats1[str(egg) + "_5"]
@@ -1126,6 +1151,7 @@ class egg_table(models.Model):
 
 	def GetPassivEggStats2(self,egg,missing_data):
 		egg_level = self.dictionnaire()[str(egg)]
+		PassivMobsStats2 = self.local_data['PassivMobsStats2']
 		passiv_stats = [0,0,0,0,0]
 		if int(egg_level) >= 4:
 			passiv_stats = PassivMobsStats2[str(egg) + "_4"]
@@ -1146,6 +1172,7 @@ class egg_table(models.Model):
 		return passiv_stats
 	
 	def GetPassivEggStats3(self,egg,missing_data):
+		PassivMobsStats3 = self.local_data['PassivMobsStats3']
 		egg_level = self.dictionnaire()[str(egg)]
 		passiv_stats = [0,0,0,0,0]
 		if int(egg_level) >= 3:
@@ -1167,7 +1194,7 @@ class egg_table(models.Model):
 		return passiv_stats
 
 
-class egg_equipped_table(models.Model):
+class egg_equipped_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	egg_equipped1 = models.CharField(max_length=30, choices=all_egg, default="Choose")
 	egg_equipped2 = models.CharField(max_length=30, choices=all_egg, default="Choose")
@@ -1213,6 +1240,7 @@ class egg_equipped_table(models.Model):
 					"Flame Damage": 0,
 					"missing_data": "",
 				}
+		MobsStats = self.local_data["MobsStats"]
 		for i in all_equipped:
 			egg = str(i).lower().replace(" ","_").replace('-','_')
 			if egg != "choose":
@@ -1242,7 +1270,7 @@ class egg_equipped_table(models.Model):
 
 
 
-class dragon_table(models.Model):
+class dragon_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	dragon1_type = models.CharField(max_length=30, choices=all_dragon, default="Glacion")
 	dragon2_type = models.CharField(max_length=30, choices=all_dragon, default="Infernox")
@@ -1311,14 +1339,14 @@ class dragon_table(models.Model):
 		dragon_rarity = self.GetDragon(str(number))['dragon_rarity'].replace(' ','_')
 		dragon_level = self.GetDragon(str(number))['dragon_level']
 		dragon_skill_4 = self.GetDragon(str(number))['dragon_skill_4']
-		base_stats1 = DragonStats[str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_base_1"]
-		base_stats2 = DragonStats[str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_base_2"]
-		b1_type = DragonStats[str(dragon_type).lower() + "_bonus1"]
-		b2_type = DragonStats[str(dragon_type).lower() + "_bonus2"]
-		inc_stats1 = DragonStats[str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_inc_1"]
-		inc_stats2 = DragonStats[str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_inc_2"]
+		base_stats1 = self.local_data["DragonStats"][str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_base_1"]
+		base_stats2 = self.local_data["DragonStats"][str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_base_2"]
+		b1_type = self.local_data["DragonStats"][str(dragon_type).lower() + "_bonus1"]
+		b2_type = self.local_data["DragonStats"][str(dragon_type).lower() + "_bonus2"]
+		inc_stats1 = self.local_data["DragonStats"][str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_inc_1"]
+		inc_stats2 = self.local_data["DragonStats"][str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_inc_2"]
 		if dragon_rarity == "Mythic" and int(dragon_skill_4) > 0:
-			inc_mythic_boost = DragonStats[str(dragon_type).lower() + "_mythic_boost_inc"]
+			inc_mythic_boost = self.local_data["DragonStats"][str(dragon_type).lower() + "_mythic_boost_inc"]
 			inc_mythic_boost_float = float(inc_mythic_boost[0]) * (int(dragon_skill_4)-1) +int(inc_mythic_boost[1])
 			inc_stats1_modified = round(float(inc_stats1) * (float(inc_mythic_boost_float)/100+1))
 			inc_stats2_modified = round(float(inc_stats2) * (float(inc_mythic_boost_float)/100+1))
@@ -1330,34 +1358,15 @@ class dragon_table(models.Model):
 			inc_stats1_modified = 0
 			inc_stats2_modified = 0
 		if dragon_rarity == "Mythic" or dragon_rarity == "Ancient Legendary":
-			b3_type = DragonStats[str(dragon_type).lower() + "_bonus3"]
+			b3_type = self.local_data["DragonStats"][str(dragon_type).lower() + "_bonus3"]
 			if dragon_rarity == "Ancient Legendary":
-				b3_boost = DragonStats[str(dragon_type).lower() + "_stats_boost3"][0]
+				b3_boost = self.local_data["DragonStats"][str(dragon_type).lower() + "_stats_boost3"][0]
 			elif dragon_rarity == "Mythic":
-				b3_boost = DragonStats[str(dragon_type).lower() + "_stats_boost3"][1]
+				b3_boost = self.local_data["DragonStats"][str(dragon_type).lower() + "_stats_boost3"][1]
 		else:
 			b3_type = 0
 			b3_boost = 0
 		dict_result = {
-			"Attack":0,
-			"Max Hp":0,
-			"Damage To Mobs":0,
-			"Damage To Melee Units":0,
-			"Damage To Ranged Units":0,
-			"Damage To Ground Units":0,
-			"Rear Damage Resistance":0,
-			"Front Damage Resistance":0,
-			"Healling effect of Red Heart":0,
-			"Collision Damage Resistance":0,
-			"Mana Points Recovery effect":0,
-			"Dodge":0,
-			"HP drops":0,
-			"Melee Units Damage reduced":0,
-			"Weapon Melee Damage":0,
-			"Mana Points Regeneration":0,
-			"Summoned Creature Damage":0,
-			"Max Mp":0,
-			"":0,
 			b1_type: round(result_stats1),
 			b2_type: round(result_stats2),
 			b3_type: float(b3_boost),
@@ -1368,21 +1377,10 @@ class dragon_table(models.Model):
 
 
 	def getPassivSkillDragon(self):
-		dragon_1_skills = SkillPassivBonusDragon[self.dragon1_type.lower()]
-		dragon_2_skills = SkillPassivBonusDragon[self.dragon2_type.lower()]
-		dragon_3_skills = SkillPassivBonusDragon[self.dragon3_type.lower()]
+		dragon_1_skills = self.local_data["SkillPassivBonusDragon"][self.dragon1_type.lower()]
+		dragon_2_skills = self.local_data["SkillPassivBonusDragon"][self.dragon2_type.lower()]
+		dragon_3_skills = self.local_data["SkillPassivBonusDragon"][self.dragon3_type.lower()]
 		return {
-			"Heart Healing":0,
-			"Heart Drop rate":0,
-			"Damage vs Melee Units":0,
-			"Blue Heart Drop Rate":0,
-			"Heartdop":0,
-			"Crit Damage":0,
-			"Blue Heart drop rate":0,
-			"HP converted to MP":0,
-			"Damage VS melee units":0,
-			"Damage dealt to undead":0,
-			"Dodge rate":0,
 			dragon_1_skills["skill_2"]['line_1_txt']: int(dragon_1_skills["skill_2"]['line_1_value']) + int(dragon_1_skills["skill_2"]['line_1_inc'])* int(self.dragon_1_boost_2),
 			dragon_1_skills["skill_2"]['line_5_txt']: int(dragon_1_skills["skill_2"]['line_5_value']),
 			dragon_1_skills["skill_2"]['line_10_txt']: int(dragon_1_skills["skill_2"]['line_10_value']),
@@ -1398,7 +1396,7 @@ class dragon_table(models.Model):
 
 
 
-class runes_table(models.Model):
+class runes_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	power_attack_flat = models.BigIntegerField(default=0, validators=[MaxValueValidator(750)])
 	power_attack_var = models.FloatField(default=0, validators=[MaxValueValidator(7)])
@@ -1583,6 +1581,7 @@ class runes_table(models.Model):
 			"var_heal_red_heart":0.0,
 			"flat_hp_drop":0,
 			"var_hp_drop":0.0,
+			## TODO dict.get("result_stats1","None")
 			self.power_line_2: self.value_power_line_2,
 			self.power_line_3: self.value_power_line_3,
 			self.power_line_4: self.value_power_line_4,
@@ -1606,7 +1605,7 @@ class runes_table(models.Model):
 		}
 
 
-class reforge_table(models.Model):
+class reforge_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	reforge_power = models.IntegerField(choices=reforge, default=0)
 	reforge_saviour = models.IntegerField(choices=reforge, default=0)
@@ -1644,7 +1643,7 @@ class reforge_table(models.Model):
 		return stats_reforge
 
 
-class refine_table(models.Model):
+class refine_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	weapon_refine_atk = models.IntegerField(default=0, validators=[MaxValueValidator(8000)])
 	weapon_refine_basic_stats = models.FloatField(default=0, validators=[MaxValueValidator(100)])
@@ -1684,7 +1683,7 @@ class refine_table(models.Model):
 		return chaine
 
 
-class dmg_calc_table(models.Model):
+class dmg_calc_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	hero_atk = models.JSONField(default=dict,blank=False)
 
@@ -1698,6 +1697,8 @@ class dmg_calc_table(models.Model):
 	flat_dmg_vs_boss = models.IntegerField(default=0,blank=False)
 	flat_dmg_element = models.IntegerField(default=0,blank=False)
 	flat_dmg_all = models.IntegerField(default=0,blank=False)
+	flat_elite_dmg = models.IntegerField(default=0,blank=False)
+	flat_normal_dmg = models.IntegerField(default=0,blank=False)
 	var_dmg_vs_ground = models.FloatField(default=0,blank=False)
 	var_dmg_vs_airborne = models.FloatField(default=0,blank=False)
 	var_dmg_vs_melee = models.FloatField(default=0,blank=False)
@@ -1706,9 +1707,14 @@ class dmg_calc_table(models.Model):
 	var_dmg_vs_boss = models.FloatField(default=0,blank=False)
 	var_dmg_element = models.FloatField(default=0,blank=False)
 	var_dmg_all = models.FloatField(default=0,blank=False)
+	var_normal_dmg = models.FloatField(default=0,blank=False)
+	var_elite_dmg = models.FloatField(default=0,blank=False)
 	crit_dmg = models.IntegerField(default=0,blank=False)
 	crit_rate = models.FloatField(default=0,blank=False)
 	dodge_rate = models.FloatField(default=0,blank=False)
+	weapon_damage = models.FloatField(default=0,blank=False)
+	weapon_melee_damage = models.FloatField(default=0,blank=False)
+	weapon_ranged_damage = models.FloatField(default=0,blank=False)
 
 	def __str__(self):
 		chaine = f"{self.user_profile.ingame_id} | {self.user_profile.ingame_name}"
@@ -1771,7 +1777,7 @@ class dmg_calc_table(models.Model):
 		}
 
 
-class medals_table(models.Model):
+class medals_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	medals_01 = models.BooleanField(blank=True, default=False)
 	medals_02 = models.BooleanField(blank=True, default=False)
@@ -1848,6 +1854,7 @@ class medals_table(models.Model):
 		return chaine
 	
 	def medal_calc(self):
+		MedalsStats = self.local_data["MedalsStats"]
 		medalsList = []
 		for k,v in self.dictionnaire().items():
 			medalsList.append(f"{v}-{k}")
@@ -1882,7 +1889,7 @@ class medals_table(models.Model):
 			"enhance_equipment":enhance_equipment
 		}
 
-class relics_table(models.Model):
+class relics_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	wraith_mask = models.CharField(max_length=15, blank=False, default="0-0-0")
 	clown_mask = models.CharField(max_length=15, blank=False, default="0-0-0")
@@ -2016,6 +2023,7 @@ class relics_table(models.Model):
 
 	def relics_Stats(self):
 		list_relic = []
+		RelicLabel = self.local_data["RelicLabel"]
 		for k,v in self.dictionnaire().items():
 			if k != "user_profile":
 				list_relic.append(v.split("-"))
@@ -2033,6 +2041,7 @@ class relics_table(models.Model):
 			"damage_humanoid_enemies_var": 0,
 			"damage_undead_var": 0,
 			"damage_heroes_var": 0,
+			"damage_elite_var": 0,
 			"elemental_damage_var": 0,
 			"damage_mobs": 0,
 			"damage_mobs_var": 0,
@@ -2055,10 +2064,12 @@ class relics_table(models.Model):
 				search_data = RelicLabel[str(relic)+ "_" +str(x+1)]
 				new_value = float(stats[search_data]) + float(relic_boost[x])
 				stats.update({search_data:new_value})
+				# if search_data != "":
+				# 	print(f"{relic} | {relic_boost[x]} | {search_data} | {new_value}")
 		return stats
 
 
-class promo_code(models.Model):
+class promo_code(models.Model,parentModel):
 	code = models.CharField(max_length=30, blank=False)
 	is_active = models.BooleanField(default=False)
 	reward_1_type = models.CharField(max_length=20,choices= type_reward, default=" ")
@@ -2077,7 +2088,7 @@ class promo_code(models.Model):
 
 
 
-class weapon_skins_table(models.Model):
+class weapon_skins_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	demon_blade_rain_1 = models.BooleanField(blank=True, default=False)
 	antiquated_sword_1 = models.BooleanField(blank=True, default=False)
@@ -2124,6 +2135,7 @@ class weapon_skins_table(models.Model):
 			return "None"
 	
 	def getWeaponSkinStats(self):
+		WeaponSkinData = self.local_data["WeaponSkinData"]
 		result = {
 			"attack":0,
 			"crit_rate":0,
@@ -2134,11 +2146,11 @@ class weapon_skins_table(models.Model):
 			if v == True:
 				skin_count = k.split("_")[-1]
 				weapon_name = k.replace(f"_{skin_count}","") 
-				all_hero_boost = WeaponSkinData[weapon_name][int(skin_count)]["all_hero_type"]
-				all_hero_value = WeaponSkinData[weapon_name][int(skin_count)]["all_hero_value"] + result[all_hero_boost]
+				all_hero_boost = WeaponSkinData[weapon_name][skin_count]["all_hero_type"]
+				all_hero_value = WeaponSkinData[weapon_name][skin_count]["all_hero_value"] + result[all_hero_boost]
 				result.update({all_hero_boost:all_hero_value})
 				if skin_equipped == k:
-					activ_type = WeaponSkinData[weapon_name][int(skin_count)]["activ_type"]
-					activ_boost = WeaponSkinData[weapon_name][int(skin_count)]["activ_boost"] + result[activ_type]
+					activ_type = WeaponSkinData[weapon_name][skin_count]["activ_type"]
+					activ_boost = WeaponSkinData[weapon_name][skin_count]["activ_boost"] + result[activ_type]
 					result.update({activ_type:activ_boost})
 		return result

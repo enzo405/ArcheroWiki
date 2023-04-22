@@ -1,12 +1,12 @@
 from django.forms import ModelForm
-from . import models
+from .models import UserQueue,user,stuff_table,hero_table,talent_table,skin_table,altar_table,jewel_type_table,jewel_level_table,egg_table,egg_equipped_table,dragon_table,runes_table,reforge_table,refine_table,medals_table,relics_table,weapon_skins_table
 from django import forms
 
 
 
 class User(ModelForm):
 	class Meta:
-		model = models.user
+		model = user
 		fields = (
 				'ingame_id',
 				'ingame_name',
@@ -21,7 +21,7 @@ class User(ModelForm):
 
 class StuffTable(ModelForm):
 	class Meta:
-		model = models.stuff_table
+		model = stuff_table
 		fields = (
 				'user_profile',
 				"weapon_choosen","weapon_level" ,"weapon_rarity" ,
@@ -38,7 +38,7 @@ class StuffTable(ModelForm):
 
 class HeroTable(ModelForm):
 	class Meta:
-		model = models.hero_table
+		model = hero_table
 		fields = (
 				'user_profile',
 				'atreus_level', 'atreus_star', 
@@ -71,7 +71,7 @@ class HeroTable(ModelForm):
 
 class TalentTable(ModelForm):
 	class Meta:
-		model = models.talent_table
+		model = talent_table
 		fields = (
 				'user_profile',
 				'strength_level',
@@ -86,7 +86,7 @@ class TalentTable(ModelForm):
 
 class SkinTable(ModelForm):
 	class Meta:
-		model = models.skin_table
+		model = skin_table
 		fields = (
 				'user_profile',
 				'skin_health',
@@ -97,7 +97,7 @@ class SkinTable(ModelForm):
 
 class AltarTable(ModelForm):
 	class Meta:
-		model = models.altar_table
+		model = altar_table
 		fields = (
 				'user_profile',
 				'stuff_altar_level', 
@@ -109,7 +109,7 @@ class AltarTable(ModelForm):
 
 class JewelTypeTable(ModelForm):
 	class Meta:
-		model = models.jewel_type_table
+		model = jewel_type_table
 		fields = (
 				'user_profile',
 				'weapon_jewel1_type','weapon_jewel2_type','weapon_jewel3_type','weapon_jewel4_type',
@@ -126,7 +126,7 @@ class JewelTypeTable(ModelForm):
 
 class JewelLevelTable(ModelForm):
 	class Meta:
-		model = models.jewel_level_table
+		model = jewel_level_table
 		fields = (
 				'user_profile',
 				'weapon_jewel1_level','weapon_jewel2_level','weapon_jewel3_level','weapon_jewel4_level',
@@ -143,7 +143,7 @@ class JewelLevelTable(ModelForm):
 
 class EggTable(ModelForm):
 	class Meta:
-		model = models.egg_table
+		model = egg_table
 		fields = (
 				'user_profile','green_bat','vase','bomb_ghost','rock_puppet','party_tree','wolfhound',
 				'skeleton_archer','skeleton_soldier','wasp','fire_mage','medusa','ice_mage',
@@ -163,7 +163,7 @@ class EggTable(ModelForm):
 
 class EggEquippedTable(ModelForm):
 	class Meta:
-		model = models.egg_equipped_table
+		model = egg_equipped_table
 		fields = (
 				'user_profile',
 				'egg_equipped1',
@@ -175,7 +175,7 @@ class EggEquippedTable(ModelForm):
 
 class DragonTable(ModelForm):
 	class Meta:
-		model = models.dragon_table
+		model = dragon_table
 		fields = (
 				'user_profile',
 				'dragon1_type',
@@ -204,7 +204,7 @@ class DragonTable(ModelForm):
 
 class RunesTable(ModelForm):
 	class Meta:
-		model = models.runes_table
+		model = runes_table
 		fields = (
 				"user_profile",
 				"power_attack_flat", 
@@ -269,7 +269,7 @@ class RunesTable(ModelForm):
 
 class ReforgeTable(ModelForm):
 	class Meta:
-		model = models.reforge_table
+		model = reforge_table
 		fields = (
 				"user_profile",
 				'reforge_power',
@@ -282,7 +282,7 @@ class ReforgeTable(ModelForm):
 
 class RefineTable(ModelForm):
 	class Meta:
-		model = models.refine_table
+		model = refine_table
 		fields = (
 				'user_profile',
 				'weapon_refine_atk',
@@ -304,7 +304,7 @@ class RefineTable(ModelForm):
 
 class MedalsTable(ModelForm):
 	class Meta:
-		model = models.medals_table
+		model = medals_table
 		fields = (
 				'user_profile',
 				'medals_01',
@@ -345,7 +345,7 @@ class MedalsTable(ModelForm):
 
 class RelicsTable(ModelForm):
 	class Meta:
-		model = models.relics_table
+		model = relics_table
 		fields = (
 				"user_profile","wraith_mask",
 				"clown_mask","princess_teddy_bear",
@@ -383,7 +383,7 @@ class RelicsTable(ModelForm):
 
 class WeaponSkinTable(ModelForm):
 	class Meta:
-		model = models.weapon_skins_table
+		model = weapon_skins_table
 		fields = (
 				"user_profile",
 				"demon_blade_rain_1",
@@ -406,3 +406,9 @@ class DamageCalculatorForm(forms.Form):
 	thirdInput = forms.DecimalField(max_digits=6, decimal_places=2)
 	fourthInput = forms.DecimalField(max_digits=6, decimal_places=2)
 	fifthInput = forms.DecimalField(max_digits=6, decimal_places=2)
+
+
+class UserQueueForm(forms.ModelForm):
+    class Meta:
+        model = UserQueue
+        fields = ['username', 'email', 'password']

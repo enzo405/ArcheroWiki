@@ -1,4 +1,12 @@
 {
+    "320": {
+        "nom": "All Browser Compatibility : Firefox, M-Edge, Internet Explorer, Safari, Opera + New interface Stats Calculator",
+        "date": "2023-04-18"
+    },
+    "319": {
+        "nom": "Item Description : Added all Hidden Stats and Chaos Boost + API/Data Editor",
+        "date": "2023-04-18"
+    },
     "317": {
         "nom": "Theorycrafting: Loading from local API and Damage Calculator Login fix",
         "date": "2023-04-03"

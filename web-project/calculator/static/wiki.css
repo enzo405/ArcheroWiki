@@ -366,6 +366,9 @@
 	background-color: var(--lt-maze-linkTop-btn-bg);
 	border: solid 0px;
 	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
 }
 #linktotop-btn:after{
 	font-family: FontAwesome;
@@ -384,6 +387,9 @@
 	padding: 4px;
 	border: solid 0px var(--lt-maze-tutorial-border);
 	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
 	background-color: var(--lt-maze-tutorial-bg); 
 	display: flex;
 	flex-direction: column;
@@ -415,6 +421,9 @@
 	cursor: pointer;
 	background-color: var(--lt-menu-onclick-bg);
 	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-o-border-radius: 6px;
 	text-align: center;
 	color: var(--lt-menu-onclick-color);
 	margin-top: 10px;
@@ -428,7 +437,7 @@
 	transition: all ease-out 0.2s;
 }
 .error-csrf-content{ /* Fait aussi 500.html et 404.html */
-	height: 70vh;
+	height: 72vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -456,6 +465,9 @@
 	margin-top: 10px;
 	border: solid 0px;
 	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-o-border-radius: 6px;
 }  
 .image-feedback-container {
 	position: absolute;
@@ -601,6 +613,9 @@
 	background-repeat: no-repeat;
 	border: 1px solid var(--lt-searchbar-myinput-border);
 	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-o-border-radius: 6px;
 }
 #myUL {
 	list-style-type: none;
@@ -693,6 +708,9 @@
 .distance-type-th, .damage-type-th, .mobs-type-td, .td-value-damage{
 	border: 1px solid black;
 	border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+   	-o-border-radius: 2px;
 	background-color: var(--lt-damagemenu-dmgtype-field-bg);
 	padding: 5px;
 	color: black;
@@ -783,6 +801,9 @@
 	background-color: var(--lt-damagemenu-formulaire-div-bg);
     border-style: solid;
     border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-o-border-radius: 6px;
     border-width: 1px;
     text-align: center;
 }
@@ -811,6 +832,9 @@
 	background-color: var(--lt-gsheet-gsheet-bg);
 	border: 0px solid var(--lt-gsheet-gsheet-border);
 	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
 	height: max-content;
 }
 .gsheet-content{
@@ -830,6 +854,9 @@
 	height: auto;
 	border: 0px solid var(--lt-gsheet-gsheetThumbnail-border);
 	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
 }
 .gsheet-title{
 	text-transform: capitalize;
@@ -845,6 +872,9 @@
 /* INTERNAL ERROR SERVER */
 /* INTERNAL ERROR SERVER */
 /* INTERNAL ERROR SERVER */
+.ies-container{
+	margin: 30px;
+}
 .get-back-ies{
 	color: var(--lt-ies-back-color);
 	cursor: pointer;
@@ -893,6 +923,9 @@
 	color: var(--lt-dmgcalc-popupcontainer-color);
 	text-align: center;
 	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-o-border-radius: 6px;
 	border-color: var(--lt-dmgcalc-popupcontainer-border);
 	border-style: solid;
 	position: absolute;
@@ -994,6 +1027,9 @@ label {
 	padding: 10px;
 	background-color: var(--lt-upgradecost-rankInput-bg);
 	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
 	display: grid;
 	grid-template-columns: repeat(3,auto);
 }
@@ -1007,6 +1043,9 @@ label {
 	background-color: var(--lt-upgradecost-fieldset_container-checked-label-bg);
     border: 0px solid;
     border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
     width: auto;
 }
 /* CHANGELOG */
@@ -1026,7 +1065,22 @@ label {
 	padding: 1px;
 	border: 0px solid black;
 	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
 	width: 80%;
+}
+/* API FORM */
+/* API FORM */
+/* API FORM */
+/* API FORM */
+/* API FORM */
+.api_form form{
+	margin-top: 100px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 
 
@@ -1160,6 +1214,10 @@ label {
 	.body_dark_mode .comming-soon{
 		background-color: var(--dt-searchbar-commingsoon-bg);
 		box-shadow: 2px 5px 36px 23px var(--dt-searchbar-commingsoon-boxshadow);
+		-webkit-box-shadow: 2px 5px 36px 23px var(--dt-searchbar-commingsoon-boxshadow);
+		-moz-box-shadow: 2px 5px 36px 23px var(--dt-searchbar-commingsoon-boxshadow);
+		-o-box-shadow: 2px 5px 36px 23px var(--dt-searchbar-commingsoon-boxshadow);
+		-ms-box-shadow: 2px 5px 36px 23px var(--dt-searchbar-commingsoon-boxshadow);
 	}
 	.body_dark_mode .get-back-ies{
 		color: var(--dt-ies-back-color);

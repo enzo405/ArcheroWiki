@@ -1,7 +1,7 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5">
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5.1a">
 <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 <title>Create Stats - Calculator</title>
 <meta property="og:title" content="Archero Stats Calculator">
@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
 <meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.1a">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
@@ -311,9 +311,6 @@
 							<td>{{ form_JewelTypeTable.weapon_jewel4_type }}</td>
 							<td>{{ form_JewelLevelTable.weapon_jewel4_level }}</td>
 						</tr>
-						<!-- <tr class="globallvj">
-							<th colspan="2">Jewel overall Lv:<p id="jewel_W"></p></th>
-						</tr> -->
 					</tbody>
 				</table>
 				<table class="armor_jewel_table jewel_table">
@@ -339,9 +336,6 @@
 							<td>{{ form_JewelTypeTable.armor_jewel4_type }}</td>
 							<td>{{ form_JewelLevelTable.armor_jewel4_level }}</td>
 						</tr>
-						<!-- <tr class="globallvj">
-							<th colspan="2">Jewel overall Lv:<p id="jewel_A"></p></th>
-						</tr> -->
 					</tbody>
 				</table>
 				<table class="ring1_jewel_table jewel_table">
@@ -367,9 +361,6 @@
 							<td>{{ form_JewelTypeTable.ring1_jewel4_type }}</td>
 							<td>{{ form_JewelLevelTable.ring1_jewel4_level }}</td>
 						</tr>
-						<!-- <tr class="globallvj">
-							<th colspan="2">Jewel overall Lv:<p id="jewel_R1"></p></th>
-						</tr> -->
 					</tbody>
 				</table>
 				<table class="ring2_jewel_table jewel_table">
@@ -395,9 +386,6 @@
 							<td>{{ form_JewelTypeTable.ring2_jewel4_type }}</td>
 							<td>{{ form_JewelLevelTable.ring2_jewel4_level }}</td>
 						</tr>
-						<!-- <tr class="globallvj">
-							<th colspan="2">Jewel overall Lv:<p id="jewel_R2"></p></th>
-						</tr> -->
 					</tbody>
 				</table>
 				<table class="pet1_jewel_table jewel_table">
@@ -423,9 +411,6 @@
 							<td>{{ form_JewelTypeTable.pet1_jewel4_type }}</td>
 							<td>{{ form_JewelLevelTable.pet1_jewel4_level }}</td>
 						</tr>
-						<!-- <tr class="globallvj">
-							<th colspan="2">Jewel overall Lv:<p id="jewel_P1"></p></th>
-						</tr> -->
 					</tbody>
 				</table>
 				<table class="pet2_jewel_table jewel_table">
@@ -451,9 +436,6 @@
 							<td>{{ form_JewelTypeTable.pet2_jewel4_type }}</td>
 							<td>{{ form_JewelLevelTable.pet2_jewel4_level }}</td>
 						</tr>
-						<!-- <tr class="globallvj">
-							<th colspan="2">Jewel overall Lv:<p id="jewel_P2"></p></th>
-						</tr> -->
 					</tbody>
 				</table>
 				<table class="bracelet_jewel_table jewel_table">
@@ -479,9 +461,6 @@
 							<td>{{ form_JewelTypeTable.bracelet_jewel4_type }}</td>
 							<td>{{ form_JewelLevelTable.bracelet_jewel4_level }}</td>
 						</tr>
-						<!-- <tr class="globallvj">
-							<th colspan="2">Jewel overall Lv:<p id="jewel_B"></p></th>
-						</tr> -->
 					</tbody>
 				</table>
 				<table class="locket_jewel_table jewel_table">
@@ -507,9 +486,6 @@
 							<td>{{ form_JewelTypeTable.locket_jewel4_type }}</td>
 							<td>{{ form_JewelLevelTable.locket_jewel4_level }}</td>
 						</tr>
-						<!-- <tr class="globallvj">
-							<th colspan="2">Jewel overall Lv:<p id="jewel_L"></p></th>
-						</tr> -->
 					</tbody>
 				</table>
 				<table class="book_jewel_table jewel_table">
@@ -535,9 +511,6 @@
 							<td>{{ form_JewelTypeTable.book_jewel4_type }}</td>
 							<td>{{ form_JewelLevelTable.book_jewel4_level }}</td>
 						</tr>
-						<!-- <tr class="globallvj">
-							<th colspan="2">Jewel overall Lv:<p id="jewel_S"></p></th>
-						</tr> -->
 					</tbody>
 				</table>
 			</div>

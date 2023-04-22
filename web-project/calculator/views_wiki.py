@@ -1,60 +1,66 @@
-from .data import *
-from .forms import *
-from .function import *
-from .models import *
-from . import models
+from .forms import DamageCalculatorForm
+from .models import user,stuff_table,hero_table,talent_table,skin_table,altar_table,jewel_level_table,egg_table,egg_equipped_table,dragon_table,runes_table,reforge_table,refine_table,medals_table,relics_table,weapon_skins_table,dmg_calc_table,promo_code
+from .function import checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,checkTheme_Request,calculatePrice,makeCookieheader
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from math import *
 from urllib.request import urlopen
 from discord_webhook import DiscordWebhook, DiscordEmbed
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from http.cookies import CookieError
 from datetime import timedelta, datetime
-import json
-import os
-import sys
-import traceback
+import json, os, sys, traceback
+from const import WEBHOOK_URL
 
-# app_version = os.environ.get('APP_VERSION')
 lang = ["English","Francais","Deutsch","Russian","Española"]
 missing_data = []
-WEBHOOK_URL = "https://discord.com/api/webhooks/#########/#############################################"
-WEBHOOK_URL2 = "https://discord.com/api/webhooks/#########/#############################################"
+
 
 def menu(request):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
-	return render(request, 'menu.html', {"darkmode": darkmode, "header_msg": "Menu Archero Wiki", 'lang':lang, "sidebarContent":SidebarContent})
+	return render(request, 'base/menu.html', {"darkmode": darkmode, "header_msg": "Menu Archero Wiki", 'lang':lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
 
 def maze(request):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
 	with urlopen("https://config-archero.habby.mobi/data/config/MazeConfig.json") as url:
 		data_json = json.load(url)
-	return render(request, 'wiki/get_maze.html', {"data_json":data_json, "darkmode": darkmode, "header_msg": "maze","lang":lang, "sidebarContent":SidebarContent})
+	return render(request, 'wiki/get_maze.html', {"data_json":data_json, "darkmode": darkmode, "header_msg": "maze","lang":lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
 
 
 def csrf_failure(request, reason=""):
-	cookie_value = checkCookie(request.COOKIES)
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
+	cookie_result = checkCookie(request.COOKIES)
 	try:
-		ingame_id_cookie = list(cookie_value.values())[0]
-		ingame_name_cookie = list(cookie_value.keys())[0]
+		ingame_id_cookie = list(cookie_result.values())[0]
+		ingame_name_cookie = list(cookie_result.keys())[0]
 		if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
 			profil = "no"
 			public_id =''
 		else:
 			profil = "yes"
-			user_stats = models.user.objects.get(ingame_id=ingame_id_cookie)
+			user_stats = user.objects.get(ingame_id=ingame_id_cookie)
 			public_id = user_stats.public_id
 	except:
 		profil = "no"
 		public_id =''
-	darkmode = checkTheme_Request(request,cookie_value)
-	return render(request,'base/csrf_failure.html', {"darkmode": darkmode, "header_msg": "CSRF FAILURE","lang":lang, "profil":profil, "public_id":public_id, "sidebarContent":SidebarContent})
+	darkmode = checkTheme_Request(request,cookie_result)
+	return render(request,'base/csrf_failure.html', {"darkmode": darkmode, "header_msg": "CSRF FAILURE","lang":lang, "profil":profil, "public_id":public_id, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
 
 
 def login(request):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_value = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_value)
 	if (len(cookie_value) >= 1 and "visitor" not in list(cookie_value)):
@@ -63,7 +69,7 @@ def login(request):
 		messages.warning(request, f"You cannot go to Login : {username}")
 		return HttpResponseRedirect("/")
 	else:
-		return render(request, "login.html", {"darkmode":darkmode, "sidebarContent":SidebarContent})
+		return render(request, "base/login.html", {"darkmode":darkmode, "sidebarContent":SidebarContent})
 
 def login_processing(request, username_raw, id_raw):
 	username_legal = checkIllegalKey(username_raw)
@@ -77,7 +83,7 @@ def login_processing(request, username_raw, id_raw):
 		try:
 			response.set_cookie(key=boolCheck[1], value=boolCheck[2], expires=expires, httponly=True, samesite="Strict")
 		except CookieError as e:
-			send_webhook(f"<@382930544385851392> : {e}")
+			send_webhook(f"<@&1091459880700874882> : {e}")
 			messages.error(request, f'Login Failed (forbidden character "{username_legal}")')
 			return response
 		messages.success(request, f'Successful Login ({boolCheck[1]})')
@@ -88,11 +94,17 @@ def login_processing(request, username_raw, id_raw):
 	return response
 
 def wiki_theorycrafting(request):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
-	return render(request, "wiki/theorycraft.html", {"darkmode": darkmode, "header_msg": "TheoryCrafting","lang":lang, "sidebarContent":SidebarContent, "TheoryCraftingContent":TheoryCraftingContent})
+	return render(request, "wiki/theorycraft.html", {"darkmode": darkmode, "header_msg": "TheoryCrafting","lang":lang, "sidebarContent":SidebarContent, "TheoryCraftingContent":local_data["TheoryCraftingContent"], "cookieUsername":makeCookieheader(cookie_result)})
 
 def item_description(request, item=None):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
 	ctx = {
@@ -101,14 +113,15 @@ def item_description(request, item=None):
 		"lang":lang,
 		"item":"no",
 		"sidebarContent":SidebarContent,
-		"ItemData":ItemData
+		"ItemData":local_data["ItemData"],
+		"cookieUsername":makeCookieheader(cookie_result)
 	}
 	if item is None:
 		item = "Brave_Bow"
 	else:
 		ctx.update({"item":"yes"})
 	try:
-		item_data = ItemData[str(item).replace('_',' ')]
+		item_data = local_data["ItemData"][str(item).replace('_',' ')]
 		ctx.update({
 			"name":str(item).replace('_',' '),
 			"item_data":item_data,
@@ -120,6 +133,9 @@ def item_description(request, item=None):
 
 
 def skill_description(request, skill=None):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
 	ctx = {
@@ -128,7 +144,8 @@ def skill_description(request, skill=None):
 		"lang":lang,
 		"skill":"no",
 		"sidebarContent":SidebarContent,
-		"SkillData":SkillData
+		"SkillData":local_data["SkillData"],
+		"cookieUsername":makeCookieheader(cookie_result)
 	}
 	if skill is None:
 		skill = "Bouncy_Wall"
@@ -136,7 +153,7 @@ def skill_description(request, skill=None):
 		ctx.update({"skill":"yes"})
 	try:
 		skill_name = skill.replace("_"," ")
-		skill_data = SkillData[skill_name]
+		skill_data = local_data["SkillData"][skill_name]
 		image_skill = f"image/skill/{str(skill).lower().replace(' - ', '_').replace(' ', '_').replace('one-eyed', 'one_eyed')}.png"
 		url_cpy = request.build_absolute_uri()
 		ctx.update({
@@ -150,6 +167,9 @@ def skill_description(request, skill=None):
 	return render(request, "wiki/skill_description.html", ctx)
 
 def heros_description(request, hero=None):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
 	ctx = {
@@ -158,14 +178,15 @@ def heros_description(request, hero=None):
 		"lang":lang,
 		"hero":"no", ## keep this for the meta tag
 		"sidebarContent":SidebarContent,
-		"HeroData":HeroData
+		"HeroData":local_data["HeroData"],
+		"cookieUsername":makeCookieheader(cookie_result)
 	}
 	if hero is None:
 		hero = "Atreus"
 	else:
 		ctx.update({"hero":"yes"})
 	try:
-		hero_data = HeroData[hero]
+		hero_data = local_data["HeroData"][hero]
 		ctx.update({
 			"name_hero": hero,
 			"hero_data": hero_data,
@@ -177,6 +198,9 @@ def heros_description(request, hero=None):
 	return render(request, "wiki/heros_description.html",ctx)
 
 def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str="None"):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
 	all_rank = ["A","S","SS"]
@@ -189,7 +213,8 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 		"lvl1":lvl1,
 		"lvl2":lvl2,
 		"rank":rank,
-		"sidebarContent":SidebarContent
+		"sidebarContent":SidebarContent,
+		"cookieUsername":makeCookieheader(cookie_result)
 	}
 	if cost_type == "items":
 		max_lvl = 170
@@ -284,22 +309,29 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 
 
 def ghssetGrid(request):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
 	ctx = {
 		'darkmode':darkmode,
 		"header_msg": "Google Sheet Wiki",
 		"lang":lang,
-		"GsheetData":GsheetData,
-		"sidebarContent":SidebarContent
+		"GsheetData":local_data['GsheetData'],
+		"sidebarContent":SidebarContent,
+		"cookieUsername":makeCookieheader(cookie_result)
 	}
 	return render(request, "wiki/gsheet.html", ctx)
 
 def promocode(request):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
 	all_active_code = []
-	promo_codes = models.promo_code.objects.all().filter(is_active=True)
+	promo_codes = promo_code.objects.all().filter(is_active=True)
 	for i in promo_codes:
 		expireDate = i.expire
 		if i.expire == None:
@@ -323,32 +355,36 @@ def promocode(request):
 		"lang":lang,
 		"promo_code":all_active_code,
 		"len_promo":len(all_active_code),
-		"sidebarContent":SidebarContent
+		"sidebarContent":SidebarContent,
+		"cookieUsername":makeCookieheader(cookie_result)
 	}
 	return render(request, "wiki/promo-code.html", ctx)
 
 
 def damage(request):
-	cookie_value = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_value)
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
+	cookie_result = checkCookie(request.COOKIES)
+	darkmode = checkTheme_Request(request,cookie_result)
 	user_stats = ""
-	if len(cookie_value) != 0:
-		ingame_id_cookie = list(cookie_value.values())[0]
-		ingame_name_cookie = list(cookie_value.keys())[0]
+	if len(cookie_result) != 0:
+		ingame_id_cookie = list(cookie_result.values())[0]
+		ingame_name_cookie = list(cookie_result.keys())[0]
 		if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
 			selfHasProfil = "login"
 		else:
 			try:
-				user_stats = models.user.objects.get(ingame_id=ingame_id_cookie)
+				user_stats = user.objects.get(ingame_id=ingame_id_cookie)
 				selfHasProfil = "yes"
 			except:
 				selfHasProfil = "no"
 	else:
 		selfHasProfil = "login"
-	chapter_1_to_21 =  models.user.objects.get(ingame_id="0-000001").public_id
-	chapter_22_to_34 = models.user.objects.get(ingame_id="0-000002").public_id
-	chapter_34_to_42 = models.user.objects.get(ingame_id="0-000003").public_id
-	chapter_ch42 =  models.user.objects.get(ingame_id="0-000004").public_id
+	chapter_1_to_21 =  user.objects.get(ingame_id="0-000001").public_id
+	chapter_22_to_34 = user.objects.get(ingame_id="0-000002").public_id
+	chapter_34_to_42 = user.objects.get(ingame_id="0-000003").public_id
+	chapter_ch42 =  user.objects.get(ingame_id="0-000004").public_id
 	ctx = {
 		"darkmode": darkmode,
 		"header_msg": "Damage Help",
@@ -359,29 +395,32 @@ def damage(request):
 		"chapter_22_to_34":chapter_22_to_34,
 		"chapter_34_to_42":chapter_34_to_42,
 		"chapter_ch42":chapter_ch42,
-		"sidebarContent":SidebarContent
+		"sidebarContent":SidebarContent,
+		"cookieUsername":makeCookieheader(cookie_result)
 		}
 	return render(request, "wiki/damage.html", ctx)
 
 
 def dmgCalc_processing(request,pbid):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
 	global missing_data
-	user_stats = models.user.objects.get(public_id=pbid)
-	stuff_table_stats = models.stuff_table.objects.get(user_profile=user_stats)
-	hero_table_stats = models.hero_table.objects.get(user_profile=user_stats)
-	talent_table_stats = models.talent_table.objects.get(user_profile=user_stats)
-	skin_table_stats = models.skin_table.objects.get(user_profile=user_stats)
-	altar_table_stats = models.altar_table.objects.get(user_profile=user_stats)
-	jewel_level_table_stats = models.jewel_level_table.objects.get(user_profile=user_stats)
-	egg_table_stats = models.egg_table.objects.get(user_profile=user_stats)
-	egg_equipped_table_stats = models.egg_equipped_table.objects.get(user_profile=user_stats)
-	dragon_table_stats = models.dragon_table.objects.get(user_profile=user_stats)
-	runes_table_stats = models.runes_table.objects.get(user_profile=user_stats)
-	reforge_table_stats = models.reforge_table.objects.get(user_profile=user_stats)
-	refine_table_stats = models.refine_table.objects.get(user_profile=user_stats)
-	medals_table_stats = models.medals_table.objects.get(user_profile=user_stats)
-	relics_table_stats = models.relics_table.objects.get(user_profile=user_stats)
-	weapon_skins_table_stats = models.weapon_skins_table.objects.get(user_profile=user_stats)
+	user_stats = user.objects.get(public_id=pbid)
+	stuff_table_stats = stuff_table.objects.get(user_profile=user_stats)
+	hero_table_stats = hero_table.objects.get(user_profile=user_stats)
+	talent_table_stats = talent_table.objects.get(user_profile=user_stats)
+	skin_table_stats = skin_table.objects.get(user_profile=user_stats)
+	altar_table_stats = altar_table.objects.get(user_profile=user_stats)
+	jewel_level_table_stats = jewel_level_table.objects.get(user_profile=user_stats)
+	egg_table_stats = egg_table.objects.get(user_profile=user_stats)
+	egg_equipped_table_stats = egg_equipped_table.objects.get(user_profile=user_stats)
+	dragon_table_stats = dragon_table.objects.get(user_profile=user_stats)
+	runes_table_stats = runes_table.objects.get(user_profile=user_stats)
+	reforge_table_stats = reforge_table.objects.get(user_profile=user_stats)
+	refine_table_stats = refine_table.objects.get(user_profile=user_stats)
+	medals_table_stats = medals_table.objects.get(user_profile=user_stats)
+	relics_table_stats = relics_table.objects.get(user_profile=user_stats)
+	weapon_skins_table_stats = weapon_skins_table.objects.get(user_profile=user_stats)
 
 	atk_base_hero_choosen = user_stats.atk_base_stats_hero_choosen
 
@@ -409,10 +448,10 @@ def dmgCalc_processing(request,pbid):
 	## Get Talents Stats
 	talent_stats_dict = talent_table_stats.getTalentStats()
 	## Get Altar Ascension Stats
-	altar_stuff_ascension_atk = StuffAltarAscension[str(stuff_altar_ascension) + '_attack']
-	altar_stuff_ascension_equipment_base = StuffAltarAscension[str(stuff_altar_ascension) + '_equipment_base']
-	altar_heros_ascension_atk = HerosAltarAscension[str(heros_altar_ascension) + '_attack']
-	altar_heros_ascension_heros_base = HerosAltarAscension[str(heros_altar_ascension) + '_heros_base']
+	altar_stuff_ascension_atk = local_data["StuffAltarAscension"][str(stuff_altar_ascension) + '_attack']
+	altar_stuff_ascension_equipment_base = local_data["StuffAltarAscension"][str(stuff_altar_ascension) + '_equipment_base']
+	altar_heros_ascension_atk = local_data["HerosAltarAscension"][str(heros_altar_ascension) + '_attack']
+	altar_heros_ascension_heros_base = local_data["HerosAltarAscension"][str(heros_altar_ascension) + '_heros_base']
 	## Get Altar Stats 
 	altar_stuff_atk = altar_table_stats.CalculAltar("stuff","attack")
 	altar_hero_atk = altar_table_stats.CalculAltar("heros","attack") ##laissé le S (le nom du field prend un s)
@@ -484,10 +523,8 @@ def dmgCalc_processing(request,pbid):
 	egg_infernal_demon_passiv = egg_table_stats.GetPassivEggStats3("infernal_demon",missing_data)
 	egg_sinister_touch_passiv = egg_table_stats.GetPassivEggStats3("sinister_touch",missing_data)
 	egg_fireworm_queen_passiv = egg_table_stats.GetPassivEggStats3("fireworm_queen",missing_data)
-	# Get All Jewel's Stats
-	stats_jewel_dict = jewel_level_table_stats.JewelStatsRecup()
 	## Get Brave Privilege Stats
-	brave_privileges_stats = BravePrivileges['level' + str(brave_privileges_level)]
+	brave_privileges_stats = local_data['BravePrivileges']['level' + str(brave_privileges_level)]
 	## Get Special Bonus Stats
 	BonusSpe_jewel_weapon = jewel_level_table_stats.JewelSpeBonusStatsRecup('weapon',brave_privileges_stats['Weapon JSSSA'])
 	BonusSpe_jewel_ring1 = jewel_level_table_stats.JewelSpeBonusStatsRecup('ring1',brave_privileges_stats['Ring JSSSA'])
@@ -512,7 +549,8 @@ def dmgCalc_processing(request,pbid):
 	medal_stats = medals_table_stats.medal_calc()
 	## Get all Relics Stats
 	relics_stats = relics_table_stats.relics_Stats()
-
+	# Get All Jewel's Stats
+	stats_jewel_dict = jewel_level_table_stats.JewelStatsRecup(float(relics_stats['attack_jewel_base']))
 ############################################## CALCUL #######################################################
 	egg_var_passiv_heros_power_up = int(egg_arch_leader_passiv[3]) + int(egg_medusa_boss_passiv[3]) + int(egg_fire_demon_passiv[3]) + int(egg_krab_boss_passiv[3]) + int(egg_skeleton_king_passiv[1]) + int(egg_skeleton_king_passiv[3]) + int(egg_desert_goliath_passiv[1]) + int(egg_desert_goliath_passiv[3]) + int(egg_ice_demon_passiv[1]) + int(egg_ice_demon_passiv[3]) + int(egg_fireworm_queen_passiv[3]) + int(egg_sinister_touch_passiv[1]) + int(egg_infernal_demon_passiv[3]) + int(egg_scythe_pharoah_passiv[3])
 	egg_var_passiv_enhanced_equipment = int(egg_crimson_witch_passiv[3]) + int(egg_queen_bee_passiv[3]) + int(egg_ice_worm_passiv[1]) + int(egg_ice_worm_passiv[3]) + int(egg_giant_owl_passiv[1]) + int(egg_giant_owl_passiv[3]) + int(egg_infernal_demon_passiv[1]) + int(egg_sinister_touch_passiv[3])
@@ -531,7 +569,7 @@ def dmgCalc_processing(request,pbid):
 	cumul_jewel_flat_activ_atk = int(stats_jewel_dict['attack_ruby']) + int(stats_jewel_dict['attack_kunzite']) + int(stats_jewel_dict['attack_tourmaline']) + int(BonusSpe_jewel_weapon[0]) + int(BonusSpe_jewel_weapon[4]) + int(BonusSpe_jewel_bracelet[0]) + int(BonusSpe_jewel_bracelet[2]) + int(BonusSpe_jewel_bracelet[4])
 	cumul_old_flat_passiv_atk = int(cumul_runes_flat_passiv_atk) + int(cumul_talent_flat_passiv_atk) + int(cumul_hero_flat_passiv_atk) + int(cumul_skin_flat_passiv_atk) + int(cumul_egg_flat_passiv_atk)
 	cumul_refine_flat_activ_atk =  int(refine_weapon_atk) + int(refine_ring1_atk) + int(refine_ring2_atk) + int(refine_bracelet_atk)
-	cumul_dragon_flat_activ_atk = int(dragon_1_stats_dict["Attack"]) + int(dragon_2_stats_dict["Attack"]) + int(dragon_3_stats_dict["Attack"])
+	cumul_dragon_flat_activ_atk = int(dragon_1_stats_dict.get("Attack",0)) + int(dragon_2_stats_dict.get("Attack",0)) + int(dragon_3_stats_dict.get("Attack",0))
 	cumul_stuff_flat_activ_atk = round(stuff_activ_stats['weapon_total'] + stuff_activ_stats['bracelet_total'])
 
 	cumul_heros_var_passiv_atk = float(hero_Taranis[2]) + float(hero_Meowgik[2]) + float(hero_Ayana[2]) + float(hero_Rolla[2]) + float(hero_Sylvan[2]) + float(hero_Aquea[2]) + float(hero_Iris[2]) + float(hero_Bonnie[4]) + float(hero_Shade[7]) + float(hero_Melinda[7]) + float(hero_Bobo[1]) + float(hero_Bobo[4]) + float(hero_Stella[2])
@@ -568,7 +606,7 @@ def dmgCalc_processing(request,pbid):
 
 	if request.method == "GET":
 		try:
-			calc_user_dmg = models.dmg_calc_table.objects.get(user_profile=user_stats)
+			calc_user_dmg = dmg_calc_table.objects.get(user_profile=user_stats)
 			calc_user_dmg.hero_atk = hero_atk_step
 			calc_user_dmg.save()
 			return HttpResponseRedirect(f"/wiki/damage-calculator/{pbid}/")
@@ -579,19 +617,23 @@ def dmgCalc_processing(request,pbid):
 
 
 def damageCalc(request,pbid):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
 	try:
-		user_stats = models.user.objects.get(public_id=pbid)
-		calc_user_dmg = models.dmg_calc_table.objects.get(user_profile=user_stats.pk)
-		runes_table_stats = models.runes_table.objects.get(user_profile=user_stats.pk)
+		user_stats = user.objects.get(public_id=pbid)
+		calc_user_dmg = dmg_calc_table.objects.get(user_profile=user_stats.pk)
+		runes_table_stats = runes_table.objects.get(user_profile=user_stats.pk)
 	except:	
-		return HttpResponseRedirect("/")
+		return HttpResponseRedirect(f"/wiki/damage-calculator/calc/{pbid}/")
 	ctx = {
 		'darkmode':darkmode,
 		"header_msg": "Damage Calc",
 		"lang":lang,
-		"sidebarContent":SidebarContent
+		"sidebarContent":SidebarContent,
+		"cookieUsername":makeCookieheader(cookie_result)
 	}
 	if request.method == "GET":
 		damage_calc_form = DamageCalculatorForm()
@@ -612,6 +654,7 @@ def damageCalc(request,pbid):
 		damage_calc_form = DamageCalculatorForm(request.POST)
 		if damage_calc_form.is_valid() and 'runes' in request.POST:
 			listHeroStepAtk = calc_user_dmg.hero_atk
+			## TODO handle if hero_atk = {}
 			param_runes_display = runes_table_stats.getRunesDmgCalc()
 			runes = damage_calc_form.cleaned_data['runes']
 			first_select = request.POST.get('firstSelect',None)
@@ -624,17 +667,12 @@ def damageCalc(request,pbid):
 			third_input = damage_calc_form.cleaned_data['thirdInput']
 			fourth_input = damage_calc_form.cleaned_data['fourthInput']
 			fifth_input = damage_calc_form.cleaned_data['fifthInput']
-			inputRune = {"none":0,'attack_flat':0,'attack_var':0.0,"flat_dmg_airborne":0,"var_dmg_airborne":0.0,
-				"flat_dmg_ground":0,"var_dmg_ground":0.0,"flat_dmg_melee":0.0,"var_dmg_melee":0.0,
-				"flat_dmg_ranged":0,"var_dmg_ranged":0.0,"flat_dmg_boss":0,"var_dmg_boss":0.0,"flat_dmg_mob":0,
-				"var_dmg_mob":0.0,"var_dmg_hero":0.0,"flat_all_dmg":0.0,"var_all_dmg":0.0,"var_elemental_dmg":0.0,
-				"var_atk_speed":0.0,"var_crit_rate":0.0,"var_crit_dmg":0.0,'Attack (Courage)':0,'Attack% (Courage)':0.0,
-				'Hero base ATK':0,'Hero base ATK %':0.0,first_select: first_input,second_select: second_input,
+			inputRune = {first_select: first_input,second_select: second_input,
 				third_select: third_input,fourth_select: fourth_input,fifth_select: fifth_input}
 
 			power_vars = {
-				'atk_power_flat': inputRune['attack_flat'],
-				'atk_power_var': inputRune['attack_var'],
+				'atk_power_flat': inputRune.get('atk_power_flat',0),
+				'atk_power_var': inputRune.get('atk_power_var',0.0),
 				'atk_courage_flat': param_runes_display["atk_courage_flat"],
 				'atk_courage_var': param_runes_display["atk_courage_var"],
 				'courage_hero_atk_flat': param_runes_display["courage_hero_atk_flat"],
@@ -651,10 +689,10 @@ def damageCalc(request,pbid):
 			courage_vars = {
 				'atk_power_flat': param_runes_display["atk_power_flat"],
 				'atk_power_var': param_runes_display["atk_power_var"],
-				'atk_courage_flat': inputRune['Attack (Courage)'],
-				'atk_courage_var': inputRune['Attack% (Courage)'],
-				'courage_hero_atk_flat': inputRune['Hero base ATK'],
-				'courage_hero_atk_var': inputRune['Hero base ATK %'],
+				'atk_courage_flat': inputRune.get('Attack (Courage)',0),
+				'atk_courage_var': inputRune.get('Attack% (Courage)',0.0),
+				'courage_hero_atk_flat': inputRune.get('Hero base ATK',0),
+				'courage_hero_atk_var': inputRune.get('Hero base ATK %',0.0),
 				"power_second_select":param_runes_display["power_second_select"],
 				"power_second_input":param_runes_display["power_second_input"],
 				"power_third_select":param_runes_display["power_third_select"],
@@ -674,22 +712,22 @@ def damageCalc(request,pbid):
 
 			resultCalcDamg = calc_user_dmg.calculDamage(
 				global_atk_save=global_stats_atk,
-				crit_dmg=float(inputRune['var_crit_dmg'])+calc_user_dmg.crit_dmg,
-				crit_rate=float(inputRune['var_crit_rate'])+calc_user_dmg.crit_rate,
-				flat_dmg_vs_mobs=float(inputRune['flat_dmg_mob'])+calc_user_dmg.flat_dmg_vs_mobs,
-				var_dmg_vs_mobs=float(inputRune['var_dmg_mob'])+calc_user_dmg.var_dmg_vs_mobs,
-				flat_dmg_vs_ground=float(inputRune['flat_dmg_ground'])+calc_user_dmg.flat_dmg_vs_ground,
-				var_dmg_vs_ground=float(inputRune['var_dmg_ground'])+calc_user_dmg.var_dmg_vs_ground,
-				flat_dmg_vs_melee=float(inputRune['flat_dmg_melee'])+calc_user_dmg.flat_dmg_vs_melee,
-				var_dmg_vs_melee=float(inputRune['var_dmg_melee'])+calc_user_dmg.var_dmg_vs_melee,
-				flat_dmg_vs_airborne=float(inputRune['flat_dmg_airborne'])+calc_user_dmg.flat_dmg_vs_airborne,
-				var_dmg_vs_airborne=float(inputRune['var_dmg_airborne'])+calc_user_dmg.var_dmg_vs_airborne,
-				flat_dmg_vs_boss=float(inputRune['flat_dmg_boss'])+calc_user_dmg.flat_dmg_vs_boss,
-				var_dmg_vs_boss=float(inputRune['var_dmg_boss'])+calc_user_dmg.var_dmg_vs_boss,
-				flat_dmg_vs_range=float(inputRune['flat_dmg_ranged'])+calc_user_dmg.flat_dmg_vs_range,
-				var_dmg_vs_range=float(inputRune['var_dmg_ranged'])+calc_user_dmg.var_dmg_vs_range,
-				flat_dmg_all=float(inputRune['flat_all_dmg'])+calc_user_dmg.flat_dmg_all,
-				var_dmg_all=float(inputRune['var_all_dmg'])+calc_user_dmg.var_dmg_all
+				crit_dmg=float(inputRune.get('var_crit_dmg',0.0))+calc_user_dmg.crit_dmg,
+				crit_rate=float(inputRune.get('var_crit_rate',0.0))+calc_user_dmg.crit_rate,
+				flat_dmg_vs_mobs=float(inputRune.get('flat_dmg_mob',0))+calc_user_dmg.flat_dmg_vs_mobs,
+				var_dmg_vs_mobs=float(inputRune.get('var_dmg_mob',0.0))+calc_user_dmg.var_dmg_vs_mobs,
+				flat_dmg_vs_ground=float(inputRune.get('flat_dmg_ground',0))+calc_user_dmg.flat_dmg_vs_ground,
+				var_dmg_vs_ground=float(inputRune.get('var_dmg_ground',0.0))+calc_user_dmg.var_dmg_vs_ground,
+				flat_dmg_vs_melee=float(inputRune.get('flat_dmg_melee',0))+calc_user_dmg.flat_dmg_vs_melee,
+				var_dmg_vs_melee=float(inputRune.get('var_dmg_melee',0.0))+calc_user_dmg.var_dmg_vs_melee,
+				flat_dmg_vs_airborne=float(inputRune.get('flat_dmg_airborne',0))+calc_user_dmg.flat_dmg_vs_airborne,
+				var_dmg_vs_airborne=float(inputRune.get('var_dmg_airborne',0.0))+calc_user_dmg.var_dmg_vs_airborne,
+				flat_dmg_vs_boss=float(inputRune.get('flat_dmg_boss',0))+calc_user_dmg.flat_dmg_vs_boss,
+				var_dmg_vs_boss=float(inputRune.get('var_dmg_boss',0.0))+calc_user_dmg.var_dmg_vs_boss,
+				flat_dmg_vs_range=float(inputRune.get('flat_dmg_ranged',0))+calc_user_dmg.flat_dmg_vs_range,
+				var_dmg_vs_range=float(inputRune.get('var_dmg_ranged',0.0))+calc_user_dmg.var_dmg_vs_range,
+				flat_dmg_all=float(inputRune.get('flat_all_dmg',0))+calc_user_dmg.flat_dmg_all,
+				var_dmg_all=float(inputRune.get('var_all_dmg',0.0))+calc_user_dmg.var_dmg_all
 			)
 			ctx.update({
 				"method": request.method,"runes": runes,"vars_dict":vars_dict,
@@ -714,17 +752,24 @@ def damageCalc(request,pbid):
 
 
 def handler404(request, exception):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
 	ctx = {
 		'darkmode':darkmode,
 		"header_msg":"Page Not Found",
 		"lang":lang,
-		"sidebarContent":SidebarContent
+		"sidebarContent":SidebarContent,
+		"cookieUsername":makeCookieheader(cookie_result)
 	}
 	return render(request,'base/404.html', ctx, status=404)
 
 def handler500(request):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
 	allfile = os.listdir('calculator/static/traceback_file/')
@@ -740,19 +785,19 @@ def handler500(request):
 	with open(f'calculator/static/traceback_file/{username}.txt','a', encoding='utf-8') as exc_value:
 		for i in exc_output:
 			exc_value.write(i)
-	webhook = DiscordWebhook(url=WEBHOOK_URL, content="<@&1091459966319198258>", rate_limit_retry=True, allowed_mentions={"users": ["382930544385851392"]})
+	webhook = DiscordWebhook(url=WEBHOOK_URL, content="<@&1091459966319198258>", rate_limit_retry=True)
 	embed = DiscordEmbed(title='Error 500 - Internal Server Error', description='', color='963e3e')
 	embed.set_author(
 		name=username.capitalize(),
 		icon_url="https://stats.wiki-archero.com/static/image/favicon.png",
 	)
-	embed.add_embed_field(name='Request', value=f"{request.method} | {request.path}", inline=False)
+	embed.add_embed_field(name='Request', value=f"{request.method} | {request.build_absolute_uri()}", inline=False)
 	embed.add_embed_field(name='Cookie', value=f"{request.COOKIES}", inline=False)
 	webhook.add_embed(embed)
 	with open(f'calculator/static/traceback_file/{username}.txt','r', encoding='utf-8') as f:
 		webhook.add_file(file=f.read(), filename=f'{username}.txt')
 	webhook.execute()
-	return render(request,'base/500.html', {'darkmode':darkmode,"header_msg":"Internal Error Server", 'lang':lang,"sidebarContent":SidebarContent},status=500)
+	return render(request,'base/500.html', {'darkmode':darkmode,"header_msg":"Internal Server Error", 'lang':lang,"sidebarContent":SidebarContent},status=500)
 
 
 def rickroll(request):
@@ -761,13 +806,19 @@ def rickroll(request):
 
 
 def tos(request):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
-	return render(request,'tos.html',{"darkmode": darkmode})
+	return render(request,'base/tos.html',{"darkmode": darkmode,"cookieUsername":makeCookieheader(cookie_result)})
 
 def changelog(request):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
 	with open(f'calculator/static/json/commits.json','r', encoding='utf-8') as commit:
 		commit_json = json.load(commit)
-	return render(request,'changelog.html',{"commit_json":commit_json,"darkmode": darkmode, "header_msg": "Change Log", 'lang':lang, "sidebarContent":SidebarContent})
+	return render(request,'base/changelog.html',{"commit_json":commit_json,"darkmode": darkmode, "header_msg": "Change Log", 'lang':lang, "sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(cookie_result)})

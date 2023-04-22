@@ -1,14 +1,14 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5">
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5.1a">
 <title>Archero - Wiki - Calculator</title>
 <meta property="og:title" content="Archero Stats Calculator">
 <meta property="og:url" content="https://stats.wiki-archero.com/calculator/index/">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
 <meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.1a">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
@@ -19,36 +19,40 @@
 			<a href="/calculator/create/">Create profile</a>
 		</div>
 		{% elif show_table == "yes" or show_table == "no_show" %}
-		<table class="index-table self-table">
-			<thead class="table-header">
-				<tr>
-					<th>Username</th>
-					<th class="self_table_atk_row">Attack</th>
-					<th class="self_table_hp_row">Hp</th>
-					{% if show_table != "no_show" %}
-					<th>Show</th>
-					{% endif %}
-					<th>Update</th>
-				</tr>
-			</thead>
-			<tbody class="table-content">
-			<tr>
-				<td id="td-table-stats-index">{{ self_ingame_name }}</td>
-				<td id="td-table-stats-index" class="self_table_atk_row">{{ self_global_atk_save }}</td>
-				<td id="td-table-stats-index" class="self_table_hp_row">{{ self_global_hp_save }}</td>
+		<div class="profile-card">
+			<div class="avatar-container">
+				<img src="{{ self_ingame_hero }}" alt="Avatar">
+			</div>
+			<div class="info-container">
+				<h3>{{ self_ingame_name }}</h3>
+				<div class="stat-container">
+					<div class="stat">
+						<span class="label">Attack:</span>
+						<span class="value">{{ self_global_atk_save }}</span>
+					</div>
+					<div class="stat">
+						<span class="label">Rank:</span>
+						<span class="value">{{ rank }}</span>
+					</div>
+					<div class="stat">
+						<span class="label">HP:</span>
+						<span class="value">{{ self_global_hp_save }}</span>
+					</div>
+				</div>
+			</div>
+			<div class="button-container">
 				{% if show_table != "no_show" %}
-					<td id="td-table-stats-index"><a href='/calculator/show/{{ self_public_id }}/'><button class="btn-table">Show</button></a></td>
+				<a href='/calculator/show/{{ self_public_id }}/'><button class="btn-table">Show</button></a>
 				{% endif %}
-				<td id="td-table-stats-index"><a href='/calculator/update/{{ self_public_id }}/'><button class="btn-table">Update</button></a></td>
-			</tr>
-			</tbody>
-		</table>
+				<a href='/calculator/update/{{ self_public_id }}/'><button class="btn-table">Update</button></a>
+			</div>
+		</div>
 		{% elif show_table == "visitor" %}
 			{% if try_access %}
 				<script>
 					createModale('You attempted to access {{ self_ingame_name }}<br>But your login username is "{{ ingame_name_cookie }}".<br>Admin have been warned',false)
 				</script>
-			{% endif %}
+		{% endif %}
 		<div class="div_formulaire">
 			<a href="/login">Log-in</a>
 		</div>
@@ -56,27 +60,27 @@
 			<p class="msg-index-no-profile">If you already have a profile, please contact me on <a href="https://discord.com/users/382930544385851392" target="_blank">Discord</a> or <a href="https://www.reddit.com/user/LuhCaran101" target="_blank">Reddit</a></p>
 		</div>
 		{% endif %}
-		<div class="container_table_all">
-			<table id="index-table" class="index-table overflow_index_table">
-				<thead class="table-header">
+		<div class="table-responsive" id="index-table">
+			<table class="table">
+				<thead>
 					<tr>
 						<th>Username</th>
 						<th class="hero_row">Hero</th>
-						<th class="table_atk_row">Attack</th>
-						<th class="table_hp_row">Hp</th>
+						<th class="self_table_atk_row">Attack</th>
+						<th class="self_table_hp_row">Hp</th>
 						<th>Show</th>
 					</tr>
 				</thead>
-				<tbody class="table-content">
-				{% for l in listALL %}
-				<tr id="{{ l.ingame_name }}">
-					<td id="td-table-stats-index">{{ l.ingame_name }}</td>
-					<td id="td-table-stats-index" class="hero_row">{{ l.choosen_hero }}</td>
-					<td id="td-table-stats-index" class="table_atk_row">{{ l.global_atk_save }}</td>
-					<td id="td-table-stats-index" class="table_hp_row">{{ l.global_hp_save }}</td>
-					<td id="td-table-stats-index"><a href='/calculator/show/{{ l.public_id }}/'><button class="btn-table">Show</button></a></td>
-				</tr>
-				{% endfor %}
+				<tbody>
+					{% for l in listALL %}
+					<tr id="{{ l.ingame_name }}">
+						<td>{{ l.ingame_name }}</td>
+						<td class="hero_row">{{ l.choosen_hero }}</td>
+						<td class="table_atk_row">{{ l.global_atk_save }}</td>
+						<td class="table_hp_row">{{ l.global_hp_save }}</td>
+						<td><a href='/calculator/show/{{ l.public_id }}/'><button class="btn-table">Show</button></a></td>
+					</tr>
+					{% endfor %}
 				</tbody>
 			</table>
 		</div>
@@ -96,35 +100,41 @@
 	const rowsPerPage = 18;
 	const numPages = Math.ceil(rows.length / rowsPerPage);
 	const pagination = document.querySelector("#pagination");
-
-	for (let i = 0; i < numPages; i++) {
-	const pageButton = document.createElement("button");
-	pageButton.textContent = i + 1;
-	pageButton.addEventListener("click", function () {
-		showPage(i);
-	});
-	pagination.appendChild(pageButton);
-	}
+	let currentPage = 0;
 
 	function showPage(pageNum) {
-	for (let i = 0; i < rows.length; i++) {
-		rows[i].style.display = "none";
-	}
-	for (let i = pageNum * rowsPerPage; i < (pageNum + 1) * rowsPerPage; i++) {
-		if (i < rows.length) {
-		rows[i].style.display = "table-row";
+		for (let i = 0; i < rows.length; i++) {
+			rows[i].style.display = "none";
+		}
+		for (let i = pageNum * rowsPerPage; i < (pageNum + 1) * rowsPerPage; i++) {
+			if (i < rows.length) {
+				rows[i].style.display = "table-row";
+			}
 		}
 	}
+
+	function generatePaginationButtons() {
+		const start = Math.max(currentPage - 1, 0);
+		const end = Math.min(start + 3, numPages);
+		pagination.innerHTML = "";
+		for (let i = start; i < end; i++) {
+			const pageButton = document.createElement("button");
+			pageButton.textContent = i + 1;
+			if (i === currentPage) {
+				pageButton.classList.add("active");
+			}
+			pageButton.addEventListener("click", function () {
+				currentPage = i;
+				showPage(currentPage);
+				generatePaginationButtons();
+			});
+			pagination.appendChild(pageButton);
+		}
 	}
 
-	showPage(0);
-	pagination.firstChild.classList.add("active");
-
-	pagination.addEventListener("click", function (event) {
-  	if (event.target.tagName === "BUTTON") {
-		const activeButton = pagination.querySelector("button.active");
-		activeButton.classList.remove("active");
-		event.target.classList.add("active");
-	}});
+	showPage(currentPage);
+	generatePaginationButtons();
+	let table_offsetHeight = document.querySelector(".table-responsive").offsetHeight
+	document.querySelector(".table-responsive").style.minHeight = `${table_offsetHeight}px`
 </script>
 {% endblock %}

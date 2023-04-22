@@ -1,8 +1,8 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.5">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.1a">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.5.1a">
 <title>Archero - Wiki</title>
 <meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
 <meta property="og:type" content="website">
@@ -10,12 +10,12 @@
 <meta property="og:title" content="{{ name }}">
 <meta property="og:url" content="{{ url_cpy }}">
 <meta property="og:description" content="{{ item_data.description|safe }}">
-<meta property="og:image" content="{% static item_data.item_image %}?version=1.5">
+<meta property="og:image" content="{% static item_data.item_image %}?version=1.5.1a">
 {% else %}
 <meta property="og:title" content="Archero - Item Description">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/item">
 <meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.1a">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -66,6 +66,12 @@
 						</span>
 						<div class="sc-3qrykn-3 hXMbfy">
 							<div class="sc-27l7o2-0 heOpKb" id="item_description">{{ item_data.description|safe }}</div>
+							<div class="e_hidden_stats " id="hidden_stats">
+								<b>Hidden Stats</b>
+								{% for rarity,boost in item_data.hidden_stats.items %}
+								<span>{{ boost|safe }}</span>
+								{% endfor %}
+							</div>
 						</div>
 						<div class="sc-3qrykn-4 hQKgZF">
 							<div class="rgqgux-0 dQAxvm">

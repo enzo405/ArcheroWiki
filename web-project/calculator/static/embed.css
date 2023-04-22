@@ -165,7 +165,18 @@
     align-items: center;
     grid-area: auto / 1 / auto / 3;
 }
-
+.e_hidden_stats{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875em;
+    color: rgb(220, 221, 222);
+    margin-bottom: 10px;
+    margin-top: 14px;
+}
+.e_hidden_stats b{
+    margin-bottom: 6px;
+    text-decoration: underline;
+}
 .frwlEK {
     font-size: 0.75em;
     font-weight: 500;

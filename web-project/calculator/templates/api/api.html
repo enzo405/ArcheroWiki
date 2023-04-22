@@ -1,0 +1,72 @@
+{% extends "template.html" %}
+{% load static %}
+	{% block head %}
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.1a">
+		<title>Archero - Wiki</title>
+		<meta property="og:title" content="Welcome to the Wiki Archero">
+		<meta property="og:url" content="https://stats.wiki-archero.com/">
+		<meta property="og:type" content="website">
+		<meta property="og:description" content="Welcome to Archero website! We offer advanced statistics, comprehensive guides to help you progress into the game. This site is includes the latest updates.">
+		<meta name="description" content="Welcome to Archero website! We offer advanced statistics, comprehensive guides to help you progress into the game. This site is includes the latest updates.">
+		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.1a">
+		<style>
+		.content_container {
+			padding: 20px;
+			border-radius: 5px;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			-o-border-radius: 5px;
+			margin-top: 20px;
+		}
+		ul {list-style-type: none;padding: 0;}
+		li {margin-bottom: 10px;}
+		a.key-link {color: blue;text-decoration: none;}
+		a.key-link:hover {text-decoration: underline;}
+		span.back-link {
+			font-size: 14px;
+			color: #333;
+			margin-bottom: 10px;
+		}
+		span.back-link a {
+			color: #007bff;
+			text-decoration: none;
+			font-weight: bold;
+			margin-left: 5px;
+		}
+		</style>
+	{% endblock %}
+	{% block header_content %}{{ header_msg }}{% endblock %}
+	{% block content %}
+    <div class="content_container">
+		<span class="back-link"><a href="{{ previous }}">Go back <i class="fa fa-arrow-left" aria-hidden="true"></i></a></span>
+			{% if result == False %}
+			<ul>
+				{% for key in keys %}
+					<li>
+						<a href="{{ url_query }}{{ key }}" class="key-link">{{ key }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+			{% elif result == True %}
+				<code>
+					<span>
+						{{ keys }}
+					</span>
+				</code>
+				{% if status == "authorized" %}
+				<div class="api_form">
+					<form action="" method="POST">
+						{% csrf_token %}
+						<script>
+							document.cookie = " csrftoken= "+document.querySelector('[name=csrfmiddlewaretoken]').value + ";path=/";
+						</script>
+						<textarea name="new_value" rows="4" cols="50">{{ keys }}</textarea>
+						<input type="submit" placeholder="Submit">
+					</form>
+				</div>
+				{% endif %}
+			{% endif %}
+	  </div>
+	{% endblock %}
+	{% block javascript %}
+	{% endblock %}

@@ -129,6 +129,9 @@ button:hover {
 	width: 960px;
 	background: #fff;
 	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
 	overflow: hidden;
 	display: flex;
 	flex-wrap: wrap;
@@ -146,6 +149,9 @@ button:hover {
 	width: 100%;
 	display: block;
 	padding-bottom: 54px;
+}
+#submit-btn:focus{
+	border: 2px solid black;
 }
 /*---------------------------------------------*/
 .wrap-input100 {
@@ -249,12 +255,19 @@ legend{
 	max-width: 600px; 
 	background-color: white;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-o-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-ms-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	padding-left: 15px;
 	padding-top: 20px;
 	padding-bottom: 10px;
 	padding-right: 15px;
 	border: solid 1px black;
 	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
 }
 .container-confirmation{
 	width: 100%;
@@ -280,6 +293,9 @@ legend{
 	background-color: #e1e1e1;
 	border: solid 0px;
 	border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+   	-o-border-radius: 2px;
 }
 .list-info-login{
 	font-size: small;
@@ -311,6 +327,10 @@ legend{
 	padding: 1rem;
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	-o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	-ms-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 	text-align: center;
 }  
 .modals-contenu h2 {

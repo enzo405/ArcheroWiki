@@ -1,9 +1,9 @@
 from django.urls import path
 from calculator import views
+from calculator import api
 from calculator import views_wiki
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.views.generic.base import TemplateView
-
+from const import DEV_MODE
 
 urlpatterns = [
     path('', views_wiki.menu),
@@ -37,7 +37,12 @@ urlpatterns = [
     path('wiki/upgrade/<str:cost_type>/<int:lvl1>/<int:lvl2>/<str:rank>/', views_wiki.upgrade_cost),
     path('wiki/promo-code/', views_wiki.promocode),
     path('habby-secret/', views_wiki.rickroll),
-    path('stats/calc/<str:pbid>/<int:redirectPath>/', views.views_calc_stats)
+    path('stats/calc/<str:pbid>/<int:redirectPath>/', views.views_calc_stats),
+    path('data/', api.data),
+    path('del_dev/<int:pbid>/', views.admin_reload_stats),
+    path('api/', api.CalculatorAPI.as_view()),
+    path('create_user_queue/', api.create_user_queue),
+    path('validate_user_queue/<int:pk>/', api.validate_user_queue, name='validate_user_queue'), ## keep the name attribute for the reverse function in api.py
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -5,9 +5,9 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.5">
+	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.5.1a">
 	<link rel="icon" type="image/ong" href="{% static 'favicon.ico' %}">
-	<script src="{% static 'main.js' %}?version=1.5"></script>
+	<script src="{% static 'main.js' %}?version=1.5.1a"></script>
 </head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
@@ -44,7 +44,7 @@
 					<div class="wrap-input100 validate-input">
 						<fieldset class="fieldset-input">
 							<legend>Username</legend>
-							<input class="input-login-field username" id="username" type="text" placeholder="" pattern="^.{4,20}$" required>
+							<input class="input-login-field username" id="username" type="text" placeholder="" pattern="^.{3,20}$" required>
 						</fieldset>
 						<ul>
 							<li class="list-info-login">Avoid space and special character for your username</li>
@@ -54,7 +54,7 @@
 							<input class="input-login-field username" id="ingameid" type="text" placeholder="1-234567" pattern="^[0-9]{1}-[0-9]{6,12}$">
 						</fieldset>
 					</div>
-					<div class="container-login100-form-btn">
+					<div class="container-login100-form-btn submit-btn">
 						<input id="submit-btn" class="login100-form-btn" type="submit" value="Log in">
 					</div>
 					<div class="text-center p-t-136">

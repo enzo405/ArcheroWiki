@@ -23,9 +23,17 @@ It also uses Docker for deployment, with a PostgreSQL database.
 
 ## Getting Started
 To run the application locally, you will need to have Docker installed on your system. Once you have Docker installed, simply clone the repository and run the docker-compose up command to start the application.
+Here are the step to run it : 
+- Once you've cloned this repository, you will need to change the services.db.volumes path from : path_local_db_data_store to what you want
+- Then when you are at the root of the application (in public-archero-wiki-docker> ) you can execute these command :
+```bash
+cd .\web-project\
+docker build -t archero .        
+docker-compose up -d --env-file=myenvfile.env
+```
 
 ## Usage
-Once the application is up and running, you can access it by navigating to the appropriate URL in your web browser. From there, you can explore the various features and tools offered by the application to help you improve your gameplay in Archero.
+Once the application is up and running, you can access it by navigating to the appropriate URL in your web browser (localhost:8000 or 0.0.0.0:8000 or 127.0.0.1:8000). From there, you can explore the various features and tools offered by the application to help you improve your gameplay in Archero.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
@@ -57,33 +65,27 @@ ___
 
 
 ```diff
-TODO :
-
-```
-```diff
 Need to hack / datamine
-- finish stuff data.py
 - data relics
 ```
 ```diff
 Future Release:
+- damage calc add new var
+- api editor ? make it better for use
 - jewel/dragon guide
+- make universal name for e.g : "range_dmg_var" or "ranged_dmg_var" ?
 - glyphs unlocked in form (new table)
 - font number stuff image
 - form relics remake
-+ when patched : necklace attack base jewel stats
 - add all heroes star for future information in profile page
 - add page for emulator skill in fight with skill you can check (don't forget medals boost)
 - details page add run boost from glyphs, dragon, stuff etc...
+- add multilingual translate
+- item (especially for ring, get value with dict.get instead of having mythic_boost, titan_tales_boost etc....)
 ```
 ```diff
 Why not ?
 - system maintenance when changing db
-- header under msg, add credentials ?
-- FAQ section : directly put the content of reddit post instead of linking ?
 ```
-```diff
-When TigerShark API finished :
-+ modify data with API
-- translate
-```
+
+Update April 15, 2023 3:45 AM
