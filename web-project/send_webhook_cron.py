@@ -25,6 +25,10 @@ class sendWebhook():
 		response = self.webhook.execute()
 		return response
 	
+	def message(self,msg):
+		self.webhook = DiscordWebhook(url=WEBHOOK_URL, content=msg, rate_limit_retry=True)
+		self.webhook.execute()
+
 	def sendRequestFile(self):
 		webhook = self.webhook
 		with open('calculator/static/json/requetes.json','r', encoding='utf-8') as f:
@@ -51,21 +55,27 @@ class sendWebhook():
 			webhook.add_file(file=f.read(), filename='local_data.json')
 
 
-if __name__ == '__main__':
-	webhook = sendWebhook()
-	if sys.argv[1] == 'db_dump':
-		webhook.database_dump()
-		webhook.execute()
-	elif sys.argv[1] == 'req':
-		webhook.sendRequestFile()
-		webhook.execute()
-	elif sys.argv[1] == 'api':
-		webhook.local_api_dump()
-		webhook.execute()
-	elif sys.argv[1] == 'all':
-		webhook.database_dump()
-		webhook.sendRequestFile()
-		webhook.local_api_dump()
-		webhook.execute()
-	else:
-		print('Erreur: command inconnue')
+webhook = sendWebhook()
+try:
+	if __name__ == '__main__':
+		if sys.argv[1] == 'db_dump':
+			webhook.database_dump()
+			webhook.execute()
+		elif sys.argv[1] == 'req':
+			webhook.sendRequestFile()
+			webhook.execute()
+		elif sys.argv[1] == 'api':
+			webhook.local_api_dump()
+			webhook.execute()
+		elif sys.argv[1] == 'all':
+			webhook.database_dump()
+			webhook.sendRequestFile()
+			webhook.local_api_dump()
+			webhook.execute()
+		else:
+			print('Erreur: commande inconnue')
+except:
+	webhook.database_dump()
+	webhook.sendRequestFile()
+	webhook.local_api_dump()
+	webhook.execute()

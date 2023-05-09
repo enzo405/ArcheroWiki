@@ -1,14 +1,14 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.1a">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.4">
 <title>Archero - Wiki</title>
 <meta property="og:title" content="Archero Emulator Runes">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/damage-calculator">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
 <meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.1a">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.4">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
@@ -127,8 +127,8 @@
 	})
 </script>
 <script>
-	var powerRunesLines = [["none", "None"],['atk_power_flat','Attack'],['atk_power_var','Attack%'],["flat_dmg_airborne", "Damage to Airborne Units"],["var_dmg_airborne", "Damage to Airborne Units %"],["flat_dmg_ground", "Damage to Ground Units"],["var_dmg_ground", "Damage to Ground Units %"],["flat_dmg_melee", "Damage to Melee Units"],["var_dmg_melee", "Damage to Melee Units %"],["flat_dmg_ranged", "Damage to Ranged Units"],["var_dmg_ranged", "Damage to Ranged Units %"],["flat_dmg_boss", "Damage to Bosses Units"],["var_dmg_boss", "Damage to Bosses Units %"],["flat_dmg_mob", "Damage to Mobs Units"],["var_dmg_mob", "Damage to Mobs Units %"],["var_dmg_hero", "Damage to Heroes %"],["var_all_dmg", "All Damage %"],["var_elemental_dmg", "Elemental Damage %"],["var_atk_speed", "Attack Speed %"],["var_crit_rate", "Critic Chance %"],["var_crit_dmg", "Critic Damage %"]]
-	var courageRunesLines = [["none", "None"],['attack_flat','Attack'],['attack_var','Attack%'],['courage_hero_atk_flat','Hero base ATK'],['courage_hero_atk_var','Hero base ATK %'],['other','other ...']]
+	var powerRunesLines = [["none", "None"],['attack_flat','Attack'],['attack_var','Attack%'],["flat_dmg_airborne", "Damage to Airborne Units"],["var_dmg_airborne", "Damage to Airborne Units %"],["flat_dmg_ground", "Damage to Ground Units"],["var_dmg_ground", "Damage to Ground Units %"],["flat_dmg_melee", "Damage to Melee Units"],["var_dmg_melee", "Damage to Melee Units %"],["flat_dmg_ranged", "Damage to Ranged Units"],["var_dmg_ranged", "Damage to Ranged Units %"],["flat_dmg_boss", "Damage to Bosses Units"],["var_dmg_boss", "Damage to Bosses Units %"],["flat_dmg_mob", "Damage to Mobs Units"],["var_dmg_mob", "Damage to Mobs Units %"],["var_dmg_hero", "Damage to Heroes %"],["var_all_dmg", "All Damage %"],["var_elemental_dmg", "Elemental Damage %"],["var_atk_speed", "Attack Speed %"],["var_crit_rate", "Critic Chance %"],["var_crit_dmg", "Critic Damage %"]]
+	var courageRunesLines = [["none", "None"],['attack_flat','Attack'],['attack_var','Attack%'],['courage_hero_attack_flat','Hero base ATK'],['courage_hero_attack_var','Hero base ATK %'],['other','other ...']]
 	function runesClicked(runesType) {
 		var allSelect = document.getElementsByClassName('runes-line');
 		var inputRuneContainer = document.getElementsByClassName('runes_input');
@@ -165,15 +165,10 @@
 					});
 				}
 			});
-			firstSelect.value = 'atk_power_flat'
-			firstInput.value = "{{ vars_dict.atk_power_flat }}";
-			if("{{ vars_dict.atk_power_var }}" != 0){
-				secondSelect.value = 'Attack% (Power)';
-				secondInput.value = "{{ vars_dict.atk_power_var }}";
-			}else{
-				secondSelect.value = "{{ vars_dict.power_second_select }}";
-				secondInput.value = "{{ vars_dict.power_second_input }}";
-			}
+			firstSelect.value = "{{ vars_dict.power_first_select }}";
+			firstInput.value = "{{ vars_dict.power_first_input }}";
+			secondSelect.value = "{{ vars_dict.power_second_select }}";
+			secondInput.value = "{{ vars_dict.power_second_input }}";
 			thirdSelect.value = "{{ vars_dict.power_third_select }}"
 			thirdInput.value = "{{ vars_dict.power_third_input }}";
 			fourthSelect.value = "{{ vars_dict.power_fourth_select }}"
@@ -197,14 +192,16 @@
 					});
 				}
 			});
-			firstSelect.value = 'attack_flat'
-			secondSelect.value = 'attack_var'
-			thirdSelect.value = 'courage_hero_atk_flat'
-			fourthSelect.value = 'courage_hero_atk_var'
-			firstInput.value = "{{ vars_dict.atk_courage_flat }}";
-			secondInput.value = "{{ vars_dict.atk_courage_var }}";
-			thirdInput.value = "{{ vars_dict.courage_hero_atk_flat }}";
-			fourthInput.value = "{{ vars_dict.courage_hero_atk_var }}";
+			firstSelect.value = "{{ vars_dict.courage_first_select }}";
+			firstInput.value = "{{ vars_dict.courage_first_input }}";
+			secondSelect.value = "{{ vars_dict.courage_second_select }}";
+			secondInput.value = "{{ vars_dict.courage_second_input }}";
+			thirdSelect.value = "{{ vars_dict.courage_third_select }}";
+			thirdInput.value = "{{ vars_dict.courage_third_input }}";
+			fourthSelect.value = "{{ vars_dict.courage_fourth_select }}";
+			fourthInput.value = "{{ vars_dict.courage_fourth_input }}";
+			fifthSelect.value = "{{ vars_dict.courage_fifth_select }}";
+			fifthInput.value = "{{ vars_dict.courage_fifth_input }}";
 		}
 	}
 	if("{{ method }}" === "POST"){

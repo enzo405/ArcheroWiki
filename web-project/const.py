@@ -1,14 +1,17 @@
 ## Discord App Credential for login in api editor localhost:8000/data/ (api.py)
 DISCORD_CLIENT_ID = '######'
 DISCORD_CLIENT_SECRET = '######'
+DISCORD_NOTIF_ROLE_ID = '######'
+DISCORD_ERROR_ROLE_ID = '######'
 DEV_MODE = True
+DEBUG_STATS = False ## if True : get the print() of all calculation function in models.py and be able to access update views for all users
 c_CSRF_FAILURE_VIEW = 'calculator.views_wiki.csrf_failure'
 c_CSRF_USE_SESSION = True
 c_CSRF_COOKIE_SECURE = True
 c_CSRF_COOKIE_DOMAIN = [""]
 c_CSRF_TRUSTED_ORIGINS = [""]
 c_ALLOWED_HOSTS = [""]
-
+c_hostname = "https://stats.wiki-archero.com"
 # Follow the steps below to generate a Django secret key:
 
 # Access the Python Interactive Shell

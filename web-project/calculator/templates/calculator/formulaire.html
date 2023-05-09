@@ -1,7 +1,7 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5.1a">
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5.4">
 <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 <title>Create Stats - Calculator</title>
 <meta property="og:title" content="Archero Stats Calculator">
@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
 <meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.1a">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.4">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
@@ -132,6 +132,12 @@
 				</div>
 			</div>
 			<div class="container-hero">    
+				<img src="/static/image/hero_icon/icon_Bobo.png" width="52px" height="52px" alt="bobo">
+				<div class="bobo">
+					<b>Level :</b> {{  form_HeroTable.bobo_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.bobo_star  }}
+				</div>
+			</div>
+			<div class="container-hero">    
 				<img src="/static/image/hero_icon/icon_Ayana.png" width="52px" height="52px" alt="ayana">
 				<div class="ayana">
 					<b>Level :</b> {{  form_HeroTable.ayana_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.ayana_star  }} <br>
@@ -225,12 +231,6 @@
 				<img src="/static/image/hero_icon/icon_Elaine.png" width="52px" height="52px" alt="elaine">
 				<div class="elaine">
 					<b>Level :</b> {{  form_HeroTable.elaine_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.elaine_star  }}
-				</div>
-			</div>
-			<div class="container-hero">    
-				<img src="/static/image/hero_icon/icon_Bobo.png" width="52px" height="52px" alt="bobo">
-				<div class="bobo">
-					<b>Level :</b> {{  form_HeroTable.bobo_level  }} <br><i class="fa fa-star" aria-hidden="true"></i> : {{  form_HeroTable.bobo_star  }}
 				</div>
 			</div>
 			<div class="container-hero">    
@@ -659,8 +659,7 @@
 			<div class="runes_form">
 				<fieldset class="power_rune container_rune">
 					<legend class="legend_rune_container">Power <img width="20px" height="20px" src="/static/image/wiki-image/rune_101.png"></legend>
-					<div class="rune_line">Attack: {{ form_RunesTable.power_attack_flat }}</div>
-					<div class="rune_line">Attack %: {{ form_RunesTable.power_attack_var }}<i class="fa fa-percent"></i></div>
+					<div class="rune_line">{{ form_RunesTable.power_line_1 }}{{ form_RunesTable.value_power_line_1 }}</div>
 					<div class="rune_line">{{ form_RunesTable.power_line_2 }}{{ form_RunesTable.value_power_line_2 }}</div>
 					<div class="rune_line">{{ form_RunesTable.power_line_3 }}{{ form_RunesTable.value_power_line_3 }}</div>
 					<div class="rune_line">{{ form_RunesTable.power_line_4 }}{{ form_RunesTable.value_power_line_4 }}</div>
@@ -668,8 +667,7 @@
 				</fieldset>
 				<fieldset class="saviour_rune container_rune">
 					<legend class="legend_rune_container">Saviour <img width="20px" height="20px" src="/static/image/wiki-image/rune_102.png"></legend>
-					<div class="rune_line">Hp: {{ form_RunesTable.saviour_hp_flat }} </div>
-					<div class="rune_line">Hp %: {{ form_RunesTable.saviour_hp_var }}<i class="fa fa-percent"></i></div>
+					<div class="rune_line">{{ form_RunesTable.saviour_line_1 }}{{ form_RunesTable.value_saviour_line_1 }}</div>
 					<div class="rune_line">{{ form_RunesTable.saviour_line_2 }}{{ form_RunesTable.value_saviour_line_2 }}</div>
 					<div class="rune_line">{{ form_RunesTable.saviour_line_3 }}{{ form_RunesTable.value_saviour_line_3 }}</div>
 					<div class="rune_line">{{ form_RunesTable.saviour_line_4 }}{{ form_RunesTable.value_saviour_line_4 }}</div>
@@ -677,1301 +675,714 @@
 				</fieldset>
 				<fieldset class="recovery_rune container_rune">
 					<legend class="legend_rune_container"> Recovery <img width="20px" height="20px" src="/static/image/wiki-image/rune_103.png"></legend>
-					<div class="rune_line">Hp: {{ form_RunesTable.recovery_hp_flat }} </div>
+					<div class="rune_line">{{ form_RunesTable.recovery_line_1 }}{{ form_RunesTable.value_recovery_line_1 }}</div>
 					<div class="rune_line">{{ form_RunesTable.recovery_line_2 }}{{ form_RunesTable.value_recovery_line_2 }}</div>
 					<div class="rune_line">{{ form_RunesTable.recovery_line_3 }}{{ form_RunesTable.value_recovery_line_3 }}</div>
 					<div class="rune_line">{{ form_RunesTable.recovery_line_4 }}{{ form_RunesTable.value_recovery_line_4 }}</div>
 					<div class="rune_line">{{ form_RunesTable.recovery_line_5 }}{{ form_RunesTable.value_recovery_line_5 }}</div>
 				</fieldset>
-				<fieldset class="luck_rune container_rune">
-					<legend class="legend_rune_container">Luck <img width="20px" height="20px" src="/static/image/wiki-image/rune_105.png"></legend>
-					<div class="rune_line">Hp: {{ form_RunesTable.luck_hp_flat }}</div>
-					<div class="rune_line">Hp %: {{ form_RunesTable.luck_hp_var }}<i class="fa fa-percent"></i></div>
-					<div class="rune_line">{{ form_RunesTable.luck_line_2 }}{{ form_RunesTable.value_luck_line_2 }}</div>
-					<div class="rune_line">{{ form_RunesTable.luck_line_3 }}{{ form_RunesTable.value_luck_line_3 }}</div>
-					<div class="rune_line">{{ form_RunesTable.luck_line_4 }}{{ form_RunesTable.value_luck_line_4 }}</div>
-					<div class="rune_line">{{ form_RunesTable.luck_line_5 }}{{ form_RunesTable.value_luck_line_5 }}</div>
-				</fieldset>
 				<fieldset class="courage_rune container_rune">
 					<legend class="legend_rune_container">Courage <img width="20px" height="20px" src="/static/image/wiki-image/rune_104.png"></legend>
-					<div class="rune_line">Attack: {{ form_RunesTable.courage_attack_flat }}</div>
-					<div class="rune_line">Attack %: {{ form_RunesTable.courage_attack_var }}<i class="fa fa-percent"></i></div>
-					<div class="rune_line">Hero Attack: {{ form_RunesTable.selected_hero_courage_attack_flat }}{{ form_RunesTable.courage_hero_attack_flat }}</div>
-					<div class="rune_line">Hero Attack %: {{ form_RunesTable.selected_hero_courage_attack_var }}{{ form_RunesTable.courage_hero_attack_var }}<i class="fa fa-percent"></i></div>
-					<div class="rune_line">Hero Hp: {{ form_RunesTable.selected_hero_courage_hp_flat }}{{ form_RunesTable.courage_hero_hp_flat }}</div>
-					<div class="rune_line">Hero Hp %: {{ form_RunesTable.selected_hero_courage_hp_var }}{{ form_RunesTable.courage_hero_hp_var }}<i class="fa fa-percent"></i></div>
+					<div class="rune_line">{{ form_RunesTable.courage_line_1 }}{{ form_RunesTable.value_courage_line_1 }}</div>
 					<div class="rune_line">{{ form_RunesTable.courage_line_2 }}{{ form_RunesTable.value_courage_line_2 }}</div>
 					<div class="rune_line">{{ form_RunesTable.courage_line_3 }}{{ form_RunesTable.value_courage_line_3 }}</div>
 					<div class="rune_line">{{ form_RunesTable.courage_line_4 }}{{ form_RunesTable.value_courage_line_4 }}</div>
 					<div class="rune_line">{{ form_RunesTable.courage_line_5 }}{{ form_RunesTable.value_courage_line_5 }}</div>
 				</fieldset>
+				<fieldset class="luck_rune container_rune">
+					<legend class="legend_rune_container">Luck <img width="20px" height="20px" src="/static/image/wiki-image/rune_105.png"></legend>
+					<div class="rune_line">{{ form_RunesTable.luck_line_1 }}{{ form_RunesTable.value_luck_line_1 }}</div>
+					<div class="rune_line">{{ form_RunesTable.luck_line_2 }}{{ form_RunesTable.value_luck_line_2 }}</div>
+					<div class="rune_line">{{ form_RunesTable.luck_line_3 }}{{ form_RunesTable.value_luck_line_3 }}</div>
+					<div class="rune_line">{{ form_RunesTable.luck_line_4 }}{{ form_RunesTable.value_luck_line_4 }}</div>
+					<div class="rune_line">{{ form_RunesTable.luck_line_5 }}{{ form_RunesTable.value_luck_line_5 }}</div>
+				</fieldset>
 			</div>
 		</div>
-		<script>
-			function boxHelpRelic(id){
-				var showbox = document.getElementById(id+"_showbox");
-				var helpbox = document.getElementById(id+"_helpbox");
-				if(showbox.style.display == "block"){
-					showbox.style.display = "none"
-					helpbox.style.display = "block"
-				}else if(showbox.style.display == "none"){
-					showbox.style.display = "block"
-					helpbox.style.display = "none"
-				}
-			}
-
-			function closeboxHelpRelic(id){
-				var showboxOpen = document.getElementById(id+"_showbox");
-				var helpboxClose = document.getElementById(id+"_helpbox");
-				helpboxClose.style.display = "none";
-				showboxOpen.style.display = "block";
-			}
-		</script>
 		<div class="relics_form container">
 			<div class="tutorial_relics">
 				<u><b>Relics: </b></u><br>
-				<li>To see in wich order you need to put the value, please click on the <i class="fa fa-question-circle" aria-hidden="true"></i> icon.</li>
-				<li>For Exclusive Effect put the boost it gives, not the number of time you got the effective boost</li>
-				<li>For number with a percentage (3.0%) you need to put a dot instead of a coma</li>
+				<li>For Exclusive Effect put the boost it gives, not the number of time you got the boost</li>
 			</div>
 			<div class="relics_form_container">
-				<div class="container-relics">
-					<div id="wraith_mask_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/wraith_mask.png" style="max-width: 51px; max-height: 54px;" alt="wraith_mask">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="wraith_mask" value="{{ form_RelicsTable.wraith_mask.value }}" required id="id_wraith_mask" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('wraith_mask');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/ancient_shield.png" alt="ancient_shield">
 					</div>
-					<div id="wraith_mask_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('wraith_mask')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Wraith Mask :</b></u><br><br>
-							<p>Attack<br>Blue Heart Drop Rate %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.ancient_shield_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.ancient_shield_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.ancient_shield_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="clown_mask_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/clown_mask.png" style="max-width: 51px; max-height: 54px;" alt="clown_mask">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="clown_mask" value="{{ form_RelicsTable.clown_mask.value }}" required id="id_clown_mask" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('clown_mask');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/maidens_pearl_earring.png" alt="maidens_pearl_earring">
 					</div>
-					<div id="clown_mask_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('clown_mask')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Clown Mask :</b></u><br><br>
-							<p>Damage To Melee<br>Damage to Humanoid %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.maidens_pearl_earring_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.maidens_pearl_earring_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.maidens_pearl_earring_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="princess_teddy_bear_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/princess_teddy_bear.png" style="max-width: 51px; max-height: 54px;" alt="princess_teddy_bear">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="10" name="princess_teddy_bear" value="{{ form_RelicsTable.princess_teddy_bear.value }}" required id="id_princess_teddy_bear" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('princess_teddy_bear');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/wraith_mask.png" alt="wraith_mask">
 					</div>
-					<div id="princess_teddy_bear_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('princess_teddy_bear')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Princess Teddy Bear :</b></u><br><br>
-							<p>Max Hp<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.wraith_mask_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.wraith_mask_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.wraith_mask_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="belt_of_might_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/belt_of_might.png" style="max-width: 51px; max-height: 54px;" alt="belt_of_might">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="belt_of_might" value="{{ form_RelicsTable.belt_of_might.value }}" required id="id_belt_of_might" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('belt_of_might');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/clown_mask.png" alt="clown_mask">
 					</div>
-					<div id="belt_of_might_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('belt_of_might')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Belt of Might :</b></u><br><br>
-							<p>Projectile Resistance<br>Max Hp %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.clown_mask_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.clown_mask_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.clown_mask_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="beastmaster_whistle_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/beastmaster_whistle.png" style="max-width: 51px; max-height: 54px;" alt="beastmaster_whistle">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="beastmaster_whistle" value="{{ form_RelicsTable.beastmaster_whistle.value }}" required id="id_beastmaster_whistle" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('beastmaster_whistle');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/princess_teddy_bear.png" alt="princess_teddy_bear">
 					</div>
-					<div id="beastmaster_whistle_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('beastmaster_whistle')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Beastmaster Whistle :</b></u><br><br>
-							<p>Max Hp<br>Damage to Ground %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.princess_teddy_bear_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.princess_teddy_bear_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.princess_teddy_bear_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="archmage_robe_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/archmage_robe.png" style="max-width: 51px; max-height: 54px;" alt="archmage_robe">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="archmage_robe" value="{{ form_RelicsTable.archmage_robe.value }}" required id="id_archmage_robe" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('archmage_robe');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/belt_of_might.png" alt="belt_of_might">
 					</div>
-					<div id="archmage_robe_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('archmage_robe')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Archmage Robe :</b></u><br><br>
-							<p>Rear Damage Resistance<br>Elemental Damage %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.belt_of_might_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.belt_of_might_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.belt_of_might_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="shimmering_gem_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/shimmering_gem.png" style="max-width: 51px; max-height: 54px;" alt="shimmering_gem">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="10" name="shimmering_gem" value="{{ form_RelicsTable.shimmering_gem.value }}" required id="id_shimmering_gem" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('shimmering_gem');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/beastmaster_whistle.png" alt="beastmaster_whistle">
 					</div>
-					<div id="shimmering_gem_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('shimmering_gem')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Shimmering Gem :</b></u><br><br>
-							<p>Projectile Resistance<br>Enhance Equipment %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.beastmaster_whistle_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.beastmaster_whistle_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.beastmaster_whistle_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="bloom_of_eternity_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/bloom_of_eternity.png" style="max-width: 51px; max-height: 54px;" alt="bloom_of_eternity">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="10" name="bloom_of_eternity" value="{{ form_RelicsTable.bloom_of_eternity.value }}" required id="id_bloom_of_eternity" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('bloom_of_eternity');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/archmage_robe.png" alt="archmage_robe">
 					</div>
-					<div id="bloom_of_eternity_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('bloom_of_eternity')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Bloom of Eternity :</b></u><br><br>
-							<p>Max Hp<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.archmage_robe_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.archmage_robe_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.archmage_robe_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="challenger_headband_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/challenger_headband.png" style="max-width: 51px; max-height: 54px;" alt="challenger_headband">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="10" name="challenger_headband" value="{{ form_RelicsTable.challenger_headband.value }}" required id="id_challenger_headband" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('challenger_headband');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/shimmering_gem.png" alt="shimmering_gem">
 					</div>
-					<div id="challenger_headband_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('challenger_headband')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Challenger Headband :</b></u><br><br>
-							<p>Attack<br>Attack %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.shimmering_gem_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.shimmering_gem_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.shimmering_gem_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="jade_gobelet_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/jade_gobelet.png" style="max-width: 51px; max-height: 54px;" alt="jade_gobelet">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="10" name="jade_gobelet" value="{{ form_RelicsTable.jade_gobelet.value }}" required id="id_jade_gobelet" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('jade_gobelet');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/bloom_of_eternity.png" alt="bloom_of_eternity">
 					</div>
-					<div id="jade_gobelet_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('jade_gobelet')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Jade Gobelet :</b></u><br><br>
-							<p>Front Damage Resistance<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.bloom_of_eternity_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.bloom_of_eternity_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.bloom_of_eternity_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="veteran_plate_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/veteran_plate.png" style="max-width: 51px; max-height: 54px;" alt="veteran_plate">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="10" name="veteran_plate" value="{{ form_RelicsTable.veteran_plate.value }}" required id="id_veteran_plate" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('veteran_plate');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/challenger_headband.png" alt="challenger_headband">
 					</div>
-					<div id="veteran_plate_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('veteran_plate')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Veteran Plate :</b></u><br><br>
-							<p>Max Hp<br>Rear Damage Resistance %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.challenger_headband_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.challenger_headband_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.challenger_headband_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="dragonscale_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/dragonscale.png" style="max-width: 51px; max-height: 54px;" alt="dragonscale">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="dragonscale" value="{{ form_RelicsTable.dragonscale.value }}" required id="id_dragonscale" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('dragonscale');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/jade_gobelet.png" alt="jade_gobelet">
 					</div>
-					<div id="dragonscale_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('dragonscale')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Dragonscale :</b></u><br><br>
-							<p>Max Hp<br>Front Damage Resistance %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.jade_gobelet_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.jade_gobelet_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.jade_gobelet_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="dragon_tooth_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/dragon_tooth.png" style="max-width: 51px; max-height: 54px;" alt="dragon_tooth">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="10" name="dragon_tooth" value="{{ form_RelicsTable.dragon_tooth.value }}" required id="id_dragon_tooth" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('dragon_tooth');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/veteran_plate.png" alt="veteran_plate">
 					</div>
-					<div id="dragon_tooth_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('dragon_tooth')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Dragon Tooth :</b></u><br><br>
-							<p>Attack<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.veteran_plate_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.veteran_plate_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.veteran_plate_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="scholar_telescope_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/scholar_telescope.png" style="max-width: 51px; max-height: 54px;" alt="scholar_telescope">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="5" name="scholar_telescope" value="{{ form_RelicsTable.scholar_telescope.value }}" required id="id_scholar_telescope" pattern="^([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('scholar_telescope');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/dragonscale.png" alt="dragonscale">
 					</div>
-					<div id="scholar_telescope_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('scholar_telescope')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Scholar Telescope :</b></u><br><br>
-							<p>Damage to Ranged</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.dragonscale_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.dragonscale_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.dragonscale_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="pirate_shank_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/pirate_shank.png" style="max-width: 51px; max-height: 54px;" alt="pirate_shank">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="10" name="pirate_shank" value="{{ form_RelicsTable.pirate_shank.value }}" required id="id_pirate_shank" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('pirate_shank');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/dragon_tooth.png" alt="dragon_tooth">
 					</div>
-					<div id="pirate_shank_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('pirate_shank')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Pirate Shank :</b></u><br><br>
-							<p>Attack<br>Damage to Mobs %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.dragon_tooth_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.dragon_tooth_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.dragon_tooth_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="giant_greatsword_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/giant_greatsword.png" style="max-width: 51px; max-height: 54px;" alt="giant_greatsword">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="giant_greatsword" value="{{ form_RelicsTable.giant_greatsword.value }}" required id="id_giant_greatsword" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('giant_greatsword');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/scholar_telescope.png" alt="scholar_telescope">
 					</div>
-					<div id="giant_greatsword_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('giant_greatsword')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Giant Greatsword :</b></u><br><br>
-							<p>Attack<br>Damage to Bosses %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.scholar_telescope_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.scholar_telescope_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.scholar_telescope_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="healing_potion_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/healing_potion.png" style="max-width: 51px; max-height: 54px;" alt="healing_potion">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="5" name="healing_potion" value="{{ form_RelicsTable.healing_potion.value }}" required id="id_healing_potion" pattern="^([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('healing_potion');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/pirate_shank.png" alt="pirate_shank">
 					</div>
-					<div id="healing_potion_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('healing_potion')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Healing Potion :</b></u><br><br>
-							<p>Max Hp</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.pirate_shank_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.pirate_shank_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.pirate_shank_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="whirlwind_mauler_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/whirlwind_mauler.png" style="max-width: 51px; max-height: 54px;" alt="whirlwind_mauler">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="10" name="whirlwind_mauler" value="{{ form_RelicsTable.whirlwind_mauler.value }}" required id="id_whirlwind_mauler" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('whirlwind_mauler');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/giant_greatsword.png" alt="giant_greatsword">
 					</div>
-					<div id="whirlwind_mauler_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('whirlwind_mauler')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Whirlwind Mauler :</b></u><br><br>
-							<p>Damage to Melee<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.giant_greatsword_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.giant_greatsword_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.giant_greatsword_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="special_lance_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/special_lance.png" style="max-width: 51px; max-height: 54px;" alt="special_lance">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="special_lance" value="{{ form_RelicsTable.special_lance.value }}" required id="id_special_lance" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('special_lance');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/healing_potion.png" alt="healing_potion">
 					</div>
-					<div id="special_lance_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('special_lance')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Special Lance :</b></u><br><br>
-							<p>Damage to Ground<br>Damage to Ground %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.healing_potion_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.healing_potion_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.healing_potion_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="precision_slingshot_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/precision_slingshot.png" style="max-width: 51px; max-height: 54px;" alt="precision_slingshot">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="10" name="precision_slingshot" value="{{ form_RelicsTable.precision_slingshot.value }}" required id="id_precision_slingshot" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('precision_slingshot');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/whirlwind_mauler.png" alt="whirlwind_mauler">
 					</div>
-					<div id="precision_slingshot_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('precision_slingshot')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Precision Slingshot :</b></u><br><br>
-							<p>Damage to Airborne<br>Damage to Airborne %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.whirlwind_mauler_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.whirlwind_mauler_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.whirlwind_mauler_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="supreme_trinity_alpha_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/supreme_trinity_alpha.png" style="max-width: 51px; max-height: 54px;" alt="supreme_trinity_alpha">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="supreme_trinity_alpha" value="{{ form_RelicsTable.supreme_trinity_alpha.value }}" required id="id_supreme_trinity_alpha" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('supreme_trinity_alpha');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/special_lance.png" alt="special_lance">
 					</div>
-					<div id="supreme_trinity_alpha_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('supreme_trinity_alpha')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Supreme Trinity Alpha :</b></u><br><br>
-							<p>Attack<br>Damage to Mobs<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.special_lance_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.special_lance_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.special_lance_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="golden_apple_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/golden_apple.png" style="max-width: 51px; max-height: 54px;" alt="golden_apple">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="golden_apple" value="{{ form_RelicsTable.golden_apple.value }}" required id="id_golden_apple" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('golden_apple');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/precision_slingshot.png" alt="precision_slingshot">
 					</div>
-					<div id="golden_apple_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('golden_apple')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Golden Apple :</b></u><br><br>
-							<p>Max Hp<br>Damage to Elite enemies %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.precision_slingshot_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.precision_slingshot_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.precision_slingshot_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="ancient_stele_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/ancient_stele.png" style="max-width: 51px; max-height: 54px;" alt="ancient_stele">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="ancient_stele" value="{{ form_RelicsTable.ancient_stele.value }}" required id="id_ancient_stele" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('ancient_stele');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/lucky_coin.png" alt="lucky_coin">
 					</div>
-					<div id="ancient_stele_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('ancient_stele')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Ancient Stele :</b></u><br><br>
-							<p>Attack<br>Damage to Boss %<br>Attack %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.lucky_coin_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.lucky_coin_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.lucky_coin_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="philosopher_stone_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/philosopher_stone.png" style="max-width: 51px; max-height: 54px;" alt="philosopher_stone">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="philosopher_stone" value="{{ form_RelicsTable.philosopher_stone.value }}" required id="id_philosopher_stone" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('philosopher_stone');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/ring_of_greed.png" alt="ring_of_greed">
 					</div>
-					<div id="philosopher_stone_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('philosopher_stone')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Philosopher Stone :</b></u><br><br>
-							<p>Projectile Resistance<br>Rear Damage Resistance<br>Enhance Equipment %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.ring_of_greed_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.ring_of_greed_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.ring_of_greed_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="dragon_heart_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/dragon_heart.png" style="max-width: 51px; max-height: 54px;" alt="dragon_heart">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="dragon_heart" value="{{ form_RelicsTable.dragon_heart.value }}" required id="id_dragon_heart" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('dragon_heart');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/dragon_eye.png" alt="dragon_eye">
 					</div>
-					<div id="dragon_heart_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('dragon_heart')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Dragon Heart :</b></u><br><br>
-							<p>Max Hp<br>Projectile Resistance<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.dragon_eye_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.dragon_eye_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.dragon_eye_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="spectral_duality_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/spectral_duality.png" style="max-width: 51px; max-height: 54px;" alt="spectral_duality">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="spectral_duality" value="{{ form_RelicsTable.spectral_duality.value }}" required id="id_spectral_duality" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('spectral_duality');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/dusken_cask.png" alt="dusken_cask">
 					</div>
-					<div id="spectral_duality_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('spectral_duality')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Spectral Duality :</b></u><br><br>
-							<p>Damage to Mobs<br>Damage to Airborne<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.dusken_cask_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.dusken_cask_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.dusken_cask_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="mystic_emblem_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/mystic_emblem.png" style="max-width: 51px; max-height: 54px;" alt="mystic_emblem">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="mystic_emblem" value="{{ form_RelicsTable.mystic_emblem.value }}" required id="id_mystic_emblem" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('mystic_emblem');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/gold_bunny.png" alt="gold_bunny">
 					</div>
-					<div id="mystic_emblem_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('mystic_emblem')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Mystic Emblem :</b></u><br><br>
-							<p>Max Hp<br>Projectile Resistance<br>Hero base stats increased %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.gold_bunny_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.gold_bunny_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.gold_bunny_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="immortal_brooch_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/immortal_brooch.png" style="max-width: 51px; max-height: 54px;" alt="immortal_brooch">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="immortal_brooch" value="{{ form_RelicsTable.immortal_brooch.value }}" required id="id_immortal_brooch" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('immortal_brooch');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/supreme_trinity_alpha.png" alt="supreme_trinity_alpha">
 					</div>
-					<div id="immortal_brooch_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('immortal_brooch')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Immortal Brooch :</b></u><br><br>
-							<p>Rear Damage Resistance<br>Collision Damage Resistance<br>Max Hp %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.supreme_trinity_alpha_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.supreme_trinity_alpha_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.supreme_trinity_alpha_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="golden_statue_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/golden_statue.png" style="max-width: 51px; max-height: 54px;" alt="golden_statue">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="golden_statue" value="{{ form_RelicsTable.golden_statue.value }}" required id="id_golden_statue" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('golden_statue');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/golden_apple.png" alt="golden_apple">
 					</div>
-					<div id="golden_statue_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('golden_statue')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Golden Statue :</b></u><br><br>
-							<p>Max Hp<br>Front Damage Resistance<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.golden_apple_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.golden_apple_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.golden_apple_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="smilling_mask_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/smilling_mask.png" style="max-width: 51px; max-height: 54px;" alt="smilling_mask">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="smilling_mask" value="{{ form_RelicsTable.smilling_mask.value }}" required id="id_smilling_mask" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('smilling_mask');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/ancient_stele.png" alt="ancient_stele">
 					</div>
-					<div id="smilling_mask_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('smilling_mask')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Smilling Mask :</b></u><br><br>
-							<p>Attack<br>Damage to Ranged<br>Attack increases ... %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.ancient_stele_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.ancient_stele_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.ancient_stele_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="unmerciful_mask_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/unmerciful_mask.png" style="max-width: 51px; max-height: 54px;" alt="unmerciful_mask">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="unmerciful_mask" value="{{ form_RelicsTable.unmerciful_mask.value }}" required id="id_unmerciful_mask" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('unmerciful_mask');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/philosopher_stone.png" alt="philosopher_stone">
 					</div>
-					<div id="unmerciful_mask_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('unmerciful_mask')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Unmerciful Mask :</b></u><br><br>
-							<p>Attack<br>Damage to Melee<br>Attack increases ... %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.philosopher_stone_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.philosopher_stone_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.philosopher_stone_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="holy_water_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/holy_water.png" style="max-width: 51px; max-height: 54px;" alt="holy_water">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="holy_water" value="{{ form_RelicsTable.holy_water.value }}" required id="id_holy_water" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('holy_water');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/dragon_heart.png" alt="dragon_heart">
 					</div>
-					<div id="holy_water_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('holy_water')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Holy Water :</b></u><br><br>
-							<p>Damage to Mobs<br>Damage to Ground<br>Attack increases ... %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.dragon_heart_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.dragon_heart_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.dragon_heart_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="book_of_the_dead_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/book_of_the_dead.png" style="max-width: 51px; max-height: 54px;" alt="book_of_the_dead">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="book_of_the_dead" value="{{ form_RelicsTable.book_of_the_dead.value }}" required id="id_book_of_the_dead" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('book_of_the_dead');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/spectral_duality.png" alt="spectral_duality">
 					</div>
-					<div id="book_of_the_dead_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('book_of_the_dead')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Book of the Dead :</b></u><br><br>
-							<p>Attack<br>Damage to Boss %<br>Damage to undead %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
-					</div>								
-				</div>
-				<div class="container-relics">
-					<div id="psionist_treasure_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/psionist_treasure.png" style="max-width: 51px; max-height: 54px;" alt="psionist_treasure">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="10" name="psionist_treasure" value="{{ form_RelicsTable.psionist_treasure.value }}" required id="id_psionist_treasure" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('psionist_treasure');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
-					</div>
-					<div id="psionist_treasure_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('psionist_treasure')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Psionist Treasure :</b></u><br><br>
-							<p>Damage to Melee<br>Damage to Mobs</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.spectral_duality_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.spectral_duality_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.spectral_duality_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="book_of_archery_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/book_of_archery.png" style="max-width: 51px; max-height: 54px;" alt="book_of_archery">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="book_of_archery" value="{{ form_RelicsTable.book_of_archery.value }}" required id="id_book_of_archery" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('book_of_archery');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/mystic_emblem.png" alt="mystic_emblem">
 					</div>
-					<div id="book_of_archery_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('book_of_archery')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Book of Archery :</b></u><br><br>
-							<p>Damage to Ranged<br>Damage to Airborne<br>Weapon Ranged Damage %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.mystic_emblem_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.mystic_emblem_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.mystic_emblem_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="book_of_bravery_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/book_of_bravery.png" style="max-width: 51px; max-height: 54px;" alt="book_of_bravery">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="book_of_bravery" value="{{ form_RelicsTable.book_of_bravery.value }}" required id="id_book_of_bravery" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('book_of_bravery');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/immortal_brooch.png" alt="immortal_brooch">
 					</div>
-					<div id="book_of_bravery_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('book_of_bravery')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Book of Bravery :</b></u><br><br>
-							<p>Attack<br>Damage to Ground<br>Weaon Melee Damage %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.immortal_brooch_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.immortal_brooch_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.immortal_brooch_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="angelic_heart_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/angelic_heart.png" style="max-width: 51px; max-height: 54px;" alt="angelic_heart">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="10" name="angelic_heart" value="{{ form_RelicsTable.angelic_heart.value }}" required id="id_angelic_heart" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('angelic_heart');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/golden_statue.png" alt="golden_statue">
 					</div>
-					<div id="angelic_heart_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('angelic_heart')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Angelic Heart :</b></u><br><br>
-							<p>Max Hp<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.golden_statue_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.golden_statue_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.golden_statue_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="devil_whisper_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/devil_whisper.png" style="max-width: 51px; max-height: 54px;" alt="devil_whisper">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="devil_whisper" value="{{ form_RelicsTable.devil_whisper.value }}" required id="id_devil_whisper" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('devil_whisper');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/smilling_mask.png" alt="smilling_mask">
 					</div>
-					<div id="devil_whisper_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('devil_whisper')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Devil Whisper :</b></u><br><br>
-							<p>Max Hp<br>Projectile Resistance<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.smilling_mask_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.smilling_mask_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.smilling_mask_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="stone_of_wisdom_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/stone_of_wisdom.png" style="max-width: 51px; max-height: 54px;" alt="stone_of_wisdom">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="5" name="stone_of_wisdom" value="{{ form_RelicsTable.stone_of_wisdom.value }}" required id="id_stone_of_wisdom" pattern="^([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('stone_of_wisdom');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/unmerciful_mask.png" alt="unmerciful_mask">
 					</div>
-					<div id="stone_of_wisdom_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('stone_of_wisdom')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Stone of Wisdom :</b></u><br><br>
-							<p>Collision Damage Resistance</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.unmerciful_mask_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.unmerciful_mask_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.unmerciful_mask_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="empyrean_mirror_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/empyrean_mirror.png" style="max-width: 51px; max-height: 54px;" alt="empyrean_mirror">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="empyrean_mirror" value="{{ form_RelicsTable.empyrean_mirror.value }}" required id="id_empyrean_mirror" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('empyrean_mirror');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/holy_water.png" alt="holy_water">
 					</div>
-					<div id="empyrean_mirror_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('empyrean_mirror')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Empyrean Mirror :</b></u><br><br>
-							<p>Max Hp<br>Rear Damage Resistance<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
-					</div>	
-				</div>
-				<div class="container-relics">
-					<div id="fabled_archer_arrow_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/fabled_archer_arrow.png" style="max-width: 51px; max-height: 54px;" alt="fabled_archer_arrow">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="fabled_archer_arrow" value="{{ form_RelicsTable.fabled_archer_arrow.value }}" required id="id_fabled_archer_arrow" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('fabled_archer_arrow');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
-					</div>
-					<div id="fabled_archer_arrow_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('fabled_archer_arrow')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Fabled Archer Arrow :</b></u><br><br>
-							<p>Attack<br>Damage to Mobs<br>Effective %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.holy_water_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.holy_water_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.holy_water_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="shiny_gemmed_belt_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/shiny_gemmed_belt.png" style="max-width: 51px; max-height: 54px;" alt="shiny_gemmed_belt">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="10" name="shiny_gemmed_belt" value="{{ form_RelicsTable.shiny_gemmed_belt.value }}" required id="id_shiny_gemmed_belt" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('shiny_gemmed_belt');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/book_of_the_dead.png" alt="book_of_the_dead">
 					</div>
-					<div id="shiny_gemmed_belt_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('shiny_gemmed_belt')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Shiny Gemmed Belt :</b></u><br><br>
-							<p>Front Damage Resistance<br>Attack increases %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.book_of_the_dead_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.book_of_the_dead_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.book_of_the_dead_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="mythril_flux_mail_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/mythril_flux_mail.png" style="max-width: 51px; max-height: 54px;" alt="mythril_flux_mail">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="mythril_flux_mail" value="{{ form_RelicsTable.mythril_flux_mail.value }}" required id="id_mythril_flux_mail" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('mythril_flux_mail');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/psionist_treasure.png" alt="psionist_treasure">
 					</div>
-					<div id="mythril_flux_mail_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('mythril_flux_mail')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Mythril Flux Mail :</b></u><br><br>
-							<p>Max Hp<br>Projectile Resistance<br>Damage Resistance %<br>Effective %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.psionist_treasure_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.psionist_treasure_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.psionist_treasure_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="stealth_boots_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/stealth_boots.png" style="max-width: 51px; max-height: 54px;" alt="stealth_boots">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="stealth_boots" value="{{ form_RelicsTable.stealth_boots.value }}" required id="id_stealth_boots" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('stealth_boots');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/book_of_archery.png" alt="book_of_archery">
 					</div>
-					<div id="stealth_boots_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('stealth_boots')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Stealth Boots :</b></u><br><br>
-							<p>Projectile Resistance<br>Rear Damage Resistance<br>Dodge %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.book_of_archery_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.book_of_archery_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.book_of_archery_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="assassin_dagger_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/assassin_dagger.png" style="max-width: 51px; max-height: 54px;" alt="assassin_dagger">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="assassin_dagger" value="{{ form_RelicsTable.assassin_dagger.value }}" required id="id_assassin_dagger" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('assassin_dagger');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/book_of_bravery.png" alt="book_of_bravery">
 					</div>
-					<div id="assassin_dagger_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('assassin_dagger')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Assassin Dagger :</b></u><br><br>
-							<p>Attack<br>Damage To Mobs<br>Damage To Heroes %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.book_of_bravery_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.book_of_bravery_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.book_of_bravery_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="gold_bunny_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/gold_bunny.png" style="max-width: 51px; max-height: 54px;" alt="gold_bunny">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="gold_bunny" value="{{ form_RelicsTable.gold_bunny.value }}" required id="id_gold_bunny" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('gold_bunny');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/angelic_heart.png" alt="angelic_heart">
 					</div>
-					<div id="gold_bunny_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('gold_bunny')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Gold Bunny :</b></u><br><br>
-							<p>Max Hp<br>Front Damage Resistance<br>Attack %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.angelic_heart_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.angelic_heart_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.angelic_heart_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="genesis_staff_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/genesis_staff.png" style="max-width: 51px; max-height: 54px;" alt="genesis_staff">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="genesis_staff" value="{{ form_RelicsTable.genesis_staff.value }}" required id="id_genesis_staff" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('genesis_staff');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/devil_whisper.png" alt="devil_whisper">
 					</div>
-					<div id="genesis_staff_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('genesis_staff')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Genesis Staff :</b></u><br><br>
-							<p>Rear Damage Resistance<br>Collision Damage Resistance %<br>Boss Damage Resistance %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.devil_whisper_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.devil_whisper_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.devil_whisper_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="bloodstained_sword_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/bloodstained_sword.png" style="max-width: 51px; max-height: 54px;" alt="bloodstained_sword">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="25" name="bloodstained_sword" value="{{ form_RelicsTable.bloodstained_sword.value }}" required id="id_bloodstained_sword" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('bloodstained_sword');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/stone_of_wisdom.png" alt="stone_of_wisdom">
 					</div>
-					<div id="bloodstained_sword_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('bloodstained_sword')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Bloodstained Sword :</b></u><br><br>
-							<p>Attack<br>Damage To Mobs<br>Weapon Melee Damage %<br>Attack %<br>Effective %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.stone_of_wisdom_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.stone_of_wisdom_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.stone_of_wisdom_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="starcluster_rage_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/starcluster_rage.png" style="max-width: 51px; max-height: 54px;" alt="starcluster_rage">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="25" name="starcluster_rage" value="{{ form_RelicsTable.starcluster_rage.value }}" required id="id_starcluster_rage" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('starcluster_rage');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/empyrean_mirror.png" alt="empyrean_mirror">
 					</div>
-					<div id="starcluster_rage_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('starcluster_rage')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Starcluster Rage :</b></u><br><br>
-							<p>Damage To Bosses<br>Damage To Ranged Units<br>Attack Speed %<br>Weapon Ranged Damage %<br>Effective %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.empyrean_mirror_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.empyrean_mirror_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.empyrean_mirror_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="elven_king_cape_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/elven_king_cape.png" style="max-width: 51px; max-height: 54px;" alt="elven_king_cape">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="25" name="elven_king_cape" value="{{ form_RelicsTable.elven_king_cape.value }}" required id="id_elven_king_cape" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('elven_king_cape');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/fabled_archer_arrow.png" alt="fabled_archer_arrow">
 					</div>
-					<div id="elven_king_cape_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('elven_king_cape')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Elven King Cape :</b></u><br><br>
-							<p>Damage To Mobs<br>Damage to Ranged Unit<br>Crit Chance %<br>Attack %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.fabled_archer_arrow_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.fabled_archer_arrow_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.fabled_archer_arrow_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="spear_of_yggdrasil_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/spear_of_yggdrasil.png" style="max-width: 51px; max-height: 54px;" alt="spear_of_yggdrasil">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="25" name="spear_of_yggdrasil" value="{{ form_RelicsTable.spear_of_yggdrasil.value }}" required id="id_spear_of_yggdrasil" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('spear_of_yggdrasil');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/shiny_gemmed_belt.png" alt="shiny_gemmed_belt">
 					</div>
-					<div id="spear_of_yggdrasil_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('spear_of_yggdrasil')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Spear of Yggdrasil :</b></u><br><br>
-							<p>Attack<br>Damage to Melee Units<br>Attack %<br>Attack Speed %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.shiny_gemmed_belt_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.shiny_gemmed_belt_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.shiny_gemmed_belt_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="dragon_gem_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/dragon_gem.png" style="max-width: 51px; max-height: 54px;" alt="dragon_gem">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="dragon_gem" value="{{ form_RelicsTable.dragon_gem.value }}" required id="id_dragon_gem" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('dragon_gem');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/mythril_flux_mail.png" alt="mythril_flux_mail">
 					</div>
-					<div id="dragon_gem_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('dragon_gem')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Dragon Gem :</b></u><br><br>
-							<p>Attack<br>Damage to Airborne<br>Attack %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.mythril_flux_mail_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.mythril_flux_mail_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.mythril_flux_mail_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="life_crown_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/life_crown.png" style="max-width: 51px; max-height: 54px;" alt="life_crown">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="life_crown" value="{{ form_RelicsTable.life_crown.value }}" required id="id_life_crown" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('life_crown');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/stealth_boots.png" alt="stealth_boots">
 					</div>
-					<div id="life_crown_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('life_crown')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Life Crown :</b></u><br><br>
-							<p>Max Hp<br>Projectile Resistance<br>Max Hp %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.stealth_boots_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.stealth_boots_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.stealth_boots_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="sand_of_time_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/sand_of_time.png" style="max-width: 51px; max-height: 54px;" alt="sand_of_time">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="sand_of_time" value="{{ form_RelicsTable.sand_of_time.value }}" required id="id_sand_of_time" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('sand_of_time');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/assassin_dagger.png" alt="assassin_dagger">
 					</div>
-					<div id="sand_of_time_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('sand_of_time')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Sand of Time :</b></u><br><br>
-							<p>Max Hp<br>Front Damage Resistance<br>Max Hp %<br>Effective %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.assassin_dagger_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.assassin_dagger_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.assassin_dagger_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="first_lightning_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/first_lightning.png" style="max-width: 51px; max-height: 54px;" alt="first_lightning">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="first_lightning" value="{{ form_RelicsTable.first_lightning.value }}" required id="id_first_lightning" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('first_lightning');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/primal_fire.png" alt="primal_fire">
 					</div>
-					<div id="first_lightning_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('first_lightning')">&times;</div>
-						<div class="helpcontent">
-							<u><b>First Lightning :</b></u><br><br>
-							<p>Attack<br>Damage to Airborne<br>Elemental Damage %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.primal_fire_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.primal_fire_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.primal_fire_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="oracle_quill_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/oracle_quill.png" style="max-width: 51px; max-height: 54px;" alt="oracle_quill">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="oracle_quill" value="{{ form_RelicsTable.oracle_quill.value }}" required id="id_oracle_quill" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('oracle_quill');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/light_grail.png" alt="light_grail">
 					</div>
-					<div id="oracle_quill_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('oracle_quill')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Oracle Quill :</b></u><br><br>
-							<p>Front Damage Resistance<br>Collision Damage Resistance<br>Dodge %<br>Effective %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.light_grail_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.light_grail_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.light_grail_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="bloodthirsty_grail_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/bloodthirsty_grail.png" style="max-width: 51px; max-height: 54px;" alt="bloodthirsty_grail">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="20" name="bloodthirsty_grail" value="{{ form_RelicsTable.bloodthirsty_grail.value }}" required id="id_bloodthirsty_grail" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('bloodthirsty_grail');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/life_staff.png" alt="life_staff">
 					</div>
-					<div id="bloodthirsty_grail_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('bloodthirsty_grail')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Bloodthirsty Grail :</b></u><br><br>
-							<p>Max Hp<br>Projectile Resistance<br>Max Hp %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.life_staff_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.life_staff_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.life_staff_effective }}</span>
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="healing_grail_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/healing_grail.png" style="max-width: 51px; max-height: 54px;" alt="healing_grail">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="healing_grail" value="{{ form_RelicsTable.healing_grail.value }}" required id="id_healing_grail" pattern="^([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])-([0-9]+(\.[0-9])?|\.[0-9])$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('healing_grail');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/cupids_necklace.png" alt="cupids_necklace">
 					</div>
-					<div id="healing_grail_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('healing_grail')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Healing Grail :</b></u><br><br>
-							<p>Max Hp<br>Max Hp %<br>Effective</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.cupids_necklace_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.cupids_necklace_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.cupids_necklace_effective }}</span> -->
 					</div>
 				</div>
-				<div class="container-relics">
-					<div id="cupids_necklace_showbox" style="display: block;">
-						<div class="header-relic-card">
-							<img src="/static/image/relics_img/cupids_necklace.png" style="max-width: 51px; max-height: 54px;" alt="cupids_necklace">
-						</div>
-						<div class="container_boost">
-							<input type="text" maxlength="15" name="cupids_necklace" value="{{ form_RelicsTable.cupids_necklace.value }}" required id="id_cupids_necklace" pattern="^([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)-([0-9]+([.][0-9])?)$">
-							<div class="info_box_relic_input_help" onclick="boxHelpRelic('cupids_necklace');">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
-							</div>
-						</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/genesis_staff.png" alt="genesis_staff">
 					</div>
-					<div id="cupids_necklace_helpbox" class="boxHelpRelic" style="display: none;">
-						<div class="header-close" onclick="closeboxHelpRelic('cupids_necklace')">&times;</div>
-						<div class="helpcontent">
-							<u><b>Healing Grail :</b></u><br><br>
-							<p>Attack<br>Damage to Mobs<br>Attack Jewel Base Stats<br>Attack %</p>
-							<input readonly value="<boost1>-<boost2>,etc">
-						</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.genesis_staff_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.genesis_staff_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.genesis_staff_effective }}</span> -->
+					</div>
+				</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/bloodstained_sword.png" alt="bloodstained_sword">
+					</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.bloodstained_sword_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.bloodstained_sword_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.bloodstained_sword_effective }}</span>
+					</div>
+				</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/starcluster_rage.png" alt="starcluster_rage">
+					</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.starcluster_rage_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.starcluster_rage_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.starcluster_rage_effective }}</span>
+					</div>
+				</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/elven_king_cape.png" alt="elven_king_cape">
+					</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.elven_king_cape_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.elven_king_cape_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.elven_king_cape_effective }}</span>
+					</div>
+				</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/spear_of_yggdrasil.png" alt="spear_of_yggdrasil">
+					</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.spear_of_yggdrasil_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.spear_of_yggdrasil_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.spear_of_yggdrasil_effective }}</span>
+					</div>
+				</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/dragon_gem.png" alt="dragon_gem">
+					</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.dragon_gem_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.dragon_gem_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.dragon_gem_effective }}</span>
+					</div>
+				</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/life_crown.png" alt="life_crown">
+					</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.life_crown_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.life_crown_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.life_crown_effective }}</span>
+					</div>
+				</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/sand_of_time.png" alt="sand_of_time">
+					</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.sand_of_time_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.sand_of_time_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.sand_of_time_effective }}</span>
+					</div>
+				</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/first_lightning.png" alt="first_lightning">
+					</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.first_lightning_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.first_lightning_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.first_lightning_effective }}</span> -->
+					</div>
+				</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/oracle_quill.png" alt="oracle_quill">
+					</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.oracle_quill_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.oracle_quill_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.oracle_quill_effective }}</span>
+					</div>
+				</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/bloodthirsty_grail.png" alt="bloodthirsty_grail">
+					</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.bloodthirsty_grail_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.bloodthirsty_grail_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.bloodthirsty_grail_effective }}</span>
+					</div>
+				</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
+						<img src="/static/image/relics_img/healing_grail.png" alt="healing_grail">
+					</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.healing_grail_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.healing_grail_star }}</span>
+						<span>Exclusive : {{ form_RelicsTable.healing_grail_effective }}</span>
 					</div>
 				</div>
 			</div>

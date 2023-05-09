@@ -268,7 +268,7 @@
 	--lt-messages-tags-border: black;
 	--lt-messages-tags-color: white;
 	--lt-messages-success-color: #267612;
-	--lt-messages-error-color: #d50400;
+	--lt-messages-error-color: #c60000;
 
 
 	--dt-header-bg: #292929;
@@ -282,9 +282,12 @@
 	--dt-footer-discord-icon-color-hover: #551A8B;
 	--dt-footer-font-color: white;
 	--dt-fashare-color: white;
-	--dt-modale-content-bg: #99aab5;
-	--dt-modale-content-btn-bg: #3e5c7d;
-	--dt-modale-content-a-color: #2e445c;
+	--dt-modale-content-bg: #565656;
+	--dt-modale-content-btn-bg: #c60000;
+	--dt-modale-content-a-color: #81a4ff;
+	--dt-modale-content-color: white;
+	--dt-messages-success-color: #ffffff;
+	--dt-messages-error-color: black;
 }
 
 
@@ -761,4 +764,15 @@ footer div, footer li{
 }
 .body_dark_mode .content_container{
 	color: var(--dt-section-main-color);
+}
+.body_dark_mode .success-messages{
+	color: var(--dt-messages-success-color);
+	letter-spacing: 1px;
+}
+.body_dark_mode .error-messages{
+	color: var(--dt-messages-error-color);
+	letter-spacing: 1px;
+}
+.body_dark_mode .modals .info-button{
+	background-color: #363636;
 }

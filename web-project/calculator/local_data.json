@@ -6311,157 +6311,157 @@
     },
     "TalentStats": {
         "strength_0": 0,
-        "strength_1": "200",
-        "strength_2": "300",
-        "strength_3": "410",
-        "strength_4": "530",
-        "strength_5": "650",
-        "strength_6": "780",
-        "strength_7": "930",
-        "strength_8": "1080",
-        "strength_9": "1250",
-        "strength_10": "1430",
-        "strength_11": "1620",
-        "strength_12": "1830",
-        "strength_13": "2050",
-        "strength_14": "2290",
-        "strength_15": "2540",
-        "strength_16": "2800",
-        "strength_17": "3090",
-        "strength_18": "3390",
-        "strength_19": "3710",
-        "strength_20": "4050",
-        "strength_21": "4390",
-        "strength_22": "4750",
-        "strength_23": "5130",
-        "strength_24": "5530",
-        "strength_25": "5950",
+        "strength_1": 200,
+        "strength_2": 300,
+        "strength_3": 410,
+        "strength_4": 530,
+        "strength_5": 650,
+        "strength_6": 780,
+        "strength_7": 930,
+        "strength_8": 1080,
+        "strength_9": 1250,
+        "strength_10": 1430,
+        "strength_11": 1620,
+        "strength_12": 1830,
+        "strength_13": 2050,
+        "strength_14": 2290,
+        "strength_15": 2540,
+        "strength_16": 2800,
+        "strength_17": 3090,
+        "strength_18": 3390,
+        "strength_19": 3710,
+        "strength_20": 4050,
+        "strength_21": 4390,
+        "strength_22": 4750,
+        "strength_23": 5130,
+        "strength_24": 5530,
+        "strength_25": 5950,
         "power_0": 0,
-        "power_1": "50",
-        "power_2": "75",
-        "power_3": "100",
-        "power_4": "130",
-        "power_5": "170",
-        "power_6": "210",
-        "power_7": "250",
-        "power_8": "300",
-        "power_9": "360",
-        "power_10": "420",
-        "power_11": "480",
-        "power_12": "560",
-        "power_13": "640",
-        "power_14": "720",
-        "power_15": "820",
-        "power_16": "920",
-        "power_17": "1030",
-        "power_18": "1140",
-        "power_19": "1270",
-        "power_20": "1400",
-        "power_21": "1540",
-        "power_22": "1680",
-        "power_23": "1840",
-        "power_24": "2000",
-        "power_25": "2180",
+        "power_1": 50,
+        "power_2": 75,
+        "power_3": 100,
+        "power_4": 130,
+        "power_5": 170,
+        "power_6": 210,
+        "power_7": 250,
+        "power_8": 300,
+        "power_9": 360,
+        "power_10": 420,
+        "power_11": 480,
+        "power_12": 560,
+        "power_13": 640,
+        "power_14": 720,
+        "power_15": 820,
+        "power_16": 920,
+        "power_17": 1030,
+        "power_18": 1140,
+        "power_19": 1270,
+        "power_20": 1400,
+        "power_21": 1540,
+        "power_22": 1680,
+        "power_23": 1840,
+        "power_24": 2000,
+        "power_25": 2180,
         "recover_0": 0,
-        "recover_1": "50",
-        "recover_2": "100",
-        "recover_3": "150",
-        "recover_4": "200",
-        "recover_5": "260",
-        "recover_6": "320",
-        "recover_7": "390",
-        "recover_8": "460",
-        "recover_9": "530",
-        "recover_10": "600",
-        "recover_11": "680",
-        "recover_12": "760",
-        "recover_13": "840",
-        "recover_14": "930",
-        "recover_15": "1030",
-        "recover_16": "1130",
-        "recover_17": "1230",
-        "recover_18": "1340",
-        "recover_19": "1450",
-        "recover_20": "1570",
-        "recover_21": "1690",
-        "recover_22": "1810",
-        "recover_23": "1940",
-        "recover_24": "2070",
-        "recover_25": "2200",
+        "recover_1": 50,
+        "recover_2": 100,
+        "recover_3": 150,
+        "recover_4": 200,
+        "recover_5": 260,
+        "recover_6": 320,
+        "recover_7": 390,
+        "recover_8": 460,
+        "recover_9": 530,
+        "recover_10": 600,
+        "recover_11": 680,
+        "recover_12": 760,
+        "recover_13": 840,
+        "recover_14": 930,
+        "recover_15": 1030,
+        "recover_16": 1130,
+        "recover_17": 1230,
+        "recover_18": 1340,
+        "recover_19": 1450,
+        "recover_20": 1570,
+        "recover_21": 1690,
+        "recover_22": 1810,
+        "recover_23": 1940,
+        "recover_24": 2070,
+        "recover_25": 2200,
         "block_0": 0,
-        "block_1": "80",
-        "block_2": "120",
-        "block_3": "160",
-        "block_4": "210",
-        "block_5": "270",
-        "block_6": "330",
-        "block_7": "400",
-        "block_8": "480",
-        "block_9": "570",
-        "block_10": "670",
-        "block_11": "780",
-        "block_12": "900",
-        "block_13": "1020",
-        "block_14": "1150",
-        "block_15": "1300",
-        "block_16": "1450",
-        "block_17": "1600",
-        "block_18": "1750",
-        "block_19": "1900",
-        "block_20": "2100",
-        "block_21": "2300",
-        "block_22": "2500",
-        "block_23": "2700",
-        "block_24": "2900",
-        "block_25": "3100",
+        "block_1": 80,
+        "block_2": 120,
+        "block_3": 160,
+        "block_4": 210,
+        "block_5": 270,
+        "block_6": 330,
+        "block_7": 400,
+        "block_8": 480,
+        "block_9": 570,
+        "block_10": 670,
+        "block_11": 780,
+        "block_12": 900,
+        "block_13": 1020,
+        "block_14": 1150,
+        "block_15": 1300,
+        "block_16": 1450,
+        "block_17": 1600,
+        "block_18": 1750,
+        "block_19": 1900,
+        "block_20": 2100,
+        "block_21": 2300,
+        "block_22": 2500,
+        "block_23": 2700,
+        "block_24": 2900,
+        "block_25": 3100,
         "iron_bulwark_0": 0,
-        "iron_bulwark_1": "50",
-        "iron_bulwark_2": "75",
-        "iron_bulwark_3": "100",
-        "iron_bulwark_4": "130",
-        "iron_bulwark_5": "170",
-        "iron_bulwark_6": "210",
-        "iron_bulwark_7": "250",
-        "iron_bulwark_8": "300",
-        "iron_bulwark_9": "360",
-        "iron_bulwark_10": "420",
-        "iron_bulwark_11": "480",
-        "iron_bulwark_12": "560",
-        "iron_bulwark_13": "640",
-        "iron_bulwark_14": "720",
-        "iron_bulwark_15": "820",
-        "iron_bulwark_16": "920",
-        "iron_bulwark_17": "1030",
-        "iron_bulwark_18": "1140",
-        "iron_bulwark_19": "1270",
-        "iron_bulwark_20": "1410",
-        "iron_bulwark_21": "1550",
-        "iron_bulwark_22": "1700",
-        "iron_bulwark_23": "1850",
-        "iron_bulwark_24": "2000",
-        "iron_bulwark_25": "2160",
+        "iron_bulwark_1": 50,
+        "iron_bulwark_2": 75,
+        "iron_bulwark_3": 100,
+        "iron_bulwark_4": 130,
+        "iron_bulwark_5": 170,
+        "iron_bulwark_6": 210,
+        "iron_bulwark_7": 250,
+        "iron_bulwark_8": 300,
+        "iron_bulwark_9": 360,
+        "iron_bulwark_10": 420,
+        "iron_bulwark_11": 480,
+        "iron_bulwark_12": 560,
+        "iron_bulwark_13": 640,
+        "iron_bulwark_14": 720,
+        "iron_bulwark_15": 820,
+        "iron_bulwark_16": 920,
+        "iron_bulwark_17": 1030,
+        "iron_bulwark_18": 1140,
+        "iron_bulwark_19": 1270,
+        "iron_bulwark_20": 1410,
+        "iron_bulwark_21": 1550,
+        "iron_bulwark_22": 1700,
+        "iron_bulwark_23": 1850,
+        "iron_bulwark_24": 2000,
+        "iron_bulwark_25": 2160,
         "enhanced_equipment_0": 0,
-        "enhanced_equipment_1": "3",
-        "enhanced_equipment_2": "6",
-        "enhanced_equipment_3": "9",
-        "enhanced_equipment_4": "12",
-        "enhanced_equipment_5": "15",
-        "enhanced_equipment_6": "18",
-        "enhanced_equipment_7": "21",
-        "enhanced_equipment_8": "24",
-        "enhanced_equipment_9": "27",
-        "enhanced_equipment_10": "30",
+        "enhanced_equipment_1": 3,
+        "enhanced_equipment_2": 6,
+        "enhanced_equipment_3": 9,
+        "enhanced_equipment_4": 12,
+        "enhanced_equipment_5": 15,
+        "enhanced_equipment_6": 18,
+        "enhanced_equipment_7": 21,
+        "enhanced_equipment_8": 24,
+        "enhanced_equipment_9": 27,
+        "enhanced_equipment_10": 30,
         "hero_power_up_0": 0,
-        "hero_power_up_1": "4",
-        "hero_power_up_2": "8",
-        "hero_power_up_3": "12",
-        "hero_power_up_4": "16",
-        "hero_power_up_5": "20",
-        "hero_power_up_6": "24",
-        "hero_power_up_7": "28",
-        "hero_power_up_8": "32",
-        "hero_power_up_9": "36",
-        "hero_power_up_10": "40"
+        "hero_power_up_1": 4,
+        "hero_power_up_2": 8,
+        "hero_power_up_3": 12,
+        "hero_power_up_4": 16,
+        "hero_power_up_5": 20,
+        "hero_power_up_6": 24,
+        "hero_power_up_7": 28,
+        "hero_power_up_8": 32,
+        "hero_power_up_9": 36,
+        "hero_power_up_10": 40
     },
     "HerosStats": {
         "atreus_star_0": [
@@ -6469,7 +6469,32 @@
             0,
             0
         ],
+        "atreus_star_1": [
+            0,
+            0,
+            0
+        ],
         "atreus_star_2": [
+            30,
+            0,
+            0
+        ],
+        "atreus_star_3": [
+            30,
+            0,
+            0
+        ],
+        "atreus_star_4": [
+            30,
+            0,
+            0
+        ],
+        "atreus_star_5": [
+            30,
+            0,
+            0
+        ],
+        "atreus_star_6": [
             30,
             0,
             0
@@ -6531,7 +6556,32 @@
             0,
             0
         ],
+        "urasil_star_1": [
+            0,
+            0,
+            0
+        ],
         "urasil_star_2": [
+            120,
+            0,
+            0
+        ],
+        "urasil_star_3": [
+            120,
+            0,
+            0
+        ],
+        "urasil_star_4": [
+            120,
+            0,
+            0
+        ],
+        "urasil_star_5": [
+            120,
+            0,
+            0
+        ],
+        "urasil_star_6": [
             120,
             0,
             0
@@ -6593,7 +6643,32 @@
             0,
             0
         ],
+        "phoren_star_1": [
+            0,
+            0,
+            0
+        ],
         "phoren_star_2": [
+            75,
+            0,
+            0
+        ],
+        "phoren_star_3": [
+            75,
+            0,
+            0
+        ],
+        "phoren_star_4": [
+            75,
+            0,
+            0
+        ],
+        "phoren_star_5": [
+            75,
+            0,
+            0
+        ],
+        "phoren_star_6": [
             75,
             0,
             0
@@ -6655,7 +6730,32 @@
             0,
             0
         ],
+        "taranis_star_1": [
+            0,
+            0,
+            0
+        ],
         "taranis_star_2": [
+            150,
+            0,
+            0
+        ],
+        "taranis_star_3": [
+            150,
+            0,
+            0
+        ],
+        "taranis_star_4": [
+            150,
+            0,
+            0
+        ],
+        "taranis_star_5": [
+            150,
+            0,
+            0
+        ],
+        "taranis_star_6": [
             150,
             0,
             0
@@ -6717,7 +6817,32 @@
             0,
             0
         ],
+        "helix_star_1": [
+            0,
+            0,
+            0
+        ],
         "helix_star_2": [
+            40,
+            0,
+            0
+        ],
+        "helix_star_3": [
+            40,
+            0,
+            0
+        ],
+        "helix_star_4": [
+            40,
+            0,
+            0
+        ],
+        "helix_star_5": [
+            40,
+            0,
+            0
+        ],
+        "helix_star_6": [
             40,
             0,
             0
@@ -6779,7 +6904,32 @@
             0,
             0
         ],
+        "meowgik_star_1": [
+            0,
+            0,
+            0
+        ],
         "meowgik_star_2": [
+            10,
+            0,
+            0
+        ],
+        "meowgik_star_3": [
+            10,
+            0,
+            0
+        ],
+        "meowgik_star_4": [
+            10,
+            0,
+            0
+        ],
+        "meowgik_star_5": [
+            10,
+            0,
+            0
+        ],
+        "meowgik_star_6": [
             10,
             0,
             0
@@ -6841,7 +6991,32 @@
             0,
             0
         ],
+        "shari_star_1": [
+            0,
+            0,
+            0
+        ],
         "shari_star_2": [
+            120,
+            0,
+            0
+        ],
+        "shari_star_3": [
+            120,
+            0,
+            0
+        ],
+        "shari_star_4": [
+            120,
+            0,
+            0
+        ],
+        "shari_star_5": [
+            120,
+            0,
+            0
+        ],
+        "shari_star_6": [
             120,
             0,
             0
@@ -6903,7 +7078,32 @@
             0,
             0
         ],
+        "ayana_star_1": [
+            0,
+            0,
+            0
+        ],
         "ayana_star_2": [
+            15,
+            0,
+            0
+        ],
+        "ayana_star_3": [
+            15,
+            0,
+            0
+        ],
+        "ayana_star_4": [
+            15,
+            0,
+            0
+        ],
+        "ayana_star_5": [
+            15,
+            0,
+            0
+        ],
+        "ayana_star_6": [
             15,
             0,
             0
@@ -6965,7 +7165,32 @@
             0,
             0
         ],
+        "onir_star_1": [
+            0,
+            0,
+            0
+        ],
         "onir_star_2": [
+            200,
+            0,
+            0
+        ],
+        "onir_star_3": [
+            200,
+            0,
+            0
+        ],
+        "onir_star_4": [
+            200,
+            0,
+            0
+        ],
+        "onir_star_5": [
+            200,
+            0,
+            0
+        ],
+        "onir_star_6": [
             200,
             0,
             0
@@ -7027,7 +7252,32 @@
             0,
             0
         ],
+        "rolla_star_1": [
+            0,
+            0,
+            0
+        ],
         "rolla_star_2": [
+            75,
+            0,
+            0
+        ],
+        "rolla_star_3": [
+            75,
+            0,
+            0
+        ],
+        "rolla_star_4": [
+            75,
+            0,
+            0
+        ],
+        "rolla_star_5": [
+            75,
+            0,
+            0
+        ],
+        "rolla_star_6": [
             75,
             0,
             0
@@ -7089,7 +7339,32 @@
             0,
             0
         ],
+        "bonnie_star_1": [
+            0,
+            0,
+            0
+        ],
         "bonnie_star_2": [
+            50,
+            0,
+            0
+        ],
+        "bonnie_star_3": [
+            50,
+            0,
+            0
+        ],
+        "bonnie_star_4": [
+            50,
+            0,
+            0
+        ],
+        "bonnie_star_5": [
+            50,
+            0,
+            0
+        ],
+        "bonnie_star_6": [
             50,
             0,
             0
@@ -7151,7 +7426,32 @@
             0,
             0
         ],
+        "sylvan_star_1": [
+            0,
+            0,
+            0
+        ],
         "sylvan_star_2": [
+            75,
+            0,
+            0
+        ],
+        "sylvan_star_3": [
+            75,
+            0,
+            0
+        ],
+        "sylvan_star_4": [
+            75,
+            0,
+            0
+        ],
+        "sylvan_star_5": [
+            75,
+            0,
+            0
+        ],
+        "sylvan_star_6": [
             75,
             0,
             0
@@ -7213,7 +7513,32 @@
             0,
             0
         ],
+        "shade_star_1": [
+            0,
+            0,
+            0
+        ],
         "shade_star_2": [
+            2,
+            0,
+            0
+        ],
+        "shade_star_3": [
+            2,
+            0,
+            0
+        ],
+        "shade_star_4": [
+            2,
+            0,
+            0
+        ],
+        "shade_star_5": [
+            2,
+            0,
+            0
+        ],
+        "shade_star_6": [
             2,
             0,
             0
@@ -7275,7 +7600,32 @@
             0,
             0
         ],
+        "ophelia_star_1": [
+            0,
+            0,
+            0
+        ],
         "ophelia_star_2": [
+            75,
+            0,
+            0
+        ],
+        "ophelia_star_3": [
+            75,
+            0,
+            0
+        ],
+        "ophelia_star_4": [
+            75,
+            0,
+            0
+        ],
+        "ophelia_star_5": [
+            75,
+            0,
+            0
+        ],
+        "ophelia_star_6": [
             75,
             0,
             0
@@ -7337,7 +7687,32 @@
             0,
             0
         ],
+        "ryan_star_1": [
+            0,
+            0,
+            0
+        ],
         "ryan_star_2": [
+            75,
+            0,
+            0
+        ],
+        "ryan_star_3": [
+            75,
+            0,
+            0
+        ],
+        "ryan_star_4": [
+            75,
+            0,
+            0
+        ],
+        "ryan_star_5": [
+            75,
+            0,
+            0
+        ],
+        "ryan_star_6": [
             75,
             0,
             0
@@ -7399,7 +7774,32 @@
             0,
             0
         ],
+        "lina_star_1": [
+            0,
+            0,
+            0
+        ],
         "lina_star_2": [
+            60,
+            0,
+            0
+        ],
+        "lina_star_3": [
+            60,
+            0,
+            0
+        ],
+        "lina_star_4": [
+            60,
+            0,
+            0
+        ],
+        "lina_star_5": [
+            60,
+            0,
+            0
+        ],
+        "lina_star_6": [
             60,
             0,
             0
@@ -7461,7 +7861,32 @@
             0,
             0
         ],
+        "aquea_star_1": [
+            0,
+            0,
+            0
+        ],
         "aquea_star_2": [
+            70,
+            0,
+            0
+        ],
+        "aquea_star_3": [
+            70,
+            0,
+            0
+        ],
+        "aquea_star_4": [
+            70,
+            0,
+            0
+        ],
+        "aquea_star_5": [
+            70,
+            0,
+            0
+        ],
+        "aquea_star_6": [
             70,
             0,
             0
@@ -7523,7 +7948,32 @@
             0,
             0
         ],
+        "shingen_star_1": [
+            0,
+            0,
+            0
+        ],
         "shingen_star_2": [
+            80,
+            0,
+            0
+        ],
+        "shingen_star_3": [
+            80,
+            0,
+            0
+        ],
+        "shingen_star_4": [
+            80,
+            0,
+            0
+        ],
+        "shingen_star_5": [
+            80,
+            0,
+            0
+        ],
+        "shingen_star_6": [
             80,
             0,
             0
@@ -7585,7 +8035,32 @@
             0,
             0
         ],
+        "gugu_star_1": [
+            0,
+            0,
+            0
+        ],
         "gugu_star_2": [
+            60,
+            0,
+            0
+        ],
+        "gugu_star_3": [
+            60,
+            0,
+            0
+        ],
+        "gugu_star_4": [
+            60,
+            0,
+            0
+        ],
+        "gugu_star_5": [
+            60,
+            0,
+            0
+        ],
+        "gugu_star_6": [
             60,
             0,
             0
@@ -7647,7 +8122,32 @@
             0,
             0
         ],
+        "iris_star_1": [
+            0,
+            0,
+            0
+        ],
         "iris_star_2": [
+            70,
+            0,
+            0
+        ],
+        "iris_star_3": [
+            70,
+            0,
+            0
+        ],
+        "iris_star_4": [
+            70,
+            0,
+            0
+        ],
+        "iris_star_5": [
+            70,
+            0,
+            0
+        ],
+        "iris_star_6": [
             70,
             0,
             0
@@ -7709,7 +8209,32 @@
             0,
             0
         ],
+        "blazo_star_1": [
+            0,
+            0,
+            0
+        ],
         "blazo_star_2": [
+            80,
+            0,
+            0
+        ],
+        "blazo_star_3": [
+            80,
+            0,
+            0
+        ],
+        "blazo_star_4": [
+            80,
+            0,
+            0
+        ],
+        "blazo_star_5": [
+            80,
+            0,
+            0
+        ],
+        "blazo_star_6": [
             80,
             0,
             0
@@ -7771,7 +8296,32 @@
             0,
             0
         ],
+        "melinda_star_1": [
+            0,
+            0,
+            0
+        ],
         "melinda_star_2": [
+            100,
+            0,
+            0
+        ],
+        "melinda_star_3": [
+            100,
+            0,
+            0
+        ],
+        "melinda_star_4": [
+            100,
+            0,
+            0
+        ],
+        "melinda_star_5": [
+            100,
+            0,
+            0
+        ],
+        "melinda_star_6": [
             100,
             0,
             0
@@ -7833,7 +8383,32 @@
             0,
             0
         ],
+        "elaine_star_1": [
+            0,
+            0,
+            0
+        ],
         "elaine_star_2": [
+            360,
+            0,
+            0
+        ],
+        "elaine_star_3": [
+            360,
+            0,
+            0
+        ],
+        "elaine_star_4": [
+            360,
+            0,
+            0
+        ],
+        "elaine_star_5": [
+            360,
+            0,
+            0
+        ],
+        "elaine_star_6": [
             360,
             0,
             0
@@ -7895,7 +8470,32 @@
             0,
             0
         ],
+        "bobo_star_1": [
+            0,
+            0,
+            0
+        ],
         "bobo_star_2": [
+            240,
+            0,
+            0
+        ],
+        "bobo_star_3": [
+            240,
+            0,
+            0
+        ],
+        "bobo_star_4": [
+            240,
+            0,
+            0
+        ],
+        "bobo_star_5": [
+            240,
+            0,
+            0
+        ],
+        "bobo_star_6": [
             240,
             0,
             0
@@ -7957,7 +8557,32 @@
             0,
             0
         ],
+        "stella_star_1": [
+            0,
+            0,
+            0
+        ],
         "stella_star_2": [
+            3,
+            0,
+            0
+        ],
+        "stella_star_3": [
+            3,
+            0,
+            0
+        ],
+        "stella_star_4": [
+            3,
+            0,
+            0
+        ],
+        "stella_star_5": [
+            3,
+            0,
+            0
+        ],
+        "stella_star_6": [
             3,
             0,
             0
@@ -8659,438 +9284,240 @@
         "calaite_special_bonus": 3.0
     },
     "JewelSpeBonus": {
-        "weapon_sb_lvl4": [
-            80,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "weapon_sb_lvl8": [
-            80,
-            5,
-            0,
-            0,
-            0,
-            0
-        ],
-        "weapon_sb_lvl16": [
-            80,
-            5,
-            5,
-            0,
-            0,
-            0
-        ],
-        "weapon_sb_lvl28": [
-            80,
-            5,
-            5,
-            50,
-            0,
-            0
-        ],
-        "weapon_sb_lvl38": [
-            80,
-            5,
-            5,
-            50,
-            1000,
-            0
-        ],
-        "weapon_sb_lvl48": [
-            80,
-            5,
-            5,
-            50,
-            1000,
-            5
-        ],
-        "armor_sb_lvl4": [
-            200,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "armor_sb_lvl8": [
-            200,
-            10,
-            0,
-            0,
-            0,
-            0
-        ],
-        "armor_sb_lvl16": [
-            200,
-            10,
-            5,
-            0,
-            0,
-            0
-        ],
-        "armor_sb_lvl28": [
-            200,
-            10,
-            5,
-            20,
-            0,
-            0
-        ],
-        "armor_sb_lvl38": [
-            200,
-            10,
-            5,
-            20,
-            2500,
-            0
-        ],
-        "armor_sb_lvl48": [
-            200,
-            10,
-            5,
-            20,
-            2500,
-            15
-        ],
-        "ring1_sb_lvl4": [
-            3,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "ring1_sb_lvl8": [
-            3,
-            5,
-            0,
-            0,
-            0,
-            0
-        ],
-        "ring1_sb_lvl16": [
-            3,
-            5,
-            5,
-            0,
-            0,
-            0
-        ],
-        "ring1_sb_lvl28": [
-            3,
-            5,
-            5,
-            20,
-            0,
-            0
-        ],
-        "ring1_sb_lvl38": [
-            3,
-            5,
-            5,
-            20,
-            5,
-            0
-        ],
-        "ring1_sb_lvl48": [
-            3,
-            5,
-            5,
-            20,
-            5,
-            6
-        ],
-        "ring2_sb_lvl4": [
-            3,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "ring2_sb_lvl8": [
-            3,
-            5,
-            0,
-            0,
-            0,
-            0
-        ],
-        "ring2_sb_lvl16": [
-            3,
-            5,
-            10,
-            0,
-            0,
-            0
-        ],
-        "ring2_sb_lvl28": [
-            3,
-            5,
-            10,
-            10,
-            0,
-            0
-        ],
-        "ring2_sb_lvl38": [
-            3,
-            5,
-            10,
-            10,
-            5,
-            0
-        ],
-        "ring2_sb_lvl48": [
-            3,
-            5,
-            10,
-            10,
-            5,
-            7
-        ],
-        "pet1_sb_lvl4": [
-            10,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "pet1_sb_lvl8": [
-            10,
-            5,
-            0,
-            0,
-            0,
-            0
-        ],
-        "pet1_sb_lvl16": [
-            10,
-            5,
-            40,
-            0,
-            0,
-            0
-        ],
-        "pet1_sb_lvl28": [
-            10,
-            5,
-            40,
-            10,
-            0,
-            0
-        ],
-        "pet1_sb_lvl38": [
-            10,
-            5,
-            40,
-            10,
-            25,
-            0
-        ],
-        "pet1_sb_lvl48": [
-            10,
-            5,
-            40,
-            10,
-            25,
-            25
-        ],
-        "pet2_sb_lvl4": [
-            100,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "pet2_sb_lvl8": [
-            100,
-            5,
-            0,
-            0,
-            0,
-            0
-        ],
-        "pet2_sb_lvl16": [
-            100,
-            5,
-            10,
-            0,
-            0,
-            0
-        ],
-        "pet2_sb_lvl28": [
-            100,
-            5,
-            10,
-            10,
-            0,
-            0
-        ],
-        "pet2_sb_lvl38": [
-            100,
-            5,
-            10,
-            10,
-            800,
-            0
-        ],
-        "pet2_sb_lvl48": [
-            100,
-            5,
-            10,
-            10,
-            800,
-            25
-        ],
-        "bracelet_sb_lvl4": [
-            80,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "bracelet_sb_lvl8": [
-            80,
-            400,
-            0,
-            0,
-            0,
-            0
-        ],
-        "bracelet_sb_lvl16": [
-            80,
-            400,
-            350,
-            0,
-            0,
-            0
-        ],
-        "bracelet_sb_lvl28": [
-            80,
-            400,
-            350,
-            0,
-            0,
-            0
-        ],
-        "bracelet_sb_lvl38": [
-            80,
-            400,
-            350,
-            0,
-            1000,
-            0
-        ],
-        "bracelet_sb_lvl48": [
-            80,
-            400,
-            350,
-            0,
-            1000,
-            0
-        ],
-        "locket_sb_lvl4": [
-            10,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "locket_sb_lvl8": [
-            10,
-            5,
-            0,
-            0,
-            0,
-            0
-        ],
-        "locket_sb_lvl16": [
-            10,
-            5,
-            1500,
-            0,
-            0,
-            0
-        ],
-        "locket_sb_lvl28": [
-            10,
-            5,
-            1500,
-            0,
-            0,
-            0
-        ],
-        "locket_sb_lvl38": [
-            10,
-            5,
-            1500,
-            0,
-            2000,
-            0
-        ],
-        "locket_sb_lvl48": [
-            10,
-            5,
-            1500,
-            0,
-            2000,
-            25
-        ],
-        "book_sb_lvl4": [
-            8,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "book_sb_lvl8": [
-            8,
-            8,
-            0,
-            0,
-            0,
-            0
-        ],
-        "book_sb_lvl16": [
-            8,
-            8,
-            5,
-            0,
-            0,
-            0
-        ],
-        "book_sb_lvl28": [
-            8,
-            8,
-            5,
-            10,
-            0,
-            0
-        ],
-        "book_sb_lvl38": [
-            8,
-            8,
-            5,
-            10,
-            8,
-            0
-        ],
-        "book_sb_lvl48": [
-            8,
-            8,
-            5,
-            10,
-            8,
-            25
-        ]
+       "weapon":{
+            "4":{
+                "label":"attack_flat",
+                "value":80
+            },
+            "8":{
+                "label":"crit_damage",
+                "value":5
+            },
+            "16":{
+                "label":"attack_var",
+                "value":5
+            },
+            "28":{
+                "label":"When enemy HP is greater than 75%, damage is increased by 50%",
+                "value":50
+            },
+            "38":{
+                "label":"attack_flat",
+                "value":1000
+            },
+            "48":{
+                "label":"crit_chance",
+                "value":5
+            }
+        },
+       "armor":{
+            "4":{
+                "label":"hp_flat",
+                "value":200
+            },
+            "8":{
+                "label":"healing_red_heart_var",
+                "value":10
+            },
+            "16":{
+                "label":"damage_resistance_var",
+                "value":5
+            },
+            "28":{
+                "label":"When hit get a short increase of 20% attack",
+                "value":20
+            },
+            "38":{
+                "label":"hp_flat",
+                "value":2500
+            },
+            "48":{
+                "label":"When entering the boss room, temporarily increase Max HP by 15%",
+                "value":15
+            }
+        },
+        "ring1":{
+            "4":{
+                "label":"collision_resistance_var",
+                "value":3
+            },
+            "8":{
+                "label":"hp_drops",
+                "value":5
+            },
+            "16":{
+                "label":"attack_speed_var",
+                "value":5
+            },
+            "28":{
+                "label":"When HP is full, attack speed is increased by 20%",
+                "value":20
+            },
+            "38":{
+                "label":"dodge_var",
+                "value":5
+            },
+            "48":{
+                "label":"attack_var",
+                "value":6
+            }
+        },
+        "ring2":{
+            "4":{
+                "label":"projectile_resistance_var",
+                "value":3
+            },
+            "8":{
+                "label":"hp_drops",
+                "value":5
+            },
+            "16":{
+                "label":"battle_xp_gain",
+                "value":10
+            },
+            "28":{
+                "label":"When HP is lower than 25%, damage immunity is increased by 10%",
+                "value":10
+            },
+            "38":{
+                "label":"movemement_speed_var",
+                "value":5
+            },
+            "48":{
+                "label":"hp_var",
+                "value":7
+            }
+        },
+        "pet1":{
+            "4":{
+                "label":"Spirits attack speed increased by 10%",
+                "value":10
+            },
+            "8":{
+                "label":"coins_from_battle",
+                "value":5
+            },
+            "16":{
+                "label":"spirit_crit_damage_var",
+                "value":40
+            },
+            "28":{
+                "label":"All spirits receive 10% of Hero's attack",
+                "value":10
+            },
+            "38":{
+                "label":"Spirit attack increased by 25%",
+                "value":25
+            },
+            "48":{
+                "label":"Spirit attack increased by 35% for 10 second after entering a room, and bullets can pass through walls",
+                "value":35
+            }
+        },
+        "pet2":{
+            "4":{
+                "label":"spirits_damage_flat",
+                "value":100
+            },
+            "8":{
+                "label":"coins_from_battle",
+                "value":5
+            },
+            "16":{
+                "label":"spirit_crit_damage_var",
+                "value":10
+            },
+            "28":{
+                "label":"coins_from_battle",
+                "value":10
+            },
+            "38":{
+                "label":"spirits_damage_flat",
+                "value":800
+            },
+            "48":{
+                "label":"Spirit attack increased by 35% for 10 second after entering a room, and bullets can pass through walls",
+                "value":35
+            }
+        },
+        "bracelet":{
+            "4":{
+                "label":"attack_flat",
+                "value":80
+            },
+            "8":{
+                "label":"hp_flat",
+                "value":400
+            },
+            "16":{
+                "label":"attack_flat",
+                "value":350
+            },
+            "28":{
+                "label":"Attack will increase temporarily after a Crit attack",
+                "value":0
+            },
+            "38":{
+                "label":"attack_flat",
+                "value":1000
+            },
+            "48":{
+                "label":"Bracelet skill lasts longer",
+                "value":0
+            }
+        },
+        "locket":{
+            "4":{
+                "label":"healing_red_heart_var",
+                "value":10
+            },
+            "8":{
+                "label":"hp_drops",
+                "value":5
+            },
+            "16":{
+                "label":"hp_flat",
+                "value":1500
+            },
+            "28":{
+                "label":"Hitting enemies will reduce the attack of their projectile; can be stacked",
+                "value":0
+            },
+            "38":{
+                "label":"hp_flat",
+                "value":2000
+            },
+            "48":{
+                "label":"After taking damage, increase Max HP by a small amount, up to 25%",
+                "value":25
+            }
+        },
+        "book":{
+            "4":{
+                "label":"rear_resistance_var",
+                "value":8
+            },
+            "8":{
+                "label":"front_resistance_var",
+                "value":8
+            },
+            "16":{
+                "label":"attack_var",
+                "value":5
+            },
+            "28":{
+                "label":"hp_var",
+                "value":10
+            },
+            "38":{
+                "label":"Energy from Spellbooks +8%",
+                "value":8
+            },
+            "48":{
+                "label":"When the life is lower than 25%, the magic book can accumulate energy more quickly",
+                "value":0
+            }
+        }
     },
     "DragonStats": {
         "none_bonus1": "none",
@@ -9137,34 +9564,34 @@
             0.6,
             4
         ],
-        "glacion_great_base_1": "200",
+        "glacion_great_base_1": 200,
         "glacion_great_base_2": 0,
-        "glacion_great_inc_1": "4",
+        "glacion_great_inc_1": 4,
         "glacion_great_inc_2": 0,
-        "glacion_rare_base_1": "250",
-        "glacion_rare_base_2": "1250",
-        "glacion_rare_inc_1": "5",
-        "glacion_rare_inc_2": "28",
-        "glacion_epic_base_1": "300",
-        "glacion_epic_base_2": "1500",
-        "glacion_epic_inc_1": "6",
-        "glacion_epic_inc_2": "32",
-        "glacion_perfect_epic_base_1": "360",
-        "glacion_perfect_epic_base_2": "1750",
-        "glacion_perfect_epic_inc_1": "7",
-        "glacion_perfect_epic_inc_2": "36",
-        "glacion_legendary_base_1": "420",
-        "glacion_legendary_base_2": "2000",
-        "glacion_legendary_inc_1": "8",
-        "glacion_legendary_inc_2": "40",
-        "glacion_ancient_legendary_base_1": "480",
-        "glacion_ancient_legendary_base_2": "2250",
-        "glacion_ancient_legendary_inc_1": "9",
-        "glacion_ancient_legendary_inc_2": "44",
-        "glacion_mythic_base_1": "540",
-        "glacion_mythic_base_2": "2500",
-        "glacion_mythic_inc_1": "10",
-        "glacion_mythic_inc_2": "52",
+        "glacion_rare_base_1": 250,
+        "glacion_rare_base_2": 1250,
+        "glacion_rare_inc_1": 5,
+        "glacion_rare_inc_2": 28,
+        "glacion_epic_base_1": 300,
+        "glacion_epic_base_2": 1500,
+        "glacion_epic_inc_1": 6,
+        "glacion_epic_inc_2": 32,
+        "glacion_perfect_epic_base_1": 360,
+        "glacion_perfect_epic_base_2": 1750,
+        "glacion_perfect_epic_inc_1": 7,
+        "glacion_perfect_epic_inc_2": 36,
+        "glacion_legendary_base_1": 420,
+        "glacion_legendary_base_2": 2000,
+        "glacion_legendary_inc_1": 8,
+        "glacion_legendary_inc_2": 40,
+        "glacion_ancient_legendary_base_1": 480,
+        "glacion_ancient_legendary_base_2": 2250,
+        "glacion_ancient_legendary_inc_1": 9,
+        "glacion_ancient_legendary_inc_2": 44,
+        "glacion_mythic_base_1": 540,
+        "glacion_mythic_base_2": 2500,
+        "glacion_mythic_inc_1": 10,
+        "glacion_mythic_inc_2": 52,
         "shadex_bonus1": "Front Damage Resistance",
         "shadex_bonus2": "Max Hp",
         "shadex_bonus3": "Collision Damage Resistance",
@@ -9176,34 +9603,34 @@
             0.6,
             4
         ],
-        "shadex_great_base_1": "230",
+        "shadex_great_base_1": 230,
         "shadex_great_base_2": 0,
-        "shadex_great_inc_1": "5",
+        "shadex_great_inc_1": 5,
         "shadex_great_inc_2": 0,
-        "shadex_rare_base_1": "300",
-        "shadex_rare_base_2": "1250",
-        "shadex_rare_inc_1": "6",
-        "shadex_rare_inc_2": "28",
-        "shadex_epic_base_1": "360",
-        "shadex_epic_base_2": "1500",
-        "shadex_epic_inc_1": "7",
-        "shadex_epic_inc_2": "32",
-        "shadex_perfect_epic_base_1": "435",
-        "shadex_perfect_epic_base_2": "1750",
-        "shadex_perfect_epic_inc_1": "8",
-        "shadex_perfect_epic_inc_2": "36",
-        "shadex_legendary_base_1": "505",
-        "shadex_legendary_base_2": "2000",
-        "shadex_legendary_inc_1": "9",
-        "shadex_legendary_inc_2": "40",
-        "shadex_ancient_legendary_base_1": "575",
-        "shadex_ancient_legendary_base_2": "2250",
-        "shadex_ancient_legendary_inc_1": "10",
-        "shadex_ancient_legendary_inc_2": "44",
-        "shadex_mythic_base_1": "697",
-        "shadex_mythic_base_2": "2500",
-        "shadex_mythic_inc_1": "11",
-        "shadex_mythic_inc_2": "52",
+        "shadex_rare_base_1": 300,
+        "shadex_rare_base_2": 1250,
+        "shadex_rare_inc_1": 6,
+        "shadex_rare_inc_2": 28,
+        "shadex_epic_base_1": 360,
+        "shadex_epic_base_2": 1500,
+        "shadex_epic_inc_1": 7,
+        "shadex_epic_inc_2": 32,
+        "shadex_perfect_epic_base_1": 435,
+        "shadex_perfect_epic_base_2": 1750,
+        "shadex_perfect_epic_inc_1": 8,
+        "shadex_perfect_epic_inc_2": 36,
+        "shadex_legendary_base_1": 505,
+        "shadex_legendary_base_2": 2000,
+        "shadex_legendary_inc_1": 9,
+        "shadex_legendary_inc_2": 40,
+        "shadex_ancient_legendary_base_1": 575,
+        "shadex_ancient_legendary_base_2": 2250,
+        "shadex_ancient_legendary_inc_1": 10,
+        "shadex_ancient_legendary_inc_2": 44,
+        "shadex_mythic_base_1": 697,
+        "shadex_mythic_base_2": 2500,
+        "shadex_mythic_inc_1": 11,
+        "shadex_mythic_inc_2": 52,
         "jadeon_bonus1": "Max Hp",
         "jadeon_bonus2": "Attack",
         "jadeon_bonus3": "Mana Points Recovery effect",
@@ -9215,34 +9642,34 @@
             0.6,
             4
         ],
-        "jadeon_great_base_1": "1000",
+        "jadeon_great_base_1": 1000,
         "jadeon_great_base_2": 0,
-        "jadeon_great_inc_1": "24",
+        "jadeon_great_inc_1": 24,
         "jadeon_great_inc_2": 0,
-        "jadeon_rare_base_1": "1315",
-        "jadeon_rare_base_2": "355",
-        "jadeon_rare_inc_1": "28",
-        "jadeon_rare_inc_2": "9",
-        "jadeon_epic_base_1": "1575",
-        "jadeon_epic_base_2": "425",
-        "jadeon_epic_inc_1": "32",
-        "jadeon_epic_inc_2": "10",
-        "jadeon_perfect_epic_base_1": "1835",
-        "jadeon_perfect_epic_base_2": "500",
-        "jadeon_perfect_epic_inc_1": "36",
-        "jadeon_perfect_epic_inc_2": "11",
-        "jadeon_legendary_base_1": "2100",
-        "jadeon_legendary_base_2": "570",
-        "jadeon_legendary_inc_1": "40",
-        "jadeon_legendary_inc_2": "12",
-        "jadeon_ancient_legendary_base_1": "2350",
-        "jadeon_ancient_legendary_base_2": "640",
-        "jadeon_ancient_legendary_inc_1": "44",
-        "jadeon_ancient_legendary_inc_2": "13",
-        "jadeon_mythic_base_1": "2650",
-        "jadeon_mythic_base_2": "715",
-        "jadeon_mythic_inc_1": "52",
-        "jadeon_mythic_inc_2": "14",
+        "jadeon_rare_base_1": 1315,
+        "jadeon_rare_base_2": 355,
+        "jadeon_rare_inc_1": 28,
+        "jadeon_rare_inc_2": 9,
+        "jadeon_epic_base_1": 1575,
+        "jadeon_epic_base_2": 425,
+        "jadeon_epic_inc_1": 32,
+        "jadeon_epic_inc_2": 10,
+        "jadeon_perfect_epic_base_1": 1835,
+        "jadeon_perfect_epic_base_2": 500,
+        "jadeon_perfect_epic_inc_1": 36,
+        "jadeon_perfect_epic_inc_2": 11,
+        "jadeon_legendary_base_1": 2100,
+        "jadeon_legendary_base_2": 570,
+        "jadeon_legendary_inc_1": 40,
+        "jadeon_legendary_inc_2": 12,
+        "jadeon_ancient_legendary_base_1": 2350,
+        "jadeon_ancient_legendary_base_2": 640,
+        "jadeon_ancient_legendary_inc_1": 44,
+        "jadeon_ancient_legendary_inc_2": 13,
+        "jadeon_mythic_base_1": 2650,
+        "jadeon_mythic_base_2": 715,
+        "jadeon_mythic_inc_1": 52,
+        "jadeon_mythic_inc_2": 14,
         "dominus_bonus1": "Attack",
         "dominus_bonus2": "Damage To Ground Units",
         "dominus_bonus3": "Mp Strength",
@@ -9254,34 +9681,34 @@
             0.6,
             4
         ],
-        "dominus_great_base_1": "240",
+        "dominus_great_base_1": 240,
         "dominus_great_base_2": 0,
-        "dominus_great_inc_1": "5",
+        "dominus_great_inc_1": 5,
         "dominus_great_inc_2": 0,
-        "dominus_rare_base_1": "285",
-        "dominus_rare_base_2": "450",
-        "dominus_rare_inc_1": "7",
-        "dominus_rare_inc_2": "7",
-        "dominus_epic_base_1": "380",
-        "dominus_epic_base_2": "540",
-        "dominus_epic_inc_1": "8",
-        "dominus_epic_inc_2": "8",
-        "dominus_perfect_epic_base_1": "500",
-        "dominus_perfect_epic_base_2": "630",
-        "dominus_perfect_epic_inc_1": "9",
-        "dominus_perfect_epic_inc_2": "9",
-        "dominus_legendary_base_1": "625",
-        "dominus_legendary_base_2": "720",
-        "dominus_legendary_inc_1": "10",
-        "dominus_legendary_inc_2": "9",
-        "dominus_ancient_legendary_base_1": "745",
-        "dominus_ancient_legendary_base_2": "810",
-        "dominus_ancient_legendary_inc_1": "11",
-        "dominus_ancient_legendary_inc_2": "11",
-        "dominus_mythic_base_1": "865",
-        "dominus_mythic_base_2": "900",
-        "dominus_mythic_inc_1": "12",
-        "dominus_mythic_inc_2": "12",
+        "dominus_rare_base_1": 285,
+        "dominus_rare_base_2": 450,
+        "dominus_rare_inc_1": 7,
+        "dominus_rare_inc_2": 7,
+        "dominus_epic_base_1": 380,
+        "dominus_epic_base_2": 540,
+        "dominus_epic_inc_1": 8,
+        "dominus_epic_inc_2": 8,
+        "dominus_perfect_epic_base_1": 500,
+        "dominus_perfect_epic_base_2": 630,
+        "dominus_perfect_epic_inc_1": 9,
+        "dominus_perfect_epic_inc_2": 9,
+        "dominus_legendary_base_1": 625,
+        "dominus_legendary_base_2": 720,
+        "dominus_legendary_inc_1": 10,
+        "dominus_legendary_inc_2": 9,
+        "dominus_ancient_legendary_base_1": 745,
+        "dominus_ancient_legendary_base_2": 810,
+        "dominus_ancient_legendary_inc_1": 11,
+        "dominus_ancient_legendary_inc_2": 11,
+        "dominus_mythic_base_1": 865,
+        "dominus_mythic_base_2": 900,
+        "dominus_mythic_inc_1": 12,
+        "dominus_mythic_inc_2": 12,
         "infernox_bonus1": "Attack",
         "infernox_bonus2": "Damage To Ranged Units",
         "infernox_bonus3": "HP drops",
@@ -9293,34 +9720,34 @@
             0.6,
             4
         ],
-        "infernox_great_base_1": "240",
+        "infernox_great_base_1": 240,
         "infernox_great_base_2": 0,
-        "infernox_great_inc_1": "5",
+        "infernox_great_inc_1": 5,
         "infernox_great_inc_2": 0,
-        "infernox_rare_base_1": "300",
-        "infernox_rare_base_2": "375",
-        "infernox_rare_inc_1": "6",
-        "infernox_rare_inc_2": "7",
-        "infernox_epic_base_1": "400",
-        "infernox_epic_base_2": "450",
-        "infernox_epic_inc_1": "7",
-        "infernox_epic_inc_2": "8",
-        "infernox_perfect_epic_base_1": "525",
-        "infernox_perfect_epic_base_2": "525",
-        "infernox_perfect_epic_inc_1": "8",
-        "infernox_perfect_epic_inc_2": "9",
-        "infernox_legendary_base_1": "660",
-        "infernox_legendary_base_2": "600",
-        "infernox_legendary_inc_1": "9",
-        "infernox_legendary_inc_2": "10",
-        "infernox_ancient_legendary_base_1": "780",
-        "infernox_ancient_legendary_base_2": "675",
-        "infernox_ancient_legendary_inc_1": "10",
-        "infernox_ancient_legendary_inc_2": "11",
-        "infernox_mythic_base_1": "900",
-        "infernox_mythic_base_2": "750",
-        "infernox_mythic_inc_1": "11",
-        "infernox_mythic_inc_2": "12",
+        "infernox_rare_base_1": 300,
+        "infernox_rare_base_2": 375,
+        "infernox_rare_inc_1": 6,
+        "infernox_rare_inc_2": 7,
+        "infernox_epic_base_1": 400,
+        "infernox_epic_base_2": 450,
+        "infernox_epic_inc_1": 7,
+        "infernox_epic_inc_2": 8,
+        "infernox_perfect_epic_base_1": 525,
+        "infernox_perfect_epic_base_2": 525,
+        "infernox_perfect_epic_inc_1": 8,
+        "infernox_perfect_epic_inc_2": 9,
+        "infernox_legendary_base_1": 660,
+        "infernox_legendary_base_2": 600,
+        "infernox_legendary_inc_1": 9,
+        "infernox_legendary_inc_2": 10,
+        "infernox_ancient_legendary_base_1": 780,
+        "infernox_ancient_legendary_base_2": 675,
+        "infernox_ancient_legendary_inc_1": 10,
+        "infernox_ancient_legendary_inc_2": 11,
+        "infernox_mythic_base_1": 900,
+        "infernox_mythic_base_2": 750,
+        "infernox_mythic_inc_1": 11,
+        "infernox_mythic_inc_2": 12,
         "stormra_bonus1": "Attack",
         "stormra_bonus2": "Damage To Melee Units",
         "stormra_bonus3": "Melee Units Damage reduced",
@@ -9332,34 +9759,34 @@
             0.6,
             4
         ],
-        "stormra_great_base_1": "240",
+        "stormra_great_base_1": 240,
         "stormra_great_base_2": 0,
-        "stormra_great_inc_1": "5",
+        "stormra_great_inc_1": 5,
         "stormra_great_inc_2": 0,
-        "stormra_rare_base_1": "300",
-        "stormra_rare_base_2": "375",
-        "stormra_rare_inc_1": "6",
-        "stormra_rare_inc_2": "7",
-        "stormra_epic_base_1": "400",
-        "stormra_epic_base_2": "450",
-        "stormra_epic_inc_1": "7",
-        "stormra_epic_inc_2": "8",
-        "stormra_perfect_epic_base_1": "525",
-        "stormra_perfect_epic_base_2": "525",
-        "stormra_perfect_epic_inc_1": "8",
-        "stormra_perfect_epic_inc_2": "9",
-        "stormra_legendary_base_1": "660",
-        "stormra_legendary_base_2": "600",
-        "stormra_legendary_inc_1": "9",
-        "stormra_legendary_inc_2": "10",
-        "stormra_ancient_legendary_base_1": "780",
-        "stormra_ancient_legendary_base_2": "675",
-        "stormra_ancient_legendary_inc_1": "10",
-        "stormra_ancient_legendary_inc_2": "11",
-        "stormra_mythic_base_1": "900",
-        "stormra_mythic_base_2": "750",
-        "stormra_mythic_inc_1": "11",
-        "stormra_mythic_inc_2": "12",
+        "stormra_rare_base_1": 300,
+        "stormra_rare_base_2": 375,
+        "stormra_rare_inc_1": 6,
+        "stormra_rare_inc_2": 7,
+        "stormra_epic_base_1": 400,
+        "stormra_epic_base_2": 450,
+        "stormra_epic_inc_1": 7,
+        "stormra_epic_inc_2": 8,
+        "stormra_perfect_epic_base_1": 525,
+        "stormra_perfect_epic_base_2": 525,
+        "stormra_perfect_epic_inc_1": 8,
+        "stormra_perfect_epic_inc_2": 9,
+        "stormra_legendary_base_1": 660,
+        "stormra_legendary_base_2": 600,
+        "stormra_legendary_inc_1": 9,
+        "stormra_legendary_inc_2": 10,
+        "stormra_ancient_legendary_base_1": 780,
+        "stormra_ancient_legendary_base_2": 675,
+        "stormra_ancient_legendary_inc_1": 10,
+        "stormra_ancient_legendary_inc_2": 11,
+        "stormra_mythic_base_1": 900,
+        "stormra_mythic_base_2": 750,
+        "stormra_mythic_inc_1": 11,
+        "stormra_mythic_inc_2": 12,
         "noxion_bonus1": "Max Hp",
         "noxion_bonus2": "Attack",
         "noxion_bonus3": "Mana Points Regeneration",
@@ -9371,34 +9798,34 @@
             0.6,
             4
         ],
-        "noxion_great_base_1": "1000",
+        "noxion_great_base_1": 1000,
         "noxion_great_base_2": 0,
-        "noxion_great_inc_1": "24",
+        "noxion_great_inc_1": 24,
         "noxion_great_inc_2": 0,
-        "noxion_rare_base_1": "1250",
-        "noxion_rare_base_2": "375",
-        "noxion_rare_inc_1": "28",
-        "noxion_rare_inc_2": "7",
-        "noxion_epic_base_1": "1500",
-        "noxion_epic_base_2": "450",
-        "noxion_epic_inc_1": "32",
-        "noxion_epic_inc_2": "8",
-        "noxion_perfect_epic_base_1": "1750",
-        "noxion_perfect_epic_base_2": "525",
-        "noxion_perfect_epic_inc_1": "36",
-        "noxion_perfect_epic_inc_2": "9",
-        "noxion_legendary_base_1": "2000",
-        "noxion_legendary_base_2": "600",
-        "noxion_legendary_inc_1": "40",
-        "noxion_legendary_inc_2": "10",
-        "noxion_ancient_legendary_base_1": "2250",
-        "noxion_ancient_legendary_base_2": "675",
-        "noxion_ancient_legendary_inc_1": "44",
-        "noxion_ancient_legendary_inc_2": "11",
-        "noxion_mythic_base_1": "2500",
-        "noxion_mythic_base_2": "750",
-        "noxion_mythic_inc_1": "52",
-        "noxion_mythic_inc_2": "12",
+        "noxion_rare_base_1": 1250,
+        "noxion_rare_base_2": 375,
+        "noxion_rare_inc_1": 28,
+        "noxion_rare_inc_2": 7,
+        "noxion_epic_base_1": 1500,
+        "noxion_epic_base_2": 450,
+        "noxion_epic_inc_1": 32,
+        "noxion_epic_inc_2": 8,
+        "noxion_perfect_epic_base_1": 1750,
+        "noxion_perfect_epic_base_2": 525,
+        "noxion_perfect_epic_inc_1": 36,
+        "noxion_perfect_epic_inc_2": 9,
+        "noxion_legendary_base_1": 2000,
+        "noxion_legendary_base_2": 600,
+        "noxion_legendary_inc_1": 40,
+        "noxion_legendary_inc_2": 10,
+        "noxion_ancient_legendary_base_1": 2250,
+        "noxion_ancient_legendary_base_2": 675,
+        "noxion_ancient_legendary_inc_1": 44,
+        "noxion_ancient_legendary_inc_2": 11,
+        "noxion_mythic_base_1": 2500,
+        "noxion_mythic_base_2": 750,
+        "noxion_mythic_inc_1": 52,
+        "noxion_mythic_inc_2": 12,
         "geogon_bonus1": "Max Hp",
         "geogon_bonus2": "Attack",
         "geogon_bonus3": "Melee Units Damage reduced",
@@ -9414,30 +9841,30 @@
         "geogon_great_base_2": 0,
         "geogon_great_inc_1": 0,
         "geogon_great_inc_2": 0,
-        "geogon_rare_base_1": "2000",
-        "geogon_rare_base_2": "450",
-        "geogon_rare_inc_1": "45",
-        "geogon_rare_inc_2": "8",
-        "geogon_epic_base_1": "2400",
-        "geogon_epic_base_2": "540",
-        "geogon_epic_inc_1": "51",
-        "geogon_epic_inc_2": "9",
-        "geogon_perfect_epic_base_1": "2800",
-        "geogon_perfect_epic_base_2": "630",
-        "geogon_perfect_epic_inc_1": "58",
-        "geogon_perfect_epic_inc_2": "10",
-        "geogon_legendary_base_1": "3200",
-        "geogon_legendary_base_2": "720",
-        "geogon_legendary_inc_1": "64",
-        "geogon_legendary_inc_2": "11",
-        "geogon_ancient_legendary_base_1": "3600",
-        "geogon_ancient_legendary_base_2": "810",
-        "geogon_ancient_legendary_inc_1": "68",
-        "geogon_ancient_legendary_inc_2": "12",
-        "geogon_mythic_base_1": "4000",
-        "geogon_mythic_base_2": "900",
-        "geogon_mythic_inc_1": "72",
-        "geogon_mythic_inc_2": "13",
+        "geogon_rare_base_1": 2000,
+        "geogon_rare_base_2": 450,
+        "geogon_rare_inc_1": 45,
+        "geogon_rare_inc_2": 8,
+        "geogon_epic_base_1": 2400,
+        "geogon_epic_base_2": 540,
+        "geogon_epic_inc_1": 51,
+        "geogon_epic_inc_2": 9,
+        "geogon_perfect_epic_base_1": 2800,
+        "geogon_perfect_epic_base_2": 630,
+        "geogon_perfect_epic_inc_1": 58,
+        "geogon_perfect_epic_inc_2": 10,
+        "geogon_legendary_base_1": 3200,
+        "geogon_legendary_base_2": 720,
+        "geogon_legendary_inc_1": 64,
+        "geogon_legendary_inc_2": 11,
+        "geogon_ancient_legendary_base_1": 3600,
+        "geogon_ancient_legendary_base_2": 810,
+        "geogon_ancient_legendary_inc_1": 68,
+        "geogon_ancient_legendary_inc_2": 12,
+        "geogon_mythic_base_1": 4000,
+        "geogon_mythic_base_2": 900,
+        "geogon_mythic_inc_1": 72,
+        "geogon_mythic_inc_2": 13,
         "ferron_bonus1": "Max Hp",
         "ferron_bonus2": "Attack",
         "ferron_bonus3": "Damage to Mobs",
@@ -9453,30 +9880,30 @@
         "ferron_great_base_2": 0,
         "ferron_great_inc_1": 0,
         "ferron_great_inc_2": 0,
-        "ferron_rare_base_1": "1500",
-        "ferron_rare_base_2": "600",
-        "ferron_rare_inc_1": "34",
-        "ferron_rare_inc_2": "11",
-        "ferron_epic_base_1": "1800",
-        "ferron_epic_base_2": "720",
-        "ferron_epic_inc_1": "38",
-        "ferron_epic_inc_2": "12",
-        "ferron_perfect_epic_base_1": "2100",
-        "ferron_perfect_epic_base_2": "840",
-        "ferron_perfect_epic_inc_1": "42",
-        "ferron_perfect_epic_inc_2": "13",
-        "ferron_legendary_base_1": "2400",
-        "ferron_legendary_base_2": "960",
-        "ferron_legendary_inc_1": "46",
-        "ferron_legendary_inc_2": "14",
-        "ferron_ancient_legendary_base_1": "2700",
-        "ferron_ancient_legendary_base_2": "1080",
-        "ferron_ancient_legendary_inc_1": "48",
-        "ferron_ancient_legendary_inc_2": "15",
-        "ferron_mythic_base_1": "3000",
-        "ferron_mythic_base_2": "1200",
-        "ferron_mythic_inc_1": "50",
-        "ferron_mythic_inc_2": "16",
+        "ferron_rare_base_1": 1500,
+        "ferron_rare_base_2": 600,
+        "ferron_rare_inc_1": 34,
+        "ferron_rare_inc_2": 11,
+        "ferron_epic_base_1": 1800,
+        "ferron_epic_base_2": 720,
+        "ferron_epic_inc_1": 38,
+        "ferron_epic_inc_2": 12,
+        "ferron_perfect_epic_base_1": 2100,
+        "ferron_perfect_epic_base_2": 840,
+        "ferron_perfect_epic_inc_1": 42,
+        "ferron_perfect_epic_inc_2": 13,
+        "ferron_legendary_base_1": 2400,
+        "ferron_legendary_base_2": 960,
+        "ferron_legendary_inc_1": 46,
+        "ferron_legendary_inc_2": 14,
+        "ferron_ancient_legendary_base_1": 2700,
+        "ferron_ancient_legendary_base_2": 1080,
+        "ferron_ancient_legendary_inc_1": 48,
+        "ferron_ancient_legendary_inc_2": 15,
+        "ferron_mythic_base_1": 3000,
+        "ferron_mythic_base_2": 1200,
+        "ferron_mythic_inc_1": 50,
+        "ferron_mythic_inc_2": 16,
         "swordian_bonus1": "Damage To Mobs",
         "swordian_bonus2": "Max Hp",
         "swordian_bonus3": "Weapon Melee Damage",
@@ -9492,30 +9919,30 @@
         "swordian_great_base_2": 0,
         "swordian_great_inc_1": 0,
         "swordian_great_inc_2": 0,
-        "swordian_rare_base_1": "660",
-        "swordian_rare_base_2": "1425",
-        "swordian_rare_inc_1": "12",
-        "swordian_rare_inc_2": "33",
-        "swordian_epic_base_1": "780",
-        "swordian_epic_base_2": "1710",
-        "swordian_epic_inc_1": "14",
-        "swordian_epic_inc_2": "36",
-        "swordian_perfect_epic_base_1": "910",
-        "swordian_perfect_epic_base_2": "1995",
-        "swordian_perfect_epic_inc_1": "15",
-        "swordian_perfect_epic_inc_2": "40",
-        "swordian_legendary_base_1": "1050",
-        "swordian_legendary_base_2": "2280",
-        "swordian_legendary_inc_1": "16",
-        "swordian_legendary_inc_2": "45",
-        "swordian_ancient_legendary_base_1": "1225",
-        "swordian_ancient_legendary_base_2": "2565",
-        "swordian_ancient_legendary_inc_1": "17",
-        "swordian_ancient_legendary_inc_2": "46",
-        "swordian_mythic_base_1": "1355",
-        "swordian_mythic_base_2": "2850",
-        "swordian_mythic_inc_1": "19",
-        "swordian_mythic_inc_2": "50",
+        "swordian_rare_base_1": 660,
+        "swordian_rare_base_2": 1425,
+        "swordian_rare_inc_1": 12,
+        "swordian_rare_inc_2": 33,
+        "swordian_epic_base_1": 780,
+        "swordian_epic_base_2": 1710,
+        "swordian_epic_inc_1": 14,
+        "swordian_epic_inc_2": 36,
+        "swordian_perfect_epic_base_1": 910,
+        "swordian_perfect_epic_base_2": 1995,
+        "swordian_perfect_epic_inc_1": 15,
+        "swordian_perfect_epic_inc_2": 40,
+        "swordian_legendary_base_1": 1050,
+        "swordian_legendary_base_2": 2280,
+        "swordian_legendary_inc_1": 16,
+        "swordian_legendary_inc_2": 45,
+        "swordian_ancient_legendary_base_1": 1225,
+        "swordian_ancient_legendary_base_2": 2565,
+        "swordian_ancient_legendary_inc_1": 17,
+        "swordian_ancient_legendary_inc_2": 46,
+        "swordian_mythic_base_1": 1355,
+        "swordian_mythic_base_2": 2850,
+        "swordian_mythic_inc_1": 19,
+        "swordian_mythic_inc_2": 50,
         "necrogon_bonus1": "Attack",
         "necrogon_bonus2": "Max Hp",
         "necrogon_bonus3": "Summoned Creature Damage",
@@ -9531,30 +9958,30 @@
         "necrogon_great_base_2": 0,
         "necrogon_great_inc_1": 0,
         "necrogon_great_inc_2": 0,
-        "necrogon_rare_base_1": "475",
-        "necrogon_rare_base_2": "1995",
-        "necrogon_rare_inc_1": "9",
-        "necrogon_rare_inc_2": "45",
-        "necrogon_epic_base_1": "570",
-        "necrogon_epic_base_2": "2395",
-        "necrogon_epic_inc_1": "10",
-        "necrogon_epic_inc_2": "51",
-        "necrogon_perfect_epic_base_1": "665",
-        "necrogon_perfect_epic_base_2": "2795",
-        "necrogon_perfect_epic_inc_1": "11",
-        "necrogon_perfect_epic_inc_2": "58",
-        "necrogon_legendary_base_1": "760",
-        "necrogon_legendary_base_2": "3190",
-        "necrogon_legendary_inc_1": "13",
-        "necrogon_legendary_inc_2": "63",
-        "necrogon_ancient_legendary_base_1": "855",
-        "necrogon_ancient_legendary_base_2": "3590",
-        "necrogon_ancient_legendary_inc_1": "14",
-        "necrogon_ancient_legendary_inc_2": "68",
-        "necrogon_mythic_base_1": "950",
-        "necrogon_mythic_base_2": "3950",
-        "necrogon_mythic_inc_1": "15",
-        "necrogon_mythic_inc_2": "76",
+        "necrogon_rare_base_1": 475,
+        "necrogon_rare_base_2": 1995,
+        "necrogon_rare_inc_1": 9,
+        "necrogon_rare_inc_2": 45,
+        "necrogon_epic_base_1": 570,
+        "necrogon_epic_base_2": 2395,
+        "necrogon_epic_inc_1": 10,
+        "necrogon_epic_inc_2": 51,
+        "necrogon_perfect_epic_base_1": 665,
+        "necrogon_perfect_epic_base_2": 2795,
+        "necrogon_perfect_epic_inc_1": 11,
+        "necrogon_perfect_epic_inc_2": 58,
+        "necrogon_legendary_base_1": 760,
+        "necrogon_legendary_base_2": 3190,
+        "necrogon_legendary_inc_1": 13,
+        "necrogon_legendary_inc_2": 63,
+        "necrogon_ancient_legendary_base_1": 855,
+        "necrogon_ancient_legendary_base_2": 3590,
+        "necrogon_ancient_legendary_inc_1": 14,
+        "necrogon_ancient_legendary_inc_2": 68,
+        "necrogon_mythic_base_1": 950,
+        "necrogon_mythic_base_2": 3950,
+        "necrogon_mythic_inc_1": 15,
+        "necrogon_mythic_inc_2": 76,
         "starrite_bonus1": "Max Hp",
         "starrite_bonus2": "Attack",
         "starrite_bonus3": "Max Mp",
@@ -9574,26 +10001,26 @@
         "starrite_rare_base_2": 0,
         "starrite_rare_inc_1": 0,
         "starrite_rare_inc_2": 0,
-        "starrite_epic_base_1": "3000",
-        "starrite_epic_base_2": "900",
-        "starrite_epic_inc_1": "64",
-        "starrite_epic_inc_2": "16",
-        "starrite_perfect_epic_base_1": "3500",
-        "starrite_perfect_epic_base_2": "1050",
-        "starrite_perfect_epic_inc_1": "72",
-        "starrite_perfect_epic_inc_2": "18",
-        "starrite_legendary_base_1": "4000",
-        "starrite_legendary_base_2": "1200",
-        "starrite_legendary_inc_1": "76",
-        "starrite_legendary_inc_2": "20",
-        "starrite_ancient_legendary_base_1": "4500",
-        "starrite_ancient_legendary_base_2": "1350",
-        "starrite_ancient_legendary_inc_1": "80",
-        "starrite_ancient_legendary_inc_2": "21",
-        "starrite_mythic_base_1": "5000",
-        "starrite_mythic_base_2": "1400",
-        "starrite_mythic_inc_1": "84",
-        "starrite_mythic_inc_2": "22",
+        "starrite_epic_base_1": 3000,
+        "starrite_epic_base_2": 900,
+        "starrite_epic_inc_1": 64,
+        "starrite_epic_inc_2": 16,
+        "starrite_perfect_epic_base_1": 3500,
+        "starrite_perfect_epic_base_2": 1050,
+        "starrite_perfect_epic_inc_1": 72,
+        "starrite_perfect_epic_inc_2": 18,
+        "starrite_legendary_base_1": 4000,
+        "starrite_legendary_base_2": 1200,
+        "starrite_legendary_inc_1": 76,
+        "starrite_legendary_inc_2": 20,
+        "starrite_ancient_legendary_base_1": 4500,
+        "starrite_ancient_legendary_base_2": 1350,
+        "starrite_ancient_legendary_inc_1": 80,
+        "starrite_ancient_legendary_inc_2": 21,
+        "starrite_mythic_base_1": 5000,
+        "starrite_mythic_base_2": 1400,
+        "starrite_mythic_inc_1": 84,
+        "starrite_mythic_inc_2": 22,
         "voideon_bonus1": "Max Hp",
         "voideon_bonus2": "Attack",
         "voideon_bonus3": "Dodge",
@@ -9613,26 +10040,26 @@
         "voideon_rare_base_2": 0,
         "voideon_rare_inc_1": 0,
         "voideon_rare_inc_2": 0,
-        "voideon_epic_base_1": "3675",
-        "voideon_epic_base_2": "720",
-        "voideon_epic_inc_1": "80",
-        "voideon_epic_inc_2": "13",
-        "voideon_perfect_epic_base_1": "4285",
-        "voideon_perfect_epic_base_2": "840",
-        "voideon_perfect_epic_inc_1": "90",
-        "voideon_perfect_epic_inc_2": "15",
-        "voideon_legendary_base_1": "4900",
-        "voideon_legendary_base_2": "960",
-        "voideon_legendary_inc_1": "95",
-        "voideon_legendary_inc_2": "16",
-        "voideon_ancient_legendary_base_1": "5500",
-        "voideon_ancient_legendary_base_2": "1080",
-        "voideon_ancient_legendary_inc_1": "100",
-        "voideon_ancient_legendary_inc_2": "17",
-        "voideon_mythic_base_1": "6120",
-        "voideon_mythic_base_2": "1200",
-        "voideon_mythic_inc_1": "113",
-        "voideon_mythic_inc_2": "19"
+        "voideon_epic_base_1": 3675,
+        "voideon_epic_base_2": 720,
+        "voideon_epic_inc_1": 80,
+        "voideon_epic_inc_2": 13,
+        "voideon_perfect_epic_base_1": 4285,
+        "voideon_perfect_epic_base_2": 840,
+        "voideon_perfect_epic_inc_1": 90,
+        "voideon_perfect_epic_inc_2": 15,
+        "voideon_legendary_base_1": 4900,
+        "voideon_legendary_base_2": 960,
+        "voideon_legendary_inc_1": 95,
+        "voideon_legendary_inc_2": 16,
+        "voideon_ancient_legendary_base_1": 5500,
+        "voideon_ancient_legendary_base_2": 1080,
+        "voideon_ancient_legendary_inc_1": 100,
+        "voideon_ancient_legendary_inc_2": 17,
+        "voideon_mythic_base_1": 6120,
+        "voideon_mythic_base_2": 1200,
+        "voideon_mythic_inc_1": 113,
+        "voideon_mythic_inc_2": 19
     },
     "MobsStats": {
         "bomb_ghost_stats_type": [
@@ -9777,7 +10204,7 @@
             1280,
             1320,
             1360,
-            "@",
+            1560,
             "@",
             "@",
             "@",
@@ -9807,7 +10234,7 @@
             1280,
             1320,
             1360,
-            "@",
+            1560,
             "@",
             "@",
             "@",
@@ -9862,10 +10289,10 @@
             338,
             403,
             450,
-            "@",
-            "@",
-            "@",
-            "@",
+            575,
+            590,
+            610,
+            630,
             "@",
             "@",
             "@",
@@ -10012,10 +10439,10 @@
             338,
             403,
             450,
-            "@",
-            "@",
-            "@",
-            "@",
+            575,
+            590,
+            610,
+            630,
             "@",
             "@",
             "@",
@@ -10042,10 +10469,10 @@
             338,
             403,
             450,
-            "@",
-            "@",
-            "@",
-            "@",
+            575,
+            590,
+            610,
+            630,
             "@",
             "@",
             "@",
@@ -10072,10 +10499,10 @@
             338,
             403,
             450,
-            "@",
-            "@",
-            "@",
-            "@",
+            575,
+            590,
+            610,
+            630,
             "@",
             "@",
             "@",
@@ -10102,10 +10529,10 @@
             338,
             403,
             450,
-            "@",
-            "@",
-            "@",
-            "@",
+            575,
+            590,
+            610,
+            630,
             "@",
             "@",
             "@",
@@ -10132,10 +10559,10 @@
             338,
             403,
             450,
-            "@",
-            "@",
-            "@",
-            "@",
+            575,
+            590,
+            610,
+            630,
             "@",
             "@",
             "@",
@@ -10192,10 +10619,10 @@
             338,
             403,
             450,
-            "@",
-            "@",
-            "@",
-            "@",
+            575,
+            590,
+            610,
+            630,
             "@",
             "@",
             "@",
@@ -10994,10 +11421,10 @@
             338,
             403,
             450,
-            "@",
-            "@",
-            "@",
-            "@",
+            575,
+            590,
+            610,
+            630,
             "@",
             "@",
             "@",
@@ -11562,11 +11989,11 @@
             19,
             22,
             27,
-            31,
+            30,
+            33,
             36,
-            40,
-            45,
-            48,
+            39,
+            4,
             49,
             50,
             52,
@@ -11611,7 +12038,6 @@
             0,
             0,
             0,
-            0,
             75,
             77,
             79,
@@ -11621,7 +12047,8 @@
             98,
             101,
             104,
-            107
+            107,
+            110
         ],
         "tundra_dragon_stats_type": [
             "Projectile Resistance",
@@ -15485,252 +15912,1308 @@
         "none_dmg_multiplier": 1.0
     },
     "MedalsStats": {
-        "stats_medals_19": 120,
-        "type_medals_19": "Hp",
-        "stats_medals_20": 600,
-        "type_medals_20": "Hp",
-        "stats_medals_28": 250,
-        "type_medals_28": "Hp",
-        "stats_medals_30": 300,
-        "type_medals_30": "Hp",
-        "stats_medals_01": 0,
-        "type_medals_01": "Gain Crit Rate",
-        "stats_medals_02": 2,
-        "type_medals_02": "Attack%",
-        "stats_medals_03": 2,
-        "type_medals_03": "Hp%",
-        "stats_medals_04": 400,
-        "type_medals_04": "Attack",
-        "stats_medals_05": 1,
-        "type_medals_05": "Hp%",
-        "stats_medals_06": 200,
-        "type_medals_06": "Hp",
-        "stats_medals_08": 85,
-        "type_medals_08": "Attack",
-        "stats_medals_09": 2,
-        "type_medals_09": "Attack%",
-        "stats_medals_10": 1,
-        "type_medals_10": "Hp%",
-        "stats_medals_11": 100,
-        "type_medals_11": "Attack",
-        "stats_medals_12": 0,
-        "type_medals_12": "Gain Attack Speed",
-        "stats_medals_13": 150,
-        "type_medals_13": "Hp",
-        "stats_medals_14": 1,
-        "type_medals_14": "Hp%",
-        "stats_medals_15": 5,
-        "type_medals_15": "Damage to Heroes",
-        "stats_medals_16": 1,
-        "type_medals_16": "Attack%",
-        "stats_medals_17": 200,
-        "type_medals_17": "Hp",
-        "stats_medals_18": 70,
-        "type_medals_18": "Attack",
-        "stats_medals_21": 7,
-        "type_medals_21": "Coins From Battle",
-        "stats_medals_22": 5,
-        "type_medals_22": "XP Gain",
-        "stats_medals_23": 5,
-        "type_medals_23": "Hero Base Enhanced",
-        "stats_medals_24": 2,
-        "type_medals_24": "Hp%",
-        "stats_medals_25": 0,
-        "type_medals_25": "Gain Dodge Rate",
-        "stats_medals_26": 4,
-        "type_medals_26": "Enhance Equipment",
-        "stats_medals_27": 0,
-        "type_medals_27": "Gain Projectile Damage",
-        "stats_medals_29": 300,
-        "type_medals_29": "Attack",
-        "stats_medals_31": 400,
-        "type_medals_31": "Attack",
-        "stats_medals_32": 1,
-        "type_medals_32": "Hp%"
+        "stats_medals_1001": 0,
+        "type_medals_1001": "Gain Crit Rate",
+        "stats_medals_1002": 2,
+        "type_medals_1002": "Attack%",
+        "stats_medals_1003": 2,
+        "type_medals_1003": "Hp%",
+        "stats_medals_1004": 400,
+        "type_medals_1004": "Attack",
+        "stats_medals_1005": 1,
+        "type_medals_1005": "Hp%",
+        "stats_medals_1006": 200,
+        "type_medals_1006": "Hp",
+        "stats_medals_1008": 85,
+        "type_medals_1008": "Attack",
+        "stats_medals_1009": 2,
+        "type_medals_1009": "Attack%",
+        "stats_medals_1010": 1,
+        "type_medals_1010": "Hp%",
+        "stats_medals_1011": 250,
+        "type_medals_1011": "Hp",
+        "stats_medals_1012": 2,
+        "type_medals_1012": "Hero Damage Resistance",
+        "stats_medals_2001": 100,
+        "type_medals_2001": "Attack",
+        "stats_medals_2002": 0,
+        "type_medals_2002": "Gain Attack Speed",
+        "stats_medals_2003": 150,
+        "type_medals_2003": "Hp",
+        "stats_medals_2004": 1,
+        "type_medals_2004": "Hp%",
+        "stats_medals_2005": 5,
+        "type_medals_2005": "Damage to Heroes",
+        "stats_medals_2006": 1,
+        "type_medals_2006": "Attack%",
+        "stats_medals_2007": 200,
+        "type_medals_2007": "Hp",
+        "stats_medals_2008": 70,
+        "type_medals_2008": "Attack",
+        "stats_medals_2009": 120,
+        "type_medals_2009": "Hp",
+        "stats_medals_2010": 600,
+        "type_medals_2010": "Hp",
+        "stats_medals_2011": 7,
+        "type_medals_2011": "Coins From Battle",
+        "stats_medals_2012": 5,
+        "type_medals_2012": "Battle XP Gain",
+        "stats_medals_2013": 20,
+        "type_medals_2013": "Counterattack Damage",
+        "stats_medals_2014": 60,
+        "type_medals_2014": "Attack",
+        "stats_medals_3001": 5,
+        "type_medals_3001": "Hero Base Enhanced",
+        "stats_medals_3002": 2,
+        "type_medals_3002": "Hp%",
+        "stats_medals_3003": 0,
+        "type_medals_3003": "Gain Dodge Rate",
+        "stats_medals_3004": 4,
+        "type_medals_3004": "Enhance Equipment",
+        "stats_medals_3005": 0,
+        "type_medals_3005": "Gain Projectile Damage",
+        "stats_medals_3006": 250,
+        "type_medals_3006": "Hp",
+        "stats_medals_3007": 300,
+        "type_medals_3007": "Attack",
+        "stats_medals_3008": 300,
+        "type_medals_3008": "Hp",
+        "stats_medals_3009": 400,
+        "type_medals_3009": "Attack",
+        "stats_medals_3010": 1,
+        "type_medals_3010": "Hp%",
+        "stats_medals_3019": 80,
+        "type_medals_3019": "Attack",
+        "stats_medals_3020": 100,
+        "type_medals_3020": "Hp",
+        "stats_medals_3021": 2,
+        "type_medals_3021": "Healing Effect of Red Heart",
+        "stats_medals_3022": 3,
+        "type_medals_3022": "Mp%",
+        "stats_medals_3023": 2,
+        "type_medals_3023": "MP Strength",
+        "stats_medals_3024": 5,
+        "type_medals_3024": "Enhance Equipment",
+        "stats_medals_3025": 12,
+        "type_medals_3025": "Enhance Equipment",
+        "stats_medals_3026": 100,
+        "type_medals_3026": "Attack",
+        "stats_medals_3027": 1,
+        "type_medals_3027": "Hp%",
+        "stats_medals_3028": 60,
+        "type_medals_3028": "Attack",
+        "stats_medals_3029": 150,
+        "type_medals_3029": "Attack",
+        "stats_medals_3030": 200,
+        "type_medals_3030": "Hp",
+        "stats_medals_3034": 250,
+        "type_medals_3034": "Hp",
+        "stats_medals_3035": 2,
+        "type_medals_3035": "Hp%",
+        "stats_medals_3036": 1.5,
+        "type_medals_3036": "Attack%"
     },
     "RelicLabel": {
-        "wraith_mask_1": "attack",
-        "wraith_mask_2": "",
-        "wraith_mask_3": "attack",
-        "clown_mask_1": "damage_melee_units",
-        "clown_mask_2": "damage_humanoid_enemies_var",
-        "clown_mask_3": "attack",
-        "princess_teddy_bear_1": "hp",
-        "princess_teddy_bear_2": "hp",
-        "belt_of_might_1": "",
-        "belt_of_might_2": "hp_var",
-        "belt_of_might_3": "hp",
-        "beastmaster_whistle_1": "hp",
-        "beastmaster_whistle_2": "damage_ground_units_var",
-        "beastmaster_whistle_3": "hp",
-        "archmage_robe_1": "",
-        "archmage_robe_2": "elemental_damage_var",
-        "archmage_robe_3": "hp",
-        "shimmering_gem_1": "",
-        "shimmering_gem_2": "enhance_equipment_var",
-        "bloom_of_eternity_1": "hp",
-        "bloom_of_eternity_2": "hp",
-        "challenger_headband_1": "attack",
-        "challenger_headband_2": "attack_var",
-        "jade_gobelet_1": "",
-        "jade_gobelet_2": "hp",
-        "veteran_plate_1": "hp",
-        "veteran_plate_2": "",
-        "dragonscale_1": "hp",
-        "dragonscale_2": "",
-        "dragonscale_3": "hp",
-        "dragon_tooth_1": "attack",
-        "dragon_tooth_2": "attack",
-        "scholar_telescope_1": "damage_ranged_units",
-        "pirate_shank_1": "attack",
-        "pirate_shank_2": "damage_mobs_var",
-        "giant_greatsword_1": "attack",
-        "giant_greatsword_2": "damage_bosses_var",
-        "giant_greatsword_3": "attack",
-        "healing_potion_1": "hp",
-        "whirlwind_mauler_1": "damage_melee_units",
-        "whirlwind_mauler_2": "attack",
-        "special_lance_1": "damage_ground_units",
-        "special_lance_2": "damage_ground_units_var",
-        "special_lance_3": "attack",
-        "precision_slingshot_1": "damage_airborne_units",
-        "precision_slingshot_2": "damage_airborne_units_var",
-        "supreme_trinity_alpha_1": "attack",
-        "supreme_trinity_alpha_2": "damage_mobs",
-        "supreme_trinity_alpha_3": "attack",
-        "golden_apple_1": "hp",
-        "golden_apple_2": "",
-        "golden_apple_3": "hp",
-        "ancient_stele_1": "attack",
-        "ancient_stele_2": "damage_bosses",
-        "ancient_stele_3": "attack_var",
-        "ancient_stele_4": "attack",
-        "philosopher_stone_1": "",
-        "philosopher_stone_2": "",
-        "philosopher_stone_3": "enhance_equipment_var",
-        "philosopher_stone_4": "hp",
-        "dragon_heart_1": "hp",
-        "dragon_heart_2": "",
-        "dragon_heart_3": "hp",
-        "spectral_duality_1": "damage_mobs",
-        "spectral_duality_2": "damage_airborne_units",
-        "spectral_duality_3": "attack",
-        "mystic_emblem_1": "hp",
-        "mystic_emblem_2": "",
-        "mystic_emblem_3": "hero_base_stats_increased_var",
-        "immortal_brooch_1": "",
-        "immortal_brooch_2": "",
-        "immortal_brooch_3": "hp_var",
-        "golden_statue_1": "hp",
-        "golden_statue_2": "",
-        "golden_statue_3": "hp",
-        "smilling_mask_1": "attack",
-        "smilling_mask_2": "damage_ranged_units",
-        "smilling_mask_3": "",
-        "unmerciful_mask_1": "attack",
-        "unmerciful_mask_2": "damage_melee_units",
-        "unmerciful_mask_3": "",
-        "unmerciful_mask_4": "attack",
-        "holy_water_1": "damage_mobs",
-        "holy_water_2": "damage_ground_units",
-        "holy_water_3": "",
-        "holy_water_4": "hp",
-        "book_of_the_dead_1": "attack",
-        "book_of_the_dead_2": "damage_bosses",
-        "book_of_the_dead_3": "damage_undead_var",
-        "book_of_the_dead_4": "attack",
-        "psionist_treasure_1": "damage_melee_units",
-        "psionist_treasure_2": "damage_mobs",
-        "book_of_archery_1": "damage_ranged_units",
-        "book_of_archery_2": "damage_airborne_units",
-        "book_of_archery_3": "weapon_ranged_damage_var",
-        "book_of_archery_4": "attack",
-        "book_of_bravery_1": "attack",
-        "book_of_bravery_2": "damage_ground_units",
-        "book_of_bravery_3": "weapon_melee_damage_var",
-        "book_of_bravery_4": "attack",
-        "angelic_heart_1": "hp",
-        "angelic_heart_2": "hp",
-        "devil_whisper_1": "hp",
-        "devil_whisper_2": "",
-        "devil_whisper_3": "hp",
-        "stone_of_wisdom_1": "",
-        "empyrean_mirror_1": "hp",
-        "empyrean_mirror_2": "",
-        "empyrean_mirror_3": "hp",
-        "fabled_archer_arrow_1": "attack",
-        "fabled_archer_arrow_2": "damage_mobs",
-        "fabled_archer_arrow_3": "attack_var",
-        "shiny_gemmed_belt_1": "",
-        "shiny_gemmed_belt_2": "",
-        "mythril_flux_mail_1": "hp",
-        "mythril_flux_mail_2": "",
-        "mythril_flux_mail_3": "",
-        "mythril_flux_mail_4": "hp_var",
-        "stealth_boots_1": "",
-        "stealth_boots_2": "",
-        "stealth_boots_3": "dodge",
-        "stealth_boots_4": "hp",
-        "assassin_dagger_1": "attack",
-        "assassin_dagger_2": "damage_mobs",
-        "assassin_dagger_3": "damage_heroes_var",
-        "assassin_dagger_4": "attack",
-        "gold_bunny_1": "hp",
-        "gold_bunny_2": "",
-        "gold_bunny_3": "attack_var",
-        "genesis_staff_1": "",
-        "genesis_staff_2": "",
-        "genesis_staff_3": "",
-        "bloodstained_sword_1": "attack",
-        "bloodstained_sword_2": "damage_mobs",
-        "bloodstained_sword_3": "weapon_melee_damage_var",
-        "bloodstained_sword_4": "attack_var",
-        "bloodstained_sword_5": "attack_var",
-        "starcluster_rage_1": "damage_bosses",
-        "starcluster_rage_2": "damage_ranged_units",
-        "starcluster_rage_3": "",
-        "starcluster_rage_4": "weapon_ranged_damage_var",
-        "starcluster_rage_5": "attack_var",
-        "elven_king_cape_1": "damage_mobs",
-        "elven_king_cape_2": "damage_bosses",
-        "elven_king_cape_3": "crit_chance_var",
-        "elven_king_cape_4": "attack_var",
-        "elven_king_cape_5": "attack",
-        "spear_of_yggdrasil_1": "attack",
-        "spear_of_yggdrasil_2": "damage_melee_units",
-        "spear_of_yggdrasil_3": "attack_var",
-        "spear_of_yggdrasil_4": "",
-        "spear_of_yggdrasil_5": "attack",
-        "dragon_gem_1": "attack",
-        "dragon_gem_2": "damage_airborne_units",
-        "dragon_gem_3": "attack_var",
-        "dragon_gem_4": "attack",
-        "life_crown_1": "hp",
-        "life_crown_2": "",
-        "life_crown_3": "hp_var",
-        "life_crown_4": "hp",
-        "sand_of_time_1": "hp",
-        "sand_of_time_2": "",
-        "sand_of_time_3": "hp_var",
-        "sand_of_time_4": "hp_var",
-        "first_lightning_1": "attack",
-        "first_lightning_2": "damage_airborne_units",
-        "first_lightning_3": "elemental_damage_var",
-        "oracle_quill_1": "",
-        "oracle_quill_2": "",
-        "oracle_quill_3": "dodge",
-        "oracle_quill_4": "hp_var",
-        "bloodthirsty_grail_1": "hp",
-        "bloodthirsty_grail_2": "",
-        "bloodthirsty_grail_3": "hp_var",
-        "bloodthirsty_grail_4": "hp",
-        "healing_grail_1": "hp",
-        "healing_grail_2": "hp_var",
-        "healing_grail_3": "hp",
-        "cupids_necklace_1": "attack",
-        "cupids_necklace_2": "damage_mobs",
-        "cupids_necklace_3": "attack_jewel_base",
-        "cupids_necklace_4": "attack_var"
+        "wraith_mask": {
+            "type": 1,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 60,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": [2,3.2,4,5,6.5,7.5,9,9,9],
+                    "label":"blue_heart_drop_rate"
+                }
+            ]
+        },
+        "clown_mask": {
+            "type": 1,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 60,
+                    "label": "damage_melee_flat"
+                },
+                {
+                    "value": [1.5,2.2,2.8,3.5,4.19,5.2,6,6,6],
+                    "label":"damage_humanoid_var"
+                }
+            ]
+        },
+        "princess_teddy_bear": {
+            "type": 1,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 240,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": [2,3.2,4,5,6.5,7.5,9,9,9],
+                    "label":"eqpm_drop_rate"
+                }
+            ]
+        },
+        "belt_of_might": {
+            "type": 1,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 29,
+                    "label": "projectile_resistance_flat"
+                },
+                {
+                    "value": [1.5,2.2,2.8,3.5,4.19,5.2,6,6,6],
+                    "label":"hp_var"
+                }
+            ]
+        },
+        "beastmaster_whistle": {
+            "type": 1,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 240,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": [1.5,2.2,2.8,3.5,4.19,5.2,6,6,6],
+                    "label":"damage_ground_var"
+                }
+            ]
+        },
+        "archmage_robe": {
+            "type": 1,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 29,
+                    "label": "rear_resistance_flat"
+                },
+                {
+                    "value": [4,5.5,7.2,8.8,11.2,13.5,16,16,16],
+                    "label":"elemental_damage_var"
+                }
+            ]
+        },
+        "shimmering_gem": {
+            "type": 1,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 29,
+                    "label": "projectile_resistance_flat"
+                },
+                {
+                    "value": [1.5,2.2,2.8,3.5,4.19,5.2,6,6,6],
+                    "label":"enhance_eqpm_var"
+                }
+            ]
+        },
+        "bloom_of_eternity": {
+            "type": 1,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 240,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": [2.5,3.5,4.5,5.5,7,8.5,10,10,10],
+                    "label":"healing_red_heart_var"
+                }
+            ]
+        },
+        "challenger_headband": {
+            "type": 1,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 60,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": [1.5,2.2,2.8,3.5,4.19,5.2,6,6,6],
+                    "label":"attack_var"
+                }
+            ]
+        },
+        "jade_gobelet": {
+            "type": 1,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 29,
+                    "label": "front_resistance_flat"
+                },
+                {
+                    "value": [2,2.5,3.2,3.8,5,6,7,7,7],
+                    "label":"battle_xp_gain"
+                }
+            ]
+        },
+        "veteran_plate": {
+            "type": 1,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 240,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": [2,3.2,4,5,6.5,7.5,9,9,9],
+                    "label":"rear_resistance_var"
+                }
+            ]
+        },
+        "dragonscale": {
+            "type": 1,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 240,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": [1.5,2.2,2.8,3.5,4.19,5.2,6,6,6],
+                    "label":"front_resistance_var"
+                }
+            ]
+        },
+        "dragon_tooth": {
+            "type": 1,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 60,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": [3,4.19,5.5,6.5,8.5,10.2,12,12,12],
+                    "label":"mp_strength_var"
+                }
+            ]
+        },
+        "scholar_telescope": {
+            "type": 1,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 60,
+                    "label": "damage_ranged_flat"
+                },
+                {
+                    "value": [4.5,6.5,8.2,10,12.5,15.5,18,18,18],
+                    "label":"meteor_star_damage"
+                }
+            ]
+        },
+        "pirate_shank": {
+            "type": 1,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 60,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": [1.5,2.2,2.8,3.5,4.19,5.2,6,6,6],
+                    "label":"damage_mobs_var"
+                }
+            ]
+        },
+        "giant_greatsword": {
+            "type": 1,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 60,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": [1.5,2.2,2.8,3.5,4.19,5.2,6,6,6],
+                    "label":"damage_bosses_var"
+                }
+            ]
+        },
+        "healing_potion": {
+            "type": 1,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 240,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": [2,2.8,3.5,4.5,5.5,6.8,8,8,8],
+                    "label":"hp_drops"
+                }
+            ]
+        },
+        "whirlwind_mauler": {
+            "type": 1,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 60,
+                    "label": "damage_melee_flat"
+                },
+                {
+                    "value": [3,4.19,5.5,6.5,8.5,10.2,12,12,12],
+                    "label":"knockback_var"
+                }
+            ]
+        },
+        "special_lance": {
+            "type": 1,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 60,
+                    "label": "damage_ground_flat"
+                },
+                {
+                    "value": [1.5,2.2,2.8,3.5,4.19,5.2,6,6,6],
+                    "label":"damage_ground_var"
+                }
+            ]
+        },
+        "precision_slingshot": {
+            "type": 1,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 60,
+                    "label": "damage_airborne_flat"
+                },
+                {
+                    "value": [1.5,2.2,2.8,3.5,4.19,5.2,6,6,6],
+                    "label":"damage_airborne_var"
+                }
+            ]
+        },
+        "maidens_pearl_earring": {
+            "type": 1,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 60,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": [2.5,3,3.5,4,4.5,5,6,6,6],
+                    "label":"jewel_hp_bonus_var"
+                }
+            ]
+        },
+        "ancient_shield": {
+            "type": 1,
+            "exclusive_label":"collision_resistance_flat",
+            "boost": [
+                {
+                    "value": 240,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": [8,10,12,14,16,18,20,20,20],
+                    "label":"shield"
+                }
+            ]
+        },
+        "supreme_trinity_alpha": {
+            "type": 2,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_mobs_flat"
+                },
+                {
+                    "value": [4,5.2,6.8,8.2,10.5,12.8,15],
+                    "label":"max_mp_var"
+                }
+            ]
+        },
+        "golden_apple": {
+            "type": 2,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 400,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "healing_red_heart_flat"
+                },
+                {
+                    "value": [2.5,3.5,4.5,5.5,7,8.5,10],
+                    "label":"damage_elite_var"
+                }
+            ]
+        },
+        "ancient_stele": {
+            "type": 2,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_bosses_flat"
+                },
+                {
+                    "value": [2,2.5,3.2,3.8,5,6,7],
+                    "label":"attack_var"
+                }
+            ]
+        },
+        "philosopher_stone": {
+            "type": 2,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 48,
+                    "label": "projectile_resistance_flat"
+                },
+                {
+                    "value": 24,
+                    "label": "rear_resistance_flat"
+                },
+                {
+                    "value": [2.5,3.5,4.5,5.5,7,8.5,10],
+                    "label":"enhance_eqpm_var"
+                }
+            ]
+        },
+        "dragon_heart": {
+            "type": 2,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 400,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 24,
+                    "label": "projectile_resistance_flat"
+                },
+                {
+                    "value": [3,4.19,5.5,6.5,8.5,10.2,12],
+                    "label":"mp_strength_var"
+                }
+            ]
+        },
+        "spectral_duality": {
+            "type": 2,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "damage_mobs_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_airborne_flat"
+                },
+                {
+                    "value": [7.5,10.5,13.5,16.5,21,25.5,30],
+                    "label":"summoned_creature_duration"
+                }
+            ]
+        },
+        "mystic_emblem": {
+            "type": 2,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 400,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 24,
+                    "label": "projectile_resistance_flat"
+                },
+                {
+                    "value": [2,3.2,4,5,6.5,7.5,9],
+                    "label":"hero_base_stats_increased_var"
+                }
+            ]
+        },
+        "immortal_brooch": {
+            "type": 2,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 48,
+                    "label": "rear_resistance_flat"
+                },
+                {
+                    "value": 24,
+                    "label": "collision_resistance_flat"
+                },
+                {
+                    "value": [2,2.5,3.2,3.8,5,6,7],
+                    "label":"hp_var"
+                }
+            ]
+        },
+        "golden_statue": {
+            "type": 2,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 400,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 20,
+                    "label": "front_resistance_flat"
+                },
+                {
+                    "value": [4,5.2,6.8,8.2,10.5,12.8,15],
+                    "label":"coins_from_battle"
+                }
+            ]
+        },
+        "smilling_mask": {
+            "type": 2,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_ranged_flat"
+                },
+                {
+                    "value": [2,2.5,3.2,3.8,5,6,7],
+                    "label":"increased_attack_after_crit"
+                }
+            ]
+        },
+        "unmerciful_mask": {
+            "type": 2,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_melee_flat"
+                },
+                {
+                    "value": [4,5.2,6.8,8.2,10.5,12.8,15],
+                    "label":"increased_attack_after_kill"
+                }
+            ]
+        },
+        "holy_water": {
+            "type": 2,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "damage_mobs_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_ground_flat"
+                },
+                {
+                    "value": [4,5.2,6.8,8.2,10.5,12.8,15],
+                    "label":"increased_attack_after_looting_heart"
+                }
+            ]
+        },
+        "book_of_the_dead": {
+            "type": 2,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_bosses_flat"
+                },
+                {
+                    "value": [4,5.5,7.2,8.8,11.2,13.5,16],
+                    "label":"damage_undead_var"
+                }
+            ]
+        },
+        "psionist_treasure": {
+            "type": 2,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "damage_melee_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_mobs_flat"
+                },
+                {
+                    "value": [6,8.8,11.2,13.8,17.5,21.2,25],
+                    "label":"summoned_creature_damage"
+                }
+            ]
+        },
+        "book_of_archery": {
+            "type": 2,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "damage_ranged_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_airborne_flat"
+                },
+                {
+                    "value": [1.5,2.2,2.8,3.5,4.19,5.2,6],
+                    "label":"damage_weapon_ranged_var"
+                }
+            ]
+        },
+        "book_of_bravery": {
+            "type": 2,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_ground_flat"
+                },
+                {
+                    "value": [2,2.5,3.2,3.8,5,6,7],
+                    "label":"damage_weapon_melee_var"
+                }
+            ]
+        },
+        "angelic_heart": {
+            "type": 2,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 400,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "healing_red_heart_flat"
+                },
+                {
+                    "value": [5,7,9,11,14,17,20],
+                    "label":"chance_healing_angel"
+                }
+            ]
+        },
+        "devil_whisper": {
+            "type": 2,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 400,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 24,
+                    "label": "projectile_resistance_flat"
+                },
+                {
+                    "value": [3,4.19,5.5,6.5,8.5,10.2,12],
+                    "label":"battle_xp_gain"
+                }
+            ]
+        },
+        "stone_of_wisdom": {
+            "type": 2,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 72,
+                    "label": "collision_resistance_flat"
+                },
+                {
+                    "value": [2.5,3.5,4.5,5.5,7,8.5,10],
+                    "label":"chance_smart_increased"
+                }
+            ]
+        },
+        "empyrean_mirror": {
+            "type": 2,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 400,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 24,
+                    "label": "rear_resistance_flat"
+                },
+                {
+                    "value": [12.5,17.5,22.5,27.5,35,42.5,50],
+                    "label":"counterattack_damage_var"
+                }
+            ]
+        },
+        "fabled_archer_arrow": {
+            "type": 2,
+            "exclusive_label":"attack_var",
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_mobs_flat"
+                },
+                {
+                    "value": [2.5,3.5,4.5,5.5,7,8.5,10],
+                    "label":"chance_multishot_increased"
+                }
+            ]
+        },
+        "shiny_gemmed_belt": {
+            "type": 2,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 40,
+                    "label": "front_resistance_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "healing_red_heart_flat"
+                },
+                {
+                    "value": [2.5,3.5,4.5,5.5,7,8.5,10],
+                    "label":"increased_attack_when_taking_damage"
+                }
+            ]
+        },
+        "mythril_flux_mail": {
+            "type": 2,
+            "exclusive_label":"hp_var",
+            "boost": [
+                {
+                    "value": 400,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 24,
+                    "label": "projectile_resistance_flat"
+                },
+                {
+                    "value": [1.5,2.2,2.8,3.5,4.19,5.2,6],
+                    "label":"damage_resistance_var"
+                }
+            ]
+        },
+        "stealth_boots": {
+            "type": 2,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 48,
+                    "label": "projectile_resistance_flat"
+                },
+                {
+                    "value": 24,
+                    "label": "rear_resistance_flat"
+                },
+                {
+                    "value": [2,2.5,3.2,3.8,5,6,7],
+                    "label":"dodge_var"
+                }
+            ]
+        },
+        "assassin_dagger": {
+            "type": 2,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_mobs_flat"
+                },
+                {
+                    "value": [5,7,9,11,14,17,20],
+                    "label":"damage_heroes_var"
+                }
+            ]
+        },
+        "gold_bunny": {
+            "type": 2,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 400,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 20,
+                    "label": "front_resistance_flat"
+                },
+                {
+                    "value": [1.8,2.4,3.4,3.8,5,6,7],
+                    "label":"attack_var"
+                }
+            ]
+        },
+        "lucky_coin": {
+            "type": 2,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 400,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_airborne_flat"
+                },
+                {
+                    "value": [1.8,0,0,0,0,0,0],
+                    "label":"hp_var"
+                }
+            ]
+        },
+        "ring_of_greed": {
+            "type": 2,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 400,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 24,
+                    "label": "projectile_resistance_flat"
+                },
+                {
+                    "value": [10,12.5,15,17.5,0,0,0],
+                    "label":"ring_basic_stats_var"
+                }
+            ]
+        },
+        "dragon_eye": {
+            "type": 2,
+            "exclusive_label":"dragon_base_stats_var",
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_ranged_flat"
+                },
+                {
+                    "value": [6,7.5,9,0,0,0,0],
+                    "label":"mp_strength_var"
+                }
+            ]
+        },
+        "dusken_cask": {
+            "type": 2,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 100,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 50,
+                    "label": "damage_melee_flat"
+                },
+                {
+                    "value": [5,6,7.5,9,11,0,0],
+                    "label":"eqpm_altar_stats_var"
+                }
+            ]
+        },
+        "genesis_staff": {
+            "type": 3,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 52,
+                    "label": "damage_resistance_flat"
+                },
+                {
+                    "value": 80,
+                    "label": "healing_red_heart_flat"
+                },
+                {
+                    "value": [2,3,3,5,5,6,6],
+                    "label":"collision_resistance_var"
+                },
+                {
+                    "value": [0.8,0.8,1,1,1.5,1.5,2],
+                    "label":"boss_resistance_var"
+                }
+            ]
+        },
+        "bloodstained_sword": {
+            "type": 3,
+            "exclusive_label":"attack_var",
+            "boost": [
+                {
+                    "value": 160,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 80,
+                    "label": "damage_mobs_flat"
+                },
+                {
+                    "value": [4,6,6,8,8,10,10],
+                    "label":"damage_weapon_melee_var"
+                },
+                {
+                    "value": [0.8,0.8,1.2,1.2,1.8,1.8,2.5],
+                    "label":"attack_var"
+                }
+            ]
+        },
+        "starcluster_rage": {
+            "type": 3,
+            "exclusive_label":"attack_var",
+            "boost": [
+                {
+                    "value": 160,
+                    "label": "damage_bosses_flat"
+                },
+                {
+                    "value": 80,
+                    "label": "damage_ranged_flat"
+                },
+                {
+                    "value": [2,3,3,4,4,5,5],
+                    "label":"attack_speed_var"
+                },
+                {
+                    "value": [1.5,1.5,2.5,3.5,3.5,4.8,4.8],
+                    "label":"damage_weapon_ranged_var"
+                }
+            ]
+        },
+        "elven_king_cape": {
+            "type": 3,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 160,
+                    "label": "damage_mobs_flat"
+                },
+                {
+                    "value": 80,
+                    "label": "damage_bosses_flat"
+                },
+                {
+                    "value": [3,4,4,5,5,7,7],
+                    "label":"crit_chance"
+                },
+                {
+                    "value": [0.8,0.8,1.2,1.2,1.8,1.8,2.5],
+                    "label":"attack_var"
+                }
+            ]
+        },
+        "spear_of_yggdrasil": {
+            "type": 3,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 160,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 80,
+                    "label": "damage_melee_flat"
+                },
+                {
+                    "value": [4,6,6,8,8,10,10],
+                    "label":"attack_var"
+                },
+                {
+                    "value": [0.8,0.8,1,1,1.5,1.5,2],
+                    "label":"attack_speed_var"
+                }
+            ]
+        },
+        "dragon_gem": {
+            "type": 3,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 160,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 80,
+                    "label": "damage_airborne_flat"
+                },
+                {
+                    "value": [10,14,14,19,19,25,25],
+                    "label":"mp_strength_var"
+                },
+                {
+                    "value": [1,1,1.5,1.5,2.2,2.2,3],
+                    "label":"attack_var"
+                }
+            ]
+        },
+        "life_crown": {
+            "type": 3,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 640,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 38,
+                    "label": "projectile_resistance_flat"
+                },
+                {
+                    "value": [4,6,6,8,8,10,10],
+                    "label":"hp_var"
+                },
+                {
+                    "value": [1.8,1.8,2.5,2.5,3.5,3.5,5],
+                    "label":"hp_drops"
+                }
+            ]
+        },
+        "sand_of_time": {
+            "type": 3,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 640,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 32,
+                    "label": "front_resistance_flat"
+                },
+                {
+                    "value": [4,6,6,8,8,10,10],
+                    "label":"projectile_resistance_flat"
+                },
+                {
+                    "value": [1,1,1.6,1.6,2.2,2.2,3],
+                    "label":"hp_var"
+                }
+            ]
+        },
+        "first_lightning": {
+            "type": 3,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 160,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 80,
+                    "label": "damage_airborne_flat"
+                },
+                {
+                    "value": [14,19,19,26,26,35,35],
+                    "label":"lightning_damage_var"
+                },
+                {
+                    "value": [5,5,7,7,10,10,14],
+                    "label":"elemental_damage_var"
+                }
+            ]
+        },
+        "oracle_quill": {
+            "type": 3,
+            "exclusive_label":"hp_var",
+            "boost": [
+                {
+                    "value": 64,
+                    "label": "front_resistance_flat"
+                },
+                {
+                    "value": 38,
+                    "label": "collision_resistance_flat"
+                },
+                {
+                    "value": [3,4,4,5,5,7,7],
+                    "label":"increased_revival_rate"
+                },
+                {
+                    "value": [2.2,2.2,3,3,4.5,4.5,6],
+                    "label":"dodge_var"
+                }
+            ]
+        },
+        "bloodthirsty_grail": {
+            "type": 3,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 640,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 38,
+                    "label": "projectile_resistance_flat"
+                },
+                {
+                    "value": [8,11,11,15,15,20,20],
+                    "label":"hp_drops"
+                },
+                {
+                    "value": [1,1,1.5,1.5,2.2,2.2,3],
+                    "label":"hp_var"
+                }
+            ]
+        },
+        "healing_grail": {
+            "type": 3,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 640,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 80,
+                    "label": "healing_red_heart_flat"
+                },
+                {
+                    "value": [6,9,9,12,12,16,16],
+                    "label":"healing_red_heart_var"
+                },
+                {
+                    "value": [1,1,1.5,1.5,2.2,2.2,3],
+                    "label":"hp_var"
+                }
+            ]
+        },
+        "cupids_necklace": {
+            "type": 3,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 160,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 80,
+                    "label": "damage_mobs_flat"
+                },
+                {
+                    "value": [4,7,7,11,11,15,15],
+                    "label":"jewel_attack_bonus_var"
+                },
+                {
+                    "value": [1,1,1.5,1.5,2.2,2.2,3],
+                    "label":"attack_var"
+                }
+            ]
+        },
+        "life_staff": {
+            "type": 3,
+            "exclusive_label":"hp_flat",
+            "boost": [
+                {
+                    "value": 640,
+                    "label": "hp_flat"
+                },
+                {
+                    "value": 32,
+                    "label": "front_resistance_flat"
+                },
+                {
+                    "value": [3,6,6,8,8,0,0],
+                    "label":"hp_var"
+                },
+                {
+                    "value": [2,2,2.5,2.5,3.5,3.5,0],
+                    "label":"healing_red_heart_var"
+                }
+            ]
+        },
+        "light_grail": {
+            "type": 3,
+            "exclusive_label":false,
+            "boost": [
+                {
+                    "value": 160,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 80,
+                    "label": "damage_melee_flat"
+                },
+                {
+                    "value": [8,11,11,14,0,0,0],
+                    "label":"damage_undead_var"
+                },
+                {
+                    "value": [4,5.5,5.5,7.5,0,0,0],
+                    "label":"undead_damage_reduced_var"
+                },
+                {
+                    "value": [3.5,3.5,5,5,0,0,0],
+                    "label":"chance_healing_angel"
+                }
+            ]
+        },
+        "primal_fire": {
+            "type": 3,
+            "exclusive_label":"attack_flat",
+            "boost": [
+                {
+                    "value": 160,
+                    "label": "attack_flat"
+                },
+                {
+                    "value": 80,
+                    "label": "damage_bosses_flat"
+                },
+                {
+                    "value": [10,14,14,19,19,0,0],
+                    "label":"flame_damage_var"
+                },
+                {
+                    "value": [1,1,1.5,1.5,2,2,0],
+                    "label":"attack_var"
+                }
+            ]
+        }
     },
     "SkillPassivBonusDragon": {
         "none": {
@@ -16034,7 +17517,7 @@
         "Blazing Meteor": {
             "value": "Blazing_Meteor",
             "description": "Summon a flame meteor to attack enemies",
-            "stats": "Burn chips off enemy HP for 2 seconds.<br>  225% modifiable damage, Partial hit: 80% damage.<br> Unlocks in Chapter 9. <br>Not affected by Rage ability."
+            "stats": "Burn chips off enemy HP for 2 seconds.<br>  225% modifiable damage, Partial hit: 80% damage.<br> Defeat Chapter 9. <br>Not affected by Rage ability."
         },
         "Blazing Star": {
             "value": "Blazing_Star",
@@ -16049,7 +17532,7 @@
         "Blazing Sword": {
             "value": "Blazing_Sword",
             "description": "Summons 2 flame swords to spin around you",
-            "stats": "Burn chips off enemy HP for 2 seconds.<br>132% modifiable damage.<br>Unlocks in Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
+            "stats": "Burn chips off enemy HP for 2 seconds.<br>132% modifiable damage.<br>Defeat Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
         },
         "Bloodthirst": {
             "value": "Bloodthirst",
@@ -16069,7 +17552,7 @@
         "Bolt Meteor": {
             "value": "Bolt_Meteor",
             "description": "Summon a bolt meteor to attack enemies",
-            "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  225% modifiable damage, Partial hit: 80% damage.<br>  Unlocks in Chapter 9.<br>Not affected by Rage ability."
+            "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  225% modifiable damage, Partial hit: 80% damage.<br> Defeat Chapter 9.<br>Not affected by Rage ability."
         },
         "Bolt Star": {
             "value": "Bolt_Star",
@@ -16084,7 +17567,7 @@
         "Bolt Sword": {
             "value": "Bolt_Sword",
             "description": "Summons 2 bolt swords to spin around you",
-            "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>132% modifiable damage.<br>Unlocks in Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
+            "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>132% modifiable damage.<br>Defeat Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
         },
         "Bouncy Wall": {
             "value": "Bouncy_Wall",
@@ -16094,7 +17577,7 @@
         "Chilling Blast": {
             "value": "Chilling_Blast",
             "description": "Enemies blast a cold wave on death",
-            "stats": "Enemies explode on death causing an explosive ice effect.<br>  Unlocks in Chapter 3."
+            "stats": "Enemies explode on death causing an explosive ice effect.<br> Defeat Chapter 3."
         },
         "Crit Aura": {
             "value": "Crit_Aura",
@@ -16109,7 +17592,7 @@
         "Crit Plus": {
             "value": "Crit_Plus",
             "description": "Increases your crit chance when you don't take damage in a stage",
-            "stats": "Increases your crit chance by 1.3% when you don't take damage in a room.<br> 17 times max [22%]"
+            "stats": "Increases your crit chance by 0.9% when you don't take damage in a room.<br> 20 times max [18%]"
         },
         "Dauntless Greatsword": {
             "value": "Dauntless_Greatsword",
@@ -16121,10 +17604,15 @@
             "description": "Your attacks cause a Dark effect",
             "stats": "Dark touch places a bomb on a struck target for 1 second, the explosion deals 90% of modified damage from ATK boosts in an area of effect around the targeted mob.<br>Base damage does not affect damage.<br> Multiple darks will not stack on an enemy."
         },
+        "Death Axe": {
+            "value": "Death_Axe",
+            "description": "Summmons 6 axes when an enemy is defeated<br>Defeat Chapter 13",
+            "stats": ""
+        },
         "Death Bomb": {
             "value": "Death_Bomb",
             "description": "Cause enemies to explode on death",
-            "stats": "Enemies explode on death causing an area of effect damage (2/3 of base damage).<br>  Unlocks in Chapter 3."
+            "stats": "Enemies explode on death causing an area of effect damage (2/3 of base damage).<br> Defeat Chapter 3."
         },
         "Death Nova": {
             "value": "Death_Nova",
@@ -16134,7 +17622,7 @@
         "Diagonal Arrows": {
             "value": "Diagonal_Arrows",
             "description": "Fire 2 additional projectile diagonally.",
-            "stats": "You fire an additional projectile diagonally forward to the left and right<br>Deal 100% of damage per projectile<br>Up to 3 diagonal arrow."
+            "stats": "You fire an additional projectile diagonally forward to the left and right.<br>You can get up to 3 diagonal arrow.<br><br><b>-20% Damage per arrow in Melee Attack</b><br><b>100% of Damage per arrow in Range Attack</b>"
         },
         "Dodge Aura": {
             "value": "Dodge_Aura",
@@ -16156,10 +17644,15 @@
             "description": "Your Dodge Chance is increased",
             "stats": "Dodge Chance +20%<br>  Dodge is multiplicative when combining dodge from different items and abilities"
         },
+        "Double Payback": {
+            "value": "Double_Payback",
+            "description": "Chance to summon twice the summoned objects<br>Defeat Chapter 17",
+            "stats": ""
+        },
         "Dwarf": {
             "value": "Dwarf",
             "description": "Transform into a dwarf with a smaller body",
-            "stats": "Reduces your hitbox by 15%.<br>Crit Chance + 10%.<br>Defeat Chapter 10"
+            "stats": "Reduces your hitbox by 15%.<br>Crit Chance + 12%.<br>Defeat Chapter 10"
         },
         "Enhanced Summon": {
             "value": "Enhanced_Summon",
@@ -16175,6 +17668,11 @@
             "value": "Element_Upgrade",
             "description": "Elemental damage increased greatly.",
             "stats": "Freeze Damage +100%<br>Bolt Damage +150%<br>Poison Damage +250%<br>Blaze Damage +100%<br>Dark Touch Damage +100%"
+        },
+        "Eye For An Eye": {
+            "value": "Eye_For_An_Eye",
+            "description": "When summoned object disappears, it has a chance to drop HP and MP items (red & blue hearts)<br>Defeat Chapter 17",
+            "stats": ""
         },
         "Explosive Arrow": {
             "value": "Explosive_Arrow",
@@ -16196,6 +17694,11 @@
             "description": "Two flame orbs circle around you",
             "stats": "Burn chips off enemy HP for 2 seconds.<br> Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br> Affected by rage.<br> Spins faster with attack speed boosts."
         },
+        "Firepower Boost": {
+            "value": "Firepower_Boost",
+            "description": "Summoned object gets a front arrow<br>Defeat Chapter 17",
+            "stats": ""
+        },
         "Freeze": {
             "value": "Freeze",
             "description": "Slows enemies down",
@@ -16209,7 +17712,7 @@
         "Frost Meteor": {
             "value": "Frost_Meteor",
             "description": "Summon a frost meteor to attack enemies",
-            "stats": "Freeze or slows enemies for 2 seconds.<br>  225% modifiable damage, Partial hit: 80% damage.<br>  Unlocks in Chapter 9.<br>Not affected by Rage ability."
+            "stats": "Freeze or slows enemies for 2 seconds.<br>  225% modifiable damage, Partial hit: 80% damage.<br> Defeat Chapter 9.<br>Not affected by Rage ability."
         },
         "Frost Star": {
             "value": "Frost_Star",
@@ -16224,7 +17727,7 @@
         "Frost Sword": {
             "value": "Frost_Sword",
             "description": "Summons 2 frost swords to spin around you",
-            "stats": "Freeze or slows enemies for 2 seconds.<br>132% modifiable damage.<br>Unlocks in Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
+            "stats": "Freeze or slows enemies for 2 seconds.<br>132% modifiable damage.<br>Defeat Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
         },
         "Furious": {
             "value": "Furious",
@@ -16244,7 +17747,7 @@
         "Giant": {
             "value": "Giant",
             "description": "Transform into a giant with increased damage",
-            "stats": "Increases your hitbox by 10%.<br>  Attack + 40%<br>  Max HP + 5%<br>  Unlocks in Chapter 11"
+            "stats": "Increases your hitbox by 10%.<br>  Attack + 40%<br>  Max HP + 5%<br> Defeat Chapter 11"
         },
         "Grace": {
             "value": "Grace",
@@ -16301,6 +17804,11 @@
             "description": "Increases your Max HP when you don't take damage in a stage",
             "stats": "Increases your max HP by 2.2% when you don't take damage in a room.<br> 14 times max [30%]"
         },
+        "Hurling Axe": {
+            "value": "Hurling_Axe",
+            "description": "Chance to hurl an axe with each attack. Axe count increases with shot count.<br> Defeat Chapter 13.",
+            "stats": ""
+        },
         "Ice Circle": {
             "value": "Ice_Circle",
             "description": "Two ice orbs circle around you",
@@ -16324,7 +17832,7 @@
         "Multishot": {
             "value": "Multishot",
             "description": "Shoot 2 consecutive arrows in a row.",
-            "stats": "-10% damage per arrow<br>-15% attack speed<br><br><b>Devil Stats</b><br>-10% damage per arrow<br>-10% attack speed"
+            "stats": "-10% damage per arrow (range)<br>-5% damage per arrow (melee)<br>-15% attack speed<br><br><b>Devil Stats</b><br>-10% damage per arrow (range)<br>-5% damage per arrow (melee)<br>-10% attack speed"
         },
         "Obsidian Circle": {
             "value": "Obsidian_Circle",
@@ -16384,7 +17892,7 @@
         "Side Arrow": {
             "value": "Side_Arrow",
             "description": "Fire 2 additional projectile on your both sides.",
-            "stats": "You fire an additional projectile to the left and right <br> Deal 100% of damage per projectile"
+            "stats": "You fire an additional projectile to the left and right <br><br><b>-20% Damage per arrow in Melee Attack</b><br><b>100% of Damage per arrow in Range Attack</b>"
         },
         "Shadow Samurai": {
             "value": "Shadow_Samurai",
@@ -16424,17 +17932,17 @@
         "Spirit Blaze": {
             "value": "Spirit_Blaze",
             "description": "Your spirit's attacks cause a flame effect",
-            "stats": "Hero Attack + 22%.<br>  Unlocks in Chapter 8."
+            "stats": "Hero Attack + 22%.<br> Defeat Chapter 8."
         },
         "Spirit Bolt": {
             "value": "Spirit_Bolt",
             "description": "Your spirit's attacks cause a lightning effect",
-            "stats": "Hero Crit Chance + 3%<br>  Unlocks in Chapter 8."
+            "stats": "Hero Crit Chance + 3%<br> Defeat Chapter 8."
         },
         "Spirit Freeze": {
             "value": "Spirit_Freeze",
             "description": "Your spirit's attacks slows enemies down",
-            "stats": "Hero Attack Speed + 18%<br>  Unlocks in Chapter 8."
+            "stats": "Hero Attack Speed + 18%<br> Defeat Chapter 8."
         },
         "Spirit Front Arrow": {
             "value": "Spirit_Front_Arrow",
@@ -16506,10 +18014,15 @@
             "description": "Allows the player to walk across water",
             "stats": "Increases attack damage by 15%"
         },
+        "Whirlwind Axe": {
+            "value": "Whirlwind_Axe",
+            "description": "Summons a random number of axes at intervals<br>Defeat Chapter 13.",
+            "stats": ""
+        },
         "Wingman": {
             "value": "Wingman",
             "description": "Your spirit can block projectiles for you.",
-            "stats": "Pets block projectiles.<br>  Unlocks in Chapter 4."
+            "stats": "Pets block projectiles.<br> Defeat Chapter 4."
         }
     },
     "ItemData": {
@@ -16597,7 +18110,8 @@
             "description": "Legendary demon blade can devour the soul of the enemy.",
             "hidden_stats": {
                 "1": "Damage Multiplier<br>x 1.5 (Ranged)<br>x 1.85 (Melee)",
-                "2": "Base Attack Speed x ?"
+                "2": "Base Attack Speed x ?",
+                "4": "During Melee attack +100% Front Collision Resistance"
             },
             "image": "image/items/demon_blade_rain_mythic.png",
             "rarity": {
@@ -16753,7 +18267,7 @@
             "value": "Tornado",
             "description": "A sharp boomerang that can fly back and forth.",
             "hidden_stats": {
-                "1": "Damage Multiplier x 1.24<br>Base Attack Speed x 1.73"
+                "1": "Damage Multiplier x 0.8 (and x0.536 for the return) <br>Base Attack Speed x 1.73"
             },
             "image": "image/items/tornado_mythic.png",
             "rarity": {
@@ -17620,7 +19134,7 @@
                 "mythic": "[Mythic] Time Span + 1",
                 "mythic+1": "[Mythic+1] 5% Basic Stats",
                 "mythic+2": "[Mythic+2] Enhance Epic Skill",
-                "titan_tales": "[Titan Tales] Enhance Equipement +8.5%",
+                "titan_tales": "[Titan Tales] Enhance equipment +8.5%",
                 "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
                 "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
                 "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
@@ -17643,7 +19157,7 @@
                 "mythic": "[Mythic] Max HP + 8%",
                 "mythic+1": "[Mythic+1] 5% Basic Stats",
                 "mythic+2": "[Mythic+2] Enhance Epic Skill",
-                "titan_tales": "[Titan Tales] Enhance Equipement +8.5%",
+                "titan_tales": "[Titan Tales] Enhance equipment +8.5%",
                 "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
                 "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
                 "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
@@ -17666,7 +19180,7 @@
                 "mythic": "[Mythic] When used, it may return 50% of the power (ULT.)",
                 "mythic+1": "[Mythic+1] 5% Basic Stats",
                 "mythic+2": "[Mythic+2] Enhance Epic Skill",
-                "titan_tales": "[Titan Tales] Enhance Equipement +8.5%",
+                "titan_tales": "[Titan Tales] Enhance equipment +8.5%",
                 "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
                 "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
                 "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
@@ -17689,7 +19203,7 @@
                 "mythic": "[Mythic] Battle XP Gain + 8%",
                 "mythic+1": "[Mythic+1] 5% Basic Stats",
                 "mythic+2": "[Mythic+2] Enhance Epic Skill",
-                "titan_tales": "[Titan Tales] Enhance Equipement +8.5%",
+                "titan_tales": "[Titan Tales] Enhance equipment +8.5%",
                 "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
                 "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
                 "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
@@ -17712,7 +19226,7 @@
                 "mythic": "[Mythic] Rage Giant - Skill can be released earlier if losing HP (ULT.)",
                 "mythic+1": "[Mythic+1] 5% Basic Stats",
                 "mythic+2": "[Mythic+2] Enhance Epic Skill",
-                "titan_tales": "[Titan Tales] Enhance Equipement +11%",
+                "titan_tales": "[Titan Tales] Enhance equipment +11%",
                 "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
                 "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
                 "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
@@ -17735,7 +19249,7 @@
                 "mythic": "[Mythic] When the undead disappears, it may drop a heart (ULT)",
                 "mythic+1": "[Mythic+1] 5% Basic Stats",
                 "mythic+2": "[Mythic+2] Enhance Epic Skill",
-                "titan_tales": "[Titan Tales] Enhance Equipement +11%",
+                "titan_tales": "[Titan Tales] Enhance equipment +11%",
                 "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
                 "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
                 "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
@@ -17760,7 +19274,7 @@
                 "mythic": "[Mythic] Greatly increase damage immunity after taking damage. Effect reduces time (ULT)",
                 "mythic+1": "[Mythic+1] 5% Basic Stats",
                 "mythic+2": "[Mythic+2] Enhance Epic Skill",
-                "titan_tales": "[Titan Tales] Enhance Equipement +13.5%",
+                "titan_tales": "[Titan Tales] Enhance equipment +13.5%",
                 "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
                 "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
                 "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
@@ -18246,6 +19760,11 @@
         }
     },
     "GsheetData": {
+        "Archero Stats Calculator (by Pelmens)": {
+            "thumbnail": "https://lh3.googleusercontent.com/docs/ADP-6oHIXouJy1Rbw-5e8Nxs5oSU9TCqx8CDVwzhSO_iXqtldOxFa-0LI-A9oqDuUd0r4lTGr9zUMiPHi7he575TBxvqPsIRlL4dJLClTfr7Aw=w1200-h630-p",
+            "description": "Archero Stats Calculator, you can export the data of your profile to this google sheet. Make a copy of this file and then you can add all your values. I you have found some ...",
+            "url": "https://docs.google.com/spreadsheets/d/14KR0LT-g1VptikoPyob0YL7UxHytHd8hmnjhbAqoAIM"
+        },
         "Archero Medals (by KeithShade)": {
             "thumbnail": "https://images-ext-2.discordapp.net/external/ZsDT1l5orZpai68x5CiADPuP4kc96SjsCeuoj9tWPMc/https/lh4.googleusercontent.com/NWM-lnXoGJMGFZIAF3ekkQK-gzwLAI5Xmtz3LsvT9rN6bSz9DT8fUOiS6yDVRvAlcBu9sOT9lzViLA%3Dw1200-h630-p",
             "description": "-List of the Medals of 4.8 update\n-Medal name\n-Trigger\n-Rarity\n-Enhancement",
@@ -19827,7 +21346,7 @@
                     "field": [
                         {
                             "name": "",
-                            "value": "\u2022 At least one main hero (Helix is recommended)<br>\u2022 Extra hatchery slots, to speed up egg hatching<br>\u2022 Extra monster book slots, to get more bonuses from monsters in use<br>\u2022 Extra attempt for Ancient Maze, if you can consistently finish it on Extreme/Misery difficulty<br>\u2022 Extra energy to farm Hero chapters or play events<br>\u2022 Extra attempt(s) for Up-Close Dangers, if you are at the point where you earn relatively high amounts of coins from it compared to chapter runs<br>\u2022 Mystery Chest in your Farm, if it shows up<br>\u2022 Extra attempt for Mystery Mine, if you can consistently reach the last stage<br>\u2022 The following Minerals in the Mineral Shop:<br>100 Gems: 100% 2-5x lvl 3 Jewel<br>500 Gems: 100% 1x lvl 5 Jewel<br>\u2022 Discounted offers of meta items from Vendors<br>"
+                            "value": "\u2022 At least one main hero (Helix is recommended)<br>\u2022 Extra hatchery slots, to speed up egg hatching<br>\u2022 Extra monster book slots, to get more bonuses from monsters in use<br>\u2022 Extra attempt for Ancient Maze, if you can consistently finish it on Extreme/Misery difficulty<br>\u2022 Extra energy to farm Hero chapters or play events<br>\u2022 Extra attempt(s) for Up-Close Dangers, if you are at the point where you earn relatively high amounts of coins from it compared to chapter runs<br>\u2022 Mystery Chest in your Farm, if it shows up<br>\u2022 Extra attempt for Mystery Mine, if you can consistently reach the last stage<br>"
                         }
                     ],
                     "footer": {
@@ -19860,7 +21379,7 @@
                     "field": [
                         {
                             "name": "",
-                            "value": "\u2022 Use any other rings than Lion Rings for +10% coins from battle<br>\u2022 In your Spirit jewel slots, have an overall level of 8 or higher, for +5% Coins from battle<br>\u2022 Play the Up-close Dangers event every time it is active (Tuesday, Thursday, Saturday, Sunday)<br>\u2022 Play the clan event (Monster Treasure) every day<br>\u2022 Watch 3 ads per day at the bottom of the Shop tab<br>\u2022 Watch 4 ads per day for 5 energy each by clicking on your energy at the top, use this energy to play chapters<br><br><em>\u2022 Hero Mode Boss chapters (7, 14, 21, 28, 32)<br>- Quick Runs<br>- Highest amount of Gold possible</em><br>"
+                            "value": "\u2022 Use any other rings than Lion,Vilebat,Dragon Rings for +10% coins from battle<br>\u2022 In your Spirit jewel slots, have an overall level of 8 or higher, for +5% Coins from battle<br>\u2022 Play the Up-close Dangers event every time it is active (Tuesday, Thursday, Saturday, Sunday)<br>\u2022 Play the clan event (Monster Treasure) every day<br>\u2022 Watch 3 ads per day at the bottom of the Shop tab<br>\u2022 Watch 4 ads per day for 5 energy each by clicking on your energy at the top, use this energy to play chapters<br><br><em>\u2022 Hero Mode Boss chapters (7, 14, 21, 28, 35, 42)</em><br>"
                         }
                     ],
                     "footer": {
@@ -19893,7 +21412,7 @@
                     "field": [
                         {
                             "name": "",
-                            "value": "<b>Flying Bullets</b><br>\u2022 Can drop more than 5 items per run<br>\u2022 Drops relatively many scrolls<br><br><b>Hero Mode wave chapters (3, 6, 10, 16, 20, 24, 31)</b><br>\u2022 Drops more Jewels on average<br>\u2022 Drops Bloodstone & runes<br><br><b>Best mob chapters for 'afk' farming</b><br>\u2022 Choose the highest Hero wave chapter that you can always finish without needing to dodge<br>\u21d2 you only need to pay attention to pick abilities and move to the next stage<br>\u2022 Choose a spot in each stage that lets your hero reach all spawning monsters"
+                            "value": "<b>Flying Bullets</b><br>\u2022 Can drop more than 5 items per run<br>\u2022 Drops relatively many scrolls<br><br><b>Farm Chapters :</b><br>\u2022 Farm the highest hero boss chapter you are able to clear (7, 14, 21, 28, 35, 42)<br>\u2022 Making QuickRaid of weapon and bracelet hero chapters is recommended (list can be found <a href=''https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w/>here</a>)<br>\u2022 Clearing normal chapter 21 as well as hero chapter 17 enables great rarity(green) item drops from chapters<br>\u2022 Clearing normal chapter 35 as well as hero chapter 32 enables rare rarity(blue) item drops from chapters"
                         }
                     ],
                     "footer": {

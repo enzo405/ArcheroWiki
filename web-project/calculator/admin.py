@@ -1,6 +1,7 @@
 from django.contrib import admin
 from calculator.models import *
 
+admin.site.register(ServerManagement)
 admin.site.register(user)
 admin.site.register(stuff_table)
 admin.site.register(hero_table)
@@ -22,3 +23,4 @@ admin.site.register(weapon_skins_table)
 admin.site.register(promo_code)
 admin.site.register(Token)
 admin.site.register(UserQueue)
+admin.site.register(Contributor)

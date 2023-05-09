@@ -1,9 +1,9 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5.1a">
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5.4">
 <title>{{ name }} Stats - Wiki</title>
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.1a">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.4">
 <meta name="description" content="{{ name }} Stats - Wiki">
 <meta property="og:url" content="https://stats.wiki-archero.com/calculator/show/{{pbid}}/">
 <meta property="og:type" content="website">
@@ -45,7 +45,12 @@
 		}
 	</script>
 	{% if DEV_MODE %}
-		<div class="go_to_details dev_div"><a href="/del_dev/{{ pbid }}/">Reload Stats (only dev mode)</a></div>
+	<div class="debug_container">
+		<div class="dev_div"><a href="/del_dev/{{ pbid }}/">Reload Stats</a></div>
+		<div class="dev_div"><a href="/calculator/update/{{ pbid }}/">Update Profile (only dev mode)</a></div>
+		<div class="dev_div"><a href="/calculator/show_debug/{{ pbid }}/">Show Debug Stats</a></div>
+		<div class="dev_div"><a href="/api_view/{{ pbid }}/">Show API Stats</a></div>
+	</div>
 	{% endif %}
 	<div class="go_to_details" onclick="toggleDetailStats()">Switch Stats/Details</div>
 	<div id="contain-image-stuff" class="contain-image-stuff" style="display: flex;">
@@ -57,7 +62,7 @@
 				<img alt="dragon" class="button-dragon" src="/static/image/stuff_save/dragon_save/{{ pbid }}.png">
 			</div>
 			<div class="image-stuff-result-container">
-				<img alt="stuff image" class="image-stuff-result" src="{% static 'image/stuff_save/'|add:pbid|add:'.png' %}?version=1.5.1a">
+				<img alt="stuff image" class="image-stuff-result" src="{% static 'image/stuff_save/'|add:pbid|add:'.png' %}?version=1.5.4">
 				<div class="image-stuff-result-bg"></div>
 			</div>
 		</div>

@@ -5,9 +5,9 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.5.1a">
+	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.5.4">
 	<link rel="icon" type="image/ong" href="{% static 'favicon.ico' %}">
-	<script src="{% static 'main.js' %}?version=1.5.1a"></script>
+	<script src="{% static 'main.js' %}?version=1.5.4"></script>
 </head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
@@ -23,7 +23,7 @@
 	{% for message in messages %}
 	<script>
 		var stringElement = '<div{% if message.tags %} class="{{ message.tags }}-messages"{% endif %}>{{ message }}</div>'
-		createModale(stringElement,false)
+		createModale(stringElement,false, 'error')
 	</script>
 	{% endfor %}
 {% endif %}
@@ -44,7 +44,7 @@
 					<div class="wrap-input100 validate-input">
 						<fieldset class="fieldset-input">
 							<legend>Username</legend>
-							<input class="input-login-field username" id="username" type="text" placeholder="" pattern="^.{3,20}$" required>
+							<input class="input-login-field username" id="username" type="text" placeholder="" pattern="^(?!.*visitor)[^\s]{3,20}$" required>
 						</fieldset>
 						<ul>
 							<li class="list-info-login">Avoid space and special character for your username</li>

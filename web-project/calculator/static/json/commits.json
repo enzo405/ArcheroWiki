@@ -1,4 +1,12 @@
 {
+    "324": {
+        "nom": "Fixed Stats Gap, Fixed Damage Calc bug, Enhanced Relic Form in Calculator",
+        "date": "2023-05-09"
+    },
+    "323": {
+        "nom": "Updated with Archero 4.12.0 (new medals, new relics)",
+        "date": "2023-05-09"
+    },
     "320": {
         "nom": "All Browser Compatibility : Firefox, M-Edge, Internet Explorer, Safari, Opera + New interface Stats Calculator",
         "date": "2023-04-18"

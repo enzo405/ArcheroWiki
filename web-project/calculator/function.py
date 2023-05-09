@@ -2,9 +2,9 @@ from PIL import Image
 from pathlib import Path
 from django.shortcuts import render, redirect
 from urllib.parse import urlencode
-from const import WEBHOOK_URL, DEV_MODE, DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET
+from const import WEBHOOK_URL, DEV_MODE, DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, c_hostname, DISCORD_NOTIF_ROLE_ID
 import random as random
-from .models import Token
+from .models import Token, ServerManagement, Contributor
 from difflib import SequenceMatcher
 from django.contrib import messages
 from discord_webhook import DiscordWebhook, DiscordEmbed
@@ -21,6 +21,7 @@ from discord_webhook import DiscordWebhook, DiscordEmbed
 import json, string, time, re, urllib.parse, string, datetime, requests, os, http.cookies
 
 APP_VERSION = os.environ.get('APP_VERSION')
+# docker-compose up -d --env-file=myenvfile.env
 
 def makeLog(request):
 	dict_log = {
@@ -112,15 +113,40 @@ def checkTokenValidity(token, length):
 			return False
 	try:
 		Token.objects.get(key=token)
-	except:
+	except Token.DoesNotExist:
 		return False
 	return True
+
+
+def db_maintenance(func):
+	def wrapper(request, *args, **kwargs):
+		try:
+			server_instance = ServerManagement.objects.get(pk=1)
+		except ServerManagement.DoesNotExist:
+			server_instance = ServerManagement(pk=1, isMaintenance=False)
+			server_instance.save()
+		isMaintenance = server_instance.isMaintenance
+		if isMaintenance:
+			with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+				local_data = json.load(f)
+			SidebarContent = local_data['SidebarContent']
+			if "modeDisplay" in list(request.COOKIES):
+				darkmode = "yes"
+			else:
+				darkmode = "no"
+			return render(request, "base/maintenance.html", {"darkmode": darkmode,"header_msg": "Database Maintenance","sidebarContent":SidebarContent})
+		else:
+			return func(request, *args, **kwargs)
+	return wrapper
 
 
 def login_required(func):
 	def wrapper(request, *args, **kwargs):
 		result = checkCookie(request.COOKIES)
 		if len(result) == 0:
+			if "visitor" in list(request.COOKIES.keys()):
+				request.session['user_credential'] = {"visitor":"0-000000"}
+				return func(request, *args, **kwargs)
 			messages.warning(request, f"You need to login first")
 			return render(request, "base/login.html")
 		elif len(result) >= 2:
@@ -170,11 +196,12 @@ def editor_login(func):
 					response = requests.get('https://discord.com/api/users/@me', headers=headers)
 					response_data = response.json()
 					token.discord_acc_rely = f"{response_data['username']}#{response_data['discriminator']}"
+					token.discord_user_id = response_data['id']
 					token.save()
 					request.session['response_data'] = response_data
 				else:
 					status = "not_auth"
-			except:
+			except Token.DoesNotExist:
 				status = "not_auth"
 		else:
 			status = "not_auth"
@@ -201,7 +228,7 @@ def requestJson(request,cookie):
 		try:
 			username = list(cookie)[0]
 			username_id = request.COOKIES[username]
-		except:
+		except (IndexError, KeyError) as e:
 			username = 'unknown'
 			username_id = "9-999999"
 		bool_func = userExist(request_json_file, username)
@@ -243,13 +270,16 @@ def checkUsernameCredentials(username_raw,id_raw):
 	ingame_name = decoded_bytes.decode('utf-8') # Remplace tous les caractères illégaux par "*" après avoir converti la chaîne de bytes en une chaîne de caractères en utf-8
 	ingame_id = urllib.parse.unquote(id_raw)   # Décode l'identifiant de jeu brut
 	unavailable_username = ['csrftoken','sessionid','windowInnerWidth','windowInnerHeight', 'modeDisplay', 'messages', 'sessionid']
-	if 3 <= len(ingame_name) < 20 and ingame_name not in unavailable_username:
-		if re.fullmatch(pattern, ingame_id) and ingame_id != "" and ingame_id != None and all(c.isdigit() or c == '-' for c in ingame_id):
-			return True, ingame_name, ingame_id
+	if ingame_id != "0-000000" and ingame_name != "visitor":
+		if 3 <= len(ingame_name) < 20 and ingame_name not in unavailable_username:
+			if re.fullmatch(pattern, ingame_id) and ingame_id != "" and ingame_id != None and all(c.isdigit() or c == '-' for c in ingame_id):
+				return True, ingame_name.replace(' ',''), ingame_id
+			else:
+				return False, ingame_name, ingame_id,"Ingame id incorrect"
 		else:
-			return False, ingame_name, ingame_id,"Ingame id incorrect"
-	else:
-		return False, ingame_name, ingame_id,"Username not allowed"
+			return False, ingame_name, ingame_id,"Username not allowed"
+	elif ingame_id == "0-000000":
+		return False, ingame_name, ingame_id,"Ingame Id not allowed"
 
 
 def checkIllegalKey(string:str):
@@ -267,11 +297,11 @@ def send_webhook(msg):
 
 def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:str,field_value:str,e_color:int, request, alert:bool, **kwargs):
 	if alert:
-		content_msg = "<@&1091459880700874882>"
+		content_msg = f"<@&{DISCORD_NOTIF_ROLE_ID}>"
 	else:
 		content_msg = ""
 	
-	avatar_url = kwargs.get('avatar_url',"https://stats.wiki-archero.com/static/image/favicon.png")
+	avatar_url = kwargs.get('avatar_url',f"{c_hostname}/static/image/favicon.png")
 	browser = request.META.get('HTTP_USER_AGENT',"None")
 	webhook = DiscordWebhook(url=WEBHOOK_URL, content=content_msg, rate_limit_retry=True)
 	embed = DiscordEmbed(title=str(title_embed), description=f"{str(description_embed)}", color=e_color)
@@ -334,3 +364,12 @@ def makeCookieheader(cookieResult: dict) -> str:
     if cookieResult.get("visitor") is None:
         result = " - ".join([key + " | " + value for key, value in cookieResult.items()])
     return result
+
+
+def checkContributor(cookie_result:dict) -> bool:
+	username = list(dict(cookie_result).keys())[0]
+	ingame_id = cookie_result[username]
+	if Contributor.objects.filter(label=f"{username}|{ingame_id}").exists():
+		return True
+	else:
+		return False

@@ -3,7 +3,6 @@ from calculator import views
 from calculator import api
 from calculator import views_wiki
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from const import DEV_MODE
 
 urlpatterns = [
     path('', views_wiki.menu),
@@ -18,6 +17,9 @@ urlpatterns = [
     path('calculator/updatecalc/<str:pbid>/', views.updatetraitement_calc),
     path('calculator/delete/<str:pbid>/', views.delete_user),
     path('calculator/damage/<str:pbid>/', views.damage_calc),
+    path('calculator/show_debug/<str:pbid>/', api.show_debug),
+    path('api_view/<str:pbid>/', api.json_payload_profile),
+    path('export_gsheet/<str:pbid>/', api.export_gsheet),
     path('login/', views_wiki.login),
     path('login/processing/<str:username_raw>/<str:id_raw>/', views_wiki.login_processing),
     path('wiki/maze/', views_wiki.maze),

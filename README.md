@@ -1,4 +1,4 @@
-# Wiki Actual Version : v1.5
+# Wiki Actual Version : v1.5.4
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 

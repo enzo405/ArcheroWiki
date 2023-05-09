@@ -3,8 +3,10 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 import datetime, math, json
 from django.contrib.auth.models import User as BuiltinDjangoUser
 from django.utils.crypto import get_random_string
+from const import DEBUG_STATS
 
-
+class ServerManagement(models.Model):
+	isMaintenance = models.BooleanField(default=False, blank=False)
 
 class UserQueue(models.Model):
 	username = models.CharField(max_length=255)
@@ -13,12 +15,15 @@ class UserQueue(models.Model):
 	is_validated = models.BooleanField(default=False)
 	created_at = models.DateTimeField(auto_now_add=True)
 
+class Contributor(models.Model):
+	label = models.CharField(max_length=40)
 
 class Token(models.Model):
 	user = models.OneToOneField(BuiltinDjangoUser, on_delete=models.CASCADE)
 	key = models.CharField(max_length=40, unique=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 	discord_acc_rely = models.CharField(max_length=40, default=" ", blank=True, null=True)
+	discord_user_id = models.BigIntegerField(unique=True, blank=False, default=0)
 
 	def save(self, *args, **kwargs):
 		if not self.key:
@@ -31,7 +36,15 @@ class Token(models.Model):
 	def __str__(self):
 		return self.key
 
+# null=True sets NULL (versus NOT NULL) on the column in your DB.
+# Blank values for Django field types such as DateTimeField or ForeignKey will be stored as NULL in the DB.
+# blank determines whether the field will be required in forms.
+# This includes the admin and your custom forms. If blank=True then the field will not be required, whereas if it's False the field cannot be blank.
+
+
 #(actual value, human readable name)
+# default selected must be the value and not the human readable
+# e.g : power_rune_all = (("none","None"),("attack_flat","Attack")) must be models.charField(.....default="none")
 all_heros = (("Atreus","Atreus"),("Urasil","Urasil"),("Phoren","Phoren"),("Taranis","Taranis"),("Helix","Helix"),("Meowgik","Meowgik"),("Shari","Shari"),("Ayana","Ayana"),("Onir","Onir"),("Rolla","Rolla"),("Bonnie","Bonnie"),("Sylvan","Sylvan"),("Shade","Shade"),("Ophelia","Ophelia"),("Ryan","Ryan"),("Lina","Lina"),("Aquea","Aquea"),("Shingen","Shingen"),("Gugu","Gugu"),("Iris","Iris"),("Blazo","Blazo"),("Melinda","Melinda"),("Elaine","Elaine"),("Bobo","Bobo"),("Stella","Stella"))
 stuff_weapon = (("None","None"),("Brave Bow","Brave Bow"),("Death Scythe","Death Scythe"),("Saw Blade","Saw Blade"),("Tornado","Tornado"),("Brightspear","Brightspear"),("Stalker Staff","Stalker Staff"),("Gale Force","Gale Force"),("Demon Blade Rain","Demon Blade Rain"),("Mini Atreus","Mini Atreus"),("Antiquated Sword","Antiquated Sword"))
 stuff_armor = (("None","None"),("Phantom Cloak","Phantom Cloak"),("Vest of Dexterity","Vest of Dexterity"),("Golden Chestplate","Golden Chestplate"),("Void Robe","Void Robe"),("Bright Robe","Bright Robe"),("Shadow Robe","Shadow Robe"))
@@ -44,7 +57,7 @@ max_talent_level10 = ((10,"10"),(9,"9"),(8,"8"),(7,"7"),(6,"6"),(5,"5"),(4,"4"),
 max_talent_level25 = ((25,"25"),(24,"24"),(23,"23"),(22,"22"),(21,"21"),(20,"20"),(19,"19"),(18,"18"),(17,"17"),(16,"16"),(15,"15"),(14,"14"),(13,"13"),(12,"12"),(11,"11"),(10,"10"),(9,"9"),(8,"8"),(7,"7"),(6,"6"),(5,"5"),(4,"4"),(3,"3"),(2,"2"),(1,"1"),(0,"0"))
 max_talent_level15 = ((15,"15"),(14,"14"),(13,"13"),(12,"12"),(11,"11"),(10,"10"),(9,"9"),(8,"8"),(7,"7"),(6,"6"),(5,"5"),(4,"4"),(3,"3"),(2,"2"),(1,"1"),(0,'0'))
 hero_level = ((120,"120"),(80,"80"),(60,"60"),(40,"40"),(20,"20"),(0,"0"))
-star_hero = ((8,"8⭐"),(7,"7⭐"),(2,"2⭐"),(0,"0⭐"))
+star_hero = ((8,"8⭐"),(7,"7⭐"),(6,"6⭐"),(5,"5⭐"),(4,"4⭐"),(3,"3⭐"),(2,"2⭐"),(1,"1⭐"),(0,"0⭐"))
 stuff_rarity = (("Common","Common"),("Great","Great"),("Rare","Rare"),("Epic","Epic"),("Perfect Epic","Perfect Epic"),("Legendary","Legendary"),("Ancient Legendary","Ancient Legendary"),("Mythic","Mythic"),("Mythic_1","Mythic+1"),("Mythic_2","Mythic+2"),("Titan Tales","Titan Tales"),("Titan Tales_1","Titan Tales+1"),("Titan Tales_2","Titan Tales+2"),("Titan Tales_3","Titan Tales+3"),("Chaos","Chaos"))
 all_resistance_type = (("None","None"),("collision","collision"),("projectile","projectile"),("front","front"),("rear","rear"),("damage","damage"),("static","static"),("trap","trap"))
 all_damage_type = (("None","None"),("ground","ground"),("airborn","airborn"),("ranged","ranged"),("melee","melee"),("boss","boss"),("mobs","mobs"),("elemental","elemental"),("all","all"))
@@ -63,24 +76,27 @@ altar_ascension_level = ((12,12),(11,11),(10,10),(9,9),(8,8),(7,7),(6,6),(5,5),(
 jewel_level = ((13,13),(12,12),(11,11),(10,10),(9,9),(8,8),(7,7),(6,6),(5,5),(4,4),(3,3),(2,2),(1,1))
 dragon_skill_level = ((10,10),(9,9),(8,8),(7,7),(6,6),(5,5),(4,4),(3,3),(2,2),(1,1),(0,0))
 brave_level_choice = ((1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20))
-type_reward = (("none","none"),("gem","gem"),("celestite_keys","celestite_keys"),("purple_ticket","purple_ticket"),("premium_ticket","premium_ticket"),("gold","gold"),("random_shards","random_shards"),("obsidian_keys","obsidian_keys"),("energy","energy"))
+type_reward = (("none","none"),("gem","gem"),("celestite_keys","celestite_keys"),("purple_ticket","purple_ticket"),("premium_ticket","premium_ticket"),("gold","gold"),("random_shards","random_shards"),("obsidian_keys","obsidian_keys"),("energy","energy"),("gold_keys","gold_keys"))
+relics_level = ((0,0),(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(27,27),(28,28),(29,29),(30,30))
+rare_relics_star = ((0,0),(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8))
+radiant_relics_star = ((0,0),(1,1),(2,2),(3,3),(4,4),(5,5),(6,6))
+holy_relics_star = ((0,0),(1,1),(2,2),(3,3),(4,4),(5,5),(6,6))
 power_rune_all = (
-	("none","None"),
+	("none","None"),("attack_flat","Attack"),("attack_var","Attack %"),
 	("flat_dmg_airborne","Damage to Airborne Units"),("var_dmg_airborne","Damage to Airborne Units %"),
 	("flat_dmg_ground","Damage to Ground Units"),("var_dmg_ground","Damage to Ground Units %"),
 	("flat_dmg_melee","Damage to Melee Units"),("var_dmg_melee","Damage to Melee Units %"),
 	("flat_dmg_ranged","Damage to Ranged Units"),("var_dmg_ranged","Damage to Ranged Units %"),
 	("flat_dmg_boss","Damage to Bosses Units"),("var_dmg_boss","Damage to Bosses Units %"),
 	("flat_dmg_mob","Damage to Mobs Units"),("var_dmg_mob","Damage to Mobs Units %"),
-	("var_dmg_hero","Damage to Heroes %"),
-	("var_all_dmg","All Damage %"),
-	("var_elemental_dmg","Elemental Damage %"),
-	("var_atk_speed","Attack Speed %"),
-	("var_crit_rate","Critic Chance %"),
-	("var_crit_dmg","Critic Damage %")
+	("var_dmg_hero","Damage to Heroes %"),("var_all_dmg","All Damage %"),
+	("var_elemental_dmg","Elemental Damage %"),("var_atk_speed","Attack Speed %"),
+	("var_crit_rate","Critic Chance %"),("var_crit_dmg","Critic Damage %")
 )
 saviour_rune_all = (
 	("none","None"),
+	("hp_flat","Max Hp"),
+	("hp_var","Max Hp %"),
 	("flat_trap_resistance","Trap Resistance"),("var_trap_resistance","Trap Resistance %"),
 	("flat_projectile_resistance","Projectile Resistance"),("var_projectile_resistance","Projectile Resistance %"),
 	("flat_collision_resistance","Collision Resistance"),("var_collision_resistance","Collision Resistance %"),
@@ -95,6 +111,7 @@ saviour_rune_all = (
 )
 recovery_rune_all = (
 	("none","None"),
+	("hp_flat","Max Hp"),
 	("flat_heal_red_heart","Healing Effect of Red Heart"),
 	("var_heal_red_heart","Healing Effect of Red Heart %"),
 	("flat_hp_drop","HP drops"),
@@ -102,7 +119,11 @@ recovery_rune_all = (
 	("var_atk_headshot","Attack Increased 3s within HeadShot")
 )
 courage_rune_all = (
-	("none","None"),
+	("none","None"),("attack_flat","Attack"),("attack_var","Attack %"),
+	("courage_hero_attack_flat","Current Hero Attack"),
+	("courage_hero_attack_var","Current Hero Attack %"),
+	("courage_hero_hp_flat","Current Hero Hp"),
+	("courage_hero_hp_var","Current Hero Hp %"),
 	("flat_dmg_flame","Flame Damage"),("var_dmg_flame","Flame Damage %"),
 	("flat_dmg_ice","Ice Damage"),("var_dmg_ice","Ice Damage %"),
 	("flat_dmg_poison","Poison Damage"),("var_dmg_poison","Poison Damage %"),
@@ -111,6 +132,8 @@ courage_rune_all = (
 )
 luck_rune_all = (
 	("none","None"),
+	("hp_flat","Max Hp"),
+	("hp_var","Max Hp %"),
 	("counterattack_rate","Counterattack Rate"),("counterattack_dmg","Counterattack Damage"),
 )
 
@@ -135,6 +158,7 @@ class user(models.Model):
 	atk_base_stats_hero_choosen = models.BigIntegerField(default=100, validators=[MaxValueValidator(6000)])
 	health_base_stats_hero_choosen = models.BigIntegerField(default=400, validators=[MaxValueValidator(20000)])
 	public_id = models.BigIntegerField(default=0, blank=False)
+	public_profile = models.BooleanField(default=True, blank=False)
 
 	def getOtherModels(self):
 			return {
@@ -331,7 +355,7 @@ class stuff_table(models.Model,parentModel):
 			'book_resistance2_type_raw' : self.local_data["StatsBook"][str(book_name)]["resistance2_type"]
 		}
 
-	def getStuffStats(self,enhanced_equipment_total,weapon_refine_basic_stats,armor_refine_basic_stats,ring1_refine_basic_stats,ring2_refine_basic_stats,bracelet_refine_basic_stats,locket_refine_basic_stats,book_refine_basic_stats,weapon_skin_stats):
+	def getStuffStats(self,enhanced_equipment_total,weapon_refine_basic_stats,armor_refine_basic_stats,ring1_refine_basic_stats,ring2_refine_basic_stats,bracelet_refine_basic_stats,locket_refine_basic_stats,book_refine_basic_stats,weapon_skin_stats,relic_ring_stats):
 		all_raw_stats = self.GetRawStats()
 		global_enhance_eqm = enhanced_equipment_total + all_raw_stats['book_enhance_eqm']
 		weapon_eh_eq = global_enhance_eqm + float(weapon_refine_basic_stats) + float(all_raw_stats["weapon_basic_stats"])
@@ -341,10 +365,10 @@ class stuff_table(models.Model,parentModel):
 		armor_eh_eq = global_enhance_eqm + float(all_raw_stats["armor_basic_stats"]) + float(armor_refine_basic_stats)
 		armor_base = math.floor((int(all_raw_stats['armor_base_raw']) + int(all_raw_stats['armor_inc_raw']) * ( self.armor_level-1)) * (armor_eh_eq))
 
-		ring1_eh_eq = global_enhance_eqm + float(all_raw_stats["ring1_basic_stats"]) + float(ring1_refine_basic_stats)
+		ring1_eh_eq = global_enhance_eqm + float(all_raw_stats["ring1_basic_stats"]) + float(ring1_refine_basic_stats) + float(relic_ring_stats)
 		ring1_base = math.floor((int(all_raw_stats['ring1_base_raw']) + int(all_raw_stats['ring1_inc_raw']) * ( self.ring1_level-1)) * (ring1_eh_eq))
 		
-		ring2_eh_eq = global_enhance_eqm + float(all_raw_stats["ring2_basic_stats"]) + float(ring2_refine_basic_stats)
+		ring2_eh_eq = global_enhance_eqm + float(all_raw_stats["ring2_basic_stats"]) + float(ring2_refine_basic_stats) + float(relic_ring_stats)
 		ring2_base = math.floor((int(all_raw_stats['ring2_base_raw']) + int(all_raw_stats['ring2_inc_raw']) * ( self.ring2_level-1)) * (ring2_eh_eq))
 
 		bracelet_eh_eq = global_enhance_eqm + float(all_raw_stats["bracelet_basic_stats"]) + float(bracelet_refine_basic_stats)
@@ -355,7 +379,7 @@ class stuff_table(models.Model,parentModel):
 
 		book_eh_eq = global_enhance_eqm + float(all_raw_stats["book_basic_stats"]) + float(book_refine_basic_stats)
 		book_base = math.floor((int(all_raw_stats['book_base_raw']) + int(all_raw_stats['book_inc_raw']) * ( self.book_level-1)) * (book_eh_eq))
-		return {
+		result = {
 			"weapon_attack_var" : float(all_raw_stats['weapon_var_raw'])/100,
 			"weapon_total" : weapon_total,
 			"armor_hp_var" : float(all_raw_stats['armor_var_raw'])/100,
@@ -380,6 +404,9 @@ class stuff_table(models.Model,parentModel):
 			all_raw_stats['ring2_titan_tales_type_raw']:all_raw_stats['ring2_titan_tales_boost'],
 			all_raw_stats['ring2_chaos_type_raw']:all_raw_stats['ring2_chaos_boost'],
 		}
+		if DEBUG_STATS:
+			print(f"\ngetStuffStats :{result}\n")
+		return result
 
 
 class hero_table(models.Model,parentModel):
@@ -589,20 +616,24 @@ class altar_table(models.Model,parentModel):
 				x=x-1
 		return x
 
-	def CalculAltar(self,type_altar,type_boost):
+	def CalculAltar(self,type_altar,type_boost,stuff_altar_boost_relic):
 		if type_altar == "stuff":
 			data = self.local_data["StuffAltar"]
+			altar_var_stats = stuff_altar_boost_relic
 		elif type_altar == "heros":
 			data = self.local_data["HerosAltar"]
-		base = int(data[str(self.RoundTen(self.dictionnaire()[type_altar+'_altar_level'])) + '_' + type_boost])
+			altar_var_stats = 0
+		base = int(data[str(self.RoundTen(self.dictionnaire()[type_altar+'_altar_level'])) + '_' + type_boost]) * float(1+altar_var_stats/100)
 		level = int(self.dictionnaire()[type_altar+'_altar_level'])
 		levelRoundTen = int(self.RoundTen(self.dictionnaire()[type_altar+'_altar_level']))
-		inc = int(data[str(self.RoundTen(self.dictionnaire()[type_altar+'_altar_level'])) + '_inc_' + type_boost])
+		inc = int(data[str(self.RoundTen(self.dictionnaire()[type_altar+'_altar_level'])) + '_inc_' + type_boost]) * float(1+altar_var_stats/100)
 		diff = level - levelRoundTen
 		if 1 <= diff <= 9:
 			total = base+((level - levelRoundTen)*inc)
 		else:
 			total = base
+		if DEBUG_STATS:
+			print(f"\nCalculAltar :{total}\n")
 		return total
 
 
@@ -773,7 +804,7 @@ class jewel_level_table(models.Model,parentModel):
 		chaine = f"{self.user_profile.ingame_id} | {self.user_profile.ingame_name}"
 		return chaine
 
-	def JewelStatsRecup(self,attack_jewel_base:float):
+	def JewelStatsRecup(self,attack_jewel_base:float,hp_jewel_base:float):
 		jewel_type = list(jewel_type_table.objects.get(user_profile=self.user_profile).dictionnaire().values())
 		jewel_level = list(self.dictionnaire().values())
 		list_type = []
@@ -782,7 +813,7 @@ class jewel_level_table(models.Model,parentModel):
 			list_type.append(str(jewel_type[i]) + "_" + str(jewel_level[i]))
 		try:
 			list_type.remove(str(self.user_profile.ingame_id)+"_"+str(self.user_profile.ingame_id))
-		except:
+		except ValueError:
 			pass
 		###### BONUS 1 ######
 		atk_ruby = 0
@@ -879,16 +910,16 @@ class jewel_level_table(models.Model,parentModel):
 				mp_max_calaite = int(JewelStats["calaite_lvl" + str(x.split("_")[1]) + "_bonus2"])
 				pv_calaite += calaite_b1
 				mp_max_calaite +=  calaite_b2
-		return {
-			'attack_ruby':math.floor(atk_ruby*(1+attack_jewel_base/100)),
-			'attack_kunzite':math.floor(atk_kunzite*(1+attack_jewel_base/100)),
-			'attack_tourmaline':math.floor(atk_tourmaline*(1+attack_jewel_base/100)),
-			'pv_lapis':pv_lapis,
-			'pv_emerald':pv_emerald,
+		result =  {
+			'attack_ruby':math.floor(math.floor(atk_ruby)*(1+attack_jewel_base/100)),
+			'attack_kunzite':math.floor(math.floor(atk_kunzite)*(1+attack_jewel_base/100)),
+			'attack_tourmaline':math.floor(math.floor(atk_tourmaline)*(1+attack_jewel_base/100)),
+			'pv_lapis':math.floor(math.floor(pv_lapis)*(1+hp_jewel_base/100)),
+			'pv_emerald':math.floor(math.floor(pv_emerald)*(1+hp_jewel_base/100)),
+			'pv_calaite':math.floor(math.floor(pv_calaite)*(1+hp_jewel_base/100)),
 			'proj_res_topaz':proj_res_topaz,
 			'front_res_amber':front_res_amber,
 			'collision_res_amethyst':collision_res_amethyst,
-			'pv_calaite':pv_calaite,
 			'dmg_to_boss':dmg_to_boss,
 			'dmg_to_mobs':dmg_to_mobs,
 			'dmg_to_elite':dmg_to_elite,
@@ -901,8 +932,12 @@ class jewel_level_table(models.Model,parentModel):
 			'weapon_ranged_damage':weapon_ranged_damage,
 			'counterattack_rate':counterattack_rate,
 		}
+		if DEBUG_STATS:
+			print(f"\nJewelStatsRecup :{result}\n")
+		return result
 
-	def JewelSpeBonusStatsRecup(self,type_jewel,brave_boost):
+	def JewelSpeBonusStatsRecup(self,type_jewel,brave_boost,relic_jewel_base=0)->dict:
+		result = {}
 		JewelSpeBonus = self.local_data['JewelSpeBonus']
 		jewel_type = jewel_type_table.objects.get(user_profile=self.user_profile).dictionnaire()
 		jewel1_type = jewel_type[str(type_jewel)+"_jewel1_type"]
@@ -913,23 +948,30 @@ class jewel_level_table(models.Model,parentModel):
 		jewel2_level = self.dictionnaire()[str(type_jewel)+"_jewel2_level"] if jewel2_type != "none" else 0
 		jewel3_level = self.dictionnaire()[str(type_jewel)+"_jewel3_level"] if jewel3_type != "none" else 0
 		jewel4_level = self.dictionnaire()[str(type_jewel)+"_jewel4_level"] if jewel4_type != "none" else 0
-
-		result = int(jewel1_level) + int(jewel2_level) + int(jewel3_level) + int(jewel4_level) + int(brave_boost)
-		if result >= 4:
-			spe_bonus = JewelSpeBonus[str(type_jewel) + "_sb_lvl4"]
-			if result >= 8:
-				spe_bonus = JewelSpeBonus[str(type_jewel) + "_sb_lvl8"]
-				if result >= 16:
-					spe_bonus = JewelSpeBonus[str(type_jewel) + "_sb_lvl16"]
-					if result >= 28:
-						spe_bonus = JewelSpeBonus[str(type_jewel) + "_sb_lvl28"]
-						if result >= 38:
-							spe_bonus = JewelSpeBonus[str(type_jewel) + "_sb_lvl38"]
-							if result >= 48:
-								spe_bonus = JewelSpeBonus[str(type_jewel) + "_sb_lvl48"]
-		else:
-			spe_bonus = [0,0,0,0,0,0]
-		return spe_bonus
+		sum_lvl = int(jewel1_level) + int(jewel2_level) + int(jewel3_level) + int(jewel4_level) + int(brave_boost)
+		if sum_lvl >= 4:
+			value_4 = result.get(JewelSpeBonus[type_jewel]["4"]["label"],0) + int(JewelSpeBonus[type_jewel]["4"]["value"])
+			result.update({JewelSpeBonus[type_jewel]["4"]["label"]:value_4})
+			if sum_lvl >= 8:
+				value_8 = result.get(JewelSpeBonus[type_jewel]["8"]["label"],0) + int(JewelSpeBonus[type_jewel]["8"]["value"])
+				result.update({JewelSpeBonus[type_jewel]["8"]["label"]:value_8})
+				if sum_lvl >= 16:
+					value_16 = result.get(JewelSpeBonus[type_jewel]["16"]["label"],0) + int(JewelSpeBonus[type_jewel]["16"]["value"])
+					result.update({JewelSpeBonus[type_jewel]["16"]["label"]:value_16})
+					if sum_lvl >= 28:
+						value_28 = result.get(JewelSpeBonus[type_jewel]["28"]["label"],0) + int(JewelSpeBonus[type_jewel]["28"]["value"])
+						result.update({JewelSpeBonus[type_jewel]["28"]["label"]:value_28})
+						if sum_lvl >= 38:
+							value_38 = result.get(JewelSpeBonus[type_jewel]["38"]["label"],0) + int(JewelSpeBonus[type_jewel]["38"]["value"])
+							result.update({JewelSpeBonus[type_jewel]["38"]["label"]:value_38})
+							if sum_lvl >= 48:
+								value_48 = result.get(JewelSpeBonus[type_jewel]["48"]["label"],0) + int(JewelSpeBonus[type_jewel]["48"]["value"])
+								result.update({JewelSpeBonus[type_jewel]["48"]["label"]:value_48})		
+		result['attack_flat'] = result.get('attack_flat',0) * (1+relic_jewel_base/100)
+		result['hp_flat'] = result.get('hp_flat',0) * (1+relic_jewel_base/100)
+		if DEBUG_STATS:
+			print(f"\nJewelSpeBonusStatsRecup :{result}\n")
+		return result
 
 	def allLevelForImage(self):
 		jewel_type = jewel_type_table.objects.get(user_profile=self.user_profile).dictionnaire()
@@ -1266,6 +1308,8 @@ class egg_equipped_table(models.Model,parentModel):
 					stats_type[1]: new_value2,
 					stats_type[2]: new_value3,
 				})
+		if DEBUG_STATS:
+			print(f"\nGetEggStats :{dict_stats}\n")
 		return dict_stats
 
 
@@ -1334,7 +1378,7 @@ class dragon_table(models.Model,parentModel):
 			"dragon_skill_4":self.dictionnaire()["dragon_" + str(number) + "_boost_4"],
 		}
 
-	def DragonStatueStats(self,number):
+	def DragonStatueStats(self,number,relic_dragon_boost):
 		dragon_type = self.GetDragon(str(number))['dragon_type']
 		dragon_rarity = self.GetDragon(str(number))['dragon_rarity'].replace(' ','_')
 		dragon_level = self.GetDragon(str(number))['dragon_level']
@@ -1345,18 +1389,19 @@ class dragon_table(models.Model,parentModel):
 		b2_type = self.local_data["DragonStats"][str(dragon_type).lower() + "_bonus2"]
 		inc_stats1 = self.local_data["DragonStats"][str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_inc_1"]
 		inc_stats2 = self.local_data["DragonStats"][str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_inc_2"]
+		dragon_base_stats_inc = 1
+		dragon_base_stats_base = relic_dragon_boost
 		if dragon_rarity == "Mythic" and int(dragon_skill_4) > 0:
-			inc_mythic_boost = self.local_data["DragonStats"][str(dragon_type).lower() + "_mythic_boost_inc"]
-			inc_mythic_boost_float = float(inc_mythic_boost[0]) * (int(dragon_skill_4)-1) +int(inc_mythic_boost[1])
-			inc_stats1_modified = round(float(inc_stats1) * (float(inc_mythic_boost_float)/100+1))
-			inc_stats2_modified = round(float(inc_stats2) * (float(inc_mythic_boost_float)/100+1))
-			result_stats1 = (float(base_stats1) + (float(dragon_level)-1)*inc_stats1_modified)*(float(inc_mythic_boost[1])/100+1)  ## c'est pas les bonnes formules mais 
-			result_stats2 = (float(base_stats2) + (float(dragon_level)-1)*inc_stats2_modified)*(float(inc_mythic_boost[1])/100+1)  ## le résultat est proches de la réalité
-		else:
-			result_stats1 = int(base_stats1) + (int(dragon_level)-1)*int(inc_stats1)
-			result_stats2 = int(base_stats2) + (int(dragon_level)-1)*int(inc_stats2)
-			inc_stats1_modified = 0
-			inc_stats2_modified = 0
+			dragon_base_stats_values = self.local_data["DragonStats"][str(dragon_type).lower() + "_mythic_boost_inc"]
+			dragon_base_stats_inc = dragon_base_stats_inc + dragon_base_stats_values[0]
+			dragon_base_stats_base = dragon_base_stats_base + dragon_base_stats_values[1]
+
+		dragon_base_stats = float(dragon_base_stats_inc) * (int(dragon_skill_4)-1) + int(dragon_base_stats_base)
+		inc_stats1_modified = round(float(inc_stats1) * (float(dragon_base_stats)/100+1))
+		inc_stats2_modified = round(float(inc_stats2) * (float(dragon_base_stats)/100+1))
+		result_stats1 = (float(base_stats1) + (float(dragon_level)-1)*inc_stats1_modified)*(float(dragon_base_stats_base)/100+1)  ## c'est pas les bonnes formules mais 
+		result_stats2 = (float(base_stats2) + (float(dragon_level)-1)*inc_stats2_modified)*(float(dragon_base_stats_base)/100+1)  ## le résultat est proches de la réalité
+		
 		if dragon_rarity == "Mythic" or dragon_rarity == "Ancient Legendary":
 			b3_type = self.local_data["DragonStats"][str(dragon_type).lower() + "_bonus3"]
 			if dragon_rarity == "Ancient Legendary":
@@ -1369,10 +1414,10 @@ class dragon_table(models.Model,parentModel):
 		dict_result = {
 			b1_type: round(result_stats1),
 			b2_type: round(result_stats2),
-			b3_type: float(b3_boost),
-			"inc_stats1_modified":round(inc_stats1_modified),
-			"inc_stats2_modified":round(inc_stats2_modified),
+			b3_type: float(b3_boost)
 		}
+		if DEBUG_STATS:
+			print(f"\nDragonStatueStats :{dict_result}\n")
 		return dict_result
 
 
@@ -1398,59 +1443,52 @@ class dragon_table(models.Model,parentModel):
 
 class runes_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
-	power_attack_flat = models.BigIntegerField(default=0, validators=[MaxValueValidator(750)])
-	power_attack_var = models.FloatField(default=0, validators=[MaxValueValidator(7)])
-	power_line_2 = models.CharField(choices=power_rune_all,default="None", max_length=30)
-	power_line_3 = models.CharField(choices=power_rune_all,default="None", max_length=30)
-	power_line_4 = models.CharField(choices=power_rune_all,default="None", max_length=30)
-	power_line_5 = models.CharField(choices=power_rune_all,default="None", max_length=30)
-	saviour_hp_flat = models.BigIntegerField(default=0, validators=[MaxValueValidator(2800)])
-	saviour_hp_var = models.FloatField(default=0, validators=[MaxValueValidator(7)])
-	saviour_line_2 = models.CharField(choices=saviour_rune_all,default="None", max_length=30)
-	saviour_line_3 = models.CharField(choices=saviour_rune_all,default="None", max_length=30)
-	saviour_line_4 = models.CharField(choices=saviour_rune_all,default="None", max_length=30)
-	saviour_line_5 = models.CharField(choices=saviour_rune_all,default="None", max_length=30)
-	recovery_hp_flat = models.BigIntegerField(default=0, validators=[MaxValueValidator(2250)])
-	recovery_line_2 = models.CharField(choices=recovery_rune_all,default="None", max_length=30)
-	recovery_line_3 = models.CharField(choices=recovery_rune_all,default="None", max_length=30)
-	recovery_line_4 = models.CharField(choices=recovery_rune_all,default="None", max_length=30)
-	recovery_line_5 = models.CharField(choices=recovery_rune_all,default="None", max_length=30)
-	courage_attack_flat = models.BigIntegerField(default=0, validators=[MaxValueValidator(750)])
-	courage_attack_var = models.FloatField(default=0, validators=[MaxValueValidator(7)])
-	selected_hero_courage_attack_flat = models.CharField(choices=all_heros,default="Atreus", max_length=15)
-	courage_hero_attack_flat = models.BigIntegerField(default=0, validators=[MaxValueValidator(180)])
-	selected_hero_courage_attack_var = models.CharField(choices=all_heros,default="Atreus", max_length=15)
-	courage_hero_attack_var = models.FloatField(default=0, validators=[MaxValueValidator(12.5)])
-	selected_hero_courage_hp_flat = models.CharField(choices=all_heros,default="Atreus", max_length=15)
-	courage_hero_hp_flat = models.BigIntegerField(default=0, validators=[MaxValueValidator(900)])
-	selected_hero_courage_hp_var = models.CharField(choices=all_heros,default="Atreus", max_length=15)
-	courage_hero_hp_var = models.FloatField(default=0, validators=[MaxValueValidator(12.5)])
-	courage_line_2 = models.CharField(choices=courage_rune_all,default="None", max_length=30)
-	courage_line_3 = models.CharField(choices=courage_rune_all,default="None", max_length=30)
-	courage_line_4 = models.CharField(choices=courage_rune_all,default="None", max_length=30)
-	courage_line_5 = models.CharField(choices=courage_rune_all,default="None", max_length=30)
-	luck_hp_flat = models.BigIntegerField(default=0, validators=[MaxValueValidator(2800)])
-	luck_hp_var = models.FloatField(default=0, validators=[MaxValueValidator(7)])
-	luck_line_2 = models.CharField(choices=luck_rune_all,default="None", max_length=30)
-	luck_line_3 = models.CharField(choices=luck_rune_all,default="None", max_length=30)
-	luck_line_4 = models.CharField(choices=luck_rune_all,default="None", max_length=30)
-	luck_line_5 = models.CharField(choices=luck_rune_all,default="None", max_length=30)
+	power_line_1 = models.CharField(choices=power_rune_all,default="none", max_length=30)
+	power_line_2 = models.CharField(choices=power_rune_all,default="none", max_length=30)
+	power_line_3 = models.CharField(choices=power_rune_all,default="none", max_length=30)
+	power_line_4 = models.CharField(choices=power_rune_all,default="none", max_length=30)
+	power_line_5 = models.CharField(choices=power_rune_all,default="none", max_length=30)
+	saviour_line_1 = models.CharField(choices=saviour_rune_all,default="none", max_length=30)
+	saviour_line_2 = models.CharField(choices=saviour_rune_all,default="none", max_length=30)
+	saviour_line_3 = models.CharField(choices=saviour_rune_all,default="none", max_length=30)
+	saviour_line_4 = models.CharField(choices=saviour_rune_all,default="none", max_length=30)
+	saviour_line_5 = models.CharField(choices=saviour_rune_all,default="none", max_length=30)
+	recovery_line_1 = models.CharField(choices=recovery_rune_all,default="none", max_length=30)
+	recovery_line_2 = models.CharField(choices=recovery_rune_all,default="none", max_length=30)
+	recovery_line_3 = models.CharField(choices=recovery_rune_all,default="none", max_length=30)
+	recovery_line_4 = models.CharField(choices=recovery_rune_all,default="none", max_length=30)
+	recovery_line_5 = models.CharField(choices=recovery_rune_all,default="none", max_length=30)
+	courage_line_1 = models.CharField(choices=courage_rune_all,default="none", max_length=30)
+	courage_line_2 = models.CharField(choices=courage_rune_all,default="none", max_length=30)
+	courage_line_3 = models.CharField(choices=courage_rune_all,default="none", max_length=30)
+	courage_line_4 = models.CharField(choices=courage_rune_all,default="none", max_length=30)
+	courage_line_5 = models.CharField(choices=courage_rune_all,default="none", max_length=30)
+	luck_line_1 = models.CharField(choices=luck_rune_all,default="none", max_length=30)
+	luck_line_2 = models.CharField(choices=luck_rune_all,default="none", max_length=30)
+	luck_line_3 = models.CharField(choices=luck_rune_all,default="none", max_length=30)
+	luck_line_4 = models.CharField(choices=luck_rune_all,default="none", max_length=30)
+	luck_line_5 = models.CharField(choices=luck_rune_all,default="none", max_length=30)
+	value_power_line_1 = models.FloatField(default=0, blank=False)
 	value_power_line_2 = models.FloatField(default=0, blank=False)
 	value_power_line_3 = models.FloatField(default=0, blank=False)
 	value_power_line_4 = models.FloatField(default=0, blank=False)
 	value_power_line_5 = models.FloatField(default=0, blank=False)
+	value_saviour_line_1 = models.FloatField(default=0, blank=False)
 	value_saviour_line_2 = models.FloatField(default=0, blank=False)
 	value_saviour_line_3 = models.FloatField(default=0, blank=False)
 	value_saviour_line_4 = models.FloatField(default=0, blank=False)
 	value_saviour_line_5 = models.FloatField(default=0, blank=False)
+	value_recovery_line_1 = models.FloatField(default=0, blank=False)
 	value_recovery_line_2 = models.FloatField(default=0, blank=False)
 	value_recovery_line_3 = models.FloatField(default=0, blank=False)
 	value_recovery_line_4 = models.FloatField(default=0, blank=False)
 	value_recovery_line_5 = models.FloatField(default=0, blank=False)
+	value_courage_line_1 = models.FloatField(default=0, blank=False)
 	value_courage_line_2 = models.FloatField(default=0, blank=False)
 	value_courage_line_3 = models.FloatField(default=0, blank=False)
 	value_courage_line_4 = models.FloatField(default=0, blank=False)
 	value_courage_line_5 = models.FloatField(default=0, blank=False)
+	value_luck_line_1 = models.FloatField(default=0, blank=False)
 	value_luck_line_2 = models.FloatField(default=0, blank=False)
 	value_luck_line_3 = models.FloatField(default=0, blank=False)
 	value_luck_line_4 = models.FloatField(default=0, blank=False)
@@ -1460,92 +1498,76 @@ class runes_table(models.Model,parentModel):
 	def dictionnaire(self):
 			return {
 				"user_profile": self.user_profile,
-				"power_attack_flat": self.power_attack_flat, 
-				"power_attack_var": self.power_attack_var, 
-				"power_line_2": self.power_line_2, 
-				"power_line_3": self.power_line_3, 
-				"power_line_4": self.power_line_4, 
-				"power_line_5": self.power_line_5, 
-				"saviour_hp_flat": self.saviour_hp_flat, 
-				"saviour_hp_var": self.saviour_hp_var, 
-				"saviour_line_2": self.saviour_line_2, 
-				"saviour_line_3": self.saviour_line_3, 
-				"saviour_line_4": self.saviour_line_4, 
-				"saviour_line_5": self.saviour_line_5, 
-				"recovery_hp_flat": self.recovery_hp_flat, 
-				"recovery_line_2": self.recovery_line_2, 
-				"recovery_line_3": self.recovery_line_3, 
-				"recovery_line_4": self.recovery_line_4, 
-				"recovery_line_5": self.recovery_line_5, 
-				"courage_attack_flat": self.courage_attack_flat, 
-				"courage_attack_var": self.courage_attack_var, 
-				"selected_hero_courage_attack_flat": self.selected_hero_courage_attack_flat,
-				"courage_hero_attack_flat": self.courage_hero_attack_flat, 
-				"selected_hero_courage_attack_var": self.selected_hero_courage_attack_var,
-				"courage_hero_attack_var": self.courage_hero_attack_var,
-				"selected_hero_courage_hp_flat": self.selected_hero_courage_hp_flat,
-				"courage_hero_hp_flat": self.courage_hero_hp_flat, 
-				"selected_hero_courage_hp_var": self.selected_hero_courage_hp_var,
-				"courage_hero_hp_var": self.courage_hero_hp_var,
-				"courage_line_2": self.courage_line_2, 
-				"courage_line_3": self.courage_line_3, 
-				"courage_line_4": self.courage_line_4, 
-				"courage_line_5": self.courage_line_5, 
-				"luck_hp_flat": self.luck_hp_flat, 
-				"luck_hp_var": self.luck_hp_var, 
-				"luck_line_2": self.luck_line_2, 
-				"luck_line_3": self.luck_line_3, 
-				"luck_line_4": self.luck_line_4, 
-				"luck_line_5": self.luck_line_5,
-				"value_power_line_2": self.value_power_line_2,
-				"value_power_line_3": self.value_power_line_3,
-				"value_power_line_4": self.value_power_line_4,
-				"value_power_line_5": self.value_power_line_5,
-				"value_saviour_line_2": self.value_saviour_line_2,
-				"value_saviour_line_3": self.value_saviour_line_3,
-				"value_saviour_line_4": self.value_saviour_line_4,
-				"value_saviour_line_5": self.value_saviour_line_5,
-				"value_recovery_line_2": self.value_recovery_line_2,
-				"value_recovery_line_3": self.value_recovery_line_3,
-				"value_recovery_line_4": self.value_recovery_line_4,
-				"value_recovery_line_5": self.value_recovery_line_5,
-				"value_courage_line_2": self.value_courage_line_2,
-				"value_courage_line_3": self.value_courage_line_3,
-				"value_courage_line_4": self.value_courage_line_4,
-				"value_courage_line_5": self.value_courage_line_5,
-				"value_luck_line_2": self.value_luck_line_2,
-				"value_luck_line_3": self.value_luck_line_3,
-				"value_luck_line_4": self.value_luck_line_4,
-				"value_luck_line_5": self.value_luck_line_5,
+				"power_line_1":self.power_line_1,
+				"power_line_2":self.power_line_2,
+				"power_line_3":self.power_line_3,
+				"power_line_4":self.power_line_4,
+				"power_line_5":self.power_line_5,
+				"saviour_line_1":self.saviour_line_1,
+				"saviour_line_2":self.saviour_line_2,
+				"saviour_line_3":self.saviour_line_3,
+				"saviour_line_4":self.saviour_line_4,
+				"saviour_line_5":self.saviour_line_5,
+				"recovery_line_1":self.recovery_line_1,
+				"recovery_line_2":self.recovery_line_2,
+				"recovery_line_3":self.recovery_line_3,
+				"recovery_line_4":self.recovery_line_4,
+				"recovery_line_5":self.recovery_line_5,
+				"courage_line_1":self.courage_line_1,
+				"courage_line_2":self.courage_line_2,
+				"courage_line_3":self.courage_line_3,
+				"courage_line_4":self.courage_line_4,
+				"courage_line_5":self.courage_line_5,
+				"luck_line_1":self.luck_line_1,
+				"luck_line_2":self.luck_line_2,
+				"luck_line_3":self.luck_line_3,
+				"luck_line_4":self.luck_line_4,
+				"luck_line_5":self.luck_line_5,
+				"value_power_line_1":self.value_power_line_1,
+				"value_power_line_2":self.value_power_line_2,
+				"value_power_line_3":self.value_power_line_3,
+				"value_power_line_4":self.value_power_line_4,
+				"value_power_line_5":self.value_power_line_5,
+				"value_saviour_line_1":self.value_saviour_line_1,
+				"value_saviour_line_2":self.value_saviour_line_2,
+				"value_saviour_line_3":self.value_saviour_line_3,
+				"value_saviour_line_4":self.value_saviour_line_4,
+				"value_saviour_line_5":self.value_saviour_line_5,
+				"value_recovery_line_1":self.value_recovery_line_1,
+				"value_recovery_line_2":self.value_recovery_line_2,
+				"value_recovery_line_3":self.value_recovery_line_3,
+				"value_recovery_line_4":self.value_recovery_line_4,
+				"value_recovery_line_5":self.value_recovery_line_5,
+				"value_courage_line_1":self.value_courage_line_1,
+				"value_courage_line_2":self.value_courage_line_2,
+				"value_courage_line_3":self.value_courage_line_3,
+				"value_courage_line_4":self.value_courage_line_4,
+				"value_courage_line_5":self.value_courage_line_5,
+				"value_luck_line_1":self.value_luck_line_1,
+				"value_luck_line_2":self.value_luck_line_2,
+				"value_luck_line_3":self.value_luck_line_3,
+				"value_luck_line_4":self.value_luck_line_4,
+				"value_luck_line_5":self.value_luck_line_5,
 			}
 	def __str__(self):
 		chaine = f"{self.user_profile.ingame_id} | {self.user_profile.ingame_name}"
 		return chaine
 
-	def CourageBoostHero(self,heros_equipped):
-		courage_hero = {
-			"current_hero_atk_flat":str(self.courage_hero_attack_flat) + "_" + str(self.selected_hero_courage_attack_flat),
-			"current_hero_atk_var":str(self.courage_hero_attack_var/100) + "_" + str(self.selected_hero_courage_attack_var),
-			"current_hero_hp_flat":str(self.courage_hero_hp_flat) + "_" + str(self.selected_hero_courage_hp_flat),
-			"current_hero_hp_var":str(self.courage_hero_hp_var/100) + "_" + str(self.selected_hero_courage_hp_var)
-		}
-		for k,v in courage_hero.items():
-			hero = v.split("_")[1]
-			boost = v.split("_")[0]
-			if heros_equipped == hero:
-				courage_hero.update({k:boost})
-			else:
-				courage_hero.update({k:0})
-		return courage_hero
 	
 	def getRunesDmgCalc(self):
 		return {
-			"atk_power_flat": self.power_attack_flat,
-			"atk_power_var": self.power_attack_var,
-			"atk_courage_flat": self.courage_attack_flat,
-			"atk_courage_var": self.courage_attack_var,
-			"courage_hero_atk_flat": self.courage_hero_attack_flat,
-			"courage_hero_atk_var": self.courage_hero_attack_var,
+			"courage_first_select": self.courage_line_1,
+			"courage_first_input": self.value_courage_line_1,
+			"courage_second_select": self.courage_line_2,
+			"courage_second_input": self.value_courage_line_2,
+			"courage_third_select": self.courage_line_3,
+			"courage_third_input": self.value_courage_line_3,
+			"courage_fourth_select": self.courage_line_4,
+			"courage_fourth_input": self.value_courage_line_4,
+			"courage_fifth_select": self.courage_line_5,
+			"courage_fifth_input": self.value_courage_line_5,
+			"power_first_select": self.power_line_1,
+			"power_first_input": self.value_power_line_1,
 			"power_second_select": self.power_line_2,
 			"power_second_input": self.value_power_line_2,
 			"power_third_select": self.power_line_3,
@@ -1556,52 +1578,45 @@ class runes_table(models.Model,parentModel):
 			"power_fifth_input": self.value_power_line_5
 		}
 
-	def getValueLine(self):
+	def getValueLinePower(self):
 		return {
-			"flat_dmg_airborne":0,
-			"var_dmg_airborne":0.0,
-			"flat_dmg_ground":0,
-			"var_dmg_ground":0.0,
-			"flat_dmg_melee":0,
-			"var_dmg_melee":0.0,
-			"flat_dmg_ranged":0,
-			"var_dmg_ranged":0.0,
-			"flat_dmg_boss":0,
-			"var_dmg_boss":0.0,
-			"flat_dmg_mob":0,
-			"var_dmg_mob":0.0,
-			"var_dmg_hero":0.0,
-			"var_all_dmg":0.0,
-			"var_elemental_dmg":0.0,
-			"var_crit_rate":0.0,
-			"var_crit_dmg":0.0,
-			"dodge":0.0,
-			"var_enhanced_eqpm":0.0,
-			"flat_heal_red_heart":0,
-			"var_heal_red_heart":0.0,
-			"flat_hp_drop":0,
-			"var_hp_drop":0.0,
-			## TODO dict.get("result_stats1","None")
+			self.power_line_1: self.value_power_line_1,
 			self.power_line_2: self.value_power_line_2,
 			self.power_line_3: self.value_power_line_3,
 			self.power_line_4: self.value_power_line_4,
-			self.power_line_5: self.value_power_line_5,
+			self.power_line_5: self.value_power_line_5
+		}
+	def getValueLineSaviour(self):
+		return {
+			self.saviour_line_1: self.value_saviour_line_1,
 			self.saviour_line_2: self.value_saviour_line_2,
 			self.saviour_line_3: self.value_saviour_line_3,
 			self.saviour_line_4: self.value_saviour_line_4,
 			self.saviour_line_5: self.value_saviour_line_5,
+		}
+	def getValueLineRecovery(self):
+		return {
+			self.recovery_line_1: self.value_recovery_line_1,
 			self.recovery_line_2: self.value_recovery_line_2,
 			self.recovery_line_3: self.value_recovery_line_3,
 			self.recovery_line_4: self.value_recovery_line_4,
 			self.recovery_line_5: self.value_recovery_line_5,
+		}
+	def getValueLineCourage(self):
+		return {
+			self.courage_line_1: self.value_courage_line_1,
 			self.courage_line_2: self.value_courage_line_2,
 			self.courage_line_3: self.value_courage_line_3,
 			self.courage_line_4: self.value_courage_line_4,
 			self.courage_line_5: self.value_courage_line_5,
+		}
+	def getValueLineLuck(self):
+		return {
+			self.luck_line_1: self.value_luck_line_1,
 			self.luck_line_2: self.value_luck_line_2,
 			self.luck_line_3: self.value_luck_line_3,
 			self.luck_line_4: self.value_luck_line_4,
-			self.luck_line_5: self.value_luck_line_5,
+			self.luck_line_5: self.value_luck_line_5
 		}
 
 
@@ -1720,49 +1735,29 @@ class dmg_calc_table(models.Model,parentModel):
 		chaine = f"{self.user_profile.ingame_id} | {self.user_profile.ingame_name}"
 		return chaine
 
-	def calculDamage(self, **kwargs):
-		if len(list(kwargs)) == 0:
-			crit_dmg = int(self.crit_dmg)/100
-			crit_rate = self.crit_rate
-			mob_ground_melee = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_ground) + int(self.flat_dmg_vs_mobs) + int(self.flat_dmg_vs_melee) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_melee/100) + float(self.var_dmg_vs_ground/100) + float(1))*(float(self.var_dmg_vs_mobs/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-			mob_ground_range = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_ground) + int(self.flat_dmg_vs_mobs) + int(self.flat_dmg_vs_range) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_range/100) + float(self.var_dmg_vs_ground/100) + float(1))*(float(self.var_dmg_vs_mobs/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-			mob_airborne_melee = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_airborne) + int(self.flat_dmg_vs_mobs) + int(self.flat_dmg_vs_melee) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_melee/100) + float(self.var_dmg_vs_airborne/100) + float(1))*(float(self.var_dmg_vs_mobs/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-			mob_airborne_range = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_airborne) + int(self.flat_dmg_vs_mobs) + int(self.flat_dmg_vs_range) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_range/100) + float(self.var_dmg_vs_airborne/100) + float(1))*(float(self.var_dmg_vs_mobs/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-			boss_ground_melee = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_ground) + int(self.flat_dmg_vs_boss) + int(self.flat_dmg_vs_melee) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_melee/100) + float(self.var_dmg_vs_ground/100) + float(1))*(float(self.var_dmg_vs_boss/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-			boss_ground_range = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_ground) + int(self.flat_dmg_vs_boss) + int(self.flat_dmg_vs_range) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_range/100) + float(self.var_dmg_vs_ground/100) + float(1))*(float(self.var_dmg_vs_boss/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-			boss_airborne_melee = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_airborne) + int(self.flat_dmg_vs_boss) + int(self.flat_dmg_vs_melee) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_melee/100) + float(self.var_dmg_vs_airborne/100) + float(1))*(float(self.var_dmg_vs_boss/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-			boss_airborne_range = round((int(self.user_profile.global_atk_save) + int(self.flat_dmg_vs_airborne) + int(self.flat_dmg_vs_boss) + int(self.flat_dmg_vs_range) + int(self.flat_dmg_all))*(float(self.var_dmg_vs_range/100) + float(self.var_dmg_vs_airborne/100) + float(1))*(float(self.var_dmg_vs_boss/100) + float(1))*(float(self.var_dmg_all/100) + float(1))*(float(self.weapon_coeff)))
-		else:
-			crit_dmg = int(kwargs['crit_dmg'])/100
-			crit_rate = kwargs['crit_rate']
-			mob_ground_melee = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_ground']) + int(kwargs['flat_dmg_vs_mobs']) + int(kwargs['flat_dmg_vs_melee']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_melee']/100) + float(kwargs['var_dmg_vs_ground']/100) + float(1))*(float(kwargs['var_dmg_vs_mobs']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
-			mob_ground_range = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_ground']) + int(kwargs['flat_dmg_vs_mobs']) + int(kwargs['flat_dmg_vs_range']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_range']/100) + float(kwargs['var_dmg_vs_ground']/100) + float(1))*(float(kwargs['var_dmg_vs_mobs']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
-			mob_airborne_melee = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_airborne']) + int(kwargs['flat_dmg_vs_mobs']) + int(kwargs['flat_dmg_vs_melee']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_melee']/100) + float(kwargs['var_dmg_vs_airborne']/100) + float(1))*(float(kwargs['var_dmg_vs_mobs']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
-			mob_airborne_range = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_airborne']) + int(kwargs['flat_dmg_vs_mobs']) + int(kwargs['flat_dmg_vs_range']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_range']/100) + float(kwargs['var_dmg_vs_airborne']/100) + float(1))*(float(kwargs['var_dmg_vs_mobs']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
-			boss_ground_melee = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_ground']) + int(kwargs['flat_dmg_vs_boss']) + int(kwargs['flat_dmg_vs_melee']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_melee']/100) + float(kwargs['var_dmg_vs_ground']/100) + float(1))*(float(kwargs['var_dmg_vs_boss']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
-			boss_ground_range = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_ground']) + int(kwargs['flat_dmg_vs_boss']) + int(kwargs['flat_dmg_vs_range']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_range']/100) + float(kwargs['var_dmg_vs_ground']/100) + float(1))*(float(kwargs['var_dmg_vs_boss']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
-			boss_airborne_melee = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_airborne']) + int(kwargs['flat_dmg_vs_boss']) + int(kwargs['flat_dmg_vs_melee']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_melee']/100) + float(kwargs['var_dmg_vs_airborne']/100) + float(1))*(float(kwargs['var_dmg_vs_boss']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
-			boss_airborne_range = round((int(kwargs['global_atk_save']) + int(kwargs['flat_dmg_vs_airborne']) + int(kwargs['flat_dmg_vs_boss']) + int(kwargs['flat_dmg_vs_range']) + int(kwargs['flat_dmg_all']))*(float(kwargs['var_dmg_vs_range']/100) + float(kwargs['var_dmg_vs_airborne']/100) + float(1))*(float(kwargs['var_dmg_vs_boss']/100) + float(1))*(float(kwargs['var_dmg_all']/100) + float(1))*(float(self.weapon_coeff)))
-		mob_ground_melee_damage = [mob_ground_melee,int(mob_ground_melee*crit_dmg)]
-		mob_ground_range_damage = [mob_ground_range,int(mob_ground_range*crit_dmg)]
-		mob_airborne_melee_damage = [mob_airborne_melee,int(mob_airborne_melee*crit_dmg)]
-		mob_airborne_range_damage = [mob_airborne_range,int(mob_airborne_range*crit_dmg)]
-		boss_ground_melee_damage = [boss_ground_melee,int(boss_ground_melee*crit_dmg)]
-		boss_ground_range_damage = [boss_ground_range,int(boss_ground_range*crit_dmg)]
-		boss_airborne_melee_damage = [boss_airborne_melee,int(boss_airborne_melee*crit_dmg)]
-		boss_airborne_range_damage = [boss_airborne_range,int(boss_airborne_range*crit_dmg)]
+	def calculDamage(self, **kwargs) -> dict:
+		crit_dmg = float(kwargs.get("crit_dmg",self.crit_dmg))/100
+		crit_rate = kwargs.get("crit_rate",self.crit_rate)
+		mob_ground_melee = round((int(kwargs.get("global_atk_save",self.user_profile.global_atk_save)) + int(kwargs.get("flat_dmg_vs_ground",self.flat_dmg_vs_ground)) + int(kwargs.get("flat_dmg_vs_mobs",self.flat_dmg_vs_mobs)) + int(kwargs.get("flat_dmg_vs_melee",self.flat_dmg_vs_melee)) + int(kwargs.get("flat_dmg_all",self.flat_dmg_all)))*(float(kwargs.get("var_dmg_vs_melee",self.var_dmg_vs_melee)/100) + float(kwargs.get("var_dmg_vs_ground",self.var_dmg_vs_ground)/100) + float(1))*(float(kwargs.get("var_dmg_vs_mobs",self.var_dmg_vs_mobs)/100) + float(1))*(float(kwargs.get("var_dmg_all",self.var_dmg_all)/100) + float(1))*(float(kwargs.get("weapon_coeff",self.weapon_coeff))))
+		mob_ground_range = round((int(kwargs.get("global_atk_save",self.user_profile.global_atk_save)) + int(kwargs.get("flat_dmg_vs_ground",self.flat_dmg_vs_ground)) + int(kwargs.get("flat_dmg_vs_mobs",self.flat_dmg_vs_mobs)) + int(kwargs.get("flat_dmg_vs_range",self.flat_dmg_vs_range)) + int(kwargs.get("flat_dmg_all",self.flat_dmg_all)))*(float(kwargs.get("var_dmg_vs_range",self.var_dmg_vs_range)/100) + float(kwargs.get("var_dmg_vs_ground",self.var_dmg_vs_ground)/100) + float(1))*(float(kwargs.get("var_dmg_vs_mobs",self.var_dmg_vs_mobs)/100) + float(1))*(float(kwargs.get("var_dmg_all",self.var_dmg_all)/100) + float(1))*(float(kwargs.get("weapon_coeff",self.weapon_coeff))))
+		mob_airborne_melee = round((int(kwargs.get("global_atk_save",self.user_profile.global_atk_save)) + int(kwargs.get("flat_dmg_vs_airborne",self.flat_dmg_vs_airborne)) + int(kwargs.get("flat_dmg_vs_mobs",self.flat_dmg_vs_mobs)) + int(kwargs.get("flat_dmg_vs_melee",self.flat_dmg_vs_melee)) + int(kwargs.get("flat_dmg_all",self.flat_dmg_all)))*(float(kwargs.get("var_dmg_vs_melee",self.var_dmg_vs_melee)/100) + float(kwargs.get("var_dmg_vs_airborne",self.var_dmg_vs_airborne)/100) + float(1))*(float(kwargs.get("var_dmg_vs_mobs",self.var_dmg_vs_mobs)/100) + float(1))*(float(kwargs.get("var_dmg_all",self.var_dmg_all)/100) + float(1))*(float(kwargs.get("weapon_coeff",self.weapon_coeff))))
+		mob_airborne_range = round((int(kwargs.get("global_atk_save",self.user_profile.global_atk_save)) + int(kwargs.get("flat_dmg_vs_airborne",self.flat_dmg_vs_airborne)) + int(kwargs.get("flat_dmg_vs_mobs",self.flat_dmg_vs_mobs)) + int(kwargs.get("flat_dmg_vs_range",self.flat_dmg_vs_range)) + int(kwargs.get("flat_dmg_all",self.flat_dmg_all)))*(float(kwargs.get("var_dmg_vs_range",self.var_dmg_vs_range)/100) + float(kwargs.get("var_dmg_vs_airborne",self.var_dmg_vs_airborne)/100) + float(1))*(float(kwargs.get("var_dmg_vs_mobs",self.var_dmg_vs_mobs)/100) + float(1))*(float(kwargs.get("var_dmg_all",self.var_dmg_all)/100) + float(1))*(float(kwargs.get("weapon_coeff",self.weapon_coeff))))
+		boss_ground_melee = round((int(kwargs.get("global_atk_save",self.user_profile.global_atk_save)) + int(kwargs.get("flat_dmg_vs_ground",self.flat_dmg_vs_ground)) + int(kwargs.get("flat_dmg_vs_boss",self.flat_dmg_vs_boss)) + int(kwargs.get("flat_dmg_vs_melee",self.flat_dmg_vs_melee)) + int(kwargs.get("flat_dmg_all",self.flat_dmg_all)))*(float(kwargs.get("var_dmg_vs_melee",self.var_dmg_vs_melee)/100) + float(kwargs.get("var_dmg_vs_ground",self.var_dmg_vs_ground)/100) + float(1))*(float(kwargs.get("var_dmg_vs_boss",self.var_dmg_vs_boss)/100) + float(1))*(float(kwargs.get("var_dmg_all",self.var_dmg_all)/100) + float(1))*(float(kwargs.get("weapon_coeff",self.weapon_coeff))))
+		boss_ground_range = round((int(kwargs.get("global_atk_save",self.user_profile.global_atk_save)) + int(kwargs.get("flat_dmg_vs_ground",self.flat_dmg_vs_ground)) + int(kwargs.get("flat_dmg_vs_boss",self.flat_dmg_vs_boss)) + int(kwargs.get("flat_dmg_vs_range",self.flat_dmg_vs_range)) + int(kwargs.get("flat_dmg_all",self.flat_dmg_all)))*(float(kwargs.get("var_dmg_vs_range",self.var_dmg_vs_range)/100) + float(kwargs.get("var_dmg_vs_ground",self.var_dmg_vs_ground)/100) + float(1))*(float(kwargs.get("var_dmg_vs_boss",self.var_dmg_vs_boss)/100) + float(1))*(float(kwargs.get("var_dmg_all",self.var_dmg_all)/100) + float(1))*(float(kwargs.get("weapon_coeff",self.weapon_coeff))))
+		boss_airborne_melee = round((int(kwargs.get("global_atk_save",self.user_profile.global_atk_save)) + int(kwargs.get("flat_dmg_vs_airborne",self.flat_dmg_vs_airborne)) + int(kwargs.get("flat_dmg_vs_boss",self.flat_dmg_vs_boss)) + int(kwargs.get("flat_dmg_vs_melee",self.flat_dmg_vs_melee)) + int(kwargs.get("flat_dmg_all",self.flat_dmg_all)))*(float(kwargs.get("var_dmg_vs_melee",self.var_dmg_vs_melee)/100) + float(kwargs.get("var_dmg_vs_airborne",self.var_dmg_vs_airborne)/100) + float(1))*(float(kwargs.get("var_dmg_vs_boss",self.var_dmg_vs_boss)/100) + float(1))*(float(kwargs.get("var_dmg_all",self.var_dmg_all)/100) + float(1))*(float(kwargs.get("weapon_coeff",self.weapon_coeff))))
+		boss_airborne_range = round((int(kwargs.get("global_atk_save",self.user_profile.global_atk_save)) + int(kwargs.get("flat_dmg_vs_airborne",self.flat_dmg_vs_airborne)) + int(kwargs.get("flat_dmg_vs_boss",self.flat_dmg_vs_boss)) + int(kwargs.get("flat_dmg_vs_range",self.flat_dmg_vs_range)) + int(kwargs.get("flat_dmg_all",self.flat_dmg_all)))*(float(kwargs.get("var_dmg_vs_range",self.var_dmg_vs_range)/100) + float(kwargs.get("var_dmg_vs_airborne",self.var_dmg_vs_airborne)/100) + float(1))*(float(kwargs.get("var_dmg_vs_boss",self.var_dmg_vs_boss)/100) + float(1))*(float(kwargs.get("var_dmg_all",self.var_dmg_all)/100) + float(1))*(float(kwargs.get("weapon_coeff",self.weapon_coeff))))
 		averageDamage = round(
-			int(mob_ground_melee_damage[0])+
-			int(mob_ground_range_damage[0])+
-			int(mob_airborne_melee_damage[0])+
-			int(mob_airborne_range_damage[0])+
-			int(boss_ground_melee_damage[0])+
-			int(boss_ground_range_damage[0])+
-			int(boss_airborne_melee_damage[0])+
-			int(boss_airborne_range_damage[0])
+			int(mob_ground_melee)+
+			int(mob_ground_range)+
+			int(mob_airborne_melee)+
+			int(mob_airborne_range)+
+			int(boss_ground_melee)+
+			int(boss_ground_range)+
+			int(boss_airborne_melee)+
+			int(boss_airborne_range)
 		)/8
 		averageDamageAll = round(averageDamage * (1 + (crit_rate/100) * (crit_dmg - 1)))
-		return {
+		result = {
 			"averageDamageAll": averageDamageAll,
 			"mob_ground_melee_damage": [mob_ground_melee,int(mob_ground_melee*crit_dmg)],
 			"mob_ground_range_damage": [mob_ground_range,int(mob_ground_range*crit_dmg)],
@@ -1775,78 +1770,115 @@ class dmg_calc_table(models.Model,parentModel):
 			"crit_dmg": crit_dmg*100,
 			"crit_rate": crit_rate,
 		}
+		return result
 
 
 class medals_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
-	medals_01 = models.BooleanField(blank=True, default=False)
-	medals_02 = models.BooleanField(blank=True, default=False)
-	medals_03 = models.BooleanField(blank=True, default=False)
-	medals_04 = models.BooleanField(blank=True, default=False)
-	medals_05 = models.BooleanField(blank=True, default=False)
-	medals_06 = models.BooleanField(blank=True, default=False)
-	medals_07 = models.BooleanField(blank=True, default=False)
-	medals_08 = models.BooleanField(blank=True, default=False)
-	medals_09 = models.BooleanField(blank=True, default=False)
-	medals_10 = models.BooleanField(blank=True, default=False)
-	medals_11 = models.BooleanField(blank=True, default=False)
-	medals_12 = models.BooleanField(blank=True, default=False)
-	medals_13 = models.BooleanField(blank=True, default=False)
-	medals_14 = models.BooleanField(blank=True, default=False)
-	medals_15 = models.BooleanField(blank=True, default=False)
-	medals_16 = models.BooleanField(blank=True, default=False)
-	medals_17 = models.BooleanField(blank=True, default=False)
-	medals_18 = models.BooleanField(blank=True, default=False)
-	medals_19 = models.BooleanField(blank=True, default=False)
-	medals_20 = models.BooleanField(blank=True, default=False)
-	medals_21 = models.BooleanField(blank=True, default=False)
-	medals_22 = models.BooleanField(blank=True, default=False)
-	medals_23 = models.BooleanField(blank=True, default=False)
-	medals_24 = models.BooleanField(blank=True, default=False)
-	medals_25 = models.BooleanField(blank=True, default=False)
-	medals_26 = models.BooleanField(blank=True, default=False)
-	medals_27 = models.BooleanField(blank=True, default=False)
-	medals_28 = models.BooleanField(blank=True, default=False)
-	medals_29 = models.BooleanField(blank=True, default=False)
-	medals_30 = models.BooleanField(blank=True, default=False)
-	medals_31 = models.BooleanField(blank=True, default=False)
-	medals_32 = models.BooleanField(blank=True, default=False)
+	medals_1001 = models.BooleanField(blank=True, default=False)
+	medals_1002 = models.BooleanField(blank=True, default=False)
+	medals_1003 = models.BooleanField(blank=True, default=False)
+	medals_1004 = models.BooleanField(blank=True, default=False)
+	medals_1005 = models.BooleanField(blank=True, default=False)
+	medals_1006 = models.BooleanField(blank=True, default=False)
+	medals_1008 = models.BooleanField(blank=True, default=False)
+	medals_1009 = models.BooleanField(blank=True, default=False)
+	medals_1010 = models.BooleanField(blank=True, default=False)
+	medals_1011 = models.BooleanField(blank=True, default=False)
+	medals_1012 = models.BooleanField(blank=True, default=False)
+	medals_2001 = models.BooleanField(blank=True, default=False)
+	medals_2002 = models.BooleanField(blank=True, default=False)
+	medals_2003 = models.BooleanField(blank=True, default=False)
+	medals_2004 = models.BooleanField(blank=True, default=False)
+	medals_2005 = models.BooleanField(blank=True, default=False)
+	medals_2006 = models.BooleanField(blank=True, default=False)
+	medals_2007 = models.BooleanField(blank=True, default=False)
+	medals_2008 = models.BooleanField(blank=True, default=False)
+	medals_2009 = models.BooleanField(blank=True, default=False)
+	medals_2010 = models.BooleanField(blank=True, default=False)
+	medals_2011 = models.BooleanField(blank=True, default=False)
+	medals_2012 = models.BooleanField(blank=True, default=False)
+	medals_2013 = models.BooleanField(blank=True, default=False)
+	medals_2014 = models.BooleanField(blank=True, default=False)
+	medals_3001 = models.BooleanField(blank=True, default=False)
+	medals_3002 = models.BooleanField(blank=True, default=False)
+	medals_3003 = models.BooleanField(blank=True, default=False)
+	medals_3004 = models.BooleanField(blank=True, default=False)
+	medals_3005 = models.BooleanField(blank=True, default=False)
+	medals_3006 = models.BooleanField(blank=True, default=False)
+	medals_3007 = models.BooleanField(blank=True, default=False)
+	medals_3008 = models.BooleanField(blank=True, default=False)
+	medals_3009 = models.BooleanField(blank=True, default=False)
+	medals_3010 = models.BooleanField(blank=True, default=False)
+	medals_3019 = models.BooleanField(blank=True, default=False)
+	medals_3020 = models.BooleanField(blank=True, default=False)
+	medals_3021 = models.BooleanField(blank=True, default=False)
+	medals_3022 = models.BooleanField(blank=True, default=False)
+	medals_3023 = models.BooleanField(blank=True, default=False)
+	medals_3024 = models.BooleanField(blank=True, default=False)
+	medals_3025 = models.BooleanField(blank=True, default=False)
+	medals_3026 = models.BooleanField(blank=True, default=False)
+	medals_3027 = models.BooleanField(blank=True, default=False)
+	medals_3028 = models.BooleanField(blank=True, default=False)
+	medals_3029 = models.BooleanField(blank=True, default=False)
+	medals_3030 = models.BooleanField(blank=True, default=False)
+	medals_3034 = models.BooleanField(blank=True, default=False)
+	medals_3035 = models.BooleanField(blank=True, default=False)
+	medals_3036 = models.BooleanField(blank=True, default=False)
 
 	def dictionnaire(self):
 		return {
 				"user_profile": self.user_profile,
-				"medals_01": self.medals_01,
-				"medals_02": self.medals_02,
-				"medals_03": self.medals_03,
-				"medals_04": self.medals_04,
-				"medals_05": self.medals_05,
-				"medals_06": self.medals_06,
-				"medals_07": self.medals_07,
-				"medals_08": self.medals_08,
-				"medals_09": self.medals_09,
-				"medals_10": self.medals_10,
-				"medals_11": self.medals_11,
-				"medals_12": self.medals_12,
-				"medals_13": self.medals_13,
-				"medals_14": self.medals_14,
-				"medals_15": self.medals_15,
-				"medals_16": self.medals_16,
-				"medals_17": self.medals_17,
-				"medals_18": self.medals_18,
-				"medals_19": self.medals_19,
-				"medals_20": self.medals_20,
-				"medals_21": self.medals_21,
-				"medals_22": self.medals_22,
-				"medals_23": self.medals_23,
-				"medals_24": self.medals_24,
-				"medals_25": self.medals_25,
-				"medals_26": self.medals_26,
-				"medals_27": self.medals_27,
-				"medals_28": self.medals_28,
-				"medals_29": self.medals_29,
-				"medals_30": self.medals_30,
-				"medals_31": self.medals_31,
-				"medals_32": self.medals_32
+				"medals_1001": self.medals_1001,
+				"medals_1002": self.medals_1002,
+				"medals_1003": self.medals_1003,
+				"medals_1004": self.medals_1004,
+				"medals_1005": self.medals_1005,
+				"medals_1006": self.medals_1006,
+				"medals_1008": self.medals_1008,
+				"medals_1009": self.medals_1009,
+				"medals_1010": self.medals_1010,
+				"medals_1011": self.medals_1011,
+				"medals_1012": self.medals_1012,
+				"medals_2001": self.medals_2001,
+				"medals_2002": self.medals_2002,
+				"medals_2003": self.medals_2003,
+				"medals_2004": self.medals_2004,
+				"medals_2005": self.medals_2005,
+				"medals_2006": self.medals_2006,
+				"medals_2007": self.medals_2007,
+				"medals_2008": self.medals_2008,
+				"medals_2009": self.medals_2009,
+				"medals_2010": self.medals_2010,
+				"medals_2011": self.medals_2011,
+				"medals_2012": self.medals_2012,
+				"medals_2013": self.medals_2013,
+				"medals_2014": self.medals_2014,
+				"medals_3001": self.medals_3001,
+				"medals_3002": self.medals_3002,
+				"medals_3003": self.medals_3003,
+				"medals_3004": self.medals_3004,
+				"medals_3005": self.medals_3005,
+				"medals_3006": self.medals_3006,
+				"medals_3007": self.medals_3007,
+				"medals_3008": self.medals_3008,
+				"medals_3009": self.medals_3009,
+				"medals_3010": self.medals_3010,
+				"medals_3019": self.medals_3019,
+				"medals_3020": self.medals_3020,
+				"medals_3021": self.medals_3021,
+				"medals_3022": self.medals_3022,
+				"medals_3023": self.medals_3023,
+				"medals_3024": self.medals_3024,
+				"medals_3025": self.medals_3025,
+				"medals_3026": self.medals_3026,
+				"medals_3027": self.medals_3027,
+				"medals_3028": self.medals_3028,
+				"medals_3029": self.medals_3029,
+				"medals_3030": self.medals_3030,
+				"medals_3034": self.medals_3034,
+				"medals_3035": self.medals_3035,
+				"medals_3036": self.medals_3036,
 			}
 
 	def __str__(self):
@@ -1875,12 +1907,12 @@ class medals_table(models.Model,parentModel):
 				elif type_medal_boost == "Hp":
 					hp += MedalsStats["stats_" + str(medal[1])]
 				elif type_medal_boost == "Hp%":
-					attack_var += MedalsStats["stats_" + str(medal[1])]
+					hp_var += MedalsStats["stats_" + str(medal[1])]
 				elif type_medal_boost == "Hero Base Enhanced":
 					hero_base_enhanced += MedalsStats["stats_" + str(medal[1])]
 				elif type_medal_boost == "Enhance Equipment":
 					enhance_equipment += MedalsStats["stats_" + str(medal[1])]
-		return {
+		result = {
 			"attack":attack,
 			"attack_var":attack_var,
 			"hp":hp,
@@ -1888,132 +1920,266 @@ class medals_table(models.Model,parentModel):
 			"hero_base_enhanced":hero_base_enhanced,
 			"enhance_equipment":enhance_equipment
 		}
+		if DEBUG_STATS:
+			print(f"\nMedals Stats :{result}\n")
+		return result
 
 class relics_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
-	wraith_mask = models.CharField(max_length=15, blank=False, default="0-0-0")
-	clown_mask = models.CharField(max_length=15, blank=False, default="0-0-0")
-	princess_teddy_bear = models.CharField(max_length=10, blank=False, default="0-0")
-	belt_of_might = models.CharField(max_length=15, blank=False, default="0-0-0")
-	beastmaster_whistle = models.CharField(max_length=15, blank=False, default="0-0-0")
-	archmage_robe = models.CharField(max_length=15, blank=False, default="0-0-0")
-	shimmering_gem = models.CharField(max_length=10, blank=False, default="0-0")
-	bloom_of_eternity = models.CharField(max_length=10, blank=False, default="0-0")
-	challenger_headband = models.CharField(max_length=10, blank=False, default="0-0")
-	jade_gobelet = models.CharField(max_length=10, blank=False, default="0-0")
-	veteran_plate = models.CharField(max_length=10, blank=False, default="0-0")
-	dragonscale = models.CharField(max_length=15, blank=False, default="0-0-0")
-	dragon_tooth = models.CharField(max_length=10, blank=False, default="0-0")
-	scholar_telescope = models.CharField(max_length=5, blank=False, default="0")
-	pirate_shank = models.CharField(max_length=10, blank=False, default="0-0")
-	giant_greatsword = models.CharField(max_length=15, blank=False, default="0-0-0")
-	healing_potion = models.CharField(max_length=5, blank=False, default="0")
-	whirlwind_mauler = models.CharField(max_length=10, blank=False, default="0-0")
-	special_lance = models.CharField(max_length=15, blank=False, default="0-0-0")
-	precision_slingshot = models.CharField(max_length=10, blank=False, default="0-0")
-	supreme_trinity_alpha = models.CharField(max_length=15, blank=False, default="0-0-0")
-	golden_apple = models.CharField(max_length=15, blank=False, default="0-0-0")
-	ancient_stele = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	philosopher_stone = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	dragon_heart = models.CharField(max_length=15, blank=False, default="0-0-0")
-	spectral_duality = models.CharField(max_length=15, blank=False, default="0-0-0")
-	mystic_emblem = models.CharField(max_length=15, blank=False, default="0-0-0")
-	immortal_brooch = models.CharField(max_length=15, blank=False, default="0-0-0")
-	golden_statue = models.CharField(max_length=15, blank=False, default="0-0-0")
-	smilling_mask = models.CharField(max_length=15, blank=False, default="0-0-0")
-	unmerciful_mask = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	holy_water = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	book_of_the_dead = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	psionist_treasure = models.CharField(max_length=10, blank=False, default="0-0")
-	book_of_archery = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	book_of_bravery = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	angelic_heart = models.CharField(max_length=10, blank=False, default="0-0")
-	devil_whisper = models.CharField(max_length=15, blank=False, default="0-0-0")
-	stone_of_wisdom = models.CharField(max_length=5, blank=False, default="0")
-	empyrean_mirror = models.CharField(max_length=15, blank=False, default="0-0-0")
-	fabled_archer_arrow = models.CharField(max_length=15, blank=False, default="0-0-0")
-	shiny_gemmed_belt = models.CharField(max_length=10, blank=False, default="0-0")
-	mythril_flux_mail = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	stealth_boots = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	assassin_dagger = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	gold_bunny = models.CharField(max_length=15, blank=False, default="0-0-0")
-	genesis_staff = models.CharField(max_length=15, blank=False, default="0-0-0")
-	bloodstained_sword = models.CharField(max_length=25, blank=False, default="0-0-0-0-0")
-	starcluster_rage = models.CharField(max_length=25, blank=False, default="0-0-0-0-0")
-	elven_king_cape = models.CharField(max_length=25, blank=False, default="0-0-0-0-0")
-	spear_of_yggdrasil = models.CharField(max_length=25, blank=False, default="0-0-0-0-0")
-	dragon_gem = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	life_crown = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	sand_of_time = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	first_lightning = models.CharField(max_length=15, blank=False, default="0-0-0")
-	oracle_quill = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	bloodthirsty_grail = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-	healing_grail = models.CharField(max_length=15, blank=False, default="0-0-0")
-	cupids_necklace = models.CharField(max_length=20, blank=False, default="0-0-0-0")
-
-
+	wraith_mask_level = models.IntegerField(default=0, choices=relics_level)
+	wraith_mask_star = models.IntegerField(default=0, choices=rare_relics_star)
+	wraith_mask_effective = models.FloatField(default=0,validators=[MaxValueValidator(420)])
+	clown_mask_level = models.IntegerField(default=0, choices=relics_level)
+	clown_mask_star = models.IntegerField(default=0, choices=rare_relics_star)
+	clown_mask_effective = models.FloatField(default=0,validators=[MaxValueValidator(420)])
+	princess_teddy_bear_level = models.IntegerField(default=0, choices=relics_level)
+	princess_teddy_bear_star = models.IntegerField(default=0, choices=rare_relics_star)
+	princess_teddy_bear_effective = models.FloatField(default=0,validators=[MaxValueValidator(1600)])
+	belt_of_might_level = models.IntegerField(default=0, choices=relics_level)
+	belt_of_might_star = models.IntegerField(default=0, choices=rare_relics_star)
+	belt_of_might_effective = models.FloatField(default=0,validators=[MaxValueValidator(1600)])
+	beastmaster_whistle_level = models.IntegerField(default=0, choices=relics_level)
+	beastmaster_whistle_star = models.IntegerField(default=0, choices=rare_relics_star)
+	beastmaster_whistle_effective = models.FloatField(default=0,validators=[MaxValueValidator(1600)])
+	archmage_robe_level = models.IntegerField(default=0, choices=relics_level)
+	archmage_robe_star = models.IntegerField(default=0, choices=rare_relics_star)
+	archmage_robe_effective = models.FloatField(default=0,validators=[MaxValueValidator(1600)])
+	shimmering_gem_level = models.IntegerField(default=0, choices=relics_level)
+	shimmering_gem_star = models.IntegerField(default=0, choices=rare_relics_star)
+	bloom_of_eternity_level = models.IntegerField(default=0, choices=relics_level)
+	bloom_of_eternity_star = models.IntegerField(default=0, choices=rare_relics_star)
+	bloom_of_eternity_effective = models.FloatField(default=0,validators=[MaxValueValidator(1600)])
+	challenger_headband_level = models.IntegerField(default=0, choices=relics_level)
+	challenger_headband_star = models.IntegerField(default=0, choices=rare_relics_star)
+	jade_gobelet_level = models.IntegerField(default=0, choices=relics_level)
+	jade_gobelet_star = models.IntegerField(default=0, choices=rare_relics_star)
+	jade_gobelet_effective = models.FloatField(default=0,validators=[MaxValueValidator(1600)])
+	veteran_plate_level = models.IntegerField(default=0, choices=relics_level)
+	veteran_plate_star = models.IntegerField(default=0, choices=rare_relics_star)
+	dragonscale_level = models.IntegerField(default=0, choices=relics_level)
+	dragonscale_star = models.IntegerField(default=0, choices=rare_relics_star)
+	dragonscale_effective = models.FloatField(default=0,validators=[MaxValueValidator(1600)])
+	dragon_tooth_level = models.IntegerField(default=0, choices=relics_level)
+	dragon_tooth_star = models.IntegerField(default=0, choices=rare_relics_star)
+	dragon_tooth_effective = models.FloatField(default=0,validators=[MaxValueValidator(420)])
+	scholar_telescope_level = models.IntegerField(default=0, choices=relics_level)
+	scholar_telescope_star = models.IntegerField(default=0, choices=rare_relics_star)
+	pirate_shank_level = models.IntegerField(default=0, choices=relics_level)
+	pirate_shank_star = models.IntegerField(default=0, choices=rare_relics_star)
+	giant_greatsword_level = models.IntegerField(default=0, choices=relics_level)
+	giant_greatsword_star = models.IntegerField(default=0, choices=rare_relics_star)
+	giant_greatsword_effective = models.FloatField(default=0,validators=[MaxValueValidator(420)])
+	healing_potion_level = models.IntegerField(default=0, choices=relics_level)
+	healing_potion_star = models.IntegerField(default=0, choices=rare_relics_star)
+	whirlwind_mauler_level = models.IntegerField(default=0, choices=relics_level)
+	whirlwind_mauler_star = models.IntegerField(default=0, choices=rare_relics_star)
+	whirlwind_mauler_effective = models.FloatField(default=0,validators=[MaxValueValidator(420)])
+	special_lance_level = models.IntegerField(default=0, choices=relics_level)
+	special_lance_star = models.IntegerField(default=0, choices=rare_relics_star)
+	special_lance_effective = models.FloatField(default=0,validators=[MaxValueValidator(420)])
+	precision_slingshot_level = models.IntegerField(default=0, choices=relics_level)
+	precision_slingshot_star = models.IntegerField(default=0, choices=rare_relics_star)
+	maidens_pearl_earring_level = models.IntegerField(default=0, choices=relics_level)
+	maidens_pearl_earring_star = models.IntegerField(default=0, choices=rare_relics_star)
+	ancient_shield_level = models.IntegerField(default=0, choices=relics_level)
+	ancient_shield_star = models.IntegerField(default=0, choices=rare_relics_star)
+	ancient_shield_effective = models.FloatField(default=0,validators=[MaxValueValidator(200)]) ## TODO check this (60,120,150,??)
+	supreme_trinity_alpha_level = models.IntegerField(default=0, choices=relics_level)
+	supreme_trinity_alpha_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	supreme_trinity_alpha_effective = models.FloatField(default=0,validators=[MaxValueValidator(500)])
+	golden_apple_level = models.IntegerField(default=0, choices=relics_level)
+	golden_apple_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	golden_apple_effective = models.FloatField(default=0,validators=[MaxValueValidator(2200)])
+	ancient_stele_level = models.IntegerField(default=0, choices=relics_level)
+	ancient_stele_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	ancient_stele_effective = models.FloatField(default=0,validators=[MaxValueValidator(500)])
+	philosopher_stone_level = models.IntegerField(default=0, choices=relics_level)
+	philosopher_stone_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	philosopher_stone_effective = models.FloatField(default=0,validators=[MaxValueValidator(2200)])
+	dragon_heart_level = models.IntegerField(default=0, choices=relics_level)
+	dragon_heart_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	dragon_heart_effective = models.FloatField(default=0,validators=[MaxValueValidator(2200)])
+	spectral_duality_level = models.IntegerField(default=0, choices=relics_level)
+	spectral_duality_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	spectral_duality_effective = models.FloatField(default=0,validators=[MaxValueValidator(500)])
+	mystic_emblem_level = models.IntegerField(default=0, choices=relics_level)
+	mystic_emblem_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	immortal_brooch_level = models.IntegerField(default=0, choices=relics_level)
+	immortal_brooch_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	golden_statue_level = models.IntegerField(default=0, choices=relics_level)
+	golden_statue_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	golden_statue_effective = models.FloatField(default=0,validators=[MaxValueValidator(2200)])
+	smilling_mask_level = models.IntegerField(default=0, choices=relics_level)
+	smilling_mask_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	unmerciful_mask_level = models.IntegerField(default=0, choices=relics_level)
+	unmerciful_mask_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	unmerciful_mask_effective = models.FloatField(default=0,validators=[MaxValueValidator(500)])
+	holy_water_level = models.IntegerField(default=0, choices=relics_level)
+	holy_water_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	holy_water_effective = models.FloatField(default=0,validators=[MaxValueValidator(2200)])
+	book_of_the_dead_level = models.IntegerField(default=0, choices=relics_level)
+	book_of_the_dead_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	book_of_the_dead_effective = models.FloatField(default=0,validators=[MaxValueValidator(500)])
+	psionist_treasure_level = models.IntegerField(default=0, choices=relics_level)
+	psionist_treasure_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	book_of_archery_level = models.IntegerField(default=0, choices=relics_level)
+	book_of_archery_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	book_of_archery_effective = models.FloatField(default=0,validators=[MaxValueValidator(500)])
+	book_of_bravery_level = models.IntegerField(default=0, choices=relics_level)
+	book_of_bravery_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	book_of_bravery_effective = models.FloatField(default=0,validators=[MaxValueValidator(500)])
+	angelic_heart_level = models.IntegerField(default=0, choices=relics_level)
+	angelic_heart_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	angelic_heart_effective = models.FloatField(default=0,validators=[MaxValueValidator(2200)])
+	devil_whisper_level = models.IntegerField(default=0, choices=relics_level)
+	devil_whisper_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	devil_whisper_effective = models.FloatField(default=0,validators=[MaxValueValidator(2200)])
+	stone_of_wisdom_level = models.IntegerField(default=0, choices=relics_level)
+	stone_of_wisdom_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	empyrean_mirror_level = models.IntegerField(default=0, choices=relics_level)
+	empyrean_mirror_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	empyrean_mirror_effective = models.FloatField(default=0,validators=[MaxValueValidator(2200)])
+	fabled_archer_arrow_level = models.IntegerField(default=0, choices=relics_level)
+	fabled_archer_arrow_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	fabled_archer_arrow_effective = models.FloatField(default=0,validators=[MaxValueValidator(10)])
+	shiny_gemmed_belt_level = models.IntegerField(default=0, choices=relics_level)
+	shiny_gemmed_belt_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	mythril_flux_mail_level = models.IntegerField(default=0, choices=relics_level)
+	mythril_flux_mail_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	mythril_flux_mail_effective = models.FloatField(default=0,validators=[MaxValueValidator(8)])
+	stealth_boots_level = models.IntegerField(default=0, choices=relics_level)
+	stealth_boots_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	stealth_boots_effective = models.FloatField(default=0,validators=[MaxValueValidator(2200)])
+	assassin_dagger_level = models.IntegerField(default=0, choices=relics_level)
+	assassin_dagger_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	assassin_dagger_effective = models.FloatField(default=0,validators=[MaxValueValidator(500)])
+	gold_bunny_level = models.IntegerField(default=0, choices=relics_level)
+	gold_bunny_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	lucky_coin_level = models.IntegerField(default=0, choices=relics_level)
+	lucky_coin_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	dusken_cask_level = models.IntegerField(default=0, choices=relics_level)
+	dusken_cask_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	dragon_eye_level = models.IntegerField(default=0, choices=relics_level)
+	dragon_eye_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	dragon_eye_effective = models.FloatField(default=0,validators=[MaxValueValidator(10)]) ##TODO 2%, ??, ??, ??
+	ring_of_greed_level = models.IntegerField(default=0, choices=relics_level)
+	ring_of_greed_star = models.IntegerField(default=0, choices=radiant_relics_star)
+	genesis_staff_level = models.IntegerField(default=0, choices=relics_level)
+	genesis_staff_star = models.IntegerField(default=0, choices=holy_relics_star)
+	bloodstained_sword_level = models.IntegerField(default=0, choices=relics_level)
+	bloodstained_sword_star = models.IntegerField(default=0, choices=holy_relics_star)
+	bloodstained_sword_effective = models.FloatField(default=0,validators=[MaxValueValidator(9)]) ##TODO 1.2%	3%	6%	??
+	starcluster_rage_level = models.IntegerField(default=0, choices=relics_level)
+	starcluster_rage_star = models.IntegerField(default=0, choices=holy_relics_star)
+	starcluster_rage_effective = models.FloatField(default=0,validators=[MaxValueValidator(10)])
+	elven_king_cape_level = models.IntegerField(default=0, choices=relics_level)
+	elven_king_cape_star = models.IntegerField(default=0, choices=holy_relics_star)
+	elven_king_cape_effective = models.FloatField(default=0,validators=[MaxValueValidator(600)])
+	spear_of_yggdrasil_level = models.IntegerField(default=0, choices=relics_level)
+	spear_of_yggdrasil_star = models.IntegerField(default=0, choices=holy_relics_star)
+	spear_of_yggdrasil_effective = models.FloatField(default=0,validators=[MaxValueValidator(600)])
+	dragon_gem_level = models.IntegerField(default=0, choices=relics_level)
+	dragon_gem_star = models.IntegerField(default=0, choices=holy_relics_star)
+	dragon_gem_effective = models.FloatField(default=0,validators=[MaxValueValidator(600)])
+	life_crown_level = models.IntegerField(default=0, choices=relics_level)
+	life_crown_star = models.IntegerField(default=0, choices=holy_relics_star)
+	life_crown_effective = models.FloatField(default=0,validators=[MaxValueValidator(2720)])
+	sand_of_time_level = models.IntegerField(default=0, choices=relics_level)
+	sand_of_time_star = models.IntegerField(default=0, choices=holy_relics_star)
+	sand_of_time_effective = models.FloatField(default=0,validators=[MaxValueValidator(10)])
+	first_lightning_level = models.IntegerField(default=0, choices=relics_level)
+	first_lightning_star = models.IntegerField(default=0, choices=holy_relics_star)
+	oracle_quill_level = models.IntegerField(default=0, choices=relics_level)
+	oracle_quill_star = models.IntegerField(default=0, choices=holy_relics_star)
+	oracle_quill_effective = models.FloatField(default=0,validators=[MaxValueValidator(10)])
+	bloodthirsty_grail_level = models.IntegerField(default=0, choices=relics_level)
+	bloodthirsty_grail_star = models.IntegerField(default=0, choices=holy_relics_star)
+	bloodthirsty_grail_effective = models.FloatField(default=0,validators=[MaxValueValidator(2720)])
+	healing_grail_level = models.IntegerField(default=0, choices=relics_level)
+	healing_grail_star = models.IntegerField(default=0, choices=holy_relics_star)
+	healing_grail_effective = models.FloatField(default=0,validators=[MaxValueValidator(2720)])
+	cupids_necklace_level = models.IntegerField(default=0, choices=relics_level)
+	cupids_necklace_star = models.IntegerField(default=0, choices=holy_relics_star)
+	life_staff_level = models.IntegerField(default=0, choices=relics_level)
+	life_staff_star = models.IntegerField(default=0, choices=holy_relics_star)
+	life_staff_effective = models.FloatField(default=0,validators=[MaxValueValidator(2000)]) ## TODO 150	500	1050	??
+	light_grail_level = models.IntegerField(default=0, choices=relics_level)
+	light_grail_star = models.IntegerField(default=0, choices=holy_relics_star)
+	primal_fire_level = models.IntegerField(default=0, choices=relics_level)
+	primal_fire_star = models.IntegerField(default=0, choices=holy_relics_star)
+	primal_fire_effective = models.FloatField(default=0,validators=[MaxValueValidator(600)]) ## TODO 60	??	??	??
+	
 	def dictionnaire(self):
 		return {
 				"user_profile": self.user_profile,
-				"wraith_mask": self.wraith_mask,
-				"clown_mask": self.clown_mask,
-				"princess_teddy_bear": self.princess_teddy_bear,
-				"belt_of_might": self.belt_of_might,
-				"beastmaster_whistle": self.beastmaster_whistle,
-				"archmage_robe": self.archmage_robe,
-				"shimmering_gem": self.shimmering_gem,
-				"bloom_of_eternity": self.bloom_of_eternity,
-				"challenger_headband": self.challenger_headband,
-				"jade_gobelet": self.jade_gobelet,
-				"veteran_plate": self.veteran_plate,
-				"dragonscale": self.dragonscale,
-				"dragon_tooth": self.dragon_tooth,
-				"scholar_telescope": self.scholar_telescope,
-				"pirate_shank": self.pirate_shank,
-				"giant_greatsword": self.giant_greatsword,
-				"healing_potion": self.healing_potion,
-				"whirlwind_mauler": self.whirlwind_mauler,
-				"special_lance": self.special_lance,
-				"precision_slingshot": self.precision_slingshot,
-				"supreme_trinity_alpha": self.supreme_trinity_alpha,
-				"golden_apple": self.golden_apple,
-				"ancient_stele": self.ancient_stele,
-				"philosopher_stone": self.philosopher_stone,
-				"dragon_heart": self.dragon_heart,
-				"spectral_duality": self.spectral_duality,
-				"mystic_emblem": self.mystic_emblem,
-				"immortal_brooch": self.immortal_brooch,
-				"golden_statue": self.golden_statue,
-				"smilling_mask": self.smilling_mask,
-				"unmerciful_mask": self.unmerciful_mask,
-				"holy_water": self.holy_water,
-				"book_of_the_dead": self.book_of_the_dead,
-				"psionist_treasure": self.psionist_treasure,
-				"book_of_archery": self.book_of_archery,
-				"book_of_bravery": self.book_of_bravery,
-				"angelic_heart": self.angelic_heart,
-				"devil_whisper": self.devil_whisper,
-				"stone_of_wisdom": self.stone_of_wisdom,
-				"empyrean_mirror": self.empyrean_mirror,
-				"fabled_archer_arrow": self.fabled_archer_arrow,
-				"shiny_gemmed_belt": self.shiny_gemmed_belt,
-				"mythril_flux_mail": self.mythril_flux_mail,
-				"stealth_boots": self.stealth_boots,
-				"assassin_dagger": self.assassin_dagger,
-				"gold_bunny": self.gold_bunny,
-				"genesis_staff": self.genesis_staff,
-				"bloodstained_sword": self.bloodstained_sword,
-				"starcluster_rage": self.starcluster_rage,
-				"elven_king_cape": self.elven_king_cape,
-				"spear_of_yggdrasil": self.spear_of_yggdrasil,
-				"dragon_gem": self.dragon_gem,
-				"life_crown": self.life_crown,
-				"sand_of_time": self.sand_of_time,
-				"first_lightning": self.first_lightning,
-				"oracle_quill": self.oracle_quill,
-				"bloodthirsty_grail": self.bloodthirsty_grail,
-				"healing_grail": self.healing_grail,
-				"cupids_necklace": self.cupids_necklace,
+				"wraith_mask_level": self.wraith_mask_level,"wraith_mask_star": self.wraith_mask_star,"wraith_mask_effective": self.wraith_mask_effective, 
+				"clown_mask_level": self.clown_mask_level,"clown_mask_star": self.clown_mask_star,"clown_mask_effective": self.clown_mask_effective, 
+				"princess_teddy_bear_level": self.princess_teddy_bear_level,"princess_teddy_bear_star": self.princess_teddy_bear_star,"princess_teddy_bear_effective": self.princess_teddy_bear_effective, 
+				"belt_of_might_level": self.belt_of_might_level,"belt_of_might_star": self.belt_of_might_star,"belt_of_might_effective": self.belt_of_might_effective, 
+				"beastmaster_whistle_level": self.beastmaster_whistle_level,"beastmaster_whistle_star": self.beastmaster_whistle_star,"beastmaster_whistle_effective": self.beastmaster_whistle_effective, 
+				"archmage_robe_level": self.archmage_robe_level,"archmage_robe_star": self.archmage_robe_star,"archmage_robe_effective": self.archmage_robe_effective, 
+				"shimmering_gem_level": self.shimmering_gem_level,"shimmering_gem_star": self.shimmering_gem_star, 
+				"bloom_of_eternity_level": self.bloom_of_eternity_level,"bloom_of_eternity_star": self.bloom_of_eternity_star,"bloom_of_eternity_effective": self.bloom_of_eternity_effective, 
+				"challenger_headband_level": self.challenger_headband_level,"challenger_headband_star": self.challenger_headband_star,
+				"jade_gobelet_level": self.jade_gobelet_level,"jade_gobelet_star": self.jade_gobelet_star,"jade_gobelet_effective": self.jade_gobelet_effective, 
+				"veteran_plate_level": self.veteran_plate_level,"veteran_plate_star": self.veteran_plate_star,
+				"dragonscale_level": self.dragonscale_level,"dragonscale_star": self.dragonscale_star,"dragonscale_effective": self.dragonscale_effective, 
+				"dragon_tooth_level": self.dragon_tooth_level,"dragon_tooth_star": self.dragon_tooth_star,"dragon_tooth_effective": self.dragon_tooth_effective, 
+				"scholar_telescope_level": self.scholar_telescope_level,"scholar_telescope_star": self.scholar_telescope_star,
+				"pirate_shank_level": self.pirate_shank_level,"pirate_shank_star": self.pirate_shank_star,
+				"giant_greatsword_level": self.giant_greatsword_level,"giant_greatsword_star": self.giant_greatsword_star,"giant_greatsword_effective": self.giant_greatsword_effective, 
+				"healing_potion_level": self.healing_potion_level,"healing_potion_star": self.healing_potion_star,
+				"whirlwind_mauler_level": self.whirlwind_mauler_level,"whirlwind_mauler_star": self.whirlwind_mauler_star,"whirlwind_mauler_effective": self.whirlwind_mauler_effective, 
+				"special_lance_level": self.special_lance_level,"special_lance_star": self.special_lance_star,"special_lance_effective": self.special_lance_effective, 
+				"precision_slingshot_level": self.precision_slingshot_level,"precision_slingshot_star": self.precision_slingshot_star,
+				"maidens_pearl_earring_level": self.maidens_pearl_earring_level,"maidens_pearl_earring_star": self.maidens_pearl_earring_star,
+				"ancient_shield_level": self.ancient_shield_level,"ancient_shield_star": self.ancient_shield_star,"ancient_shield_effective": self.ancient_shield_effective, 
+				"supreme_trinity_alpha_level": self.supreme_trinity_alpha_level,"supreme_trinity_alpha_star": self.supreme_trinity_alpha_star,"supreme_trinity_alpha_effective": self.supreme_trinity_alpha_effective, 
+				"golden_apple_level": self.golden_apple_level,"golden_apple_star": self.golden_apple_star,"golden_apple_effective": self.golden_apple_effective, 
+				"ancient_stele_level": self.ancient_stele_level,"ancient_stele_star": self.ancient_stele_star,"ancient_stele_effective": self.ancient_stele_effective, 
+				"philosopher_stone_level": self.philosopher_stone_level,"philosopher_stone_star": self.philosopher_stone_star,"philosopher_stone_effective": self.philosopher_stone_effective, 
+				"dragon_heart_level": self.dragon_heart_level,"dragon_heart_star": self.dragon_heart_star,"dragon_heart_effective": self.dragon_heart_effective, 
+				"spectral_duality_level": self.spectral_duality_level,"spectral_duality_star": self.spectral_duality_star,"spectral_duality_effective": self.spectral_duality_effective, 
+				"mystic_emblem_level": self.mystic_emblem_level,"mystic_emblem_star": self.mystic_emblem_star,
+				"immortal_brooch_level": self.immortal_brooch_level,"immortal_brooch_star": self.immortal_brooch_star,
+				"golden_statue_level": self.golden_statue_level,"golden_statue_star": self.golden_statue_star,"golden_statue_effective": self.golden_statue_effective, 
+				"smilling_mask_level": self.smilling_mask_level,"smilling_mask_star": self.smilling_mask_star,
+				"unmerciful_mask_level": self.unmerciful_mask_level,"unmerciful_mask_star": self.unmerciful_mask_star,"unmerciful_mask_effective": self.unmerciful_mask_effective, 
+				"holy_water_level": self.holy_water_level,"holy_water_star": self.holy_water_star,"holy_water_effective": self.holy_water_effective, 
+				"book_of_the_dead_level": self.book_of_the_dead_level,"book_of_the_dead_star": self.book_of_the_dead_star,"book_of_the_dead_effective": self.book_of_the_dead_effective, 
+				"psionist_treasure_level": self.psionist_treasure_level,"psionist_treasure_star": self.psionist_treasure_star,
+				"book_of_archery_level": self.book_of_archery_level,"book_of_archery_star": self.book_of_archery_star,"book_of_archery_effective": self.book_of_archery_effective, 
+				"book_of_bravery_level": self.book_of_bravery_level,"book_of_bravery_star": self.book_of_bravery_star,"book_of_bravery_effective": self.book_of_bravery_effective, 
+				"angelic_heart_level": self.angelic_heart_level,"angelic_heart_star": self.angelic_heart_star,"angelic_heart_effective": self.angelic_heart_effective, 
+				"devil_whisper_level": self.devil_whisper_level,"devil_whisper_star": self.devil_whisper_star,"devil_whisper_effective": self.devil_whisper_effective,
+				"stone_of_wisdom_level": self.stone_of_wisdom_level,"stone_of_wisdom_star": self.stone_of_wisdom_star,
+				"empyrean_mirror_level": self.empyrean_mirror_level,"empyrean_mirror_star": self.empyrean_mirror_star,"empyrean_mirror_effective": self.empyrean_mirror_effective, 
+				"fabled_archer_arrow_level": self.fabled_archer_arrow_level,"fabled_archer_arrow_star": self.fabled_archer_arrow_star,"fabled_archer_arrow_effective": self.fabled_archer_arrow_effective, 
+				"shiny_gemmed_belt_level": self.shiny_gemmed_belt_level,"shiny_gemmed_belt_star": self.shiny_gemmed_belt_star,
+				"mythril_flux_mail_level": self.mythril_flux_mail_level,"mythril_flux_mail_star": self.mythril_flux_mail_star,"mythril_flux_mail_effective": self.mythril_flux_mail_effective, 
+				"stealth_boots_level": self.stealth_boots_level,"stealth_boots_star": self.stealth_boots_star,"stealth_boots_effective": self.stealth_boots_effective, 
+				"assassin_dagger_level": self.assassin_dagger_level,"assassin_dagger_star": self.assassin_dagger_star,"assassin_dagger_effective": self.assassin_dagger_effective, 
+				"gold_bunny_level": self.gold_bunny_level,"gold_bunny_star": self.gold_bunny_star,
+				"lucky_coin_level": self.lucky_coin_level,"lucky_coin_star": self.lucky_coin_star,
+				"dusken_cask_level": self.dusken_cask_level,"dusken_cask_star": self.dusken_cask_star,
+				"dragon_eye_level": self.dragon_eye_level,"dragon_eye_star": self.dragon_eye_star,"dragon_eye_effective": self.dragon_eye_effective, 
+				"ring_of_greed_level": self.ring_of_greed_level,"ring_of_greed_star": self.ring_of_greed_star,
+				"genesis_staff_level": self.genesis_staff_level,"genesis_staff_star": self.genesis_staff_star,
+				"bloodstained_sword_level": self.bloodstained_sword_level,"bloodstained_sword_star": self.bloodstained_sword_star,"bloodstained_sword_effective": self.bloodstained_sword_effective, 
+				"starcluster_rage_level": self.starcluster_rage_level,"starcluster_rage_star": self.starcluster_rage_star,"starcluster_rage_effective": self.starcluster_rage_effective, 
+				"elven_king_cape_level": self.elven_king_cape_level,"elven_king_cape_star": self.elven_king_cape_star,"elven_king_cape_effective": self.elven_king_cape_effective, 
+				"spear_of_yggdrasil_level": self.spear_of_yggdrasil_level,"spear_of_yggdrasil_star": self.spear_of_yggdrasil_star,"spear_of_yggdrasil_effective": self.spear_of_yggdrasil_effective, 
+				"dragon_gem_level": self.dragon_gem_level,"dragon_gem_star": self.dragon_gem_star,"dragon_gem_effective": self.dragon_gem_effective, 
+				"life_crown_level": self.life_crown_level,"life_crown_star": self.life_crown_star,"life_crown_effective": self.life_crown_effective, 
+				"sand_of_time_level": self.sand_of_time_level,"sand_of_time_star": self.sand_of_time_star,"sand_of_time_effective": self.sand_of_time_effective, 
+				"first_lightning_level": self.first_lightning_level,"first_lightning_star": self.first_lightning_star,
+				"oracle_quill_level": self.oracle_quill_level,"oracle_quill_star": self.oracle_quill_star,"oracle_quill_effective": self.oracle_quill_effective, 
+				"bloodthirsty_grail_level": self.bloodthirsty_grail_level,"bloodthirsty_grail_star": self.bloodthirsty_grail_star,"bloodthirsty_grail_effective": self.bloodthirsty_grail_effective, 
+				"healing_grail_level": self.healing_grail_level,"healing_grail_star": self.healing_grail_star,"healing_grail_effective": self.healing_grail_effective, 
+				"cupids_necklace_level": self.cupids_necklace_level,"cupids_necklace_star": self.cupids_necklace_star,
+				"life_staff_level": self.life_staff_level,"life_staff_star": self.life_staff_star,"life_staff_effective": self.life_staff_effective, 
+				"light_grail_level": self.light_grail_level,"light_grail_star": self.light_grail_star,
+				"primal_fire_level": self.primal_fire_level,"primal_fire_star": self.primal_fire_star,"primal_fire_effective": self.primal_fire_effective, 
 			}
 
 	def __str__(self):
@@ -2022,51 +2188,37 @@ class relics_table(models.Model,parentModel):
 
 
 	def relics_Stats(self):
-		list_relic = []
-		RelicLabel = self.local_data["RelicLabel"]
-		for k,v in self.dictionnaire().items():
-			if k != "user_profile":
-				list_relic.append(v.split("-"))
-		stats = {
-			'':0,
-			"attack": 0,
-			"attack_var": 0,
-			"hp": 0,
-			"hp_var": 0,
-			"enhance_equipment_var": 0,
-			"hero_base_stats_increased_var": 0,
-			"crit_chance_var": 0,
-			"damage_ranged_units": 0,
-			"damage_melee_units": 0,
-			"damage_humanoid_enemies_var": 0,
-			"damage_undead_var": 0,
-			"damage_heroes_var": 0,
-			"damage_elite_var": 0,
-			"elemental_damage_var": 0,
-			"damage_mobs": 0,
-			"damage_mobs_var": 0,
-			"damage_bosses": 0,
-			"damage_bosses_var": 0,
-			"damage_ground_units": 0,
-			"damage_ground_units_var": 0,
-			"damage_airborne_units": 0,
-			"damage_airborne_units_var": 0,
-			"weapon_melee_damage_var": 0,
-			"weapon_ranged_damage_var": 0,
-			"dodge":0,
-			"attack_jewel_base":0,
-		}
-		relic_name = ["wraith_mask","clown_mask","princess_teddy_bear","belt_of_might","beastmaster_whistle","archmage_robe","shimmering_gem","bloom_of_eternity","challenger_headband","jade_gobelet","veteran_plate","dragonscale","dragon_tooth","scholar_telescope","pirate_shank","giant_greatsword","healing_potion","whirlwind_mauler","special_lance","precision_slingshot","supreme_trinity_alpha","golden_apple","ancient_stele","philosopher_stone","dragon_heart","spectral_duality","mystic_emblem","immortal_brooch","golden_statue","smilling_mask","unmerciful_mask","holy_water","book_of_the_dead","psionist_treasure","book_of_archery","book_of_bravery","angelic_heart","devil_whisper","stone_of_wisdom","empyrean_mirror","fabled_archer_arrow","shiny_gemmed_belt","mythril_flux_mail","stealth_boots","assassin_dagger","gold_bunny","genesis_staff","bloodstained_sword","starcluster_rage","elven_king_cape","spear_of_yggdrasil","dragon_gem","life_crown","sand_of_time","first_lightning","oracle_quill","bloodthirsty_grail","healing_grail","cupids_necklace"]
-		for i in range(0,len(list_relic)):
-			relic = relic_name[i]
-			relic_boost = list_relic[i]
-			for x in range(0,len(relic_boost)):
-				search_data = RelicLabel[str(relic)+ "_" +str(x+1)]
-				new_value = float(stats[search_data]) + float(relic_boost[x])
-				stats.update({search_data:new_value})
-				# if search_data != "":
-				# 	print(f"{relic} | {relic_boost[x]} | {search_data} | {new_value}")
-		return stats
+		result = {}
+		RelicLabel:dict = self.local_data["RelicLabel"]
+		star_multiplier = [1,1.1,1.21,1.34,1.48,1.62,1.78,1.96,2.16]
+		user_data = self.dictionnaire()
+		for relic,value in RelicLabel.items():
+			if RelicLabel[relic]['type'] == 1:
+				level_multiplier = [1,1.1,1.2336,1.3336,1.4336,1.5336,1.6672,1.7672,1.8672,1.9672,2.1008,2.2008,2.3008,2.4008,2.5344,2.6344,2.7344,2.8344,2.968,3.068,3.168,3.268,3.4016,3.5016,3.6016,3.7016,3.8352,3.9352,4.0352,4.1352,4.2688]
+			elif RelicLabel[relic]['type'] == 2:
+				level_multiplier = [1,1.08,1.18,1.26,1.34,1.42,1.52,1.60,1.68,1.76,1.86,1.94,2.02,2.10,2.20,2.28,2.36,2.44,2.54,2.62,2.70,2.78,2.88,2.96,3.04,3.12,3.22,3.30,3.38,3.46,3.56]
+			elif RelicLabel[relic]['type'] == 3:
+				level_multiplier =  [1,1.0625,1.125,1.1875,1.25,1.3125,1.375,1.4375,1.5,1.5625,1.625,1.6875,1.75,1.8125,1.875,1.9375,2,2.0625,2.125,2.1875,2.25,2.3125,2.375,2.4375,2.5,2.5625,2.625,2.6875,2.75,2.8125,2.875]
+			relic_lv = user_data[str(relic) + "_level"]
+			relic_star = user_data[str(relic) + "_star"]
+			relic_eff = user_data.get(str(relic) + "_effective",0)
+			if not (int(relic_star) == 0 and int(relic_lv) == 0 and int(relic_eff) == 0):
+				exclusive_label = RelicLabel[relic]['exclusive_label']
+				for boost in RelicLabel[relic]["boost"]:
+					old_value = result.get(boost['label'],0)
+					if isinstance(boost['value'],list):
+						value = float(boost['value'][int(relic_star)]) + float(old_value)
+						result.update({boost['label']:value})
+					elif isinstance(boost['value'],(int,float)):
+						value = math.floor(math.floor(int(boost['value']) * level_multiplier[relic_lv]) * float(star_multiplier[relic_star])) + float(old_value)
+						result.update({boost['label']:value})
+				if exclusive_label != False and relic_eff != 0:
+					old_value = result.get(exclusive_label,0)
+					value = float(relic_eff) + float(old_value)
+					result.update({exclusive_label:value})
+		if DEBUG_STATS:
+			print(f"\nrelics_Stats :{result}\n")
+		return result
 
 
 class promo_code(models.Model,parentModel):
@@ -2117,7 +2269,7 @@ class weapon_skins_table(models.Model,parentModel):
 	def __str__(self):
 		chaine = f"{self.user_profile.ingame_id} | {self.user_profile.ingame_name}"
 		return chaine
-	
+
 
 	def equippedSkin(self):
 		weapon_choosen = stuff_table.objects.get(user_profile=self.user_profile).weapon_choosen.replace(" ","_").lower()
@@ -2153,4 +2305,6 @@ class weapon_skins_table(models.Model,parentModel):
 					activ_type = WeaponSkinData[weapon_name][skin_count]["activ_type"]
 					activ_boost = WeaponSkinData[weapon_name][skin_count]["activ_boost"] + result[activ_type]
 					result.update({activ_type:activ_boost})
+		if DEBUG_STATS:
+			print(f"\ngetWeaponSkinStats :{result}\n")
 		return result

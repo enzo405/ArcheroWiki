@@ -4,7 +4,7 @@ function cookieInitialize(){
 }
 cookieInitialize()
 
-function createModale(element, urlNeedParentid){
+function createModale(element, urlNeedParentid, type){
     var titremodals = "";
     var url = window.location.href
     if(element.nodeType === Node.ELEMENT_NODE){
@@ -28,6 +28,7 @@ function createModale(element, urlNeedParentid){
     contenumodals.appendChild(titremodals);
     const boutonFermer = document.createElement("button");
     boutonFermer.textContent = "Close";
+    boutonFermer.classList.add(`${type}-button`);
     boutonFermer.addEventListener("click", () => {
         document.body.removeChild(modals);
     });
