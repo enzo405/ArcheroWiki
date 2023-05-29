@@ -397,14 +397,23 @@ class WeaponSkinTable(ModelForm):
 		fields = (
 				"user_profile",
 				"demon_blade_rain_1",
+				"demon_blade_rain_2",
 				"antiquated_sword_1",
+				"antiquated_sword_2",
 				"gale_force_1",
+				"gale_force_2",
 				"death_scythe_1",
+				"death_scythe_2",
 				"boomerang_1",
+				"boomerang_2",
 				"brightspear_1",
+				"brightspear_2",
 				"saw_blade_1",
+				"saw_blade_2",
 				"brave_bow_1",
-				"stalker_staff_1"
+				"brave_bow_2",
+				"stalker_staff_1",
+				"stalker_staff_2"
 		)
 
 

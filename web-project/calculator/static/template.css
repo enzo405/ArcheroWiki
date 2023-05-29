@@ -506,7 +506,8 @@ footer div, footer li{
 .sidebar-open #Stats-sidebar-image:hover::after,
 .sidebar-open #Sheet-sidebar-image:hover::after,
 .sidebar-open #Damage-sidebar-image:hover::after,
-.sidebar-open #Promos-sidebar-image:hover::after{
+.sidebar-open #Promos-sidebar-image:hover::after,
+.sidebar-open #AdvancedStats-sidebar-image:hover::after{
 	position: fixed;
 	left: 75px;
     border: var(--lt-sidebaropen-content-border) 1px solid;
@@ -527,6 +528,7 @@ footer div, footer li{
 .sidebar-open #Sheet-sidebar-image:hover::after{ content: "Sheet";}
 .sidebar-open #Damage-sidebar-image:hover::after{ content: "Damage";}
 .sidebar-open #Promos-sidebar-image:hover::after{ content: "Promotion Code";}
+.sidebar-open #AdvancedStats-sidebar-image:hover::after{ content: "Advanced Stats";}
 
 .bg-traveling{
 	background-color: var(--lt-sidebar-traveling-bg);

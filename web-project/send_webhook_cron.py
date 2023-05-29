@@ -1,14 +1,9 @@
 #!/usr/bin/python
 from discord_webhook import DiscordWebhook, DiscordWebhook, DiscordEmbed
-from const import WEBHOOK_URL 
+from const import WEBHOOK_URL, ADMIN_CREDENTIAL
 import os, json, re, sys
+import hashlib
 
-def checkUsernameCredentials(username,ingame_id):
-	pattern = re.compile(r'^\d{1}-\d{6,12}$')
-	if (len(username) >= 3 and len(username) < 20 and re.fullmatch(pattern, ingame_id) and ingame_id != "" and ingame_id != None and all(c.isdigit() or c == '-' for c in ingame_id)):
-		return True
-	else:
-		return False
 
 def clearFile():
 	with open('calculator/static/json/requetes.json', "w") as f:
@@ -16,6 +11,12 @@ def clearFile():
 		json.dump(data_init, f)
 		f.close()
 
+
+def encode_string(string):
+    sha256 = hashlib.sha256()
+    sha256.update(string.encode('utf-8'))
+    encoded_string = sha256.hexdigest()
+    return encoded_string
 
 class sendWebhook():
 	def __init__(self) -> None:
@@ -33,13 +34,11 @@ class sendWebhook():
 		webhook = self.webhook
 		with open('calculator/static/json/requetes.json','r', encoding='utf-8') as f:
 			user = DiscordEmbed(title='Number Request', description='', color='1ed9be')
-			suspect = []
 			for i in json.load(f)['user']:
-				if checkUsernameCredentials(i['username'],i['ingame_id']):
-					user.add_embed_field(name=f"{i['username']} | {i['ingame_id']} = {i['number_request']}", value=f"", inline=False)
+				if ADMIN_CREDENTIAL.get(i['username']) == i['ingame_id']:
+					user.add_embed_field(name=f"{i['username']} | {encode_string(i['ingame_id'])} = {i['number_request']}", value=f"", inline=False)
 				else:
-					suspect.append(f"{i['username']} | {i['ingame_id']}")
-			user.set_footer(text=f'{str(suspect)}', icon_url='')
+					user.add_embed_field(name=f"{i['username']} | {i['ingame_id']} = {i['number_request']}", value=f"", inline=False)
 			webhook.add_embed(user)
 		clearFile()
 

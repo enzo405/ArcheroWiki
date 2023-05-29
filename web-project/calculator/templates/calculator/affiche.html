@@ -1,9 +1,9 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5.4">
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5.6a">
 <title>{{ name }} Stats - Wiki</title>
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.4">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.6a">
 <meta name="description" content="{{ name }} Stats - Wiki">
 <meta property="og:url" content="https://stats.wiki-archero.com/calculator/show/{{pbid}}/">
 <meta property="og:type" content="website">
@@ -55,15 +55,8 @@
 	<div class="go_to_details" onclick="toggleDetailStats()">Switch Stats/Details</div>
 	<div id="contain-image-stuff" class="contain-image-stuff" style="display: flex;">
 		<div class="image-div-stuff">
-			<div class="orb-jewel">
-				<img alt="light rotating" class="rotating img-light2" src="/static/image/light/light5.png">
-				<img alt="jewel" class="button-jewel" src="/static/image/round_jewel/button.png">
-				<img alt="light rotating" class="rotating img-light1" src="/static/image/light/light5.png">
-				<img alt="dragon" class="button-dragon" src="/static/image/stuff_save/dragon_save/{{ pbid }}.png">
-			</div>
 			<div class="image-stuff-result-container">
-				<img alt="stuff image" class="image-stuff-result" src="{% static 'image/stuff_save/'|add:pbid|add:'.png' %}?version=1.5.4">
-				<div class="image-stuff-result-bg"></div>
+				<img alt="stuff image" class="image-stuff-result" src="{% static 'image/stuff_save/'|add:pbid|add:'.png' %}?version=1.5.6a">
 			</div>
 		</div>
 	</div>

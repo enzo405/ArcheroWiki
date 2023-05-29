@@ -1,10 +1,11 @@
 from PIL import Image
 from pathlib import Path
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from urllib.parse import urlencode
-from const import WEBHOOK_URL, DEV_MODE, DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, c_hostname, DISCORD_NOTIF_ROLE_ID
+from const import ADMIN_LOG_WEBHOOK_URL,WEBHOOK_URL, DEV_MODE, DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, c_hostname, DISCORD_NOTIF_ROLE_ID, ADMIN_CREDENTIAL
 import random as random
-from .models import Token, ServerManagement, Contributor
+from .models import Token, ServerManagement, Contributor, user
 from difflib import SequenceMatcher
 from django.contrib import messages
 from discord_webhook import DiscordWebhook, DiscordEmbed
@@ -95,13 +96,16 @@ def findFormError(valid_User, valid_StuffTable, valid_HeroTable, valid_TalentTab
 
 ################################# FONCTION RESTE #######################################################
 
-def checkCookie(cookie_value:dict):
+def checkCookie(cookie_value:dict) -> dict:
 	requestCookie = cookie_value.copy()
 	result = {}
 	for k,v in requestCookie.items():
-		check_credential = checkUsernameCredentials(k,v)
-		if check_credential[0]:
-			result.update({k:v})
+		if checkUsernameCredentials(k,v)["access"]:
+			result[k] = v
+			if len(result) >= 2:
+				cookie_value.pop(k,v)
+	if len(result) != 0:
+		result = {list(result.keys())[0]: list(result.values())[0]}
 	return result
 
 
@@ -122,10 +126,11 @@ def db_maintenance(func):
 	def wrapper(request, *args, **kwargs):
 		try:
 			server_instance = ServerManagement.objects.get(pk=1)
+			isMaintenance = server_instance.isMaintenance
 		except ServerManagement.DoesNotExist:
-			server_instance = ServerManagement(pk=1, isMaintenance=False)
-			server_instance.save()
-		isMaintenance = server_instance.isMaintenance
+			isMaintenance = True
+			## si ça n'existe pas alors on affiche database maintenance car cela veut dire que soit la db n'est pas crée
+			#  (lors d'une monté de version) soit que j'ai pas recrée l'instance ServerManagement
 		if isMaintenance:
 			with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 				local_data = json.load(f)
@@ -140,6 +145,17 @@ def db_maintenance(func):
 	return wrapper
 
 
+def checkMessages(func):
+    def wrapper(request, *args, **kwargs):
+        message_types = ['error_message', 'info_message', 'success_message']
+        for message_type in message_types:
+            message = request.session.pop(message_type, None)
+            if message:
+                message_function = getattr(messages, message_type.split('_')[0])
+                message_function(request, message)
+        return func(request, *args, **kwargs)
+    return wrapper
+
 def login_required(func):
 	def wrapper(request, *args, **kwargs):
 		result = checkCookie(request.COOKIES)
@@ -148,9 +164,7 @@ def login_required(func):
 				request.session['user_credential'] = {"visitor":"0-000000"}
 				return func(request, *args, **kwargs)
 			messages.warning(request, f"You need to login first")
-			return render(request, "base/login.html")
-		elif len(result) >= 2:
-			send_webhook(f"Log : {result} \n{request.COOKIES}\n{request.build_absolute_uri()}")
+			return HttpResponseRedirect('/login')
 		request.session['user_credential'] = result
 		return func(request, *args, **kwargs)
 	return wrapper
@@ -210,8 +224,6 @@ def editor_login(func):
 	return wrapper
 
 
-
-
 def userExist(json, user):
 	liste_username = []
 	for i in list(json['user']):
@@ -254,8 +266,6 @@ def clearFile(f):
 
 
 def similar(a, b):
-	a = a.replace('*', '') ## pour ceux qui ont mis un character unterdis dans le cookie 
-	b = b.replace('*', '') ## vu que le character interdis est remplacé par un *
 	return SequenceMatcher(None, a, b).ratio()
 
 
@@ -264,22 +274,25 @@ def create_unique_id():
 	return unique_id
 
 
-def checkUsernameCredentials(username_raw,id_raw):
+def checkUsernameCredentials(username_raw,id_raw) -> dict:
 	pattern = re.compile(r'^\d{1}-\d{6,12}$')    # Compile un motif de regex pour les identifiants de jeu valides
 	decoded_bytes = urllib.parse.unquote(username_raw).encode('utf-8') # Décode le nom d'utilisateur brut en octets et encode la chaîne de caractères décodée en octets
 	ingame_name = decoded_bytes.decode('utf-8') # Remplace tous les caractères illégaux par "*" après avoir converti la chaîne de bytes en une chaîne de caractères en utf-8
 	ingame_id = urllib.parse.unquote(id_raw)   # Décode l'identifiant de jeu brut
-	unavailable_username = ['csrftoken','sessionid','windowInnerWidth','windowInnerHeight', 'modeDisplay', 'messages', 'sessionid']
+	unavailable_username = ['csrftoken','sessionid','windowInnerWidth','windowInnerHeight', 'modeDisplay', 'messages']
+	for k,v in ADMIN_CREDENTIAL.items():
+		if ingame_id == v and ingame_name.lower() == k:
+			return {"access":True,"ingame_name": ingame_name.replace(' ',''),"ingame_id": ingame_id,"admin_log":True}
 	if ingame_id != "0-000000" and ingame_name != "visitor":
 		if 3 <= len(ingame_name) < 20 and ingame_name not in unavailable_username:
 			if re.fullmatch(pattern, ingame_id) and ingame_id != "" and ingame_id != None and all(c.isdigit() or c == '-' for c in ingame_id):
-				return True, ingame_name.replace(' ',''), ingame_id
+				return {"access":True,"ingame_name": ingame_name.replace(' ',''),"ingame_id": ingame_id}
 			else:
-				return False, ingame_name, ingame_id,"Ingame id incorrect"
+				return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": "Ingame id incorrect"}
 		else:
-			return False, ingame_name, ingame_id,"Username not allowed"
+			return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": "Username not allowed"}
 	elif ingame_id == "0-000000":
-		return False, ingame_name, ingame_id,"Ingame Id not allowed"
+		return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": "Ingame Id not allowed"}
 
 
 def checkIllegalKey(string:str):
@@ -291,8 +304,11 @@ def checkIllegalKey(string:str):
 			return i
 	return string
 
-def send_webhook(msg):
-	wh = DiscordWebhook(url=WEBHOOK_URL, content=msg, rate_limit_retry=True)
+def send_webhook(msg, **kwargs):
+	if kwargs.get("admin_log",False) != False:
+		wh = DiscordWebhook(url=ADMIN_LOG_WEBHOOK_URL, content=msg, rate_limit_retry=True)
+	else:
+		wh = DiscordWebhook(url=WEBHOOK_URL, content=msg, rate_limit_retry=True)
 	wh.execute()
 
 def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:str,field_value:str,e_color:int, request, alert:bool, **kwargs):
@@ -300,10 +316,12 @@ def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:
 		content_msg = f"<@&{DISCORD_NOTIF_ROLE_ID}>"
 	else:
 		content_msg = ""
-	
 	avatar_url = kwargs.get('avatar_url',f"{c_hostname}/static/image/favicon.png")
 	browser = request.META.get('HTTP_USER_AGENT',"None")
-	webhook = DiscordWebhook(url=WEBHOOK_URL, content=content_msg, rate_limit_retry=True)
+	if kwargs.get("admin_log") != None:
+		webhook = DiscordWebhook(url=ADMIN_LOG_WEBHOOK_URL, content=content_msg, rate_limit_retry=True)
+	else:
+		webhook = DiscordWebhook(url=WEBHOOK_URL, content=content_msg, rate_limit_retry=True)
 	embed = DiscordEmbed(title=str(title_embed), description=f"{str(description_embed)}", color=e_color)
 	embed.set_author(
 		name=str(author_name),
@@ -360,10 +378,10 @@ def calculatePrice(lvl1, lvl2, type, rank=None):
 			return [int(result[0])*2,int(result[1])*2]
 
 def makeCookieheader(cookieResult: dict) -> str:
-    result = ""
-    if cookieResult.get("visitor") is None:
-        result = " - ".join([key + " | " + value for key, value in cookieResult.items()])
-    return result
+	result = ""
+	if cookieResult.get("visitor") is None:
+		result = " - ".join([key + " | " + value for key, value in cookieResult.items()])
+	return result
 
 
 def checkContributor(cookie_result:dict) -> bool:
@@ -373,3 +391,20 @@ def checkContributor(cookie_result:dict) -> bool:
 		return True
 	else:
 		return False
+
+def getProfileWithCookie(ingame_id: str, ingame_name: str, **kwargs) -> tuple[bool, user|None]:
+	try:
+		pbid = kwargs.get("public_id",None)
+		if pbid != None:
+			user_profile = user.objects.get(ingame_id=ingame_id, public_id=pbid)
+		else:
+			user_profile = user.objects.get(ingame_id=ingame_id)
+	except user.DoesNotExist:
+		return False, None
+	resultSimilarity = similar(user_profile.ingame_name.lower(), ingame_name.lower())
+	if resultSimilarity >= 1 or resultSimilarity >= 0.7:
+		if 0.7 <= resultSimilarity <= 0.99:
+			send_webhook(f"{ingame_name.lower()} accessed {user_profile.ingame_name.lower()}'s Profile and the similarity is {resultSimilarity}\n[Admin Panel Link User]({c_hostname}/luhcaran/calculator/user/{user_profile.pk}/change/)")
+		return True, user_profile
+	else:
+		return False, user_profile

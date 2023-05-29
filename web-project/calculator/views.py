@@ -5,13 +5,20 @@ from math import *
 from .forms import User,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelTypeTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinTable
 from .image import create_image
 from .models import user,stuff_table,hero_table,talent_table,skin_table,altar_table,jewel_type_table,jewel_level_table,egg_table,egg_equipped_table,dragon_table,runes_table,reforge_table,refine_table,medals_table,relics_table,weapon_skins_table,dmg_calc_table,Contributor
-from .function import all_formIsValid,findFormError,checkCookie,login_required,similar,create_unique_id,send_webhook,send_embed,checkTheme_Request, makeCookieheader, db_maintenance, checkContributor
+from .function import checkMessages,all_formIsValid,findFormError,checkCookie,login_required,similar,create_unique_id,send_webhook,send_embed,checkTheme_Request, makeCookieheader, db_maintenance, checkContributor, getProfileWithCookie
 import json, os
 from const import DEV_MODE, c_hostname, DEBUG_STATS
 
 missing_data = []
 lang = ["English","Francais","Deutsch","Russian","Española"]
-user_init_primary_key = user.objects.get(ingame_id="0-000000", ingame_name="user_init").pk
+
+# Put a try catch if the database is empty, because when makeing `python manage.py makemigrations|migrate` it will give an error because the calculator_user relation doesn't exist
+try:
+	user_init_primary_key = user.objects.get(ingame_id="0-000000", ingame_name="user_init").pk
+except:
+	user_init_primary_key = 6
+## HHttpResponseRedirect doesn't allow messages.<type>(request,<message:str>) because the messages are stored in the user's session, and a new request means a new session.
+## redirect allow messages.<type>(request,<message:str>)
 
 @db_maintenance
 @login_required
@@ -24,7 +31,7 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 		user_stats = user.objects.get(public_id=pbid)
 	except user.DoesNotExist:
 		return HttpResponseRedirect('/')
-	user_credential = request.session['user_credential']
+	# user_credential = request.session['user_credential']
 	ingame_name = user_stats.ingame_name
 	other_model = user_stats.getOtherModels()
 	stuff_table_stats = other_model['stuff_table']
@@ -200,9 +207,7 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	all_jewel_lvl_dict = jewel_level_table_stats.allLevelForImage()
 	## DRAGON
 	relics_dragon_base_stats = relics_stats.get('dragon_base_stats_var',0.0)
-	dragon_1_stats_dict = dragon_table_stats.DragonStatueStats("1",relics_dragon_base_stats)
-	dragon_2_stats_dict = dragon_table_stats.DragonStatueStats("2",relics_dragon_base_stats)
-	dragon_3_stats_dict = dragon_table_stats.DragonStatueStats("3",relics_dragon_base_stats)
+	dragons_stats_dict = dragon_table_stats.DragonStatueStats(relics_dragon_base_stats)
 	## Get Dragon passiv Skills
 	dragons_skills = dragon_table_stats.getPassivSkillDragon()
 	## Get Dragon For Image
@@ -256,14 +261,14 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	cumul_egg_flat_passiv_hp = int(egg_green_bat_passiv[3]) + int(egg_party_tree_passiv[1]) + int(egg_rock_puppet_passiv[1]) +  int(egg_vase_passiv[1]) + int(egg_zombie_passiv[1]) + int(egg_fire_lizard_passiv[1]) + int(egg_long_dragon_passiv[1]) + int(egg_scarecrow_passiv[1]) + int(egg_skeleton_swordsman_passiv[1]) + int(egg_tornado_mage_passiv[1]) + int(egg_wasp_passiv[1]) + int(egg_cactus_passiv[1]) + int(egg_ice_golem_passiv[1]) + int(egg_scythe_mage_passiv[1]) + int(egg_skull_wizard_passiv[4]) + int(egg_fallen_bat_passiv[1]) + int(egg_nether_puppet_passiv[1]) + int(egg_psionic_scarecrow_passiv[1]) + int(egg_spitting_mushroom_passiv[1]) + int(egg_steel_dryad_passiv[1]) + int(egg_tundra_dragon_passiv[1]) +  int(egg_little_dragon_passiv[1]) + int(egg_rage_golem_passiv[1]) + int(egg_krab_boss_passiv[1]) + int(egg_skeleton_king_passiv[0]) + int(egg_queen_bee_passiv[0]) + int(egg_fire_demon_passiv[0]) + int(egg_plainswolf_passiv[1])
 	cumul_altar_flat_passiv_atk = int(altar_stuff_atk) + int(altar_hero_atk)
 	cumul_altar_flat_passiv_hp = int(altar_stuff_hp) + int(altar_hero_hp)
-	cumul_jewel_flat_activ_atk = int(stats_jewel_dict['attack_ruby']) + int(stats_jewel_dict['attack_kunzite']) + int(stats_jewel_dict['attack_tourmaline']) + int(BonusSpe_jewel_weapon.get('attack_flat',0)) + int(BonusSpe_jewel_bracelet.get('attack_flat',0))
-	cumul_jewel_flat_activ_hp = int(stats_jewel_dict['pv_emerald']) + int(stats_jewel_dict['pv_lapis']) + int(stats_jewel_dict['pv_calaite']) + int(BonusSpe_jewel_armor.get('hp_flat',0)) + int(BonusSpe_jewel_bracelet.get('hp_flat',0)) + int(BonusSpe_jewel_locket.get('hp_flat',0))
+	cumul_jewel_flat_activ_atk = int(stats_jewel_dict.get('attack_flat',0)) + int(BonusSpe_jewel_weapon.get('attack_flat',0)) + int(BonusSpe_jewel_bracelet.get('attack_flat',0))
+	cumul_jewel_flat_activ_hp = int(stats_jewel_dict.get('hp_flat',0)) + int(BonusSpe_jewel_armor.get('hp_flat',0)) + int(BonusSpe_jewel_bracelet.get('hp_flat',0)) + int(BonusSpe_jewel_locket.get('hp_flat',0))
 	cumul_old_flat_passiv_atk = int(cumul_talent_flat_passiv_atk) + int(cumul_runes_flat_passiv_atk) + int(cumul_hero_flat_passiv_atk) + int(cumul_skin_flat_passiv_atk) + int(cumul_egg_flat_passiv_atk)
 	cumul_old_flat_passiv_hp = int(cumul_talent_flat_passiv_hp) + int(cumul_runes_flat_passiv_hp) + int(cumul_hero_flat_passiv_hp) + int(cumul_skin_flat_passiv_hp) + int(cumul_egg_flat_passiv_hp)
 	cumul_refine_flat_activ_atk =  int(refine_weapon_atk) + int(refine_ring1_atk) + int(refine_ring2_atk) + int(refine_bracelet_atk)
 	cumul_refine_flat_activ_hp = int(refine_armor_hp) + int(refine_locket_hp) + int(refine_book_hp)
-	cumul_dragon_flat_activ_atk = int(dragon_1_stats_dict.get("Attack",0)) + int(dragon_2_stats_dict.get("Attack",0)) + int(dragon_3_stats_dict.get("Attack",0))
-	cumul_dragon_flat_activ_hp = int(dragon_1_stats_dict.get("Max Hp",0)) + int(dragon_2_stats_dict.get("Max Hp",0)) + int(dragon_3_stats_dict.get("Max Hp",0))
+	cumul_dragon_flat_activ_atk = int(dragons_stats_dict.get("Attack",0))
+	cumul_dragon_flat_activ_hp = int(dragons_stats_dict.get("Max Hp",0))
 	cumul_stuff_flat_activ_atk = round(stuff_activ_stats['weapon_total'] + stuff_activ_stats['bracelet_total'])
 	cumul_stuff_flat_activ_hp = round(stuff_activ_stats['armor_total'] + stuff_activ_stats['locket_total'] + stuff_activ_stats['book_total'])
 
@@ -290,31 +295,31 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	hero_modified_base_atk = (int(atk_base_hero_choosen) - int(runelineCourage.get('courage_hero_attack_flat',0))) * (float(runelineCourage.get('courage_hero_attack_var',0.0)/100) + float(cumul_var_passiv_power_up_hero) + 1) + int(runelineCourage.get('courage_hero_attack_flat',0))
 	hero_modified_base_hp = (int(health_base_hero_choosen) - int(runelineCourage.get('courage_hero_hp_flat',0))) * (float(runelineCourage.get('courage_hero_hp_var',0.0)/100) + float(cumul_var_passiv_power_up_hero) + 1) + int(runelineCourage.get('courage_hero_hp_flat',0))
 	############################################# RESULT #############################################
-	global_critic_damage = 200 + float(dragons_skills.get("Crit Damage",0.0)) + float(runelinePower.get('var_crit_dmg',0.0)) + float(stats_jewel_dict['crit_dmg_topaz']) + float(stuff_raw_stats['weapon_crit_raw']) + float(stuff_raw_stats['ring1_crit_damage_raw']) + float(stuff_raw_stats['ring2_crit_damage_raw']) + float(stuff_raw_stats['bracelet_crit_raw']) + float(activ_egg_stats['Critic Damage']) + float(cumul_heros_var_passiv_crit_dmg) + float(BonusSpe_jewel_weapon.get('crit_damage',0))
+	global_critic_damage = 200 + float(dragons_skills.get("Crit Damage",0.0)) + float(runelinePower.get('var_crit_dmg',0.0)) + float(stats_jewel_dict.get('crit_damage',0.0)) + float(stuff_raw_stats['weapon_crit_raw']) + float(stuff_raw_stats['ring1_crit_damage_raw']) + float(stuff_raw_stats['ring2_crit_damage_raw']) + float(stuff_raw_stats['bracelet_crit_raw']) + float(activ_egg_stats['Critic Damage']) + float(cumul_heros_var_passiv_crit_dmg) + float(BonusSpe_jewel_weapon.get('crit_damage',0))
 	global_elemental_damage_flat = 0
-	global_elemental_damage_var = float(runelinePower.get('var_elemental_dmg',0.0)) + float(relics_stats.get('elemental_damage_var',0.0)) + float(brave_privileges_stats['Elemental Damage']) + float(stats_jewel_dict['elementary_dmg_amber']) + float(hero_Sylvan[7])
-	global_dodge_chance = 1 - (1-(float(dragons_skills.get("Dodge rate",0.0)))*1-(float(runelineSaviour.get('dodge',0.0)))*1-(float(relics_stats.get('dodge_var',0.0)))*1-(float(BonusSpe_jewel_ring1.get('dodge_var',0.0)))*1-(float(dragon_1_stats_dict.get("Dodge",0.0)))*1-(float(dragon_2_stats_dict.get("Dodge",0.0)))*1-(float(dragon_3_stats_dict.get("Dodge",0.0)))*1-(float(stuff_raw_stats['armor_dodge_raw']))*1-(float(stuff_raw_stats['locket_dodge_raw']))*1-(float(stuff_raw_stats['ring1_dodge_raw']))*1-(float(stuff_raw_stats['ring2_dodge_raw']))*1-(float(hero_Meowgik[4]))*1-(float(hero_Meowgik[7]))*1-(float(hero_Meowgik[1]))*1-(float(hero_Ayana[3]))*1-(float(hero_Rolla[3]))*1-(float(hero_Lina[1]))*1-(float(hero_Gugu[1]))*1-(float(hero_Iris[3])))
+	global_elemental_damage_var = float(runelinePower.get('var_elemental_dmg',0.0)) + float(relics_stats.get('elemental_damage_var',0.0)) + float(brave_privileges_stats['Elemental Damage']) + float(stats_jewel_dict.get('elemental_damage_var',0.0)) + float(hero_Sylvan[7])
+	global_dodge_chance = 1 - (1-(float(dragons_skills.get("Dodge rate",0.0)))*1-(float(runelineSaviour.get('dodge',0.0)))*1-(float(relics_stats.get('dodge_var',0.0)))*1-(float(BonusSpe_jewel_ring1.get('dodge_var',0.0)))*1-(float(dragons_stats_dict.get("Dodge",0.0)))*1-(float(stuff_raw_stats['armor_dodge_raw']))*1-(float(stuff_raw_stats['locket_dodge_raw']))*1-(float(stuff_raw_stats['ring1_dodge_raw']))*1-(float(stuff_raw_stats['ring2_dodge_raw']))*1-(float(hero_Meowgik[4]))*1-(float(hero_Meowgik[7]))*1-(float(hero_Meowgik[1]))*1-(float(hero_Ayana[3]))*1-(float(hero_Rolla[3]))*1-(float(hero_Lina[1]))*1-(float(hero_Gugu[1]))*1-(float(hero_Iris[3])))
 	global_crit_rate = float(15) + float(runelinePower.get('var_crit_rate',0.0)) + float(BonusSpe_jewel_weapon.get('crit_chance',0)) + float(relics_stats.get('crit_chance',0.0)) + float(brave_privileges_stats['Critic Rate']) + float(stuff_raw_stats['ring1_crit_chance_raw']) + float(stuff_raw_stats['ring2_crit_chance_raw']) + float(cumul_heros_var_passiv_crit_rate)
-	global_boss_damage_flat = int(runelinePower.get('flat_dmg_boss',0)) + int(relics_stats.get('damage_bosses_flat',0)) + int(activ_egg_stats['Damage To Bosses']) + int(stuff_activ_stats.get('boss units dmg',0)) + int(stuff_activ_stats.get('boss units dmg',0)) + int(stats_jewel_dict['dmg_to_boss'])
-	global_boss_damage_var = float(stuff_activ_stats.get('boss units dmg var',0.0)) + float(runelinePower.get('var_dmg_boss',0.0)) + float(relics_stats.get('damage_bosses_var',0.0))
-	global_mobs_damage_flat = int(runelinePower.get('flat_dmg_mob',0)) + int(relics_stats.get('damage_mobs_flat',0)) + int(dragon_1_stats_dict.get("Damage To Mobs",0)) + int(dragon_2_stats_dict.get("Damage To Mobs",0)) + int(dragon_3_stats_dict.get("Damage To Mobs",0)) + int(activ_egg_stats['Damage To Mobs']) + int(stuff_activ_stats.get('mobs units dmg',0)) + int(stuff_activ_stats.get('mobs units dmg',0)) + int(stats_jewel_dict['dmg_to_mobs']) + int(hero_Bobo[0])
-	global_mobs_damage_var = float(stuff_activ_stats.get('mobs units dmg var',0.0)) + float(runelinePower.get('var_dmg_mob',0.0)) + float(relics_stats.get('damage_mobs_var',0.0))
-	global_ranged_damage_flat = int(runelinePower.get('flat_dmg_ranged',0)) + int(relics_stats.get('damage_ranged_flat',0)) + int(dragon_1_stats_dict.get("Damage To Ranged Units",0)) + int(dragon_2_stats_dict.get("Damage To Ranged Units",0)) + int(dragon_3_stats_dict.get("Damage To Ranged Units",0)) + int(stuff_activ_stats.get('ranged units dmg',0)) + int(stuff_activ_stats.get('ranged units dmg',0)) + int(activ_egg_stats['Damage To Ranged Units']) + int(hero_Ryan[0]) + int(hero_Melinda[0]) + int(hero_Sylvan[5]) + int(hero_Ryan[5]) + int(hero_Melinda[5]) + int(hero_Helix[6]) + int(hero_Gugu[6])
+	global_boss_damage_flat = int(runelinePower.get('flat_dmg_boss',0)) + int(relics_stats.get('damage_bosses_flat',0)) + int(activ_egg_stats['Damage To Bosses']) + int(stuff_activ_stats.get('boss units dmg',0)) + int(stuff_activ_stats.get('boss units dmg',0)) + int(stats_jewel_dict.get('damage_bosses_flat',0))
+	global_boss_damage_var = float(stats_jewel_dict.get('damage_bosses_var',0.0)) + float(stuff_activ_stats.get('boss units dmg var',0.0)) + float(runelinePower.get('var_dmg_boss',0.0)) + float(relics_stats.get('damage_bosses_var',0.0))
+	global_mobs_damage_flat = int(runelinePower.get('flat_dmg_mob',0)) + int(relics_stats.get('damage_mobs_flat',0)) + int(dragons_stats_dict.get("Damage To Mobs",0)) + int(activ_egg_stats['Damage To Mobs']) + int(stuff_activ_stats.get('mobs units dmg',0)) + int(stuff_activ_stats.get('mobs units dmg',0)) + int(stats_jewel_dict.get('damage_mobs_flat',0)) + int(hero_Bobo[0])
+	global_mobs_damage_var = float(stats_jewel_dict.get('damage_mobs_var',0.0)) + float(stuff_activ_stats.get('mobs units dmg var',0.0)) + float(runelinePower.get('var_dmg_mob',0.0)) + float(relics_stats.get('damage_mobs_var',0.0))
+	global_ranged_damage_flat = int(runelinePower.get('flat_dmg_ranged',0)) + int(relics_stats.get('damage_ranged_flat',0)) + int(dragons_stats_dict.get("Damage To Ranged Units",0)) + int(stuff_activ_stats.get('ranged units dmg',0)) + int(stuff_activ_stats.get('ranged units dmg',0)) + int(activ_egg_stats['Damage To Ranged Units']) + int(hero_Ryan[0]) + int(hero_Melinda[0]) + int(hero_Sylvan[5]) + int(hero_Ryan[5]) + int(hero_Melinda[5]) + int(hero_Helix[6]) + int(hero_Gugu[6])
 	global_ranged_damage_var = float(stuff_activ_stats.get('ranged units dmg var',0.0)) + float(runelinePower.get('var_dmg_ranged',0.0)) + float(relics_stats.get('damage_ranged_var',0.0)) + float(hero_Bobo[2]) + float(hero_Gugu[2]) + float(hero_Ayana[4]) + float(hero_Melinda[4]) + float(hero_Sylvan[4]) + float(hero_Phoren[4]) + float(hero_Atreus[1]) + float(hero_Ayana[1]) + float(hero_Sylvan[1])
-	global_ground_damage_flat = int(runelinePower.get('flat_dmg_ground',0)) + int(relics_stats.get('damage_ground_flat',0)) + int(dragon_1_stats_dict.get("Damage To Ground Units",0)) + int(dragon_2_stats_dict.get("Damage To Ground Units",0)) + int(dragon_3_stats_dict.get("Damage To Ground Units",0)) + int(stuff_activ_stats.get('ground units dmg',0)) + int(stuff_activ_stats.get('ground units dmg',0)) + int(activ_egg_stats['Damage To Ground Units']) + int(hero_Shade[0]) + int(hero_Ophelia[5]) + int(hero_Blazo[5]) + int(hero_Sylvan[6])
+	global_ground_damage_flat = int(runelinePower.get('flat_dmg_ground',0)) + int(relics_stats.get('damage_ground_flat',0)) + int(dragons_stats_dict.get("Damage To Ground Units",0)) + int(stuff_activ_stats.get('ground units dmg',0)) + int(stuff_activ_stats.get('ground units dmg',0)) + int(activ_egg_stats['Damage To Ground Units']) + int(hero_Shade[0]) + int(hero_Ophelia[5]) + int(hero_Blazo[5]) + int(hero_Sylvan[6])
 	global_ground_damage_var = float(stuff_activ_stats.get('ground units dmg var',0.0)) + float(runelinePower.get('var_dmg_ground',0.0)) + float(relics_stats.get('damage_ground_var',0.0)) + float(hero_Onir[4]) + float(hero_Shingen[4]) + float(hero_Phoren[7]) + float(hero_Onir[1]) + float(hero_Blazo[3])
 	global_airborne_damage_flat = int(runelinePower.get('flat_dmg_airborne',0)) + int(relics_stats.get('damage_airborne_flat',0)) + int(stuff_activ_stats.get('airborne units dmg',0)) + int(stuff_activ_stats.get('airborne units dmg',0)) + int(activ_egg_stats['Damage To Airborne Units']) + int(hero_Ayana[0]) + int(hero_Gugu[0]) + int(hero_Ryan[2]) + int(hero_Phoren[5]) + int(hero_Gugu[5]) + int(hero_Taranis[6]) + int(hero_Ryan[6]) + int(hero_Iris[6]) + int(hero_Elaine[0])
 	global_airborne_damage_var = float(stuff_activ_stats.get('airborne units dmg var',0.0)) + float(runelinePower.get('var_dmg_airborne',0.0)) + float(relics_stats.get('damage_airborne_var',0.0)) + float(hero_Taranis[4]) + float(hero_Iris[4]) + float(hero_Taranis[1])
-	global_melee_damage_flat = int(runelinePower.get('flat_dmg_melee',0)) + int(relics_stats.get('damage_melee_flat',0)) + int(dragon_1_stats_dict.get("Damage To Melee Units",0)) + int(dragon_2_stats_dict.get("Damage To Melee Units",0)) + int(dragon_3_stats_dict.get("Damage To Melee Units",0)) + int(stuff_activ_stats.get('melee units dmg',0)) + int(stuff_activ_stats.get('melee units dmg',0)) + int(activ_egg_stats['Damage To Melee Units']) + int(hero_Shari[0]) + int(hero_Shingen[0]) + int(hero_Blazo[0]) + int(hero_Rolla[5]) + int(hero_Shingen[5]) + int(hero_Shari[6])
+	global_melee_damage_flat = int(runelinePower.get('flat_dmg_melee',0)) + int(relics_stats.get('damage_melee_flat',0)) + int(dragons_stats_dict.get("Damage To Melee Units",0)) + int(stuff_activ_stats.get('melee units dmg',0)) + int(stuff_activ_stats.get('melee units dmg',0)) + int(activ_egg_stats['Damage To Melee Units']) + int(hero_Shari[0]) + int(hero_Shingen[0]) + int(hero_Blazo[0]) + int(hero_Rolla[5]) + int(hero_Shingen[5]) + int(hero_Shari[6])
 	global_melee_damage_var = float(stuff_activ_stats.get('melee units dmg var',0.0)) + float(dragons_skills.get("Damage VS melee units",0.0)) + float(runelinePower.get('var_dmg_melee',0.0)) + float(relics_stats.get('damage_melee_var',0.0)) + float(hero_Shari[3]) + float(hero_Melinda[2]) + float(hero_Urasil[4]) + float(hero_Ophelia[4]) + float(hero_Lina[4]) + float(hero_Urasil[1]) + float(hero_Ophelia[1]) + float(hero_Shingen[3]) + float(hero_Elaine[4])
 	global_normal_damage_flat = int(stuff_activ_stats.get("non-elite mobs dmg",0))
 	global_normal_damage_var = float(stuff_activ_stats.get("non-elite mobs dmg var",0))
-	global_elite_damage_flat = int(stuff_activ_stats.get("elite mobs dmg",0))
-	global_elite_damage_var = float(relics_stats.get("damage_elite_var",0.0)) + float(stuff_activ_stats.get("elite mobs dmg var",0)) + float(altar_heros_ascension_dmg_elite) ### RELICS damage_elite_var doesn't work because field isn't added in db and won't be added 
+	global_elite_damage_flat = int(stuff_activ_stats.get("elite mobs dmg",0)) + int(stats_jewel_dict.get('damage_elite_flat',0))
+	global_elite_damage_var = float(stats_jewel_dict.get('damage_elite_var',0.0)) + float(relics_stats.get("damage_elite_var",0.0)) + float(stuff_activ_stats.get("elite mobs dmg var",0)) + float(altar_heros_ascension_dmg_elite) ### RELICS damage_elite_var doesn't work because field isn't added in db and won't be added
 	global_all_damage_flat = 0
 	global_all_damage_var = float(runelinePower.get('var_all_dmg',0.0))
-	weapon_ranged_damage = float(stats_jewel_dict['weapon_ranged_damage']) + float(relics_stats.get("damage_weapon_ranged_var",0.0)) + float(hero_Iris[7])
-	weapon_melee_damage = float(dragon_1_stats_dict.get("Weapon Melee Damage",0)) + float(dragon_2_stats_dict.get("Weapon Melee Damage",0)) + float(dragon_3_stats_dict.get("Weapon Melee Damage",0)) + float(relics_stats.get("damage_weapon_melee_var",0.0)) + float(hero_Shingen[7])
+	weapon_ranged_damage = float(stats_jewel_dict.get('damage_weapon_ranged_var',0.0)) + float(relics_stats.get("damage_weapon_ranged_var",0.0)) + float(hero_Iris[7])
+	weapon_melee_damage = float(dragons_stats_dict.get("Weapon Melee Damage",0)) + float(relics_stats.get("damage_weapon_melee_var",0.0)) + float(hero_Shingen[7])
 	weapon_damage = float(hero_Stella[7]) + float(stuff_raw_stats['weapon_damage_stats'])
 
 	global_stats_atk_flat = hero_modified_base_atk + int(cumul_old_flat_passiv_atk) + int(cumul_stuff_flat_activ_atk) + int(activ_egg_stats["Attack"]) + int(cumul_altar_flat_passiv_atk) + int(cumul_dragon_flat_activ_atk) + int(brave_privileges_stats['Attack Flat']) + int(medal_stats['attack']) + int(relics_stats.get('attack_flat',0))
@@ -390,6 +395,7 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	return HttpResponseRedirect(f'{dict_Link.get(redirectPath,"/calculator/index/")}')
 
 @login_required
+@checkMessages
 def affiche_calc(request, pbid):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
@@ -402,7 +408,7 @@ def affiche_calc(request, pbid):
 	except dmg_calc_table.DoesNotExist:
 		return HttpResponseRedirect(f"/stats/calc/{pbid}/1/?log=False")
 	except user.DoesNotExist:
-		messages.error(request, "user doesn't exist")
+		request.session['error_message'] = "user doesn't exist"
 		return HttpResponseRedirect('/')
 	if not os.path.exists(f"calculator/static/image/stuff_save/{pbid}.png"):
 		return HttpResponseRedirect(f"/stats/calc/{pbid}/0/?log=False")
@@ -453,6 +459,7 @@ def affiche_calc(request, pbid):
 
 @db_maintenance
 @login_required
+@checkMessages
 def index_calc(request):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
@@ -470,50 +477,45 @@ def index_calc(request):
 		new_tempUser.atk_base_stats_hero_choosen = 100
 		new_tempUser.health_base_stats_hero_choosen = 400
 		new_tempUser.public_id = 1678471785674909
+		new_tempUser.public_profile = False
 		new_tempUser.save()
 
 	SidebarContent = local_data['SidebarContent']
 	user_credential = request.session['user_credential']
 	darkmode = checkTheme_Request(request,user_credential)
-	try_access = False
-	ingame_id_cookie = list(user_credential.values())[0]
 	ingame_name_cookie = list(user_credential.keys())[0]
+	ingame_id_cookie = user_credential.get(ingame_name_cookie,None)
+	profile = getProfileWithCookie(ingame_id_cookie,ingame_name_cookie)
 	user_liste = list(user.objects.all().order_by('-global_atk_save').filter(public_profile=True))
-	user_stats = ""
+
+	show_table = "no_profile"
+	self_ingame_hero = "unknown"
+	user_stats = profile[1]
 	self_ingame_name = ""
 	self_public_id = ""
 	self_global_atk_save = ""
 	self_global_hp_save = ""
 	rank = "?"
 	avatar_src = f"/static/image/hero_icon/icon_unknown.png"
-	try:
-		if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
-			show_table = "visitor"
-		else:
-			user_stats = user.objects.get(ingame_id=ingame_id_cookie)
-			self_ingame_name = user_stats.ingame_name
-			self_ingame_hero = user_stats.choosen_hero
-			if os.path.exists(f"calculator/static/image/hero_icon/icon_{self_ingame_hero}.png"):
-				avatar_src = f"/static/image/hero_icon/icon_{self_ingame_hero}.png"
-			self_public_id = user_stats.public_id
-			self_global_atk_save = user_stats.global_atk_save
-			self_global_hp_save = user_stats.global_hp_save
-			resultSimilar = similar(self_ingame_name.lower(),str(ingame_name_cookie).lower())
-			try:
-				rank = user_liste.index(user_stats)
-			except ValueError:
-				rank = "?"
-			if resultSimilar >= 0.65:
-				show_table = "yes"
-			elif resultSimilar >= 0.65:
-				show_table = "no_show"
-			else:
-				show_table = "visitor"
-				try_access = True
-				send_webhook(f"{str(ingame_name_cookie).lower()} tried to acces {self_ingame_name.lower()} and the similitude was at {similar(self_ingame_name.lower(),str(ingame_name_cookie).lower())}")
-	except user.DoesNotExist:
-		show_table = "no_profile"
-		self_ingame_hero = "unknown"
+	if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
+		show_table = "visitor"
+	elif profile[0] == False and user_stats != None:
+		show_table = "visitor"
+		self_ingame_name = user_stats.ingame_name
+		messages.error(request,f'You attempted to access {self_ingame_name}<br>But your login username is "{ingame_name_cookie}".')
+	elif profile[0] and user_stats != None:
+		self_ingame_name = user_stats.ingame_name
+		self_ingame_hero = user_stats.choosen_hero
+		if os.path.exists(f"calculator/static/image/hero_icon/icon_{self_ingame_hero}.png"):
+			avatar_src = f"/static/image/hero_icon/icon_{self_ingame_hero}.png"
+		self_public_id = user_stats.public_id
+		self_global_atk_save = user_stats.global_atk_save
+		self_global_hp_save = user_stats.global_hp_save
+		show_table = "yes"
+		try:
+			rank = user_liste.index(user_stats)
+		except ValueError:
+			rank = "?"
 	number_user = len(user_liste)
 	notuserlist = ['0-000001','0-000002','0-000003','0-000004'] ## pas besoin de mettre le user_init, il a déjà moins de 2800 atk
 	notuserlist.extend(user.objects.filter(global_atk_save__lt=2800).values_list('ingame_id', flat=True))
@@ -536,7 +538,6 @@ def index_calc(request):
 		"header_msg": "Stats Calculator",
 		"lang":lang,
 		"number_user":number_user,
-		"try_access":try_access,
 		"ingame_name_cookie":ingame_name_cookie,
 		"sidebarContent":SidebarContent,
 		"cookieUsername":makeCookieheader(user_credential)
@@ -550,14 +551,14 @@ def formulaire_calc(request):
 	SidebarContent = local_data['SidebarContent']
 	user_credential = request.session['user_credential']
 	darkmode = checkTheme_Request(request,user_credential)
-	cookie_request_id = list(user_credential.values())[0]
 	cookie_request_name = list(user_credential.keys())[0]
-	try:
-		profile = user.objects.get(ingame_id=cookie_request_id)
-	except user.DoesNotExist:
-		profile = False
-	if request.method == "POST" or profile != False:
-		messages.info(request, f"{profile.ingame_name}'s Profile already exists")
+	cookie_request_id = user_credential.get(cookie_request_name,None)
+	profile = getProfileWithCookie(cookie_request_id,cookie_request_name)
+	if request.method == "POST" or profile[0]:
+		request.session['info_message'] = f"{profile[1].ingame_name}'s Profile already exists"
+		return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
+	elif profile[0] == False and profile[1] != None:
+		request.session['error_message'] = f'You can\'t create a new profile, this id is already used by {profile[1].ingame_name}.'
 		return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
 	else :
 		form_User = User()
@@ -611,83 +612,21 @@ def formulaire_calc(request):
 @db_maintenance
 @login_required
 def traitement_calc(request):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
-	user_credential = request.session['user_credential']
-	darkmode = checkTheme_Request(request,user_credential)
-	form_User = User(request.POST)
-	form_StuffTable = StuffTable(request.POST)
-	form_HeroTable = HeroTable(request.POST)
-	form_TalentTable = TalentTable(request.POST)
-	form_SkinTable = SkinTable(request.POST)
-	form_AltarTable = AltarTable(request.POST)
-	form_JewelTypeTable = JewelTypeTable(request.POST)
-	form_JewelLevelTable = JewelLevelTable(request.POST)
-	form_EggTable = EggTable(request.POST)
-	form_EggEquippedTable = EggEquippedTable(request.POST)
-	form_DragonTable = DragonTable(request.POST)
-	form_RunesTable = RunesTable(request.POST)
-	form_ReforgeTable = ReforgeTable(request.POST)
-	form_RefineTable = RefineTable(request.POST)
-	form_MedalTable = MedalsTable(request.POST)
-	form_RelicsTable = RelicsTable(request.POST)
-	form_WeaponSkinTable = WeaponSkinTable(request.POST)
-	form_validation = all_formIsValid(form_User.is_valid(),form_StuffTable.is_valid(),form_HeroTable.is_valid(),form_TalentTable.is_valid(),form_SkinTable.is_valid(),form_AltarTable.is_valid(),form_JewelTypeTable.is_valid(),form_JewelLevelTable.is_valid(),form_EggTable.is_valid(),form_EggEquippedTable.is_valid(),form_DragonTable.is_valid(),form_RunesTable.is_valid(),form_ReforgeTable.is_valid(),form_RefineTable.is_valid(), form_MedalTable.is_valid(), form_RelicsTable.is_valid(), form_WeaponSkinTable.is_valid())
-	if form_validation:
-		stats_User = form_User.save()
-		stats_User.save()
-		stats_StuffTable = form_StuffTable.save(commit=False)
-		stats_HeroTable = form_HeroTable.save(commit=False)
-		stats_TalentTable = form_TalentTable.save(commit=False)
-		stats_SkinTable = form_SkinTable.save(commit=False)
-		stats_AltarTable = form_AltarTable.save(commit=False)
-		stats_JewelTypeTable = form_JewelTypeTable.save(commit=False)
-		stats_JewelLevelTable = form_JewelLevelTable.save(commit=False)
-		stats_EggTable = form_EggTable.save(commit=False)
-		stats_EggEquippedTable = form_EggEquippedTable.save(commit=False)
-		stats_DragonTable = form_DragonTable.save(commit=False)
-		stats_RunesTable = form_RunesTable.save(commit=False)
-		stats_ReforgeTable = form_ReforgeTable.save(commit=False)
-		stats_RefineTable = form_RefineTable.save(commit=False)
-		stats_MedalsTable = form_MedalTable.save(commit=False)
-		stats_RelicsTable = form_RelicsTable.save(commit=False)
-		stats_WeaponSkinTable = form_WeaponSkinTable.save(commit=False)
-		stats_StuffTable.user_profile = stats_User
-		stats_HeroTable.user_profile = stats_User
-		stats_TalentTable.user_profile = stats_User
-		stats_SkinTable.user_profile = stats_User
-		stats_AltarTable.user_profile = stats_User
-		stats_JewelTypeTable.user_profile = stats_User
-		stats_JewelLevelTable.user_profile = stats_User
-		stats_EggTable.user_profile = stats_User
-		stats_EggEquippedTable.user_profile = stats_User
-		stats_DragonTable.user_profile = stats_User
-		stats_RunesTable.user_profile = stats_User
-		stats_ReforgeTable.user_profile = stats_User
-		stats_RefineTable.user_profile = stats_User
-		stats_MedalsTable.user_profile = stats_User
-		stats_RelicsTable.user_profile = stats_User
-		stats_WeaponSkinTable.user_profile = stats_User
-		stats_StuffTable.save()
-		stats_HeroTable.save()
-		stats_TalentTable.save()
-		stats_SkinTable.save()
-		stats_AltarTable.save()
-		stats_JewelTypeTable.save()
-		stats_JewelLevelTable.save()
-		stats_EggTable.save()
-		stats_EggEquippedTable.save()
-		stats_DragonTable.save()
-		stats_RunesTable.save()
-		stats_ReforgeTable.save()
-		stats_RefineTable.save()
-		stats_MedalsTable.save()
-		stats_RelicsTable.save()
-		stats_WeaponSkinTable.save()
-		pbid_for_url = stats_User.public_id
-		return HttpResponseRedirect(f"/stats/calc/{pbid_for_url}/0/")
-	else:
+	if request.method == "POST":
+		with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+			local_data = json.load(f)
+		SidebarContent = local_data['SidebarContent']
+		user_credential = request.session['user_credential']
+		darkmode = checkTheme_Request(request,user_credential)
+		cookie_request_name = list(user_credential.keys())[0]
+		cookie_request_id = user_credential.get(cookie_request_name,None)
+		profile = getProfileWithCookie(cookie_request_id,cookie_request_name)
+		if profile[0]:
+			request.session['info_message'] = f"{profile[1].ingame_name}'s Profile already exists"
+			return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
+		elif profile[0] == False and profile[1] != None:
+			request.session['error_message'] = f'You attempted to access {profile[1].ingame_name}<br>But your login username is "{cookie_request_name}".'
+			return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
 		form_User = User(request.POST)
 		form_StuffTable = StuffTable(request.POST)
 		form_HeroTable = HeroTable(request.POST)
@@ -705,19 +644,93 @@ def traitement_calc(request):
 		form_MedalTable = MedalsTable(request.POST)
 		form_RelicsTable = RelicsTable(request.POST)
 		form_WeaponSkinTable = WeaponSkinTable(request.POST)
-		pbid = create_unique_id()
-		ingame_id = form_User['ingame_id'].data
-		ingame_name = form_User['ingame_name'].data
-		pk_id = form_StuffTable['user_profile'].data
-		form_error = findFormError(form_User, form_StuffTable, form_HeroTable, form_TalentTable, form_SkinTable, form_AltarTable, form_JewelTypeTable, form_JewelLevelTable, form_EggTable, form_EggEquippedTable, form_DragonTable, form_RunesTable, form_ReforgeTable, form_RefineTable, form_MedalTable, form_RelicsTable, form_WeaponSkinTable)
-		value_error_msg = (str(form_error).split("'")[1].replace("_"," ") + ": " + str(form_error).split("'")[3]).title()
-		return render(request,"calculator/formulaire.html",{"value_error": value_error_msg,'form_User' :form_User,'form_StuffTable' :form_StuffTable,
-			'form_HeroTable' :form_HeroTable,'form_TalentTable' :form_TalentTable,'form_SkinTable' :form_SkinTable,'form_AltarTable' :form_AltarTable,
-			'form_JewelTypeTable' :form_JewelTypeTable,'form_JewelLevelTable' :form_JewelLevelTable,'form_EggTable' :form_EggTable,
-			'form_EggEquippedTable' :form_EggEquippedTable,'form_DragonTable' :form_DragonTable,'form_RunesTable' :form_RunesTable,
-			'form_ReforgeTable' :form_ReforgeTable,'form_RefineTable' :form_RefineTable,'form_MedalTable' :form_MedalTable,'form_RelicsTable' :form_RelicsTable,
-			'form_WeaponSkinTable' :form_WeaponSkinTable,'darkmode': darkmode, 'header_msg': 'Create Profile','lang':lang, "public_id":pbid,"cookie_request_id":ingame_id,
-			"cookie_request_name":ingame_name,"pk_id":pk_id,"sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(user_credential)})
+		form_validation = all_formIsValid(form_User.is_valid(),form_StuffTable.is_valid(),form_HeroTable.is_valid(),form_TalentTable.is_valid(),form_SkinTable.is_valid(),form_AltarTable.is_valid(),form_JewelTypeTable.is_valid(),form_JewelLevelTable.is_valid(),form_EggTable.is_valid(),form_EggEquippedTable.is_valid(),form_DragonTable.is_valid(),form_RunesTable.is_valid(),form_ReforgeTable.is_valid(),form_RefineTable.is_valid(), form_MedalTable.is_valid(), form_RelicsTable.is_valid(), form_WeaponSkinTable.is_valid())
+		if form_validation:
+			stats_User = form_User.save()
+			stats_User.save()
+			stats_StuffTable = form_StuffTable.save(commit=False)
+			stats_HeroTable = form_HeroTable.save(commit=False)
+			stats_TalentTable = form_TalentTable.save(commit=False)
+			stats_SkinTable = form_SkinTable.save(commit=False)
+			stats_AltarTable = form_AltarTable.save(commit=False)
+			stats_JewelTypeTable = form_JewelTypeTable.save(commit=False)
+			stats_JewelLevelTable = form_JewelLevelTable.save(commit=False)
+			stats_EggTable = form_EggTable.save(commit=False)
+			stats_EggEquippedTable = form_EggEquippedTable.save(commit=False)
+			stats_DragonTable = form_DragonTable.save(commit=False)
+			stats_RunesTable = form_RunesTable.save(commit=False)
+			stats_ReforgeTable = form_ReforgeTable.save(commit=False)
+			stats_RefineTable = form_RefineTable.save(commit=False)
+			stats_MedalsTable = form_MedalTable.save(commit=False)
+			stats_RelicsTable = form_RelicsTable.save(commit=False)
+			stats_WeaponSkinTable = form_WeaponSkinTable.save(commit=False)
+			stats_StuffTable.user_profile = stats_User
+			stats_HeroTable.user_profile = stats_User
+			stats_TalentTable.user_profile = stats_User
+			stats_SkinTable.user_profile = stats_User
+			stats_AltarTable.user_profile = stats_User
+			stats_JewelTypeTable.user_profile = stats_User
+			stats_JewelLevelTable.user_profile = stats_User
+			stats_EggTable.user_profile = stats_User
+			stats_EggEquippedTable.user_profile = stats_User
+			stats_DragonTable.user_profile = stats_User
+			stats_RunesTable.user_profile = stats_User
+			stats_ReforgeTable.user_profile = stats_User
+			stats_RefineTable.user_profile = stats_User
+			stats_MedalsTable.user_profile = stats_User
+			stats_RelicsTable.user_profile = stats_User
+			stats_WeaponSkinTable.user_profile = stats_User
+			stats_StuffTable.save()
+			stats_HeroTable.save()
+			stats_TalentTable.save()
+			stats_SkinTable.save()
+			stats_AltarTable.save()
+			stats_JewelTypeTable.save()
+			stats_JewelLevelTable.save()
+			stats_EggTable.save()
+			stats_EggEquippedTable.save()
+			stats_DragonTable.save()
+			stats_RunesTable.save()
+			stats_ReforgeTable.save()
+			stats_RefineTable.save()
+			stats_MedalsTable.save()
+			stats_RelicsTable.save()
+			stats_WeaponSkinTable.save()
+			pbid_for_url = stats_User.public_id
+			return HttpResponseRedirect(f"/stats/calc/{pbid_for_url}/0/")
+		else:
+			form_User = User(request.POST)
+			form_StuffTable = StuffTable(request.POST)
+			form_HeroTable = HeroTable(request.POST)
+			form_TalentTable = TalentTable(request.POST)
+			form_SkinTable = SkinTable(request.POST)
+			form_AltarTable = AltarTable(request.POST)
+			form_JewelTypeTable = JewelTypeTable(request.POST)
+			form_JewelLevelTable = JewelLevelTable(request.POST)
+			form_EggTable = EggTable(request.POST)
+			form_EggEquippedTable = EggEquippedTable(request.POST)
+			form_DragonTable = DragonTable(request.POST)
+			form_RunesTable = RunesTable(request.POST)
+			form_ReforgeTable = ReforgeTable(request.POST)
+			form_RefineTable = RefineTable(request.POST)
+			form_MedalTable = MedalsTable(request.POST)
+			form_RelicsTable = RelicsTable(request.POST)
+			form_WeaponSkinTable = WeaponSkinTable(request.POST)
+			pbid = create_unique_id()
+			ingame_id = form_User['ingame_id'].data
+			ingame_name = form_User['ingame_name'].data
+			pk_id = form_StuffTable['user_profile'].data
+			form_error = findFormError(form_User, form_StuffTable, form_HeroTable, form_TalentTable, form_SkinTable, form_AltarTable, form_JewelTypeTable, form_JewelLevelTable, form_EggTable, form_EggEquippedTable, form_DragonTable, form_RunesTable, form_ReforgeTable, form_RefineTable, form_MedalTable, form_RelicsTable, form_WeaponSkinTable)
+			value_error_msg = (str(form_error).split("'")[1].replace("_"," ") + ": " + str(form_error).split("'")[3]).title()
+			return render(request,"calculator/formulaire.html",{"value_error": value_error_msg,'form_User' :form_User,'form_StuffTable' :form_StuffTable,
+				'form_HeroTable' :form_HeroTable,'form_TalentTable' :form_TalentTable,'form_SkinTable' :form_SkinTable,'form_AltarTable' :form_AltarTable,
+				'form_JewelTypeTable' :form_JewelTypeTable,'form_JewelLevelTable' :form_JewelLevelTable,'form_EggTable' :form_EggTable,
+				'form_EggEquippedTable' :form_EggEquippedTable,'form_DragonTable' :form_DragonTable,'form_RunesTable' :form_RunesTable,
+				'form_ReforgeTable' :form_ReforgeTable,'form_RefineTable' :form_RefineTable,'form_MedalTable' :form_MedalTable,'form_RelicsTable' :form_RelicsTable,
+				'form_WeaponSkinTable' :form_WeaponSkinTable,'darkmode': darkmode, 'header_msg': 'Create Profile','lang':lang, "public_id":pbid,"cookie_request_id":ingame_id,
+				"cookie_request_name":ingame_name,"pk_id":pk_id,"sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(user_credential)})
+	else:
+		return HttpResponseRedirect("/calculator/index")
 
 @db_maintenance
 @login_required
@@ -727,32 +740,36 @@ def update_calc(request, pbid):
 	SidebarContent = local_data['SidebarContent']
 	user_credential = request.session['user_credential']
 	darkmode = checkTheme_Request(request,user_credential)
-	try:
-		user_stats = user.objects.get(public_id=pbid)
-	except user.DoesNotExist:
-		return HttpResponseRedirect("/")
-	user_id = user_stats.ingame_id
-	stuff_table_stats = stuff_table.objects.get(user_profile=user_stats)
-	hero_table_stats = hero_table.objects.get(user_profile=user_stats)
-	talent_table_stats = talent_table.objects.get(user_profile=user_stats)
-	skin_table_stats = skin_table.objects.get(user_profile=user_stats)
-	altar_table_stats = altar_table.objects.get(user_profile=user_stats)
-	jewel_type_table_stats = jewel_type_table.objects.get(user_profile=user_stats)
-	jewel_level_table_stats = jewel_level_table.objects.get(user_profile=user_stats)
-	egg_table_stats = egg_table.objects.get(user_profile=user_stats)
-	egg_equipped_table_stats = egg_equipped_table.objects.get(user_profile=user_stats)
-	dragon_table_stats = dragon_table.objects.get(user_profile=user_stats)
-	runes_table_stats = runes_table.objects.get(user_profile=user_stats)
-	reforge_table_stats = reforge_table.objects.get(user_profile=user_stats)
-	refine_table_stats = refine_table.objects.get(user_profile=user_stats)
-	medal_table_stats = medals_table.objects.get(user_profile=user_stats)
-	relics_table_stats = relics_table.objects.get(user_profile=user_stats)
-	weapon_skins_table_stats = weapon_skins_table.objects.get(user_profile=user_stats)
-	user_name = user_stats.ingame_name.lower()
 	ingame_name_cookie = list(user_credential.keys())[0]
-	ingame_id_cookie = list(user_credential.values())[0]
-	if (request.method == "GET" and similar(user_name,str(ingame_name_cookie).lower()) >= 0.65 and ingame_id_cookie == user_id) or DEBUG_STATS:
-		username_unlowered = user_stats.ingame_name
+	ingame_id_cookie = user_credential.get(ingame_name_cookie,None)
+	profile = getProfileWithCookie(ingame_id_cookie,ingame_name_cookie,public_id=pbid)
+	if profile[0] or DEBUG_STATS:
+		user_stats = profile[1]
+		if DEBUG_STATS:
+			user_stats = user.objects.get(public_id=pbid)	
+	elif profile[0] == False:
+		if profile[1] != None:
+			request.session['error_message'] = f'You attempted to access {profile[1].ingame_name}<br>But your login username is "{ingame_name_cookie}".'
+		return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
+	if request.method == "GET":
+		stuff_table_stats = stuff_table.objects.get(user_profile=user_stats)
+		hero_table_stats = hero_table.objects.get(user_profile=user_stats)
+		talent_table_stats = talent_table.objects.get(user_profile=user_stats)
+		skin_table_stats = skin_table.objects.get(user_profile=user_stats)
+		altar_table_stats = altar_table.objects.get(user_profile=user_stats)
+		jewel_type_table_stats = jewel_type_table.objects.get(user_profile=user_stats)
+		jewel_level_table_stats = jewel_level_table.objects.get(user_profile=user_stats)
+		egg_table_stats = egg_table.objects.get(user_profile=user_stats)
+		egg_equipped_table_stats = egg_equipped_table.objects.get(user_profile=user_stats)
+		dragon_table_stats = dragon_table.objects.get(user_profile=user_stats)
+		runes_table_stats = runes_table.objects.get(user_profile=user_stats)
+		reforge_table_stats = reforge_table.objects.get(user_profile=user_stats)
+		refine_table_stats = refine_table.objects.get(user_profile=user_stats)
+		medal_table_stats = medals_table.objects.get(user_profile=user_stats)
+		relics_table_stats = relics_table.objects.get(user_profile=user_stats)
+		weapon_skins_table_stats = weapon_skins_table.objects.get(user_profile=user_stats)
+		user_id = user_stats.ingame_id
+		username = user_stats.ingame_name
 		public_id = user_stats.public_id
 		form_User = User(user_stats.dictionnaire())
 		form_StuffTable = StuffTable(stuff_table_stats.dictionnaire())
@@ -791,7 +808,7 @@ def update_calc(request, pbid):
 			'form_WeaponSkinTable': form_WeaponSkinTable,
 			"ingame_id":user_id,
 			"public_id":public_id,
-			"ingame_name": username_unlowered,
+			"ingame_name": username,
 			"pk_id": user_stats.pk,
 			"id_token": pbid,
 			"form_dragon_1": dragon_table_stats.dragon1_type,
@@ -813,7 +830,11 @@ def updatetraitement_calc(request, pbid):
 		with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 			local_data = json.load(f)
 		SidebarContent = local_data['SidebarContent']
-		user_instance = user.objects.get(public_id=pbid)
+		try:
+			user_instance = user.objects.get(public_id=pbid)
+		except:
+			request.session['error_message'] = f'User doesn\'t exist'
+			return HttpResponseRedirect("/calculator/index/")
 		stuff_table_stats = stuff_table.objects.get(user_profile=user_instance)
 		hero_table_stats = hero_table.objects.get(user_profile=user_instance)
 		talent_table_stats = talent_table.objects.get(user_profile=user_instance)
@@ -951,10 +972,6 @@ def delete_user(request, pbid):
 	return HttpResponseRedirect(f"/calculator/index")
 
 
-
-def damage_calc(request, pbid):
-	# one page request POST form
-	return HttpResponseRedirect(f"/calculator/index")
 
 @db_maintenance
 def admin_reload_stats(request,pbid):

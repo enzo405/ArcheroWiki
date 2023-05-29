@@ -706,14 +706,23 @@
         "fields": {
             "user_profile": 1,
             "demon_blade_rain_1": false,
+            "demon_blade_rain_2": false,
             "antiquated_sword_1": false,
+            "antiquated_sword_2": false,
             "gale_force_1": false,
+            "gale_force_2": false,
             "death_scythe_1": false,
+            "death_scythe_2": false,
             "boomerang_1": false,
+            "boomerang_2": false,
             "brightspear_1": false,
+            "brightspear_2": false,
             "saw_blade_1": false,
+            "saw_blade_2": false,
             "brave_bow_1": false,
-            "stalker_staff_1": false
+            "brave_bow_2": false,
+            "stalker_staff_1": false,
+            "stalker_staff_2": false
         }
     }
 ]

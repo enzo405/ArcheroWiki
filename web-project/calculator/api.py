@@ -1,8 +1,8 @@
-import json
-from django.http import HttpResponseRedirect, JsonResponse
+import json, os
+from django.http import HttpResponseRedirect, JsonResponse, HttpResponseBadRequest
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from .function import send_webhook, login_required, send_embed, editor_login,db_maintenance, checkContributor
+from .function import send_webhook, login_required, send_embed, editor_login,db_maintenance, checkContributor, getProfileWithCookie, checkCookie
 from .models import UserQueue, Token, Contributor, user
 from django.contrib import messages
 from .forms import UserQueueForm
@@ -12,6 +12,7 @@ from rest_framework import status
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django.urls import reverse
+
 
 missing_data = []
 
@@ -149,8 +150,6 @@ def validate_user_queue(request, pk):
 	else:
 		return HttpResponseRedirect('/luhcaran/login/?next=' + request.build_absolute_uri())
 	
-def export_gsheet(request,pbid):
-	return HttpResponseRedirect(f"/calculator/index")
 
 def json_payload_profile(request,pbid):
 	try:
@@ -865,9 +864,7 @@ def show_debug(request, pbid):
 		BonusSpe_jewel_book = jewel_level_table_stats.JewelSpeBonusStatsRecup('book',brave_privileges_stats['Spellbook JSSSA'])
 		## DRAGON
 		relics_dragon_base_stats = relics_stats.get('dragon_base_stats_var',0.0)
-		dragon_1_stats_dict = dragon_table_stats.DragonStatueStats("1",relics_dragon_base_stats)
-		dragon_2_stats_dict = dragon_table_stats.DragonStatueStats("2",relics_dragon_base_stats)
-		dragon_3_stats_dict = dragon_table_stats.DragonStatueStats("3",relics_dragon_base_stats)
+		dragon_stats_dict = dragon_table_stats.DragonStatueStats(relics_dragon_base_stats)
 		## Get Dragon passiv Skills
 		dragons_skills = dragon_table_stats.getPassivSkillDragon()
 		## Get All Stats of Equipped Egg
@@ -913,9 +910,7 @@ def show_debug(request, pbid):
 			"BonusSpe_jewel_locket":BonusSpe_jewel_locket,
 			"BonusSpe_jewel_book":BonusSpe_jewel_book,
 			"relics_dragon_base_stats":relics_dragon_base_stats,
-			"dragon_1_stats_dict":dragon_1_stats_dict,
-			"dragon_2_stats_dict":dragon_2_stats_dict,
-			"dragon_3_stats_dict":dragon_3_stats_dict,
+			"dragon_stats_dict":dragon_stats_dict,
 			"dragons_skills":dragons_skills,
 			"activ_egg_stats":activ_egg_stats,
 			"weapon_skin_stats":weapon_skin_stats,

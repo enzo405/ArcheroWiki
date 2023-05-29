@@ -162,7 +162,6 @@
 		top: -37px;
 	}
 	.image-div-stuff{
-		margin-top: -280px;
 		max-width: 550px;
 	}
 	.detail-stats{
@@ -457,7 +456,7 @@ main{
 	-moz-border-radius: 10px;
 	-o-border-radius: 10px;
 	padding: 10px;
-	background-color: rgba(245,208,129,255);
+	background-color: rgb(231,198,171);
 	z-index: 49;
 }
 .debug_container{
@@ -494,9 +493,6 @@ main{
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	-o-border-radius: 10px;
-	background-image: url(image/background/bg_stuff_affiche.png);
-	background-repeat: no-repeat;
-	background-size: contain;
 }
 .image-stuff-result{
 	height: 100%;
@@ -576,7 +572,6 @@ main{
 }
 .form_stuff select{
 	width: 85px;
-	height: 100%;
 }
 .form_stuff input{
 	max-width: 56px;

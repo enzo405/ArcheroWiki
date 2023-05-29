@@ -1,15 +1,19 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5.4">
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5.6a">
 <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+{% if ingame_id == none %}
 <title>Create Stats - Calculator</title>
+{% else %}
+<title>Update Stats - {{ ingame_name }}</title>
+{% endif %}
 <meta property="og:title" content="Archero Stats Calculator">
 <meta property="og:url" content="https://stats.wiki-archero.com/calculator/index/">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
 <meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.4">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.6a">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
@@ -927,6 +931,16 @@
 				</div>
 				<div class="container-relic">
 					<div class="header-relic-card">
+						<img src="/static/image/relics_img/dusken_cask.png" alt="dusken_cask">
+					</div>
+					<div class="container_boost">
+						<span>Level : {{ form_RelicsTable.dusken_cask_level }}</span>
+						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.dusken_cask_star }}</span>
+						<!-- <span>Exclusive : {{ form_RelicsTable.dusken_cask_effective }}</span> -->
+					</div>
+				</div>
+				<div class="container-relic">
+					<div class="header-relic-card">
 						<img src="/static/image/relics_img/lucky_coin.png" alt="lucky_coin">
 					</div>
 					<div class="container_boost">
@@ -953,16 +967,6 @@
 						<span>Level : {{ form_RelicsTable.dragon_eye_level }}</span>
 						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.dragon_eye_star }}</span>
 						<span>Exclusive : {{ form_RelicsTable.dragon_eye_effective }}</span>
-					</div>
-				</div>
-				<div class="container-relic">
-					<div class="header-relic-card">
-						<img src="/static/image/relics_img/dusken_cask.png" alt="dusken_cask">
-					</div>
-					<div class="container_boost">
-						<span>Level : {{ form_RelicsTable.dusken_cask_level }}</span>
-						<span><i class="fa fa-star" aria-hidden="true"></i> : {{ form_RelicsTable.dusken_cask_star }}</span>
-						<!-- <span>Exclusive : {{ form_RelicsTable.dusken_cask_effective }}</span> -->
 					</div>
 				</div>
 				<div class="container-relic">

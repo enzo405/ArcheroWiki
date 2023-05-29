@@ -3,11 +3,11 @@
 	<head>
 		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.5.4">
+		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.5.6a">
 		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-		<script src="{% static 'main.js' %}?version=1.5.4"></script>
+		<script src="{% static 'main.js' %}?version=1.5.6a"></script>
 		{% block head %}
 		{% endblock %}
 	</head>
@@ -74,7 +74,7 @@
 			<footer>
 				<div class="footer-content">
 					<div class="footer-about">
-						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.5.4" alt="image game icon">
+						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.5.6a" alt="image game icon">
 						<div class="about-content">
 							<h2>Archero :</h2>
 							<div>Archero Update will be added with a certains delay</div>
@@ -83,7 +83,7 @@
 							</div>
 							<div class="f_content_info"><a href="/Terms-of-Use/">Terms of Use</a></div>
 							<div class="f_content_info"><a href="/changelog/">ChangeLog</a></div>
-							<div class="f_content_info">Build v1.5.4</div>
+							<div class="f_content_info">Build v1.5.6</div>
 						</div>
 					</div>
 					<div class="discord_link">
@@ -113,7 +113,7 @@
 	{% if messages %}
 		{% for message in messages %}
 		<script>
-			var stringElement = '<div{% if message.tags %} class="{{ message.tags }}-messages"{% endif %}>{{ message }}</div>'
+			var stringElement = '<div{% if message.tags %} class="{{ message.tags }}-messages"{% endif %}>{{ message|safe }}</div>'
 			createModale(stringElement,false,'info')
 		</script>
 		{% endfor %}

@@ -1,8 +1,9 @@
 from .forms import DamageCalculatorForm
 from .models import user,stuff_table,hero_table,talent_table,skin_table,altar_table,jewel_level_table,egg_table,egg_equipped_table,dragon_table,runes_table,reforge_table,refine_table,medals_table,relics_table,weapon_skins_table,dmg_calc_table,promo_code
-from .function import checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,checkTheme_Request,calculatePrice,makeCookieheader,db_maintenance
+from .function import checkMessages,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,checkTheme_Request,calculatePrice,makeCookieheader,db_maintenance, getProfileWithCookie, login_required, checkContributor
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.urls import reverse
 from math import *
 from urllib.request import urlopen
 from discord_webhook import DiscordWebhook, DiscordEmbed
@@ -15,7 +16,7 @@ from const import WEBHOOK_URL, c_hostname, DISCORD_NOTIF_ROLE_ID, DISCORD_ERROR_
 lang = ["English","Francais","Deutsch","Russian","Española"]
 missing_data = []
 
-
+@checkMessages
 def menu(request):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
@@ -34,29 +35,28 @@ def maze(request):
 		data_json = json.load(url)
 	return render(request, 'wiki/get_maze.html', {"data_json":data_json, "darkmode": darkmode, "header_msg": "maze","lang":lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
 
-
 def csrf_failure(request, reason=""):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
+	profil = "no"
+	public_id =''
 	try:
-		ingame_id_cookie = list(cookie_result.values())[0]
 		ingame_name_cookie = list(cookie_result.keys())[0]
-		if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
-			profil = "no"
-			public_id =''
-		else:
-			profil = "yes"
-			user_stats = user.objects.get(ingame_id=ingame_id_cookie)
-			public_id = user_stats.public_id
-	except (IndexError,user.DoesNotExist):
-		profil = "no"
-		public_id =''
+		ingame_id_cookie = cookie_result.get(ingame_name_cookie,None)
+		user_profile = getProfileWithCookie(ingame_id_cookie,ingame_name_cookie)
+		if len(cookie_result) != 0:
+			if user_profile[0]:
+				profil = "yes"
+				user_stats = user_profile[1]
+				public_id = user_stats.public_id
+	except IndexError:
+		pass
 	darkmode = checkTheme_Request(request,cookie_result)
 	return render(request,'base/csrf_failure.html', {"darkmode": darkmode, "header_msg": "CSRF FAILURE","lang":lang, "profil":profil, "public_id":public_id, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
 
-
+@checkMessages
 def login(request):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
@@ -64,38 +64,49 @@ def login(request):
 	cookie_value = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_value)
 	if (len(cookie_value) >= 1 and "visitor" not in list(cookie_value)):
-		username = list(cookie_value.keys())[0]
-		send_webhook(f'{cookie_value} tried to access Login but was redirected to Home')
-		messages.warning(request, f"You cannot go to Login : {username}")
+		cookie_request_name = list(cookie_value.keys())[0]
+		cookie_request_id = cookie_value.get(cookie_request_name,None)
+		profile = getProfileWithCookie(cookie_request_id,cookie_request_name)
+		if profile[0] == False and profile[1] != None:
+			return render(request, "base/login.html", {"darkmode":darkmode, "sidebarContent":SidebarContent})
+		send_webhook(f'{cookie_value} tried to access Login but was redirected to Home\n{request.COOKIES}')
+		request.session['error_message'] = f"You cannot go to Login : {cookie_request_name}"
 		return HttpResponseRedirect("/")
 	else:
 		return render(request, "base/login.html", {"darkmode":darkmode, "sidebarContent":SidebarContent})
 
 def login_processing(request, username_raw, id_raw):
 	response = redirect("/")
-	if len(checkCookie(request.COOKIES)) != 0:
-		messages.info(request, f'You are already logged in')
-		return response
+	cookie_value = checkCookie(request.COOKIES)
+	if len(cookie_value) != 0:
+		cookie_request_name = list(cookie_value.keys())[0]
+		cookie_request_id = cookie_value.get(cookie_request_name,None)
+		profile = getProfileWithCookie(cookie_request_id,cookie_request_name)
+		if profile[0]:
+			request.session['info_message'] = f"You are already logged in"
+			return response
+		else:
+			response.delete_cookie(key=cookie_request_name,path="/")
 	username_legal = checkIllegalKey(username_raw)
 	boolCheck = checkUsernameCredentials(username_raw,id_raw)
-	if boolCheck[1] == "visitor" and boolCheck[2] == "0-000000":
+	if boolCheck["ingame_name"] == "visitor" and boolCheck["ingame_id"] == "0-000000":
 		response.set_cookie(key="visitor", value="0-000000", httponly=True, path='/')
-	elif boolCheck[1] != "visitor" and boolCheck[2] == "0-000000":
-		messages.error(request, f'Login Failed : you can\'t use 0-000000')
-	elif boolCheck[0]:
+	elif boolCheck["ingame_name"] != "visitor" and boolCheck["ingame_id"] == "0-000000":
+		request.session['error_message'] = f"Login Failed : you can\'t use 0-000000"
+	elif boolCheck["access"]:
 		response.delete_cookie('visitor', path='/')
 		expires = datetime.now() + timedelta(days=365)
 		try:
-			response.set_cookie(key=boolCheck[1], value=boolCheck[2], expires=expires, httponly=True, samesite="Strict")
+			response.set_cookie(key=boolCheck["ingame_name"], value=boolCheck["ingame_id"], expires=expires, httponly=True, samesite="Strict")
 		except CookieError as e:
 			send_webhook(f"<@&{DISCORD_NOTIF_ROLE_ID}> : {e}")
-			messages.error(request, f'Login Failed (forbidden character "{username_legal}")')
+			request.session['error_message'] = f"Login Failed (forbidden character \"{username_legal}\")"
 			return response
-		messages.success(request, f'Successful Login ({boolCheck[1]})')
-		send_embed(boolCheck[1],"Successful Login",description_embed=f"",field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck[1]}`|`{boolCheck[2]}`",e_color="32ec08",request=request, alert=False)
+		request.session['success_message'] = f"Successful Login ({boolCheck['ingame_name']})"
+		send_embed(boolCheck["ingame_name"],"Successful Login",description_embed=f"",field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck['ingame_name']}`|`{boolCheck['ingame_id']}`\n\n**Response Cookies** : \n{response.cookies}",e_color="32ec08",request=request, alert=False, admin_log=boolCheck.get('admin_log',None))
 	else:
-		messages.error(request, f'Login Failed : {boolCheck[3]}')
-		send_embed(boolCheck[1],"Login Failed",description_embed=boolCheck[3],field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck[1]}`|`{boolCheck[2]}`",e_color="d50400",request=request, alert=True)
+		request.session['error_message'] = f"Login Failed : {boolCheck['error_message']}"
+		send_embed(boolCheck["ingame_name"],"Login Failed",description_embed=boolCheck["error_message"],field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck['ingame_name']}`|`{boolCheck['ingame_id']}`\n\n**Response Cookies** : \n{response.cookies}",e_color="d50400",request=request, alert=True, admin_log=boolCheck.get('admin_log',None))
 	return response
 
 def wiki_theorycrafting(request):
@@ -202,6 +213,7 @@ def heros_description(request, hero=None):
 		messages.warning(request, message=f"{e} isn't a hero")
 	return render(request, "wiki/heros_description.html",ctx)
 
+@checkMessages
 def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str="None"):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
@@ -239,7 +251,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 				"currency2": ['Scrolls :','scroll'],
 			}
 		else:
-			messages.error(request, message=f"The levels need to be between 0 and {max_lvl}")
+			request.session['error_message'] = f"The levels need to be between 0 and {max_lvl}"
 			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "heroes":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
@@ -254,7 +266,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 				"currency2": ['Sapphire :','sapphire'],
 			}
 		else:
-			messages.error(request, message="The levels need to be between 0 and 120")
+			request.session['error_message'] = f"The levels need to be between 0 and 120"
 			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "talents":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 205) and (1 <= lvl2 <= 206):
@@ -269,7 +281,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 				"currency2": ['',''],
 			}
 		else:
-			messages.error(request, message="The levels need to be between 0 and 206")
+			request.session['error_message'] = "The levels need to be between 0 and 206"
 			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "dragons":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
@@ -285,10 +297,10 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 					"currency2": ['Magestones :','magestone'],
 				}
 			else:
-				messages.error(request, message="The rank need to be whether A, S or SS")
+				request.session['error_message'] = "The rank need to be whether A, S or SS"
 				return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/{lvl1}/{lvl2}/A/")
 		else:
-			messages.error(request, message="The levels need to be between 0 and 120")
+			request.session['error_message'] = "The levels need to be between 0 and 120"
 			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/{rank}/")
 	elif cost_type == "relics":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 29) and (1 <= lvl2 <= 30):
@@ -304,10 +316,10 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 					"currency2": ['Starlight :','starlight'],
 				}
 			else:
-				messages.error(request, message="The rank need to be whether A, S or SS")
+				request.session['error_message'] = "The rank need to be whether A, S or SS"
 				return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/{lvl1}/{lvl2}/A/")
 		else:
-			messages.error(request, message="The levels need to be between 0 and 30")
+			request.session['error_message'] = "The levels need to be between 0 and 30"
 			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/{rank}/")
 	ctx.update({"content":content})
 	return render(request, "wiki/upgrade_cost.html", ctx)
@@ -366,6 +378,7 @@ def promocode(request):
 	return render(request, "wiki/promo-code.html", ctx)
 
 @db_maintenance
+@checkMessages
 def damage(request):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
@@ -373,17 +386,19 @@ def damage(request):
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
 	user_stats = ""
+	selfHasProfil = "no"
 	if len(cookie_result) != 0:
-		ingame_id_cookie = list(cookie_result.values())[0]
 		ingame_name_cookie = list(cookie_result.keys())[0]
+		ingame_id_cookie = cookie_result.get(ingame_name_cookie,None)
+		profile = getProfileWithCookie(ingame_id_cookie,ingame_name_cookie)
 		if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
 			selfHasProfil = "login"
-		else:
-			try:
-				user_stats = user.objects.get(ingame_id=ingame_id_cookie)
-				selfHasProfil = "yes"
-			except user.DoesNotExist:
-				selfHasProfil = "no"
+		elif profile[0]:
+			user_stats = profile[1]
+			selfHasProfil = "yes"
+		elif not profile[0] and profile[1] != None:
+			selfHasProfil = "login"
+			messages.error(request,f'You attempted to access {profile[1].ingame_name}<br>But your login username is "{ingame_name_cookie}".')
 	else:
 		selfHasProfil = "login"
 	chapter_1_to_21 =  user.objects.get(ingame_id="0-000001").public_id
@@ -532,9 +547,7 @@ def dmgCalc_processing(request,pbid):
 	BonusSpe_jewel_book = jewel_level_table_stats.JewelSpeBonusStatsRecup('book',brave_privileges_stats['Spellbook JSSSA'])
 	## DRAGON
 	relics_dragon_base_stats = relics_stats.get('dragon_base_stats_var',0.0)
-	dragon_1_stats_dict = dragon_table_stats.DragonStatueStats("1",relics_dragon_base_stats)
-	dragon_2_stats_dict = dragon_table_stats.DragonStatueStats("2",relics_dragon_base_stats)
-	dragon_3_stats_dict = dragon_table_stats.DragonStatueStats("3",relics_dragon_base_stats)
+	dragon_stats_dict = dragon_table_stats.DragonStatueStats(relics_dragon_base_stats)
 	## Get Dragon passiv Skills
 	dragons_skills = dragon_table_stats.getPassivSkillDragon()
 	## Get All Stats of Equipped Egg
@@ -567,10 +580,10 @@ def dmgCalc_processing(request,pbid):
 	cumul_skin_flat_passiv_atk = int(skin_atk_boost)
 	cumul_egg_flat_passiv_atk = int(egg_bomb_ghost_passiv[1]) + int(egg_green_bat_passiv[1]) + int(egg_piranha_passiv[1]) + int(egg_crazy_spider_passiv[1]) + int(egg_fire_mage_passiv[1]) + int(egg_skeleton_archer_passiv[1]) + int(egg_skeleton_soldier_passiv[1]) + int(egg_fire_element_passiv[1]) + int(egg_flame_ghost_passiv[1]) + int(egg_ice_mage_passiv[1]) + int(egg_pea_shooter_passiv[1]) + int(egg_shadow_assassin_passiv[1]) + int(egg_skull_wizard_passiv[1]) + int(egg_tornado_demon_passiv[1]) + int(egg_savage_spider_passiv[1]) + int(egg_flaming_bug_passiv[1]) + int(egg_one_eyed_bat_passiv[1]) + int(egg_elite_archer_passiv[1]) + int(egg_icefire_phantom_passiv[1]) + int(egg_purple_phantom_passiv[1]) + int(egg_scarlet_mage_passiv[1]) + int(egg_arch_leader_passiv[0]) + int(egg_crimson_witch_passiv[0]) + int(egg_medusa_boss_passiv[0]) + int(egg_ice_worm_passiv[0]) + int(egg_desert_goliath_passiv[0]) + int(egg_ice_demon_passiv[0]) + int(egg_fire_demon_passiv[1]) + int(egg_crimson_zombie_passiv[1]) + int(egg_scythe_pharoah_passiv[1]) + int(egg_infernal_demon_passiv[0]) + int(egg_fireworm_queen_passiv[0])
 	cumul_altar_flat_passiv_atk = int(altar_stuff_atk) + int(altar_hero_atk)
-	cumul_jewel_flat_activ_atk = int(stats_jewel_dict['attack_ruby']) + int(stats_jewel_dict['attack_kunzite']) + int(stats_jewel_dict['attack_tourmaline']) + int(BonusSpe_jewel_weapon.get('attack_flat',0)) + int(BonusSpe_jewel_bracelet.get('attack_flat',0))
+	cumul_jewel_flat_activ_atk = int(stats_jewel_dict.get('attack_flat',0)) + int(BonusSpe_jewel_weapon.get('attack_flat',0)) + int(BonusSpe_jewel_bracelet.get('attack_flat',0))
 	cumul_old_flat_passiv_atk = int(cumul_talent_flat_passiv_atk) + int(cumul_runes_flat_passiv_atk) + int(cumul_hero_flat_passiv_atk) + int(cumul_skin_flat_passiv_atk) + int(cumul_egg_flat_passiv_atk)
 	cumul_refine_flat_activ_atk =  int(refine_weapon_atk) + int(refine_ring1_atk) + int(refine_ring2_atk) + int(refine_bracelet_atk)
-	cumul_dragon_flat_activ_atk = int(dragon_1_stats_dict.get("Attack",0)) + int(dragon_2_stats_dict.get("Attack",0)) + int(dragon_3_stats_dict.get("Attack",0))
+	cumul_dragon_flat_activ_atk = int(dragon_stats_dict.get("Attack",0))
 	cumul_stuff_flat_activ_atk = round(stuff_activ_stats['weapon_total'] + stuff_activ_stats['bracelet_total'])
 
 	cumul_heros_var_passiv_atk = float(hero_Taranis[2]) + float(hero_Meowgik[2]) + float(hero_Ayana[2]) + float(hero_Rolla[2]) + float(hero_Sylvan[2]) + float(hero_Aquea[2]) + float(hero_Iris[2]) + float(hero_Bonnie[4]) + float(hero_Shade[7]) + float(hero_Melinda[7]) + float(hero_Bobo[1]) + float(hero_Bobo[4]) + float(hero_Stella[2])
@@ -616,6 +629,7 @@ def dmgCalc_processing(request,pbid):
 		return HttpResponseRedirect("/wiki/damage-calculator/")
 
 @db_maintenance
+@checkMessages
 def damageCalc(request,pbid):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
@@ -782,7 +796,7 @@ def damageCalc(request,pbid):
 			form_error = damage_calc_form.errors.items()
 			for k,v in form_error:
 				error_msg = f"{k} : {str(v[0])}"
-			messages.error(request, error_msg)
+			request.session['error_message'] = error_msg
 			return HttpResponseRedirect(f"/wiki/damage-calculator/{pbid}/")
 	else:
 		return HttpResponseRedirect(f"/wiki/damage-calculator/{pbid}/")
@@ -841,17 +855,14 @@ def handler500(request):
 
 
 def rickroll(request):
-	send_webhook(f'Someone has been rickrolled')	
+	send_webhook(f'Someone has been rickrolled')
 	return HttpResponseRedirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
 
 def tos(request):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
 	darkmode = checkTheme_Request(request,cookie_result)
-	return render(request,'base/tos.html',{"darkmode": darkmode,"cookieUsername":makeCookieheader(cookie_result)})
+	return render(request,'base/tos.html',{"darkmode": darkmode})
 
 def changelog(request):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
@@ -862,3 +873,19 @@ def changelog(request):
 	with open(f'calculator/static/json/commits.json','r', encoding='utf-8') as commit:
 		commit_json = json.load(commit)
 	return render(request,'base/changelog.html',{"commit_json":commit_json,"darkmode": darkmode, "header_msg": "Change Log", 'lang':lang, "sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(cookie_result)})
+
+
+@login_required
+def advanced_stats(request):
+	user_credential = request.session['user_credential']
+	if checkContributor(user_credential):
+		with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+			local_data = json.load(f)
+		darkmode = checkTheme_Request(request,user_credential)
+		SidebarContent = local_data['SidebarContent']
+		AdvancedStats = local_data['AdvancedStats']
+		send_webhook(f"{user_credential} is looking at Advanced stats",admin_log=True)
+		return render(request, "wiki/advanced_stats.html", {"darkmode":darkmode, "header_msg": "Advanced Stats", "AdvancedStats":AdvancedStats,"sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(user_credential)})
+	else:
+		request.session['error_message'] = "Access Restricted<br>Verification in progress."
+		return redirect(reverse('menu'))

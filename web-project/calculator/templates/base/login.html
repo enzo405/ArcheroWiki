@@ -5,9 +5,9 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.5.4">
+	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.5.6a">
 	<link rel="icon" type="image/ong" href="{% static 'favicon.ico' %}">
-	<script src="{% static 'main.js' %}?version=1.5.4"></script>
+	<script src="{% static 'main.js' %}?version=1.5.6a"></script>
 </head>
 {% if darkmode == "yes" %}
 <body class="body_dark_mode">
@@ -107,26 +107,26 @@
 	const errorBox = document.getElementById('errorBox');
 	const errorContent = document.getElementById('error_msg');
 	const formRow = document.getElementById('form-row');
-	const ingameIdRegex = /^[0-9]{1}-[0-9]{6,12}$/;
+	const ingameIdRegex = /^\d-\d{6,12}$/;
+	const adminRegex = /^0-\d{4,12}$/;
 	formRow.style.pointerEvents = 'auto';
 
 	submitBtn.addEventListener('click', () => {
 		const username = usernameInput.value.trim();
 		const ingameId = ingameIdInput.value.trim();
 		if (!username) {
-			errors.username = 'Username field cannot be empty';
+			throw "Username must be between 3 and 15 characters long"
 		} else if (username.length < 3 || username.length > 20) {
-			errors.username = 'Username must be between 3 and 15 characters long';
+			throw 'Username must be between 3 and 15 characters long';
 		} else if (username === 'visitor') {
-			errors.username = 'You cannot use this username';
+			throw 'You cannot use this username';
 		}
-
 		if (!ingameId) {
-			errors.ingameId = 'Ingame ID field cannot be empty';
-		} else if (!ingameId.match(ingameIdRegex)) {
-			errors.ingameId = 'Your id must fit this format: X-XXXXXXX';
-		} else if (ingameId.length > 11) {
-			errors.ingameId = 'Your id must be minimum 11 number';
+			throw 'Ingame ID field cannot be empty';
+		} else if (!ingameIdRegex.test(ingameId) && !adminRegex.test(ingameId)) {
+			throw 'Your id must fit this format: X-XXXXXXX';
+		} else if (ingameId.length > 11 ) {
+			throw 'Your id must be minimum 11 number';
 		}
 
 		async function submitLogin() {
@@ -143,8 +143,6 @@
 		submitLogin().then((result) => {
 			formRow.style.pointerEvents = 'none';
 			if (result === 'yes') {
-				const date = new Date();
-				date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
 				const usernameLower = username.toLowerCase();
 				window.location.href = `/login/processing/${usernameLower}/${ingameId}/`;
 			} else if (result === 'no') {

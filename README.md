@@ -1,4 +1,4 @@
-# Wiki Actual Version : v1.5.4
+# Wiki Actual Version : v1.5.6
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -59,33 +59,34 @@ ___
 - `if migrate doesn't work, you need to delete the database through the psql command and DROP TABLE`
 - `python manage.py makemigrations`
 - `python manage.py migrate`
-- `python manage.py loaddata data.json`
-<!-- Remind to fill up the data.json -->
+- `python manage.py loaddata database_dump.json`
+<!-- Remind to fill up the database_dump.json -->
 ---
 
 
 ```diff
-Need to hack / datamine
-- data relics
+Todo list: 
+- export gsheet
+- add not allowed ingame_id
 ```
 ```diff
 Future Release:
+- altar_hero_projectile_resistance incrementation data wrong
+- login ask if this profile is yours and use it if yes etc...
+- security sql injection fix (owasp zap)
 - damage calc add new var
-- api editor ? make it better for use
 - jewel/dragon guide
 - make universal name for e.g : "range_dmg_var" or "ranged_dmg_var" ?
-- glyphs unlocked in form (new table)
-- font number stuff image
-- form relics remake
 - add all heroes star for future information in profile page
 - add page for emulator skill in fight with skill you can check (don't forget medals boost)
 - details page add run boost from glyphs, dragon, stuff etc...
-- add multilingual translate
+- translate
 - item (especially for ring, get value with dict.get instead of having mythic_boost, titan_tales_boost etc....)
-```
-```diff
-Why not ?
-- system maintenance when changing db
+- store cookie in session
+- remove space in key of local_data (skill)
+- maze soluce display only current week pattern
+- relics stat does apply if level, star and exclusive are = to 0
+- damage fix with HACKER profile, and also when looking at other profile, because stats doesn't load
 ```
 
-Update April 15, 2023 3:45 AM
+Update May 29, 2023 6:45 PM

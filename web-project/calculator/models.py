@@ -17,6 +17,9 @@ class UserQueue(models.Model):
 
 class Contributor(models.Model):
 	label = models.CharField(max_length=40)
+	
+	def __str__(self):
+		return self.label
 
 class Token(models.Model):
 	user = models.OneToOneField(BuiltinDjangoUser, on_delete=models.CASCADE)
@@ -41,6 +44,32 @@ class Token(models.Model):
 # blank determines whether the field will be required in forms.
 # This includes the admin and your custom forms. If blank=True then the field will not be required, whereas if it's False the field cannot be blank.
 
+rarity_index = {
+	"common":0,
+	"great":1,
+	"rare":2,
+	"epic":3,
+	"perfect_epic":4,
+	"legendary":5,
+	"ancient_legendary":6,
+	"mythic":7,
+	"mythic_1":8,
+	"mythic_2":9,
+	"titan_tales":10,
+	"titan_tales_1":11,
+	"titan_tales_2":12,
+	"titan_tales_3":13,
+	"chaos":14,
+}
+dragon_rarity_index = {
+	"Great":0,
+	"Rare":1,
+	"Epic":2,
+	"Perfect_Epic":3,
+	"Legendary":4,
+	"Ancient_Legendary":5,
+	"Mythic":6,
+}
 
 #(actual value, human readable name)
 # default selected must be the value and not the human readable
@@ -69,7 +98,7 @@ mix_atk_resistance = (("none","none"),("amber","amber"),("topaz","topaz"),("ruby
 mix_defense_resistance = (("none","none"),("amber","amber"),("topaz","topaz"),("lapis","lapis"),("emerald","emerald"),("amethyst","amethyst"),("calaite","calaite"))
 level_egg_boss = ((15,"15⭐"),(14,"14⭐"),(13,"13⭐"),(12,"12⭐"),(11,"11⭐"),(10,"10⭐"),(9,"9⭐"),(8,"8⭐"),(7,"7⭐"),(6,"6⭐"),(5,"5⭐"),(4,"4⭐"),(3,"3⭐"),(2,"2⭐"),(1,"1⭐"),(0,'0⭐'))
 level_egg_mobs = ((20,"20⭐"),(19,"19⭐"),(18,"18⭐"),(17,"17⭐"),(16,"16⭐"),(15,"15⭐"),(14,"14⭐"),(13,"13⭐"),(12,"12⭐"),(11,"11⭐"),(10,"10⭐"),(9,"9⭐"),(8,"8⭐"),(7,"7⭐"),(6,"6⭐"),(5,"5⭐"),(4,"4⭐"),(3,"3⭐"),(2,"2⭐"),(1,"1⭐"),(0,"0⭐"))
-all_dragon = (("None","None"),("Glacion","Glacion"),("Infernox","Infernox"),("Stormra","Stormra"),("Noxion","Noxion"),("Shadex","Shadex"),("Jadeon","Jadeon"),("Dominus","Dominus"),("Ferron","Ferron"),("Geogon","Geogon"),("Swordian","Swordian"),("Necrogon","Necrogon"),("Starrite","Starrite"),("Voideon","Voideon"))
+all_dragon = (("None","None"),("Glacion","Glacion"),("Infernox","Infernox"),("Stormra","Stormra"),("Noxion","Noxion"),("Shadex","Shadex"),("Jadeon","Jadeon"),("Dominus","Dominus"),("Ferron","Ferron"),("Geogon","Geogon"),("Swordian","Swordian"),("Necrogon","Necrogon"),("Starrite","Starrite"),("Voideon","Voideon"),("Magmar","Magmar"))
 dragon_rarity = (("Great","Great"),("Rare","Rare"),("Epic","Epic"),("Perfect Epic","Perfect Epic"),("Legendary","Legendary"),("Ancient Legendary","Ancient Legendary"),("Mythic","Mythic"))
 reforge = ((0,0),(20,20),(40,40),(60,60),(80,80),(100,100),(120,120),(140,140),(160,160),(180,180),(200,200),(220,220),(240,240),(260,260),(280,280),(300,300),(320,320),(340,340),(360,360),(380,380),(400,400),(450,450),(500,500),(550,550),(600,600),(650,650),(700,700),(750,750),(800,800),(850,850),(900,900),(950,950),(1000,1000))
 altar_ascension_level = ((12,12),(11,11),(10,10),(9,9),(8,8),(7,7),(6,6),(5,5),(4,4),(3,3),(2,2),(1,1),(0,0))
@@ -247,23 +276,6 @@ class stuff_table(models.Model,parentModel):
 		return int(self.local_data["WeaponHiddenStats"][self.weapon_choosen.lower().replace(" ","_") + "_dmg_multiplier"])
 
 	def GetRawStats(self):
-		rarity_index = {
-			"common":0,
-			"great":1,
-			"rare":2,
-			"epic":3,
-			"perfect_epic":4,
-			"legendary":5,
-			"ancient_legendary":6,
-			"mythic":7,
-			"mythic_1":8,
-			"mythic_2":9,
-			"titan_tales":10,
-			"titan_tales_1":11,
-			"titan_tales_2":12,
-			"titan_tales_3":13,
-			"chaos":14,
-		}
 		weapon_name = self.weapon_choosen.replace(" ","_").lower()
 		armor_name = self.armor_choosen.replace(" ","_").lower()
 		ring_1_name = self.ring1_choosen.replace(" ","_").lower()
@@ -805,133 +817,30 @@ class jewel_level_table(models.Model,parentModel):
 		return chaine
 
 	def JewelStatsRecup(self,attack_jewel_base:float,hp_jewel_base:float):
-		jewel_type = list(jewel_type_table.objects.get(user_profile=self.user_profile).dictionnaire().values())
-		jewel_level = list(self.dictionnaire().values())
+		jewels_type = list(jewel_type_table.objects.get(user_profile=self.user_profile).dictionnaire().values())
+		jewels_level = list(self.dictionnaire().values())
 		list_type = []
+		result =  {}
 		JewelStats = self.local_data['JewelStats']
-		for i in range(0,len(jewel_type)):
-			list_type.append(str(jewel_type[i]) + "_" + str(jewel_level[i]))
+		for i in range(1,len(jewels_type)): # 1 car l'index 0 = user_profile
+			list_type.append(str(jewels_type[i]) + "_" + str(jewels_level[i]))
 		try:
 			list_type.remove(str(self.user_profile.ingame_id)+"_"+str(self.user_profile.ingame_id))
 		except ValueError:
 			pass
-		###### BONUS 1 ######
-		atk_ruby = 0
-		atk_kunzite = 0
-		atk_tourmaline = 0
-		pv_lapis = 0
-		pv_emerald = 0
-		proj_res_topaz = 0
-		front_res_amber = 0
-		collision_res_amethyst = 0
-		pv_calaite = 0
-		###### BONUS 2 ######
-		dmg_to_boss = 0
-		dmg_to_mobs = 0
-		dmg_to_elite = 0
-		red_he_lapis = 0
-		drop_pv_emerald = 0
-		crit_dmg_topaz = 0
-		elementary_dmg_amber = 0
-		pm_when_hurt_amethyst = 0
-		mp_max_calaite = 0
-		###### BONUS 3 ######
-		weapon_ranged_damage = 0
-		counterattack_rate = 0
-
-		for x in list_type:
-			a = x.split("_")[0]
-			if a == "ruby":
-				ruby_b1 = atk_ruby
-				ruby_b2 = dmg_to_boss
-				atk_ruby = int(JewelStats["ruby_lvl" + str(x.split("_")[1]) + "_bonus1"])
-				dmg_to_boss = int(JewelStats["ruby_lvl" + str(x.split("_")[1]) + "_bonus2"])
-				atk_ruby += ruby_b1
-				dmg_to_boss +=  ruby_b2
-			if a == "kunzite":
-				kunzite_b1 = atk_kunzite
-				kunzite_b2 = dmg_to_mobs
-				atk_kunzite = int(JewelStats["kunzite_lvl" + str(x.split("_")[1]) + "_bonus1"])
-				dmg_to_mobs = int(JewelStats["kunzite_lvl" + str(x.split("_")[1]) + "_bonus2"])
-				atk_kunzite += kunzite_b1
-				dmg_to_mobs +=  kunzite_b2
-			if a == "tourmaline":
-				tourmaline_b1 = atk_tourmaline
-				tourmaline_b2 = dmg_to_elite
-				tourmaline_b3 = weapon_ranged_damage
-				atk_tourmaline = int(JewelStats["tourmaline_lvl" + str(x.split("_")[1]) + "_bonus1"])
-				dmg_to_elite = int(JewelStats["tourmaline_lvl" + str(x.split("_")[1]) + "_bonus2"])
-				weapon_ranged_damage = float(JewelStats["tourmaline_lvl" + str(x.split("_")[1]) + "_bonus3"])
-				atk_tourmaline += tourmaline_b1
-				dmg_to_elite +=  tourmaline_b2
-				weapon_ranged_damage += tourmaline_b3
-			if a == "lapis":
-				lapis_b1 = pv_lapis
-				lapis_b2 = red_he_lapis
-				pv_lapis = int(JewelStats["lapis_lvl" + str(x.split("_")[1]) + "_bonus1"])
-				red_he_lapis = int(JewelStats["lapis_lvl" + str(x.split("_")[1]) + "_bonus2"])
-				pv_lapis += lapis_b1
-				red_he_lapis +=  lapis_b2
-			if a == "emerald":
-				emerald_b1 = pv_emerald
-				emerald_b2 = drop_pv_emerald
-				pv_emerald = int(JewelStats["emerald_lvl" + str(x.split("_")[1]) + "_bonus1"])
-				drop_pv_emerald = int(JewelStats["emerald_lvl" + str(x.split("_")[1]) + "_bonus2"])
-				pv_emerald += emerald_b1
-				drop_pv_emerald +=  emerald_b2
-			if a == "topaz":
-				topaz_b1 = proj_res_topaz
-				topaz_b2 = crit_dmg_topaz
-				proj_res_topaz = int(JewelStats["topaz_lvl" + str(x.split("_")[1]) + "_bonus1"])
-				crit_dmg_topaz = int(JewelStats["topaz_lvl" + str(x.split("_")[1]) + "_bonus2"])
-				proj_res_topaz += topaz_b1
-				crit_dmg_topaz +=  topaz_b2
-			if a == "amber":
-				amber_b1 = front_res_amber
-				amber_b2 = elementary_dmg_amber
-				front_res_amber = int(JewelStats["amber_lvl" + str(x.split("_")[1]) + "_bonus1"])
-				elementary_dmg_amber = float(JewelStats["amber_lvl" + str(x.split("_")[1]) + "_bonus2"])
-				front_res_amber += amber_b1
-				elementary_dmg_amber +=  amber_b2
-			if a == "amethyst":
-				amethyst_b1 = collision_res_amethyst
-				amethyst_b2 = pm_when_hurt_amethyst
-				amethyst_b3 = counterattack_rate
-				collision_res_amethyst = int(JewelStats["amethyst_lvl" + str(x.split("_")[1]) + "_bonus1"])
-				pm_when_hurt_amethyst = int(JewelStats["amethyst_lvl" + str(x.split("_")[1]) + "_bonus2"])
-				counterattack_rate = float(JewelStats["amethyst_lvl" + str(x.split("_")[1]) + "_bonus3"])
-				collision_res_amethyst += amethyst_b1
-				pm_when_hurt_amethyst +=  amethyst_b2
-				counterattack_rate +=  amethyst_b3
-			if a == "calaite":
-				calaite_b1 = pv_calaite
-				calaite_b2 = mp_max_calaite
-				pv_calaite = int(JewelStats["calaite_lvl" + str(x.split("_")[1]) + "_bonus1"])
-				mp_max_calaite = int(JewelStats["calaite_lvl" + str(x.split("_")[1]) + "_bonus2"])
-				pv_calaite += calaite_b1
-				mp_max_calaite +=  calaite_b2
-		result =  {
-			'attack_ruby':math.floor(math.floor(atk_ruby)*(1+attack_jewel_base/100)),
-			'attack_kunzite':math.floor(math.floor(atk_kunzite)*(1+attack_jewel_base/100)),
-			'attack_tourmaline':math.floor(math.floor(atk_tourmaline)*(1+attack_jewel_base/100)),
-			'pv_lapis':math.floor(math.floor(pv_lapis)*(1+hp_jewel_base/100)),
-			'pv_emerald':math.floor(math.floor(pv_emerald)*(1+hp_jewel_base/100)),
-			'pv_calaite':math.floor(math.floor(pv_calaite)*(1+hp_jewel_base/100)),
-			'proj_res_topaz':proj_res_topaz,
-			'front_res_amber':front_res_amber,
-			'collision_res_amethyst':collision_res_amethyst,
-			'dmg_to_boss':dmg_to_boss,
-			'dmg_to_mobs':dmg_to_mobs,
-			'dmg_to_elite':dmg_to_elite,
-			'red_he_lapis':red_he_lapis,
-			'drop_pv_emerald':drop_pv_emerald,
-			'crit_dmg_topaz':crit_dmg_topaz,
-			'elementary_dmg_amber':elementary_dmg_amber,
-			'pm_when_hurt_amethyst':pm_when_hurt_amethyst,
-			'mp_max_calaite':mp_max_calaite,
-			'weapon_ranged_damage':weapon_ranged_damage,
-			'counterattack_rate':counterattack_rate,
-		}
+		for jewel in list_type:
+			jewel_type = jewel.split("_")[0]
+			jewel_level = jewel.split("_")[1]
+			for v in dict(JewelStats[jewel_type]).values():
+				value = int(result.get(v['label'],0)) + int(v['value'][int(jewel_level)-1])
+				result.update({v['label']: value})
+		result_jewel_attack = result.get("attack_flat",0)
+		result_jewel_hp = result.get("hp_flat",0)
+		result.update({
+			"attack":math.floor(math.floor(result_jewel_attack)*(1+attack_jewel_base/100)),
+			"hp":math.floor(math.floor(result_jewel_hp)*(1+hp_jewel_base/100))
+		})
+		
 		if DEBUG_STATS:
 			print(f"\nJewelStatsRecup :{result}\n")
 		return result
@@ -1363,6 +1272,7 @@ class dragon_table(models.Model,parentModel):
 				'dragon_3_boost_3': self.dragon_3_boost_3,
 				'dragon_3_boost_4': self.dragon_3_boost_4,
 				}
+
 	def __str__(self):
 		chaine = f"{self.user_profile.ingame_id} | {self.user_profile.ingame_name}"
 		return chaine
@@ -1378,44 +1288,47 @@ class dragon_table(models.Model,parentModel):
 			"dragon_skill_4":self.dictionnaire()["dragon_" + str(number) + "_boost_4"],
 		}
 
-	def DragonStatueStats(self,number,relic_dragon_boost):
-		dragon_type = self.GetDragon(str(number))['dragon_type']
-		dragon_rarity = self.GetDragon(str(number))['dragon_rarity'].replace(' ','_')
-		dragon_level = self.GetDragon(str(number))['dragon_level']
-		dragon_skill_4 = self.GetDragon(str(number))['dragon_skill_4']
-		base_stats1 = self.local_data["DragonStats"][str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_base_1"]
-		base_stats2 = self.local_data["DragonStats"][str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_base_2"]
-		b1_type = self.local_data["DragonStats"][str(dragon_type).lower() + "_bonus1"]
-		b2_type = self.local_data["DragonStats"][str(dragon_type).lower() + "_bonus2"]
-		inc_stats1 = self.local_data["DragonStats"][str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_inc_1"]
-		inc_stats2 = self.local_data["DragonStats"][str(dragon_type).lower() + "_" + str(dragon_rarity).lower() + "_inc_2"]
-		dragon_base_stats_inc = 1
-		dragon_base_stats_base = relic_dragon_boost
-		if dragon_rarity == "Mythic" and int(dragon_skill_4) > 0:
-			dragon_base_stats_values = self.local_data["DragonStats"][str(dragon_type).lower() + "_mythic_boost_inc"]
-			dragon_base_stats_inc = dragon_base_stats_inc + dragon_base_stats_values[0]
-			dragon_base_stats_base = dragon_base_stats_base + dragon_base_stats_values[1]
+	def DragonStatueStats(self,relic_dragon_boost):
+		dict_result = {}
+		for i in range(1,4):
+			dragon_type = self.GetDragon(str(i))['dragon_type']
+			dragon_rarity = dragon_rarity_index[self.GetDragon(str(i))['dragon_rarity']]
+			dragon_level = self.GetDragon(str(i))['dragon_level']
+			dragon_skill_4 = self.GetDragon(str(i))['dragon_skill_4']
+			base_stats1 = self.local_data["DragonStats"][dragon_type.lower()]["base_1"][dragon_rarity]
+			base_stats2 = self.local_data["DragonStats"][dragon_type.lower()]["base_2"][dragon_rarity]
+			b1_type = self.local_data["DragonStats"][dragon_type.lower()]["bonus1"]
+			b2_type = self.local_data["DragonStats"][dragon_type.lower()]["bonus2"]
+			inc_stats1 = self.local_data["DragonStats"][dragon_type.lower()]["inc_1"][dragon_rarity]
+			inc_stats2 = self.local_data["DragonStats"][dragon_type.lower()]["inc_2"][dragon_rarity]
 
-		dragon_base_stats = float(dragon_base_stats_inc) * (int(dragon_skill_4)-1) + int(dragon_base_stats_base)
-		inc_stats1_modified = round(float(inc_stats1) * (float(dragon_base_stats)/100+1))
-		inc_stats2_modified = round(float(inc_stats2) * (float(dragon_base_stats)/100+1))
-		result_stats1 = (float(base_stats1) + (float(dragon_level)-1)*inc_stats1_modified)*(float(dragon_base_stats_base)/100+1)  ## c'est pas les bonnes formules mais 
-		result_stats2 = (float(base_stats2) + (float(dragon_level)-1)*inc_stats2_modified)*(float(dragon_base_stats_base)/100+1)  ## le résultat est proches de la réalité
-		
-		if dragon_rarity == "Mythic" or dragon_rarity == "Ancient Legendary":
-			b3_type = self.local_data["DragonStats"][str(dragon_type).lower() + "_bonus3"]
-			if dragon_rarity == "Ancient Legendary":
-				b3_boost = self.local_data["DragonStats"][str(dragon_type).lower() + "_stats_boost3"][0]
-			elif dragon_rarity == "Mythic":
-				b3_boost = self.local_data["DragonStats"][str(dragon_type).lower() + "_stats_boost3"][1]
-		else:
-			b3_type = 0
-			b3_boost = 0
-		dict_result = {
-			b1_type: round(result_stats1),
-			b2_type: round(result_stats2),
-			b3_type: float(b3_boost)
-		}
+			dragon_base_stats_inc = 1
+			dragon_base_stats_base = relic_dragon_boost
+			if dragon_rarity == "Mythic" and int(dragon_skill_4) > 0:
+				dragon_base_stats_values = self.local_data["DragonStats"][dragon_type.lower()]["mythic_boost_inc"]
+				dragon_base_stats_inc = math.floor(dragon_base_stats_inc + dragon_base_stats_values[0])
+				dragon_base_stats_base = math.floor(dragon_base_stats_base + dragon_base_stats_values[1])
+				dragon_base_stats = (float(dragon_base_stats_inc) * (int(dragon_skill_4)-1)) + int(dragon_base_stats_base)
+			else:
+				dragon_base_stats = int(dragon_base_stats_base)
+			inc_stats1_modified = math.floor(float(inc_stats1) * (float(dragon_base_stats)/100+1))
+			inc_stats2_modified = math.floor(float(inc_stats2) * (float(dragon_base_stats)/100+1))
+			result_stats1 = (float(base_stats1) + (float(dragon_level)-1)*inc_stats1_modified)*(float(dragon_base_stats_base)/100+1)  ## c'est pas les bonnes formules mais 
+			result_stats2 = (float(base_stats2) + (float(dragon_level)-1)*inc_stats2_modified)*(float(dragon_base_stats_base)/100+1)  ## le résultat est proches de la réalité
+			
+			if dragon_rarity == "Mythic" or dragon_rarity == "Ancient Legendary":
+				b3_type = self.local_data["DragonStats"][str(dragon_type).lower() + "_bonus3"]
+				if dragon_rarity == "Ancient Legendary":
+					b3_boost = self.local_data["DragonStats"][str(dragon_type).lower() + "_stats_boost3"][0]
+				elif dragon_rarity == "Mythic":
+					b3_boost = self.local_data["DragonStats"][str(dragon_type).lower() + "_stats_boost3"][1]
+			else:
+				b3_type = 0
+				b3_boost = 0
+			a_value = dict_result.get(b1_type,0) + math.floor(result_stats1)
+			b_value = dict_result.get(b2_type,0) + math.floor(result_stats2)
+			c_value = dict_result.get(b3_type,0) + float(b3_boost)
+			dict_result.update({b1_type: a_value,b2_type: b_value,b3_type: c_value})
 		if DEBUG_STATS:
 			print(f"\nDragonStatueStats :{dict_result}\n")
 		return dict_result
@@ -2243,27 +2156,45 @@ class promo_code(models.Model,parentModel):
 class weapon_skins_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	demon_blade_rain_1 = models.BooleanField(blank=True, default=False)
+	demon_blade_rain_2 = models.BooleanField(blank=True, default=False)
 	antiquated_sword_1 = models.BooleanField(blank=True, default=False)
+	antiquated_sword_2 = models.BooleanField(blank=True, default=False)
 	gale_force_1 = models.BooleanField(blank=True, default=False)
+	gale_force_2 = models.BooleanField(blank=True, default=False)
 	death_scythe_1 = models.BooleanField(blank=True, default=False)
+	death_scythe_2 = models.BooleanField(blank=True, default=False)
 	boomerang_1 = models.BooleanField(blank=True, default=False)
+	boomerang_2 = models.BooleanField(blank=True, default=False)
 	brightspear_1 = models.BooleanField(blank=True, default=False)
+	brightspear_2 = models.BooleanField(blank=True, default=False)
 	saw_blade_1 = models.BooleanField(blank=True, default=False)
+	saw_blade_2 = models.BooleanField(blank=True, default=False)
 	brave_bow_1 = models.BooleanField(blank=True, default=False)
+	brave_bow_2 = models.BooleanField(blank=True, default=False)
 	stalker_staff_1 = models.BooleanField(blank=True, default=False)
+	stalker_staff_2 = models.BooleanField(blank=True, default=False)
 
 	def dictionnaire(self):
 		return {
 				"user_profile": self.user_profile,
 				"demon_blade_rain_1": self.demon_blade_rain_1,
+				"demon_blade_rain_2": self.demon_blade_rain_2,
 				"antiquated_sword_1": self.antiquated_sword_1,
+				"antiquated_sword_2": self.antiquated_sword_2,
 				"gale_force_1": self.gale_force_1,
+				"gale_force_2": self.gale_force_2,
 				"death_scythe_1": self.death_scythe_1,
+				"death_scythe_2": self.death_scythe_2,
 				"boomerang_1": self.boomerang_1,
+				"boomerang_2": self.boomerang_2,
 				"brightspear_1": self.brightspear_1,
+				"brightspear_2": self.brightspear_2,
 				"saw_blade_1": self.saw_blade_1,
+				"saw_blade_2": self.saw_blade_2,
 				"brave_bow_1": self.brave_bow_1,
-				"stalker_staff_1": self.stalker_staff_1
+				"brave_bow_2": self.brave_bow_2,
+				"stalker_staff_1": self.stalker_staff_1,
+				"stalker_staff_2": self.stalker_staff_2
 			}
 
 	def __str__(self):
@@ -2276,16 +2207,15 @@ class weapon_skins_table(models.Model,parentModel):
 		list_weapon_noskin = ['mini_atreus']
 		## pour prochain skin faudra rajouter un moyen pour savoir quelle skin est équipé
 		if weapon_choosen == "tornado":
-			name_skin = "boomerang_1"
+			name_skin = "boomerang"
 		elif weapon_choosen == "none" or weapon_choosen in list_weapon_noskin:
 			return "None"
-		else:
-			name_skin = str(weapon_choosen) + "_1"
-		if self.dictionnaire()[name_skin] == True:
-			return name_skin
-		else:
-			return "None"
-	
+		name_skin = str(weapon_choosen)
+		for k,v in self.dictionnaire().items():
+			if v == True and k[0:int(k.index(k.split("_")[-1]))-1] == name_skin:
+				return k
+		return "None"
+
 	def getWeaponSkinStats(self):
 		WeaponSkinData = self.local_data["WeaponSkinData"]
 		result = {

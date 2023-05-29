@@ -12,6 +12,7 @@ c_CSRF_COOKIE_DOMAIN = [""]
 c_CSRF_TRUSTED_ORIGINS = [""]
 c_ALLOWED_HOSTS = [""]
 c_hostname = "https://stats.wiki-archero.com"
+ADMIN_LOG_WEBHOOK_URL = "https://discord.com/api/webhooks/###########/#################################"
 # Follow the steps below to generate a Django secret key:
 
 # Access the Python Interactive Shell
@@ -19,6 +20,10 @@ c_hostname = "https://stats.wiki-archero.com"
 # Generate the Secret Key in the Terminal using the get_random_secret_key() function
 # Copy and Paste the Key into your SECRET_KEY variable in the const.py
 c_SECRET_KEY = '##########'
+
+ADMIN_CREDENTIAL = {
+    "#####":"#####"
+}
 
 if DEV_MODE:
     WEBHOOK_URL = "https://discord.com/api/webhooks/###########/#################################"
