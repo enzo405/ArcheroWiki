@@ -5,13 +5,13 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.5.6a">
+	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.5.7e">
 	<link rel="icon" type="image/ong" href="{% static 'favicon.ico' %}">
-	<script src="{% static 'main.js' %}?version=1.5.6a"></script>
+	<script src="{% static 'main.js' %}?version=1.5.7e"></script>
 </head>
-{% if darkmode == "yes" %}
+{% if darkmode == True %}
 <body class="body_dark_mode">
-{% elif darkmode == "no" %}
+{% elif darkmode == False %}
 <body>
 {% endif %}
 <noscript>
@@ -50,8 +50,8 @@
 							<li class="list-info-login">Avoid space and special character for your username</li>
 						</ul><br>
 						<fieldset class="fieldset-input">
-							<legend>Ingame ID</legend>	
-							<input class="input-login-field username" id="ingameid" type="text" placeholder="1-234567" pattern="^[0-9]{1}-[0-9]{6,12}$">
+							<legend>Ingame ID</legend>
+							<input class="input-login-field username" id="ingameid" type="text" placeholder="1-234567" pattern="^[0-9]{1}-[0-9]{5,12}$">
 						</fieldset>
 					</div>
 					<div class="container-login100-form-btn submit-btn">
@@ -78,7 +78,6 @@
 			</div>
 		</div>
 	</div>
-</body>
 <script>
 	document.cookie = 'visitor=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 </script>
@@ -107,7 +106,7 @@
 	const errorBox = document.getElementById('errorBox');
 	const errorContent = document.getElementById('error_msg');
 	const formRow = document.getElementById('form-row');
-	const ingameIdRegex = /^\d-\d{6,12}$/;
+	const ingameIdRegex = /^\d-\d{5,12}$/;
 	const adminRegex = /^0-\d{4,12}$/;
 	formRow.style.pointerEvents = 'auto';
 
@@ -159,4 +158,5 @@
 		window.location.href = `/login/processing/visitor/0-000000/`;
 	})
 </script>
+</body>
 </html>

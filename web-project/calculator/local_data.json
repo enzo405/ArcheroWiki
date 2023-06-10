@@ -1583,6 +1583,20 @@
     "12_dmg_elite": 12
   },
   "JewelStats": {
+    "none": {
+      "bonus_1": {
+        "label": "",
+        "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      },
+      "bonus_2": {
+        "label": "",
+        "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      },
+      "special_bonus": {
+        "label": "",
+        "value": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      }
+    },
     "kunzite": {
       "bonus_1": {
         "label": "attack_flat",
@@ -6079,7 +6093,7 @@
         "line_1_txt": "Dodge rate",
         "line_1_value": 3,
         "line_1_inc": 1,
-        "line_5_txt": "Greatly increases dodge rate 1s after dodging",
+        "line_5_txt": "Greatly increases critic rate 1s after dodging",
         "line_5_value": 0,
         "line_5_inc": 0,
         "line_7_txt": "",
@@ -8546,7 +8560,7 @@
       "url": "https://docs.google.com/spreadsheets/d/1rPOm5BHlc6d5slelRB1MSZDAYMOAUKjVh35huyMRO0w"
     },
     "Archero Stats Calculator (by Pelmens)": {
-      "thumbnail": "https://lh3.googleusercontent.com/docs/ADP-6oHIXouJy1Rbw-5e8Nxs5oSU9TCqx8CDVwzhSO_iXqtldOxFa-0LI-A9oqDuUd0r4lTGr9zUMiPHi7he575TBxvqPsIRlL4dJLClTfr7Aw=w1200-h630-p",
+      "thumbnail": "https://images-ext-1.discordapp.net/external/WEENXcWq8vv8qX9vq_pi1VQfgyV55I9gGG6pKl0sQn0/https/lh3.googleusercontent.com/docs/ADP-6oG0nw7mtVar1KU_X4KcIb7QeWsgjF2uwtDTTy1CHkZyJ6UmaOWlDr-HbDi05UgghijXuXlU-3Npq5-SIvQjWeabZDU0cXkPy_u6FHLj5Q%3Dw1200-h630-p",
       "description": "Archero Stats Calculator, you can export the data of your profile to this google sheet. Make a copy of this file and then you can add all your values. I you have found some ...",
       "url": "https://docs.google.com/spreadsheets/d/14KR0LT-g1VptikoPyob0YL7UxHytHd8hmnjhbAqoAIM"
     },
@@ -8847,6 +8861,27 @@
           }
         }
       }
+    },
+    "AdvancedStats": {
+      "class": "traveling-inline-div",
+      "onclick": "/wiki/advanced-stats/",
+      "childs_container": {
+        "leftsidebar": {
+          "self_class": "leftsidebarc traveling-left",
+          "child_class": "shcl",
+          "child_content": "Advanced Stats"
+        },
+        "rightsidebar": {
+          "self_class": "rightsidebarc traveling-right ",
+          "child_class": "shcr",
+          "child_content": {
+            "image_src": "/static/image/img-sidebar/advanced_stats.png",
+            "image_width": "21",
+            "image_id": "AdvancedStats",
+            "image_height": "21"
+          }
+        }
+      }
     }
   },
   "DataPrice": {
@@ -9087,7 +9122,7 @@
       "classButton": "collapsible faq-container",
       "collapsible_container": {
         "class_content": "faq content",
-        "border_color": "rgb(177,177,177);",
+        "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
             "idTitle": "title_faq",
@@ -9104,7 +9139,7 @@
             },
             {
               "name": "\u2022 Farming \u2022",
-              "value": "<a href='#wiki_why_did_i_not_receive_my_loot_that_dropped_in_a_stage.3F'>Why did I not receive my loot ?</a><br><a href='#wiki_what_is_the_best_place_to_farm.3F'>What is the best place to farm?</a><br><a href='#wiki_what_is_the_best_place_to_farm_a_specific_item.3F'>What is the best place to farm a specific item?</a><br><a href='#wiki_where_do_i_find_bloodthirst_stones.3F'>Where do I find Bloodthirst Stones?</a>"
+              "value": "<a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_why_did_i_not_receive_my_loot_that_dropped_in_a_stage.3F'>Why did I not receive my loot ?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_place_to_farm.3F'>What is the best place to farm?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_place_to_farm_a_specific_item.3F'>What is the best place to farm a specific item?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_bloodthirst_stones.3F'>Where do I find Bloodthirst Stones?</a>"
             },
             {
               "name": "\u2022 Progressing \u2022",
@@ -9143,15 +9178,15 @@
     },
     "gems_spending_guide": {
       "type": "embed",
-      "displayName": "Gems Spending guide",
+      "displayName": "Gems guide",
       "classButton": "collapsible gems_spending_guide",
       "collapsible_container": {
         "class_content": "gems_spending_guide_child content",
-        "border_color": "rgb(0,249,54);",
+        "border_color": "style='border-color: rgb(0,249,54);'",
         "content": {
           "title": {
             "idTitle": "title_gems_guide",
-            "innerText": "Gem Spending Guide"
+            "innerText": "Gem Guide"
           },
           "description": {
             "idDesc": "desc_gems_guide",
@@ -9160,11 +9195,11 @@
           "field": [
             {
               "name": "",
-              "value": "\u2022 At least one main hero (Helix is recommended)<br>\u2022 Extra hatchery slots, to speed up egg hatching<br>\u2022 Extra monster book slots, to get more bonuses from monsters in use<br>\u2022 Extra attempt for Ancient Maze, if you can consistently finish it on Extreme/Misery difficulty<br>\u2022 Extra energy to farm Hero chapters or play events<br>\u2022 Extra attempt(s) for Up-Close Dangers, if you are at the point where you earn relatively high amounts of coins from it compared to chapter runs<br>\u2022 Mystery Chest in your Farm, if it shows up<br>\u2022 Extra attempt for Mystery Mine, if you can consistently reach the last stage<br>"
+              "value": "<strong>Earning:</strong><br>\u2022 Daily Quests: Up to 40 Gems per day<br>\u2022 Weekly Quests: Up to 230 Gems per week<br>\u2022 Daily Ad Pack: 30 Gems per day<br>\u2022 Ad Boss wheel: Up to 100 Gems per day<br>\u2022 Hero Duo<br>\u2022 Hero Duel: Profit if you win ≥62% of 40 Gem matches or ≥67% of 100 Gem matches<br>\u2022 Monster Farm: Clean up obstacles for a chance to receive Gems<br>\u2022 Clear new chapters<br>\u2022 Clear Expedition stages<br><br><strong>Spending:</strong><br>\u2022 At least one main hero (Helix is recommended)<br>\u2022 Extra hatchery slots, to speed up egg hatching<br>\u2022 Extra monster book slots, to get more bonuses from monsters in use<br>\u2022 Extra attempt for Ancient Maze, if you can consistently finish it on Extreme/Misery difficulty<br>\u2022 Extra energy to farm Hero chapters or play events<br>\u2022 Extra attempt(s) for Up-Close Dangers, if you are at the point where you earn relatively high amounts of coins from it compared to chapter runs<br>\u2022 Mystery Chest in your Farm, if it shows up<br>\u2022 Login Rewards Event <a href='https://cdn.discordapp.com/attachments/1018889785571540994/1113272516136407061/LoginRewardsEvent.png' target='_blank'>[Example]</a><br>"
             }
           ],
           "footer": {
-            "innerText": "Credit: zkn#4789"
+            "innerText": ""
           },
           "thumbnail": {
             "src": "/static/image/wiki-image/Gem.png",
@@ -9180,7 +9215,7 @@
       "classButton": "collapsible gold_earning_guide",
       "collapsible_container": {
         "class_content": "gold_earning_guide_child content",
-        "border_color": "rgb(255,196,0);",
+        "border_color": "style='border-color: rgb(255,196,0);'",
         "content": {
           "title": {
             "idTitle": "title_gold_guide",
@@ -9213,7 +9248,7 @@
       "classButton": "collapsible gear_farming_guide",
       "collapsible_container": {
         "class_content": "gear_farming_guide_child content",
-        "border_color": "rgb(177,177,177);",
+        "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
             "idTitle": "title_gear_guide",
@@ -9226,7 +9261,7 @@
           "field": [
             {
               "name": "",
-              "value": "<b>Flying Bullets</b><br>\u2022 Can drop more than 5 items per run<br>\u2022 Drops relatively many scrolls<br><br><b>Farm Chapters :</b><br>\u2022 Farm the highest hero boss chapter you are able to clear (7, 14, 21, 28, 35, 42)<br>\u2022 Making QuickRaid of weapon and bracelet hero chapters is recommended (list can be found <a href=''https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w/>here</a>)<br>\u2022 Clearing normal chapter 21 as well as hero chapter 17 enables great rarity(green) item drops from chapters<br>\u2022 Clearing normal chapter 35 as well as hero chapter 32 enables rare rarity(blue) item drops from chapters"
+              "value": "<b>Flying Bullets</b><br>\u2022 Can drop more than 5 items per run<br>\u2022 Drops relatively many scrolls<br><br><b>Farm Chapters :</b><br>\u2022 Farm the highest hero boss chapter you are able to clear (7, 14, 21, 28, 35, 42)<br>\u2022 Making QuickRaid of weapon and bracelet hero chapters is recommended (list can be found <a href='https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w/'>here</a>)<br>\u2022 Clearing normal chapter 21 as well as hero chapter 17 enables great rarity(green) item drops from chapters<br>\u2022 Clearing normal chapter 35 as well as hero chapter 32 enables rare rarity(blue) item drops from chapters"
             }
           ],
           "footer": {
@@ -9246,7 +9281,7 @@
       "classButton": "collapsible glyphs",
       "collapsible_container": {
         "class_content": "glyphs content",
-        "border_color": "rgb(177,177,177);",
+        "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
             "idTitle": "title_glyph_guide",
@@ -9283,7 +9318,7 @@
       "classButton": "collapsible refinement",
       "collapsible_container": {
         "class_content": "refinement content",
-        "border_color": "rgb(177,177,177);",
+        "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
             "idTitle": "title_refinement_guide",
@@ -9331,7 +9366,7 @@
       "classButton": "collapsible altar_cost",
       "collapsible_container": {
         "class_content": "altar_cost_content content",
-        "border_color": "rgb(177,177,177);",
+        "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
             "idTitle": "altar_cost_title",
@@ -9408,7 +9443,7 @@
       "classButton": "collapsible egg_stats",
       "collapsible_container": {
         "class_content": "egg_stats_content content",
-        "border_color": "rgb(177,177,177);",
+        "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
             "idTitle": "title_egg_stats",
@@ -9441,7 +9476,7 @@
       "classButton": "collapsible hidden_stats",
       "collapsible_container": {
         "class_content": "hidden_stats_content content",
-        "border_color": "rgb(177,177,177);",
+        "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
             "idTitle": "title_refine_stats",
@@ -9473,7 +9508,86 @@
       }
     }
   },
-  "AdvancedStats": [
-    // need confirmation by Archero Team
+  "AdvancedStatsSharable": [
+    {
+      "id_item": "diagonal_arrows",
+      "type":"skills",
+      "image_header": {
+        "src": "skill/diagonal_arrows.png",
+        "alt": "diagonal arrow skill image"
+      },
+      "content": {
+        "title": "Diagonal Arrow",
+        "description": [
+          "-20% melee dmg",
+          "-40% with 2x"
+        ],
+        "href":"/wiki/skill-list/Diagonal_Arrows/"
+      }
+    },
+    {
+      "id_item": "side_arrow",
+      "type":"skills",
+      "image_header": {
+        "src": "skill/side_arrow.png",
+        "alt": "side arrow skill image"
+      },
+      "content": {
+        "title": "Side Arrows",
+        "description": [
+          "-20% melee dmg",
+          "-20% with 2x (2nd one doesn't reduce)"
+        ],
+        "href":"/wiki/skill-list/Side_Arrow/"
+      }
+    },
+    {
+      "id_item": "rear_arrow",
+      "type":"skills",
+      "image_header": {
+        "src": "skill/rear_arrow.png",
+        "alt": "rear arrow skill image"
+      },
+      "content": {
+        "title": "Rear Arrow",
+        "description": [
+          "+15% melee dmg"
+        ],
+        "href":"/wiki/skill-list/Rear_Arrow/"
+      }
+    },
+    {
+      "id_item": "multishot",
+      "type":"skills",
+      "image_header": {
+        "src": "skill/multishot.png",
+        "alt": "multishot skill image"
+      },
+      "content": {
+        "title": "Multishot",
+        "description": [
+          "-5% melee dmg"
+        ],
+        "href":"/wiki/skill-list/Multishot/"
+      }
+    },
+    {
+      "id_item": "price_of_strength",
+      "type":"skills",
+      "image_header": {
+        "src": "skill/price_of_strength.png",
+        "alt": "price_of_strength"
+      },
+      "content": {
+        "title": "Price Of Strength",
+        "description": [
+          "Buffs/Debuffs =>",
+          "8second :  increase movespeed, around 30% atk,regular dmg taken,increase size,normal aspd,increase melee boost",
+          "2second :  decrease move speed,around 20% atk,increase dmg taken,increase size,decrease atk speed,increase melee boost",
+          "6second :  decrease move,decrease damage,increase dmg taken,decrease size,decrease atk speed,Lose melee boost"
+        ],
+        "href":"/wiki/skill-list/Price_of_Strength/"
+      }
+    }
   ]
 }

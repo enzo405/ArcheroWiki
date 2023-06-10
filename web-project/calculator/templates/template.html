@@ -3,17 +3,17 @@
 	<head>
 		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.5.6a">
+		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.5.7e">
 		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-		<script src="{% static 'main.js' %}?version=1.5.6a"></script>
+		<script src="{% static 'main.js' %}?version=1.5.7e"></script>
 		{% block head %}
 		{% endblock %}
 	</head>
-{% if darkmode == "yes" %}
+{% if darkmode == True %}
 <body class="body_dark_mode">
-{% elif darkmode == "no" %}
+{% elif darkmode == False %}
 <body>
 {% endif %}
 <noscript>
@@ -53,9 +53,9 @@
 						<div class="shcl">Theme</div>
 					</div>
 					<div class="rightsidebarc traveling-right">
-						{% if darkmode == "yes" %}
+						{% if darkmode == True %}
 						<img alt="button switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/moon.png">
-						{% elif darkmode == "no" %}
+						{% elif darkmode == False %}
 						<img alt="button switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/sun.png">
 						{% endif %}
 					</div>
@@ -74,34 +74,36 @@
 			<footer>
 				<div class="footer-content">
 					<div class="footer-about">
-						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.5.6a" alt="image game icon">
+						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.5.7e" alt="image game icon">
 						<div class="about-content">
 							<h2>Archero :</h2>
 							<div>Archero Update will be added with a certains delay</div>
 							<div class="contact-me">
-								<div>Contact <b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+								<div>Contact <b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b> for more info</div>
 							</div>
 							<div class="f_content_info"><a href="/Terms-of-Use/">Terms of Use</a></div>
 							<div class="f_content_info"><a href="/changelog/">ChangeLog</a></div>
-							<div class="f_content_info">Build v1.5.6</div>
+							<div class="f_content_info">Build v1.5.7</div>
 						</div>
 					</div>
 					<div class="discord_link">
-						<div class="container_dlink">
-							<h2>Community Link:</h2> 
-							<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMutique's Server</li></a>
-							<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+						<h2>Community Links:</h2>
+						<div class="container-link">
+							<a href="https://discord.gg/djj" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>LeMutique's Server</a>
 						</div>
-						<div class="container_rlink">
-							<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
+						<div class="container-link">
+							<a href="https://discord.gg/eAqZquTF6X" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>TigerShark's Server</a>
 						</div>
-						<div class="container_flink">
-							<a href="https://www.facebook.com/archerogame/" target="_blank"><li> FB Archero</li></a>
+						<div class="container-link">
+							<a href="https://www.reddit.com/r/Archero/" target="_blank"><span class="link-icon"><i class="fab fa-reddit"></i></span>r/Archero</a>
+						</div>
+						<div class="container-link">
+							<a href="https://www.facebook.com/archerogame/" target="_blank"><span class="link-icon"><i class="fab fa-facebook"></i></span>FB Archero</a>
 						</div>
 					</div>
 					<div class="thanks">
 						<h2>Shout-out :</h2>
-						<div class="shout-out">Special thanks : <b>Deth, SonHaon and TigerShark14</b></div>
+						<div class="shout-out">Special thanks : <b>Deth, TigerShark14</b></div>
 						<div class="shout-out">Thanks to : Pew, Lorenz, RedsMeName</div>
 						<div class="shout-out">KeithShade, Craggy94, Kang Greenstrider</div>
 						<div class="shout-out">Chaos, Mahanaxar, Pelmens, PNE241, Lovii</div>
@@ -113,7 +115,7 @@
 	{% if messages %}
 		{% for message in messages %}
 		<script>
-			var stringElement = '<div{% if message.tags %} class="{{ message.tags }}-messages"{% endif %}>{{ message|safe }}</div>'
+			var stringElement = `<div{% if message.tags %} class="{{ message.tags }}-messages"{% endif %}>{{ message|safe }}</div>`
 			createModale(stringElement,false,'info')
 		</script>
 		{% endfor %}

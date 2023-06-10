@@ -542,35 +542,23 @@ footer div, footer li{
 	list-style: none;
 	margin-left: 10px;
 }
-.discord_link a{
+.discord_link a {
 	text-decoration: none;
-	list-style: none;
+	color: unset;
 }
-.container_dlink li:hover:before{
-	color: var(--lt-footer-discord-icon-color-hover);
+.discord_link h2 {
+	margin-bottom: 10px;
 }
-.container_dlink li:before{
-	content: "\f392";
+.container-link a {
+	display: block;
+	margin-bottom: 5px;
+}
+.link-icon {
+	margin-right: 5px;
 	font-family: FontAwesome;
-	display: inline-block;
 }
-.container_rlink li:hover:before{
+.container-link a:hover .link-icon {
 	color: var(--lt-footer-discord-icon-color-hover);
-}
-.container_rlink li:before{
-	content: "\f1a1";
-	font-family: FontAwesome;
-	display: inline-block;
-    font-size: larger;
-}
-.container_flink li:hover:before{
-	color: var(--lt-footer-discord-icon-color-hover);
-}
-.container_flink li:before{
-	content: "\f39e";
-	font-family: FontAwesome;
-	display: inline-block;
-    font-size: larger;
 }
 .me-discord-link{
 	text-decoration: none;

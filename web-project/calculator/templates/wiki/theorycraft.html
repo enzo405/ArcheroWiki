@@ -1,15 +1,15 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.6a">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.5.6a">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.7e">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.5.7e">
 <title>Archero - Wiki</title>
 <meta property="og:title" content="Archero - Wiki">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/menu?Search=fusion_item">
 <meta property="og:type" content="website">
-<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-<meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.6a">
+<meta property="og:description" content="Welcome to the Archero Wiki, your ultimate resource for the popular mobile game by HABBY. Explore comprehensive guides, tier lists, hero breakdowns, and item stats on our extensive Wiki. Level up your gameplay with expert strategies and unleash your full potential in the world of Archero.">
+<meta name="description" content="Welcome to the Archero Wiki, your ultimate resource for the popular mobile game by HABBY. Explore comprehensive guides, tier lists, hero breakdowns, and item stats on our extensive Wiki. Level up your gameplay with expert strategies and unleash your full potential in the world of Archero.">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.7e">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
@@ -17,18 +17,18 @@
 	<div class="flex-box">
 		{% for k,v in TheoryCraftingContent.items %}
 		<div class="container-btn-flexbox">
-			<button type="button" class="{{ v.classButton }}" id="{{ k }}">{{ v.displayName|safe }}<a onclick="createModale(this,true,'info')" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></button>
+			<div class="button-theorycrafting-collaps {{ v.classButton }}"><span id="{{ k }}">{{ v.displayName|safe }}<a onclick="createModale(this,true,'info')" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span></div>
 			<div class="{{ v.collapsible_container.class_content }}">
 			{% if v.type == "img" %}
-				<img src="{% static v.collapsible_container.content.field.src %}?version=1.5.6a" class="{{ v.collapsible_container.content.field.class }}" alt="{{ v.collapsible_container.content.field.alt }}" loading="eager">
+				<img src="{% static v.collapsible_container.content.field.src %}?version=1.5.7e" class="{{ v.collapsible_container.content.field.class }}" alt="{{ v.collapsible_container.content.field.alt }}" loading="eager">
 			{% elif v.type == "embed" %}
 				<div class="kn3fae-0 ezpxFx">
 					<div class="kn3fae-2 eKjosW">
-						<div class="z4zgh4-0 jiJPTS" style="border-color: {{ v.collapsible_container.border_color|safe }};">
+						<div class="z4zgh4-0 jiJPTS" {{ v.collapsible_container.border_color|safe }}>
 							<div class="sc-3qrykn-0 bdFBtt">
-								<span class="sc-3qrykn-1 bsDYtY">
+								<div class="sc-3qrykn-1 bsDYtY">
 									<div class="sc-27l7o2-0 heOpKb" id="{{ v.collapsible_container.content.title.idTitle }}">{{ v.collapsible_container.content.title.innerText|safe }}</div>
-								</span>
+								</div>
 								<div class="sc-3qrykn-3 hXMbfy">
 									<div class="sc-27l7o2-0 heOpKb" id="{{ v.collapsible_container.content.description.idDesc }}">{{ v.collapsible_container.content.description.innerText|safe }}</div>
 								</div>
@@ -50,7 +50,9 @@
 								</div>
 								<div class="sc-1wl8gx1-0 khpRBf"><span class="sc-1wl8gx1-2 frwlEK">{{ v.collapsible_container.content.footer.innerText|safe }}</span></div>
 								<div class="sc-3qrykn-6 fTOqMH">
-									<img src="{{ v.collapsible_container.content.thumbnail.src }}" alt="{{ v.collapsible_container.content.thumbnail.alt }}" class="sc-3qrykn-7 fUliQq {{ v.collapsible_container.content.thumbnail.src }}">
+									{% if v.collapsible_container.content.thumbnail.src != '' %}
+										<img src="{{ v.collapsible_container.content.thumbnail.src }}" alt="{{ v.collapsible_container.content.thumbnail.alt }}" class="sc-3qrykn-7 fUliQq {{ v.collapsible_container.content.thumbnail.class }}">
+									{% endif %}	
 								</div>
 							</div>
 						</div>
@@ -105,12 +107,13 @@
 		"gems_spending_guide": 'gems_spending_guide',
 		"gold_earning_guide": 'gold_earning_guide',
 		"gear_farming_guide": 'gear_farming_guide',
-		"refine_glyphs": 'refine_glyphs',
+		"glyphs": 'glyphs',
+		"refinement": 'refinement',
 		"quickraid": 'quickraid',
 		"altar_cost": 'altar_cost',
 		"egg_stats": 'egg_stats',
 		"hidden_stats": 'hidden_stats',
-		"faq": 'faq',
+		"faq": 'faq'
 	}
 
 	function navigateUrl(){

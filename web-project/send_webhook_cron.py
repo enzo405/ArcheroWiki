@@ -12,12 +12,6 @@ def clearFile():
 		f.close()
 
 
-def encode_string(string):
-    sha256 = hashlib.sha256()
-    sha256.update(string.encode('utf-8'))
-    encoded_string = sha256.hexdigest()
-    return encoded_string
-
 class sendWebhook():
 	def __init__(self) -> None:
 		self.webhook = DiscordWebhook(url=WEBHOOK_URL, content="", rate_limit_retry=True)
@@ -35,10 +29,7 @@ class sendWebhook():
 		with open('calculator/static/json/requetes.json','r', encoding='utf-8') as f:
 			user = DiscordEmbed(title='Number Request', description='', color='1ed9be')
 			for i in json.load(f)['user']:
-				if ADMIN_CREDENTIAL.get(i['username']) == i['ingame_id']:
-					user.add_embed_field(name=f"{i['username']} | {encode_string(i['ingame_id'])} = {i['number_request']}", value=f"", inline=False)
-				else:
-					user.add_embed_field(name=f"{i['username']} | {i['ingame_id']} = {i['number_request']}", value=f"", inline=False)
+				user.add_embed_field(name=f"{i['username']} | {i['ingame_id']} = {i['number_request']}", value=f"", inline=False)
 			webhook.add_embed(user)
 		clearFile()
 

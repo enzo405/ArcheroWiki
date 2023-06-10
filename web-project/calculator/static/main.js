@@ -11,6 +11,7 @@ function createModale(element, urlNeedParentid, type){
         titremodals = document.createElement("h3");
         titremodals.innerHTML = `Link copied : <a href='${url}'>${element.parentElement.id}</a>`;
         if(urlNeedParentid == true){
+            var url = url.split('?')[0]
             titremodals.innerHTML = `Link copied : <a href='${url}?${element.parentElement.id}' target="_blank">${element.parentElement.id}</a>`;
             navigator.clipboard.writeText(`${url}?${element.parentElement.id}`)
         }else{

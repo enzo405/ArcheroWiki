@@ -1,9 +1,9 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5.6a">
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.5.7e">
 <title>{{ name }} Stats - Wiki</title>
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.6a">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.7e">
 <meta name="description" content="{{ name }} Stats - Wiki">
 <meta property="og:url" content="https://stats.wiki-archero.com/calculator/show/{{pbid}}/">
 <meta property="og:type" content="website">
@@ -56,7 +56,7 @@
 	<div id="contain-image-stuff" class="contain-image-stuff" style="display: flex;">
 		<div class="image-div-stuff">
 			<div class="image-stuff-result-container">
-				<img alt="stuff image" class="image-stuff-result" src="{% static 'image/stuff_save/'|add:pbid|add:'.png' %}?version=1.5.6a">
+				<img alt="{{ name }}'s Stuff emulator image" class="image-stuff-result" src="{% static 'image/stuff_save/'|add:pbid|add:'.png' %}?version=1.5.7e">
 			</div>
 		</div>
 	</div>
@@ -82,7 +82,7 @@
 					<p title="Dodge Rate">+{{ global_dodge_chance }}%</p>
 				</div>
 				<div class="stat-item">
-					<img class="image_damage_type_stats" title="Dodge Rate" alt="Dodge Rate image" width="50px" height="50px" src="/static/image/wiki-image/dodge_skill.png">
+					<img class="image_damage_type_stats" title="Dodge Rate" alt="Dodge Rate image" width="50" height="50" src="/static/image/wiki-image/dodge_skill.png">
 				</div>
 			</div>
 		</div>
@@ -93,7 +93,7 @@
 					<p title="Elemental Damage">+{{ global_elemental_damage }}%</p>
 				</div>
 				<div class="stat-item">
-					<img class="image_damage_type_stats" title="Elemental Damage" alt="Elemental Damage image" width="50px" height="50px" src="/static/image/wiki-image/elemental_damage.png">
+					<img class="image_damage_type_stats" title="Elemental Damage" alt="Elemental Damage image" width="50" height="50" src="/static/image/wiki-image/elemental_damage.png">
 				</div>
 			</div>
 		</div>

@@ -8,3 +8,4 @@ discord==2.0.0
 discord-webhook==1.0.0
 discord.py==2.0.0
 djangorestframework==3.14.0
+Markdown==3.4.3
