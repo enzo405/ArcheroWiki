@@ -11,7 +11,6 @@ c_CSRF_COOKIE_SECURE = True
 c_CSRF_COOKIE_DOMAIN = [""]
 c_CSRF_TRUSTED_ORIGINS = [""]
 c_ALLOWED_HOSTS = [""]
-c_hostname = "https://stats.wiki-archero.com"
 ADMIN_LOG_WEBHOOK_URL = "https://discord.com/api/webhooks/###########/#################################"
 # Follow the steps below to generate a Django secret key:
 
@@ -27,6 +26,7 @@ ADMIN_CREDENTIAL = {
 
 if DEV_MODE:
     WEBHOOK_URL = "https://discord.com/api/webhooks/###########/#################################"
+    c_hostname = "http://127.0.0.1:8000"
     c_DEBUG = True
     c_DATABASES = {
         'default': {
@@ -40,6 +40,7 @@ if DEV_MODE:
     }
 else:
     WEBHOOK_URL = "https://discord.com/api/webhooks/###########/#################################"
+    c_hostname = "https://stats.wiki-archero.com"
     c_DEBUG = False
     c_DATABASES = {
         'default': {

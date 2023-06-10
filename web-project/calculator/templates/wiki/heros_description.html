@@ -1,21 +1,21 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.6a">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.5.6a">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.7e">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.5.7e">
 <title>Archero - Wiki</title>
 <meta property="og:type" content="website">
-<meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+<meta name="description" content="Discover the extensive collection of heroes in Archero, each with unique star boosts, base skills, and descriptions. Explore our comprehensive list to uncover the full potential of each character. Make strategic choices and harness the power of your heroes to overcome challenges and triumph in Archero.">
 {% if hero == "yes" %}
 <meta property="og:title" content="{{ name_hero }}">
 <meta property="og:url" content="{{ url_cpy }}">
 <meta property="og:description" content="{{ hero_data.hero_description|safe }} {{ hero_data.skill|safe }} {{ hero_data.skill_details|safe }}">
-<meta property="og:image" content="{% static hero_image %}?version=1.5.6a">
+<meta property="og:image" content="{% static hero_image %}?version=1.5.7e">
 {% else %}
 <meta property="og:title" content="Archero - Heroes Description">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/heroes">
-<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.6a">
+<meta property="og:description" content="Discover the extensive collection of heroes in Archero, each with unique star boosts, base skills, and descriptions. Explore our comprehensive list to uncover the full potential of each character. Make strategic choices and harness the power of your heroes to overcome challenges and triumph in Archero.">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.7e">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -43,7 +43,7 @@
 		<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for hero.." value="{{ name_hero }}">
 		<ul id="myUL" class="searchbar-ul-hero" style="display: none;">
 			{% for k in HeroData %}
-			<li value="{{ k }}"><a id="toggle-display-list" href="/wiki/heroes/{{ k }}/"><div class="item_name">{{ k }}</div><div class="siimg"><img src="/static/image/hero_icon/icon_{{ k }}.png" width="26px"></div></a></li>
+			<li><a class="toggle-display-list" href="/wiki/heroes/{{ k }}/"><div class="item_name">{{ k }}</div><div class="siimg"><img src="/static/image/hero_icon/icon_{{ k }}.png" width="26" alt="{{ k }}"></div></a></li>
 			{% endfor %}
 		</ul>
 	</div>
@@ -56,14 +56,14 @@
 					<span class="sgp62q-3 cTBPsI">BOT</span>
 					<span class="sc-1idsap7-0 dyOqmJ" id="date"></span>
 				</a>
-				<span class="span-share" id="{{ name_hero }}"><a onclick="createModale(this,false,'info')" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
+				<span id="{{ name_hero|lower }}" class="span-share"><a onclick="createModale(this,false,'info')" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
 			</div>
 			<div class="kn3fae-2 eKjosW">
 				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
 					<div class="sc-3qrykn-0 bdFBtt">
-						<span class="sc-3qrykn-1 bsDYtY">
+						<div class="sc-3qrykn-1 bsDYtY">
 							<div class="sc-27l7o2-0 heOpKb" id="name_hero">{{ name_hero }}</div>
-						</span>
+						</div>
 						<div class="sc-3qrykn-3 hXMbfy">
 							<div class="sc-27l7o2-0 heOpKb" id="hero_description">{{ hero_data.hero_description|safe }}</div>
 						</div>
@@ -134,8 +134,8 @@
 								<div class="rgqgux-2 jFcAhO">
 									<div class="content-embed-star sc-27l7o2-0 heOpKb">
 										{% for k,v in hero_data.star.items %}
-										<b>{{ k }} <object type="image/png" data="\static\image\svg\star.svg" width="14" height="14"></object></b><br>
-										<div id="star_1">
+										<b>{{ k }} <object type="image/png" data="/static/image/svg/star.svg" width="14" height="14"></object></b><br>
+										<div id="star_{{ k }}">
 											{{ v|safe }}
 										</div><br>
 										{% endfor %}
@@ -155,7 +155,7 @@
 	var mainDescription = document.getElementsByClassName('main-description')
 	var search_bar = document.getElementById('myInput');
 	var ul_li = document.getElementById('myUL');
-	var hero_li_a = document.querySelectorAll("#toggle-display-list");
+	var hero_li_a = document.querySelectorAll(".toggle-display-list");
 
 	var n =  new Date();
 	var y = n.getFullYear();

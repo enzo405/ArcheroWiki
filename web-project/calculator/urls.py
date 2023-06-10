@@ -37,6 +37,8 @@ urlpatterns = [
     path('wiki/upgrade/<str:cost_type>/<int:lvl1>/<int:lvl2>/<str:rank>/', views_wiki.upgrade_cost),
     path('wiki/promo-code/', views_wiki.promocode, name='promo_code'),
     path('wiki/advanced-stats/', views_wiki.advanced_stats, name='advanced_stats'),
+    path('wiki/news/', views_wiki.news, name='news'),
+    path('wiki/news/<str:titleArticle>/', views_wiki.news, name='news'),
     path('habby-secret/', views_wiki.rickroll),
     path('stats/calc/<str:pbid>/<int:redirectPath>/', views.views_calc_stats, name='stats_calc_api'),
     path('data/', api.data),

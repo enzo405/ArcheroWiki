@@ -1,0 +1,36 @@
+{% extends "template.html" %}
+{% load static %}
+{% load markdown_extras %}
+	{% block head %}
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.7e">
+		<title>Archero - Wiki - article.title</title>
+		<meta property="og:title" content="Welcome to the Wiki Archero">
+		<meta property="og:url" content="https://stats.wiki-archero.com/">
+		<meta property="og:type" content="website">
+		<meta property="og:description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.">
+		<meta name="description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.">
+		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.7e">
+	{% endblock %}
+	{% block header_content %}{{ article.title }}{% endblock %}
+	{% block content %}
+	<div class="article-news-container">
+		<div class="article-new-box">
+			<section class="is-primary">
+				<div class="article-new-body">
+					<p class="article-new-title">{{ article.title }}</p>
+					<p class="article-new-subtitle">Created at {{ article.created_at|date:"Y-m-d H:i" }}</p>
+				</div>
+			</section>
+			<div class="article-new-content">
+				<p>{{ article.intro | markdown | safe }}</p>
+				<p>{{ article.body | markdown | safe }}</p>
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+	{% block javascript %}
+		<script>
+			const self_inline_div_traveling = document.getElementById('Menu-sidebar-image')
+			self_inline_div_traveling.classList.add('bg-traveling') 
+		</script>
+	{% endblock %}

@@ -82,9 +82,6 @@ stuff_pet = (("None","None"),("Laser Bat","Laser Bat"),("Scythe Mage","Scythe Ma
 stuff_bracelet = (("None","None"),("Thunder Bracelet","Thunder Bracelet"),("Frozen Bracelet","Frozen Bracelet"),("Blazing Bracelet","Blazing Bracelet"),("Split Bracelet","Split Bracelet"),("Invincible Bracelet","Invincible Bracelet"),("Quickshot Bracelet","Quickshot Bracelet"),("Shield Bracelet","Shield Bracelet"))
 stuff_locket = (("None","None"),("Agile Locket","Agile Locket"),("Iron Locket","Iron Locket"),("Angel Locket","Angel Locket"),("Bulletproof Locket","Bulletproof Locket"),("Piercer Locket","Piercer Locket"),("Bloodthirsty Locket","Bloodthirsty Locket"),("Counterattack Locket","Counterattack Locket"))
 stuff_book = (("None","None"),("Arcane Archer","Arcane Archer"),("Art of Combat","Art of Combat"),("Ice Realm","Ice Realm"),("Enlightenment","Enlightenment"),("Giants Contract","Giants Contract"),("Spectre Book","Spectre Book"),("Arcanum of Time","Arcanum of Time"))
-max_talent_level10 = ((10,"10"),(9,"9"),(8,"8"),(7,"7"),(6,"6"),(5,"5"),(4,"4"),(3,"3"),(2,"2"),(1,"1"),(0,"0"))
-max_talent_level25 = ((25,"25"),(24,"24"),(23,"23"),(22,"22"),(21,"21"),(20,"20"),(19,"19"),(18,"18"),(17,"17"),(16,"16"),(15,"15"),(14,"14"),(13,"13"),(12,"12"),(11,"11"),(10,"10"),(9,"9"),(8,"8"),(7,"7"),(6,"6"),(5,"5"),(4,"4"),(3,"3"),(2,"2"),(1,"1"),(0,"0"))
-max_talent_level15 = ((15,"15"),(14,"14"),(13,"13"),(12,"12"),(11,"11"),(10,"10"),(9,"9"),(8,"8"),(7,"7"),(6,"6"),(5,"5"),(4,"4"),(3,"3"),(2,"2"),(1,"1"),(0,'0'))
 hero_level = ((120,"120"),(80,"80"),(60,"60"),(40,"40"),(20,"20"),(0,"0"))
 star_hero = ((8,"8⭐"),(7,"7⭐"),(6,"6⭐"),(5,"5⭐"),(4,"4⭐"),(3,"3⭐"),(2,"2⭐"),(1,"1⭐"),(0,"0⭐"))
 stuff_rarity = (("Common","Common"),("Great","Great"),("Rare","Rare"),("Epic","Epic"),("Perfect Epic","Perfect Epic"),("Legendary","Legendary"),("Ancient Legendary","Ancient Legendary"),("Mythic","Mythic"),("Mythic_1","Mythic+1"),("Mythic_2","Mythic+2"),("Titan Tales","Titan Tales"),("Titan Tales_1","Titan Tales+1"),("Titan Tales_2","Titan Tales+2"),("Titan Tales_3","Titan Tales+3"),("Chaos","Chaos"))
@@ -546,14 +543,14 @@ class hero_table(models.Model,parentModel):
 
 class talent_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
-	strength_level = models.IntegerField(validators=[MaxValueValidator(25)], default=1)
-	power_level = models.IntegerField(validators=[MaxValueValidator(25)], default=1)
-	recover_level = models.IntegerField(validators=[MaxValueValidator(25)], default=1)
-	block_level = models.IntegerField(validators=[MaxValueValidator(25)], default=1)
-	iron_bulwark_level = models.IntegerField(validators=[MaxValueValidator(25)], default=1)
-	enhanced_equipment_level = models.IntegerField(validators=[MaxValueValidator(10)], default=1)
-	hero_power_up_level = models.IntegerField(validators=[MaxValueValidator(10)], default=1)
-	runes_power_up_level = models.IntegerField(validators=[MaxValueValidator(15)], default=1)
+	strength_level = models.IntegerField(validators=[MaxValueValidator(25)], default=0)
+	power_level = models.IntegerField(validators=[MaxValueValidator(25)], default=0)
+	recover_level = models.IntegerField(validators=[MaxValueValidator(25)], default=0)
+	block_level = models.IntegerField(validators=[MaxValueValidator(25)], default=0)
+	iron_bulwark_level = models.IntegerField(validators=[MaxValueValidator(25)], default=0)
+	enhanced_equipment_level = models.IntegerField(validators=[MaxValueValidator(10)], default=0)
+	hero_power_up_level = models.IntegerField(validators=[MaxValueValidator(10)], default=0)
+	runes_power_up_level = models.IntegerField(validators=[MaxValueValidator(15)], default=0)
 
 	def dictionnaire(self):
 			return {
@@ -1225,15 +1222,15 @@ class egg_equipped_table(models.Model,parentModel):
 
 class dragon_table(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
-	dragon1_type = models.CharField(max_length=30, choices=all_dragon, default="Glacion")
-	dragon2_type = models.CharField(max_length=30, choices=all_dragon, default="Infernox")
-	dragon3_type = models.CharField(max_length=30, choices=all_dragon, default="Stormra")
+	dragon1_type = models.CharField(max_length=30, choices=all_dragon, default="None")
+	dragon2_type = models.CharField(max_length=30, choices=all_dragon, default="None")
+	dragon3_type = models.CharField(max_length=30, choices=all_dragon, default="None")
 	dragon1_rarity = models.CharField(max_length=30, choices=dragon_rarity, default="Great")
 	dragon2_rarity = models.CharField(max_length=30, choices=dragon_rarity, default="Great")
 	dragon3_rarity = models.CharField(max_length=30, choices=dragon_rarity, default="Great")
-	dragon1_level = models.IntegerField(default=1, validators=[MinValueValidator(1),MaxValueValidator(120)]) 
-	dragon2_level = models.IntegerField(default=1, validators=[MinValueValidator(1),MaxValueValidator(120)]) 
-	dragon3_level = models.IntegerField(default=1, validators=[MinValueValidator(1),MaxValueValidator(120)])
+	dragon1_level = models.IntegerField(default=0, validators=[MinValueValidator(0),MaxValueValidator(120)]) 
+	dragon2_level = models.IntegerField(default=0, validators=[MinValueValidator(0),MaxValueValidator(120)]) 
+	dragon3_level = models.IntegerField(default=0, validators=[MinValueValidator(0),MaxValueValidator(120)])
 	dragon_1_boost_1 = models.IntegerField(choices=dragon_skill_level, default=0)
 	dragon_1_boost_2 = models.IntegerField(choices=dragon_skill_level, default=0)
 	dragon_1_boost_3 = models.IntegerField(choices=dragon_skill_level, default=0)
@@ -2238,3 +2235,15 @@ class weapon_skins_table(models.Model,parentModel):
 		if DEBUG_STATS:
 			print(f"\ngetWeaponSkinStats :{result}\n")
 		return result
+	
+
+
+class articleMenu(models.Model):
+	title = models.CharField(max_length=255)
+	intro = models.TextField()
+	body = models.TextField()
+	created_at = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		chaine = f"{self.title}"
+		return chaine

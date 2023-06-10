@@ -2,6 +2,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Legal Notices</title>
+	<meta name="description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
 	<style>
@@ -108,9 +109,9 @@
 		}
 	</style>
 </head>
-{% if darkmode == "yes" %}
+{% if darkmode == True %}
 <body class="body_dark_mode">
-{% elif darkmode == "no" %}
+{% elif darkmode == False %}
 <body>
 {% endif %}
 	<header>
@@ -118,9 +119,9 @@
 		<div class="header-lowerpart">
 			<h2><a href="/">Home <i class="fa fa-home" aria-hidden="true"></i></a></h2>
 			<div class="traveling-inline-div" id="switch_dark_mode">
-				{% if darkmode == "yes" %}
+				{% if darkmode == True %}
 				<img alt="button switch theme" id="darkmodeSWITCH" width="26" height="26" src="/static/image/img-sidebar/moon.png">
-				{% elif darkmode == "no" %}
+				{% elif darkmode == False %}
 				<img alt="button switch theme" id="darkmodeSWITCH" width="26" height="26" src="/static/image/img-sidebar/sun.png">
 				{% endif %}
 			</div>
@@ -147,7 +148,6 @@
 			<a href="https://github.com/enzo405/public-archero-wiki-docker" target="_blank">https://github.com/enzo405/public-archero-wiki-docker</a>
 		</h3>
 	</main>
-</body>
 <script>
 	var switchModeBtn = document.getElementById('switch_dark_mode');
 	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
@@ -165,4 +165,5 @@
 		}
 	})
 </script>
+</body>
 </html>

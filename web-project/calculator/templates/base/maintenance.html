@@ -3,12 +3,12 @@
 	<head>
 		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.5.6a">
+		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.5.7e">
 		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-		<script src="{% static 'main.js' %}?version=1.5.6a"></script>
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.6a">
+		<script src="{% static 'main.js' %}?version=1.5.7e"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.7e">
 		<title>{{ message }}</title>
 		<style>
 			#error-image {
@@ -21,9 +21,9 @@
 			}
 		</style>
 	</head>
-{% if darkmode == "yes" %}
+{% if darkmode == True %}
 <body class="body_dark_mode">
-{% elif darkmode == "no" %}
+{% elif darkmode == False %}
 <body>
 {% endif %}
 <noscript>
@@ -63,9 +63,9 @@
 						<div class="shcl">Theme</div>
 					</div>
 					<div class="rightsidebarc traveling-right">
-						{% if darkmode == "yes" %}
+						{% if darkmode == True %}
 						<img alt="button switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/moon.png">
-						{% elif darkmode == "no" %}
+						{% elif darkmode == False %}
 						<img alt="button switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/sun.png">
 						{% endif %}
 					</div>
@@ -79,7 +79,7 @@
 			<footer class="empty-page-footer">
 				<div class="footer-content">
 					<div class="footer-about">
-						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.5.6a" alt="image game icon">
+						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.5.7e" alt="image game icon">
 						<div class="about-content">
 							<h2>Archero :</h2>
 							<div>Archero Update will be added with a certains delay</div>
@@ -88,7 +88,7 @@
 							</div>
 							<div class="f_content_info"><a href="/Terms-of-Use/">Terms of Use</a></div>
 							<div class="f_content_info"><a href="/changelog/">ChangeLog</a></div>
-							<div class="f_content_info">Build v1.5.6a</div>
+							<div class="f_content_info">Build v1.5.7e</div>
 						</div>
 					</div>
 					<div class="discord_link">

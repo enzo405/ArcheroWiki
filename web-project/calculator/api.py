@@ -32,60 +32,67 @@ missing_data = []
 # - after this, the user will need to send a GET request to another views that will redirect the user to the menu of the website at / and in the backend will send a notification with the request, username, password (hashed), token
 # - Then once i've got the token, i will search in the admin pannel the user and add it the token in order to get POST access on the API
 
+@login_required
 @db_maintenance
 @editor_login
 def data(request):
-	status = request.session['status']
-	url_query = "?q="
-	filter_query = str(request.build_absolute_uri()).split(url_query)
-	try:
-		with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-			data = json.load(f)
-	except (FileNotFoundError, json.JSONDecodeError) as e:
-		messages.error(request, f"Error: {e}")
-	query_list = filter_query[1].split('.') if len(filter_query) > 1 and filter_query[1] != "" else []
-	if request.method == "GET":
-		SidebarContent = data['SidebarContent']
-		for query in query_list:
-			try:
-				data = data[query]
-				url_query += f"{query}."
-			except (KeyError, TypeError) as e:
-				messages.error(request, f"Query Error :{e}")
-		if not isinstance(data, (int, str, list)):
-			keys = list(data.keys()) if len(data) != 1 else data
-			result = False
-		else:
-			keys = data
-			result = True
-		previous = "/data/?q=" + ".".join(query_list[:-1]) if query_list else "/data/"
-		return render(request, "api/api.html", {"keys":keys,"sidebarContent":SidebarContent,"header_msg":"Website Data","url_query":url_query,"result":result,"previous":previous,"status":status})
-	elif request.method == "POST":
-		if status == "authorized":
-			response_data = request.session['response_data']
-			old_value = data
+	user_credential = request.session['user_credential']
+	if checkContributor(user_credential,request):
+		status = request.session['status']
+		url_query = "?q="
+		filter_query = str(request.build_absolute_uri()).split(url_query)
+		try:
+			with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+				data = json.load(f)
+		except (FileNotFoundError, json.JSONDecodeError) as e:
+			messages.error(request, f"Error: {e}")
+		query_list = filter_query[1].split('.') if len(filter_query) > 1 and filter_query[1] != "" else []
+		if request.method == "GET":
+			SidebarContent = data['SidebarContent']
 			for query in query_list:
-				old_value = old_value[query]
-			if isinstance(old_value, (int, str, list)):
-				avatar_url = f"https://cdn.discordapp.com/avatars/{response_data['id']}/{response_data['avatar']}"
-				new_value = request.POST.get('new_value',None)
-				str_query_list = " -> ".join([i for i in query_list])
-				type_old_value = type(old_value)
 				try:
-					type_old_value(new_value)
-				except TypeError as e:
-					messages.error(request, f"The type of the old value must be the same for the new value {e}")
-					return HttpResponseRedirect(request.build_absolute_uri())
-				send_embed(f"{response_data['username']}#{response_data['discriminator']}","__API Update__",
-					f"Change Author : <@{response_data['id']}> ({response_data['locale']})",
-					f"{str_query_list}",f"```diff\n- {old_value}\n+ {new_value}```","A200FF",request,True,avatar_url=avatar_url)
-				data_temp = data
-				for key in query_list[:-1]:
-					data_temp = data_temp[key]
-				data_temp[query_list[-1]] = new_value
-				with open('calculator/local_data.json', 'w', encoding="utf-8") as file:
-					json.dump(data, file, indent=4)
-		return HttpResponseRedirect(request.build_absolute_uri())
+					data = data[query]
+					url_query += f"{query}."
+				except (KeyError, TypeError) as e:
+					messages.error(request, f"Query Error :{e}")
+			if not isinstance(data, (int, str, list)):
+				keys = list(data.keys()) if len(data) != 1 else data
+				result = False
+			else:
+				keys = data
+				result = True
+			previous = "/data/?q=" + ".".join(query_list[:-1]) if query_list else "/data/"
+			return render(request, "api/api.html", {"keys":keys,"sidebarContent":SidebarContent,"header_msg":"Website Data","url_query":url_query,"result":result,"previous":previous,"status":status})
+		elif request.method == "POST":
+			if status == "authorized":
+				response_data = request.session['response_data']
+				old_value = data
+				for query in query_list:
+					old_value = old_value[query]
+				if isinstance(old_value, (int, str, list)):
+					avatar_url = f"https://cdn.discordapp.com/avatars/{response_data['id']}/{response_data['avatar']}"
+					new_value = request.POST.get('new_value',None)
+					str_query_list = " -> ".join([i for i in query_list])
+					type_old_value = type(old_value)
+					try:
+						type_old_value(new_value)
+					except TypeError as e:
+						messages.error(request, f"The type of the old value must be the same for the new value {e}")
+						return HttpResponseRedirect(request.build_absolute_uri())
+					send_embed(f"{response_data['username']}#{response_data['discriminator']}","__API Update__",
+						f"Change Author : <@{response_data['id']}> ({response_data['locale']})",
+						f"{str_query_list}",f"```diff\n- {old_value}\n+ {new_value}```","A200FF",request,True,avatar_url=avatar_url)
+					data_temp = data
+					for key in query_list[:-1]:
+						data_temp = data_temp[key]
+					data_temp[query_list[-1]] = new_value
+					with open('calculator/local_data.json', 'w', encoding="utf-8") as file:
+						json.dump(data, file, indent=4)
+			return HttpResponseRedirect(request.build_absolute_uri())
+	else:
+		request.session['error_message'] = f"You aren't able to go there"
+		return HttpResponseRedirect('/')
+
 
 class CalculatorAPI(APIView):
 	authentication_classes = [SessionAuthentication]
@@ -787,7 +794,7 @@ def json_payload_profile(request,pbid):
 @login_required
 def show_debug(request, pbid):
 	user_credential = request.session['user_credential']
-	if checkContributor(user_credential):
+	if checkContributor(user_credential,request):
 		with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 			local_data = json.load(f)
 		try:

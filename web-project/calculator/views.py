@@ -5,7 +5,7 @@ from math import *
 from .forms import User,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelTypeTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinTable
 from .image import create_image
 from .models import user,stuff_table,hero_table,talent_table,skin_table,altar_table,jewel_type_table,jewel_level_table,egg_table,egg_equipped_table,dragon_table,runes_table,reforge_table,refine_table,medals_table,relics_table,weapon_skins_table,dmg_calc_table,Contributor
-from .function import checkMessages,all_formIsValid,findFormError,checkCookie,login_required,similar,create_unique_id,send_webhook,send_embed,checkTheme_Request, makeCookieheader, db_maintenance, checkContributor, getProfileWithCookie
+from .function import checkDarkMode,getCredentialForNonLoginRequired,checkMessages,all_formIsValid,findFormError,checkCookie,login_required,similar,create_unique_id,send_webhook,send_embed,MakeLogAddRequestJson, makeCookieheader, db_maintenance, checkContributor, getProfileWithCookie
 import json, os
 from const import DEV_MODE, c_hostname, DEBUG_STATS
 
@@ -394,21 +394,20 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 		send_embed("New Entry",f"{user_stats.ingame_name} | {user_stats.ingame_id}","","",f"[Admin Panel Link User]({c_hostname}/luhcaran/calculator/user/{user_stats.id}/change/)\n[Profile]({c_hostname}/calculator/show/{user_stats.public_id}/) Stats : {user_stats.global_atk_save} | {user_stats.global_hp_save}","A200FF", request,False)
 	return HttpResponseRedirect(f'{dict_Link.get(redirectPath,"/calculator/index/")}')
 
-@login_required
 @checkMessages
 def affiche_calc(request, pbid):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
-	user_credential = request.session['user_credential']
-	darkmode = checkTheme_Request(request,user_credential)
+	user_credential = getCredentialForNonLoginRequired(request)['user_credential']
+	MakeLogAddRequestJson(request,user_credential)
 	try:
 		user_stats = user.objects.get(public_id=pbid)
 		dmg_calc_table_stats = dmg_calc_table.objects.get(user_profile=user_stats)
 	except dmg_calc_table.DoesNotExist:
 		return HttpResponseRedirect(f"/stats/calc/{pbid}/1/?log=False")
 	except user.DoesNotExist:
-		request.session['error_message'] = "user doesn't exist"
+		request.session['error_message'] = "User doesn't exist"
 		return HttpResponseRedirect('/')
 	if not os.path.exists(f"calculator/static/image/stuff_save/{pbid}.png"):
 		return HttpResponseRedirect(f"/stats/calc/{pbid}/0/?log=False")
@@ -444,7 +443,7 @@ def affiche_calc(request, pbid):
 		"weapon_damage": dmg_calc_table_stats.weapon_damage,
 		"weapon_melee_damage": dmg_calc_table_stats.weapon_melee_damage,
 		"weapon_ranged_damage": dmg_calc_table_stats.weapon_ranged_damage,
-		"darkmode": darkmode,
+		"darkmode": checkDarkMode(request),
 		"header_msg": "Stats Calculator",
 		"ValueError": valueError,
 		"missing_data": dmg_calc_table_stats.missing_data,
@@ -453,16 +452,75 @@ def affiche_calc(request, pbid):
 		"cookieUsername":makeCookieheader(user_credential),
 		'DEV_MODE':DEV_MODE
 	}
-	if request.user.is_superuser or checkContributor(user_credential):
+	if checkContributor(user_credential,request):
 		ctx['DEV_MODE'] = True
 	return render(request,'calculator/affiche.html',ctx)
 
 @db_maintenance
-@login_required
 @checkMessages
 def index_calc(request):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
+	ingame_name_cookie,ingame_id_cookie,user_credential = getCredentialForNonLoginRequired(request).values()
+	MakeLogAddRequestJson(request,user_credential)
+	profile = getProfileWithCookie(ingame_id_cookie,ingame_name_cookie)
+	user_liste = user.objects.all().order_by('-global_atk_save').filter(public_profile=True)
+
+	show_table = "no_profile"
+	self_ingame_hero = "unknown"
+	user_stats = profile[1] if profile else None
+	self_ingame_name = user_stats.ingame_name if user_stats else ""
+	self_public_id = user_stats.public_id if user_stats else ""
+	self_global_atk_save = user_stats.global_atk_save if user_stats else ""
+	self_global_hp_save = user_stats.global_hp_save if user_stats else ""
+	rank = "?"
+	avatar_src = f"/static/image/hero_icon/icon_unknown.png"
+	if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
+		show_table = "visitor"
+	elif ingame_id_cookie == "9-999999" and ingame_name_cookie == "unknown":
+		show_table = "visitor"
+	elif profile and not profile[0] and user_stats:
+		show_table = "visitor"
+		messages.error(request, f'You attempted to access {self_ingame_name}<br>But your login username is "{ingame_name_cookie}".')
+	elif profile and user_stats:
+		self_ingame_name = user_stats.ingame_name
+		self_ingame_hero = user_stats.choosen_hero
+		if os.path.exists(f"calculator/static/image/hero_icon/icon_{self_ingame_hero}.png"):
+			avatar_src = f"/static/image/hero_icon/icon_{self_ingame_hero}.png"
+		self_public_id = user_stats.public_id
+		self_global_atk_save = user_stats.global_atk_save
+		self_global_hp_save = user_stats.global_hp_save
+		show_table = "yes"
+		try:
+			rank = list(user_liste).index(user_stats)
+		except ValueError:
+			rank = "?"
+	number_user = len(user_liste)
+	notuserlist = ['0-000001','0-000002','0-000003','0-000004'] ## pas besoin de mettre le user_init, il a déjà moins de 2800 atk
+	notuserlist.extend(user.objects.filter(global_atk_save__lt=2800).values_list('ingame_id', flat=True))
+	user_liste = user_liste.exclude(ingame_id__in=notuserlist)
+	return render(request,"calculator/index.html",{
+		"listALL": user_liste,
+		"self_ingame_name":self_ingame_name,
+		"self_global_atk_save":self_global_atk_save,
+		"self_global_hp_save":self_global_hp_save,
+		"self_public_id":self_public_id,
+		"self_ingame_hero": avatar_src,
+		"show_table": show_table,
+		"rank": rank,
+		"darkmode": checkDarkMode(request),
+		"header_msg": "Stats Calculator",
+		"lang":lang,
+		"number_user":number_user,
+		"ingame_name_cookie":ingame_name_cookie,
+		"sidebarContent":SidebarContent,
+		"cookieUsername":makeCookieheader(user_credential)
+	})
+
+@db_maintenance
+@login_required
+def formulaire_calc(request):
 	try:
 		user.objects.get(pk=user_init_primary_key)
 	except user.DoesNotExist:
@@ -479,87 +537,19 @@ def index_calc(request):
 		new_tempUser.public_id = 1678471785674909
 		new_tempUser.public_profile = False
 		new_tempUser.save()
-
-	SidebarContent = local_data['SidebarContent']
-	user_credential = request.session['user_credential']
-	darkmode = checkTheme_Request(request,user_credential)
-	ingame_name_cookie = list(user_credential.keys())[0]
-	ingame_id_cookie = user_credential.get(ingame_name_cookie,None)
-	profile = getProfileWithCookie(ingame_id_cookie,ingame_name_cookie)
-	user_liste = list(user.objects.all().order_by('-global_atk_save').filter(public_profile=True))
-
-	show_table = "no_profile"
-	self_ingame_hero = "unknown"
-	user_stats = profile[1]
-	self_ingame_name = ""
-	self_public_id = ""
-	self_global_atk_save = ""
-	self_global_hp_save = ""
-	rank = "?"
-	avatar_src = f"/static/image/hero_icon/icon_unknown.png"
-	if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
-		show_table = "visitor"
-	elif profile[0] == False and user_stats != None:
-		show_table = "visitor"
-		self_ingame_name = user_stats.ingame_name
-		messages.error(request,f'You attempted to access {self_ingame_name}<br>But your login username is "{ingame_name_cookie}".')
-	elif profile[0] and user_stats != None:
-		self_ingame_name = user_stats.ingame_name
-		self_ingame_hero = user_stats.choosen_hero
-		if os.path.exists(f"calculator/static/image/hero_icon/icon_{self_ingame_hero}.png"):
-			avatar_src = f"/static/image/hero_icon/icon_{self_ingame_hero}.png"
-		self_public_id = user_stats.public_id
-		self_global_atk_save = user_stats.global_atk_save
-		self_global_hp_save = user_stats.global_hp_save
-		show_table = "yes"
-		try:
-			rank = user_liste.index(user_stats)
-		except ValueError:
-			rank = "?"
-	number_user = len(user_liste)
-	notuserlist = ['0-000001','0-000002','0-000003','0-000004'] ## pas besoin de mettre le user_init, il a déjà moins de 2800 atk
-	notuserlist.extend(user.objects.filter(global_atk_save__lt=2800).values_list('ingame_id', flat=True))
-	for i in notuserlist:
-		try:
-			profile = user.objects.get(ingame_id=i)
-			user_liste.remove(profile)
-		except (user.DoesNotExist,ValueError):
-			pass
-	return render(request,"calculator/index.html",{
-		"listALL": user_liste,
-		"self_ingame_name":self_ingame_name,
-		"self_global_atk_save":self_global_atk_save,
-		"self_global_hp_save":self_global_hp_save,
-		"self_public_id":self_public_id,
-		"self_ingame_hero": avatar_src,
-		"show_table": show_table,
-		"rank": rank,
-		"darkmode": darkmode,
-		"header_msg": "Stats Calculator",
-		"lang":lang,
-		"number_user":number_user,
-		"ingame_name_cookie":ingame_name_cookie,
-		"sidebarContent":SidebarContent,
-		"cookieUsername":makeCookieheader(user_credential)
-	})
-
-@db_maintenance
-@login_required
-def formulaire_calc(request):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	user_credential = request.session['user_credential']
-	darkmode = checkTheme_Request(request,user_credential)
-	cookie_request_name = list(user_credential.keys())[0]
-	cookie_request_id = user_credential.get(cookie_request_name,None)
+	MakeLogAddRequestJson(request,user_credential)
+	cookie_request_name,cookie_request_id = list(user_credential.items())[0]
 	profile = getProfileWithCookie(cookie_request_id,cookie_request_name)
 	if request.method == "POST" or profile[0]:
 		request.session['info_message'] = f"{profile[1].ingame_name}'s Profile already exists"
-		return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
+		return HttpResponseRedirect("/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
 	elif profile[0] == False and profile[1] != None:
 		request.session['error_message'] = f'You can\'t create a new profile, this id is already used by {profile[1].ingame_name}.'
-		return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
+		return HttpResponseRedirect("/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
 	else :
 		form_User = User()
 		form_StuffTable = StuffTable()
@@ -600,7 +590,7 @@ def formulaire_calc(request):
 			'public_id': create_unique_id(),
 			'cookie_request_id': cookie_request_id,
 			'cookie_request_name': cookie_request_name,
-			"darkmode": darkmode,
+			"darkmode": checkDarkMode(request),
 			"header_msg": "Create Profile",
 			"lang":lang,
 			"pk_id":user_init.pk,
@@ -617,16 +607,15 @@ def traitement_calc(request):
 			local_data = json.load(f)
 		SidebarContent = local_data['SidebarContent']
 		user_credential = request.session['user_credential']
-		darkmode = checkTheme_Request(request,user_credential)
-		cookie_request_name = list(user_credential.keys())[0]
-		cookie_request_id = user_credential.get(cookie_request_name,None)
+		MakeLogAddRequestJson(request,user_credential)
+		cookie_request_name,cookie_request_id = list(user_credential.items())[0]
 		profile = getProfileWithCookie(cookie_request_id,cookie_request_name)
 		if profile[0]:
 			request.session['info_message'] = f"{profile[1].ingame_name}'s Profile already exists"
-			return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
+			return HttpResponseRedirect("/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
 		elif profile[0] == False and profile[1] != None:
 			request.session['error_message'] = f'You attempted to access {profile[1].ingame_name}<br>But your login username is "{cookie_request_name}".'
-			return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
+			return HttpResponseRedirect("/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
 		form_User = User(request.POST)
 		form_StuffTable = StuffTable(request.POST)
 		form_HeroTable = HeroTable(request.POST)
@@ -727,7 +716,7 @@ def traitement_calc(request):
 				'form_JewelTypeTable' :form_JewelTypeTable,'form_JewelLevelTable' :form_JewelLevelTable,'form_EggTable' :form_EggTable,
 				'form_EggEquippedTable' :form_EggEquippedTable,'form_DragonTable' :form_DragonTable,'form_RunesTable' :form_RunesTable,
 				'form_ReforgeTable' :form_ReforgeTable,'form_RefineTable' :form_RefineTable,'form_MedalTable' :form_MedalTable,'form_RelicsTable' :form_RelicsTable,
-				'form_WeaponSkinTable' :form_WeaponSkinTable,'darkmode': darkmode, 'header_msg': 'Create Profile','lang':lang, "public_id":pbid,"cookie_request_id":ingame_id,
+				'form_WeaponSkinTable' :form_WeaponSkinTable,'darkmode': checkDarkMode(request), 'header_msg': 'Create Profile','lang':lang, "public_id":pbid,"cookie_request_id":ingame_id,
 				"cookie_request_name":ingame_name,"pk_id":pk_id,"sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(user_credential)})
 	else:
 		return HttpResponseRedirect("/calculator/index")
@@ -739,18 +728,17 @@ def update_calc(request, pbid):
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	user_credential = request.session['user_credential']
-	darkmode = checkTheme_Request(request,user_credential)
-	ingame_name_cookie = list(user_credential.keys())[0]
-	ingame_id_cookie = user_credential.get(ingame_name_cookie,None)
+	MakeLogAddRequestJson(request,user_credential)
+	ingame_name_cookie,ingame_id_cookie = list(user_credential.items())[0]
 	profile = getProfileWithCookie(ingame_id_cookie,ingame_name_cookie,public_id=pbid)
 	if profile[0] or DEBUG_STATS:
 		user_stats = profile[1]
 		if DEBUG_STATS:
-			user_stats = user.objects.get(public_id=pbid)	
+			user_stats = user.objects.get(public_id=pbid)
 	elif profile[0] == False:
 		if profile[1] != None:
 			request.session['error_message'] = f'You attempted to access {profile[1].ingame_name}<br>But your login username is "{ingame_name_cookie}".'
-		return HttpResponseRedirect("/calculator/index/", {"darkmode": darkmode,"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
+		return HttpResponseRedirect("/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
 	if request.method == "GET":
 		stuff_table_stats = stuff_table.objects.get(user_profile=user_stats)
 		hero_table_stats = hero_table.objects.get(user_profile=user_stats)
@@ -814,7 +802,7 @@ def update_calc(request, pbid):
 			"form_dragon_1": dragon_table_stats.dragon1_type,
 			"form_dragon_2": dragon_table_stats.dragon2_type,
 			"form_dragon_3": dragon_table_stats.dragon3_type,
-			"darkmode": darkmode,
+			"darkmode": checkDarkMode(request),
 			"header_msg": "Stats Calculator",
 			"lang":lang,
 			"sidebarContent":SidebarContent,
@@ -835,6 +823,8 @@ def updatetraitement_calc(request, pbid):
 		except:
 			request.session['error_message'] = f'User doesn\'t exist'
 			return HttpResponseRedirect("/calculator/index/")
+		user_credential = request.session['user_credential']
+		MakeLogAddRequestJson(request,user_credential)
 		stuff_table_stats = stuff_table.objects.get(user_profile=user_instance)
 		hero_table_stats = hero_table.objects.get(user_profile=user_instance)
 		talent_table_stats = talent_table.objects.get(user_profile=user_instance)
@@ -851,8 +841,6 @@ def updatetraitement_calc(request, pbid):
 		medal_table_stats = medals_table.objects.get(user_profile=user_instance)
 		relics_table_stats = relics_table.objects.get(user_profile=user_instance)
 		weapon_skins_table_stats = weapon_skins_table.objects.get(user_profile=user_instance)
-		user_credential = request.session['user_credential']
-		darkmode = checkTheme_Request(request,user_credential)
 		form_User = User(request.POST,instance=user_instance)
 		form_StuffTable = StuffTable(request.POST,instance=stuff_table_stats)
 		form_HeroTable = HeroTable(request.POST,instance=hero_table_stats)
@@ -946,7 +934,7 @@ def updatetraitement_calc(request, pbid):
 				'form_JewelTypeTable' :form_JewelTypeTable,'form_JewelLevelTable' :form_JewelLevelTable,'form_EggTable' :form_EggTable,
 				'form_EggEquippedTable' :form_EggEquippedTable,'form_DragonTable' :form_DragonTable,'form_RunesTable' :form_RunesTable,
 				'form_ReforgeTable' :form_ReforgeTable,'form_RefineTable' :form_RefineTable,"form_MedalTable":form_MedalTable,"form_RelicsTable":form_RelicsTable,
-				"form_WeaponSkinTable":form_WeaponSkinTable,"id_token": pbid, "value_error": value_error_msg,"darkmode": darkmode,
+				"form_WeaponSkinTable":form_WeaponSkinTable,"id_token": pbid, "value_error": value_error_msg,"darkmode": checkDarkMode(request),
 				"header_msg": "Stats Calculator", "lang":lang,"sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(user_credential)
 			}
 			return render(request,"calculator/formulaire.html",ctx)
@@ -972,11 +960,11 @@ def delete_user(request, pbid):
 	return HttpResponseRedirect(f"/calculator/index")
 
 
-
+@login_required
 @db_maintenance
 def admin_reload_stats(request,pbid):
-	cookie_result = checkCookie(request.COOKIES)
-	if checkContributor(cookie_result):
+	user_credential = request.session['user_credential']
+	if checkContributor(user_credential,request):
 		try:
 			os.remove(f"calculator/static/image/stuff_save/{pbid}.png")
 		except (FileNotFoundError,IsADirectoryError,OSError):

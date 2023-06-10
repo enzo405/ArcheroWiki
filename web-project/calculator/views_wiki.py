@@ -1,6 +1,6 @@
 from .forms import DamageCalculatorForm
-from .models import user,stuff_table,hero_table,talent_table,skin_table,altar_table,jewel_level_table,egg_table,egg_equipped_table,dragon_table,runes_table,reforge_table,refine_table,medals_table,relics_table,weapon_skins_table,dmg_calc_table,promo_code
-from .function import checkMessages,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,checkTheme_Request,calculatePrice,makeCookieheader,db_maintenance, getProfileWithCookie, login_required, checkContributor
+from .models import articleMenu,user,stuff_table,hero_table,talent_table,skin_table,altar_table,jewel_level_table,egg_table,egg_equipped_table,dragon_table,runes_table,reforge_table,refine_table,medals_table,relics_table,weapon_skins_table,dmg_calc_table,promo_code
+from .function import checkDarkMode,checkMessages,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,MakeLogAddRequestJson,calculatePrice,makeCookieheader,db_maintenance, getProfileWithCookie, login_required, checkContributor
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse
@@ -22,18 +22,34 @@ def menu(request):
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
-	return render(request, 'base/menu.html', {"darkmode": darkmode, "header_msg": "Menu Archero Wiki", 'lang':lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
+	MakeLogAddRequestJson(request,cookie_result)
+	list_article = list(articleMenu.objects.all())
+	return render(request, 'base/menu.html', {"darkmode": checkDarkMode(request), "header_msg": "Menu Archero Wiki", 'lang':lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result),"allArticle":list_article})
+
+@checkMessages
+def news(request,titleArticle=None):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	SidebarContent = local_data['SidebarContent']
+	cookie_result = checkCookie(request.COOKIES)
+	MakeLogAddRequestJson(request,cookie_result)
+	try:
+		article = articleMenu.objects.get(title=titleArticle)
+	except articleMenu.DoesNotExist:
+		request.session['error_message'] = f"{titleArticle} Article doesn't exist" 
+		return HttpResponseRedirect('/')
+	return render(request, 'wiki/article-news.html', {"darkmode": checkDarkMode(request), "header_msg": "Menu Archero Wiki", 'lang':lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result), "article":article})
+
 
 def maze(request):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
+	MakeLogAddRequestJson(request,cookie_result)
 	with urlopen("https://config-archero.habby.mobi/data/config/MazeConfig.json") as url:
-		data_json = json.load(url)
-	return render(request, 'wiki/get_maze.html', {"data_json":data_json, "darkmode": darkmode, "header_msg": "maze","lang":lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
+		maze_data_api = json.load(url)
+	return render(request, 'wiki/get_maze.html', {"data_json":maze_data_api, "darkmode": checkDarkMode(request), "header_msg": "maze","lang":lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
 
 def csrf_failure(request, reason=""):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
@@ -43,18 +59,16 @@ def csrf_failure(request, reason=""):
 	profil = "no"
 	public_id =''
 	try:
-		ingame_name_cookie = list(cookie_result.keys())[0]
-		ingame_id_cookie = cookie_result.get(ingame_name_cookie,None)
+		ingame_name_cookie,ingame_id_cookie = list(cookie_result.items())[0]
 		user_profile = getProfileWithCookie(ingame_id_cookie,ingame_name_cookie)
-		if len(cookie_result) != 0:
-			if user_profile[0]:
-				profil = "yes"
-				user_stats = user_profile[1]
-				public_id = user_stats.public_id
+		if user_profile[0]:
+			profil = "yes"
+			user_stats = user_profile[1]
+			public_id = user_stats.public_id
 	except IndexError:
 		pass
-	darkmode = checkTheme_Request(request,cookie_result)
-	return render(request,'base/csrf_failure.html', {"darkmode": darkmode, "header_msg": "CSRF FAILURE","lang":lang, "profil":profil, "public_id":public_id, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
+	MakeLogAddRequestJson(request,cookie_result)
+	return render(request,'base/csrf_failure.html', {"darkmode": checkDarkMode(request), "header_msg": "CSRF FAILURE","lang":lang, "profil":profil, "public_id":public_id, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
 
 @checkMessages
 def login(request):
@@ -62,43 +76,45 @@ def login(request):
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_value = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_value)
-	if (len(cookie_value) >= 1 and "visitor" not in list(cookie_value)):
-		cookie_request_name = list(cookie_value.keys())[0]
-		cookie_request_id = cookie_value.get(cookie_request_name,None)
+	MakeLogAddRequestJson(request,cookie_value)
+	if (len(cookie_value) >= 1 and "visitor" not in list(cookie_value)): ## normally len(cookie_value) will have maximum 1 length but to be sure 
+		cookie_request_name,cookie_request_id = list(cookie_value.items())[0]
 		profile = getProfileWithCookie(cookie_request_id,cookie_request_name)
 		if profile[0] == False and profile[1] != None:
-			return render(request, "base/login.html", {"darkmode":darkmode, "sidebarContent":SidebarContent})
+			return render(request, "base/login.html", {"darkmode":checkDarkMode(request), "sidebarContent":SidebarContent})
 		send_webhook(f'{cookie_value} tried to access Login but was redirected to Home\n{request.COOKIES}')
-		request.session['error_message'] = f"You cannot go to Login : {cookie_request_name}"
+		request.session['error_message'] = f"You can't login again, your username is {cookie_request_name}"
 		return HttpResponseRedirect("/")
 	else:
-		return render(request, "base/login.html", {"darkmode":darkmode, "sidebarContent":SidebarContent})
+		return render(request, "base/login.html", {"darkmode":checkDarkMode(request), "sidebarContent":SidebarContent})
 
 def login_processing(request, username_raw, id_raw):
 	response = redirect("/")
 	cookie_value = checkCookie(request.COOKIES)
 	if len(cookie_value) != 0:
-		cookie_request_name = list(cookie_value.keys())[0]
-		cookie_request_id = cookie_value.get(cookie_request_name,None)
+		cookie_request_name,cookie_request_id = list(cookie_value.items())[0]
 		profile = getProfileWithCookie(cookie_request_id,cookie_request_name)
 		if profile[0]:
 			request.session['info_message'] = f"You are already logged in"
 			return response
-		else:
+		elif profile[0] == False and profile[1] != None:
+			# si il a pas de profil mais qu'il a un user_credential dans les cookies/session
 			response.delete_cookie(key=cookie_request_name,path="/")
-	username_legal = checkIllegalKey(username_raw)
-	boolCheck = checkUsernameCredentials(username_raw,id_raw)
+			request.session.clear()
+	boolCheck = checkUsernameCredentials(username_raw,id_raw,login=True)
 	if boolCheck["ingame_name"] == "visitor" and boolCheck["ingame_id"] == "0-000000":
 		response.set_cookie(key="visitor", value="0-000000", httponly=True, path='/')
-	elif boolCheck["ingame_name"] != "visitor" and boolCheck["ingame_id"] == "0-000000":
-		request.session['error_message'] = f"Login Failed : you can\'t use 0-000000"
+		request.session.clear()
+		request.session['user_credential'] = {"visitor":"0-000000"}
+		request.session['success_message'] = "You successfully logged as visitor"
 	elif boolCheck["access"]:
 		response.delete_cookie('visitor', path='/')
 		expires = datetime.now() + timedelta(days=365)
 		try:
 			response.set_cookie(key=boolCheck["ingame_name"], value=boolCheck["ingame_id"], expires=expires, httponly=True, samesite="Strict")
+			request.session['user_credential'] = {boolCheck["ingame_name"]:boolCheck["ingame_id"]}
 		except CookieError as e:
+			username_legal = checkIllegalKey(username_raw)
 			send_webhook(f"<@&{DISCORD_NOTIF_ROLE_ID}> : {e}")
 			request.session['error_message'] = f"Login Failed (forbidden character \"{username_legal}\")"
 			return response
@@ -114,17 +130,17 @@ def wiki_theorycrafting(request):
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
-	return render(request, "wiki/theorycraft.html", {"darkmode": darkmode, "header_msg": "TheoryCrafting","lang":lang, "sidebarContent":SidebarContent, "TheoryCraftingContent":local_data["TheoryCraftingContent"], "cookieUsername":makeCookieheader(cookie_result)})
+	MakeLogAddRequestJson(request,cookie_result)
+	return render(request, "wiki/theorycraft.html", {"darkmode": checkDarkMode(request), "header_msg": "Wiki","lang":lang, "sidebarContent":SidebarContent, "TheoryCraftingContent":local_data["TheoryCraftingContent"], "cookieUsername":makeCookieheader(cookie_result)})
 
 def item_description(request, item=None):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
+	MakeLogAddRequestJson(request,cookie_result)
 	ctx = {
-		"darkmode": darkmode,
+		"darkmode": checkDarkMode(request),
 		"header_msg": "Item Description",
 		"lang":lang,
 		"item":"no",
@@ -153,9 +169,9 @@ def skill_description(request, skill=None):
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
+	MakeLogAddRequestJson(request,cookie_result)
 	ctx = {
-		"darkmode": darkmode,
+		"darkmode": checkDarkMode(request),
 		"header_msg": "Skill Description",
 		"lang":lang,
 		"skill":"no",
@@ -187,9 +203,9 @@ def heros_description(request, hero=None):
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
+	MakeLogAddRequestJson(request,cookie_result)
 	ctx = {
-		"darkmode": darkmode,
+		"darkmode": checkDarkMode(request),
 		"header_msg": "Heroes Description",
 		"lang":lang,
 		"hero":"no", ## keep this for the meta tag
@@ -213,17 +229,16 @@ def heros_description(request, hero=None):
 		messages.warning(request, message=f"{e} isn't a hero")
 	return render(request, "wiki/heros_description.html",ctx)
 
-@checkMessages
 def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str="None"):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
+	MakeLogAddRequestJson(request,cookie_result)
 	all_rank = ["A","S","SS"]
 	content = ""
 	ctx = {
-		"darkmode": darkmode,
+		"darkmode": checkDarkMode(request),
 		"header_msg": "Upgrade Cost",
 		"lang":lang,
 		"cost_type":cost_type,
@@ -251,7 +266,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 				"currency2": ['Scrolls :','scroll'],
 			}
 		else:
-			request.session['error_message'] = f"The levels need to be between 0 and {max_lvl}"
+			messages.error(request,f"The levels need to be between 0 and {max_lvl}")
 			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "heroes":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
@@ -266,7 +281,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 				"currency2": ['Sapphire :','sapphire'],
 			}
 		else:
-			request.session['error_message'] = f"The levels need to be between 0 and 120"
+			messages.error(request,f"The levels need to be between 0 and 120")
 			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "talents":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 205) and (1 <= lvl2 <= 206):
@@ -281,7 +296,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 				"currency2": ['',''],
 			}
 		else:
-			request.session['error_message'] = "The levels need to be between 0 and 206"
+			messages.error(request,"The levels need to be between 0 and 206")
 			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "dragons":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
@@ -297,10 +312,10 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 					"currency2": ['Magestones :','magestone'],
 				}
 			else:
-				request.session['error_message'] = "The rank need to be whether A, S or SS"
+				messages.error(request,"The rank need to be whether A, S or SS")
 				return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/{lvl1}/{lvl2}/A/")
 		else:
-			request.session['error_message'] = "The levels need to be between 0 and 120"
+			messages.error(request,"The levels need to be between 0 and 120")
 			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/{rank}/")
 	elif cost_type == "relics":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 29) and (1 <= lvl2 <= 30):
@@ -316,10 +331,10 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 					"currency2": ['Starlight :','starlight'],
 				}
 			else:
-				request.session['error_message'] = "The rank need to be whether A, S or SS"
+				messages.error("The rank need to be whether A, S or SS")
 				return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/{lvl1}/{lvl2}/A/")
 		else:
-			request.session['error_message'] = "The levels need to be between 0 and 30"
+			messages.error(request,"The levels need to be between 0 and 30")
 			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/{rank}/")
 	ctx.update({"content":content})
 	return render(request, "wiki/upgrade_cost.html", ctx)
@@ -330,9 +345,9 @@ def ghssetGrid(request):
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
+	MakeLogAddRequestJson(request,cookie_result)
 	ctx = {
-		'darkmode':darkmode,
+		'darkmode':checkDarkMode(request),
 		"header_msg": "Google Sheet Wiki",
 		"lang":lang,
 		"GsheetData":local_data['GsheetData'],
@@ -346,7 +361,7 @@ def promocode(request):
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
+	MakeLogAddRequestJson(request,cookie_result)
 	all_active_code = []
 	promo_codes = promo_code.objects.all().filter(is_active=True)
 	for i in promo_codes:
@@ -367,7 +382,7 @@ def promocode(request):
 						result = [i.code,expireDate,[r1,r2,r3,r4]]
 			all_active_code.append(result)
 	ctx = {
-		"darkmode": darkmode,
+		"darkmode": checkDarkMode(request),
 		"header_msg": "Promo Code",
 		"lang":lang,
 		"promo_code":all_active_code,
@@ -384,12 +399,11 @@ def damage(request):
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
+	MakeLogAddRequestJson(request,cookie_result)
 	user_stats = ""
 	selfHasProfil = "no"
 	if len(cookie_result) != 0:
-		ingame_name_cookie = list(cookie_result.keys())[0]
-		ingame_id_cookie = cookie_result.get(ingame_name_cookie,None)
+		ingame_name_cookie,ingame_id_cookie = list(cookie_result.items())[0]
 		profile = getProfileWithCookie(ingame_id_cookie,ingame_name_cookie)
 		if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
 			selfHasProfil = "login"
@@ -406,8 +420,8 @@ def damage(request):
 	chapter_34_to_42 = user.objects.get(ingame_id="0-000003").public_id
 	chapter_ch42 =  user.objects.get(ingame_id="0-000004").public_id
 	ctx = {
-		"darkmode": darkmode,
-		"header_msg": "Damage Help",
+		"darkmode": checkDarkMode(request),
+		"header_msg": "Damage Calculator",
 		"selfHasProfil":selfHasProfil,
 		"selfStats":user_stats,
 		"lang":lang,
@@ -635,7 +649,7 @@ def damageCalc(request,pbid):
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
+	MakeLogAddRequestJson(request,cookie_result)
 	try:
 		user_stats = user.objects.get(public_id=pbid)
 		calc_user_dmg = dmg_calc_table.objects.get(user_profile=user_stats.pk)
@@ -643,7 +657,7 @@ def damageCalc(request,pbid):
 	except (user.DoesNotExist,dmg_calc_table.DoesNotExist,runes_table.DoesNotExist):	
 		return HttpResponseRedirect(f"/wiki/damage-calculator/calc/{pbid}/")
 	ctx = {
-		'darkmode':darkmode,
+		'darkmode':checkDarkMode(request),
 		"header_msg": "Damage Calc",
 		"lang":lang,
 		"sidebarContent":SidebarContent,
@@ -809,9 +823,9 @@ def handler404(request, exception):
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
+	MakeLogAddRequestJson(request,cookie_result)
 	ctx = {
-		'darkmode':darkmode,
+		'darkmode':checkDarkMode(request),
 		"header_msg":"Page Not Found",
 		"lang":lang,
 		"sidebarContent":SidebarContent,
@@ -824,7 +838,7 @@ def handler500(request):
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
+	MakeLogAddRequestJson(request,cookie_result)
 	allfile = os.listdir('calculator/static/traceback_file/')
 	for file in allfile:
 		os.remove(f'calculator/static/traceback_file/{file}')
@@ -851,7 +865,7 @@ def handler500(request):
 		webhook.add_file(file=f.read(), filename=f'{username}.txt')
 	webhook.execute()
 	messages.error(request,"Oops! Something went wrong<br>An error occurred while processing your request. Please try again later.")
-	return render(request,'base/500.html', {'darkmode':darkmode,"header_msg":"Internal Server Error", 'lang':lang,"sidebarContent":SidebarContent},status=500)
+	return render(request,'base/500.html', {'darkmode':checkDarkMode(request),"header_msg":"Internal Server Error", 'lang':lang,"sidebarContent":SidebarContent},status=500)
 
 
 def rickroll(request):
@@ -861,31 +875,31 @@ def rickroll(request):
 
 def tos(request):
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
-	return render(request,'base/tos.html',{"darkmode": darkmode})
+	MakeLogAddRequestJson(request,cookie_result)
+	return render(request,'base/tos.html',{"darkmode": checkDarkMode(request)})
 
 def changelog(request):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request.COOKIES)
-	darkmode = checkTheme_Request(request,cookie_result)
+	MakeLogAddRequestJson(request,cookie_result)
 	with open(f'calculator/static/json/commits.json','r', encoding='utf-8') as commit:
 		commit_json = json.load(commit)
-	return render(request,'base/changelog.html',{"commit_json":commit_json,"darkmode": darkmode, "header_msg": "Change Log", 'lang':lang, "sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(cookie_result)})
+	return render(request,'base/changelog.html',{"commit_json":commit_json,"darkmode": checkDarkMode(request), "header_msg": "Change Log", 'lang':lang, "sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(cookie_result)})
 
 
 @login_required
 def advanced_stats(request):
 	user_credential = request.session['user_credential']
-	if checkContributor(user_credential):
-		with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-			local_data = json.load(f)
-		darkmode = checkTheme_Request(request,user_credential)
-		SidebarContent = local_data['SidebarContent']
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	MakeLogAddRequestJson(request,user_credential)
+	SidebarContent = local_data['SidebarContent']
+	if checkContributor(user_credential,request):
 		AdvancedStats = local_data['AdvancedStats']
-		send_webhook(f"{user_credential} is looking at Advanced stats",admin_log=True)
-		return render(request, "wiki/advanced_stats.html", {"darkmode":darkmode, "header_msg": "Advanced Stats", "AdvancedStats":AdvancedStats,"sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(user_credential)})
+		send_webhook(f"{user_credential} is looking at all Advanced stats",admin_log=True)
+		return render(request, "wiki/advanced_stats.html", {"darkmode":checkDarkMode(request), "header_msg": "Advanced Stats", "AdvancedStats":AdvancedStats,"sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(user_credential)})
 	else:
-		request.session['error_message'] = "Access Restricted<br>Verification in progress."
-		return redirect(reverse('menu'))
+		AdvancedStats = local_data['AdvancedStatsSharable']
+		return render(request, "wiki/advanced_stats.html", {"darkmode":checkDarkMode(request), "header_msg": "Advanced Stats", "AdvancedStats":AdvancedStats,"sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(user_credential)})
