@@ -1,6 +1,7 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.contrib import messages
+from django.core.handlers.wsgi import WSGIRequest
 from math import *
 from .forms import User,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelTypeTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinTable
 from .image import create_image
@@ -21,7 +22,6 @@ except:
 ## redirect allow messages.<type>(request,<message:str>)
 
 @db_maintenance
-@login_required
 def views_calc_stats(request,pbid:str,redirectPath:int):
 	global missing_data
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
@@ -31,7 +31,6 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 		user_stats = user.objects.get(public_id=pbid)
 	except user.DoesNotExist:
 		return HttpResponseRedirect('/')
-	# user_credential = request.session['user_credential']
 	ingame_name = user_stats.ingame_name
 	other_model = user_stats.getOtherModels()
 	stuff_table_stats = other_model['stuff_table']
@@ -465,8 +464,11 @@ def index_calc(request):
 	ingame_name_cookie,ingame_id_cookie,user_credential = getCredentialForNonLoginRequired(request).values()
 	MakeLogAddRequestJson(request,user_credential)
 	profile = getProfileWithCookie(ingame_id_cookie,ingame_name_cookie)
-	user_liste = user.objects.all().order_by('-global_atk_save').filter(public_profile=True)
 
+	notuserlist = ['0-000001','0-000002','0-000003','0-000004']
+	notuserlist.extend(user.objects.filter(global_atk_save__lt=2800).values_list('ingame_id', flat=True))
+	user_liste = user.objects.filter(public_profile=True).exclude(ingame_id__in=notuserlist).order_by('-global_atk_save')[:100]
+	
 	show_table = "no_profile"
 	self_ingame_hero = "unknown"
 	user_stats = profile[1] if profile else None
@@ -496,10 +498,7 @@ def index_calc(request):
 			rank = list(user_liste).index(user_stats)
 		except ValueError:
 			rank = "?"
-	number_user = len(user_liste)
-	notuserlist = ['0-000001','0-000002','0-000003','0-000004'] ## pas besoin de mettre le user_init, il a déjà moins de 2800 atk
-	notuserlist.extend(user.objects.filter(global_atk_save__lt=2800).values_list('ingame_id', flat=True))
-	user_liste = user_liste.exclude(ingame_id__in=notuserlist)
+	number_user = user.objects.count()
 	return render(request,"calculator/index.html",{
 		"listALL": user_liste,
 		"self_ingame_name":self_ingame_name,
@@ -951,7 +950,7 @@ def delete_user(request, pbid):
 		except (FileNotFoundError,IsADirectoryError,OSError):
 			pass
 	else:
-		cookie_value = checkCookie(request.COOKIES)
+		cookie_value = checkCookie(request)
 		try:
 			ingame_name_cookie = list(cookie_value.keys())[0]
 		except:
@@ -960,7 +959,6 @@ def delete_user(request, pbid):
 	return HttpResponseRedirect(f"/calculator/index")
 
 
-@login_required
 @db_maintenance
 def admin_reload_stats(request,pbid):
 	user_credential = request.session['user_credential']

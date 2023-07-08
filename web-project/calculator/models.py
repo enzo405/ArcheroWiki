@@ -2242,8 +2242,21 @@ class articleMenu(models.Model):
 	title = models.CharField(max_length=255)
 	intro = models.TextField()
 	body = models.TextField()
-	created_at = models.DateTimeField(auto_now_add=True)
+	last_change = models.CharField(max_length=55, default=f"Created on {datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')}")
+	is_new = models.BooleanField(default=True)
+	_display = models.BooleanField(default=True)
+
+	def save(self, *args, **kwargs):
+		from .function import send_webhook
+		pk_article = self.pk
+		try:
+			articleMenu.objects.get(pk=pk_article)
+			self.last_change = f"Updated on {datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')}"
+			send_webhook(f"Update : `{self}`")
+		except:
+			send_webhook(f"New Article : `{self}`")
+		super(articleMenu, self).save(*args, **kwargs)
 
 	def __str__(self):
-		chaine = f"{self.title}"
+		chaine = f"{self.title} | display {self._display} | is_new {self.is_new}"
 		return chaine

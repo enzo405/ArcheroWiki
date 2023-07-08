@@ -1,21 +1,22 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.7e">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.5.7e">
-<title>Archero - Wiki</title>
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.1">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.1">
 <meta name="description" content="Explore a comprehensive list of items in Archero, including weapons, armor, rings, pets, lockets, bracelets, and spellbooks. Discover the stats, hidden stats, and descriptions for each item rarity. Unlock the full potential of your loadout with invaluable insights and make strategic choices to dominate your enemies in Archero.">
 <meta property="og:type" content="website">
 {% if item == "yes" %}
+<title>Archero - Wiki - {{ name }}</title>
 <meta property="og:title" content="{{ name }}">
 <meta property="og:url" content="{{ url_cpy }}">
 <meta property="og:description" content="{{ item_data.description|safe }}">
-<meta property="og:image" content="{% static item_data.item_image %}?version=1.5.7e">
+<meta property="og:image" content="{% static item_data.item_image %}?version=1.6.1">
 {% else %}
+<title>Archero - Wiki</title>
 <meta property="og:title" content="Archero - Item Description">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/item">
 <meta property="og:description" content="Explore a comprehensive list of items in Archero, including weapons, armor, rings, pets, lockets, bracelets, and spellbooks. Discover the stats, hidden stats, and descriptions for each item rarity. Unlock the full potential of your loadout with invaluable insights and make strategic choices to dominate your enemies in Archero.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.7e">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.1">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -84,7 +85,7 @@
 									<div class="sc-27l7o2-0 heOpKb container-rarity">
 										{% for k,v in item_data.rarity.items %}
 										{% if v != "" %}
-											<div class="rarity-desc" id="{{ k }}-rarity"><span class="span-rarity-item-desc"><img src="/static/image/rarity/{{ k }}.png" alt="{{ k }}"></span>{{ v|safe }}</div>
+											<div class="rarity-desc" id="{{ k }}-rarity"><span class="span-rarity-item-desc"><img src="/static/image/rarity/{{ k }}.png" alt="{{ k }} rarity icon"></span>{{ v|safe }}</div>
 										{% endif %}
 										{% endfor %}
 									</div>

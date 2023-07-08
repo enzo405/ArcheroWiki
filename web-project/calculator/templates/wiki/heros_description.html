@@ -1,21 +1,22 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.7e">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.5.7e">
-<title>Archero - Wiki</title>
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.1">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.1">
 <meta property="og:type" content="website">
 <meta name="description" content="Discover the extensive collection of heroes in Archero, each with unique star boosts, base skills, and descriptions. Explore our comprehensive list to uncover the full potential of each character. Make strategic choices and harness the power of your heroes to overcome challenges and triumph in Archero.">
 {% if hero == "yes" %}
+<title>Archero - Wiki - {{ name_hero }}</title>
 <meta property="og:title" content="{{ name_hero }}">
 <meta property="og:url" content="{{ url_cpy }}">
 <meta property="og:description" content="{{ hero_data.hero_description|safe }} {{ hero_data.skill|safe }} {{ hero_data.skill_details|safe }}">
-<meta property="og:image" content="{% static hero_image %}?version=1.5.7e">
+<meta property="og:image" content="{% static hero_image %}?version=1.6.1">
 {% else %}
+<title>Archero - Wiki</title>
 <meta property="og:title" content="Archero - Heroes Description">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/heroes">
 <meta property="og:description" content="Discover the extensive collection of heroes in Archero, each with unique star boosts, base skills, and descriptions. Explore our comprehensive list to uncover the full potential of each character. Make strategic choices and harness the power of your heroes to overcome challenges and triumph in Archero.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.7e">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.1">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -65,7 +66,7 @@
 							<div class="sc-27l7o2-0 heOpKb" id="name_hero">{{ name_hero }}</div>
 						</div>
 						<div class="sc-3qrykn-3 hXMbfy">
-							<div class="sc-27l7o2-0 heOpKb" id="hero_description">{{ hero_data.hero_description|safe }}</div>
+							<div class="sc-27l7o2-0 heOpKb" id="hero_description">{{ hero_data.description|safe }}</div>
 						</div>
 						<div class="sc-3qrykn-4 hQKgZF">
 							<div class="rgqgux-0 dQAxvm">
@@ -114,7 +115,7 @@
 								<div class="rgqgux-2 jFcAhO">
 									<div class="sc-27l7o2-0 heOpKb">
 										<div id="skill">
-											{{ hero_data.skill|safe }}
+											<span class="center_content"><object type="image/png" data="/static/image/svg/icon-skill-{{ name_hero }}.svg" width="22" height="22"></object>{{ hero_data.skill|safe }}</span>
 										</div>
 									</div>
 								</div>
@@ -129,15 +130,45 @@
 			<div class="kn3fae-2 eKjosW">
 				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
 					<div class="sc-3qrykn-0 bdFBtt">
+						<div class="rgqgux-1 dHYyKL">
+							<div class="sc-27l7o2-0 heOpKb" style="color: white;">
+								<strong>Star Boost</strong>
+							</div>
+						</div>
 						<div class="sc-3qrykn-4 hQKgZF">
 							<div class="rgqgux-0 dQAxvm">
 								<div class="rgqgux-2 jFcAhO">
 									<div class="content-embed-star sc-27l7o2-0 heOpKb">
 										{% for k,v in hero_data.star.items %}
-										<b>{{ k }} <object type="image/png" data="/static/image/svg/star.svg" width="14" height="14"></object></b><br>
+										<b>{{ k }} <object type="image/png" data="/static/image/svg/star.svg" width="14" height="14"></object></b>
 										<div id="star_{{ k }}">
 											{{ v|safe }}
 										</div><br>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="kn3fae-2 eKjosW">
+				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
+					<div class="sc-3qrykn-0 bdFBtt">
+						<div class="rgqgux-1 dHYyKL">
+							<div class="sc-27l7o2-0 heOpKb" style="color: white;">
+								<strong>Assist Brave</strong>
+							</div>
+							<div class="sc-3qrykn-3 hXMbfy">
+								<div class="sc-27l7o2-0 heOpKb center_content" id="hero_description">Needs <object type='image/png' data='/static/image/svg/{{ hero_data.hero_assist_evolve }}' width='18' height='18'></object> to evolve assist bravery level</div>
+							</div>
+						</div>
+						<div class="sc-3qrykn-4 hQKgZF">
+							<div class="rgqgux-0 dQAxvm">
+								<div class="rgqgux-2 jFcAhO">
+									<div class="content-embed-assist sc-27l7o2-0 heOpKb">
+										{% for k,v in hero_data.hero_assist.items %}
+										<span class="center_content"><object type="image/png" data="/static/image/svg/{{ k }}_assist_icon.svg" width="22" height="22"></object>{{ v|safe }}</span><br>
 										{% endfor %}
 									</div>
 								</div>

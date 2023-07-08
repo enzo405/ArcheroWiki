@@ -1,15 +1,19 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.7e">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.5.7e">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.1">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.1">
+{% if name_title != None %}
+<title>Archero - Wiki - {{ name_title }}</title>
+{% else %}
 <title>Archero - Wiki</title>
+{% endif %}
 <meta property="og:title" content="Archero - Wiki">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/menu?Search=fusion_item">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Welcome to the Archero Wiki, your ultimate resource for the popular mobile game by HABBY. Explore comprehensive guides, tier lists, hero breakdowns, and item stats on our extensive Wiki. Level up your gameplay with expert strategies and unleash your full potential in the world of Archero.">
 <meta name="description" content="Welcome to the Archero Wiki, your ultimate resource for the popular mobile game by HABBY. Explore comprehensive guides, tier lists, hero breakdowns, and item stats on our extensive Wiki. Level up your gameplay with expert strategies and unleash your full potential in the world of Archero.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.7e">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.1">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
@@ -17,10 +21,10 @@
 	<div class="flex-box">
 		{% for k,v in TheoryCraftingContent.items %}
 		<div class="container-btn-flexbox">
-			<div class="button-theorycrafting-collaps {{ v.classButton }}"><span id="{{ k }}">{{ v.displayName|safe }}<a onclick="createModale(this,true,'info')" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span></div>
+			<div class="button-theorycrafting-collaps {{ v.classButton }}"><span class="thcrft-name" id="{{ k }}">{{ v.displayName|safe }}<a onclick="createModale(this,true,'info')" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span></div>
 			<div class="{{ v.collapsible_container.class_content }}">
 			{% if v.type == "img" %}
-				<img src="{% static v.collapsible_container.content.field.src %}?version=1.5.7e" class="{{ v.collapsible_container.content.field.class }}" alt="{{ v.collapsible_container.content.field.alt }}" loading="eager">
+				<img src="{% static v.collapsible_container.content.field.src %}?version=1.6.1" class="{{ v.collapsible_container.content.field.class }}" alt="{{ v.collapsible_container.content.field.alt }}" loading="eager">
 			{% elif v.type == "embed" %}
 				<div class="kn3fae-0 ezpxFx">
 					<div class="kn3fae-2 eKjosW">
@@ -97,38 +101,10 @@
 	}
 </script>
 <script>
-	var urlDict = {
-		"fusion_item": 'fusion_item',
-		"fusion_item2": 'fusion_item2',
-		"fusion_dragon": 'fusion_dragon',
-		"fusion_dragon2": 'fusion_dragon2',
-		"tierlist_item_1": 'tierlist_item_1',
-		"tierlist_item_2": 'tierlist_item_2',
-		"gems_spending_guide": 'gems_spending_guide',
-		"gold_earning_guide": 'gold_earning_guide',
-		"gear_farming_guide": 'gear_farming_guide',
-		"glyphs": 'glyphs',
-		"refinement": 'refinement',
-		"quickraid": 'quickraid',
-		"altar_cost": 'altar_cost',
-		"egg_stats": 'egg_stats',
-		"hidden_stats": 'hidden_stats',
-		"faq": 'faq'
+	if("{{ article }}" != "None"){
+		var elementColaps = document.getElementById("{{ article }}")
+		elementColaps.click()
 	}
-
-	function navigateUrl(){
-		var url = window.location.href
-		var postSearch = url.split("?")
-		var postSearchParam = postSearch[1].toLowerCase().replaceAll(" ","_");
-		if(postSearchParam[1] != null){
-			var output4dict = urlDict[postSearchParam]
-			var elementColaps = document.getElementById(output4dict)
-			elementColaps.click()
-		}else{
-			// pass
-		}
-	}
-	navigateUrl()
 </script>
 <script>
 	const self_inline_div_traveling = document.getElementById('Wiki-sidebar-image')

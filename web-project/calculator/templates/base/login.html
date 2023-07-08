@@ -5,9 +5,9 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.5.7e">
+	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.6.1">
 	<link rel="icon" type="image/ong" href="{% static 'favicon.ico' %}">
-	<script src="{% static 'main.js' %}?version=1.5.7e"></script>
+	<script src="{% static 'main.js' %}?version=1.6.1"></script>
 </head>
 {% if darkmode == True %}
 <body class="body_dark_mode">
@@ -56,12 +56,6 @@
 					</div>
 					<div class="container-login100-form-btn submit-btn">
 						<input id="submit-btn" class="login100-form-btn" type="submit" value="Log in">
-					</div>
-					<div class="text-center p-t-136">
-						<a class="txt2" id="visitor">
-							Just visits as a Visitor
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
 					</div>
 				</div>
 				<div id="confirmationBox" class="confirmation-box" style="display: none;">
@@ -149,14 +143,6 @@
 			}
 		});
 	});
-</script>
-<script>
-	var visitor= document.getElementById('visitor');
-	visitor.addEventListener('click', function(){
-		var date = new Date()
-		date.setTime(date.getTime() + (365*24*60*60*1000));
-		window.location.href = `/login/processing/visitor/0-000000/`;
-	})
 </script>
 </body>
 </html>
