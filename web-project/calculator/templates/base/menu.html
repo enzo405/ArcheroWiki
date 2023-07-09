@@ -1,35 +1,43 @@
 {% extends "template.html" %}
 {% load static %}
 	{% block head %}
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.5.7e">
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.1">
 		<title>Archero - Wiki</title>
 		<meta property="og:title" content="Welcome to the Wiki Archero">
 		<meta property="og:url" content="https://stats.wiki-archero.com/">
 		<meta property="og:type" content="website">
 		<meta property="og:description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.">
 		<meta name="description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.">
-		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.5.7e">
+		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.1">
 	{% endblock %}
 	{% block header_content %}{{ header_msg }}{% endblock %}
 	{% block content %}
 		<div class="select-href">
-			{% for article in allArticle %}
+			{% for article in new_list_article %}
 			<div class="new-tag div-onclick-menu">
 				<a href="/wiki/news/{{ article.title }}">{{ article.title }}</a>
 				<span class="new-label">New</span>
 			</div>
 			{% endfor %}
-			<a href="/calculator/index" class="div-onclick-menu calc-index">Stats</a>
-			<a href="/wiki/menu" class="div-onclick-menu wiki-tc">Wiki</a>
-			<a href="/wiki/item" class="div-onclick-menu wiki-item">Item</a>
-			<a href="/wiki/skill-list" class="div-onclick-menu wiki-skill">Skill</a>
-			<a href="/wiki/heroes" class="div-onclick-menu wiki-heros">Heroes</a>
-			<a href="/wiki/damage-calculator" class="div-onclick-menu wiki-skill">Damage Calculator</a>
-			<a href="/wiki/upgrade" class="div-onclick-menu wiki-cost">Upgrade Cost</a>
-			<a href="/wiki/archive" class="div-onclick-menu wiki-maze">Google Sheet</a>
-			<a href="/wiki/promo-code" class="div-onclick-menu promo-code">Promo Codes</a>
-			<a href="/wiki/maze" class="div-onclick-menu wiki-maze">Maze Soluce</a>
-			<a href="/wiki/advanced-stats" class="div-onclick-menu advanced-stats">Advanced Stats</a>
+			{% for article in list_article %}
+			<div class="new-tag div-onclick-menu">
+				<a href="/wiki/news/{{ article.title }}">{{ article.title }}</a>
+			</div>
+			{% endfor %}
+			<a href="/calculator/index" class="div-onclick-menu calc-index"><div class="menu-onclick-img"><span class="txt-onclick-span">Stats </span><img alt="stats-link" src="/static/image/img-sidebar/stats.png"></div></a>
+			<a href="/wiki/menu" class="div-onclick-menu wiki-tc"><div class="menu-onclick-img"><span class="txt-onclick-span">Wiki </span><img alt="stats-link" src="/static/image/img-sidebar/wiki.png"></div></a>
+			<a href="/wiki/heroes" class="div-onclick-menu wiki-heros"><div class="menu-onclick-img"><span class="txt-onclick-span">Heroes </span><img alt="stats-link" src="/static/image/img-sidebar/hero.png"></div></a>
+			<a href="/wiki/item" class="div-onclick-menu wiki-item"><div class="menu-onclick-img"><span class="txt-onclick-span">Item </span><img alt="stats-link" src="/static/image/img-sidebar/icon_stuff.png"></div></a>
+			<a href="/wiki/skill-list" class="div-onclick-menu wiki-skill"><div class="menu-onclick-img"><span class="txt-onclick-span">Skill </span><img alt="stats-link" src="/static/image/img-sidebar/skill.png"></div></a>
+			<a href="/wiki/damage-calculator" class="div-onclick-menu wiki-skill"><div class="menu-onclick-img"><span class="txt-onclick-span">Damage Calculator </span><img alt="stats-link" src="/static/image/img-sidebar/damage.png"></div></a>
+			<a href="/wiki/upgrade" class="div-onclick-menu wiki-cost"><div class="menu-onclick-img"><span class="txt-onclick-span">Upgrade Cost </span><img alt="stats-link" src="/static/image/img-sidebar/upgrade.png"></div></a>
+			<a href="/wiki/promo-code" class="div-onclick-menu promo-code"><div class="menu-onclick-img"><span class="txt-onclick-span">Promo Codes </span><img alt="stats-link" src="/static/image/img-sidebar/promotion_code.png"></div></a>
+			<a href="/wiki/archive" class="div-onclick-menu wiki-maze"><div class="menu-onclick-img"><span class="txt-onclick-span">Google Sheet </span><img alt="stats-link" src="/static/image/img-sidebar/sheet.png"></div></a>
+			<a href="/wiki/maze" class="div-onclick-menu wiki-maze"><div class="menu-onclick-img"><span class="txt-onclick-span">Maze Map </span><img alt="stats-link" src="/static/image/img-sidebar/maze.png"></div></a>
+			<a href="/wiki/advanced-stats" class="div-onclick-menu advanced-stats"><div class="menu-onclick-img"><span class="txt-onclick-span">Advanced Stats </span><img alt="stats-link" src="/static/image/img-sidebar/advanced_stats.png"></div></a>
+			{% if dev_mode %}
+			<a href="/page_set" class="div-onclick-menu">Page Set</a>
+			{% endif %}
 		</div>
 		<div class="feedback">
 			<div class="feedback-title">

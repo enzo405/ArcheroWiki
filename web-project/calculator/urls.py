@@ -3,6 +3,7 @@ from calculator import views
 from calculator import api
 from calculator import views_wiki
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from const import DEV_MODE
 
 urlpatterns = [
     path('', views_wiki.menu, name='menu'),
@@ -22,6 +23,7 @@ urlpatterns = [
     path('login/processing/<str:username_raw>/<str:id_raw>/', views_wiki.login_processing, name='login_process'),
     path('wiki/maze/', views_wiki.maze, name='maze'),
     path('wiki/menu/', views_wiki.wiki_theorycrafting, name='theorycrafting'),
+    path('wiki/menu/<str:article>/', views_wiki.wiki_theorycrafting, name='theorycrafting'),
     path('wiki/item/', views_wiki.item_description, name='item_desc'),
     path('wiki/item/<str:item>/', views_wiki.item_description),
     path('wiki/heroes/', views_wiki.heros_description, name='heroes_desc'),
@@ -46,6 +48,15 @@ urlpatterns = [
     path('api/', api.CalculatorAPI.as_view()),
     path('create_user_queue/', api.create_user_queue),
     path('validate_user_queue/<int:pk>/', api.validate_user_queue, name='validate_user_queue'), ## keep the name attribute for the reverse function in api.py
+    path('delete_cookie/<str:key>/<str:name_redirect>/', views_wiki.delete_cookie),
+    path('delete_session/<str:key>/<str:name_redirect>/', views_wiki.delete_session),
 ]
+
+if DEV_MODE:
+    urlpatterns += [
+        path('set_cookie/<str:key_cookie>/<str:value_cookie>/', views_wiki.set_cookie),
+        path('set_session/<str:key_cookie>/<str:value_cookie>/', views_wiki.set_session),
+        path('page_set/', views_wiki.page_set)
+    ]
 
 urlpatterns += staticfiles_urlpatterns()

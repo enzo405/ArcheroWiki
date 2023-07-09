@@ -104,7 +104,7 @@
 		width: 75%;
 	}
 	.commit_date{
-		display: none;
+		display: block;
 	}
 }
 
@@ -420,7 +420,15 @@
 	text-align: center;
 	min-height: 75vh;
 }
+.div-onclick-menu {
+	display: inline-block;
+	text-align: center;
+	padding: 5px;
+  }
 .div-onclick-menu{
+	display: inline-block;
+	text-align: center;
+	height: 4vh;
 	cursor: pointer;
 	background-color: var(--lt-menu-onclick-bg);
 	border-radius: 6px;
@@ -439,9 +447,26 @@
 	transform: scale(1.02);
 	transition: all ease-out 0.2s;
 }
+.menu-onclick-img {
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    height: 100%;
+    width: 100%;
+}
+.menu-onclick-img img {
+	width: auto;
+    height: 90%;
+}
+.txt-onclick-span{
+	display: flex;
+    align-items: center;
+}
 .new-tag {
 	position: relative;
 	display: flex;
+	align-items: center;
 }
 .new-label {
 	position: absolute;
@@ -586,6 +611,19 @@
 	flex-direction: column;
 	gap: 3px;
 }
+.thcrft-name{
+	font-size: calc(14px + 0.390625vw);;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	gap: 5px;
+}
+.thcrft-name img {
+	max-height: 65%;
+	max-width: 65%;
+	object-fit: contain;
+}
 .collapsible{
 	width: 100%;
 	height: 44px;
@@ -602,6 +640,7 @@
 }
 .button-theorycrafting-collaps{
     display: flex;
+	cursor: pointer;
     text-align: center;
     align-items: center;
     box-sizing: border-box;
@@ -636,7 +675,6 @@
 	cursor: pointer;
 }
 .container-btn-flexbox{
-	cursor: pointer;
 	width: 100%;
 }
 .fusion_collaps_img{
@@ -739,8 +777,11 @@
 }
 .rarity-desc{
 	display: flex;
-	align-items: center;
-	text-align: center;
+	align-items: start;
+}
+.rarity-desc img{
+	user-select: none;
+	margin-top: 3px;
 }
 .span-rarity-item-desc,.span-rarity-item-desc img{
 	width: 20px;
@@ -752,7 +793,12 @@
     flex-direction: column;
     gap: 5px;
 }
-/*################  DAMAGE  ##################*/
+
+/*################  HEROES LIST  ##################*/
+.content-embed-assist span object{
+	user-select: none;
+}
+
 /*################  DAMAGE  ##################*/
 /*################  DAMAGE  ##################*/
 /*################  DAMAGE  ##################*/

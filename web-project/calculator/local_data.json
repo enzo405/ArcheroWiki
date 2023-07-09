@@ -1098,7 +1098,7 @@
     "sylvan_star_5": [75, 0, 0],
     "sylvan_star_6": [75, 0, 0],
     "sylvan_star_7": [75, 400, 0],
-    "sylvan_star_8": [75, 400, 25],
+    "sylvan_star_8": [75, 400, 30],
     "sylvan_0": [0, 0, 0, 0, 0],
     "sylvan_20": [200, 0, 0, 0, 0],
     "sylvan_40": [200, 20, 0, 0, 0],
@@ -4564,7 +4564,7 @@
   },
   "WeaponHiddenStats": {
     "antiquated_sword_dmg_multiplier": 1.5,
-    "demon_blade_rain_dmg_multiplier": 1.5,
+    "demon_blade_rain_dmg_multiplier": 1.18,
     "brave_bow_dmg_multiplier": 1.0,
     "saw_blade_dmg_multiplier": 0.8,
     "tornado_dmg_multiplier": 1.24,
@@ -6355,6 +6355,11 @@
       "description": "Your arrows bounce up to 2 times against walls.",
       "stats": "-50% damage for each bounce"
     },
+    "Burst Punch": {
+      "value": "Burst_Punch",
+      "description": "Chance to trigger explosion when enemies are hit. Melee attack chance is 2x of ranged attack chance (Melee attacks chance of triggering explosions is 2x higher than Ranged attacks)",
+      "stats": "Only Available with Fist <a class='a_styled' href='/wiki/item/Expedition_Fist/'>Expedition Weapon</a>"
+    },
     "Chilling Blast": {
       "value": "Chilling_Blast",
       "description": "Enemies blast a cold wave on death",
@@ -6610,6 +6615,11 @@
       "description": "Become invincible for 2 seconds once a while",
       "stats": "Become invincible for 2 seconds every 10 seconds (1/6th of total time)"
     },
+    "Mirror Punch": {
+      "value": "Mirror_Punch",
+      "description": "When Melee attacks deal critical hits, they leave behind 1-2 melee range Shadow Clones",
+      "stats": "Only Available with Fist <a class='a_styled' href='/wiki/item/Expedition_Fist/'>Expedition Weapon</a>"
+    },
     "Multishot": {
       "value": "Multishot",
       "description": "Shoot 2 consecutive arrows in a row.",
@@ -6619,6 +6629,11 @@
       "value": "Obsidian_Circle",
       "description": "Two dark orbs circle around you",
       "stats": "Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br>  Affected by rage.<br>  Spins faster with attack speed boosts."
+    },
+    "One Punch": {
+      "value": "One_Punch",
+      "description": "Max Attack Speed is 60%. Additional Attack Speed is converted to 2x weapon damage.",
+      "stats": "Only Available with Fist <a class='a_styled' href='/wiki/item/Expedition_Fist/'>Expedition Weapon</a>"
     },
     "Overdraft": {
       "value": "Overdraft",
@@ -6653,7 +6668,7 @@
     "Price of Strength": {
       "value": "Price_of_Strength",
       "description": "Get greatly enhanced when entering a room.<br>Weakened for a time when durations ends",
-      "stats": "Pros: Increases Attack, Attack Speed,  Movement Speed and Crit Rate, Increase hero size for 10 seconds.<br>Cons: Weakened for 5 seconds after buff ends: Slower Attack Speed, Movement speed and Hero size back to normal."
+      "stats": "8sec :  10% movespeed, 40% atk, regular dmg taken, 10% size, normal atkspd, 10% melee damage boost, 15% crit rate<br>2sec : -5% movespeed, 28% atk, 1.1x dmg taken, 5% size, -15% atkspd, 10% melee damage boost<br>6sec : -15% movespeed, -12% atk, 1.2x dmg taken, -5% size, -15% atkspd"
     },
     "Radiant Star": {
       "value": "Radiant_Star",
@@ -6822,12 +6837,158 @@
     }
   },
   "ItemData": {
+    "Expedition Fist": {
+      "value": "Expedition_Fist",
+      "description": "Unbreakable gauntlet that blows through mountains with a single punch",
+      "hidden_stats": {
+        "1": "Damage Multiplier<br>x 1.6 (Ranged)<br>x 1.7+2.1 (2 Melee hits)"
+      },
+      "image": "image/items/expedition_fist_mythic_s.png",
+      "rarity": {
+        "base": "Fast Attack Speed, short distance. Hits twice in melee range<br>Attack + [x]<br>Crit Chance +8%",
+        "common": "",
+        "great": "",
+        "rare": "",
+        "epic": "[Epic] Active skill: Power Punch - Slide the joystick to quickly move and attack<br>[Epic] Combo attacks gradually increase Attack Speed and Movement Speed",
+        "perfect_epic": "[Perfect Epic] Chance to ignore projectile damage when moving. The faster you move, the higher the chance",
+        "legendary": "[Legendary] 2nd hit in melee range has slightly higher Crit Rate",
+        "ancient_legendary": "[Ancient Legendary] Attack +15%",
+        "mythic": "[Mythic] The lower you HP, the higher your Attack",
+        "mythic+1": "[Mythic+1] Weapon Basic Stats +10%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
+        "titan_tales": "[Titan Tales] Weapon damage : +15%",
+        "titan_tales+1": "[Titan Tales+1] Weapon Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Weapon Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
+        "chaos": "[Chaos] Total HP restored is converted into Attack and Elemental damage"
+      }
+    },
+    "Expedition Plate": {
+      "value": "Expedition_Plate",
+      "description": "Possesses impenetrable defense and restorative effects.",
+      "hidden_stats": {},
+      "image": "image/items/expedition_plate_s.png",
+      "rarity": {
+        "base": "Max HP + [x]<br>Max HP +10%.<br>HP Drops +25%",
+        "common": "",
+        "great": "",
+        "rare": "",
+        "epic": "[Epic] When attacking, reduces own damage taken.",
+        "perfect_epic": "",
+        "legendary": "[Legendary] When healing, gain 2x healing effect until max healing is reached",
+        "ancient_legendary": "",
+        "mythic": "[Mythic] When looting a Red Heart, slightly higher chance to gain invincibility shield for 2s",
+        "mythic+1": "[Mythic+1] Armor Basic Stats +10%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
+        "titan_tales": "[Titan Tales] Max Hp : +18%",
+        "titan_tales+1": "[Titan Tales+1] Armor Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Armor Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
+        "chaos": "[Chaos] Max Battle Level +1"
+      }
+    },
+    "Expedition Ring": {
+      "value": "Expedition_Ring",
+      "description": "Symbolizes the expeditionary force's unwavering glory",
+      "hidden_stats": {},
+      "image": "image/items/expedition_ring_s.png",
+      "rarity": {
+        "base": "Attack + [x]<br>Movement Speed +4%",
+        "common": "",
+        "great": "",
+        "rare": "",
+        "epic": "[Epic] Damage on enemies with full HP +15%",
+        "perfect_epic": "",
+        "legendary": "[Legendary] Crit Chance + 6%",
+        "ancient_legendary": "",
+        "mythic": "[Mythic] Damage to Bosses +9%",
+        "mythic+1": "[Mythic+1] Ring Basic Stats +10%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+20%)",
+        "titan_tales": "[Titan Tales] Battle XP Gain +4%",
+        "titan_tales+1": "[Titan Tales+1] Ring Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Ring Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded (+12%)",
+        "chaos": "[Chaos] Knockback +7%"
+      }
+    },
+    "Expedition Locket": {
+      "value": "Expedition_Locket",
+      "description": "Increases leveling speed and healing when equipped",
+      "hidden_stats": {},
+      "image": "image/items/expedition_locket_s.png",
+      "rarity": {
+        "base": "Max HP + [x]<br>Battle XP Gain +15%",
+        "common": "",
+        "great": "",
+        "rare": "",
+        "epic": "[Epic] When HP is below 25%, heal for [x]% HP. Only triggers 1 time",
+        "perfect_epic": "",
+        "legendary": "[Legendary] Increased Attack after looting Hearts +25%",
+        "ancient_legendary": "[Ancient Legendary] Max HP + 7%",
+        "mythic": "[Mythic] Additionnaly restores some HP with each level up",
+        "mythic+1": "[Mythic+1] Locket Basic Stats +10%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
+        "titan_tales": "[Titan Tales] Max Hp +15%",
+        "titan_tales+1": "[Titan Tales+1] Locket Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Locket Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
+        "chaos": "[Chaos] When healing in Angel Room, 40% chance to gain angel's other skill"
+      }
+    },
+    "Expedition Bracelet": {
+      "value": "Expedition_Bracelet",
+      "description": "Increase archery proficiency when equipped",
+      "hidden_stats": {},
+      "image": "image/items/expedition_bracelet_s.png",
+      "rarity": {
+        "base": "Attack + [x]<br>Upon encountering enemy, +1 Front Arrow with 3 random elements for 2s",
+        "common": "",
+        "great": "",
+        "rare": "",
+        "epic": "[Epic] 2x Crit Rate on enemies with slightly more HP",
+        "perfect_epic": "",
+        "legendary": "[Legendary] Crit Damage +40%",
+        "ancient_legendary": "Attack +7%",
+        "mythic": "[Mythic] Weapon damage increases with level. Higher levels deals more damage",
+        "mythic+1": "[Mythic+1] Bracelet Basic Stats +10%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
+        "titan_tales": "[Titan Tales] Attack +15%",
+        "titan_tales+1": "[Titan Tales+1] Bracelet Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Bracelet Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
+        "chaos": "[Chaos] For every 100 enemies defeated, projectiles bounce +1 (Max 2)"
+      }
+    },
+    "Expedition Spellbook": {
+      "value": "Expedition_Spellbook",
+      "description": "Lets you gain an angel's blessing. Gain 1 auto-cast Ult. when equipped.",
+      "hidden_stats": {},
+      "image": "image/items/expedition_spellbook_s.png",
+      "rarity": {
+        "base": "When meter is full, instantly gain 1-3 special Red Hearts that heal and increase battle power<br>Max HP + [x]<br>(ULT.) Attack + [x]<br>(ULT.) Attack Speed + 10%",
+        "common": "",
+        "great": "",
+        "rare": "",
+        "epic": "[Epic] (ULT.) Red Hearts can temporarily raise Attack and Crit Rate. Can be stacked",
+        "perfect_epic": "[Perfect Epic] (ULT.) Each Red Heart spawns +1 Shadow Clone",
+        "legendary": "[Legendary] (ULT.) Max Red Hearts +1",
+        "ancient_legendary": "[Ancient Legendary] (ULT.) Red Hearts can temporarily raise Movement Speed and Damage Reduction. Can be stacked",
+        "mythic": "[Mythic] (ULT.) For every 15 Red Hearts obtained, summon +1 Angel",
+        "mythic+1": "[Mythic+1] Spellbook Basic Stats +10%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
+        "titan_tales": "[Titan Tales] Enhance equipment +12%",
+        "titan_tales+1": "[Titan Tales+1] Spellbook Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Spellbook Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
+        "chaos": "[Chaos] Red Hearts dropped by enemies raise Spellbook charge speed"
+      }
+    },
     "Brave Bow": {
       "value": "Brave_Bow",
       "description": "Only the worthly can use this bow, with balanced performance.",
       "hidden_stats": {
-        "1": "Damage Multiplier x 1",
-        "2": "Base Attack Speed x 1.73"
+        "1": "Damage Multiplier x1",
+        "2": "Base Attack Speed x1.73"
       },
       "image": "image/items/brave_bow_mythic.png",
       "rarity": {
@@ -6839,12 +7000,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Attack increased temporarily after moving",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (50% \u2192 75%)",
+        "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (50% \u2192 75%)",
         "titan_tales": "[Titan Tales] Weapon damage : +8%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Weapon Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Weapon Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Increases Critic chance by +5%. Increase attack speed upon critical hit"
       }
     },
@@ -6852,8 +7013,8 @@
       "value": "Brightspear",
       "description": "Contains immense energy, you're defeated before you know it!",
       "hidden_stats": {
-        "1": "Damage Multiplier x 1.2",
-        "2": "Base Attack Speed x 1.63"
+        "1": "Damage Multiplier x1.2",
+        "2": "Base Attack Speed x1.63"
       },
       "image": "image/items/brightspear_mythic.png",
       "rarity": {
@@ -6865,12 +7026,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Landing crits increases Attack Speed",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Weapon damage : +9%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Weapon Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Weapon Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Bullet penetrate enemy"
       }
     },
@@ -6878,8 +7039,8 @@
       "value": "Death_Scythe",
       "description": "Powerful scythe, very heavy with slow attack speed.",
       "hidden_stats": {
-        "1": "Damage Multiplier x 1.45",
-        "2": "Base Attack Speed x 0.85",
+        "1": "Damage Multiplier x1.45",
+        "2": "Base Attack Speed x0.85",
         "3": "50% chance to kill enemies under 30% Hp"
       },
       "image": "image/items/death_scythe_mythic.png",
@@ -6892,12 +7053,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] The closer, the higher the damage",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (30% \u2192 35%)",
+        "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (30% \u2192 35%)",
         "titan_tales": "[Titan Tales] Weapon damage : +8%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Weapon Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Weapon Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] After headshot, increase atk and there is a chance it cause explosion"
       }
     },
@@ -6905,8 +7066,8 @@
       "value": "Demon_Blade_Rain",
       "description": "Legendary demon blade can devour the soul of the enemy.",
       "hidden_stats": {
-        "1": "Damage Multiplier<br>x 1.5 (Ranged)<br>x 1.85 (Melee)",
-        "2": "Base Attack Speed x ?",
+        "1": "Damage Multiplier<br>x 1.18 (Ranged)<br>x 1.85 (Melee)",
+        "2": "Base Attack Speed x?",
         "4": "During Melee attack +100% Front Collision Resistance"
       },
       "image": "image/items/demon_blade_rain_mythic.png",
@@ -6919,12 +7080,12 @@
         "legendary": "[Legendary] When moving, dodge rate slightly increased",
         "ancient_legendary": "",
         "mythic": "[Mythic] Taking damage increases Crit Chance temporarily",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Weapon damage : +11%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Weapon Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Weapon Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] The less health, the higher dodge rate and movement speed"
       }
     },
@@ -6933,7 +7094,7 @@
       "description": "Ancient Sword that becomes bigger when empowered. Named 'Giantkiller' for its history of slaying titans.",
       "hidden_stats": {
         "1": "Damage Multiplier<br>x 1.5 (Ranged)<br>x 1.85 (Melee)<br>x 2.02 (2 hands)",
-        "2": "Base Attack Speed x ?"
+        "2": "Base Attack Speed x?"
       },
       "image": "image/items/antiquated_sword_mythic.png",
       "rarity": {
@@ -6945,12 +7106,12 @@
         "legendary": "[Legendary] Increases Max HP and reduces Whirlwind cost. At low HP, Fury cost is significantly reduced",
         "ancient_legendary": "",
         "mythic": "[Mythic] Upon taking damage, increases Attack Speed and Crit Chance",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Weapon damage : +12%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Weapon Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Weapon Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] When in dual form, a 3rd attack is added to successive ranged attacks"
       }
     },
@@ -6958,8 +7119,8 @@
       "value": "Gale_Force",
       "description": "A crossbow infused with the power of the wind, shooting out charged arrows.",
       "hidden_stats": {
-        "1": "Damage Multiplier x 1.55",
-        "2": "Base Attack Speed x 0.75",
+        "1": "Damage Multiplier x1.55",
+        "2": "Base Attack Speed x0.75",
         "3": "Charged Attack x 2",
         "4": "Penetrating Attack x 1.35"
       },
@@ -6973,12 +7134,12 @@
         "legendary": "[Legendary] After a Crit attack, charging speed can be increased.",
         "ancient_legendary": "[Ancient Legendary] After a Crit Attack, charging speed can be increased.",
         "mythic": "[Mythic] Charged attacks deal increased damage and slow enemies.",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Weapon damage : +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Weapon Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Weapon Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] When a charged attack lands critical hit, increases hero's Attack for a while (~2s)"
       }
     },
@@ -6986,8 +7147,8 @@
       "value": "Mini_Atreus",
       "description": "An exquisite Atreus puppet that can be used for battle in times of danger.",
       "hidden_stats": {
-        "1": "Damage Multiplier x 1.25",
-        "2": "Base Attack Speed x ?"
+        "1": "Damage Multiplier x1.25",
+        "2": "Base Attack Speed x?"
       },
       "image": "image/items/mini_atreus.png",
       "rarity": {
@@ -6999,12 +7160,12 @@
         "legendary": "[Legendary] Chance to summon 2 Atreus Rotating Shields after hitting an enemy",
         "ancient_legendary": "",
         "mythic": "[Mythic] Coins from Battle + 10%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Weapon damage : +12%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill (+22%)",
+        "titan_tales+1": "[Titan Tales+1] Weapon Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Weapon Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded (+22%)",
         "chaos": "[Chaos] Deals more damage to enemies that slow you down or have freeze effect"
       }
     },
@@ -7012,8 +7173,8 @@
       "value": "Saw_Blade",
       "description": "A serrated throwing knife from the mysterious Orient.",
       "hidden_stats": {
-        "1": "Damage Multiplier x 0.8",
-        "2": "Base Attack Speed x 2.6"
+        "1": "Damage Multiplier x0.8",
+        "2": "Base Attack Speed x2.6"
       },
       "image": "image/items/saw_blade_mythic.png",
       "rarity": {
@@ -7025,12 +7186,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Hitting enemies has a chance to increase Dodge and Attack (Stackable)",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (3s \u2192 5s)",
+        "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (3s \u2192 5s)",
         "titan_tales": "[Titan Tales] Weapon damage : +8%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Weapon Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Weapon Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] After hitting enemy, there is a chance to increase the damage of bullet (stackable)"
       }
     },
@@ -7038,7 +7199,7 @@
       "value": "Stalker_Staff",
       "description": "The staff of all staffs, no one can escape!",
       "hidden_stats": {
-        "1": "Damage Multiplier x 1<br>Base Attack Speed x 2"
+        "1": "Damage Multiplier x1<br>Base Attack Speed x2"
       },
       "image": "image/items/stalker_staff_mythic.png",
       "rarity": {
@@ -7050,12 +7211,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Projectile charge time -50%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Weapon damage : +9%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill (-70%)",
+        "titan_tales+1": "[Titan Tales+1] Weapon Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Weapon Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded (-70%)",
         "chaos": "[Chaos] The bigger the turn radius of own projectile, the higher the damage"
       }
     },
@@ -7063,7 +7224,7 @@
       "value": "Tornado",
       "description": "A sharp boomerang that can fly back and forth.",
       "hidden_stats": {
-        "1": "Damage Multiplier x 0.8 (and x0.536 for the return) <br>Base Attack Speed x 1.73"
+        "1": "Damage Multiplier x0.8 (and x0.536 for the return) <br>Base Attack Speed x1.73"
       },
       "image": "image/items/tornado_mythic.png",
       "rarity": {
@@ -7075,12 +7236,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] The further projectiles travel, the higher the damage",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Weapon damage : +8%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Weapon Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Weapon Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] The more enemies hit by the boomerang, the higher bullet damage"
       }
     },
@@ -7101,12 +7262,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Enemies frozen by Phantom Cloak take more damage",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Armor Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Max Hp : +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Armor Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Armor Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Chance to drop a Hearts when taking projectile damage"
       }
     },
@@ -7127,12 +7288,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Damage taken is greatly reduced for 2s after taking damage ",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Armor Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Max Hp : +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Armor Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Armor Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] The lower your health the higher the recovery"
       }
     },
@@ -7150,12 +7311,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Increased Dodge while moving",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Armor Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Max Hp : +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Armor Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Armor Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Chance to gain blessing 1 time when obtaining a heart. (shield that block projectile, can stack up to 2)"
       }
     },
@@ -7176,12 +7337,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Dropped Hearts restore more HP",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Armor Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Max Hp : +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Armor Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Armor Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Chance of dropping a heart when taking collision Damage"
       }
     },
@@ -7203,12 +7364,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] HP Drops +10%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Armor Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Max Hp : +12%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Armor Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Armor Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Obtained Hearts increase Max Hp and Damage reduction"
       }
     },
@@ -7228,12 +7389,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] In case of many enemies, damage taken is reduced",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Armor Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Max Hp : +12%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Armor Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Armor Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] The more nearby enemies inflected with Dark, the higher Hero's Attack"
       }
     },
@@ -7251,12 +7412,12 @@
         "legendary": "[Legendary] Attacked enemies will be poisoned",
         "ancient_legendary": "[Ancient Legendary] 80% chance for new ability after adventure level-up",
         "mythic": "[Mythic] Enemies hit lose more HP when taking damage",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Pets Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Pets Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Pets Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Gain hero's attack speed"
       }
     },
@@ -7274,12 +7435,12 @@
         "legendary": "[Legendary] Crit Damage increased greatly",
         "ancient_legendary": "[Ancient Legendary] 80% chance for new ability after adventure level-up",
         "mythic": "[Mythic] Enemies hit lose more HP when taking damage",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Pets Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Pets Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Pets Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Gain hero's attack speed"
       }
     },
@@ -7297,12 +7458,12 @@
         "legendary": "[Legendary] Attack Speed increased greatly from time to time",
         "ancient_legendary": "[Ancient Legendary] 80% chance for new ability after adventure level-up",
         "mythic": "[Mythic] Enemies hit lose more HP when taking damage",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Pets Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Pets Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Pets Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Gain hero's attack speed"
       }
     },
@@ -7320,12 +7481,12 @@
         "legendary": "[Legendary] Trigger Fury State for a short duration after a Crit",
         "ancient_legendary": "[Ancient Legendary] Chance to block a lethal attack and die for Hero 1 time",
         "mythic": "[Mythic] Enemies hit lose more HP when taking damage",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Pets Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Pets Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Pets Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Gain hero's attack speed"
       }
     },
@@ -7343,12 +7504,12 @@
         "legendary": "[Legendary] The bomb will split into 3 mini bombs once it hits the floor",
         "ancient_legendary": "[Ancient Legendary] 80% chance for new ability after adventure level-up",
         "mythic": "[Mythic] Enemies hit lose more HP when taking damage",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Pets Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Pets Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Pets Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Gain hero's attack speed"
       }
     },
@@ -7368,12 +7529,12 @@
         "legendary": "[Legendary] Projectiles split into 2 after some distance",
         "ancient_legendary": "[Ancient Legendary] 80% chance for new ability after adventure level-up",
         "mythic": "[Mythic] Enemies hit lose more HP when taking damage",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Pets Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Pets Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Pets Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Gain hero's attack speed"
       }
     },
@@ -7393,12 +7554,12 @@
         "legendary": "[Legendary] Projectiles rebound once",
         "ancient_legendary": "[Ancient Legendary] 80% chance for new ability after adventure level-up",
         "mythic": "[Mythic] Enemies hit lose more HP when taking damage",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Pets Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] For every 5 spirit level they gain 1% of Hero's attack",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Pets Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Pets Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Gain hero's attack speed"
       }
     },
@@ -7416,12 +7577,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Ground Units damage reduced +7%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 15%)",
+        "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 15%)",
         "titan_tales": "[Titan Tales] Damage Ground Units +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill (+ 12%)",
+        "titan_tales+1": "[Titan Tales+1] Ring Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Ring Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded (+ 12%)",
         "chaos": "[Chaos] Greatly Increases fire Damage."
       }
     },
@@ -7439,12 +7600,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Melee Units damage reduced+7%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 15%)",
+        "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 15%)",
         "titan_tales": "[Titan Tales] Damage Melee Units +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill (+ 12%)",
+        "titan_tales+1": "[Titan Tales+1] Ring Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Ring Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded (+ 12%)",
         "chaos": "[Chaos] Greatly Increases lightning Damage"
       }
     },
@@ -7462,12 +7623,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Airborne damage resistance + 7%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 15%)",
+        "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 15%)",
         "titan_tales": "[Titan Tales] Damage Airborne Units +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill (+ 12%)",
+        "titan_tales+1": "[Titan Tales+1] Ring Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Ring Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded (+ 12%)",
         "chaos": "[Chaos] Greatly increases ice damage."
       }
     },
@@ -7485,12 +7646,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Ranged Units damage reduced + 7%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 15%)",
+        "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 15%)",
         "titan_tales": "[Titan Tales] Damage Range Units +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill (+ 12%)",
+        "titan_tales+1": "[Titan Tales+1] Ring Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Ring Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded (+ 12%)",
         "chaos": "[Chaos] Greatly increases poison damage."
       }
     },
@@ -7508,12 +7669,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Mobs damage resistance +5%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 15%)",
+        "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 15%)",
         "titan_tales": "[Titan Tales] Damage Mob Units +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill (+ 7%)",
+        "titan_tales+1": "[Titan Tales+1] Ring Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Ring Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded (+ 7%)",
         "chaos": "[Chaos] Increase Melee Damage"
       }
     },
@@ -7531,12 +7692,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Boss Damage Resistance + 5%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Damage Boss Units +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill (+ 7%)",
+        "titan_tales+1": "[Titan Tales+1] Ring Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Ring Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded (+ 7%)",
         "chaos": "[Chaos] Increases ranged damage"
       }
     },
@@ -7554,12 +7715,12 @@
         "legendary": "[Legendary] MP Strength + 20%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Damage dealt to Humanoid enemies + 15%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 8%)",
+        "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 8%)",
         "titan_tales": "[Titan Tales] Damage Elite Units +12%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill (+ 22%)",
+        "titan_tales+1": "[Titan Tales+1] Ring Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Ring Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded (+ 22%)",
         "chaos": "[Chaos] Increases Movement Speed"
       }
     },
@@ -7581,12 +7742,12 @@
         "legendary": "[Legendary] Heart drops + 20%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Collision Damage Resistance + 12%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Damage Normal Units +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill (+ 22%)",
+        "titan_tales+1": "[Titan Tales+1] Ring Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Ring Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded (+ 22%)",
         "chaos": "[Chaos] HP Gain's Healing is more effective."
       }
     },
@@ -7604,12 +7765,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Dodge + 6%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 40%)",
+        "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 40%)",
         "titan_tales": "[Titan Tales] Angel HP restored +30%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Locket Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Locket Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] While moving, increases self Dodge."
       }
     },
@@ -7627,12 +7788,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Collision damage resistance + 8%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 40%)",
+        "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 40%)",
         "titan_tales": "[Titan Tales] Angel HP restored +30%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Locket Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Locket Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Gain Attack for a short duration when taking Collision Damage"
       }
     },
@@ -7650,12 +7811,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Chance to Revive + 5%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 40%)",
+        "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 40%)",
         "titan_tales": "[Titan Tales] Angel HP restored +30%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Locket Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Locket Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Chance to get a random number of Red Hearts when angle restores your HP."
       }
     },
@@ -7673,12 +7834,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Projectile Resistance + 8%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 40%)",
+        "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 40%)",
         "titan_tales": "[Titan Tales] Angel Healing +30%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill (+ 12%)",
+        "titan_tales+1": "[Titan Tales+1] Locket Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Locket Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded (+ 12%)",
         "chaos": "[Chaos] Gain Attack Speed for a short duration when taking projectile Damage."
       }
     },
@@ -7696,12 +7857,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Enhanced Recovery Effects of Bloodthirst",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 28%)",
+        "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 28%)",
         "titan_tales": "[Titan Tales] Healing Effect of Red Heart +20%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Locket Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Locket Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] The more HP restored from Bloodthirst, the higher the Hero's Attack"
       }
     },
@@ -7719,17 +7880,17 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Movement Speed + 3%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 28%)",
+        "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 28%)",
         "titan_tales": "[Titan Tales] Healing Effect of Red Heart +20%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill (+ 5%)",
+        "titan_tales+1": "[Titan Tales+1] Locket Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Locket Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded (+ 5%)",
         "chaos": "[Chaos] While nearby a wall, takes less damage. "
       }
     },
-    "Counterattack Locket": {
-      "value": "Counterattack_Locket",
+    "Counterattack Charm": {
+      "value": "Counterattack_Charm",
       "description": "Etched with a Counterattack. Performs Counterattacks on enemies each time damage is taken.",
       "hidden_stats": {},
       "image": "image/items/counterattack_locket.png",
@@ -7742,12 +7903,12 @@
         "legendary": "[Legendary] Max HP + 4%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Counterattack damage to bosses is increased by 120%.",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Counterattack Rate +15%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Locket Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Locket Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] The more HP lost, the higher the reflected damage"
       }
     },
@@ -7765,12 +7926,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Elemental Lightning damage increased",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 20%)",
+        "mythic+1": "[Mythic+1] Bracelet Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 20%)",
         "titan_tales": "[Titan Tales] Attack +8%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Bracelet Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Bracelet Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Upon Killing an enemy, increases self lightning Damage."
       }
     },
@@ -7788,12 +7949,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Elemental Freezing damage increased",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 20%)",
+        "mythic+1": "[Mythic+1] Bracelet Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 20%)",
         "titan_tales": "[Titan Tales] Attack +8%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Bracelet Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Bracelet Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Upon Killing an enemy, increases self ice Damage."
       }
     },
@@ -7811,12 +7972,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Elemental Fire damage increased",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 20%)",
+        "mythic+1": "[Mythic+1] Bracelet Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 20%)",
         "titan_tales": "[Titan Tales] Attack +8%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Bracelet Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Bracelet Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Upon Killing an enemy, increases self fire Damage."
       }
     },
@@ -7834,12 +7995,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] The lower the HP, the higher the clones attack",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 20%)",
+        "mythic+1": "[Mythic+1] Bracelet Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 20%)",
         "titan_tales": "[Titan Tales] Attack +8%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Bracelet Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Bracelet Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] While nearby a summoned creature, increases hero's Attack."
       }
     },
@@ -7857,12 +8018,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] When the bracelet triggers Invincible, Crit Damage is increased",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 8%)",
+        "mythic+1": "[Mythic+1] Bracelet Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 8%)",
         "titan_tales": "[Titan Tales] Attack +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Bracelet Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Bracelet Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Greatly increases Attack Speed when invincible shield is active"
       }
     },
@@ -7880,12 +8041,12 @@
         "legendary": "",
         "ancient_legendary": "",
         "mythic": "[Mythic] Projectiles travel faster",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 8%)",
+        "mythic+1": "[Mythic+1] Bracelet Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 8%)",
         "titan_tales": "[Titan Tales] Attack +10%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Bracelet Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Bracelet Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Upon Critical Hit, there is a chance to follow up with a shot."
       }
     },
@@ -7903,12 +8064,12 @@
         "legendary": "[Legendary] Shield Size + 25%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Chance to gain Shield Guard after a Crit hit",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill (+ 9%)",
+        "mythic+1": "[Mythic+1] Bracelet Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded (+ 9%)",
         "titan_tales": "[Titan Tales] Attack +12%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Bracelet Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Bracelet Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Increases shield spin speed, Shield also deals damage"
       }
     },
@@ -7926,12 +8087,12 @@
         "legendary": "[Legendary] Time Span + 1.2seconds (ULT)",
         "ancient_legendary": "[Ancient Legendary] Crit Damage + 25% (ULT)",
         "mythic": "[Mythic] Time Span + 1",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Spellbook Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Enhance equipment +8.5%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Spellbook Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Spellbook Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Upon a Critical hit, there is a chance to increase bullet count for a while."
       }
     },
@@ -7949,12 +8110,12 @@
         "legendary": "[Legendary] Attack contains Random Elemental (ULT)",
         "ancient_legendary": "[Ancient Legendary] Crit Chance + 15% (ULT)",
         "mythic": "[Mythic] Max HP + 8%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Spellbook Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Enhance equipment +8.5%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Spellbook Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Spellbook Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] For a while after taking damage, Crit chance is increased."
       }
     },
@@ -7972,12 +8133,12 @@
         "legendary": "[Legendary] Crit Chance + 20% (ULT)",
         "ancient_legendary": "[Ancient Legendary] Initial Power + 35% (ULT)",
         "mythic": "[Mythic] When used, it may return 50% of the power (ULT.)",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Spellbook Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Enhance equipment +8.5%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Spellbook Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Spellbook Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] For a while after taking damage, attack inflict Freeze"
       }
     },
@@ -7995,12 +8156,12 @@
         "legendary": "[Legendary] Multi-Skill + 1 (ULT)",
         "ancient_legendary": "[Ancient Legendary] Max HP + 7%",
         "mythic": "[Mythic] Battle XP Gain + 8%",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Spellbook Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Enhance equipment +8.5%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Spellbook Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Spellbook Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] When HP is below 50%, upgrade speed +25%"
       }
     },
@@ -8018,12 +8179,12 @@
         "legendary": "[Legendary] Gale Giant - Increased movement and attack speed (ULT)",
         "ancient_legendary": "[Ancient Legendary] Bolt Giant - Surrounding enemies will be hit by lightning (ULT)",
         "mythic": "[Mythic] Rage Giant - Skill can be released earlier if losing HP (ULT.)",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Spellbook Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Enhance equipment +11%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Spellbook Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Spellbook Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Ult. energy cost -15%."
       }
     },
@@ -8041,12 +8202,12 @@
         "legendary": "[Legendary] Summon an Ultimate warrior - Skeleton King (ULT)",
         "ancient_legendary": "[Ancient Legendary] Kill enemies to extend summon time (ULT)",
         "mythic": "[Mythic] When the undead disappears, it may drop a heart (ULT)",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Spellbook Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Enhance equipment +11%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Spellbook Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Spellbook Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] Enhances Attack and duration of Undead allies."
       }
     },
@@ -8066,12 +8227,12 @@
         "legendary": "[Legendary] Haste: Speed of attacks, movement, spins, shots, magic casts increased (ULT)",
         "ancient_legendary": "[Ancient Legendary] Manipulate Time: Reduces continuous damage intervals on enemies. Increases enemy debuff duration (ULT)",
         "mythic": "[Mythic] Greatly increase damage immunity after taking damage. Effect reduces time (ULT)",
-        "mythic+1": "[Mythic+1] 5% Basic Stats",
-        "mythic+2": "[Mythic+2] Enhance Epic Skill",
+        "mythic+1": "[Mythic+1] Spellbook Basic Stats +5%",
+        "mythic+2": "[Mythic+2] Epic Skill Effect Upgraded",
         "titan_tales": "[Titan Tales] Enhance equipment +13.5%",
-        "titan_tales+1": "[Titan Tales+1] +10% Basic Stats",
-        "titan_tales+2": "[Titan Tales+2] +10% Basic Stats",
-        "titan_tales+3": "[Titan Tales+3] Enhanced Mythic skill",
+        "titan_tales+1": "[Titan Tales+1] Spellbook Basic Stats +10%",
+        "titan_tales+2": "[Titan Tales+2] Spellbook Basic Stats +10%",
+        "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
         "chaos": "[Chaos] When HP is below 20%, nearby bullets are slowed."
       }
     }
@@ -8083,7 +8244,7 @@
       "base_hp": "600 [+25]",
       "attributes": " \u2022 Lvl 20: Max HP + 100 [All Heroes]<br>\u2022 Lvl 40: Damage to Ranged Units + 15%<br>\u2022 Lvl 60: Max HP + 4% [All Heroes]<br>\u2022 Lvl 80: Attack Speed + 5%<br>\u2022 Lvl 120: Projectile Resistance + 7% [All Heroes]",
       "price": "Free",
-      "skill": "Skill: Atreus does not have a unique ability",
+      "skill": "Atreus does not have a unique ability",
       "skill_details": "<br>",
       "star": {
         "1": "Patrol Gold Earnings + 4%",
@@ -8094,7 +8255,21 @@
         "6": "Growth - Insight: Upgrade speed and Heart droprate increased",
         "7": "Max HP + 800 [All Heroes]",
         "8": "Max HP + 5% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Atreus's base Attack +5%",
+        "20": "[All Heroes] Attack +80",
+        "30": "Battle XP gain +20%",
+        "30_1": "[Assist Effect] Battle XP gain +10%",
+        "40": "Attack +2%",
+        "50": "Atreus's base HP +8%",
+        "60": "[Assist Effect] Attack Speed +5%",
+        "70": "Bounces +1",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Max Hp +5%"
+      },
+      "hero_assist_evolve":"everlife-trialstone.svg"
     },
     "Urasil": {
       "description": "Proficient in the study of Medicine, an invisible killer allowing him to be skilled in Poison.",
@@ -8102,7 +8277,7 @@
       "base_hp": "550 [+30]",
       "attributes": " \u2022 Lvl 20: Attack + 40 [All Heroes]<br> \u2022 Lvl 40: Damage to Melee Units + 15%<br> \u2022 Lvl 60: Crit Damage + 15% [All Heroes]<br> \u2022 Lvl 80: Max HP + 6%<br> \u2022 Lvl 120: Damage to Melee Units + 9% [All Heroes]",
       "price": "Free (Unlocked after clearing stage 1 of chapter 2)",
-      "skill": "Skill: Your attacks cause an enhanced Poison effect",
+      "skill": "Your attacks cause an enhanced Poison effect",
       "skill_details": "<br><b>Skill Details:</b><br>40% of base damage per second<br><br>",
       "star": {
         "1": "Patrol Ring Scroll Earnings + 4%",
@@ -8113,7 +8288,21 @@
         "6": "Poison - Lethal: Toxic attack, chance to deal 3x more damage",
         "7": "Crit Chance + 2% [All heroes]",
         "8": "Healing Effect of Red Heart + 7% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Urasil's base Attack +5%",
+        "20": "[All Heroes] Max Hp +320",
+        "30": "Attack increased for short time when enemies are killed by Poison",
+        "30_1": "[Assist Effect] Poison damage +15%",
+        "40": "Damage to ground Units +4%",
+        "50": "Urasil's base HP +8%",
+        "60": "[Assist Effect] Poison Resistance +15%",
+        "70": "Poison slows Movement speed",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Poison Damage +10%"
+      },
+      "hero_assist_evolve":"everlife-trialstone.svg"
     },
     "Phoren": {
       "description": "Born from Fire, and Fire answers to no one but him.",
@@ -8121,7 +8310,7 @@
       "base_hp": "500 [+35]",
       "attributes": " \u2022 Lvl 20: Critical Chance + 2% [All Heroes]<br> \u2022 Lvl 40: Projectile Resistance: + 15%<br> \u2022 Lvl 60: Critical Chance + 2% [All Heroes]<br> \u2022 Lvl 80: Critical Chance + 5%<br> \u2022 Lvl 120: Damage to Ranged Units + 9% [All Heroes]",
       "price": "50,000 <object type='image/png' data='/static/image/svg/gold.svg' width='16' height='16'></object>",
-      "skill": "Skill: Your attacks cause an enhanced Flame effect",
+      "skill": "Your attacks cause an enhanced Flame effect",
       "skill_details": "<br>",
       "star": {
         "1": "Patrol Sapphires Earnings + 4%",
@@ -8132,7 +8321,21 @@
         "6": "Red Flame - Flame Star: Enemies that are burning will cause reduced damage to hero",
         "7": "Attack + 200 [All heroes]",
         "8": "Ground Units damage reduced + 6% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Phoren's base Attack +5%",
+        "20": "[All Heroes] Damage to Airborne Units +150",
+        "30": "Attack increased for short time when enemies are killed by Fire",
+        "30_1": "[Assist Effect] Flame Damage + 10%",
+        "40": "Damage to Melee Units +4%",
+        "50": "Phoren's base HP +8%",
+        "60": "[Assist Effect] Flame Resistance +15%",
+        "70": "Fire lowers Attack",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Flame Damage +10%"
+      },
+      "hero_assist_evolve":"everlife-trialstone.svg"
     },
     "Taranis": {
       "description": "Born of the Thunder, and naturally able to control and wield Thunder.",
@@ -8140,7 +8343,7 @@
       "base_hp": "550 [+40]",
       "attributes": " \u2022 Lvl 20: Crit Chance + 2% [All Heroes]<br> \u2022 Lvl 40: Damage to Airborne Units + 20%<br> \u2022 Lvl 60: Attack + 4% [All Heroes]<br> \u2022 Lvl 80: Crit Damage + 50%<br> \u2022 Lvl 120: Damage to Airborne Units + 9% [All Heroes]",
       "price": "1000 <object type='image/png' data='/static/image/svg/gem.svg' width='16' height='16'></object> or 30 Taranis Shards",
-      "skill": "Skill: Your attacks cause an enhanced Lightning effect",
+      "skill": "Your attacks cause an enhanced Lightning effect",
       "skill_details": "<br>",
       "star": {
         "1": "Patrol XP Earnings + 4%",
@@ -8151,7 +8354,21 @@
         "6": "Thunderstorm - Damage: Lightning damage increased by 20%",
         "7": "Damage to Airborne Units + 300 [All heroes]",
         "8": "Airborne Units Damage Resistance + 7% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Taranis's base Attack +5%",
+        "20": "[All Heroes] Max Hp +400",
+        "30": "Attack increased for short time when enemies are killed by Lightning",
+        "30_1": "[Assist Effect] Lightning Damage +15%",
+        "40": "Damage to Ranged Units +5%",
+        "50": "Taranis's base HP +8%",
+        "60": "[Assist Effect] Lightning Damage Resistance +15%",
+        "70": "Lightning lowers Attack",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Lightning Damage +10%"
+      },
+      "hero_assist_evolve":"everlife-trialstone.svg"
     },
     "Helix": {
       "description": "A tribe warrior, a hunter; even the strong admire his power!",
@@ -8159,7 +8376,7 @@
       "base_hp": "620 [+43]",
       "attributes": " \u2022 Lvl 20: Crit Damage + 20% [All Heroes]<br> \u2022 Lvl 40: Healing Effect of Red Heart + 20%<br> \u2022 Lvl 60: Max HP + 5% [All Heroes]<br> \u2022 Lvl 80: Crit Chance + 5%<br> \u2022 Lvl 120: Healing Effect + 10% [All Heroes]",
       "price": "1500 <object type='image/png' data='/static/image/svg/gem.svg' width='16' height='16'></object> or 30 Helix Shards",
-      "skill": "Skill: Your attacks deal more damage at low HP.",
+      "skill": "Your attacks deal more damage at low HP.",
       "skill_details": "<br><b>Skill Details:</b><br>Fury Command: +1.2% attack for every 1% of player HP lost.<br><br>",
       "star": {
         "1": "Patrol Gold Earnings + 4%",
@@ -8170,7 +8387,21 @@
         "6": "Rage - Nimble: When HP is lower than 25%, movement speed increased slightly",
         "7": "Damage to Ranged Units + 300 [All heroes]",
         "8": "Ranged Units Damage Resistance + 8% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Helix's base Attack +5%",
+        "20": "[All Heroes] Attack +120",
+        "30": "Attack Speed increased for a short time after taking damage",
+        "30_1": "[Assist Effect] Attack +4%",
+        "40": "Damage to Bosses +5%",
+        "50": "Helix's base HP +8%",
+        "60": "[Assist Effect] Healing Effect of Red Heart +10%",
+        "70": "When HP is below 10%, gain invincibility shield for 2s",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Healing Effect of Red Heart +8%"
+      },
+      "hero_assist_evolve":"everlife-trialstone.svg"
     },
     "Meowgik": {
       "description": "The spirit of the cat combined with magic; not to be underestimated.",
@@ -8178,7 +8409,7 @@
       "base_hp": "550 [+40]",
       "attributes": " \u2022 Lvl 20: Attack + 50 [All Heroes]<br> \u2022 Lvl 40: Dodge + 5%<br> \u2022 Lvl 60: Attack + 4% [All Heroes]<br> \u2022 Lvl 80: Healing Effect of Red Heart + 30%<br> \u2022 Lvl 120: Dodge + 3% [All Heroes]",
       "price": "1800 <object type='image/png' data='/static/image/svg/gem.svg' width='16' height='16'></object> or 30 Meowgik Shards",
-      "skill": "Skill: A chance to summon an auto-attacking kitty when attacking enemies",
+      "skill": "A chance to summon an auto-attacking kitty when attacking enemies",
       "skill_details": "<br>",
       "star": {
         "1": "Patrol Spirit Scroll Earnings + 4%",
@@ -8189,7 +8420,21 @@
         "6": "Meow - Tracking: Meowspirit becomes better at tracking and has its Attack increased",
         "7": "Max HP +1000 [All heroes]",
         "8": "Dodge + 7% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Meowgik's base Attack +5%",
+        "20": "[All Heroes] Damage to Melee Units +160",
+        "30": "Meowspirits triggers projectile's special effects",
+        "30_1": "[Assist Effect] All Meteor skills damage dealt",
+        "40": "Damage to Mobs +5%",
+        "50": "Meowgik's base HP +8%",
+        "60": "[Assist Effect] Projectile Flight speed +10%",
+        "70": "Chance to summon extra Meowspirits after taking damage",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Coins from battle +5%"
+      },
+      "hero_assist_evolve":"everlife-trialstone.svg"
     },
     "Shari": {
       "description": "Born of the magical woodlands, she is in touch with nature.",
@@ -8197,7 +8442,7 @@
       "base_hp": "550 [+35]",
       "attributes": " \u2022 Lvl 20: Damage to Melee Units + 150<br> \u2022 Lvl 40: Max HP + 300 [All Heroes]<br> \u2022 Lvl 60: Crit Chance + 5%<br> \u2022 Lvl 80: Damage to Melee Units + 5% [All Heroes]<br> \u2022 Lvl 120: Max HP + 8% [All Heroes]",
       "price": "30 Shari Shards",
-      "skill": "Skill:  Summons a thorned vine to attack enemies.",
+      "skill": " Summons a thorned vine to attack enemies.",
       "skill_details": "<br>",
       "star": {
         "1": "Patrol Gold Earnings + 4%",
@@ -8208,7 +8453,21 @@
         "6": "Entangle - Auto Track: Vines will follow and attack enemies",
         "7": "Damage to Melee Units + 300 [All heroes]",
         "8": "Melee Units Damage Resistance + 7% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Shari's base Attack +5%",
+        "20": "[All Heroes] Max Hp +400",
+        "30": "Attack +10%",
+        "30_1": "[Assist Effect] Stand around summoned creature to gain Attack",
+        "40": "Deals Damage to normal enemies +5%",
+        "50": "Shari's base HP +8%",
+        "60": "[Assist Effect] Summoned creature damage +12%",
+        "70": "Increase Damage Reduction when moving",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Damage to heroes +9%"
+      },
+      "hero_assist_evolve":"everlife-trialstone.svg"
     },
     "Ayana": {
       "description": "Hailing from a magical city, a witch with powerful magic!",
@@ -8216,7 +8475,7 @@
       "base_hp": "550 [+42]",
       "attributes": " \u2022 Lvl 20: Damage to Airborne Units + 80 [All Heroes]<br> \u2022 Lvl 40: Damage to Ranged Units + 15%<br> \u2022 Lvl 60: Attack + 4% [All Heroes]<br> \u2022 Lvl 80: Dodge + 10%<br> \u2022 Lvl 120: Damage to Ranged Units + 9% [All Heroes]",
       "price": "2500 <object type='image/png' data='/static/image/svg/gem.svg' width='16' height='16'></object> or 30 Ayana Shards",
-      "skill": "Skill: Attacks can charm the enemy, with a chance to summon a portal",
+      "skill": "Attacks can charm the enemy, with a chance to summon a portal",
       "skill_details": "<br><b>Skill Details:</b><br>Charm: Charmed enemies will receive additional damage with reduced movement speed and loss of health.<br><br><b>Additional Skill Notes:</b><br> \u2022 Applies a 'Charm' when targetting an enemy every 10 seconds, or applies it instantly when attacking an enemy.<br> \u2022 Deals 48% of non-modifiable base damage (includes rune ATK% boosts) for 2 ticks.<br> \u2022 The damage ticked increases by 0.4% of your base damage each time you level up, maximum of 49.6%.<br> \u2022 Creates a portal that lasts 5 seconds at a time until used.<br><br>",
       "star": {
         "1": "Patrol Locket Scroll Earnings + 4%",
@@ -8227,7 +8486,21 @@
         "6": "Witchcraft - Charm: Strengthen Charmed effect",
         "7": "Attack + 250 [All heroes]",
         "8": "Damage to Bosses + 7% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Ayana's base Attack +5%",
+        "20": "[All Heroes] Damage to ground Units +200",
+        "30": "Increased Movement Speed after being teleported",
+        "30_1": "[Assist Effect] Attack +10% being teleported",
+        "40": "Deals Damage to elite enemies +5%",
+        "50": "Ayana's base HP +8%",
+        "60": "[Assist Effect] Increased damage to slowed enemies",
+        "70": "Control Effect Duration +30%",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Damage to mobs +8%"
+      },
+      "hero_assist_evolve":"everlife-trialstone.svg"
     },
     "Onir": {
       "description": "The son of Light, possessing all the powers from the Light like his shiny hair.",
@@ -8235,7 +8508,7 @@
       "base_hp": "650 [+45]",
       "attributes": " \u2022 Lvl 20: Max HP + 200 [All Heroes]<br> \u2022 Lvl 40: Damage to Ground Units + 20%<br> \u2022 Lvl 60: Healing Effect of Red Heart + 20% [All Heroes]<br> \u2022 Lvl 80: Attack + 6%<br> \u2022 Lvl 120: Damage to Ground Units + 6% [All Heroes]",
       "price": "$9.99 USD or 30 Onir Shards",
-      "skill": "Skill: Your attacks cause an enhanced Holy effect",
+      "skill": "Your attacks cause an enhanced Holy effect",
       "skill_details": "<br>",
       "star": {
         "1": "Patrol Weapon Scroll Earnings + 4%",
@@ -8246,7 +8519,21 @@
         "6": "Aurora - Re-Shine: When enemy dies, another powerful light is released",
         "7": "Projectile Resistance + 10% [All heroes]",
         "8": "Damage to Mobs + 7% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Onir's base Attack +5%",
+        "20": "[All Heroes] Max Hp +480",
+        "30": "Crit Chance +8%",
+        "30_1": "[Assist Effect] Holy damage increased. +1 holy projectile",
+        "40": "Damage to Airborne Units +6%",
+        "50": "Onir's base HP +8%",
+        "60": "[Assist Effect] Holy touch projectiles can bounce",
+        "70": "Gain extra boost when increasing Max HP",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Weapon Damage +6%"
+      },
+      "hero_assist_evolve":"immortal-trialstone.svg"
     },
     "Rolla": {
       "description": "The goddess of Ice, wielder of the power of ice and snow with virtuous heart.",
@@ -8254,7 +8541,7 @@
       "base_hp": "500 [+40]",
       "attributes": " \u2022 Lvl 20: Attack + 60 [All Heroes]<br> \u2022 Lvl 40: Collision Damage Resistence + 20%<br> \u2022 Lvl 60: Attack + 5% [All Heroes]<br> \u2022 Lvl 80: Dodge + 10%<br> \u2022 Lvl 120: Collision Damage Resistance + 7% [All Heroes]",
       "price": "$16.99 USD or 30 Rolla Shards",
-      "skill": "Skill: Your attacks freeze enemies for a longer time",
+      "skill": "Your attacks freeze enemies for a longer time",
       "skill_details": "<br><br><br>",
       "star": {
         "1": "Patrol XP Earnings + 5%",
@@ -8265,7 +8552,21 @@
         "6": "Frost - Ice Spike: Frozen enemies will have their first received damage increased",
         "7": "Crit Damage + 20% [All heroes]",
         "8": "Max HP + 7% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Rolla's base Attack +5%",
+        "20": "[All Heroes] Damage to Melee Units +240",
+        "30": "Attacking enemies stacks freeze damage",
+        "30_1": "[Assist Effect] Ice Damage +22%",
+        "40": "Max HP +4%",
+        "50": "Rolla's base HP +8%",
+        "60": "[Assist Effect] Deals more damage to frozen enemies",
+        "70": "Attack +10%",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Attack +6%"
+      },
+      "hero_assist_evolve":"immortal-trialstone.svg"
     },
     "Bonnie": {
       "description": "Heroic and kind woman of the sea! She robs the rich and helps the poor.",
@@ -8284,7 +8585,21 @@
         "6": "Clone - Crowd: Clone max limit increased",
         "7": "Max HP + 1200 [All heroes]",
         "8": "Summoned Creature Damage + 15% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Bonnie's base Attack +5%",
+        "20": "[All Heroes] Attack +150",
+        "30": "After i critical hit, summoned shadow's damage increased for 4s",
+        "30_1": "[Assist Effect] Summoned Creature Damage +9%",
+        "40": "Attack +4%",
+        "50": "Bonnie's base HP +8%",
+        "60": "[Assist Effect] Summoned Creature Duration +20%",
+        "70": "More summoned creature in a room increases own Attack",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Summoned Creature Damage +17%"
+      },
+      "hero_assist_evolve":"immortal-trialstone.svg"
     },
     "Sylvan": {
       "description": "An elf prince, master of the elements and loves nature.",
@@ -8292,7 +8607,7 @@
       "base_hp": "600 [+45]",
       "attributes": " \u2022 Lvl 20: Max HP + 200 [All Heroes]<br> \u2022 Lvl 40: Damage to Ranged Units + 20%<br> \u2022 Lvl 60: Attack + 5% [All Heroes]<br> \u2022 Lvl 80: Max HP + 6%<br> \u2022 Lvl 120: Damage to Ranged Units + 9% [All Heroes]",
       "price": "$18.99 USD or 30 Sylvan Shards",
-      "skill": "Skill: When attacking, there's a chance to trigger a random powerful elemental attack.",
+      "skill": "When attacking, there's a chance to trigger a random powerful elemental attack.",
       "skill_details": "<br><b>Skill Details:</b><br>Every time an enemy is attacked, a random effect from fire, toxic, bolt or ice is used.<br><br>",
       "star": {
         "1": "Patrol Locket Scroll Earnings + 4%",
@@ -8302,8 +8617,22 @@
         "5": "Spirit - Upgrade: Enemy gets a second Elemental attack",
         "6": "Elemental - Critical Strike: Elemental damage has a chance to deal crit attack",
         "7": "Damage to Ground Units + 400 [All heroes]",
-        "8": "Elemental Damage + 25% [All Heroes]"
-      }
+        "8": "Elemental Damage + 30% [All Heroes]"
+      },
+      "hero_assist": {
+        "10": "Sylvan's base Attack +5%",
+        "20": "[All Heroes] Damage to Ranged Units +240",
+        "30": "Increased attack after looting a Red Heart. Lasts 3 rooms",
+        "30_1": "[Assist Effect] Elemental Damage +10%",
+        "40": "Max HP +5%",
+        "50": "Sylvan's base HP +8%",
+        "60": "[Assist Effect] Elemental Damage +18%",
+        "70": "Gain increased Element damage when attacked by enemies",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Elemental Damage +25%"
+      },
+      "hero_assist_evolve":"immortal-trialstone.svg"
     },
     "Shade": {
       "description": "Killer of shadows, queen of the night, she can switch between her real and shadow self in battle.",
@@ -8311,7 +8640,7 @@
       "base_hp": "550 [+40]",
       "attributes": " \u2022 Lvl 20: Damage to Ground Units + 100 [All Heroes]<br> \u2022 Lvl 40: Crit Chance + 5%<br> \u2022 Lvl 60: Max HP + 5% [All Heroes]<br> \u2022 Lvl 80: Attack Speed + 5%<br> \u2022 Lvl 120: Crit Damage + 10% [All Heroes]",
       "price": "$18.99 USD or 30 Shade Shards",
-      "skill": "Skill: You can enjoy different effects with real and shadow forms, which switch automatically during battle.",
+      "skill": "You can enjoy different effects with real and shadow forms, which switch automatically during battle.",
       "skill_details": "<br><b>Skill Details:</b><br><b><em>Real Self</em></b>: Attacks have strong dark powers, and deal continued damage.<br><b><em>Shadow Self:</em></b> Increased attack, attack speed and dodge rate.<br><br><b>Additional Skill Notes:</b><br> \u2022 Switches between her 2 forms every 4 seconds.<br> \u2022 Normal form: 135% Damage on hit, 30% damage for 2 ticks, and 135% Dark Touch Explosion.<br> \u2022 Shadow form: 75% Attack, 15% Attack Speed, ~15% Dodge Chance.<br><br>",
       "star": {
         "1": "Patrol Sapphire Earnings + 5%",
@@ -8322,7 +8651,21 @@
         "6": "Twin Shadows - Cruel: Increases crit attack when in Dark form",
         "7": "Attack + 300 [All heroes]",
         "8": "Attack + 8% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Shade's base Attack +5%",
+        "20": "[All Heroes] Damage to Melee Units +240",
+        "30": "Attack increased for short time when enemies are killed by Dark damage",
+        "30_1": "[Assist Effect] Dark touch Damage +10%",
+        "40": "Damage to heroes +8%",
+        "50": "Shade's base HP +8%",
+        "60": "[Assist Effect] HP Converted to MP +15%",
+        "70": "Shadow forms ignore traps",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Attack +8%"
+      },
+      "hero_assist_evolve":"immortal-trialstone.svg"
     },
     "Ophelia": {
       "description": "Huntress walking between darkness and light, adept at hunting evil monsters.",
@@ -8341,7 +8684,21 @@
         "6": "Demon Soul - Distort: Get a new strengthening effect",
         "7": "Attack Speed + 3% [All heroes]",
         "8": "MP Cast Speed + 25% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Ophelia's base Attack +5%",
+        "20": "[All Heroes] Damage to Ground Units +240",
+        "30": "Soul Absorption increases red heart drop rate (Max 50%)",
+        "30_1": "[Assist Effect] Own buff duration extended",
+        "40": "Blue Heart drop rate +12%",
+        "50": "Ophelia's base HP +8%",
+        "60": "[Assist Effect] Chance of Angel's healing x2 +20%",
+        "70": "50% chance to not lose HP when exchanging demon skills",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Weapon Ranged damage +7%"
+      },
+      "hero_assist_evolve":"immortal-trialstone.svg"
     },
     "Ryan": {
       "description": "A traveling red panda that loves to sing, dance, and meet new people",
@@ -8349,7 +8706,7 @@
       "base_hp": "700 [+45]",
       "attributes": " \u2022 Lvl 20: Damage to Ranged Units + 100 [All heroes]<br> \u2022 Lvl 40: Max HP + 5%<br> \u2022 Lvl 60: Damage to Airborne Units [All heroes]<br> \u2022 Lvl 80: Healing Effect of Red Heart + 30%<br> \u2022 Lvl 120: Max HP + 8% [All Heroes]",
       "price": "50 Ryan Shards",
-      "skill": "Skill: Revive upon death, with Invincibility for 1s. Invincibility increases with the amount of monsters killed.",
+      "skill": "Revive upon death, with Invincibility for 1s. Invincibility increases with the amount of monsters killed.",
       "skill_details": "<br><b>Skill Details:</b><br> \u2022 Defeating enemies increase invincibilty time after revive. The time limit for invincibility is 6 seconds.<br> \u2022 Defeating bosses gives 10 times the amount extra invincibility time compared to normal monsters.<br><br>",
       "star": {
         "1": "Patrol Ring Scroll Earnings + 4%",
@@ -8360,7 +8717,21 @@
         "6": "Luck - Haven: After revival, doge rate, movement speed and crit attack increased during this game",
         "7": "Damage to Airborne Units + 400 [All heroes]",
         "8": "Coin Drops + 10% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Ryan's base Attack +5%",
+        "20": "[All Heroes] Damage to Airborne Units +240",
+        "30": "Each revival permanently increase Attack by 8%",
+        "30_1": "[Assist Effect] Max Mp +7%",
+        "40": "Chance of Angel's Healing x2 +10%",
+        "50": "Ryan's base HP +8%",
+        "60": "[Assist Effect] Hp Drops +15%",
+        "70": "Max Hp +20% when hero revies with talent skill",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Max hp +7%"
+      },
+      "hero_assist_evolve":"immortal-trialstone.svg"
     },
     "Lina": {
       "description": "A mysterious dancer who loves to travel and dance gracefully for strangers she meets.",
@@ -8368,7 +8739,7 @@
       "base_hp": "650 [+45]",
       "attributes": " \u2022 Lvl 20: Attack + 100 [All Heroes]<br> \u2022 Lvl 40: Dodge + 5%<br> \u2022 Lvl 60: Max HP + 5% [All Heroes]<br> \u2022 Lvl 80: Attack Speed + 5%<br> \u2022 Lvl 120: Damage to Melee Units + 9% [All Heroes]",
       "price": "50 Lina Shards",
-      "skill": "Skill: Hitting an enemy deals extra damage and summons a phantom dancer who attacks enemies and causes a negative effect.",
+      "skill": "Hitting an enemy deals extra damage and summons a phantom dancer who attacks enemies and causes a negative effect.",
       "skill_details": "<br><b>Skill Details:</b><br>Enemies around the Phantom Dancer will slow down and reduce HP.<br><br>",
       "star": {
         "1": "Patrol Sapphire Earnings + 5%",
@@ -8379,7 +8750,21 @@
         "6": "Dream Dance - Freeze: Enemies in the range will be frozen after 5s",
         "7": "Max HP + 1500 [All heroes]",
         "8": "Max MP + 15% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Lina's base Attack +5%",
+        "20": "[All Heroes] Attack +150",
+        "30": "Attack +10%",
+        "30_1": "[Assist Effect] Summoned Creature Damage +14%",
+        "40": "Max Mp +7%",
+        "50": "Lina's base HP +8%",
+        "60": "[Assist Effect] Summoned Creature Attack Speed +25%",
+        "70": "The more red hearts obtained, the higher your Crit Chance",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Summoned Creature Duration +12%"
+      },
+      "hero_assist_evolve":"immortal-trialstone.svg"
     },
     "Aquea": {
       "description": "Princess of the seas, loved by all underwater.",
@@ -8387,7 +8772,7 @@
       "base_hp": "800 [+50]",
       "attributes": " \u2022 Lvl 20: Max HP + 250 [All Heroes]<br> \u2022 Lvl 40: Healing Effect of Red Heart + 30%<br> \u2022 Lvl 60: Attack + 5% [All Heroes]<br> \u2022 Lvl 80: Max HP + 10%<br> \u2022 Lvl 120: Healing Effect of Red Heart + 12% [All Heroes]",
       "price": "50 Aquea Shards or $24.99 USD",
-      "skill": "Skill: Attack carries a strong freezing effect which slows down enemies. When HP is lower than 35%, combat mode is entered.",
+      "skill": "Attack carries a strong freezing effect which slows down enemies. When HP is lower than 35%, combat mode is entered.",
       "skill_details": "<br><b>Skill Details:</b><br><b><em>Combat Form:</em></b> Body size reduced 15%, crit rate increased 10%, dodge rate increased 15%, freezing damage increased.<br><br>",
       "star": {
         "1": "Patrol Bracelet Scroll Earnings + 5%",
@@ -8398,7 +8783,21 @@
         "6": "Duel Form - Bloodthirst: Get a bloodthirst effect in combat form",
         "7": "Max HP + 1800 [All heroes]",
         "8": "Movement Speed + 4% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Aquea's base Attack +5%",
+        "20": "[All Heroes] Attack +200",
+        "30": "When HP is below 20%, chance to drop many red hearts. Only occurs 1 time",
+        "30_1": "[Assist Effect] Ice Damage +20%",
+        "40": "Attack +5%",
+        "50": "Aquea's base HP +8%",
+        "60": "[Assist Effect] Control Effect Duration +22%",
+        "70": "Attack +10%",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Weapon Damage +7%"
+      },
+      "hero_assist_evolve":"eternal-trialstone.svg"
     },
     "Shingen": {
       "description": "The only heir of an ancient clan, owning their curse and gifts. (Owns their family heirloom: Demon Blade - Rain)",
@@ -8406,7 +8805,7 @@
       "base_hp": "700 [+45]",
       "attributes": " \u2022 Lvl 20: Damage to Melee Units + 120 [All Heroes]<br> \u2022 Lvl 40: Attack speed + 5%<br> \u2022 Lvl 60: Max HP + 6% [All Heroes]<br> \u2022 Lvl 80: Damage to Melee Units +20%<br> \u2022 Lvl 120: Damage to Ground Units + 6% [All Heroes]",
       "price": "25.99\u20ac or 50 Shingen Shards",
-      "skill": "Skill: Lower the HP, higher the attack speed. Has high Crit damage.",
+      "skill": "Lower the HP, higher the attack speed. Has high Crit damage.",
       "skill_details": "<br><b>Skill Details:</b><br>Lower the HP, higher the attack speed. Has high Crit Damage.<br><br><b>Hidden Skill Details:</b><br>Able to cast Slash when equipped with an Epic or above Demon Blade<br><br>",
       "star": {
         "1": "Patrol Gold Earnings + 5%",
@@ -8417,7 +8816,21 @@
         "6": "Charge - Souleater: The more enemies killed, the higher the attack (Max limit 10%)",
         "7": "Max HP +1800 [All Heroes]",
         "8": "Weapon Melee Damage + 11% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Shingen's base Attack +5%",
+        "20": "[All Heroes] Damage to Melee Units +320",
+        "30": "Dodge +9%",
+        "30_1": "[Assist Effect] Weapon Melee Damage +5%",
+        "40": "Front Damage Resistance +6%",
+        "50": "Shingen's base HP +8%",
+        "60": "[Assist Effect] Increased Attack for short time after healing",
+        "70": "When Hp is below 25%, Attack +35%, Movement Speed +20%, Shadow Samurai damage +50%",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Deal damage to elite enemies +12%"
+      },
+      "hero_assist_evolve":"eternal-trialstone.svg"
     },
     "Gugu": {
       "description": "A brave warrior owl, with a gleam of wisdom in its eyes.",
@@ -8436,7 +8849,21 @@
         "6": "Guardian Spirit - Strength: Owl Guardian's stats increased",
         "7": "Damage to Ranged Units + 400 [All Heroes]",
         "8": "Spin Speed + 15% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Gugu's base Attack +5%",
+        "20": "[All Heroes] Damage to Airborne Units +320",
+        "30": "Collision Damage Resistance +9%",
+        "30_1": "[Assist Effect] Dragon magic CoolDown -7%",
+        "40": "Shield Size +7%",
+        "50": "Gugu's base HP +8%",
+        "60": "[Assist Effect] Spinning Shield spins faster +20%",
+        "70": "Projectile Resistance +10%",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Max HP +8%"
+      },
+      "hero_assist_evolve":"eternal-trialstone.svg"
     },
     "Iris": {
       "description": "A powerful archer and the guardian of the forest.",
@@ -8455,7 +8882,21 @@
         "6": "Sharpshooter - Charged Attack: Moving increases Crit Chance temporarily.",
         "7": "Damage to Airborne Units + 400 [All Heroes]",
         "8": "Weapon Ranged Damage + 10% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Iris's base Attack +5%",
+        "20": "[All Heroes] Attack +200",
+        "30": "The higher your crit chance, the faster you move ",
+        "30_1": "[Assist Effect] Front arrow +1 chance increased +10%",
+        "40": "Rear Damage Resistance +8%",
+        "50": "Iris's base HP +8%",
+        "60": "[Assist Effect] Front arrow damage up",
+        "70": "Gain movement speed for short time after taking damage ",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Damage to Airborne units +12%"
+      },
+      "hero_assist_evolve":"eternal-trialstone.svg"
     },
     "Blazo": {
       "description": "A furious avenger, and an inquisitor against evil.",
@@ -8463,7 +8904,7 @@
       "base_hp": "900 [+44]",
       "attributes": " \u2022 Lvl 20: Damage to Melee Units + 130 [All Heroes]<br> \u2022 Lvl 40: Attack + 250<br> \u2022 Lvl 60: Max HP + 6% [All Heroes]<br> \u2022 Lvl 80: Damage to Ground Units + 20%<br> \u2022 Lvl 120: Max HP + 8% [All Heroes]",
       "price": "28.99\u20ac or 50 Blazo Shards",
-      "skill": "Skill: Attacks have a chance to be judged; repeated hits inflicts justice.",
+      "skill": "Attacks have a chance to be judged; repeated hits inflicts justice.",
       "skill_details": "<br><b>Skill Details:</b><br>Greatly increases its own attack, and reduces the enemy's movement speed and attack. Enemies lose more HP when injured.<br><br>",
       "star": {
         "1": "Patrol Gold Earnings + 25%",
@@ -8474,7 +8915,21 @@
         "6": "Judge - Execution: Performs Judgement more quickly with greater effect",
         "7": "Max HP + 1800 [All Heroes]",
         "8": "Free Magic Cast Rate + 12% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Blazo's base Attack +5%",
+        "20": "[All Heroes] Damage to ground Units +320",
+        "30": "The more red hearts obtained, the faster you attack",
+        "30_1": "[Assist Effect] Enemy Debuff duration extended +15%",
+        "40": "Increased Attack after killing enemies +7%",
+        "50": "Blazo's base HP +8%",
+        "60": "[Assist Effect] Increase Attack speed for short time after healing ",
+        "70": "Gain attack speed for short time after taking damage ",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Control Resistance +20%"
+      },
+      "hero_assist_evolve":"eternal-trialstone.svg"
     },
     "Melinda": {
       "description": "A beautiful and brave noble who has embarked on a journey to become a renowned ranger.",
@@ -8493,7 +8948,21 @@
         "6": "Ranger's Heart - Composure: Increased leveling speed at a higher level cap",
         "7": "Attack + 400 [All Heroes]",
         "8": "Attack + 9% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Melinda's base Attack +5%",
+        "20": "[All Heroes] Damage to Airborne Units +400",
+        "30": "Crit Chance +8%",
+        "30_1": "[Assist Effect] Diagonal arrow damage up +10%",
+        "40": "Attack+5%",
+        "50": "Melinda's base HP +8%",
+        "60": "[Assist Effect] Summoned flying object damage +30%",
+        "70": "Extra arrows can deal critical heats and penetrate",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Attack +10%"
+      },
+      "hero_assist_evolve":"eternal-trialstone.svg"
     },
     "Elaine": {
       "description": "An adorable butterfly maiden blessed by elven gods since her birth",
@@ -8512,7 +8981,21 @@
         "6": "Invincible Elaine - Enhanced Shield: Shield's duration increased. Also increases Crit Rate and summoned creature attack.",
         "7": "Max HP + 2000 [All Heroes]",
         "8": "Max HP + 9% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Elaine's base Attack +5%",
+        "20": "[All Heroes] Max Hp +770 ",
+        "30": "Damage Resistance +9%",
+        "30_1": "[Assist Effect] Invincibility star chance increased +15%",
+        "40": "Max Hp +6%",
+        "50": "Elaine's base HP +8%",
+        "60": "[Assist Effect] Max level +1",
+        "70": "Bosses have slight chance to drop 1 extra red heart",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Max Hp +10%"
+      },
+      "hero_assist_evolve":"eternal-trialstone.svg"
     },
     "Bobo": {
       "description": "A brainy bear from a faraway city",
@@ -8531,7 +9014,21 @@
         "6": "Wisdom's Might - Insight: Inflicts weakness on enemies. Hitting the same enemy repeatedly deals more damage",
         "7": "Max HP + 1800 [All Heroes]",
         "8": "Battle XP Gain + 5% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Bobo's base Attack +5%",
+        "20": "[All Heroes] Max Hp +480",
+        "30": "Attack Speed +8%",
+        "30_1": "[Assist Effect] MP Strength +6%",
+        "40": "Attack +3%",
+        "50": "Bobo's base HP +8%",
+        "60": "[Assist Effect] Battle XP Gain +15%",
+        "70": "Max level +1",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Battle XP Gain +6%"
+      },
+      "hero_assist_evolve":"everlife-trialstone.svg"
     },
     "Stella": {
       "description": "Princess of the Sky City, able to wield the power of the astral realm since birth.",
@@ -8550,12 +9047,64 @@
         "6": "Starlight and Thunder - Eon Ward: Guardian spirit's weapon damage increased. Successive attacks on enemies increase Attack Speed",
         "7": "Meteor and Star damage + 10% [All Heroes]",
         "8": "Weapon Damage + 8% [All Heroes]"
-      }
+      },
+      "hero_assist": {
+        "10": "Stella's base Attack +5%",
+        "20": "[All Heroes] Attack +230",
+        "30": "After moving a distance, gain attack and elemental attack for a short time",
+        "30_1": "[Assist Effect] All star skills damage +18%",
+        "40": "Attack +5%",
+        "50": "Stella's base HP +8%",
+        "60": "[Assist Effect] Wall bounce +1",
+        "70": "Increased damage reduction when moving ",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Increased attack after killing enemies +12%"
+      },
+      "hero_assist_evolve":"eternal-trialstone.svg"
+    },
+    "Taiga": {
+      "description": "An enigmatic warrior from the East, probably the world's most powerful martial artist. None can withhand his full might.",
+      "base_atk": "230 (+19)",
+      "base_hp": "1000 (+ 55)",
+      "attributes": " \u2022 Lvl 20: Max Hp + 400 [All Heroes]<br> \u2022 Lvl 40: Dodge + 7%<br> \u2022 Lvl 60: Max Hp + 6% [All Heroes]<br> \u2022 Lvl 80: Attack Speed + 7%<br> \u2022 Lvl 120: Crit Damage +17% [All Heroes]",
+      "price": "40 USD or 50 Taiga's Shards",
+      "skill": "Summons a meteor to attack enemies and deal Fire damage to enemies in the area.",
+      "skill_details": "<br>",
+      "star": {
+        "1": "Patrol Gold Earnings + 5%",
+        "2": "Dodge +2% [All Heroes]",
+        "3": "Meteor Flamefist - Red Heart: Increases Blazing Meteor's damage. When HP is lower, meteor has a chance to drop Hearts",
+        "4": "Trait - Brave: Sustained attacks increase Attack Speed",
+        "5": "Spirit - Upgrade: Attack Speed and Crit Rate can be stacked after Spirit attacks enemies",
+        "6": "Meteor Flamefist - Suppression: The higher the enemy's HP, the more damage Blazing Meteor deals",
+        "7": "Attack + 3% [All Heroes]",
+        "8": "Beast Damage Reduction + 10% [All Heroes]"
+      },
+      "hero_assist": {
+        "10": "Taiga's base Attack +5%",
+        "20": "[All Heroes] Attack +240",
+        "30": "Chance to summon 1 more meteor after fire meteor hits an enemy",
+        "30_1": "[Assist Effect] Meteor summons 3 Holy Light after hitting enemy, increase Crit Rate if Holy Light hits an enemy",
+        "40": "[Assist Effect] Beast Damage + 10%",
+        "50": "Taiga's base HP + 8%",
+        "60": "[Assist Effect] The lower your HP, the higher the Damage (stack with Rage)",
+        "70": "The further you move, the higher the next attack",
+        "80": "[Assist Effect] Can deploy at any time to assist in Battle",
+        "90": "Weapon Damage +7%",
+        "100": "[All Heroes] Weapon Melee Damage + 8%"
+      },
+      "hero_assist_evolve":"eternal-trialstone.svg"
     }
   },
   "GsheetData": {
-    "Archero Relics 4.12": {
-      "thumbnail": "https://images-ext-2.discordapp.net/external/3P95LiN0_kCpY5_sZHF3aypDoDzVXgzM3LzJsBpnrzM/https/lh3.googleusercontent.com/docs/ADP-6oGoHyJvdwCRwGniAafbls17hyHqU2Z6nxIwRgd8F2ii3I72FUUGiAWuWY9cOKw9OIvD4PUEEC31v24ylCbWT-QCbsm0AR3Pv_ZddpOg0EnR%3Dw1200-h630-p",
+    "Archero 5.0 Assist Brave": {
+      "thumbnail": "https://images-ext-1.discordapp.net/external/AmzV-lxpiiD3nG28dqizeubLH7VE4E9VZ6c3juPajts/https/lh3.googleusercontent.com/docs/ADP-6oEtuV2rn2VnbD76NAmX37kohn5Hn0NEOTkxkUxJioJ_oMfzaBNCYl_iFpNgy7KpoasHrQ8psrFoYIea9yhXOKIZ_5-GZZmcqrszhMn0Sda-%3Dw1200-h630-p",
+      "description": "List of all Hero's Assist brave boost for Update 5.0 ⬇️",
+      "url": "https://docs.google.com/spreadsheets/d/1NJIbXr8LtmNpdjJE4o5HXnoN850XkULXukvZLzIiOPY/"
+    },
+    "Archero Relics 4.14": {
+      "thumbnail": "https://lh3.googleusercontent.com/docs/ADP-6oHhKIJAFiXJAp6nIzGdd1zgtOOD4GkC754MV6Qqnbk7azkTmvVhLrDJrFs8WRIVvPwjxOl0Tgc9dBnRWvHCSoUMrmD1QjZxJ90Sp0Ub3cAW=w1200-h630-p",
       "description": "Relic Name,Base Effect,Advanced Effect, Exclusive effect for all Relics ⬇️",
       "url": "https://docs.google.com/spreadsheets/d/1rPOm5BHlc6d5slelRB1MSZDAYMOAUKjVh35huyMRO0w"
     },
@@ -8569,17 +9118,17 @@
       "description": "-List of the Medals of 4.8 update\n-Medal name\n-Trigger\n-Rarity\n-Enhancement",
       "url": "https://docs.google.com/spreadsheets/d/1In0CS_bJsHR9xO7KDgEftXgogPxMYrW-20nlEp-s8WI"
     },
-    "Archero Hatchery 4.10.0 (LanderZ, mrb, Shusaku, Abstrusity, LuhCaran)": {
+    "Archero Hatchery 4.14.0 (LanderZ, mrb, Shusaku, Abstrusity, LuhCaran)": {
       "thumbnail": "https://images-ext-1.discordapp.net/external/Wr4YOONrx0-ZrldaKK6-ej3gnnFj4Be5seFuSk7Webo/https/lh6.googleusercontent.com/t6U7OU0W2oEP2ECobzUm8UJWLmG-oqunPtygosBafiCgNIbWotsVx9JIFQdGkmb37iMn9JE0-aBlFg%3Dw1200-h630-p",
       "description": "-List of available Monsters\n-Numbers of kills required to hatch or complete quests\n-Completed quest dialogue\n-Automated hatch timers\n-Where to find each Monster and which locations are recommended\n-Monster training bonuses and costs (still Work in Progress)",
       "url": "https://docs.google.com/spreadsheets/d/1p0xAb6ZrgwqhynromVXTqJSsfWlK1W8EDDt2HyvmRKE"
     },
-    "Relics 4.10 (LuhCaran, Hollmanovec, RedsMeName)": {
+    "Relics 4.14 (LuhCaran, Hollmanovec, RedsMeName)": {
       "thumbnail": "https://images-ext-2.discordapp.net/external/-Uz7vgaHAmL8pV5TP0tsN3RQEXljKR__UwkC8ggld34/https/lh6.googleusercontent.com/4JXx6B6snH453Vv-toFLnMwKsiTEd11kBbwDQ87-mbkyd7iI9p6zWuW_nIOIWdCKeqMkrl1hOZC0oQ%3Dw1200-h630-p",
       "description": "This Google Sheet is inventoring all the Relics Stats (4.8.4). Name of Relics,Base Effect,Advance Effect,Exclusive Effect,Effective Exclusive Effect,Resonance Effect",
       "url": "https://docs.google.com/spreadsheets/d/1SWsyuI6PwYVHHeIpbHyGe3w6nS4C4d_QzlOPAyKh_2Y"
     },
-    "Jewels Stats (LuhCaran on 4.10)": {
+    "Jewels Stats (LuhCaran on 4.14)": {
       "thumbnail": "https://images-ext-2.discordapp.net/external/qvZ57PWuTO0Zq9NcFueJZ7fMZqFR-Xu4B5zxOt9BkLU/https/lh4.googleusercontent.com/pps5MNL0e1UjKyt5UKbeTyjTmD5U4stUPMXTUlaDCOcWaEtmTurONg9Y9iTSbbQsvVt-TgExWaw2EA%3Dw1200-h630-p",
       "description": "This Google Sheet will be inventoring all the Jewel Stats (4.8.4), you can help us collecting the stats by asking LuhCaran#9802 on discord\nName,Kunzite,Ruby,Tourmaline,Emerald,Lapis,Calaite,Amber,Topaz,Amethyst",
       "url": "https://docs.google.com/spreadsheets/d/1h81qU9p1H6TkeyPrZlRzh2U6W28x3S2q2pOrVeusw94"
@@ -8589,7 +9138,7 @@
       "description": "In here you will find all the Outfit / Skin / Coupon / Type / Bonus / Unit / Value that are in the game right now",
       "url": "https://docs.google.com/spreadsheets/d/1EcvyN2NGT3k8hDrIk14CsUmyILzMDOJidKKEDDB2dSU"
     },
-    "QuickRaid 4.10 (LuhCaran, Pelmens, tkn)": {
+    "QuickRaid 4.14 (LuhCaran, Pelmens, tkn)": {
       "thumbnail": "https://images-ext-1.discordapp.net/external/O49IU7I7N0xrxgeEv4_olqJXCTCuzbP0o8MdDSvoNsI/https/lh4.googleusercontent.com/E-QN8HZJy2uCkSHmt9_Q-KQ2IXLUafedztTrXxtWsfqN_Z3CO9Vx3qoYO5UygUIjQIlYuvAQJq5cTw%3Dw1200-h630-p",
       "description": "Please don't change the formula, if you did it by accident just @ me on discord (LuhCaran#9802)\nMode,Heroic Mode\nN\u00b0 de Chapitre / Chapter LVL,35",
       "url": "https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w"
@@ -8848,7 +9397,7 @@
         "leftsidebar": {
           "self_class": "leftsidebarc traveling-left",
           "child_class": "shcl",
-          "child_content": "Maze"
+          "child_content": "Maze Map"
         },
         "rightsidebar": {
           "self_class": "rightsidebarc traveling-right ",
@@ -9043,7 +9592,7 @@
   "TheoryCraftingContent": {
     "fusion_item": {
       "type": "img",
-      "displayName": "fusion item",
+      "displayName": "fusion item <img src='/static/image/rarity/epic.png' alt='epic rarity image fusion item'> - <img src='/static/image/rarity/mythic.png' alt='mythic rarity image fusion item'>",
       "classButton": "collapsible fusion",
       "collapsible_container": {
         "class_content": "fusion content",
@@ -9056,9 +9605,9 @@
         }
       }
     },
-    "fusion_item2": {
+    "fusion_item_above_mythic": {
       "type": "img",
-      "displayName": "fusion item mythic+",
+      "displayName": "fusion item mythic+ <img src='/static/image/rarity/mythic.png' alt='mythic rarity image fusion item'> - <img src='/static/image/rarity/chaos.png' alt='chaos rarity image fusion item'>",
       "classButton": "collapsible fusion",
       "collapsible_container": {
         "class_content": "fusion content",
@@ -9071,9 +9620,24 @@
         }
       }
     },
+    "fusion_item_s_grade": {
+      "type": "img",
+      "displayName": "fusion item s grade <img src='/static/image/dragon/S.png' alt='S grade image fusion item'>",
+      "classButton": "collapsible fusion",
+      "collapsible_container": {
+        "class_content": "fusion content",
+        "content": {
+          "field": {
+            "src": "image/wiki-image/Fusing_Hierarchy_S.png",
+            "class": "fusion_collaps_img",
+            "alt": "Fusion Chart Archero Item S grade"
+          }
+        }
+      }
+    },
     "fusion_dragon": {
       "type": "img",
-      "displayName": "fusion dragon",
+      "displayName": "fusion dragon <img src='/static/image/wiki-image/Currency_Dragon_Random_RarityQuality_12.png' alt='great rarity image dragon'> - <img src='/static/image/wiki-image/Currency_Dragon_Random_RarityQuality_14.png' alt='epic rarity image dragon'>",
       "classButton": "collapsible fusion",
       "collapsible_container": {
         "class_content": "fusion content",
@@ -9086,9 +9650,9 @@
         }
       }
     },
-    "tierlist_item_1": {
+    "tierlist_item": {
       "type": "img",
-      "displayName": "tierlist item normal",
+      "displayName": "tierlist item normal <img src='/static/image/rarity/epic.png' alt='epic rarity image tierlist archero'> - <img src='/static/image/rarity/ancient_legendary.png' alt='ancient legendary rarity image tierlist archero'>",
       "classButton": "collapsible tierlist",
       "collapsible_container": {
         "class_content": "tierlist content",
@@ -9101,9 +9665,9 @@
         }
       }
     },
-    "tierlist_item_2": {
+    "tierlist_item_mythic": {
       "type": "img",
-      "displayName": "tierlist item mythic",
+      "displayName": "tierlist item mythic <img src='/static/image/rarity/mythic.png' alt='mythic rarity image tierlist archero'>",
       "classButton": "collapsible tierlist",
       "collapsible_container": {
         "class_content": "tierlist content",
@@ -9118,7 +9682,7 @@
     },
     "faq": {
       "type": "embed",
-      "displayName": "Frequently Asked Questions",
+      "displayName": "Frequently Asked Questions <img src='/static/image/wiki-image/question_mark.png' alt='question mark archero'>",
       "classButton": "collapsible faq-container",
       "collapsible_container": {
         "class_content": "faq content",
@@ -9163,7 +9727,7 @@
     },
     "evo_cost": {
       "type": "img",
-      "displayName": "evolution cost",
+      "displayName": "hero evolution cost <img src='/static/image/wiki-image/cookie.png' alt='cookie image archero'><img src='/static/image/wiki-image/Random_HeroFragment.png' alt='shards image archero'>",
       "classButton": "collapsible evo_cost",
       "collapsible_container": {
         "class_content": "evo_cost content",
@@ -9178,7 +9742,7 @@
     },
     "gems_spending_guide": {
       "type": "embed",
-      "displayName": "Gems guide",
+      "displayName": "Gems guide <img src='/static/image/wiki-image/gem.png' alt='gem image archero'>",
       "classButton": "collapsible gems_spending_guide",
       "collapsible_container": {
         "class_content": "gems_spending_guide_child content",
@@ -9211,7 +9775,7 @@
     },
     "gold_earning_guide": {
       "type": "embed",
-      "displayName": "gold earning guide",
+      "displayName": "gold earning guide <img src='/static/image/wiki-image/gold.png' alt='gold image archero'>",
       "classButton": "collapsible gold_earning_guide",
       "collapsible_container": {
         "class_content": "gold_earning_guide_child content",
@@ -9244,7 +9808,7 @@
     },
     "gear_farming_guide": {
       "type": "embed",
-      "displayName": "gear farming guide",
+      "displayName": "gear farming guide <img src='/static/image/wiki-image/Inventory.png' alt='gear farming inventory image archero'>",
       "classButton": "collapsible gear_farming_guide",
       "collapsible_container": {
         "class_content": "gear_farming_guide_child content",
@@ -9277,7 +9841,7 @@
     },
     "glyphs": {
       "type": "embed",
-      "displayName": "glyphs",
+      "displayName": "glyphs guide <img src='/static/image/wiki-image/RandomGlyph.png' alt='glyph guide image archero'>",
       "classButton": "collapsible glyphs",
       "collapsible_container": {
         "class_content": "glyphs content",
@@ -9314,7 +9878,7 @@
     },
     "refinement": {
       "type": "embed",
-      "displayName": "refinements",
+      "displayName": "refinements guide <img src='/static/image/wiki-image/RandomGlyph.png' alt='refinement guide image archero'>",
       "classButton": "collapsible refinement",
       "collapsible_container": {
         "class_content": "refinement content",
@@ -9347,7 +9911,7 @@
     },
     "quickraid": {
       "type": "img",
-      "displayName": "quickraid",
+      "displayName": "quick raid rewards <img src='/static/image/wiki-image/Quickraid_icon.png' alt='quickraid icon image archero'>",
       "classButton": "collapsible quickraid",
       "collapsible_container": {
         "class_content": "quickraid content",
@@ -9362,7 +9926,7 @@
     },
     "altar_cost": {
       "type": "embed",
-      "displayName": "altar cost",
+      "displayName": "altar cost <img src='/static/image/wiki-image/BloodthirstStone.png' alt='bloodthirst stone image archero'>",
       "classButton": "collapsible altar_cost",
       "collapsible_container": {
         "class_content": "altar_cost_content content",
@@ -9439,7 +10003,7 @@
     },
     "egg_stats": {
       "type": "embed",
-      "displayName": "egg stats",
+      "displayName": "egg stats <img src='/static/image/wiki-image/Egg_icon.png' alt='egg icon archero'>",
       "classButton": "collapsible egg_stats",
       "collapsible_container": {
         "class_content": "egg_stats_content content",
@@ -9472,7 +10036,7 @@
     },
     "hidden_stats": {
       "type": "embed",
-      "displayName": "Hidden Stats",
+      "displayName": "hidden stats <img src='/static/image/img-sidebar/advanced_stats.png' alt='hidden stats magnifying glass image archero'>",
       "classButton": "collapsible hidden_stats",
       "collapsible_container": {
         "class_content": "hidden_stats_content content",
@@ -9582,9 +10146,9 @@
         "title": "Price Of Strength",
         "description": [
           "Buffs/Debuffs =>",
-          "8second :  increase movespeed, around 30% atk,regular dmg taken,increase size,normal aspd,increase melee boost",
-          "2second :  decrease move speed,around 20% atk,increase dmg taken,increase size,decrease atk speed,increase melee boost",
-          "6second :  decrease move,decrease damage,increase dmg taken,decrease size,decrease atk speed,Lose melee boost"
+          "8second :  10% movespeed, 40% atk, regular dmg taken, 10% size, normal atkspd, 10% melee damage boost, 15% crit rate",
+          "2second :  -5% movespeed, 28% atk, 1.1x dmg taken, 5% size, -15% atkspd, 10% melee damage boost",
+          "6second :  -15% movespeed, -12% atk, 1.2x dmg taken, -5% size, -15% atkspd"
         ],
         "href":"/wiki/skill-list/Price_of_Strength/"
       }

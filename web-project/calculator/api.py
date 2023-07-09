@@ -1,9 +1,9 @@
-import json, os
-from django.http import HttpResponseRedirect, JsonResponse, HttpResponseBadRequest
+import json
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from .function import send_webhook, login_required, send_embed, editor_login,db_maintenance, checkContributor, getProfileWithCookie, checkCookie
-from .models import UserQueue, Token, Contributor, user
+from .function import send_webhook, login_required, send_embed, editor_login,db_maintenance, checkContributor, getCredentialForNonLoginRequired
+from .models import UserQueue, Token, user
 from django.contrib import messages
 from .forms import UserQueueForm
 from rest_framework.views import APIView
@@ -32,11 +32,10 @@ missing_data = []
 # - after this, the user will need to send a GET request to another views that will redirect the user to the menu of the website at / and in the backend will send a notification with the request, username, password (hashed), token
 # - Then once i've got the token, i will search in the admin pannel the user and add it the token in order to get POST access on the API
 
-@login_required
 @db_maintenance
 @editor_login
 def data(request):
-	user_credential = request.session['user_credential']
+	user_credential = getCredentialForNonLoginRequired(request)['user_credential']
 	if checkContributor(user_credential,request):
 		status = request.session['status']
 		url_query = "?q="
@@ -70,7 +69,7 @@ def data(request):
 				for query in query_list:
 					old_value = old_value[query]
 				if isinstance(old_value, (int, str, list)):
-					avatar_url = f"https://cdn.discordapp.com/avatars/{response_data['id']}/{response_data['avatar']}"
+					avatar_url = f"https://cdn.discordapp.com/avatars/{response_data.get('id','0')}/{response_data.get('avatar','a')}"
 					new_value = request.POST.get('new_value',None)
 					str_query_list = " -> ".join([i for i in query_list])
 					type_old_value = type(old_value)
@@ -79,8 +78,8 @@ def data(request):
 					except TypeError as e:
 						messages.error(request, f"The type of the old value must be the same for the new value {e}")
 						return HttpResponseRedirect(request.build_absolute_uri())
-					send_embed(f"{response_data['username']}#{response_data['discriminator']}","__API Update__",
-						f"Change Author : <@{response_data['id']}> ({response_data['locale']})",
+					send_embed(f"{response_data.get('username','a')}","__API Update__",
+						f"Change Author : <@{response_data.get('id','a')}> ({response_data.get('locale','a')})",
 						f"{str_query_list}",f"```diff\n- {old_value}\n+ {new_value}```","A200FF",request,True,avatar_url=avatar_url)
 					data_temp = data
 					for key in query_list[:-1]:
@@ -90,7 +89,7 @@ def data(request):
 						json.dump(data, file, indent=4)
 			return HttpResponseRedirect(request.build_absolute_uri())
 	else:
-		request.session['error_message'] = f"You aren't able to go there"
+		request.session['error_message'] = f"You're not allowed to acces this page"
 		return HttpResponseRedirect('/')
 
 

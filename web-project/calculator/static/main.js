@@ -12,8 +12,8 @@ function createModale(element, urlNeedParentid, type){
         titremodals.innerHTML = `Link copied : <a href='${url}'>${element.parentElement.id}</a>`;
         if(urlNeedParentid == true){
             var url = url.split('?')[0]
-            titremodals.innerHTML = `Link copied : <a href='${url}?${element.parentElement.id}' target="_blank">${element.parentElement.id}</a>`;
-            navigator.clipboard.writeText(`${url}?${element.parentElement.id}`)
+            titremodals.innerHTML = `Link copied : <a href='/wiki/menu/${element.parentElement.id}/' target="_blank">${(element.parentElement.id).replaceAll('_',' ').toUpperCase()}</a>`;
+            navigator.clipboard.writeText(`https://stats.wiki-archero.com/wiki/menu/${element.parentElement.id}/`)
         }else{
             titremodals.innerHTML = `Link copied : <a href='${url}'>${element.parentElement.id}</a>`;
             navigator.clipboard.writeText(url)

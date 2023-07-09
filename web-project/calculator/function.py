@@ -2,6 +2,7 @@ from PIL import Image
 from pathlib import Path
 from django.shortcuts import render, redirect
 from django.http import HttpResponse,HttpResponseRedirect
+from django.core.handlers.wsgi import WSGIRequest
 from urllib.parse import urlencode
 from const import ADMIN_LOG_WEBHOOK_URL,WEBHOOK_URL, DEV_MODE, DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, c_hostname, DISCORD_NOTIF_ROLE_ID, ADMIN_CREDENTIAL
 import random as random
@@ -25,7 +26,7 @@ import json, string, time, re, urllib.parse, string, datetime, requests, os, htt
 APP_VERSION = os.environ.get('APP_VERSION')
 # docker-compose up -d --env-file=myenvfile.env
 
-def makeLog(request):
+def makeLog(request:HttpResponse|WSGIRequest):
 	dict_log = {
 		"dateLog": datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
 		"container": "archero",
@@ -39,7 +40,7 @@ def makeLog(request):
 			"User-Agent": f"{request.headers['User-Agent']}",
 			"Cookie": f"{request.COOKIES}",
 			"AUTH":f"{request.user}: {request.user.is_authenticated}",
-			"User_Creds": f"{dict(request.session).get('user_credential',{'unknown':'9-999999'})}"
+			"User_Creds": f"{dict(request.session).items()}"
 		}
 	}
 	json_log = json.dumps(dict_log, indent=1)
@@ -98,22 +99,20 @@ def findFormError(valid_User, valid_StuffTable, valid_HeroTable, valid_TalentTab
 
 ################################# FONCTION RESTE #######################################################
 
-def checkCookie(cookie_value:dict) -> dict:
+def checkCookie(request:WSGIRequest) -> dict:
 	"""
 	This function will always return one or zero key,value, 
 	if it return 1, then this is the cookie/session username and ingame_id
 	else the returned value will be an empty dict {} (wich can be turned into False with bool(empty_dict))
 	"""
-	requestCookie = cookie_value.copy()
 	result = {}
-	for k,v in requestCookie.items():
+	for k,v in request.COOKIES.items():
 		if checkUsernameCredentials(k,v)["access"]:
 			result[k] = v
-			if len(result) >= 2:
-				cookie_value.pop(k,v)
+			break
 	if len(result) != 0:
 		result = {list(result.keys())[0]: list(result.values())[0]}
-	return result # renvoie toujours 1 clé et 1 valeur
+	return result # renvoie toujours max 1 clé et 1 valeur
 
 
 def checkTokenValidity(token, length):
@@ -134,7 +133,7 @@ def checkTokenValidity(token, length):
 
 
 def db_maintenance(func):
-	def wrapper(request, *args, **kwargs):
+	def wrapper(request:HttpResponse|WSGIRequest, *args, **kwargs):
 		try:
 			server_instance = ServerManagement.objects.get(pk=1)
 			isMaintenance = server_instance.isMaintenance
@@ -157,7 +156,7 @@ def checkMessages(func):
 	This decorator check if there is messages in the user session,
 	If there is then it will remove it from the session and send the content of it in the views
 	"""
-	def wrapper(request, *args, **kwargs):
+	def wrapper(request:HttpResponse|WSGIRequest, *args, **kwargs):
 		message_types = ['error_message', 'info_message', 'success_message']
 		for message_type in message_types:
 			message = request.session.pop(message_type, None)
@@ -168,18 +167,30 @@ def checkMessages(func):
 	return wrapper
 
 
+def delete_visitor(redirected_uri):
+	def _method_wrapper(view_method):
+		def _arguments_wrapper(request, *args, **kwargs):
+			credentials_check = request.session.get("user_credential")
+			if "visitor" in str(credentials_check):
+				return redirect(f"/delete_session/user_credential/{redirected_uri}/")
+			if request.COOKIES.get("visitor",None) != None:
+				return redirect(f"/delete_cookie/visitor/{redirected_uri}/")
+			return view_method(request, *args, **kwargs)
+		return _arguments_wrapper
+	return _method_wrapper
+
+
 def login_required(func):
 	"""
 	This decorator store user cookies in a result variable (will only be 1 or 0 length),
 	If the lenght of this variable is 0 and the user is logged as visitor,	then the user will be redirected to the views with visitor credentials in session,
 	else he will be redirected in login page
 	"""
-	def wrapper(request, *args, **kwargs):
-		result = checkCookie(request.COOKIES)
+	def wrapper(request:HttpResponse|WSGIRequest, *args, **kwargs):
+		result = checkCookie(request)
 		if len(result) == 0:
 			if "visitor" in list(request.COOKIES.keys()):
-				request.session['user_credential'] = {"visitor":"0-000000"}
-				return func(request, *args, **kwargs)
+				return HttpResponseRedirect(f'/delete_cookie/visitor/menu/')
 			messages.warning(request, f"You need to login first")
 			return HttpResponseRedirect('/login')
 		request.session['user_credential'] = result
@@ -188,7 +199,7 @@ def login_required(func):
 
 
 def editor_login(func):
-	def wrapper(request, *args, **kwargs):
+	def wrapper(request:HttpResponse|WSGIRequest, *args, **kwargs):
 		REDIRECT_URI = f"http://{request.META['HTTP_HOST']}/data/"
 		if request.user.is_authenticated:
 			try:
@@ -227,10 +238,14 @@ def editor_login(func):
 					headers = {'Authorization': f'Bearer {access_token}'}
 					response = requests.get('https://discord.com/api/users/@me', headers=headers)
 					response_data = response.json()
-					token.discord_acc_rely = f"{response_data['username']}#{response_data['discriminator']}"
-					token.discord_user_id = response_data['id']
-					token.save()
-					request.session['response_data'] = response_data
+					try:
+						token.discord_acc_rely = f"{response_data['username']}"
+						token.discord_user_id = response_data['id']
+						token.save()
+						request.session['response_data'] = response_data
+					except KeyError as e:
+						send_webhook(e)
+						request.session['response_data'] = {}
 				else:
 					status = "not_auth"
 			except Token.DoesNotExist:
@@ -290,7 +305,7 @@ def checkUsernameCredentials(username_raw,id_raw, **kwargs) -> dict:
 			if re.fullmatch(pattern, ingame_id) and ingame_id != "" and ingame_id != None and all(c.isdigit() or c == '-' for c in ingame_id):
 				return {"access":True,"ingame_name": ingame_name.replace(' ',''),"ingame_id": ingame_id}
 			else:
-				return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": "Ingame id incorrect"}
+				return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": "Ingame id doesn't match or is too short"}
 		else:
 			return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": "Username not allowed"}
 	elif ingame_id in unavailable_ingame_id:
@@ -316,7 +331,7 @@ def send_webhook(msg, **kwargs):
 		wh = DiscordWebhook(url=WEBHOOK_URL, content=msg, rate_limit_retry=True)
 	wh.execute()
 
-def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:str,field_value:str,e_color:int, request, alert:bool, **kwargs):
+def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:str,field_value:str,e_color:str, request:HttpResponse, alert:bool, **kwargs):
 	"""
 	If alert is set to True it will ping the notif role in the discord webhook,
 	Kwargs can contain admin_log or the avatar_url
@@ -343,7 +358,7 @@ def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:
 	webhook.execute()
 
 
-def MakeLogAddRequestJson(request, cookie_result):
+def MakeLogAddRequestJson(request:HttpResponse|WSGIRequest, cookie_result):
 	"""
 	cookie_result will always have 1 or 0 items
 	This function is a "global function" that call makeLog function
@@ -379,7 +394,7 @@ def MakeLogAddRequestJson(request, cookie_result):
 			json.dump(request_json_file, jsonFile)
 
 
-def checkDarkMode(request) -> bool:
+def checkDarkMode(request:HttpResponse|WSGIRequest) -> bool:
 	"""
 	Check if darkmode is in the Cookies
 	"""
@@ -471,10 +486,9 @@ def getProfileWithCookie(ingame_id: str, ingame_name: str, **kwargs) -> tuple[bo
 		return False, None
 	resultSimilarity = similar(user_profile.ingame_name.lower(), ingame_name.lower())
 	if resultSimilarity >= 1 or resultSimilarity >= 0.7:
-		if 0.7 <= resultSimilarity <= 0.99:
-			send_webhook(f"{ingame_name.lower()} accessed {user_profile.ingame_name.lower()}'s Profile and the similarity is {resultSimilarity}\n[Admin Panel Link User]({c_hostname}/luhcaran/calculator/user/{user_profile.pk}/change/)")
 		return True, user_profile
 	else:
+		send_webhook(f"{ingame_name.lower()} accessed {user_profile.ingame_name.lower()}'s Profile and the similarity is {resultSimilarity}\n[Admin Panel Link User]({c_hostname}/luhcaran/calculator/user/{user_profile.pk}/change/)")
 		return False, user_profile
 	
 def encode_string(string):
@@ -486,7 +500,7 @@ def encode_string(string):
 	encoded_string = sha256.hexdigest()
 	return encoded_string
 
-def getCredentialForNonLoginRequired(request, **kwargs) -> dict:
+def getCredentialForNonLoginRequired(request:HttpResponse|WSGIRequest, **kwargs) -> dict:
 	"""
 	Retrieves user credentials for non-login-required scenarios.
 
@@ -502,7 +516,7 @@ def getCredentialForNonLoginRequired(request, **kwargs) -> dict:
 	"""
 	user_credential = request.session.get('user_credential')
 	if user_credential is None:
-		cookie_result = checkCookie(request.COOKIES)
+		cookie_result = checkCookie(request)
 		ingame_name_cookie = next(iter(cookie_result), 'unknown')
 		ingame_id_cookie = cookie_result.get(ingame_name_cookie, '9-999999')
 		user_credential = {ingame_name_cookie:ingame_id_cookie}

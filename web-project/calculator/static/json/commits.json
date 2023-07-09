@@ -1,6 +1,18 @@
 {
+  "331": {
+    "nom": "Updated With Archero 5.0 (Taiga, new skills, S equipment grade)",
+    "date": "2023-07-01"
+  },
+  "329": {
+    "nom": "Added new feature Article to post Real-Time guide for Event etc...",
+    "date": "2023-06-23"
+  },
+  "328": {
+    "nom": "Reduced page load time + Some Optimizations",
+    "date": "2023-06-01"
+  },
   "326": {
-    "nom": "Enhanced User Experience with Messages, Added Advanced Stats (waiting for Archero team Confirmation)",
+    "nom": "Enhanced User Experience with Messages, Added Advanced Stats",
     "date": "2023-05-27"
   },
   "325": {
