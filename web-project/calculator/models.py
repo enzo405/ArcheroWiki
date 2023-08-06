@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
 import datetime, math, json
 from django.contrib.auth.models import User as BuiltinDjangoUser
 from django.utils.crypto import get_random_string
@@ -617,7 +617,7 @@ class altar_table(models.Model,parentModel):
 		chaine = f"{self.user_profile.ingame_id} | {self.user_profile.ingame_name}"
 		return chaine
 	
-	def RoundTen(self,x):
+	def RoundTen(self,x) -> int:
 		if int(x) % 10==0:
 			x = x
 		else:
@@ -632,10 +632,10 @@ class altar_table(models.Model,parentModel):
 		elif type_altar == "heros":
 			data = self.local_data["HerosAltar"]
 			altar_var_stats = 0
-		base = int(data[str(self.RoundTen(self.dictionnaire()[type_altar+'_altar_level'])) + '_' + type_boost]) * float(1+altar_var_stats/100)
-		level = int(self.dictionnaire()[type_altar+'_altar_level'])
-		levelRoundTen = int(self.RoundTen(self.dictionnaire()[type_altar+'_altar_level']))
-		inc = int(data[str(self.RoundTen(self.dictionnaire()[type_altar+'_altar_level'])) + '_inc_' + type_boost]) * float(1+altar_var_stats/100)
+		level = self.dictionnaire()[type_altar + '_altar_level']
+		levelRoundTen = int(self.RoundTen(level) / 10)
+		base = int(data[type_boost][levelRoundTen]) * float(1+altar_var_stats/100)
+		inc = int(data['inc_' + type_boost][int(levelRoundTen)]) * float(1+altar_var_stats/100)
 		diff = level - levelRoundTen
 		if 1 <= diff <= 9:
 			total = base+((level - levelRoundTen)*inc)
@@ -2236,27 +2236,31 @@ class weapon_skins_table(models.Model,parentModel):
 			print(f"\ngetWeaponSkinStats :{result}\n")
 		return result
 	
-
+isImage = RegexValidator(r"([-\w]+\.(?:png))", "Your string be an image.")
 
 class articleMenu(models.Model):
 	title = models.CharField(max_length=255)
 	intro = models.TextField()
 	body = models.TextField()
-	last_change = models.CharField(max_length=55, default=f"Created on {datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')}")
+	image_label = models.CharField(max_length=255, default=None, validators=[isImage], blank=True, null=True)
+	last_change = models.CharField(max_length=55, default=f"Created on {datetime.datetime.now().strftime('%m/%d/%Y')}")
 	is_new = models.BooleanField(default=True)
-	_display = models.BooleanField(default=True)
+	display = models.BooleanField(default=True)
+	index = models.IntegerField(null=True, blank=True)
+	titre_description = models.CharField(max_length=255, default=None, blank=True, null=True)
+	meta_description = models.CharField(max_length=255, default=None, blank=True, null=True)
 
 	def save(self, *args, **kwargs):
 		from .function import send_webhook
 		pk_article = self.pk
 		try:
 			articleMenu.objects.get(pk=pk_article)
-			self.last_change = f"Updated on {datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')}"
+			self.last_change = f"Updated on {datetime.datetime.now().strftime('%m/%d/%Y')}"
 			send_webhook(f"Update : `{self}`")
 		except:
 			send_webhook(f"New Article : `{self}`")
 		super(articleMenu, self).save(*args, **kwargs)
 
 	def __str__(self):
-		chaine = f"{self.title} | display {self._display} | is_new {self.is_new}"
+		chaine = f"{self.title} | display {self.display} | is_new {self.is_new}"
 		return chaine

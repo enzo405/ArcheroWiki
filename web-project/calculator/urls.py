@@ -22,23 +22,23 @@ urlpatterns = [
     path('login/', views_wiki.login, name='login'),
     path('login/processing/<str:username_raw>/<str:id_raw>/', views_wiki.login_processing, name='login_process'),
     path('wiki/maze/', views_wiki.maze, name='maze'),
-    path('wiki/menu/', views_wiki.wiki_theorycrafting, name='theorycrafting'),
-    path('wiki/menu/<str:article>/', views_wiki.wiki_theorycrafting, name='theorycrafting'),
+    path('wiki/menu/', views_wiki.wiki_menu, name='wiki'),
+    path('wiki/menu/<str:article>/', views_wiki.wiki_menu, name='wiki'),
     path('wiki/item/', views_wiki.item_description, name='item_desc'),
     path('wiki/item/<str:item>/', views_wiki.item_description),
     path('wiki/heroes/', views_wiki.heros_description, name='heroes_desc'),
     path('wiki/heroes/<str:hero>/', views_wiki.heros_description),
-    path('wiki/skill-list/', views_wiki.skill_description, name='skill_list'),
-    path('wiki/skill-list/<str:skill>/', views_wiki.skill_description),
+    path('wiki/skill/', views_wiki.skill_description, name='skill'),
+    path('wiki/skill/<str:skill>/', views_wiki.skill_description),
     path('wiki/damage-calculator/', views_wiki.damage, name='damage_calc'),
     path('wiki/damage-calculator/calc/<str:pbid>/', views_wiki.dmgCalc_processing, name='damage_calc_process'),
     path('wiki/damage-calculator/<str:pbid>/', views_wiki.damageCalc, name='damage_calc_calc'),
-    path('wiki/archive/', views_wiki.ghssetGrid, name='archives'),
+    path('wiki/google-sheet/', views_wiki.ghssetGrid, name='google_sheet'),
     path('wiki/upgrade/', views_wiki.upgrade_cost, name='upgrade_cost'),
     path('wiki/upgrade/<str:cost_type>/<int:lvl1>/<int:lvl2>/', views_wiki.upgrade_cost),
     path('wiki/upgrade/<str:cost_type>/<int:lvl1>/<int:lvl2>/<str:rank>/', views_wiki.upgrade_cost),
     path('wiki/promo-code/', views_wiki.promocode, name='promo_code'),
-    path('wiki/advanced-stats/', views_wiki.advanced_stats, name='advanced_stats'),
+    path('wiki/theorycraft/', views_wiki.theorycraft, name='theorycraft'),
     path('wiki/news/', views_wiki.news, name='news'),
     path('wiki/news/<str:titleArticle>/', views_wiki.news, name='news'),
     path('habby-secret/', views_wiki.rickroll),
@@ -49,7 +49,11 @@ urlpatterns = [
     path('create_user_queue/', api.create_user_queue),
     path('validate_user_queue/<int:pk>/', api.validate_user_queue, name='validate_user_queue'), ## keep the name attribute for the reverse function in api.py
     path('delete_cookie/<str:key>/<str:name_redirect>/', views_wiki.delete_cookie),
-    path('delete_session/<str:key>/<str:name_redirect>/', views_wiki.delete_session),
+    path('logout/', views_wiki.delete_session),
+
+    ## fix url redirect 
+    path('wiki/skill-list/', views_wiki.redirect_skill),
+    path('wiki/skill-list/<str:skill>/', views_wiki.redirect_skill),
 ]
 
 if DEV_MODE:

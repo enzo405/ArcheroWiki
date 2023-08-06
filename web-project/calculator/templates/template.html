@@ -3,11 +3,11 @@
 	<head>
 		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.6.1">
-		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.6.4b">
+		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}?version=1.6.4b">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-		<script src="{% static 'main.js' %}?version=1.6.1"></script>
+		<script src="{% static 'main.js' %}?version=1.6.4b"></script>
 		{% block head %}
 		{% endblock %}
 	</head>
@@ -36,7 +36,7 @@
 				</div>
 				<div class="rightsidebarc traveling-right">
 					<div class="shcr">
-						<img alt="{{ key }}" id="{{ value.childs_container.rightsidebar.child_content.image_id }}" src="{{ value.childs_container.rightsidebar.child_content.image_src }}" width="{{ value.childs_container.rightsidebar.child_content.image_width }}" height="{{ value.childs_container.rightsidebar.child_content.image_height }}">
+						<img alt="{{ key }}" id="{{ value.childs_container.rightsidebar.child_content.image_id }}" src="{{ value.childs_container.rightsidebar.child_content.image_src }}?version=1.6.4b" width="{{ value.childs_container.rightsidebar.child_content.image_width }}" height="{{ value.childs_container.rightsidebar.child_content.image_height }}">
 					</div>
 				</div>
 			</a>
@@ -74,21 +74,21 @@
 			<footer>
 				<div class="footer-content">
 					<div class="footer-about">
-						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.6.1" alt="image game icon">
+						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.6.4b" alt="image game icon">
 						<div class="about-content">
-							<h1>Archero</h1>
+							<h1>Archero 5.1.0</h1>
 							<div class="contact-me">
 								<span>Contact <a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran</a> <a href="https://www.reddit.com/user/LuhCaran101" target="_blank"><i class="fab fa-reddit"></i> u/LuhCaran101</a></span>
 							</div>
 							<div class="f_content_info"><a href="/Terms-of-Use/">Terms of Use</a></div>
 							<div class="f_content_info"><a href="/changelog/">ChangeLog</a></div>
-							<div class="f_content_info">Build v1.6.1</div>
+							<div class="f_content_info">Build v1.6.4b</div>
 						</div>
 					</div>
 					<div class="discord_link">
 						<div style="font-size: large;font-weight: bold;">Community Links:</div>
 						<div class="container-link">
-							<a href="https://discord.gg/djj" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>LeMutique's Server</a>
+							<a href="http://discord.gg/AsGcUrT" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>LeMutique's Server</a>
 						</div>
 						<div class="container-link">
 							<a href="https://discord.gg/eAqZquTF6X" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>TigerShark's Server</a>
@@ -111,6 +111,10 @@
 			</footer>
 		</section>
 	</main>
+	<!-- "To the top" button -->
+	<div id="to-top-button">
+		<i class="fas fa-arrow-up"></i>
+	</div>
 	{% if messages %}
 		{% for message in messages %}
 		<script>
@@ -142,6 +146,23 @@
 		sidebar.classList.toggle('sidebar-active')
 		sidebar.classList.toggle('sidebar-open')
 	})
+</script>
+<script>
+	window.addEventListener('scroll', function() {
+		var toTopButton = document.getElementById('to-top-button');
+		var headerHeight = document.querySelector('.header-container').offsetHeight;
+		var scrollPosition = window.scrollY || window.pageYOffset;
+		if (scrollPosition > headerHeight) {
+			toTopButton.classList.add('show');
+		} else {
+			toTopButton.classList.remove('show');
+		}
+	});
+
+	var toTopButton = document.getElementById('to-top-button');
+	toTopButton.addEventListener('click', function() {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
 </script>
 {% block javascript %}
 {% endblock %}

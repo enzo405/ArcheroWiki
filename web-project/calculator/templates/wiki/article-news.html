@@ -2,14 +2,22 @@
 {% load static %}
 {% load markdown_extras %}
 	{% block head %}
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.1">
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
 		<title>Archero - Wiki - {{ article.title }}</title>
+		{% if article.titre_description != None %}
+		<meta property="og:title" content="{{ article.titre_description }}">
+		{% else %}
 		<meta property="og:title" content="Welcome to the Wiki Archero">
+		{% endif %}
 		<meta property="og:url" content="https://stats.wiki-archero.com/">
 		<meta property="og:type" content="website">
+		{% if article.meta_description != None %}
+		<meta property="og:description" content="{{ article.meta_description }}">
+		{% else %}
 		<meta property="og:description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.">
+		{% endif %}
 		<meta name="description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.">
-		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.1">
+		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.4b">
 	{% endblock %}
 	{% block header_content %}{{ article.title }}{% endblock %}
 	{% block content %}

@@ -1,8 +1,8 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.1">
-	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.1">
+	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
+	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.4b">
 	<title>Archero - Wiki</title>
 	<meta property="og:type" content="website">
 	<meta name="description" content="Welcome to the Archero wiki, your ultimate resource for the popular mobile game by HABBY. Explore upgrade costs for relics, dragons, talents, items, and heroes. Discover comprehensive guides and strategies to optimize your gameplay.">
@@ -17,7 +17,7 @@
 		<meta property="og:title" content="Archero - Upgrade Cost">
 		<meta property="og:url" content="https://stats.wiki-archero.com/wiki/upgrade">
 		<meta property="og:description" content="Welcome to the Archero wiki, your ultimate resource for the popular mobile game by HABBY. Explore upgrade costs for relics, dragons, talents, items, and heroes. Discover comprehensive guides and strategies to optimize your gameplay.">
-		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.1">
+		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.4b">
 	{% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -134,11 +134,11 @@
 {% block javascript %}
 	<script>
 		submit_input.addEventListener('click', function a(){
-			var type = document.getElementById('cost_type').value;
-			var level1 = document.getElementById('level1').value ?? 1;
-			var level2 = document.getElementById('level2').value ?? 2;
+			var type = document.getElementById('cost_type').value ?? "items";
+			var level1 = document.getElementById('level1').value || "1";
+			var level2 = document.getElementById('level2').value || "2";
 			if (type == "dragons" || type === "relics"){
-				var rankInput = document.querySelector('input[name="rank"]:checked').value.toUpperCase();
+				var rankInput = document.querySelector('input[name="rank"]:checked').value.toUpperCase() || "A";
 				window.location.href = `/wiki/upgrade/${type}/${level1}/${level2}/${rankInput}/`
 			}else{
 				window.location.href = `/wiki/upgrade/${type}/${level1}/${level2}/` 

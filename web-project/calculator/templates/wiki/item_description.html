@@ -1,8 +1,8 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.1">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.1">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.4b">
 <meta name="description" content="Explore a comprehensive list of items in Archero, including weapons, armor, rings, pets, lockets, bracelets, and spellbooks. Discover the stats, hidden stats, and descriptions for each item rarity. Unlock the full potential of your loadout with invaluable insights and make strategic choices to dominate your enemies in Archero.">
 <meta property="og:type" content="website">
 {% if item == "yes" %}
@@ -10,13 +10,13 @@
 <meta property="og:title" content="{{ name }}">
 <meta property="og:url" content="{{ url_cpy }}">
 <meta property="og:description" content="{{ item_data.description|safe }}">
-<meta property="og:image" content="{% static item_data.item_image %}?version=1.6.1">
+<meta property="og:image" content="{% static item_data.item_image %}?version=1.6.4b">
 {% else %}
 <title>Archero - Wiki</title>
 <meta property="og:title" content="Archero - Item Description">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/item">
 <meta property="og:description" content="Explore a comprehensive list of items in Archero, including weapons, armor, rings, pets, lockets, bracelets, and spellbooks. Discover the stats, hidden stats, and descriptions for each item rarity. Unlock the full potential of your loadout with invaluable insights and make strategic choices to dominate your enemies in Archero.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.1">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.4b">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -41,12 +41,27 @@
 				}
 			}
 		</script>
-		<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for items.." value="{{ name }}">
-		<ul id="myUL" style="display: none;">
+		<a class="before_index arrow_searchbar" href="/wiki/item/{{ index_before.value }}/">
+            <img src="/static/{{ index_before.image }}" width="30" alt="{{ index_before.value }}">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+        <input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for items.." value="{{ name }}">
+		<ul id="myUL" class="searchbar-ul-hero" style="display: none;">
 			{% for k,v in ItemData.items %}
-				<li><a class="toggle-display-list" href="/wiki/item/{{ v.value }}/"><div class="item_name">{{ k }}</div><div class="siimg"><img src="/static/{{ v.image }}" alt="{{ k }}" width="26"></div></a></li>
-			{% endfor %}
+                <li>
+                    <a class="toggle-display-list" href="/wiki/item/{{ v.value }}/">
+                        <div class="item_name">{{ k }}</div>
+                        <div class="siimg">
+                            <img src="/static/{{ v.image }}" alt="{{ k }}" width="26">
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
 		</ul>
+		<a class="after_index arrow_searchbar" href="/wiki/item/{{ index_after.value }}/">
+            <img src="/static/{{ index_after.image }}" width="30" alt="{{ index_after.value }}">
+            <i class="fas fa-arrow-up"></i>
+        </a>
 	</div>
 	<div class="embed-container">
 		<div class="kn3fae-0 ezpxFx">
@@ -63,16 +78,21 @@
 				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
 					<div class="sc-3qrykn-0 bdFBtt">
 						<div class="sc-3qrykn-1 bsDYtY">
-							<div class="sc-27l7o2-0 heOpKb" id="name_item">{{ name }}</div>
+							<div class="sc-27l7o2-0 heOpKb thumbnail-title" id="name_item">
+								<img src="/static/{{ item_data.image }}" alt="Thumbnail-{{ item_data.image }}" class="sc-3qrykn-7" id="item_image">
+								{{ name }}
+							</div>
 						</div>
 						<div class="sc-3qrykn-3 hXMbfy">
 							<div class="sc-27l7o2-0 heOpKb" id="item_description">{{ item_data.description|safe }}</div>
+							{% if item_data.hidden_stats %}
 							<div class="e_hidden_stats " id="hidden_stats">
 								<b>Hidden Stats</b>
 								{% for rarity,boost in item_data.hidden_stats.items %}
 								<span>{{ boost|safe }}</span>
 								{% endfor %}
 							</div>
+							{% endif %}
 						</div>
 						<div class="sc-3qrykn-4 hQKgZF">
 							<div class="rgqgux-0 dQAxvm">

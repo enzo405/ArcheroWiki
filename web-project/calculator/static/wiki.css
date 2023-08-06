@@ -27,7 +27,7 @@
 }
 
 
-@media screen and (min-width : 1070px){ /* pour résolution supérieux à 1070px */	
+@media screen and (min-width : 1071px){ /* pour résolution supérieux à 1070px */	
 	.altar_cost_content{
 		display: flex;
 		flex-direction: row;
@@ -47,7 +47,30 @@
 	}
 }
 
-@media screen and (min-width : 600px){ /* pour résolution supérieur à 600x */
+@media screen and (min-width : 787px){ /* pour résolution supérieur à 786px */
+	.floating_embed{
+		position: fixed;
+		transform: translate(-275%,43.4%);
+	}
+	.toc-hero-desc{
+		flex-direction: column;
+	}
+}
+
+@media screen and (max-width : 786px){ /* pour résolution inférieur à 786px */
+	.floating_embed{
+		margin-top: 10px;
+	}
+	.toc-hero-desc{
+		flex-direction: row;
+	} 
+	.toc-hero-desc a{
+		flex-direction: column-reverse;
+	}
+}
+
+
+@media screen and (min-width : 601px){ /* pour résolution supérieur à 600x */
 	#all_week_div{
 		display: grid;
 		grid-template-columns: repeat(2,auto);
@@ -82,7 +105,7 @@
 	}
 }
 
-@media screen and (min-width: 540px){
+@media screen and (min-width: 541px){
 	.flex-box{
 		width: 70%;
 	}
@@ -108,7 +131,7 @@
 	}
 }
 
-@media screen and (min-width : 400px){ /* pour résolution sup à 400px */
+@media screen and (min-width : 401px){ /* pour résolution sup à 400px */
 	#myInput {
 		width: 50%;
 		max-width: 250px;
@@ -140,15 +163,15 @@
 		padding: 8px 14px 8px 28px;
 	}
 	#myUL {
-		width: 65%;
-		margin-top: 32px;
+		width: 49%;
+		margin-top: 35px;
 	}
 	#myUL li a {
 		font-size: 13px;
 	}
 }
 
-@media screen and (min-width : 350px){ /* pour résolution inférieur à 400px */
+@media screen and (min-width : 351px){ /* pour résolution inférieur à 400px */
 	.runes-choice{
 		width: 100%;
 		gap: 8px;
@@ -214,23 +237,23 @@
 	--dt-menu-feedbackTitle-color: #f5f5f5bf;
 	--dt-menu-feedback-container-bg: none;
 	--dt-menu-onclick-border: none;
-	/* THEORYCRAFTING */
-	--lt-theorycrafting-coll-border: grey;
-	--lt-theorycrafting-coll-bg: antiquewhite;
-	--lt-theorycrafting-coll-hover-bg: rgb(211, 199, 182);
-	--lt-theorycrafting-coll-color: black;
-	--lt-theorycrafting-coll-after-color: white;
-	--lt-theorycrafting-content-a-color: #ff9090;
+	/* WIKI */
+	--lt-wiki-coll-border: grey;
+	--lt-wiki-coll-bg: antiquewhite;
+	--lt-wiki-coll-hover-bg: rgb(211, 199, 182);
+	--lt-wiki-coll-color: black;
+	--lt-wiki-coll-after-color: white;
+	--lt-wiki-content-a-color: #ff9090;
 
-	--dt-theorycrafting-content-color: #e7e3e0;
-	--dt-theorycrafting-content-a-color: #c58af9;
-	--dt-theorycrafting-copyicon-color: #b2b2b2;
-	--dt-theorycrafting-coll-after-color: black;
-	--dt-theorycrafting-coll-bg: linear-gradient(to left, #545454a8, #383333);
-	--dt-theorycrafting-coll-color: rgb(228, 228, 228);
-	--dt-theorycrafting-coll-hover-bg: linear-gradient(to left, #434343a8, #282525);
-	--dt-theorycrafting-coll-content-bg: transparent;
-	--dt-theorycrafting-coll-border: none;
+	--dt-wiki-content-color: #e7e3e0;
+	--dt-wiki-content-a-color: #c58af9;
+	--dt-wiki-copyicon-color: #b2b2b2;
+	--dt-wiki-coll-after-color: black;
+	--dt-wiki-coll-bg: linear-gradient(to left, #545454a8, #383333);
+	--dt-wiki-coll-color: rgb(228, 228, 228);
+	--dt-wiki-coll-hover-bg: linear-gradient(to left, #434343a8, #282525);
+	--dt-wiki-coll-content-bg: transparent;
+	--dt-wiki-coll-border: none;
 	/* SEARCHBAR */
 	--lt-searchbar-myinput-border: #ddd;
 	--lt-searchbar-myul-li-a-bg: #f6f6f6;
@@ -418,7 +441,7 @@
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
-	min-height: 75vh;
+	min-height: 78.5vh;
 }
 .div-onclick-menu {
 	display: inline-block;
@@ -443,7 +466,7 @@
 }
 .div-onclick-menu:hover{
 	z-index: 1;
-	color: var(--lt-menu-onclick-color-hover);
+	/* color: var(--lt-menu-onclick-color-hover); */
 	transform: scale(1.02);
 	transition: all ease-out 0.2s;
 }
@@ -463,26 +486,15 @@
 	display: flex;
     align-items: center;
 }
-.new-tag {
-	position: relative;
-	display: flex;
-	align-items: center;
-}
 .new-label {
-	position: absolute;
-	top: -10px;
-	right: -10px;
+	position: relative;
+	bottom: 150%;
+	right: -50%;
 	background-color: #ff0000;
 	color: #ffffff;
 	padding: 4px 8px;
 	font-size: 12px;
 	border-radius: 50%;
-}
-.new-tag a {
-	width: 100%;
-	height: auto;
-	text-decoration: none;
-	color: var(--lt-menu-onclick-color);
 }
 /* Styles for the article container */
 .article-new-box {
@@ -499,6 +511,9 @@
 	padding: 10px;
 	border-radius: 5px;
 	margin-bottom: 20px;
+}
+.article-news-container iframe{
+	max-width: 100%;
 }
 .article-new-body {
 	text-align: center;
@@ -593,12 +608,12 @@
 	text-decoration: none;
 	color: var(--lt-menu-feedback-a-color);
 }
-/*################  THEORYCRAFTING.HTML  ##################*/
-/*################  THEORYCRAFTING.HTML  ##################*/
-/*################  THEORYCRAFTING.HTML  ##################*/
-/*################  THEORYCRAFTING.HTML  ##################*/
-/*################  THEORYCRAFTING.HTML  ##################*/
-/*################  THEORYCRAFTING.HTML  ##################*/
+/*################  WIKI.HTML  ##################*/
+/*################  WIKI.HTML  ##################*/
+/*################  WIKI.HTML  ##################*/
+/*################  WIKI.HTML  ##################*/
+/*################  WIKI.HTML  ##################*/
+/*################  WIKI.HTML  ##################*/
 .main-flexbox{
 	display: flex;
 	flex-direction: column;
@@ -612,6 +627,7 @@
 	gap: 3px;
 }
 .thcrft-name{
+	user-select: none;
 	font-size: calc(14px + 0.390625vw);;
     height: 100%;
     display: flex;
@@ -627,18 +643,18 @@
 .collapsible{
 	width: 100%;
 	height: 44px;
-	border: solid 1px var(--lt-theorycrafting-coll-border);
-	background-color: var(--lt-theorycrafting-coll-bg);
+	border: solid 1px var(--lt-wiki-coll-border);
+	background-color: var(--lt-wiki-coll-bg);
 	border-radius: 5px;
 	align-items: center;
 	text-transform: uppercase;
-	color: var(--lt-theorycrafting-coll-color);
+	color: var(--lt-wiki-coll-color);
 	font-weight: bold;
 	font-size: medium;
 	text-align: left;
 	outline: none;
 }
-.button-theorycrafting-collaps{
+.button-wiki-collaps{
     display: flex;
 	cursor: pointer;
     text-align: center;
@@ -658,7 +674,7 @@
 .collapsible:after {
 	content: '\02795'; /* Unicode character for "plus" sign (+) */
 	font-size: 13px;
-	color: var(--lt-theorycrafting-coll-after-color);
+	color: var(--lt-wiki-coll-after-color);
 	float: right;
 	margin-left: 5px;
 }
@@ -666,7 +682,7 @@
 	content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 .collapsible:hover{
-	background-color: var(--lt-theorycrafting-coll-hover-bg);
+	background-color: var(--lt-wiki-coll-hover-bg);
 }
 .copy-icon-container i{
 	display: inline;
@@ -682,9 +698,9 @@
 	height: 100%;
 	max-width: 700px;
 }
-.content a{
+.styled_a{
 	text-decoration: none;
-	color: var(--lt-theorycrafting-content-a-color);
+	color: var(--lt-wiki-content-a-color);
 }
 .qr-chart-img{
 	max-height: 600px;
@@ -711,18 +727,23 @@
 .search-bar{
 	margin-top: 10px;
 	width: 100%;
-    display: flex;
-    text-align: center;
-    justify-content: center;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	position: relative;
 }
 #myInput {
-    background-image: url("/static/image/svg/look.svg");
+	background-image: url(/static/image/svg/look.svg);
 	background-repeat: no-repeat;
 	border: 1px solid var(--lt-searchbar-myinput-border);
 	border-radius: 6px;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	-o-border-radius: 6px;
+	font-size: 16px;
+	box-sizing: border-box;
 }
 #myUL {
 	list-style-type: none;
@@ -732,6 +753,14 @@
 	overflow-y: scroll;
 	max-height: 284px;
 	max-width: 200px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	border: 1px solid var(--lt-searchbar-myinput-border);
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-o-border-radius: 6px;
+	border-radius: 6px;
+
+	top: 0;
 }
 #myUL li a {
 	padding-top: 5px;
@@ -775,6 +804,31 @@
 	height: 20px;
 	width: auto;
 }
+.arrow_searchbar{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    gap: 5px;
+}
+.before_index{
+    flex-direction: row-reverse;
+}
+.after_index{
+    flex-direction: row;
+}
+.before_index i{
+	transform: rotate(-90deg);
+}
+.after_index i{
+	transform: rotate(90deg);
+}
+.arrow_searchbar img{
+	display: block;
+}
 .rarity-desc{
 	display: flex;
 	align-items: start;
@@ -797,6 +851,42 @@
 /*################  HEROES LIST  ##################*/
 .content-embed-assist span object{
 	user-select: none;
+}
+.toc-hero-desc{
+	padding-left: 0;
+	display: flex;
+	gap: 10px;
+}
+.content-embed-skin{
+	display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+.content-embed-skin img{
+	width: auto;
+    height: 8vh;
+}
+.content-embed-skin div span{
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+	margin-top: 2px;
+	padding: 1px;
+}
+#Skins hr{
+	display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+	margin-inline-start: unset;
+    margin-inline-end: unset;
+    overflow: hidden;
+    border-style: outset;
+    border-width: 0.1px;
+	border-color: #DCDDDE;
 }
 
 /*################  DAMAGE  ##################*/
@@ -1215,10 +1305,6 @@ label {
 		background: var(--dt-menu-onclick-bg);
 		color: var(--dt-menu-onclick-color);
 	}
-	.body_dark_mode .new-tag a{
-		border: var(--dt-menu-onclick-border);
-		color: var(--dt-menu-onclick-color);
-	}
 	/* ARTICLE NEW */
 	.body_dark_mode .article-new-box {
 		background-color: #252525;
@@ -1267,10 +1353,10 @@ label {
 	.body_dark_mode .weeks{
 		color: var(--dt-maze-weeks-color);
 	}
-	/* THEORYCRAFTING HTML */
+	/* WIKI HTML */
 	.body_dark_mode .altar_cost_content, .body_dark_mode .flex-box .egg_stats_content, .body_dark_mode .hidden_stats_content, .body_dark_mode .glyphs_explanation, .body_dark_mode .refinement_explanation, .body_dark_mode .faq{
 		border-radius: 5px;
-		color: var(--dt-theorycrafting-content-color);
+		color: var(--dt-wiki-content-color);
 	}
 	.body_dark_mode #week_1,.body_dark_mode #week_2,
 	.body_dark_mode #week_3,.body_dark_mode #week_4,
@@ -1281,25 +1367,25 @@ label {
 		border-left: var(--dt-maze-weeks-border-left);
 	}
 	.body_dark_mode .copy-icon-container i{
-		color: var(--dt-theorycrafting-copyicon-color);
+		color: var(--dt-wiki-copyicon-color);
 	}
 	.body_dark_mode .collapsible:after {
-		color: var(--dt-theorycrafting-coll-after-color);
+		color: var(--dt-wiki-coll-after-color);
 	}
 	.body_dark_mode .content{
-		background-color: var(--dt-theorycrafting-coll-content-bg);
+		background-color: var(--dt-wiki-coll-content-bg);
 	}
 	.body_dark_mode .collapsible{
-		border: var(--dt-theorycrafting-coll-border);
-		background: var(--dt-theorycrafting-coll-bg);
-		color: var(--dt-theorycrafting-coll-color);
+		border: var(--dt-wiki-coll-border);
+		background: var(--dt-wiki-coll-bg);
+		color: var(--dt-wiki-coll-color);
 	}
 	.body_dark_mode .collapsible:hover{
-		background: var(--dt-theorycrafting-coll-hover-bg);
+		background: var(--dt-wiki-coll-hover-bg);
 	}
-	.body_dark_mode .content a{
+	.body_dark_mode .styled_a{
 		text-decoration: none;
-		color: var(--dt-theorycrafting-content-a-color);
+		color: var(--dt-wiki-content-a-color);
 	}
 	/* DESCRIPTION PAGE HTML */
 	.body_dark_mode #myUL li a {

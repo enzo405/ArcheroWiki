@@ -1,7 +1,7 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.1">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
 <title>Archero - Wiki - Maze Map</title>
 <meta name="description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.">
 {% endblock %}
@@ -23,7 +23,7 @@
 	let list = document.getElementById("main");
 
 	let author = document.createElement("p");
-	author.innerText = "Author: TigerShark14\nCreated: October 3rd, 2022"
+	author.innerText = "Author: TigerShark14\nThis solution is auto-updated\nConnected to Archero Maze API"
 	list.appendChild(author);
 	let contents = document.createElement("h2");
 	contents.innerText  = "Contents"
