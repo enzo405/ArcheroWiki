@@ -1,8 +1,8 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.1">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.1">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.4b">
 <meta property="og:type" content="website">
 <meta name="description" content="Discover the extensive collection of heroes in Archero, each with unique star boosts, base skills, and descriptions. Explore our comprehensive list to uncover the full potential of each character. Make strategic choices and harness the power of your heroes to overcome challenges and triumph in Archero.">
 {% if hero == "yes" %}
@@ -10,13 +10,13 @@
 <meta property="og:title" content="{{ name_hero }}">
 <meta property="og:url" content="{{ url_cpy }}">
 <meta property="og:description" content="{{ hero_data.hero_description|safe }} {{ hero_data.skill|safe }} {{ hero_data.skill_details|safe }}">
-<meta property="og:image" content="{% static hero_image %}?version=1.6.1">
+<meta property="og:image" content="{% static hero_image %}?version=1.6.4b">
 {% else %}
 <title>Archero - Wiki</title>
 <meta property="og:title" content="Archero - Heroes Description">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/heroes">
 <meta property="og:description" content="Discover the extensive collection of heroes in Archero, each with unique star boosts, base skills, and descriptions. Explore our comprehensive list to uncover the full potential of each character. Make strategic choices and harness the power of your heroes to overcome challenges and triumph in Archero.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.1">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.4b">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -41,12 +41,41 @@
 				}
 			}
 		</script>
+		<a class="before_index arrow_searchbar" href="/wiki/heroes/{{ index_before }}/">
+			<img src="/static/image/hero_icon/icon_{{ index_before }}.png" width="30" alt="{{ index_before }}">
+			<i class="fas fa-arrow-up"></i>
+		</a>
 		<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for hero.." value="{{ name_hero }}">
 		<ul id="myUL" class="searchbar-ul-hero" style="display: none;">
 			{% for k in HeroData %}
 			<li><a class="toggle-display-list" href="/wiki/heroes/{{ k }}/"><div class="item_name">{{ k }}</div><div class="siimg"><img src="/static/image/hero_icon/icon_{{ k }}.png" width="26" alt="{{ k }}"></div></a></li>
 			{% endfor %}
 		</ul>
+		<a class="after_index arrow_searchbar" href="/wiki/heroes/{{ index_after }}/">
+			<img src="/static/image/hero_icon/icon_{{ index_after }}.png" width="30" alt="{{ index_after }}">
+			<i class="fas fa-arrow-up"></i>
+		</a>
+	</div>
+	<div class="embed-container floating_embed">
+		<div class="kn3fae-0 ezpxFx">
+			<div class="kn3fae-2 eKjosW">
+				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(109, 109, 109);">
+					<div class="sc-3qrykn-0 bdFBtt">
+						<div class="sc-3qrykn-1 bsDYtY">
+							<div class="heOpKb" style="color: rgb(255, 255, 255); text-align: center;">Jump to</div>
+						</div>
+						<div class="sc-3qrykn-3 hXMbfy">
+							<ul class="toc-hero-desc">
+								<li class="li_wo_marker"><a class="styled_a center_content" href="#Hero"><object type="image/png" data="/static/image/svg/hero.svg" width="15" height="15"></object>Hero</a></li>
+								<li class="li_wo_marker"><a class="styled_a center_content" href="#Star"><object type="image/png" data="/static/image/svg/star.svg" width="15" height="15"></object>Star</a></li>
+								<li class="li_wo_marker"><a class="styled_a center_content" href="#Assist"><object type="image/png" data="/static/image/svg/assist.svg" width="15" height="15"></object>Assist</a></li>
+								<li class="li_wo_marker"><a class="styled_a center_content" href="#Skins"><object type="image/png" data="/static/image/svg/icon-characterskin-cloth.svg" width="15" height="15"></object>Skins</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="embed-container">
 		<div class="kn3fae-0 ezpxFx">
@@ -59,11 +88,14 @@
 				</a>
 				<span id="{{ name_hero|lower }}" class="span-share"><a onclick="createModale(this,false,'info')" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
 			</div>
-			<div class="kn3fae-2 eKjosW">
+			<div class="kn3fae-2 eKjosW" id="Hero">
 				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
 					<div class="sc-3qrykn-0 bdFBtt">
 						<div class="sc-3qrykn-1 bsDYtY">
-							<div class="sc-27l7o2-0 heOpKb" id="name_hero">{{ name_hero }}</div>
+							<div class="sc-27l7o2-0 heOpKb thumbnail-title" id="name_hero">
+								<img src="/static/{{ hero_image }}" alt="Thumbnail" class="sc-3qrykn-7" id="hero_image">
+								{{ name_hero }}
+							</div>
 						</div>
 						<div class="sc-3qrykn-3 hXMbfy">
 							<div class="sc-27l7o2-0 heOpKb" id="hero_description">{{ hero_data.description|safe }}</div>
@@ -127,7 +159,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="kn3fae-2 eKjosW">
+			<div class="kn3fae-2 eKjosW" id="Star">
 				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
 					<div class="sc-3qrykn-0 bdFBtt">
 						<div class="rgqgux-1 dHYyKL">
@@ -152,7 +184,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="kn3fae-2 eKjosW">
+			<div class="kn3fae-2 eKjosW" id="Assist">
 				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
 					<div class="sc-3qrykn-0 bdFBtt">
 						<div class="rgqgux-1 dHYyKL">
@@ -160,7 +192,7 @@
 								<strong>Assist Brave</strong>
 							</div>
 							<div class="sc-3qrykn-3 hXMbfy">
-								<div class="sc-27l7o2-0 heOpKb center_content" id="hero_description">Needs <object type='image/png' data='/static/image/svg/{{ hero_data.hero_assist_evolve }}' width='18' height='18'></object> to evolve assist bravery level</div>
+								<div class="sc-27l7o2-0 heOpKb center_content" style="color: rgb(243 243 243);">Needs <object type='image/png' data='/static/image/svg/{{ hero_data.hero_assist_evolve }}' width='18' height='18'></object> to evolve assist bravery level</div>
 							</div>
 						</div>
 						<div class="sc-3qrykn-4 hQKgZF">
@@ -174,9 +206,52 @@
 								</div>
 							</div>
 						</div>
+						<div class="rgqgux-1 dHYyKL">
+							<div class="sc-3qrykn-3 hXMbfy" style="margin: 0;">
+								<div class="sc-27l7o2-0 heOpKb" style="color: rgb(243 243 243);">Available assist heroes:</div>
+							</div>
+							<div class="sc-27l7o2-0 heOpKb center_content" style="margin-bottom: 0.6vh;margin-top: 0.4vh;overflow: auto;">
+								{% for h in hero_data.list_hero_assist %}
+									<a href='/wiki/heroes/{{ h }}/' class="styled_a center_content"><img src="/static/image/hero_icon/icon_{{ h }}.png" width="27" height="27"></img></a>
+								{% endfor %}
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
+			{% if hero_data.skins %}
+			<div class="kn3fae-2 eKjosW" id="Skins">
+				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
+					<div class="sc-3qrykn-0 bdFBtt">
+						<div class="rgqgux-1 dHYyKL">
+							<div class="sc-27l7o2-0 heOpKb" style="color: white;">
+								<strong>Skins</strong>
+							</div>
+						</div>
+						<div class="sc-3qrykn-4 hQKgZF">
+							{% for skin in hero_data.skins %}
+							<div class="rgqgux-0 dQAxvm">
+								<div class="rgqgux-2 jFcAhO">
+									<div class="content-embed-skin sc-27l7o2-0 heOpKb">
+										<img src="/static/image/hero_skin/{{ name_hero }}_{{ skin.src }}.png?version=1.6.4b" alt="{{ name_hero }}'s' {{ skin.name }} skin thumbnail">
+										<div>
+											<h3>{{ skin.name }}</h3>
+											<div>
+												<span>{{ skin.activ_boost|safe }}</span>
+												<span>{{ skin.passiv_boost|safe }}</span>
+												<span>{{ skin.price|safe }}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<hr>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endif %}
 		</div>
 	</div>
 </div>

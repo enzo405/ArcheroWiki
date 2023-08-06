@@ -1302,285 +1302,34 @@
     "stella_120": [125, 6, 6, 7, 7]
   },
   "StuffAltar": {
-    "0_inc_attack": 10,
-    "0_attack": 0,
-    "10_inc_attack": 10,
-    "10_attack": 100,
-    "20_inc_attack": 15,
-    "20_attack": 200,
-    "30_inc_attack": 15,
-    "30_attack": 350,
-    "40_inc_attack": 20,
-    "40_attack": 500,
-    "50_inc_attack": 20,
-    "50_attack": 700,
-    "60_inc_attack": 30,
-    "60_attack": 900,
-    "70_inc_attack": 30,
-    "70_attack": 1200,
-    "80_inc_attack": 40,
-    "80_attack": 1500,
-    "90_inc_attack": 50,
-    "90_attack": 1900,
-    "100_inc_attack": 70,
-    "100_attack": 2400,
-    "110_inc_attack": 100,
-    "110_attack": 3100,
-    "120_inc_attack": 0,
-    "120_attack": 4100,
-    "0_inc_hp": 50,
-    "0_hp": 0,
-    "10_inc_hp": 50,
-    "10_hp": 500,
-    "20_inc_hp": 75,
-    "20_hp": 1000,
-    "30_inc_hp": 75,
-    "30_hp": 1750,
-    "40_inc_hp": 100,
-    "40_hp": 2500,
-    "50_inc_hp": 100,
-    "50_hp": 3500,
-    "60_inc_hp": 150,
-    "60_hp": 4500,
-    "70_inc_hp": 150,
-    "70_hp": 6000,
-    "80_inc_hp": 200,
-    "80_hp": 7500,
-    "90_inc_hp": 250,
-    "90_hp": 9500,
-    "100_inc_hp": 350,
-    "100_hp": 12000,
-    "110_inc_hp": 500,
-    "110_hp": 15500,
-    "120_inc_hp": 0,
-    "120_hp": 20500,
-    "0_inc_healing_effect": 5,
-    "0_healing_effect": 0,
-    "10_inc_healing_effect": 10,
-    "10_healing_effect": 50,
-    "20_inc_healing_effect": 10,
-    "20_healing_effect": 150,
-    "30_inc_healing_effect": 15,
-    "30_healing_effect": 250,
-    "40_inc_healing_effect": 15,
-    "40_healing_effect": 400,
-    "50_inc_healing_effect": 15,
-    "50_healing_effect": 550,
-    "60_inc_healing_effect": 20,
-    "60_healing_effect": 700,
-    "70_inc_healing_effect": 20,
-    "70_healing_effect": 900,
-    "80_inc_healing_effect": 30,
-    "80_healing_effect": 1100,
-    "90_inc_healing_effect": 30,
-    "90_healing_effect": 1400,
-    "100_inc_healing_effect": 40,
-    "100_healing_effect": 1700,
-    "110_inc_healing_effect": 50,
-    "110_healing_effect": 2100,
-    "120_inc_healing_effect": 0,
-    "120_healing_effect": 2600
+    "inc_attack": [10,10,15,15,20,20,30,30,40,50,70,100,0],
+    "attack": [0,100,200,350,500,700,900,1200,1500,1900,2400,3100,4100],
+    "inc_hp": [50,50,75,75,100,100,150,150,200,250,350,500,0],
+    "hp": [0,500,1000,1750,2500,3500,4500,6000,7500,9500,12000,15500,20500],
+    "inc_healing_effect": [5,10,10,15,15,15,20,20,30,30,40,50,0],
+    "healing_effect": [0,50,150,250,400,550,700,900,1100,1400,1700,2100,2600]
   },
   "HerosAltar": {
-    "0_inc_attack": 10,
-    "0_attack": 0,
-    "10_inc_attack": 10,
-    "10_attack": 100,
-    "20_inc_attack": 15,
-    "20_attack": 200,
-    "30_inc_attack": 15,
-    "30_attack": 350,
-    "40_inc_attack": 20,
-    "40_attack": 500,
-    "50_inc_attack": 20,
-    "50_attack": 700,
-    "60_inc_attack": 30,
-    "60_attack": 900,
-    "70_inc_attack": 30,
-    "70_attack": 1200,
-    "80_inc_attack": 40,
-    "80_attack": 1500,
-    "90_inc_attack": 50,
-    "90_attack": 1900,
-    "100_inc_attack": 70,
-    "100_attack": 2400,
-    "110_inc_attack": 100,
-    "110_attack": 3100,
-    "120_inc_attack": 0,
-    "120_attack": 4100,
-    "0_inc_hp": 50,
-    "0_hp": 0,
-    "10_inc_hp": 50,
-    "10_hp": 500,
-    "20_inc_hp": 75,
-    "20_hp": 1000,
-    "30_inc_hp": 75,
-    "30_hp": 1750,
-    "40_inc_hp": 100,
-    "40_hp": 2500,
-    "50_inc_hp": 100,
-    "50_hp": 3500,
-    "60_inc_hp": 150,
-    "60_hp": 4500,
-    "70_inc_hp": 150,
-    "70_hp": 6000,
-    "80_inc_hp": 200,
-    "80_hp": 7500,
-    "90_inc_hp": 250,
-    "90_hp": 9500,
-    "100_inc_hp": 350,
-    "100_hp": 12000,
-    "110_inc_hp": 500,
-    "110_hp": 15500,
-    "120_inc_hp": 0,
-    "120_hp": 20500,
-    "0_inc_projectile_resistance": 5,
-    "0_projectile_resistance": 0,
-    "10_inc_projectile_resistance": 10,
-    "10_projectile_resistance": 50,
-    "20_inc_projectile_resistance": 10,
-    "20_projectile_resistance": 150,
-    "30_inc_projectile_resistance": 15,
-    "30_projectile_resistance": 250,
-    "40_inc_projectile_resistance": 15,
-    "40_projectile_resistance": 400,
-    "50_inc_projectile_resistance": 15,
-    "50_projectile_resistance": 550,
-    "60_inc_projectile_resistance": 20,
-    "60_projectile_resistance": 700,
-    "70_inc_projectile_resistance": 20,
-    "70_projectile_resistance": 900,
-    "80_inc_projectile_resistance": 30,
-    "80_projectile_resistance": 1100,
-    "90_inc_projectile_resistance": 30,
-    "90_projectile_resistance": 1400,
-    "100_inc_projectile_resistance": 40,
-    "100_projectile_resistance": 1700,
-    "110_inc_projectile_resistance": 50,
-    "110_projectile_resistance": 2100,
-    "120_inc_projectile_resistance": 0,
-    "120_projectile_resistance": 2600
+    "inc_attack": [10,10,15,15,20,20,30,30,40,50,70,100,0],
+    "attack": [0,100,200,350,500,700,900,1200,1500,1900,2400,3100,4100],
+    "inc_hp": [50,50,75,75,100,100,150,150,200,250,350,500,0],
+    "hp": [0,500,1000,1750,2500,3500,4500,6000,7500,9500,12000,15500,20500],
+    "inc_projectile_resistance": [5,10,10,15,15,15,20,20,30,30,40,50,0],
+    "projectile_resistance": [0,50,100,150,200,300,400,500,600,750,900,1050,1200]
   },
   "StuffAltarAscension": {
-    "0_attack": 0,
-    "0_hp": 0,
-    "0_healing_effect": 0,
-    "0_equipment_base": 0,
-    "1_attack": 0,
-    "1_hp": 5,
-    "1_healing_effect": 0,
-    "1_equipment_base": 2,
-    "2_attack": 5,
-    "2_hp": 5,
-    "2_healing_effect": 0,
-    "2_equipment_base": 4,
-    "3_attack": 5,
-    "3_hp": 5,
-    "3_healing_effect": 5,
-    "3_equipment_base": 6,
-    "4_attack": 5,
-    "4_hp": 10,
-    "4_healing_effect": 5,
-    "4_equipment_base": 8,
-    "5_attack": 10,
-    "5_hp": 10,
-    "5_healing_effect": 5,
-    "5_equipment_base": 10,
-    "6_attack": 10,
-    "6_hp": 10,
-    "6_healing_effect": 10,
-    "6_equipment_base": 13,
-    "7_attack": 10,
-    "7_hp": 15,
-    "7_healing_effect": 10,
-    "7_equipment_base": 16,
-    "8_attack": 15,
-    "8_hp": 15,
-    "8_healing_effect": 10,
-    "8_equipment_base": 19,
-    "9_attack": 15,
-    "9_hp": 15,
-    "9_healing_effect": 15,
-    "9_equipment_base": 22,
-    "10_attack": 15,
-    "10_hp": 20,
-    "10_healing_effect": 15,
-    "10_equipment_base": 26,
-    "11_attack": 20,
-    "11_hp": 20,
-    "11_healing_effect": 15,
-    "11_equipment_base": 30,
-    "12_attack": 20,
-    "12_hp": 20,
-    "12_healing_effect": 20,
-    "12_equipment_base": 34
+    "attack": [0,0,5,5,5,10,10,10,15,15,15,20,20],
+    "hp": [0,5,5,5,10,10,10,15,15,15,20,20,20],
+    "healing_effect": [0,0,0,5,5,5,10,10,10,15,15,15,15],
+    "equipment_base": [0,2,4,6,8,10,13,16,19,22,26,30,34],
+    "equipment_droprate": [0,0,3,6,9,12,15,18,21,24,27,30,33]
   },
   "HerosAltarAscension": {
-    "0_attack": 0,
-    "0_hp": 0,
-    "0_hp_drop": 0,
-    "0_heros_base": 0,
-    "0_dmg_elite": 0,
-    "1_attack": 0,
-    "1_hp": 5,
-    "1_hp_drop": 0,
-    "1_heros_base": 2,
-    "1_dmg_elite": 0,
-    "2_attack": 5,
-    "2_hp": 5,
-    "2_hp_drop": 0,
-    "2_heros_base": 4,
-    "2_dmg_elite": 0,
-    "3_attack": 5,
-    "3_hp": 5,
-    "3_hp_drop": 5,
-    "3_heros_base": 6,
-    "3_dmg_elite": 0,
-    "4_attack": 5,
-    "4_hp": 10,
-    "4_hp_drop": 5,
-    "4_heros_base": 8,
-    "4_dmg_elite": 0,
-    "5_attack": 10,
-    "5_hp": 10,
-    "5_hp_drop": 5,
-    "5_heros_base": 10,
-    "5_dmg_elite": 4,
-    "6_attack": 10,
-    "6_hp": 10,
-    "6_hp_drop": 10,
-    "6_heros_base": 13,
-    "6_dmg_elite": 6,
-    "7_attack": 10,
-    "7_hp": 15,
-    "7_hp_drop": 10,
-    "7_heros_base": 16,
-    "7_dmg_elite": 6,
-    "8_attack": 15,
-    "8_hp": 15,
-    "8_hp_drop": 10,
-    "8_heros_base": 19,
-    "8_dmg_elite": 8,
-    "9_attack": 15,
-    "9_hp": 15,
-    "9_hp_drop": 15,
-    "9_heros_base": 22,
-    "9_dmg_elite": 8,
-    "10_attack": 15,
-    "10_hp": 20,
-    "10_hp_drop": 15,
-    "10_heros_base": 26,
-    "10_dmg_elite": 10,
-    "11_attack": 20,
-    "11_hp": 20,
-    "11_hp_drop": 15,
-    "11_heros_base": 30,
-    "11_dmg_elite": 10,
-    "12_attack": 20,
-    "12_hp": 20,
-    "12_hp_drop": 20,
-    "12_heros_base": 34,
-    "12_dmg_elite": 12
+    "attack": [0,0,5,5,5,10,10,10,15,15,15,20,20],
+    "hp": [0,5,5,5,10,10,10,15,15,15,20,20,20],
+    "hp_drop": [0,0,0,5,5,5,10,10,10,15,15,15,15],
+    "heros_base": [0,2,4,6,8,10,13,16,19,22,26,30,34],
+    "dmg_elite": [0,0,0,0,0,4,6,6,8,8,10,10,12]
   },
   "JewelStats": {
     "none": {
@@ -6252,588 +6001,699 @@
   "SkillData": {
     "Absolute Strike": {
       "value": "Absolute_Strike",
-      "description": "After moving some distance, the next attack's damage is doubled<br>Defeat Chapter 21",
+      "description": "After moving some distance, the next attack's damage is doubled",
+      "requirement": "Requirement : clear Chapter 21",
       "stats": ""
     },
     "Agility": {
       "value": "Agility",
       "description": "Your Dodge chance increase the lower your HP is",
+      "requirement": "",
       "stats": "+0.3% chance to dodge each 1% of life missing. (Additive)"
     },
     "Attack Boost": {
       "value": "Attack_Boost",
       "description": "Increase your damage",
+      "requirement": "",
       "stats": "[Major] Damage + 30%<br>[Minor] Damage + 15%<br>Additive"
     },
     "Attack Plus": {
       "value": "Attack_Plus",
       "description": "Increases your attack when you don't take damage in a stage",
+      "requirement": "",
       "stats": "Increases your attack by 2.25% when you don't take damage in a room.<br> 18 times max [40%]"
     },
     "Attack Speed Boost": {
       "value": "Attack_Speed_Boost",
       "description": "Increase your attack speed",
+      "requirement": "",
       "stats": "\u2022 [Major] Attack Speed +25%<br>\u2022 [Minor] Attack Speed +12.5%<br>\u2022 Additive"
     },
     "Angelic Blessing": {
       "value": "Angelic_Blessing",
       "description": "Angel room has chance to heal 2x 4x HP",
-      "stats": "<br>"
-    },
-    "Berserker": {
-      "value": "Berserker",
-      "description": "Increases Max Fury by 50%",
-      "stats": "Increases Max Fury by 50%. Fury charges faster at low HP. Upon taking damage, Fury charges by a lot."
+      "requirement": "",
+      "stats": ""
     },
     "Blade Storm": {
       "value": "Blade_Storm",
       "description": "Whirldwind storm of blades that blocks projectiles.",
-      "stats": "<br>"
+      "requirement": "Only available while using <a class='styled_a' href='/wiki/item/Antiquated_Sword/'>Antiquated Sword</a>",
+      "stats": ""
     },
     "Blaze": {
       "value": "Blaze",
       "description": "Your attacks cause a Flame effect",
+      "requirement": "",
       "stats": "Deals 18% equipment damage every 0.25s to enemies hit by weapon projectile after initial hit up to 7 ticks (2s)"
     },
     "Blazing Meteor": {
       "value": "Blazing_Meteor",
       "description": "Summon a flame meteor to attack enemies",
-      "stats": "Burn chips off enemy HP for 2 seconds.<br>  225% modifiable damage, Partial hit: 80% damage.<br> Defeat Chapter 9. <br>Not affected by Rage ability."
+      "requirement": "Requirement : clear Chapter 9",
+      "stats": "Burn chips off enemy HP for 2 seconds.<br>  225% modifiable damage, Partial hit: 80% damage.<br>Not affected by Rage ability."
     },
     "Blazing Star": {
       "value": "Blazing_Star",
       "description": "Summon a flame star to attack enemies",
+      "requirement": "",
       "stats": "Burn chips off enemy HP for 2 seconds.<br>  90% modifiable damage. <br>Not affected by Rage ability.<br>Stars are affected by ricochet and will bounce between enemies just like ricochet."
     },
     "Blazing Strike": {
       "value": "Blazing_Strike",
       "description": "Summon a flame sword to attack enemies",
+      "requirement": "",
       "stats": "Burn chips off enemy HP for 2 seconds.<br>  165% modifiable damage.<br>Not affected by Rage ability.<br>  The faster the attack speed, the shorter the summoning time."
     },
     "Blazing Sword": {
       "value": "Blazing_Sword",
       "description": "Summons 2 flame swords to spin around you",
-      "stats": "Burn chips off enemy HP for 2 seconds.<br>132% modifiable damage.<br>Defeat Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
+      "requirement": "Requirement : clear Chapter 2",
+      "stats": "Burn chips off enemy HP for 2 seconds.<br>132% modifiable damage.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
     },
     "Bloodthirst": {
       "value": "Bloodthirst",
       "description": "Restores HP when you kill enemies!",
+      "requirement": "",
       "stats": "Gain 1.5% of base Max HP on enemy kills."
     },
     "Bolt": {
       "value": "Bolt",
       "description": "Your attacks cause Lightning effect",
+      "requirement": "",
       "stats": "Deal 25% equipment damage to enemies within a few tiles of enemies hit by weapon projectile.<br> Deals 30% (Up to 45%) damage to the initial target, with an additional 5% damage per enemy chained by the lightning bolt.<br>Works well with Ricochet<br>Maximum of one spark per enemy per tick.<br> i.e. doesn't hit twice with Front Arrow or extremely high attack speed."
     },
     "Bolt Circle": {
       "value": "Bolt_Circle",
       "description": "Two lightning orbs circle around you",
+      "requirement": "",
       "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br>  Affected by rage.<br>  Spins faster with attack speed boosts."
     },
     "Bolt Meteor": {
       "value": "Bolt_Meteor",
       "description": "Summon a bolt meteor to attack enemies",
-      "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  225% modifiable damage, Partial hit: 80% damage.<br> Defeat Chapter 9.<br>Not affected by Rage ability."
+      "requirement": "Requirement : clear Chapter 9",
+      "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  225% modifiable damage, Partial hit: 80% damage.<br> Not affected by Rage ability."
     },
     "Bolt Star": {
       "value": "Bolt_Star",
       "description": "Summon a bolt star to attack enemies",
+      "requirement": "",
       "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  90% modifiable damage.<br>Not affected by Rage ability.<br>  Stars are affected by ricochet and will bounce between enemies just like ricochet."
     },
     "Bolt Strike": {
       "value": "Bolt_Strike",
       "description": "Summon a bolt sword to attack enemies",
+      "requirement": "",
       "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>  165% modifiable damage.<br>Not affected by Rage ability.<br>  The faster the attack speed, the shorter the summoning time."
     },
     "Bolt Sword": {
       "value": "Bolt_Sword",
       "description": "Summons 2 bolt swords to spin around you",
-      "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>132% modifiable damage.<br>Defeat Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
+      "requirement": "Requirement : clear Chapter 2",
+      "stats": "The shocks from the lightning bolts quickly chips off enemy HP, and bounces to other nearby enemies.<br>132% modifiable damage.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
     },
     "Bouncy Wall": {
       "value": "Bouncy_Wall",
       "description": "Your arrows bounce up to 2 times against walls.",
+      "requirement": "",
       "stats": "-50% damage for each bounce"
     },
     "Burst Punch": {
       "value": "Burst_Punch",
       "description": "Chance to trigger explosion when enemies are hit. Melee attack chance is 2x of ranged attack chance (Melee attacks chance of triggering explosions is 2x higher than Ranged attacks)",
-      "stats": "Only Available with Fist <a class='a_styled' href='/wiki/item/Expedition_Fist/'>Expedition Weapon</a>"
+      "requirement": "Only available while using <a class='a_styled' href='/wiki/item/Expedition_Fist/'>Expedition Weapon</a>",
+      "stats": ""
     },
     "Chilling Blast": {
       "value": "Chilling_Blast",
       "description": "Enemies blast a cold wave on death",
-      "stats": "Enemies explode on death causing an explosive ice effect.<br> Defeat Chapter 3."
+      "requirement": "Requirement : clear Chapter 3",
+      "stats": "Enemies explode on death causing an explosive ice effect."
     },
     "Crit Aura": {
       "value": "Crit_Aura",
       "description": "Increases Crit Chance for a short time",
+      "requirement": "",
       "stats": "Increases your crit chance by 47.5% for 2 seconds.<br> 8 second cooldown"
     },
     "Crit Master": {
       "value": "Crit_Master",
       "description": "Increase your critical damage & chance",
+      "requirement": "",
       "stats": "[Major] Crit Damage + 40% & Crit chance + 10%<br>[Minor] Crit Damage + 20% & Crit chance + 5%<br>Additive"
     },
     "Crit Plus": {
       "value": "Crit_Plus",
       "description": "Increases your crit chance when you don't take damage in a stage",
+      "requirement": "",
       "stats": "Increases your crit chance by 0.9% when you don't take damage in a room.<br> 20 times max [18%]"
     },
     "Dauntless Greatsword": {
       "value": "Dauntless_Greatsword",
       "description": "Reduced greatsword rage cost. Forms can be freely changed.",
-      "stats": "<br>"
+      "requirement": "Only available while using <a class='styled_a' href='/wiki/item/Antiquated_Sword/'>Antiquated Sword</a>",
+      "stats": ""
     },
     "Dark Touch": {
       "value": "Dark_Touch",
       "description": "Your attacks cause a Dark effect",
+      "requirement": "",
       "stats": "Dark touch places a bomb on a struck target for 1 second, the explosion deals 90% of modified damage from ATK boosts in an area of effect around the targeted mob.<br>Base damage does not affect damage.<br> Multiple darks will not stack on an enemy."
     },
     "Death Axe": {
       "value": "Death_Axe",
-      "description": "Summmons 6 axes when an enemy is defeated<br>Defeat Chapter 13",
+      "description": "Summmons 6 axes when an enemy is defeated",
+      "requirement": "Requirement : clear Chapter 13",
       "stats": ""
     },
     "Death Bomb": {
       "value": "Death_Bomb",
       "description": "Cause enemies to explode on death",
-      "stats": "Enemies explode on death causing an area of effect damage (2/3 of base damage).<br> Defeat Chapter 3."
+      "requirement": "Requirement : clear Chapter 3",
+      "stats": "Enemies explode on death causing an area of effect damage (66% of base damage)."
     },
     "Death Nova": {
       "value": "Death_Nova",
       "description": "Enemies explode into lightning bolts upon death",
+      "requirement": "",
       "stats": "When an enemy is killed, enemies create holy projectiles, shooting out in 8 equidistant directions dealing 30% current damage on contact."
     },
     "Diagonal Arrows": {
       "value": "Diagonal_Arrows",
       "description": "Fire 2 additional projectile diagonally.",
+      "requirement": "",
       "stats": "You fire an additional projectile diagonally forward to the left and right.<br>You can get up to 3 diagonal arrow.<br><br><b>-20% Damage per arrow in Melee Attack</b><br><b>100% of Damage per arrow in Range Attack</b>"
     },
     "Dodge Aura": {
       "value": "Dodge_Aura",
       "description": "Greatly increases Dodge once in a while.",
-      "stats": "<br>"
+      "requirement": "",
+      "stats": ""
     },
     "Dodge Burst": {
       "value": "Dodge_Burst",
       "description": "Greatly increases Attack once in a while after dodging.",
-      "stats": "<br>"
+      "requirement": "",
+      "stats": ""
     },
     "Dodge Challenge": {
       "value": "Dodge_Challenge",
       "description": "Increases Dodge if no damage taken when clearing a room.",
-      "stats": "<br>"
+      "requirement": "",
+      "stats": ""
     },
     "Dodge Master": {
       "value": "Dodge_Master",
       "description": "Your Dodge Chance is increased",
+      "requirement": "",
       "stats": "Dodge Chance +20%<br>  Dodge is multiplicative when combining dodge from different items and abilities"
     },
     "Double Payback": {
       "value": "Double_Payback",
-      "description": "Chance to summon twice the summoned objects<br>Defeat Chapter 17",
+      "description": "Chance to summon twice the summoned objects",
+      "requirement": "Requirement : clear Chapter 17",
       "stats": ""
     },
     "Dwarf": {
       "value": "Dwarf",
       "description": "Transform into a dwarf with a smaller body",
-      "stats": "Reduces your hitbox by 15%.<br>Crit Chance + 12%.<br>Defeat Chapter 10"
+      "requirement": "Requirement : clear Chapter 10",
+      "stats": "Reduces your hitbox by 15%.<br>Crit Chance + 12%."
     },
     "Enhanced Summon": {
       "value": "Enhanced_Summon",
       "description": "Greatly increases summoned creature duration and attack",
-      "stats": "<br>"
+      "requirement": "",
+      "stats": ""
     },
     "Element Burst": {
       "value": "Element_Burst",
       "description": "Various elemental stats, elemental damage has chance for Crit.",
+      "requirement": "",
       "stats": "<em>Elemental damage crit chance/damage TBC</em>"
     },
     "Element Upgrade": {
       "value": "Element_Upgrade",
       "description": "Elemental damage increased greatly.",
+      "requirement": "",
       "stats": "Freeze Damage +100%<br>Bolt Damage +150%<br>Poison Damage +250%<br>Blaze Damage +100%<br>Dark Touch Damage +100%"
     },
     "Eye For An Eye": {
       "value": "Eye_For_An_Eye",
-      "description": "When summoned object disappears, it has a chance to drop HP and MP items (red & blue hearts)<br>Defeat Chapter 17",
+      "description": "When summoned object disappears, it has a chance to drop HP and MP items (red & blue hearts)",
+      "requirement": "Requirement : clear Chapter 17",
       "stats": ""
     },
     "Explosive Arrow": {
       "value": "Explosive_Arrow",
       "description": "Store explosive arrow when moving.<br> Explodes when enemies or walls are hit",
+      "requirement": "",
       "stats": "Can stack up to 4 explosive arrow.<br>Each explosion does x1.5 damage to mobs close to the wall"
     },
     "Extra Life": {
       "value": "Extra_Life",
       "description": "Provides you an automatic free revival after death",
+      "requirement": "",
       "stats": "Revives you once after death.<br>  Reduces your Max HP by 30% (Devil Tax).<br>  Can only be recieved by the devil<br>  There is no invincibility when reviving from the extra life', Does not use up your revive.<br> When you exclude reviving, Extra Life provides you with 40% more HP overall. However if you choose to revive, Extra Life only provides you with a 5% increase overall in HP compared to if you didn't accept the deal from the Devil"
     },
     "Fatal Excitement": {
       "value": "Fatal_Excitement",
       "description": "The lower your HP, the faster circling objects spin",
-      "stats": "<br>"
+      "requirement": "",
+      "stats": ""
     },
     "Fire Circle": {
       "value": "Fire_Circle",
       "description": "Two flame orbs circle around you",
+      "requirement": "",
       "stats": "Burn chips off enemy HP for 2 seconds.<br> Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br> Affected by rage.<br> Spins faster with attack speed boosts."
     },
     "Firepower Boost": {
       "value": "Firepower_Boost",
-      "description": "Summoned object gets a front arrow<br>Defeat Chapter 17",
+      "description": "Summoned object gets a front arrow",
+      "requirement": "Requirement : clear Chapter 17",
       "stats": ""
     },
     "Freeze": {
       "value": "Freeze",
       "description": "Slows enemies down",
+      "requirement": "",
       "stats": "Freezes enemies until attacked or for 2 seconds.<br> Only freezes enemies; does not slow enemies. Mobs will be unfrozen by next hit, including pets hits. Freeze changes the behavior of mobs"
     },
     "Front Arrow": {
       "value": "Front_Arrow",
       "description": "Shoot 2 arrows in one shot.",
+      "requirement": "",
       "stats": "  Additional Front Arrow.<br>  -25% damage per arrow<br><br><b>Devil Stats</b><br>  Additional Front Arrow.<br>  -20% damage per arrow"
     },
     "Frost Meteor": {
       "value": "Frost_Meteor",
       "description": "Summon a frost meteor to attack enemies",
-      "stats": "Freeze or slows enemies for 2 seconds.<br>  225% modifiable damage, Partial hit: 80% damage.<br> Defeat Chapter 9.<br>Not affected by Rage ability."
+      "requirement": "Requirement : clear Chapter 7",
+      "stats": "Freeze or slows enemies for 2 seconds.<br>  225% modifiable damage, Partial hit: 80% damage.<br>Not affected by Rage ability."
     },
     "Frost Star": {
       "value": "Frost_Star",
       "description": "Summon a frost star to attack enemies",
+      "requirement": "",
       "stats": "Freeze or slows enemies for 2 seconds.<br>  90% modifiable damage.<br>Not affected by Rage ability.<br>  Stars are affected by ricochet and will bounce between enemies just like ricochet."
     },
     "Frost Strike": {
       "value": "Frost_Strike",
       "description": "Summon a frost sword to attack enemies",
+      "requirement": "",
       "stats": "Freeze or slows enemies for 2 seconds.<br>  165% modifiable damage.<br>Not affected by Rage ability.<br>  The faster the attack speed, the shorter the summoning time."
     },
     "Frost Sword": {
       "value": "Frost_Sword",
       "description": "Summons 2 frost swords to spin around you",
-      "stats": "Freeze or slows enemies for 2 seconds.<br>132% modifiable damage.<br>Defeat Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
+      "requirement": "Requirement : clear Chapter 2",
+      "stats": "Freeze or slows enemies for 2 seconds.<br>132% modifiable damage.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
     },
     "Furious": {
       "value": "Furious",
       "description": "When wielding the Broadsword, it deals more damage at higher Fury.",
-      "stats": "<br>"
+      "requirement": "Only available while using <a class='styled_a' href='/wiki/item/Antiquated_Sword/'>Antiquated Sword</a>",
+      "stats": ""
     },
     "Fury": {
       "value": "Fury",
       "description": "Your Attack Speed increase the lower your HP is",
+      "requirement": "",
       "stats": "+0.4% Attack Speed per 1% of life missing. (Additive)"
     },
     "Fury Command": {
       "value": "Fury_Command",
       "description": "Spirits enters a fury state within 5s of entering a room",
-      "stats": "<br>"
+      "requirement": "",
+      "stats": ""
     },
     "Giant": {
       "value": "Giant",
       "description": "Transform into a giant with increased damage",
-      "stats": "Increases your hitbox by 10%.<br>  Attack + 40%<br>  Max HP + 5%<br> Defeat Chapter 11"
+      "requirement": "Requirement : clear Chapter 11",
+      "stats": "Increases your hitbox by 10%.<br>  Attack + 40%<br>  Max HP + 5%"
     },
     "Grace": {
       "value": "Grace",
       "description": "Heal from red heart increase the lower your HP is",
+      "requirement": "",
       "stats": "+0.6% of heal for red heart each 1% of life missing. (Additive)"
     },
     "Greed": {
       "value": "Greed",
       "description": "Collect more coins, but also receive more damage",
+      "requirement": "",
       "stats": "Coin drop chance +25%<br>  Enemy damage +20%"
     },
     "Headshot": {
       "value": "Headshot",
       "description": "Small chance to kill mobs instantly",
+      "requirement": "",
       "stats": "12% chance to kill mobs instantly<br>  Ricochet, pierce, and spirit shots can trigger the effect."
     },
     "Heal": {
       "value": "Heal",
       "description": "Restores HP partially",
+      "requirement": "",
       "stats": "Restores 40% of your HP<br><b>Notes</b><br>Can only be recieved via an Angel and lucky wheel"
     },
     "Hermes Shoes": {
       "value": "Hermes_Shoes",
       "description": "Increases movement speed and some dodge rate.",
+      "requirement": "",
       "stats": "Movement Speed +12%<br>Dodge Chance +15%"
     },
     "Heal Overflow": {
       "value": "Heal_Overflow",
       "description": "Excess healing increases Max HP",
-      "stats": "<br>"
+      "requirement": "",
+      "stats": ""
     },
     "Heroic Fightback": {
       "value": "Heroic_Fightback",
       "description": "Once the hero falls, huge amounts of damage is dealt to all enemies",
-      "stats": "<br>"
+      "requirement": "",
+      "stats": ""
     },
     "Holy Touch": {
       "value": "Holy_Touch",
       "description": "Your attacks cause Holy effect",
+      "requirement": "",
       "stats": "All arrows that hit an enemy create two perpendicular holy projectiles that deals 70% of your modified projectile damage each.<br>Piercing."
     },
     "HP Boost": {
       "value": "HP_Boost",
       "description": "Max HP increased!",
+      "requirement": "",
       "stats": "Increases HP by 20% of base max HP"
     },
     "Bloodthirst Aura": {
       "value": "Bloodthirst_Aura",
       "description": "Bloodthirst Aura increases health once in a while (cooldown of 8s)",
+      "requirement": "",
       "stats": "Mob/Boss kill heal 15% of Max HP."
     },
     "HP Plus": {
       "value": "HP_Plus",
       "description": "Increases your Max HP when you don't take damage in a stage",
+      "requirement": "",
       "stats": "Increases your max HP by 2.2% when you don't take damage in a room.<br> 14 times max [30%]"
     },
     "Hurling Axe": {
       "value": "Hurling_Axe",
-      "description": "Chance to hurl an axe with each attack. Axe count increases with shot count.<br> Defeat Chapter 13.",
+      "description": "Chance to hurl an axe with each attack. Axe count increases with shot count.",
+      "requirement": "Requirement : clear Chapter 13",
       "stats": ""
     },
     "Ice Circle": {
       "value": "Ice_Circle",
       "description": "Two ice orbs circle around you",
+      "requirement": "",
       "stats": "Freeze or slows enemies for 2 seconds.<br> Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br>  Affected by rage.<br>  Spins faster with attack speed boosts."
     },
     "Inherited Summon": {
       "value": "Inherited_Summon",
       "description": "Summon creature inherits portion of own stats",
-      "stats": "<br>"
+      "requirement": "",
+      "stats": ""
     },
     "Inspire": {
       "value": "Inspire",
       "description": "Increases attack speed and effect is doubled once enemy is killed.",
+      "requirement": "",
       "stats": "Attack Speed +25% (Effect doubled when enemy killed)"
     },
     "Invincibility Star": {
       "value": "Invincibility_Star",
       "description": "Become invincible for 2 seconds once a while",
+      "requirement": "",
       "stats": "Become invincible for 2 seconds every 10 seconds (1/6th of total time)"
     },
     "Mirror Punch": {
       "value": "Mirror_Punch",
       "description": "When Melee attacks deal critical hits, they leave behind 1-2 melee range Shadow Clones",
+      "requirement": "",
       "stats": "Only Available with Fist <a class='a_styled' href='/wiki/item/Expedition_Fist/'>Expedition Weapon</a>"
     },
     "Multishot": {
       "value": "Multishot",
       "description": "Shoot 2 consecutive arrows in a row.",
+      "requirement": "",
       "stats": "-10% damage per arrow (range)<br>-5% damage per arrow (melee)<br>-15% attack speed<br><br><b>Devil Stats</b><br>-10% damage per arrow (range)<br>-5% damage per arrow (melee)<br>-10% attack speed"
     },
     "Obsidian Circle": {
       "value": "Obsidian_Circle",
       "description": "Two dark orbs circle around you",
+      "requirement": "",
       "stats": "Deals 85% modifiable damage.<br>Proportional to damage of a single projectile.<br>  Affected by rage.<br>  Spins faster with attack speed boosts."
     },
     "One Punch": {
       "value": "One_Punch",
       "description": "Max Attack Speed is 60%. Additional Attack Speed is converted to 2x weapon damage.",
+      "requirement": "",
       "stats": "Only Available with Fist <a class='a_styled' href='/wiki/item/Expedition_Fist/'>Expedition Weapon</a>"
     },
     "Overdraft": {
       "value": "Overdraft",
       "description": "Massive boost to attack speed, but gain experience slower.",
+      "requirement": "",
       "stats": "Attack Speed +45%<br> XP gain -20%."
     },
     "Pain Suppression": {
       "value": "Pain_Suppression",
-      "description": "Greatly reduces damage taken during attack action<br>Defeat Chapter 21",
-      "stats": "<br>"
+      "description": "Greatly reduces damage taken during attack action",
+      "requirement": "Requirement : clear Chapter 21",
+      "stats": ""
     },
     "Phantom Sword": {
       "value": "Phantom_Sword",
       "description": "Melee attacks will split the sword into two",
-      "stats": "<br>"
+      "requirement": "Only available while using <a class='styled_a' href='/wiki/item/Demon_Blade_Rain/'>Demon Blade Rain</a>",
+      "stats": ""
     },
     "Piercing Shot": {
       "value": "Piercing_Shot",
       "description": "Your arrows pierce enemies.",
+      "requirement": "",
       "stats": "-33% damage after each enemy pierced"
     },
     "Poison Circle": {
       "value": "Poison_Circle",
       "description": "Two poisonous orbs circle around you",
+      "requirement": "",
       "stats": "Poison slowly chips off enemy HP till it dies<br>  Deals 90% modifiable damage.<br>Proportional to damage of a single projectile.<br>  Affected by rage.<br>  Spins faster with attack speed boosts."
     },
     "Poisoned Touch": {
       "value": "Poisoned_Touch",
       "description": "Your attacks cause Poison effect",
+      "requirement": "",
       "stats": "Poison deals 30% equipment damage per sec utill mob dies.<br>Works well with Ricochet.<br> Does not stack."
     },
     "Price of Strength": {
       "value": "Price_of_Strength",
       "description": "Get greatly enhanced when entering a room.<br>Weakened for a time when durations ends",
+      "requirement": "",
       "stats": "8sec :  10% movespeed, 40% atk, regular dmg taken, 10% size, normal atkspd, 10% melee damage boost, 15% crit rate<br>2sec : -5% movespeed, 28% atk, 1.1x dmg taken, 5% size, -15% atkspd, 10% melee damage boost<br>6sec : -15% movespeed, -12% atk, 1.2x dmg taken, -5% size, -15% atkspd"
     },
     "Radiant Star": {
       "value": "Radiant_Star",
-      "description": "All Stars attacks trigger radiance when enemies are hit.<br>Defeat Chapter 11",
-      "stats": "<br>"
+      "description": "All Stars attacks trigger radiance when enemies are hit.",
+      "requirement": "Requirement : clear Chapter 11",
+      "stats": ""
     },
     "Rage": {
       "value": "Rage",
       "description": "Your Attack Speed increase the lower your HP is",
+      "requirement": "",
       "stats": "+1% Damage each 1% of life missing. (Additive)<br>At 20% of your HP you'll have +80% damage (multiplicative with the other abilities)"
     },
     "Red-Hearted Grace": {
       "value": "Red-Hearted_Grace",
       "description": "Chance for enemies to drop a heart when they are hit.",
-      "stats": "<br>"
+      "requirement": "",
+      "stats": ""
     },
     "Rear Arrow": {
       "value": "Rear_Arrow",
       "description": "Fire 1 additional projectile backward.",
+      "requirement": "",
       "stats": "You fire an additional projectile backwards<br>Deal 100% of damage per projectile"
     },
     "Ricochet": {
       "value": "Ricochet",
       "description": "Your arrows bounce up to 3 times between nearby enemies.",
+      "requirement": "",
       "stats": "You fire an additional projectile to the left and right<br>-30% damage after each bounce<br> Allows your shot to rebound between enemies up to 3 times in total"
     },
     "Sated": {
       "value": "Sated",
-      "description": "When HP is full, damage +60%<br>Defeat Chapter 19",
-      "stats": "<br>"
+      "description": "When HP is full, damage +60%",
+      "requirement": "Requirement : clear Chapter 19",
+      "stats": ""
     },
     "Side Arrow": {
       "value": "Side_Arrow",
       "description": "Fire 2 additional projectile on your both sides.",
+      "requirement": "",
       "stats": "You fire an additional projectile to the left and right <br><br><b>-20% Damage per arrow in Melee Attack</b><br><b>100% of Damage per arrow in Range Attack</b>"
     },
     "Shadow Samurai": {
       "value": "Shadow_Samurai",
       "description": "Summon a Samurai to help you in Melee attacks.",
-      "stats": "<br>"
+      "requirement": "Only available while using <a class='styled_a' href='/wiki/item/Demon_Blade_Rain/'>Demon Blade Rain</a>",
+      "stats": ""
     },
     "Shadow Clone": {
       "value": "Shadow_Clone",
       "description": "Summons a shadow clone of yours.",
-      "stats": "15% chance to spawn.<br>Max 1 per enemy.<br>Max 3 per boss.<br>Up to 15 clones can be spawned at once.<br>Lasts up to 8 seconds.<br>Deals 100% equipment damage every second.<br>Defeat chapter 2."
+      "requirement": "Requirement : clear Chapter 2",
+      "stats": "15% chance to spawn.<br>Max 1 per enemy.<br>Max 3 per boss.<br>Up to 15 clones can be spawned at once.<br>Lasts up to 8 seconds.<br>Deals 100% equipment damage every second."
     },
     "Shield Guard": {
       "value": "Shield_Guard",
       "description": "A shield circles around you",
+      "requirement": "",
       "stats": "Two shields rotate around you, blocking incoming projectiles<br>Up to 3 shield rotating"
     },
     "Slow Projectile": {
       "value": "Slow_Projectile",
       "description": "Slow enemy projectiles",
+      "requirement": "",
       "stats": "Effect : -50% projectile speed"
     },
     "Smart": {
       "value": "Smart",
       "description": "Level-up faster, Max level increased by 2.",
-      "stats": "30% increased experience (XP).<br>2 Additional levels<br>This ability does not appear in hero adventure.<br>     The extra level provides you with only 1 additional extra skill besides smart.<br>     Chapters where there are only 10 stages (chapterd 7 and 14) don't give much xp. On these stages you don't usually recieve enough xp to get anywhere close to max level."
+      "requirement": "",
+      "stats": "30% increased experience (XP).<br>2 Additional levels<br>This ability does not appear in hero adventure.<br>The extra level provides you with only 1 additional extra skill besides smart.<br> Chapters where there are only 10 stages (chapterd 7 and 14) don't give much xp. On these stages you don't usually recieve enough xp to get anywhere close to max level."
     },
     "Speed Aura": {
       "value": "Speed_Aura",
       "description": "Increases Attack Speed for a short time",
+      "requirement": "",
       "stats": "+62.5% Attack Speed for 2s.<br> 8 second cooldown"
     },
     "Speed Plus": {
       "value": "Speed_Plus",
       "description": "Increases speed by a small percent if no damage is taken",
+      "requirement": "",
       "stats": "Increases your attack speed by 2.1% when you don't take damage in a room.<br> 17 times max [35%]"
     },
     "Spirit Blaze": {
       "value": "Spirit_Blaze",
       "description": "Your spirit's attacks cause a flame effect",
-      "stats": "Hero Attack + 22%.<br> Defeat Chapter 8."
+      "requirement": "Requirement : clear Chapter 8",
+      "stats": "Hero Attack + 22%."
     },
     "Spirit Bolt": {
       "value": "Spirit_Bolt",
       "description": "Your spirit's attacks cause a lightning effect",
-      "stats": "Hero Crit Chance + 3%<br> Defeat Chapter 8."
+      "requirement": "Requirement : clear Chapter 8",
+      "stats": "Hero Crit Chance + 3%"
     },
     "Spirit Freeze": {
       "value": "Spirit_Freeze",
       "description": "Your spirit's attacks slows enemies down",
-      "stats": "Hero Attack Speed + 18%<br> Defeat Chapter 8."
+      "requirement": "Requirement : clear Chapter 8",
+      "stats": "Hero Attack Speed + 18%"
     },
     "Spirit Front Arrow": {
       "value": "Spirit_Front_Arrow",
       "description": "Your spirit Front Arrow +1",
+      "requirement": "",
       "stats": "Scales with hero attack and crit damage.<br>  Your spirit's attack can receive a maximum of 80% in boosts, whereas the spirit's crit damage can receive a maximum of 200%. Does not boost your hero, in-game description is incorrect."
     },
     "Spirit Multishot": {
       "value": "Spirit_Multishot",
       "description": "Your spirit fire one more arrow",
+      "requirement": "",
       "stats": "Scales with hero attack speed and crit rate.<br>  Your spirit's attack speed can receive a maximum of 95% in boosts, whereas the spirit's crit rate can receive a maximum of 30%. Does not boost your hero, in-game description is incorrect."
     },
     "Spirit Poisoned Touch": {
       "value": "Spirit_Poisoned_Touch",
       "description": "Your spirit's attacks cause a poison effect",
+      "requirement": "Requirement : clear Chapter 7",
       "stats": "Hero HP Boost + 15%<br>  Unlocks in Chapter 8."
     },
     "Strong Heart": {
       "value": "Strong_Heart",
       "description": "You restore more HP when healed",
+      "requirement": "",
       "stats": "Increases red heart heal power by 40% of the base heal.<br>  40% more red hearts spawn<br>When receiving this ability from the Angel, heal power of heart crystal is only increased by 20%. (Half the strength of the regular Strong Heart ability)"
     },
     "Strong Strong Heart": {
       "value": "Strong_Strong_Heart",
       "description": "Strong Heart increases attack speed and can be stacked",
-      "stats": "Attack Speed +2% every time you get a crystal heart (Max 60%) (Requires Strong Heart)"
+      "requirement": "Requirement : need <a href='/wiki/skill/Strong_Heart/' class='styled_a'>Strong Heart</a>",
+      "stats": "Attack Speed +2% every time you get a crystal heart (Max 60%)"
     },
     "Summon Bone Warrior": {
       "value": "Summon_Bone_Warrior",
       "description": "Chance to summon bone warrior when attacking enemies",
-      "stats": "<br>"
+      "requirement": "",
+      "stats": ""
     },
     "Summon One Eyed Bat": {
       "value": "Summon_One_Eyed_Bat",
       "description": "Summon a One-Eyed Bat",
-      "stats": "15% chance to spawn<br>  Max 1 per enemy<br>  Max 3 per boss<br>  Up to 15 clones can be spawned at once.<br>  Lasts up to 8 seconds.<br>  Each bat shoots 1 laser per second dealing 65% of player damage.<br>  Unlocks in Chapter 3."
+      "requirement": "Requirement : clear Chapter 2",
+      "stats": "15% chance to spawn<br>  Max 1 per enemy<br>  Max 3 per boss<br>  Up to 15 clones can be spawned at once.<br>  Lasts up to 8 seconds.<br>  Each bat shoots 1 laser per second dealing 65% of player damage."
     },
     "Summon Wolfhound": {
       "value": "Summon_Wolfhound",
       "description": "Chance to summon wolfhound when attacking enemies",
-      "stats": "<br>"
+      "requirement": "",
+      "stats": ""
     },
     "Toxic Meteor": {
       "value": "Toxic_Meteor",
       "description": "Summon a toxic meteor to attack enemies",
+      "requirement": "",
       "stats": "Poison slowly chips off enemy HP till it dies<br>  225% modifiable damage, Partial hit: 80% damage.<br>  Unlocks in Chapter 9.<br>Not affected by Rage ability."
     },
     "Toxic Star": {
       "value": "Toxic_Star",
       "description": "Summon a toxic star to attack enemies",
+      "requirement": "",
       "stats": "Poison slowly chips off enemy HP until it dies<br>  95% modifiable damage.<br>Not affected by Rage ability.<br>  Stars are affected by ricochet and will bounce between enemies just like ricochet."
     },
     "Toxic Strike": {
       "value": "Toxic_Strike",
       "description": "Summon a toxic sword to attack enemies",
+      "requirement": "",
       "stats": "Poison slowly chips off enemy HP till it dies<br>  168% modifiable damage.<br>Not affected by Rage ability.<br>  The faster the attack speed, the shorter the summoning time."
     },
     "Toxic Sword": {
       "value": "Toxic_Sword",
       "description": "Summons 2 toxic swords to spin around you",
-      "stats": "Poison slowly chips off enemy HP till it dies<br>132% modifiable damage.<br>Unlocks in Chapter 2.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
+      "requirement": "Requirement : clear Chapter 1",
+      "stats": "Poison slowly chips off enemy HP till it dies<br>132% modifiable damage.<br><b>Notes</b><br>Spins much faster after receiving attack speed boosts."
     },
     "Through The Wall": {
       "value": "Through_The_Wall",
       "description": "Allows the player to walk through walls",
+      "requirement": "",
       "stats": "Increases attack damage by 15%"
     },
     "Water Walker": {
       "value": "Water_Walker",
       "description": "Allows the player to walk across water",
+      "requirement": "",
       "stats": "Increases attack damage by 15%"
     },
     "Whirlwind Axe": {
       "value": "Whirlwind_Axe",
-      "description": "Summons a random number of axes at intervals<br>Defeat Chapter 13.",
+      "description": "Summons a random number of axes at intervals",
+      "requirement": "Requirement : clear Chapter 13",
       "stats": ""
     },
     "Wingman": {
       "value": "Wingman",
       "description": "Your spirit can block projectiles for you.",
-      "stats": "Pets block projectiles.<br> Defeat Chapter 4."
+      "requirement": "Requirement : clear Chapter 4",
+      "stats": "Pets block projectiles."
     }
   },
   "ItemData": {
@@ -6841,7 +6701,7 @@
       "value": "Expedition_Fist",
       "description": "Unbreakable gauntlet that blows through mountains with a single punch",
       "hidden_stats": {
-        "1": "Damage Multiplier<br>x 1.6 (Ranged)<br>x 1.7+2.1 (2 Melee hits)"
+        "1": "Damage Multiplier<br>x 1.6 (Ranged)<br>x 1.7 & 2.1 (2 Melee hits)"
       },
       "image": "image/items/expedition_fist_mythic_s.png",
       "rarity": {
@@ -6899,7 +6759,7 @@
         "rare": "",
         "epic": "[Epic] Damage on enemies with full HP +15%",
         "perfect_epic": "",
-        "legendary": "[Legendary] Crit Chance + 6%",
+        "legendary": "[Legendary] Crit Chance + 7%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Damage to Bosses +9%",
         "mythic+1": "[Mythic+1] Ring Basic Stats +10%",
@@ -6997,7 +6857,7 @@
         "rare": "[Rare] Attack + 5%",
         "epic": "[Epic] Crit Damage + 50%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] When HP is lower, next attack has a chance to fire consecutive shots after moving for a short distance.",
         "ancient_legendary": "",
         "mythic": "[Mythic] Attack increased temporarily after moving",
         "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
@@ -7023,7 +6883,7 @@
         "rare": "[Rare] Attack + 5%",
         "epic": "[Epic] When attacking a similar target (same mob), damage dealt will increase.",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Shot damage increased each time it bounces off wall. Also increases max wall bounces.",
         "ancient_legendary": "",
         "mythic": "[Mythic] Landing crits increases Attack Speed",
         "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
@@ -7050,7 +6910,7 @@
         "rare": "[Rare] Attack + 5%",
         "epic": "[Epic] High chance to kill mobs with less than 30% of HP",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] After instakilling lower HP minions, increase own Attack Speed for a short time.",
         "ancient_legendary": "",
         "mythic": "[Mythic] The closer, the higher the damage",
         "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
@@ -7183,7 +7043,7 @@
         "rare": "[Rare] Attack + 5%",
         "epic": "[Epic] Increases your Attack Speed for 3 sec after entering a room",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Reduces Elemental Resistance after hitting an enemy. Can be stacked",
         "ancient_legendary": "",
         "mythic": "[Mythic] Hitting enemies has a chance to increase Dodge and Attack (Stackable)",
         "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
@@ -7208,7 +7068,7 @@
         "rare": "[Rare] Attack + 5%",
         "epic": "[Epic] The lower the target's HP, the higher the Crit rate.",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Chance to split into an extra shot after defeating an enemy.",
         "ancient_legendary": "",
         "mythic": "[Mythic] Projectile charge time -50%",
         "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
@@ -7233,7 +7093,7 @@
         "rare": "[Rare] Attack + 5%",
         "epic": "[Epic] Boomerang deals increased damage when it returns",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Tornado damage increased. Tornado return speed is faster",
         "ancient_legendary": "",
         "mythic": "[Mythic] The further projectiles travel, the higher the damage",
         "mythic+1": "[Mythic+1] Weapon Basic Stats +5%",
@@ -7249,8 +7109,10 @@
       "value": "Phantom_Cloak",
       "description": "An awesome-looking cloak.",
       "hidden_stats": {
-        "1": "Thorn attacks are x2 your base damage",
-        "2": "At mythic, on freeze enemy, thorn does 10% your base damage"
+        "1": "[Epic] Thorn attacks are x2 your base damage",
+        "2": "[Mythic] Frozen enemy takes +10% base damage",
+        "3": "[Mythic+2] Thorns attack are x2.8 your base damage",
+        "4": "[Titan Tales+3] Frozen enemy takes +15% base damage"
       },
       "image": "image/items/phantom_cloak.png",
       "rarity": {
@@ -7259,7 +7121,7 @@
         "rare": "[Rare] Healing from red hearts + 20%",
         "epic": "[Epic] Freezes enemies who hit you for 1-2s and deal thorn damage",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Increases Attack upon revival",
         "ancient_legendary": "",
         "mythic": "[Mythic] Enemies frozen by Phantom Cloak take more damage",
         "mythic+1": "[Mythic+1] Armor Basic Stats +5%",
@@ -7275,8 +7137,10 @@
       "value": "Golden_Chestplate",
       "description": "A chestplate made of pure gold. It's as solid as a rock.",
       "hidden_stats": {
-        "1": "[Mythic] Damage reduction = 30%",
-        "2": "[Titan Tales+3] Damage reduction = 35%"
+        "1": "[Mythic] Damage reduction = 25%",
+        "2": "[Titan Tales+3] Damage reduction = 27.5%",
+        "3": "[Epic] Fire Damage +10%",
+        "4": "[Mythic+2] Fire Damage +13%"
       },
       "image": "image/items/golden_chestplate.png",
       "rarity": {
@@ -7285,7 +7149,7 @@
         "rare": "[Rare] Healing from red hearts + 20%",
         "epic": "[Epic] Deals 8% of base damage per tick as flame damage to close enemies",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Increases Max HP upon revival",
         "ancient_legendary": "",
         "mythic": "[Mythic] Damage taken is greatly reduced for 2s after taking damage ",
         "mythic+1": "[Mythic+1] Armor Basic Stats +5%",
@@ -7300,7 +7164,10 @@
     "Vest of Dexterity": {
       "value": "Vest_of_Dexterity",
       "description": "Light and durable. Wear it to dodge enemy attacks.",
-      "hidden_stats": {},
+      "hidden_stats": {
+        "1":"[Epic] Lightning Damage 80%",
+        "2":"[Mythic+2] Lightning Damage 110%"
+      },
       "image": "image/items/vest_of_dexterity.png",
       "rarity": {
         "common": "Max HP + [x]<br>[Common] Dodge Chance + 7%",
@@ -7308,7 +7175,7 @@
         "rare": "[Rare] Healing from red hearts + 20%",
         "epic": "[Epic] Deals 80% base damage (affected by attack boost) and applies Lightning effect to nearest enemy",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Increases Attack upon revival",
         "ancient_legendary": "",
         "mythic": "[Mythic] Increased Dodge while moving",
         "mythic+1": "[Mythic+1] Armor Basic Stats +5%",
@@ -7334,7 +7201,7 @@
         "rare": "[Rare] Healing from red hearts + 20%",
         "epic": "[Epic] Poisons all enemies in the room.",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Increases Max HP upon revival",
         "ancient_legendary": "",
         "mythic": "[Mythic] Dropped Hearts restore more HP",
         "mythic+1": "[Mythic+1] Armor Basic Stats +5%",
@@ -7361,7 +7228,7 @@
         "rare": "[Rare] Battle XP Gain + 25%",
         "epic": "[Epic] Each upgrade will increase HP limit.",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Increases Attack upon revival",
         "ancient_legendary": "",
         "mythic": "[Mythic] HP Drops +10%",
         "mythic+1": "[Mythic+1] Armor Basic Stats +5%",
@@ -7377,7 +7244,10 @@
       "value": "Shadow_Robe",
       "description": "An assassin's special robe, reduces rear damage during battle.",
       "hidden_stats": {
-        "1": "[Epic] Deals 135% modifiable base damage"
+        "1": "[Epic] Deals 135% modifiable base damage",
+        "2": "[Mythic] 10% Resistance when there are 5 enemies or more",
+        "3": "[Mythic+2] Deals 165% modifiable base damage",
+        "4": "[Titan Tales+3] 16% Resistance when there are 5 enemies or more"
       },
       "image": "image/items/shadow_robe.png",
       "rarity": {
@@ -7386,7 +7256,7 @@
         "rare": "[Rare] Max HP + 7%",
         "epic": "[Epic] Causes strong dark damage (Dark Touch) to nearby enemies.",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Increases Max HP upon revival",
         "ancient_legendary": "",
         "mythic": "[Mythic] In case of many enemies, damage taken is reduced",
         "mythic+1": "[Mythic+1] Armor Basic Stats +5%",
@@ -7566,7 +7436,9 @@
     "Bear Ring": {
       "value": "Bear_Ring",
       "description": "Bestowed with the Power of a Bear.",
-      "hidden_stats": {},
+      "hidden_stats": {
+        "1":"[Chaos] Fire Damage +5%"
+      },
       "image": "image/items/bear_ring_epic.png",
       "rarity": {
         "common": "Increases damage to ground units + x",
@@ -7574,7 +7446,7 @@
         "rare": "[Rare] Max HP + 5%",
         "epic": "[Epic] Coins From Battle + 10%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Ice Damage +8%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Ground Units damage reduced +7%",
         "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
@@ -7589,7 +7461,9 @@
     "Wolf Ring": {
       "value": "Wolf_Ring",
       "description": "Bestowed with the Power of a Wolf.",
-      "hidden_stats": {},
+      "hidden_stats": {
+        "1":"[Chaos] Lightning Damage +15%"
+      },
       "image": "image/items/wolf_ring_epic.png",
       "rarity": {
         "common": "Increases damage to melee units + x",
@@ -7597,7 +7471,7 @@
         "rare": "[Rare] Crit Chance + 5%",
         "epic": "[Epic] Coins From Battle + 10%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Flame Damage +5%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Melee Units damage reduced+7%",
         "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
@@ -7612,7 +7486,9 @@
     "Falcon Ring": {
       "value": "Falcon_Ring",
       "description": "Bestowed with the Power of a Falcon.",
-      "hidden_stats": {},
+      "hidden_stats": {
+        "1":"[Chaos] Ice Damage +40%"
+      },
       "image": "image/items/falcon_ring_epic.png",
       "rarity": {
         "common": "Increases damage to airborne units + x",
@@ -7620,7 +7496,7 @@
         "rare": "[Rare] Attack Speed + 5%",
         "epic": "[Epic] Coins From Battle + 10%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Dark Touch Damage +6%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Airborne damage resistance + 7%",
         "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
@@ -7635,7 +7511,9 @@
     "Serpent Ring": {
       "value": "Serpent_Ring",
       "description": "Bestowed with the Power of a Serpent.",
-      "hidden_stats": {},
+      "hidden_stats": {
+        "1":"[Chaos] Poison Damage +20%"
+      },
       "image": "image/items/serpent_ring_epic.png",
       "rarity": {
         "common": "Increases damage to ranged units + x",
@@ -7643,7 +7521,7 @@
         "rare": "[Rare] Dodge + 7%",
         "epic": "[Epic] Coins From Battle + 10%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Poison Damage +7%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Ranged Units damage reduced + 7%",
         "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
@@ -7658,7 +7536,9 @@
     "Bull Ring": {
       "value": "Bull_Ring",
       "description": "Contains the power of bulls, use it to increase attacks on all mobs.",
-      "hidden_stats": {},
+      "hidden_stats": {
+        "1":"[Chaos] Damage to Melee Units +3%"
+      },
       "image": "image/items/bull_ring_epic.png",
       "rarity": {
         "common": "Increases damage to mobs + x",
@@ -7666,7 +7546,7 @@
         "rare": "[Rare] Damage Resistance + 10%",
         "epic": "[Epic] Coins From Battle + 10%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Lightning Damage +7%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Mobs damage resistance +5%",
         "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
@@ -7681,7 +7561,9 @@
     "Lion Ring": {
       "value": "Lion_Ring",
       "description": "Contains the power of a berserk lion, use it to increase attacks on boss monsters.",
-      "hidden_stats": {},
+      "hidden_stats": {
+        "1":"[Chaos] Damage to Ranged Units +4%"
+      },
       "image": "image/items/lion_ring_epic.png",
       "rarity": {
         "common": "Increases damage to bosses + x",
@@ -7689,7 +7571,7 @@
         "rare": "[Rare] Crit Damage + 20%",
         "epic": "[Epic] Attack + 5%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Holy Touch' Damage +8%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Boss Damage Resistance + 5%",
         "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
@@ -7739,7 +7621,7 @@
         "rare": "[Rare] Healing Effect of Red Heart + 20%",
         "epic": "[Epic] Killing enemies restores HP. Heal is stronger for boss kills",
         "perfect_epic": "",
-        "legendary": "[Legendary] Heart drops + 20%",
+        "legendary": "[Legendary] HP drops + 20%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Collision Damage Resistance + 12%",
         "mythic+1": "[Mythic+1] Ring Basic Stats +5%",
@@ -7762,7 +7644,7 @@
         "rare": "",
         "epic": "[Epic] Chance of Angel's Healing x2 + 30%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Max HP +4%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Dodge + 6%",
         "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
@@ -7785,7 +7667,7 @@
         "rare": "",
         "epic": "[Epic] Chance of Angel's Healing x2 + 30%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Max HP +4%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Collision damage resistance + 8%",
         "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
@@ -7808,7 +7690,7 @@
         "rare": "",
         "epic": "[Epic] Chance of Angel's Healing x2 + 30%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Max HP +4%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Chance to Revive + 5%",
         "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
@@ -7817,7 +7699,7 @@
         "titan_tales+1": "[Titan Tales+1] Locket Basic Stats +10%",
         "titan_tales+2": "[Titan Tales+2] Locket Basic Stats +10%",
         "titan_tales+3": "[Titan Tales+3] Mythic Skill Effect Upgraded",
-        "chaos": "[Chaos] Chance to get a random number of Red Hearts when angle restores your HP."
+        "chaos": "[Chaos] Chance to get a random number of Red Hearts when angel restores your HP."
       }
     },
     "Bulletproof Locket": {
@@ -7831,7 +7713,7 @@
         "rare": "",
         "epic": "[Epic] Chance of Angel's Healing x2 + 30%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Max HP +4%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Projectile Resistance + 8%",
         "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
@@ -7854,7 +7736,7 @@
         "rare": "",
         "epic": "[Epic] HP drops + 20%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Max HP +4%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Enhanced Recovery Effects of Bloodthirst",
         "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
@@ -7877,7 +7759,7 @@
         "rare": "",
         "epic": "[Epic] HP drops + 20%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary]  Max HP +4%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Movement Speed + 3%",
         "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
@@ -7900,7 +7782,7 @@
         "rare": "[Rare] x% chance to counter (increases with quality) enemies after taking damage (does 5x the damage taken to the enemy)",
         "epic": "[Epic] More Hearts equal better recovery effect, up to 100%",
         "perfect_epic": "",
-        "legendary": "[Legendary] Max HP + 4%",
+        "legendary": "[Legendary] Max HP + 5%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Counterattack damage to bosses is increased by 120%.",
         "mythic+1": "[Mythic+1] Locket Basic Stats +5%",
@@ -7923,7 +7805,7 @@
         "rare": "",
         "epic": "[Epic] Crit Damage + 15%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Attack +4%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Elemental Lightning damage increased",
         "mythic+1": "[Mythic+1] Bracelet Basic Stats +5%",
@@ -7946,7 +7828,7 @@
         "rare": "",
         "epic": "[Epic] Crit Damage + 15%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Attack +4%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Elemental Freezing damage increased",
         "mythic+1": "[Mythic+1] Bracelet Basic Stats +5%",
@@ -7969,7 +7851,7 @@
         "rare": "",
         "epic": "[Epic] Crit Damage + 15%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Attack +4%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Elemental Fire damage increased",
         "mythic+1": "[Mythic+1] Bracelet Basic Stats +5%",
@@ -7992,7 +7874,7 @@
         "rare": "",
         "epic": "[Epic] Crit Damage + 15%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Summoned Creature Damage +15%",
         "ancient_legendary": "",
         "mythic": "[Mythic] The lower the HP, the higher the clones attack",
         "mythic+1": "[Mythic+1] Bracelet Basic Stats +5%",
@@ -8007,7 +7889,10 @@
     "Invincible Bracelet": {
       "value": "Invincible_Bracelet",
       "description": "A bracelet which triggers an invincible star when enemies appear.",
-      "hidden_stats": {},
+      "hidden_stats": {
+        "1":"[Mythic] +30% Critical Damage when Invincibility trigger",
+        "2":"[Titan Tales+3] +55% Critical Damage when Invincibility trigger"
+      },
       "image": "image/items/invincible_bracelet.png",
       "rarity": {
         "common": "Attack + x<br>Be protected by Invincible Star lasting t seconds when encountering enemies.",
@@ -8015,7 +7900,7 @@
         "rare": "",
         "epic": "[Epic] Attack + 6%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Own buff duration extended +7%",
         "ancient_legendary": "",
         "mythic": "[Mythic] When the bracelet triggers Invincible, Crit Damage is increased",
         "mythic+1": "[Mythic+1] Bracelet Basic Stats +5%",
@@ -8038,7 +7923,7 @@
         "rare": "",
         "epic": "[Epic] Attack + 6%",
         "perfect_epic": "",
-        "legendary": "",
+        "legendary": "[Legendary] Projectile flight speed +6%",
         "ancient_legendary": "",
         "mythic": "[Mythic] Projectiles travel faster",
         "mythic+1": "[Mythic+1] Bracelet Basic Stats +5%",
@@ -8247,7 +8132,7 @@
       "skill": "Atreus does not have a unique ability",
       "skill_details": "<br>",
       "star": {
-        "1": "Patrol Gold Earnings + 4%",
+        "1": "Patrol Gold Earnings + x%",
         "2": "Attack + 30 [All Heroes]",
         "3": "Skill - Growth: Acquire a new skill - Growth",
         "4": "Trait - Stubborn: When HP is lower than 20%, HP is restored for a while",
@@ -8261,15 +8146,17 @@
         "20": "[All Heroes] Attack +80",
         "30": "Battle XP gain +20%",
         "30_1": "[Assist Effect] Battle XP gain +10%",
-        "40": "Attack +2%",
-        "50": "Atreus's base HP +8%",
+        "40": "[All Heroes] Attack +2%",
+        "50": "Atreus's base HP +10%",
         "60": "[Assist Effect] Attack Speed +5%",
         "70": "Bounces +1",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Max Hp +5%"
       },
-      "hero_assist_evolve":"everlife-trialstone.svg"
+      "hero_assist_evolve":"everlife-trialstone.svg",
+      "list_hero_assist": ["Urasil", "Phoren", "Taranis", "Helix", "Ayana", "Onir", "Lina", "Iris"],
+      "skins" :[]
     },
     "Urasil": {
       "description": "Proficient in the study of Medicine, an invisible killer allowing him to be skilled in Poison.",
@@ -8280,7 +8167,7 @@
       "skill": "Your attacks cause an enhanced Poison effect",
       "skill_details": "<br><b>Skill Details:</b><br>40% of base damage per second<br><br>",
       "star": {
-        "1": "Patrol Ring Scroll Earnings + 4%",
+        "1": "Patrol Ring Scroll Earnings + x%",
         "2": "Max HP + 120 [All heroes]",
         "3": "Poison - Feeble: Enemy movement speed reduced 10% when poisoned",
         "4": "Trait - Low-key: Toxic damaged + 35% after killing enemy for a while",
@@ -8294,15 +8181,32 @@
         "20": "[All Heroes] Max Hp +320",
         "30": "Attack increased for short time when enemies are killed by Poison",
         "30_1": "[Assist Effect] Poison damage +15%",
-        "40": "Damage to ground Units +4%",
-        "50": "Urasil's base HP +8%",
+        "40": "[All Heroes] Damage to ground Units +4%",
+        "50": "Urasil's base HP +10%",
         "60": "[Assist Effect] Poison Resistance +15%",
         "70": "Poison slows Movement speed",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Poison Damage +10%"
       },
-      "hero_assist_evolve":"everlife-trialstone.svg"
+      "hero_assist_evolve":"everlife-trialstone.svg",
+      "list_hero_assist": ["Atreus", "Phoren", "Taranis", "Bonnie", "Sylvan", "Lina", "Melinda", "Stella"],
+      "skins" :[
+        {
+          "name": "Royal Knight",
+          "src": "Royal_Knight",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 30]: Max HP + 150 [All Heroes]",
+          "activ_boost": " \u2022 15% chance to resist long-distance damage",
+          "price": "Price: <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object> 55"
+        },
+        {
+          "name": "Black Order",
+          "src": "Black_Order",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 30]: Max HP + 150 [All Heroes]",
+          "activ_boost": " \u2022 When HP is lower than 25%, Poison damage increased 100%",
+          "price": "Price: <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object> 60"
+        }
+      ]
     },
     "Phoren": {
       "description": "Born from Fire, and Fire answers to no one but him.",
@@ -8313,7 +8217,7 @@
       "skill": "Your attacks cause an enhanced Flame effect",
       "skill_details": "<br>",
       "star": {
-        "1": "Patrol Sapphires Earnings + 4%",
+        "1": "Patrol Sapphires Earnings + x%",
         "2": "Damage to Airborne Units + 75 [All heroes]",
         "3": "Red Flame - Super Fire: Fire damage is increased",
         "4": "Trait - Passion: When entering a room, a random enemy will be ignited",
@@ -8327,15 +8231,32 @@
         "20": "[All Heroes] Damage to Airborne Units +150",
         "30": "Attack increased for short time when enemies are killed by Fire",
         "30_1": "[Assist Effect] Flame Damage + 10%",
-        "40": "Damage to Melee Units +4%",
-        "50": "Phoren's base HP +8%",
+        "40": "[All Heroes] Damage to Melee Units +4%",
+        "50": "Phoren's base HP +10%",
         "60": "[Assist Effect] Flame Resistance +15%",
         "70": "Fire lowers Attack",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Flame Damage +10%"
       },
-      "hero_assist_evolve":"everlife-trialstone.svg"
+      "hero_assist_evolve":"everlife-trialstone.svg",
+      "list_hero_assist": ["Atreus", "Urasil", "Taranis", "Ayana", "Bonnie", "Sylvan", "Iris", "Stella"],
+      "skins" :[
+        {
+          "name": "Flame Student",
+          "src": "Flame_Student",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 30]: Attack + 40 [All Heroes]",
+          "activ_boost": " \u2022 Flame damage can reduce enemy movement speed, lasting 5s",
+          "price": "Price: <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object> 20"
+        },
+        {
+          "name": "Brawler",
+          "src": "Brawler",
+          "passiv_boost": " \u2022 [Lvl50] Attack + 85 [All Heroes]",
+          "activ_boost": " \u2022 Chance to instakill enemies. Enemies explode when taking Fire damage over time.",
+          "price": "Obtainable from Exclusive Event (Worldcup event december 2022)"
+        }
+      ]
     },
     "Taranis": {
       "description": "Born of the Thunder, and naturally able to control and wield Thunder.",
@@ -8346,7 +8267,7 @@
       "skill": "Your attacks cause an enhanced Lightning effect",
       "skill_details": "<br>",
       "star": {
-        "1": "Patrol XP Earnings + 4%",
+        "1": "Patrol XP Earnings + x%",
         "2": "Max HP + 150 [All heroes]",
         "3": "Thunderstorm - Distance: Lightning range increased",
         "4": "Trait - Rapid: Hitting the enemy continuously will gradually increase movement speed",
@@ -8360,15 +8281,32 @@
         "20": "[All Heroes] Max Hp +400",
         "30": "Attack increased for short time when enemies are killed by Lightning",
         "30_1": "[Assist Effect] Lightning Damage +15%",
-        "40": "Damage to Ranged Units +5%",
-        "50": "Taranis's base HP +8%",
+        "40": "[All Heroes] Damage to Ranged Units +5%",
+        "50": "Taranis's base HP +10%",
         "60": "[Assist Effect] Lightning Damage Resistance +15%",
         "70": "Lightning lowers Attack",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Lightning Damage +10%"
       },
-      "hero_assist_evolve":"everlife-trialstone.svg"
+      "hero_assist_evolve":"everlife-trialstone.svg",
+      "list_hero_assist": ["Urasil", "Phoren", "Ayana", "Sylvan", "Shingen", "Blazo", "Stella"],
+      "skins" :[
+        {
+          "name": "Thunder Lord",
+          "src": "Thunder_Lord",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 30]: Max HP + 200 [All Heroes]",
+          "activ_boost": " \u2022 When moving, chance to deal Lightning damage to nearby enemies each sec",
+          "price": "Price: <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object> 100"
+        },
+        {
+          "name": "Phoenixier",
+          "src": "Phoenixier",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 60]: Max HP + 320 [All Heroes]",
+          "activ_boost": " \u2022 Gain the Phoenix's blessing, increasing Movement Speed, Attack Speed, and Dodge. Attacks are imbued with fire for every 20 enemies hit.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 50"
+        }
+      ]
     },
     "Helix": {
       "description": "A tribe warrior, a hunter; even the strong admire his power!",
@@ -8379,7 +8317,7 @@
       "skill": "Your attacks deal more damage at low HP.",
       "skill_details": "<br><b>Skill Details:</b><br>Fury Command: +1.2% attack for every 1% of player HP lost.<br><br>",
       "star": {
-        "1": "Patrol Gold Earnings + 4%",
+        "1": "Patrol Gold Earnings + x%",
         "2": "Attack + 40 [All heroes]",
         "3": "Rage - Fury: When losing HP, attack is increased",
         "4": "Trait - Irritant: After losing HP, damage is increased on next attack",
@@ -8393,15 +8331,53 @@
         "20": "[All Heroes] Attack +120",
         "30": "Attack Speed increased for a short time after taking damage",
         "30_1": "[Assist Effect] Attack +4%",
-        "40": "Damage to Bosses +5%",
-        "50": "Helix's base HP +8%",
+        "40": "[All Heroes] Damage to Bosses +5%",
+        "50": "Helix's base HP +10%",
         "60": "[Assist Effect] Healing Effect of Red Heart +10%",
         "70": "When HP is below 10%, gain invincibility shield for 2s",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Healing Effect of Red Heart +8%"
       },
-      "hero_assist_evolve":"everlife-trialstone.svg"
+      "hero_assist_evolve":"everlife-trialstone.svg",
+      "list_hero_assist": ["Atreus", "Meowgik", "Shari", "Ophelia", "Shingen", "Gugu", "Bobo", "Elaine", "Taiga"],
+      "skins" :[
+        {
+          "name": "Bear Master",
+          "src": "Bear_Master",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Attack + 60 [All Heroes]",
+          "activ_boost": " \u2022 5% increased damage to enemies on foot",
+          "price": "Price: <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object> 120"
+        },
+        {
+          "name": "Coast Guard",
+          "src": "Coast_Guard",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 30]: Attack + 60 [All Heroes]",
+          "activ_boost": " \u2022 When near water, attack & movement speed increase",
+          "price": "Price: <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object> 120"
+        },
+        {
+          "name": "Sweetheart Teddy",
+          "src": "Sweetheart_Teddy",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 600 [All Heroes]",
+          "activ_boost": " \u2022 Hitting enemies has a chance to freeze or burn them.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 100"
+        },
+        {
+          "name": "Zombies Incoming",
+          "src": "Zombies_Incoming",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 30] Attack + 60 [All Heroes]",
+          "activ_boost": " \u2022 Chance to Headshot when own HP is lower than 30%.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 100"
+        },
+        {
+          "name": "Netherwolf",
+          "src": "Netherwolf",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 70] Max HP + 800 [All Heroes]",
+          "activ_boost": " \u2022 Increases Movement Speed. When HP drops below 30%, temporarily enter Netherwolf mode, increasing Movement Speed, Attack Speed, Melee Attack and Elemental Damage Resistance",
+          "price": "Obtainable from Exclusive Event"
+        }
+      ]
     },
     "Meowgik": {
       "description": "The spirit of the cat combined with magic; not to be underestimated.",
@@ -8412,7 +8388,7 @@
       "skill": "A chance to summon an auto-attacking kitty when attacking enemies",
       "skill_details": "<br>",
       "star": {
-        "1": "Patrol Spirit Scroll Earnings + 4%",
+        "1": "Patrol Spirit Scroll Earnings + x%",
         "2": "Healing Effect of Red Heart + 10% [All heroes]",
         "3": "Meow - Giant: Meowing increases, attack and attack range increased",
         "4": "Trait - Lazy: Crit rate increased after standing still",
@@ -8426,15 +8402,46 @@
         "20": "[All Heroes] Damage to Melee Units +160",
         "30": "Meowspirits triggers projectile's special effects",
         "30_1": "[Assist Effect] All Meteor skills damage dealt",
-        "40": "Damage to Mobs +5%",
-        "50": "Meowgik's base HP +8%",
+        "40": "[All Heroes] Damage to Mobs +5%",
+        "50": "Meowgik's base HP +10%",
         "60": "[Assist Effect] Projectile Flight speed +10%",
         "70": "Chance to summon extra Meowspirits after taking damage",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Coins from battle +5%"
       },
-      "hero_assist_evolve":"everlife-trialstone.svg"
+      "hero_assist_evolve":"everlife-trialstone.svg",
+      "list_hero_assist": ["Urasil", "Phoren", "Taranis", "Rolla", "Shade", "Helix", "Aquea", "Sylvan", "Taiga"],
+      "skins" :[
+        {
+          "name": "Cat Warlock",
+          "src": "Cat_Warlock",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 30]: Max HP + 200 [All Heroes]",
+          "activ_boost": " \u2022 Dodge rate increased 5s after kill; the higher your level, the higher the dodge rate.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object> 120"
+        },
+        {
+          "name": "Cherry Kitty",
+          "src": "Cherry_Kitty",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 500 [All Heroes]",
+          "activ_boost": " \u2022 When dying there's a 20% chance to be resurrected in a random Meowspirit's location",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 105"
+        },
+        {
+          "name": "Holiday Kitty",
+          "src": "Holiday_Kitty",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 500 [All Heroes]",
+          "activ_boost": " \u2022 Collision damage reduced 20%, spinning Crabs can be used replace Tornado",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 100"
+        },
+        {
+          "name": "Chef Kitty",
+          "src": "Chef_Kitty",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50] Max HP + 600 [All Heroes]",
+          "activ_boost": " \u2022 Increases attack after Crit attack. Meowspirit has a chance to cause Fire damage.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 150"
+        }
+      ]
     },
     "Shari": {
       "description": "Born of the magical woodlands, she is in touch with nature.",
@@ -8445,7 +8452,7 @@
       "skill": " Summons a thorned vine to attack enemies.",
       "skill_details": "<br>",
       "star": {
-        "1": "Patrol Gold Earnings + 4%",
+        "1": "Patrol Gold Earnings + x%",
         "2": "Max HP + 120 [All heroes]",
         "3": "Entangle - Vine: Vine has increased attack",
         "4": "Trait - Active: When moving, dodge rate slightly increased",
@@ -8459,15 +8466,32 @@
         "20": "[All Heroes] Max Hp +400",
         "30": "Attack +10%",
         "30_1": "[Assist Effect] Stand around summoned creature to gain Attack",
-        "40": "Deals Damage to normal enemies +5%",
-        "50": "Shari's base HP +8%",
+        "40": "[All Heroes] Deals Damage to normal enemies +5%",
+        "50": "Shari's base HP +10%",
         "60": "[Assist Effect] Summoned creature damage +12%",
         "70": "Increase Damage Reduction when moving",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Damage to heroes +9%"
       },
-      "hero_assist_evolve":"everlife-trialstone.svg"
+      "hero_assist_evolve":"everlife-trialstone.svg",
+      "list_hero_assist": ["Atreus", "Urasil", "Phoren", "Meowgik", "Bonnie", "Lina", "Melinda", "Stella"],
+      "skins" :[
+        {
+          "name": "Shaman Sacrifice",
+          "src": "Shaman_Sacrifice",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 30]: Max HP + 150 [All Heroes]",
+          "activ_boost": " \u2022 When around vines, damage resistance is increased by 10%",
+          "price": "Price: <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object> 40"
+        },
+        {
+          "name": "Tribe Chief",
+          "src": "Tribe_Chief",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 400 [All Heroes]",
+          "activ_boost": " \u2022 Each attack has a chance to summon a staff that casts powerful debuffs. 100% summon rate when taking damage",
+          "price": "Obtainable from Exclusive Event"
+        }
+      ]
     },
     "Ayana": {
       "description": "Hailing from a magical city, a witch with powerful magic!",
@@ -8478,7 +8502,7 @@
       "skill": "Attacks can charm the enemy, with a chance to summon a portal",
       "skill_details": "<br><b>Skill Details:</b><br>Charm: Charmed enemies will receive additional damage with reduced movement speed and loss of health.<br><br><b>Additional Skill Notes:</b><br> \u2022 Applies a 'Charm' when targetting an enemy every 10 seconds, or applies it instantly when attacking an enemy.<br> \u2022 Deals 48% of non-modifiable base damage (includes rune ATK% boosts) for 2 ticks.<br> \u2022 The damage ticked increases by 0.4% of your base damage each time you level up, maximum of 49.6%.<br> \u2022 Creates a portal that lasts 5 seconds at a time until used.<br><br>",
       "star": {
-        "1": "Patrol Locket Scroll Earnings + 4%",
+        "1": "Patrol Locket Scroll Earnings + x%",
         "2": "Crit Damage + 15% [All heroes]",
         "3": "Witchcraft - Dodger: After leaving the portal, dodge rate increased by 75% for a while",
         "4": "Trait - Elegance: After using the portal, enemies around the portal will be Charmed",
@@ -8492,15 +8516,39 @@
         "20": "[All Heroes] Damage to ground Units +200",
         "30": "Increased Movement Speed after being teleported",
         "30_1": "[Assist Effect] Attack +10% being teleported",
-        "40": "Deals Damage to elite enemies +5%",
-        "50": "Ayana's base HP +8%",
+        "40": "[All Heroes] Deals Damage to elite enemies +5%",
+        "50": "Ayana's base HP +10%",
         "60": "[Assist Effect] Increased damage to slowed enemies",
         "70": "Control Effect Duration +30%",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Damage to mobs +8%"
       },
-      "hero_assist_evolve":"everlife-trialstone.svg"
+      "hero_assist_evolve":"everlife-trialstone.svg",
+      "list_hero_assist": ["Rolla", "Shade", "Ryan", "Lina", "Aquea", "Gugu", "Bobo", "Blazo"],
+      "skins" :[
+        {
+          "name": "Little Witch",
+          "src": "Little_Witch",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 30]: Attack + 60 [All Heroes]",
+          "activ_boost": " \u2022 After being transported, collision damage is reduced by 25% within 3s",
+          "price": "Price: <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object> 145"
+        },
+        {
+          "name": "Beach Dance",
+          "src": "Beach_Dance",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 30]: Attack + 60 [All Heroes]",
+          "activ_boost": " \u2022 After each Charm, a small puddle is left which reduces enemy speed",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 100"
+        },
+        {
+          "name": "Enchantress",
+          "src": "Enchantress",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50] Attack + 110 [All Heroes]",
+          "activ_boost": " \u2022 Continuously charms nearby enemies.",
+          "price": "Obtained from Valentine's Day limited-time event. Cannot be Price: purchased <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object with> at the moment."
+        }
+      ]
     },
     "Onir": {
       "description": "The son of Light, possessing all the powers from the Light like his shiny hair.",
@@ -8511,7 +8559,7 @@
       "skill": "Your attacks cause an enhanced Holy effect",
       "skill_details": "<br>",
       "star": {
-        "1": "Patrol Weapon Scroll Earnings + 4%",
+        "1": "Patrol Weapon Scroll Earnings + x%",
         "2": "Max HP + 200 [All heroes]",
         "3": "Aurora - Shine: Light repeatedly attacks enemies, with increased damage",
         "4": "Trait - Justice: When only one enemy remains, own crit rate is increased by 10%",
@@ -8525,15 +8573,32 @@
         "20": "[All Heroes] Max Hp +480",
         "30": "Crit Chance +8%",
         "30_1": "[Assist Effect] Holy damage increased. +1 holy projectile",
-        "40": "Damage to Airborne Units +6%",
-        "50": "Onir's base HP +8%",
+        "40": "[All Heroes] Damage to Airborne Units +6%",
+        "50": "Onir's base HP +10%",
         "60": "[Assist Effect] Holy touch projectiles can bounce",
         "70": "Gain extra boost when increasing Max HP",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Weapon Damage +6%"
       },
-      "hero_assist_evolve":"immortal-trialstone.svg"
+      "hero_assist_evolve":"immortal-trialstone.svg",
+      "list_hero_assist": ["Phoren", "Meowgik", "Shari", "Rolla", "Sylvan", "Aquea", "Shingen", "Bobo", "Melinda"],
+      "skins" :[
+        {
+          "name": "Athenian Lord",
+          "src": "Athenian_Lord",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 30]: Max HP + 250 [All Heroes]",
+          "activ_boost": " \u2022 Every 10s, Light stats damage is increased 10%, disappears at the end of battle",
+          "price": "Price: <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object> 95"
+        },
+        {
+          "name": "This is Sparta",
+          "src": "This_is_Sparta",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 60]: Attack + 75 [All Heroes]",
+          "activ_boost": " \u2022 Chance to throw shield when attacking. Fires lances at surrounding enemies when attacked.",
+          "price": "Obtainable from Exclusive Event"
+        }
+      ]
     },
     "Rolla": {
       "description": "The goddess of Ice, wielder of the power of ice and snow with virtuous heart.",
@@ -8544,7 +8609,7 @@
       "skill": "Your attacks freeze enemies for a longer time",
       "skill_details": "<br><br><br>",
       "star": {
-        "1": "Patrol XP Earnings + 5%",
+        "1": "Patrol XP Earnings + x%",
         "2": "Damage to Melee Units + 75 [All heroes]",
         "3": "Frost - Sub-Zero: Frozen damage increased, frozen time increased",
         "4": "Trait - Ice Snow: Upgrade quicker during battle, Spellbook mana increased",
@@ -8558,15 +8623,32 @@
         "20": "[All Heroes] Damage to Melee Units +240",
         "30": "Attacking enemies stacks freeze damage",
         "30_1": "[Assist Effect] Ice Damage +22%",
-        "40": "Max HP +4%",
-        "50": "Rolla's base HP +8%",
+        "40": "[All Heroes] Max HP +4%",
+        "50": "Rolla's base HP +10%",
         "60": "[Assist Effect] Deals more damage to frozen enemies",
         "70": "Attack +10%",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Attack +6%"
       },
-      "hero_assist_evolve":"immortal-trialstone.svg"
+      "hero_assist_evolve":"immortal-trialstone.svg",
+      "list_hero_assist": ["Shari", "Ayana", "Bonnie", "Sylvan", "Lina", "Aquea", "Gugu", "Blazo", "Melinda"],
+      "skins" :[
+        {
+          "name": "Ice Empress",
+          "src": "Ice_Empress",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Attack + 100 [All Heroes]",
+          "activ_boost": " \u2022 Surrounding enemies will automatically have reduced movement speed",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 70"
+        },
+        {
+          "name": "Sweet Proposal",
+          "src": "Sweet_Proposal",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Attack + 100 [All Heroes]",
+          "activ_boost": " \u2022 Continuously attacking the enemy will increase attack and dodge rate, can be stack up to 10%",
+          "price": "Obtainable from Exclusive Event"
+        }
+      ]
     },
     "Bonnie": {
       "description": "Heroic and kind woman of the sea! She robs the rich and helps the poor.",
@@ -8577,7 +8659,7 @@
       "skill": "Chance to summon Clone when attacking",
       "skill_details": "<br>",
       "star": {
-        "1": "Patrol Gold Earnings + 5%",
+        "1": "Patrol Gold Earnings + x%",
         "2": "Attack + 50 [All heroes]",
         "3": "Clone - Emergency: Chance to summon 2 clones",
         "4": "Trait - Fearless: When there are too many enemies, own attack speed increased",
@@ -8591,15 +8673,32 @@
         "20": "[All Heroes] Attack +150",
         "30": "After i critical hit, summoned shadow's damage increased for 4s",
         "30_1": "[Assist Effect] Summoned Creature Damage +9%",
-        "40": "Attack +4%",
-        "50": "Bonnie's base HP +8%",
+        "40": "[All Heroes] Attack +4%",
+        "50": "Bonnie's base HP +10%",
         "60": "[Assist Effect] Summoned Creature Duration +20%",
         "70": "More summoned creature in a room increases own Attack",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Summoned Creature Damage +17%"
       },
-      "hero_assist_evolve":"immortal-trialstone.svg"
+      "hero_assist_evolve":"immortal-trialstone.svg",
+      "list_hero_assist": ["Atreus", "Helix", "Meowgik", "Shari", "Ayana", "Lina", "Shingen", "Bobo", "Melinda"],
+      "skins" :[
+        {
+          "name": "Pirate Captain",
+          "src": "Pirate_Captain",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 250",
+          "activ_boost": " \u2022 Bonnie's clone duration increased with the amount of abilities",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 20"
+        },
+        {
+          "name": "Ghost Captain",
+          "src": "Ghost_Captain",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50] Max HP + 250 [All Heroes]",
+          "activ_boost": " \u2022 Turn into a ghost at intervals, during which projectiles and enemies will pass through.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 120"
+        }
+      ]
     },
     "Sylvan": {
       "description": "An elf prince, master of the elements and loves nature.",
@@ -8610,7 +8709,7 @@
       "skill": "When attacking, there's a chance to trigger a random powerful elemental attack.",
       "skill_details": "<br><b>Skill Details:</b><br>Every time an enemy is attacked, a random effect from fire, toxic, bolt or ice is used.<br><br>",
       "star": {
-        "1": "Patrol Locket Scroll Earnings + 4%",
+        "1": "Patrol Locket Scroll Earnings + x%",
         "2": "Damage to Ranged Units + 75 [All heroes]",
         "3": "Elemental - Damage: Elemental damage increased",
         "4": "Trait - Pride: When HP is higher than 75%, get extra attack speed",
@@ -8624,15 +8723,46 @@
         "20": "[All Heroes] Damage to Ranged Units +240",
         "30": "Increased attack after looting a Red Heart. Lasts 3 rooms",
         "30_1": "[Assist Effect] Elemental Damage +10%",
-        "40": "Max HP +5%",
-        "50": "Sylvan's base HP +8%",
+        "40": "[All Heroes] Max HP +5%",
+        "50": "Sylvan's base HP +10%",
         "60": "[Assist Effect] Elemental Damage +18%",
         "70": "Gain increased Element damage when attacked by enemies",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Elemental Damage +25%"
       },
-      "hero_assist_evolve":"immortal-trialstone.svg"
+      "hero_assist_evolve":"immortal-trialstone.svg",
+      "list_hero_assist": ["Urasil", "Phoren", "Taranis", "Rolla", "Ryan", "Aquea", "Gugu", "Blazo", "Stella"],
+      "skins" :[
+        {
+          "name": "Elegant Prince",
+          "src": "Elegant_Prince",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Attack + 120 [All Heroes]",
+          "activ_boost": " \u2022 When stationary, attack is increased by 4%",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 95"
+        },
+        {
+          "name": "Sweet Proposal",
+          "src": "Sweet_Proposal",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Attack + 120 [All Heroes]",
+          "activ_boost": " \u2022 When getting Skills, there's a higher chance to get an Elemental skill",
+          "price": "Leaderboard Top 3 Rewards (only during the 1st Season)"
+        },
+        {
+          "name": "Commander",
+          "src": "Commander",
+          "passiv_boost": " \u2022 [Lvl50] Max HP + 350 [All Heroes]",
+          "activ_boost": " \u2022 Gain elemental damage resistance. Boost summoned creatures' random elemental damage.",
+          "price": "Leaderboard Top 20 Rewards (Exclusive)"
+        },
+        {
+          "name": "Vampire Count",
+          "src": "Vampire_Count",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50] Max HP + 350 [All Heroes]",
+          "activ_boost": " \u2022 Killing enemies restores a little HP. Killing bosses restores more HP.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object> 250"
+        }
+      ]
     },
     "Shade": {
       "description": "Killer of shadows, queen of the night, she can switch between her real and shadow self in battle.",
@@ -8643,7 +8773,7 @@
       "skill": "You can enjoy different effects with real and shadow forms, which switch automatically during battle.",
       "skill_details": "<br><b>Skill Details:</b><br><b><em>Real Self</em></b>: Attacks have strong dark powers, and deal continued damage.<br><b><em>Shadow Self:</em></b> Increased attack, attack speed and dodge rate.<br><br><b>Additional Skill Notes:</b><br> \u2022 Switches between her 2 forms every 4 seconds.<br> \u2022 Normal form: 135% Damage on hit, 30% damage for 2 ticks, and 135% Dark Touch Explosion.<br> \u2022 Shadow form: 75% Attack, 15% Attack Speed, ~15% Dodge Chance.<br><br>",
       "star": {
-        "1": "Patrol Sapphire Earnings + 5%",
+        "1": "Patrol Sapphire Earnings + x%",
         "2": "Crit Chance + 2% [All heroes]",
         "3": "Twin Shadows - Cold Blood: Chance for Dark stats increased",
         "4": "Trait - Calm: HP max limit is increased with each kill",
@@ -8657,15 +8787,39 @@
         "20": "[All Heroes] Damage to Melee Units +240",
         "30": "Attack increased for short time when enemies are killed by Dark damage",
         "30_1": "[Assist Effect] Dark touch Damage +10%",
-        "40": "Damage to heroes +8%",
-        "50": "Shade's base HP +8%",
+        "40": "[All Heroes] Damage to heroes +8%",
+        "50": "Shade's base HP +10%",
         "60": "[Assist Effect] HP Converted to MP +15%",
         "70": "Shadow forms ignore traps",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Attack +8%"
       },
-      "hero_assist_evolve":"immortal-trialstone.svg"
+      "hero_assist_evolve":"immortal-trialstone.svg",
+      "list_hero_assist": ["Ayana", "Onir", "Rolla", "Sylvan", "Ophelia", "Aquea", "Gugu", "Iris", "Blazo"],
+      "skins" :[
+        {
+          "name": "Legendary Assassin",
+          "src": "Legendary_Assassin",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Attack + 120 [All Heroes]",
+          "activ_boost": " \u2022 In shadow form, collision damage is reduced by 5%",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 95"
+        },
+        {
+          "name": "Crimson Blade",
+          "src": "Crimson_Blade",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Attack + 120 [All Heroes]",
+          "activ_boost": " \u2022 Lower the HP, faster the movement speed",
+          "price": "3000 Honor Points in Honor Shop (for 7d unlock and infinite Attack Boost) or Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 100"
+        },
+        {
+          "name": "Diver Pro",
+          "src": "Diver_Pro",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Attack + 120 [All Heroes]",
+          "activ_boost": " \u2022 During Shadow form, dodge rate increased 8%",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 100"
+        }
+      ]
     },
     "Ophelia": {
       "description": "Huntress walking between darkness and light, adept at hunting evil monsters.",
@@ -8676,7 +8830,7 @@
       "skill": "Skill (Demon Soul): Chance to suck and absorb the enemy's soul, increasing own strength.",
       "skill_details": "<br><b>Skill Details:</b><br>Souls are absorbed into different colors in the formation.<br><br><b>Green</b>: Increase attack speed and projectile speed.<br><b>Yellow</b>: Chance to recover HP during crit attacks.<br><b>Blue</b>: Attacked enemy will explode.<br><b>Red</b>: Increase attack and add knockback effect.<br><br>",
       "star": {
-        "1": "Patrol Armor Scroll Earnings + 4%",
+        "1": "Patrol Armor Scroll Earnings + x%",
         "2": "Damage to Ground Units + 75 [All heroes]",
         "3": "Demon Soul - Amplify: Soul absorption effect increases",
         "4": "Trait - Tranquil: Each kill increases HP limit",
@@ -8690,15 +8844,32 @@
         "20": "[All Heroes] Damage to Ground Units +240",
         "30": "Soul Absorption increases red heart drop rate (Max 50%)",
         "30_1": "[Assist Effect] Own buff duration extended",
-        "40": "Blue Heart drop rate +12%",
-        "50": "Ophelia's base HP +8%",
+        "40": "[All Heroes] Blue Heart drop rate +12%",
+        "50": "Ophelia's base HP +10%",
         "60": "[Assist Effect] Chance of Angel's healing x2 +20%",
         "70": "50% chance to not lose HP when exchanging demon skills",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Weapon Ranged damage +7%"
       },
-      "hero_assist_evolve":"immortal-trialstone.svg"
+      "hero_assist_evolve":"immortal-trialstone.svg",
+      "list_hero_assist": ["Urasil", "Onir", "Bonnie", "Shade", "Ryan", "Lina", "Iris", "Melinda", "Stella", "Taiga"],
+      "skins" :[
+        {
+          "name": "Demon Shift",
+          "src": "Demon_Shift",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Attack + 100 [All Heroes]",
+          "activ_boost": " \u2022 The lower the HP, the stronger the recovery of HP",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 55"
+        },
+        {
+        "name": "Present Envoy",
+        "src": "Present_Envoy",
+        "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Attack + 100 [All Heroes]",
+        "activ_boost": " \u2022 Summons a Christmas mimic that attacks enemies after Soul absorption.",
+        "price": "Obtainable from Exclusive Event"
+        }
+      ]
     },
     "Ryan": {
       "description": "A traveling red panda that loves to sing, dance, and meet new people",
@@ -8709,7 +8880,7 @@
       "skill": "Revive upon death, with Invincibility for 1s. Invincibility increases with the amount of monsters killed.",
       "skill_details": "<br><b>Skill Details:</b><br> \u2022 Defeating enemies increase invincibilty time after revive. The time limit for invincibility is 6 seconds.<br> \u2022 Defeating bosses gives 10 times the amount extra invincibility time compared to normal monsters.<br><br>",
       "star": {
-        "1": "Patrol Ring Scroll Earnings + 4%",
+        "1": "Patrol Ring Scroll Earnings + x%",
         "2": "Damage to Ranged Units + 75 [All heroes]",
         "3": "Luck - Counterattack: When invincible, attack and crit rate increased greatly",
         "4": "Trait - Leisure: Enemy projectiles will slow down near Ryan",
@@ -8723,15 +8894,39 @@
         "20": "[All Heroes] Damage to Airborne Units +240",
         "30": "Each revival permanently increase Attack by 8%",
         "30_1": "[Assist Effect] Max Mp +7%",
-        "40": "Chance of Angel's Healing x2 +10%",
-        "50": "Ryan's base HP +8%",
+        "40": "[All Heroes] Chance of Angel's Healing x2 +10%",
+        "50": "Ryan's base HP +10%",
         "60": "[Assist Effect] Hp Drops +15%",
         "70": "Max Hp +20% when hero revies with talent skill",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Max hp +7%"
       },
-      "hero_assist_evolve":"immortal-trialstone.svg"
+      "hero_assist_evolve":"immortal-trialstone.svg",
+      "list_hero_assist": ["Meowgik", "Rolla", "Shade", "Ophelia", "Lina", "Aquea", "Gugu", "Iris", "Elaine"],
+      "skins" :[
+        {
+          "name": "Christmas Elf",
+          "src": "Christmas_Elf",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Weapon droprate + 8% [All Heroes]",
+          "activ_boost": " \u2022 After killing the enemy, there is a chance to summon a chest that can freeze surrounding enemies",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 100"
+        },
+        {
+          "name": "Boy Scout",
+          "src": "Boy_Scout",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 600 [All Heroes]",
+          "activ_boost": " \u2022 Attack speed increased after Crit attack, can be stacked.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object> 150"
+        },
+        {
+          "name": "Trick or Treat",
+          "src": "Trick_or_Treat",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50] Max HP + 600 [All Heroes]",
+          "activ_boost": " \u2022 Hitting enemy has a chance to summon a magic Pumpkin, dealing continuous elemental damage.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 100"
+        }
+      ]
     },
     "Lina": {
       "description": "A mysterious dancer who loves to travel and dance gracefully for strangers she meets.",
@@ -8742,7 +8937,7 @@
       "skill": "Hitting an enemy deals extra damage and summons a phantom dancer who attacks enemies and causes a negative effect.",
       "skill_details": "<br><b>Skill Details:</b><br>Enemies around the Phantom Dancer will slow down and reduce HP.<br><br>",
       "star": {
-        "1": "Patrol Sapphire Earnings + 5%",
+        "1": "Patrol Sapphire Earnings + x%",
         "2": "Attack + 60 [All heroes]",
         "3": "Dream Dance - Enlarge: Range increased 50%",
         "4": "Trait - Tender: Red hearts droprate + 20%, HP Recovery + 20%",
@@ -8756,15 +8951,32 @@
         "20": "[All Heroes] Attack +150",
         "30": "Attack +10%",
         "30_1": "[Assist Effect] Summoned Creature Damage +14%",
-        "40": "Max Mp +7%",
-        "50": "Lina's base HP +8%",
+        "40": "[All Heroes] Max Mp +7%",
+        "50": "Lina's base HP +10%",
         "60": "[Assist Effect] Summoned Creature Attack Speed +25%",
         "70": "The more red hearts obtained, the higher your Crit Chance",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Summoned Creature Duration +12%"
       },
-      "hero_assist_evolve":"immortal-trialstone.svg"
+      "hero_assist_evolve":"immortal-trialstone.svg",
+      "list_hero_assist": ["Atreus", "Helix", "Meowgik", "Shari", "Bonnie", "Shade", "Ryan", "Shingen", "Bobo"],
+      "skins" :[
+        {
+          "name": "Royal Princess",
+          "src": "Royal_Princess",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 500 [All Heroes]",
+          "activ_boost": " \u2022 Damage received when moving reduced 10%",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 75"
+        },
+        {
+          "name": "Today's Chef",
+          "src": "Todays_Chef",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 60]: Max HP + 550",
+          "activ_boost": " \u2022 Own and mirror image dancer attacks gain Fire damage. Fire damage increases with surrounding enemy count.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 100"
+        }
+      ]
     },
     "Aquea": {
       "description": "Princess of the seas, loved by all underwater.",
@@ -8775,7 +8987,7 @@
       "skill": "Attack carries a strong freezing effect which slows down enemies. When HP is lower than 35%, combat mode is entered.",
       "skill_details": "<br><b>Skill Details:</b><br><b><em>Combat Form:</em></b> Body size reduced 15%, crit rate increased 10%, dodge rate increased 15%, freezing damage increased.<br><br>",
       "star": {
-        "1": "Patrol Bracelet Scroll Earnings + 5%",
+        "1": "Patrol Bracelet Scroll Earnings + x%",
         "2": "Attack + 70 [All heroes]",
         "3": "Duel Form - Freeze: Freezing effect is greatly increased",
         "4": "Trait - Optimism: When HP is lower than 10%, 20% HP is recovered",
@@ -8789,15 +9001,32 @@
         "20": "[All Heroes] Attack +200",
         "30": "When HP is below 20%, chance to drop many red hearts. Only occurs 1 time",
         "30_1": "[Assist Effect] Ice Damage +20%",
-        "40": "Attack +5%",
-        "50": "Aquea's base HP +8%",
+        "40": "[All Heroes] Attack +5%",
+        "50": "Aquea's base HP +10%",
         "60": "[Assist Effect] Control Effect Duration +22%",
         "70": "Attack +10%",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Weapon Damage +7%"
       },
-      "hero_assist_evolve":"eternal-trialstone.svg"
+      "hero_assist_evolve":"eternal-trialstone.svg",
+      "list_hero_assist": ["Ayana", "Rolla", "Sylvan", "Ophelia", "Shingen", "Gugu", "Iris", "Blazo", "Elaine", "Taiga"],
+      "skins" :[
+        {
+          "name": "Mermaid Garb",
+          "src": "Mermaid_Garb",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 525 [All Heroes]",
+          "activ_boost": " \u2022 Can walk on water",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 100"
+        },
+        {
+          "name": "Seahorse! Seahorse!",
+          "src": "Seahorse_Seahorse",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 600 [All Heroes]",
+          "activ_boost": " \u2022 Seahorse has chance to assist in attack when moving or attacking. Gain slight Movement speed.",
+          "price": "Obtainable from Exclusive Event"
+        }
+      ]
     },
     "Shingen": {
       "description": "The only heir of an ancient clan, owning their curse and gifts. (Owns their family heirloom: Demon Blade - Rain)",
@@ -8808,7 +9037,7 @@
       "skill": "Lower the HP, higher the attack speed. Has high Crit damage.",
       "skill_details": "<br><b>Skill Details:</b><br>Lower the HP, higher the attack speed. Has high Crit Damage.<br><br><b>Hidden Skill Details:</b><br>Able to cast Slash when equipped with an Epic or above Demon Blade<br><br>",
       "star": {
-        "1": "Patrol Gold Earnings + 5%",
+        "1": "Patrol Gold Earnings + x%",
         "2": "Damage to Melee Units + 80 [All heroes]",
         "3": "Charge - Strengthen: Melee damage +12%, long range damage +7%, Crit damage +20%",
         "4": "Trait - Persevere: Hitting the same target consecutively increases damage dealt",
@@ -8822,15 +9051,46 @@
         "20": "[All Heroes] Damage to Melee Units +320",
         "30": "Dodge +9%",
         "30_1": "[Assist Effect] Weapon Melee Damage +5%",
-        "40": "Front Damage Resistance +6%",
-        "50": "Shingen's base HP +8%",
+        "40": "[All Heroes] Front Damage Resistance +6%",
+        "50": "Shingen's base HP +10%",
         "60": "[Assist Effect] Increased Attack for short time after healing",
         "70": "When Hp is below 25%, Attack +35%, Movement Speed +20%, Shadow Samurai damage +50%",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Deal damage to elite enemies +12%"
       },
-      "hero_assist_evolve":"eternal-trialstone.svg"
+      "hero_assist_evolve":"eternal-trialstone.svg",
+      "list_hero_assist": ["Onir", "Ophelia", "Ryan", "Gugu", "Iris", "Blazo", "Melinda", "Elaine", "Stella", "Taiga"],
+      "skins" :[
+        {
+          "name": "Family Armor",
+          "src": "Family_Armor",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50] Attack +125 [All Heroes]",
+          "activ_boost": " \u2022 Immunity to collision damage +7%, projectile damage +4%, attack increased +4%",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 100"
+        },
+        {
+          "name": "Sushi Master",
+          "src": "Sushi_Master",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50] Attack + 130 [All Heroes]",
+          "activ_boost": " \u2022 Chance to perform +1 attack when melee attacking. Also increases movement speed.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 120"
+        },
+        {
+          "name": "Cherry Blossom",
+          "src": "Cherry_Blossom",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50] Attack + 130 [All Heroes]",
+          "activ_boost": " \u2022 Triggers berserk 5s after entering a chamber. Triggers again when receiving damage.",
+          "price": "Obtainable from Exclusive Event"
+        },
+        {
+          "name": "White-haired",
+          "src": "White_haired",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50] Attack + 150 [All Heroes]",
+          "activ_boost": " \u2022 Higher chance to get Phantom Sword and Shadow Samurai. Also increases own Critical Rate.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 150"
+        }
+      ]
     },
     "Gugu": {
       "description": "A brave warrior owl, with a gleam of wisdom in its eyes.",
@@ -8841,7 +9101,7 @@
       "skill": "Small chance to summon an owl guardian on hitting enemies. Owl guardians can resist damage and strengthen their hero.",
       "skill_details": "<br><b>Skill Details:</b><br>Small chance to summon an owl guardian on hitting enemies. Owl guardians can resist damage and strengthen their hero.<br><br><FONT color='red'>Red Owl</FONT>: Increased attack, can be stacked.(Increases Attack by 0.1%. Attack is doubled [0.2%] when there are two red owls)<br><FONT color='yellow'>Yellow Owl</FONT>: Killing enemies can restore HP, can be stacked.(Gain 0.7% of Base HP on enemy kills. The amount of Healing is doubled [1.4%] when there are two yellow owls)<br><FONT color='blue'>Blue Owl</FONT>: Increased attack speed, can be stacked. (No data)<br><FONT color='green'>Green Owl</FONT>: Increased attack crit rate, can be stacked. (No data)<br><br>",
       "star": {
-        "1": "Patrol Sapphire Earnings + 10%",
+        "1": "Patrol Sapphire Earnings + x%",
         "2": "Damage to Airborne Units + 60 [All Heroes]",
         "3": "Guardian Spirit - Hope: When own HP is low, chance for summon is higher",
         "4": "Trait - Intelligence: Level-up Speed is increased 15% during battle",
@@ -8855,15 +9115,32 @@
         "20": "[All Heroes] Damage to Airborne Units +320",
         "30": "Collision Damage Resistance +9%",
         "30_1": "[Assist Effect] Dragon magic CoolDown -7%",
-        "40": "Shield Size +7%",
-        "50": "Gugu's base HP +8%",
+        "40": "[All Heroes] Shield Size +7%",
+        "50": "Gugu's base HP +10%",
         "60": "[Assist Effect] Spinning Shield spins faster +20%",
         "70": "Projectile Resistance +10%",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Max HP +8%"
       },
-      "hero_assist_evolve":"eternal-trialstone.svg"
+      "hero_assist_evolve":"eternal-trialstone.svg",
+      "list_hero_assist": ["Shari", "Bonnie", "Ophelia", "Lina", "Shingen", "Iris", "Blazo", "Elaine", "Stella", "Taiga"],
+      "skins" :[
+        {
+          "name": "Mummy Returns",
+          "src": "Mummy_Returns",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50] Attack + 125 [All Heroes]",
+          "activ_boost": " \u2022 Reduces enemy movement speed, reduces damage received from behind.",
+          "price": "Obtainable from Exclusive Event"
+        },
+        {
+          "name": "Robin Gugu",
+          "src": "Robin_Gugu",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 60] Max HP + 400 [All Heroes]",
+          "activ_boost": " \u2022 Each attack has a change to summon an owl auto-attacks nearby enemies",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 90"
+        }
+      ]
     },
     "Iris": {
       "description": "A powerful archer and the guardian of the forest.",
@@ -8874,7 +9151,7 @@
       "skill": "High Movement Speed and Dodge. Each ranged attack has a chance to shoot an extra projectile. (Front Arrow)",
       "skill_details": "<br>",
       "star": {
-        "1": "Patrol Gold Earnings + 15%",
+        "1": "Patrol Gold Earnings + x%",
         "2": "Attack + 70 [All Heroes]",
         "3": "Sharpshooter - Power Attack: Increase damage of extra projectiles and knockback effect.",
         "4": "Trait - Lively: Each successful dodge will increase Attack Speed temporarily.",
@@ -8888,15 +9165,25 @@
         "20": "[All Heroes] Attack +200",
         "30": "The higher your crit chance, the faster you move ",
         "30_1": "[Assist Effect] Front arrow +1 chance increased +10%",
-        "40": "Rear Damage Resistance +8%",
-        "50": "Iris's base HP +8%",
+        "40": "[All Heroes] Rear Damage Resistance +8%",
+        "50": "Iris's base HP +10%",
         "60": "[Assist Effect] Front arrow damage up",
         "70": "Gain movement speed for short time after taking damage ",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Damage to Airborne units +12%"
       },
-      "hero_assist_evolve":"eternal-trialstone.svg"
+      "hero_assist_evolve":"eternal-trialstone.svg",
+      "list_hero_assist": ["Helix", "Onir", "Shade", "Ophelia", "Ryan", "Blazo", "Melinda", "Elaine", "Stella", "Taiga"],
+      "skins" :[
+        {
+          "name": "Merry Christmas",
+          "src": "Merry_Christmas",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 700 [All Heroes]",
+          "activ_boost": " \u2022 When HP is low, it'll be recovered over time (only triggered once)",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 100"
+        }
+      ]
     },
     "Blazo": {
       "description": "A furious avenger, and an inquisitor against evil.",
@@ -8907,7 +9194,7 @@
       "skill": "Attacks have a chance to be judged; repeated hits inflicts justice.",
       "skill_details": "<br><b>Skill Details:</b><br>Greatly increases its own attack, and reduces the enemy's movement speed and attack. Enemies lose more HP when injured.<br><br>",
       "star": {
-        "1": "Patrol Gold Earnings + 25%",
+        "1": "Patrol Gold Earnings + x%",
         "2": "Damage to Ground Units +80 [All Heroes]",
         "3": "Judge - Ghast: Increases Crit Chance for killing enemies when justice",
         "4": "Trait - Revenge: Chance to deal Revenge damage when receiving damage",
@@ -8921,15 +9208,32 @@
         "20": "[All Heroes] Damage to ground Units +320",
         "30": "The more red hearts obtained, the faster you attack",
         "30_1": "[Assist Effect] Enemy Debuff duration extended +15%",
-        "40": "Increased Attack after killing enemies +7%",
-        "50": "Blazo's base HP +8%",
+        "40": "[All Heroes] Increased Attack after killing enemies +7%",
+        "50": "Blazo's base HP +10%",
         "60": "[Assist Effect] Increase Attack speed for short time after healing ",
         "70": "Gain attack speed for short time after taking damage ",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Control Resistance +20%"
       },
-      "hero_assist_evolve":"eternal-trialstone.svg"
+      "hero_assist_evolve":"eternal-trialstone.svg",
+      "list_hero_assist": ["Helix","Meowgik","Shari","Bobo","Ophelia","Ryan","Shingen","Melinda","Elaine","Taiga"],
+      "skins" :[
+        {
+          "name": "Rockstar",
+          "src": "Rockstar",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50] Attack + 130 [All Heroes]",
+          "activ_boost": " \u2022 Rock N' Roll style changes with mood; various styles have various effects",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 120"
+        },
+        {
+          "name": "It's Noon",
+          "src": "Its_Noon",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 60]: Attack + 160 [All Heroes]",
+          "activ_boost": " \u2022 Chance to mark enemies, allowing projectiles to go through walls and deal additional damage when attacking them.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 150"
+        }
+      ]
     },
     "Melinda": {
       "description": "A beautiful and brave noble who has embarked on a journey to become a renowned ranger.",
@@ -8940,7 +9244,7 @@
       "skill": "Chance to fire a projectile barrage with each attack. The lower the HP, the stronger the barrage.",
       "skill_details": "<br>",
       "star": {
-        "1": "Patrol XP Earnings + 25%",
+        "1": "Patrol XP Earnings + x%",
         "2": "Damage to Ranged Units + 100 [All Heroes]",
         "3": "Ranger's Heart - Inspire: Chance to increase attack when projectile barrage is hitting enemies; can stack",
         "4": "Trait - Righteous: Surrounding enemies; more and closer will increase hero's attack",
@@ -8954,15 +9258,39 @@
         "20": "[All Heroes] Damage to Airborne Units +400",
         "30": "Crit Chance +8%",
         "30_1": "[Assist Effect] Diagonal arrow damage up +10%",
-        "40": "Attack+5%",
-        "50": "Melinda's base HP +8%",
+        "40": "[All Heroes] Attack+5%",
+        "50": "Melinda's base HP +10%",
         "60": "[Assist Effect] Summoned flying object damage +30%",
         "70": "Extra arrows can deal critical heats and penetrate",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Attack +10%"
       },
-      "hero_assist_evolve":"eternal-trialstone.svg"
+      "hero_assist_evolve":"eternal-trialstone.svg",
+      "list_hero_assist": ["Urasil","Phoren","Taranis","Onir","Aquea","Iris","Blazo","Elaine","Stella","Taiga"],
+      "skins" :[
+        {
+          "name": "Baking Sweety",
+          "src": "Baking_Sweety",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 750 [All Heroes]",
+          "activ_boost": " \u2022 Gain Rage 5s after damage, increases attack. Gain Joy 5s after looting a Heart, increases Dodge rate.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 120"
+        },
+        {
+          "name": "Huffy Melinda",
+          "src": "Huffy_Melinda",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 750 [All Heroes]",
+          "activ_boost": " \u2022 Melinda hates math, but when her HP is multiples of 3, 17 and 59, her Attack is greatly increased. Her Movement and Dodge Rate are increased at other HP value.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 150"
+        },
+        {
+          "name": "Cute Clown",
+          "src": "Cute_Clown",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 40] Max HP + 700 [All Heroes]",
+          "activ_boost": " \u2022 Turns projectile barrage into daggers that deal damage over time and slow enemies",
+          "price": "Obtainable from Exclusive Event"
+        }
+      ]
     },
     "Elaine": {
       "description": "An adorable butterfly maiden blessed by elven gods since her birth",
@@ -8973,7 +9301,7 @@
       "skill": "Gain invincibility shield at intervals that also increases Attack Speed. When shield fades, attack is greatly increased.",
       "skill_details": "<br>",
       "star": {
-        "1": "Patrol Weapon Scroll Earnings + 5%",
+        "1": "Patrol Weapon Scroll Earnings + x%",
         "2": "Max HP + 350 [All Heroes]",
         "3": "Invincible Elaine - Counter: Shots blocked by invincibility shield are converted into attack when shield fades.",
         "4": "Trait - Outgoing: Great at making friends, reducing hostility of surrounding enemies (reduces attack)",
@@ -8987,15 +9315,39 @@
         "20": "[All Heroes] Max Hp +770 ",
         "30": "Damage Resistance +9%",
         "30_1": "[Assist Effect] Invincibility star chance increased +15%",
-        "40": "Max Hp +6%",
-        "50": "Elaine's base HP +8%",
+        "40": "[All Heroes] Max Hp +6%",
+        "50": "Elaine's base HP +10%",
         "60": "[Assist Effect] Max level +1",
         "70": "Bosses have slight chance to drop 1 extra red heart",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Max Hp +10%"
       },
-      "hero_assist_evolve":"eternal-trialstone.svg"
+      "hero_assist_evolve":"eternal-trialstone.svg",
+      "list_hero_assist": ["Helix","Bobo","Shade","Ryan","Shingen","Gugu","Blazo","Melinda","Stella","Taiga"],
+      "skins" :[
+        {
+          "name": "Snow Maiden Elaine",
+          "src": "Snow_Maiden_Elaine",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50] Attack + 150 [All Heroes]",
+          "activ_boost": " \u2022 Immune to freeze. Also slows or freezes surrounding enemies. Greatly increases ice damage and ice damage resistance.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 150"
+        },
+        {
+          "name": "Your Present",
+          "src": "Your_Present",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 800 [All Heroes]",
+          "activ_boost": " \u2022 Chance to get 1 random boost effect when Invincibility Shield fades.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 165"
+        },
+        {
+          "name": "Cherry Blossom",
+          "src": "Cherry_Blossom",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50]: Max HP + 800 [All Heroes]",
+          "activ_boost": " \u2022 Chance to get 1 cherry blossom when enemies are killed. Merge 3 cherries blossoms into 1 heart.",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 165"
+        }
+      ]
     },
     "Bobo": {
       "description": "A brainy bear from a faraway city",
@@ -9006,7 +9358,7 @@
       "skill": "Increases leveling speed. Attack increases with level in a chamber",
       "skill_details": "<br><b>Skill Details:</b><br>Bobo has 12.5% atk boost at start, and gains around 8.5% attack per lvl (credit to Chaos)<br><br>",
       "star": {
-        "1": "Patrol XP Earnings + 4%",
+        "1": "Patrol XP Earnings + x%",
         "2": "Max HP + 240 [All Heroes]",
         "3": "Wisdom's Might - Upgrade: Gain higher Attack and leveling speed",
         "4": "Trait - Learner: Loot Hearts to increase slight Attack Speed (Max 10%)",
@@ -9020,15 +9372,25 @@
         "20": "[All Heroes] Max Hp +480",
         "30": "Attack Speed +8%",
         "30_1": "[Assist Effect] MP Strength +6%",
-        "40": "Attack +3%",
-        "50": "Bobo's base HP +8%",
+        "40": "[All Heroes] Attack +3%",
+        "50": "Bobo's base HP +10%",
         "60": "[Assist Effect] Battle XP Gain +15%",
         "70": "Max level +1",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Battle XP Gain +6%"
       },
-      "hero_assist_evolve":"everlife-trialstone.svg"
+      "hero_assist_evolve":"everlife-trialstone.svg",
+      "list_hero_assist": ["Atreus","Meowgik","Shari","Onir","Rolla","Aquea","Shingen","Elaine"],
+      "skins" :[
+        {
+          "name": "Pinobear",
+          "src": "Pinobear",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 50] Max HP + 300 [All Heroes]",
+          "activ_boost": " \u2022 Each attack has a chance to fire lasers from the nose. Gain extra collision damage reduction.",
+          "price": "Obtainable from Exclusive Event"
+        }
+      ]
     },
     "Stella": {
       "description": "Princess of the Sky City, able to wield the power of the astral realm since birth.",
@@ -9039,7 +9401,7 @@
       "skill": "Master of starlight and lightning. Attacks with guardian spirit. Possesses strong weapon damage and knockback.",
       "skill_details": "<br>",
       "star": {
-        "1": "Patrol Armor Scroll Earnings + 5%",
+        "1": "Patrol Armor Scroll Earnings + x%",
         "2": "Rear Damage Resistance +3% [All Heroes]",
         "3": "Starlight and Thunder - Dazzle: Increases Starlight damage, summon chance and max summons",
         "4": "Trait - Mischievous: Chance to use lightning to attack surrounding enemies when moving",
@@ -9053,15 +9415,32 @@
         "20": "[All Heroes] Attack +230",
         "30": "After moving a distance, gain attack and elemental attack for a short time",
         "30_1": "[Assist Effect] All star skills damage +18%",
-        "40": "Attack +5%",
-        "50": "Stella's base HP +8%",
+        "40": "[All Heroes] Attack +5%",
+        "50": "Stella's base HP +10%",
         "60": "[Assist Effect] Wall bounce +1",
         "70": "Increased damage reduction when moving ",
         "80": "[Assist Effect] Can deploy at any time to assist in Battle",
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Increased attack after killing enemies +12%"
       },
-      "hero_assist_evolve":"eternal-trialstone.svg"
+      "hero_assist_evolve":"eternal-trialstone.svg",
+      "list_hero_assist": ["Taranis","Bobo","Shade","Ryan","Gugu","Iris","Blazo","Melinda","Elaine","Taiga"],
+      "skins" :[
+        {
+          "name": "Ocean's Heart",
+          "src": "Oceans_Heart",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 60] Attack + 155 [All Heroes]",
+          "activ_boost": " \u2022 The more water in the room, the higher your Attack",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 155"
+        },
+        {
+          "name": "Lethal Jello",
+          "src": "Lethal_Jello",
+          "passiv_boost": " \u2022 <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> [Lvl 70] Attack + 200 [All Heroes]",
+          "activ_boost": " \u2022 Poisons all enemies in the room when taking damage. The lower the HP of Poisoned enemies, the higher the poison damage. Last 8s",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 160"
+        }
+      ]
     },
     "Taiga": {
       "description": "An enigmatic warrior from the East, probably the world's most powerful martial artist. None can withhand his full might.",
@@ -9072,7 +9451,7 @@
       "skill": "Summons a meteor to attack enemies and deal Fire damage to enemies in the area.",
       "skill_details": "<br>",
       "star": {
-        "1": "Patrol Gold Earnings + 5%",
+        "1": "Patrol Gold Earnings + x%",
         "2": "Dodge +2% [All Heroes]",
         "3": "Meteor Flamefist - Red Heart: Increases Blazing Meteor's damage. When HP is lower, meteor has a chance to drop Hearts",
         "4": "Trait - Brave: Sustained attacks increase Attack Speed",
@@ -9086,7 +9465,7 @@
         "20": "[All Heroes] Attack +240",
         "30": "Chance to summon 1 more meteor after fire meteor hits an enemy",
         "30_1": "[Assist Effect] Meteor summons 3 Holy Light after hitting enemy, increase Crit Rate if Holy Light hits an enemy",
-        "40": "[Assist Effect] Beast Damage + 10%",
+        "40": "[All Heroes] [Assist Effect] Beast Damage + 10%",
         "50": "Taiga's base HP + 8%",
         "60": "[Assist Effect] The lower your HP, the higher the Damage (stack with Rage)",
         "70": "The further you move, the higher the next attack",
@@ -9094,7 +9473,17 @@
         "90": "Weapon Damage +7%",
         "100": "[All Heroes] Weapon Melee Damage + 8%"
       },
-      "hero_assist_evolve":"eternal-trialstone.svg"
+      "hero_assist_evolve":"eternal-trialstone.svg",
+      "list_hero_assist": ["Helix","Meowgik","Ophelia","Aquea","Iris","Blazo","Melinda","Elaine","Stella"],
+      "skins" :[
+        {
+          "name": "Asura",
+          "src": "Asura",
+          "passiv_boost": " \u2022 Attack + 1% [All Heroes]",
+          "activ_boost": " \u2022 Chance to trigger Tiger Punch when enemy is hit. Chance increases with Crit Rate. Invincible for 3s when almost dead",
+          "price": "Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 200"
+        }
+      ]
     }
   },
   "GsheetData": {
@@ -9104,12 +9493,12 @@
       "url": "https://docs.google.com/spreadsheets/d/1NJIbXr8LtmNpdjJE4o5HXnoN850XkULXukvZLzIiOPY/"
     },
     "Archero Relics 4.14": {
-      "thumbnail": "https://lh3.googleusercontent.com/docs/ADP-6oHhKIJAFiXJAp6nIzGdd1zgtOOD4GkC754MV6Qqnbk7azkTmvVhLrDJrFs8WRIVvPwjxOl0Tgc9dBnRWvHCSoUMrmD1QjZxJ90Sp0Ub3cAW=w1200-h630-p",
+      "thumbnail": "https://lh3.googleusercontent.com/docs/AOD9vFrQYjPz3yB2iSBsKlBg4Tri1ZdrkJrpntBYSGkGAYQyvD34AY6gAMh-DXcZRqL0aZLlKOuuytigqG6L2Db7RR4vu6TzvaHUsi5RdreRrzgQ=w1200-h630-p",
       "description": "Relic Name,Base Effect,Advanced Effect, Exclusive effect for all Relics ⬇️",
       "url": "https://docs.google.com/spreadsheets/d/1rPOm5BHlc6d5slelRB1MSZDAYMOAUKjVh35huyMRO0w"
     },
-    "Archero Stats Calculator (by Pelmens)": {
-      "thumbnail": "https://images-ext-1.discordapp.net/external/WEENXcWq8vv8qX9vq_pi1VQfgyV55I9gGG6pKl0sQn0/https/lh3.googleusercontent.com/docs/ADP-6oG0nw7mtVar1KU_X4KcIb7QeWsgjF2uwtDTTy1CHkZyJ6UmaOWlDr-HbDi05UgghijXuXlU-3Npq5-SIvQjWeabZDU0cXkPy_u6FHLj5Q%3Dw1200-h630-p",
+    "Archero Stats Calculator 5.0 (by Pelmens)": {
+      "thumbnail": "https://lh3.googleusercontent.com/docs/AOD9vFoDubV5ZrzQAPst5VK42eTiFwqEkWFuft-X9S_snvdaBolRZ7Q4-ovxS5UxgbV-3nWvYKYKWLmlwL0KdYB-ZIl6J2_cXKiWLb17EIT82A=w1200-h630-p",
       "description": "Archero Stats Calculator, you can export the data of your profile to this google sheet. Make a copy of this file and then you can add all your values. I you have found some ...",
       "url": "https://docs.google.com/spreadsheets/d/14KR0LT-g1VptikoPyob0YL7UxHytHd8hmnjhbAqoAIM"
     },
@@ -9287,7 +9676,7 @@
     },
     "Skill": {
       "class": "traveling-inline-div",
-      "onclick": "/wiki/skill-list",
+      "onclick": "/wiki/skill",
       "childs_container": {
         "leftsidebar": {
           "self_class": "leftsidebarc traveling-left",
@@ -9371,7 +9760,7 @@
     },
     "Sheet": {
       "class": "traveling-inline-div",
-      "onclick": "/wiki/archive",
+      "onclick": "/wiki/google-sheet",
       "childs_container": {
         "leftsidebar": {
           "self_class": "leftsidebarc traveling-left",
@@ -9411,22 +9800,22 @@
         }
       }
     },
-    "AdvancedStats": {
+    "Theorycraft": {
       "class": "traveling-inline-div",
-      "onclick": "/wiki/advanced-stats/",
+      "onclick": "/wiki/theorycraft/",
       "childs_container": {
         "leftsidebar": {
           "self_class": "leftsidebarc traveling-left",
           "child_class": "shcl",
-          "child_content": "Advanced Stats"
+          "child_content": "TheoryCraft"
         },
         "rightsidebar": {
           "self_class": "rightsidebarc traveling-right ",
           "child_class": "shcr",
           "child_content": {
-            "image_src": "/static/image/img-sidebar/advanced_stats.png",
+            "image_src": "/static/image/img-sidebar/theorycraft.png",
             "image_width": "21",
-            "image_id": "AdvancedStats",
+            "image_id": "Theorycraft",
             "image_height": "21"
           }
         }
@@ -9589,13 +9978,13 @@
       ]
     }
   },
-  "TheoryCraftingContent": {
+  "WikiContent": {
     "fusion_item": {
       "type": "img",
       "displayName": "fusion item <img src='/static/image/rarity/epic.png' alt='epic rarity image fusion item'> - <img src='/static/image/rarity/mythic.png' alt='mythic rarity image fusion item'>",
       "classButton": "collapsible fusion",
       "collapsible_container": {
-        "class_content": "fusion content",
+        "class_content": "fusion",
         "content": {
           "field": {
             "src": "image/wiki-image/Fusing_Hierarchy.png",
@@ -9610,7 +9999,7 @@
       "displayName": "fusion item mythic+ <img src='/static/image/rarity/mythic.png' alt='mythic rarity image fusion item'> - <img src='/static/image/rarity/chaos.png' alt='chaos rarity image fusion item'>",
       "classButton": "collapsible fusion",
       "collapsible_container": {
-        "class_content": "fusion content",
+        "class_content": "fusion",
         "content": {
           "field": {
             "src": "image/wiki-image/Fusing_Hierarchy2.png",
@@ -9625,7 +10014,7 @@
       "displayName": "fusion item s grade <img src='/static/image/dragon/S.png' alt='S grade image fusion item'>",
       "classButton": "collapsible fusion",
       "collapsible_container": {
-        "class_content": "fusion content",
+        "class_content": "fusion",
         "content": {
           "field": {
             "src": "image/wiki-image/Fusing_Hierarchy_S.png",
@@ -9640,7 +10029,7 @@
       "displayName": "fusion dragon <img src='/static/image/wiki-image/Currency_Dragon_Random_RarityQuality_12.png' alt='great rarity image dragon'> - <img src='/static/image/wiki-image/Currency_Dragon_Random_RarityQuality_14.png' alt='epic rarity image dragon'>",
       "classButton": "collapsible fusion",
       "collapsible_container": {
-        "class_content": "fusion content",
+        "class_content": "fusion",
         "content": {
           "field": {
             "src": "image/wiki-image/Dragon-Rarity-Guide.png",
@@ -9655,7 +10044,7 @@
       "displayName": "tierlist item normal <img src='/static/image/rarity/epic.png' alt='epic rarity image tierlist archero'> - <img src='/static/image/rarity/ancient_legendary.png' alt='ancient legendary rarity image tierlist archero'>",
       "classButton": "collapsible tierlist",
       "collapsible_container": {
-        "class_content": "tierlist content",
+        "class_content": "tierlist",
         "content": {
           "field": {
             "src": "image/wiki-image/General-Tier-List_1.png",
@@ -9670,7 +10059,7 @@
       "displayName": "tierlist item mythic <img src='/static/image/rarity/mythic.png' alt='mythic rarity image tierlist archero'>",
       "classButton": "collapsible tierlist",
       "collapsible_container": {
-        "class_content": "tierlist content",
+        "class_content": "tierlist",
         "content": {
           "field": {
             "src": "image/wiki-image/Mythic-Tier-List2023.png",
@@ -9685,7 +10074,7 @@
       "displayName": "Frequently Asked Questions <img src='/static/image/wiki-image/question_mark.png' alt='question mark archero'>",
       "classButton": "collapsible faq-container",
       "collapsible_container": {
-        "class_content": "faq content",
+        "class_content": "faq",
         "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
@@ -9699,19 +10088,19 @@
           "field": [
             {
               "name": "\u2022 Frequently Asked Questions \u2022",
-              "value": "<a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_should_i_dismantle_or_exchange_items.3F'>Should I dismantle or exchange items?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_loadout.3F'>What is the best loadout?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_are_the_best_abilities.3F'>What are the best abilities?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_stutterstepping.3F'>What is stutterstepping?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_eggs_of_certain_monsters.2Feggs.3F'>Where do I find eggs of certain monsters/eggs?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_can_i_transfer_my_progress_from_ios_to_android_or_from_android_to_ios.3F'>Can I transfer my progress from iOS \u27f7 Android ?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_why_did_i_not_get_the_latest_archero_update_yet.3F'>Why did I not get the latest Archero update yet?</a>"
+              "value": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_should_i_dismantle_or_exchange_items.3F'>Should I dismantle or exchange items?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_loadout.3F'>What is the best loadout?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_are_the_best_abilities.3F'>What are the best abilities?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_stutterstepping.3F'>What is stutterstepping?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_eggs_of_certain_monsters.2Feggs.3F'>Where do I find eggs of certain monsters/eggs?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_can_i_transfer_my_progress_from_ios_to_android_or_from_android_to_ios.3F'>Can I transfer my progress from iOS \u27f7 Android ?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_why_did_i_not_get_the_latest_archero_update_yet.3F'>Why did I not get the latest Archero update yet?</a>"
             },
             {
               "name": "\u2022 Farming \u2022",
-              "value": "<a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_why_did_i_not_receive_my_loot_that_dropped_in_a_stage.3F'>Why did I not receive my loot ?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_place_to_farm.3F'>What is the best place to farm?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_place_to_farm_a_specific_item.3F'>What is the best place to farm a specific item?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_bloodthirst_stones.3F'>Where do I find Bloodthirst Stones?</a>"
+              "value": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_why_did_i_not_receive_my_loot_that_dropped_in_a_stage.3F'>Why did I not receive my loot ?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_place_to_farm.3F'>What is the best place to farm?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_place_to_farm_a_specific_item.3F'>What is the best place to farm a specific item?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_bloodthirst_stones.3F'>Where do I find Bloodthirst Stones?</a>"
             },
             {
               "name": "\u2022 Progressing \u2022",
-              "value": "<a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_do_i_get_more_gems.3F'>How do I get more gems?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_i_can.27t_beat_chapter_x.2C_what_should_i_do.3F'>I can't beat chapter x, what should I do?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_do_i_get_more_atk_and_hp.3F'>How do I get more ATK and HP?</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_far_can_i_upgrade_my_talents.3F'>How far can I upgrade my talents?</a>"
+              "value": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_do_i_get_more_gems.3F'>How do I get more gems?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_i_can.27t_beat_chapter_x.2C_what_should_i_do.3F'>I can't beat chapter x, what should I do?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_do_i_get_more_atk_and_hp.3F'>How do I get more ATK and HP?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_far_can_i_upgrade_my_talents.3F'>How far can I upgrade my talents?</a>"
             },
             {
               "name": "\u2022 When do I unlock ... ?",
-              "value": "<a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.ancient_maze'>Ancient Maze</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.expedition_hero_mode'>Expedition Hero mode</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.quick_raids'>Quick Raids</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.equipment_altar'>Equipment Altar</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.hero_altar'>Hero Altar</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.dragon_statues'>Dragon Statues</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.great_.28green.29_item_drops_in_chapters'>Great item drops</a><br><a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.refining.2Fglyphs'>Refining/Glyphs</a>"
+              "value": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.ancient_maze'>Ancient Maze</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.expedition_hero_mode'>Expedition Hero mode</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.quick_raids'>Quick Raids</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.equipment_altar'>Equipment Altar</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.hero_altar'>Hero Altar</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.dragon_statues'>Dragon Statues</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.great_.28green.29_item_drops_in_chapters'>Great item drops</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.refining.2Fglyphs'>Refining/Glyphs</a>"
             }
           ],
           "footer": {
@@ -9730,7 +10119,7 @@
       "displayName": "hero evolution cost <img src='/static/image/wiki-image/cookie.png' alt='cookie image archero'><img src='/static/image/wiki-image/Random_HeroFragment.png' alt='shards image archero'>",
       "classButton": "collapsible evo_cost",
       "collapsible_container": {
-        "class_content": "evo_cost content",
+        "class_content": "evo_cost",
         "content": {
           "field": {
             "src": "image/wiki-image/EvolutionCost.png",
@@ -9742,10 +10131,10 @@
     },
     "gems_spending_guide": {
       "type": "embed",
-      "displayName": "Gems guide <img src='/static/image/wiki-image/gem.png' alt='gem image archero'>",
+      "displayName": "Gems guide <img src='/static/image/wiki-image/Gem.png' alt='gem image archero'>",
       "classButton": "collapsible gems_spending_guide",
       "collapsible_container": {
-        "class_content": "gems_spending_guide_child content",
+        "class_content": "gems_spending_guide_child",
         "border_color": "style='border-color: rgb(0,249,54);'",
         "content": {
           "title": {
@@ -9759,7 +10148,7 @@
           "field": [
             {
               "name": "",
-              "value": "<strong>Earning:</strong><br>\u2022 Daily Quests: Up to 40 Gems per day<br>\u2022 Weekly Quests: Up to 230 Gems per week<br>\u2022 Daily Ad Pack: 30 Gems per day<br>\u2022 Ad Boss wheel: Up to 100 Gems per day<br>\u2022 Hero Duo<br>\u2022 Hero Duel: Profit if you win ≥62% of 40 Gem matches or ≥67% of 100 Gem matches<br>\u2022 Monster Farm: Clean up obstacles for a chance to receive Gems<br>\u2022 Clear new chapters<br>\u2022 Clear Expedition stages<br><br><strong>Spending:</strong><br>\u2022 At least one main hero (Helix is recommended)<br>\u2022 Extra hatchery slots, to speed up egg hatching<br>\u2022 Extra monster book slots, to get more bonuses from monsters in use<br>\u2022 Extra attempt for Ancient Maze, if you can consistently finish it on Extreme/Misery difficulty<br>\u2022 Extra energy to farm Hero chapters or play events<br>\u2022 Extra attempt(s) for Up-Close Dangers, if you are at the point where you earn relatively high amounts of coins from it compared to chapter runs<br>\u2022 Mystery Chest in your Farm, if it shows up<br>\u2022 Login Rewards Event <a href='https://cdn.discordapp.com/attachments/1018889785571540994/1113272516136407061/LoginRewardsEvent.png' target='_blank'>[Example]</a><br>"
+              "value": "<strong>Earning:</strong><br>\u2022 Daily Quests: Up to 40 Gems per day<br>\u2022 Weekly Quests: Up to 230 Gems per week<br>\u2022 Daily Ad Pack: 30 Gems per day<br>\u2022 Ad Boss wheel: Up to 100 Gems per day<br>\u2022 Hero Duo<br>\u2022 Hero Duel: Profit if you win ≥62% of 40 Gem matches or ≥67% of 100 Gem matches<br>\u2022 Monster Farm: Clean up obstacles for a chance to receive Gems<br>\u2022 Clear new chapters<br>\u2022 Clear Expedition stages<br><br><strong>Spending:</strong><br>\u2022 At least one main hero (Helix is recommended)<br>\u2022 Extra hatchery slots, to speed up egg hatching<br>\u2022 Extra monster book slots, to get more bonuses from monsters in use<br>\u2022 Extra attempt for Ancient Maze, if you can consistently finish it on Extreme/Misery difficulty<br>\u2022 Extra energy to farm Hero chapters or play events<br>\u2022 Extra attempt(s) for Up-Close Dangers, if you are at the point where you earn relatively high amounts of coins from it compared to chapter runs<br>\u2022 Mystery Chest in your Farm, if it shows up<br>\u2022 Login Rewards Event <a class='styled_a' href='https://cdn.discordapp.com/attachments/1018889785571540994/1113272516136407061/LoginRewardsEvent.png' target='_blank'>[Example]</a><br>"
             }
           ],
           "footer": {
@@ -9773,17 +10162,17 @@
         }
       }
     },
-    "gold_earning_guide": {
+    "gold_guide": {
       "type": "embed",
-      "displayName": "gold earning guide <img src='/static/image/wiki-image/gold.png' alt='gold image archero'>",
-      "classButton": "collapsible gold_earning_guide",
+      "displayName": "gold guide <img src='/static/image/wiki-image/Gold.png' alt='gold image archero'>",
+      "classButton": "collapsible gold_guide",
       "collapsible_container": {
-        "class_content": "gold_earning_guide_child content",
+        "class_content": "gold_guide_child",
         "border_color": "style='border-color: rgb(255,196,0);'",
         "content": {
           "title": {
             "idTitle": "title_gold_guide",
-            "innerText": "Gold Earning Guide"
+            "innerText": "Gold Guide"
           },
           "description": {
             "idDesc": "desc_gold_guide",
@@ -9792,7 +10181,11 @@
           "field": [
             {
               "name": "",
-              "value": "\u2022 Use any other rings than Lion,Vilebat,Dragon Rings for +10% coins from battle<br>\u2022 In your Spirit jewel slots, have an overall level of 8 or higher, for +5% Coins from battle<br>\u2022 Play the Up-close Dangers event every time it is active (Tuesday, Thursday, Saturday, Sunday)<br>\u2022 Play the clan event (Monster Treasure) every day<br>\u2022 Watch 3 ads per day at the bottom of the Shop tab<br>\u2022 Watch 4 ads per day for 5 energy each by clicking on your energy at the top, use this energy to play chapters<br><br><em>\u2022 Hero Mode Boss chapters (7, 14, 21, 28, 35, 42)</em><br>"
+              "value": "<strong>Earning:</strong><br>\u2022 Use any other rings than Lion,Vilebat,Dragon Rings for +10% coins from battle<br>\u2022 In your Spirit jewel slots, have an overall level of 8 or higher, for +5% Coins from battle<br>\u2022 Play the Up-close Dangers event every time it is active (Tuesday, Thursday, Saturday, Sunday)<br>\u2022 Play the clan event (Monster Treasure) every day<br>\u2022 Watch 3 ads per day at the bottom of the Shop tab<br>\u2022 Watch 4 ads per day for 5 energy each by clicking on your energy at the top, use this energy to play chapters<br><em>\u2022 Hero Mode Boss chapters (7, 14, 21, 28, 35, 42)</em><br><br>"
+            },
+            {
+              "name": "",
+              "value": "<strong>Earning:</strong><br>\u2022 <a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_should_i_spend_my_gold_on.3F' target='_blank'>What should i spend my gold on ???</a></em><br>"
             }
           ],
           "footer": {
@@ -9811,7 +10204,7 @@
       "displayName": "gear farming guide <img src='/static/image/wiki-image/Inventory.png' alt='gear farming inventory image archero'>",
       "classButton": "collapsible gear_farming_guide",
       "collapsible_container": {
-        "class_content": "gear_farming_guide_child content",
+        "class_content": "gear_farming_guide_child",
         "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
@@ -9825,7 +10218,7 @@
           "field": [
             {
               "name": "",
-              "value": "<b>Flying Bullets</b><br>\u2022 Can drop more than 5 items per run<br>\u2022 Drops relatively many scrolls<br><br><b>Farm Chapters :</b><br>\u2022 Farm the highest hero boss chapter you are able to clear (7, 14, 21, 28, 35, 42)<br>\u2022 Making QuickRaid of weapon and bracelet hero chapters is recommended (list can be found <a href='https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w/'>here</a>)<br>\u2022 Clearing normal chapter 21 as well as hero chapter 17 enables great rarity(green) item drops from chapters<br>\u2022 Clearing normal chapter 35 as well as hero chapter 32 enables rare rarity(blue) item drops from chapters"
+              "value": "<b>Flying Bullets</b><br>\u2022 Can drop more than 5 items per run<br>\u2022 Drops relatively many scrolls<br><br><b>Farm Chapters :</b><br>\u2022 Farm the highest hero boss chapter you are able to clear (7, 14, 21, 28, 35, 42)<br>\u2022 Making QuickRaid of weapon and bracelet hero chapters is recommended (list can be found <a class='styled_a' href='https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w/'>here</a>)<br>\u2022 Clearing normal chapter 21 as well as hero chapter 17 enables great rarity(green) item drops from chapters<br>\u2022 Clearing normal chapter 35 as well as hero chapter 32 enables rare rarity(blue) item drops from chapters"
             }
           ],
           "footer": {
@@ -9844,7 +10237,7 @@
       "displayName": "glyphs guide <img src='/static/image/wiki-image/RandomGlyph.png' alt='glyph guide image archero'>",
       "classButton": "collapsible glyphs",
       "collapsible_container": {
-        "class_content": "glyphs content",
+        "class_content": "glyphs",
         "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
@@ -9853,7 +10246,7 @@
           },
           "description": {
             "idDesc": "desc_glyph_guide",
-            "innerText": "<a href='https://www.reddit.com/r/Archero/wiki/refinement_guide/' target='_blank'>reddit guide</a>"
+            "innerText": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/refinement_guide/' target='_blank'>reddit guide</a>"
           },
           "field": [
             {
@@ -9881,7 +10274,7 @@
       "displayName": "refinements guide <img src='/static/image/wiki-image/RandomGlyph.png' alt='refinement guide image archero'>",
       "classButton": "collapsible refinement",
       "collapsible_container": {
-        "class_content": "refinement content",
+        "class_content": "refinement",
         "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
@@ -9890,7 +10283,7 @@
           },
           "description": {
             "idDesc": "desc_refinement_guide",
-            "innerText": "<a href='https://www.reddit.com/r/Archero/wiki/refinement_guide/' target='_blank'>reddit guide</a>"
+            "innerText": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/refinement_guide/' target='_blank'>reddit guide</a>"
           },
           "field": [
             {
@@ -9899,7 +10292,7 @@
             }
           ],
           "footer": {
-            "innerText": "<a href='https://docs.google.com/spreadsheets/d/1Z0bGaCJ8EuKZQSqeW8q1eS5bWl_5z6E237-JAuf9pFk' target='_blank'>Glyph Sheets</a>"
+            "innerText": "<a class='styled_a' href='https://docs.google.com/spreadsheets/d/1Z0bGaCJ8EuKZQSqeW8q1eS5bWl_5z6E237-JAuf9pFk' target='_blank'>Glyph Sheets</a>"
           },
           "thumbnail": {
             "src": "",
@@ -9914,7 +10307,7 @@
       "displayName": "quick raid rewards <img src='/static/image/wiki-image/Quickraid_icon.png' alt='quickraid icon image archero'>",
       "classButton": "collapsible quickraid",
       "collapsible_container": {
-        "class_content": "quickraid content",
+        "class_content": "quickraid",
         "content": {
           "field": {
             "src": "image/wiki-image/qr_chart.png",
@@ -9929,7 +10322,7 @@
       "displayName": "altar cost <img src='/static/image/wiki-image/BloodthirstStone.png' alt='bloodthirst stone image archero'>",
       "classButton": "collapsible altar_cost",
       "collapsible_container": {
-        "class_content": "altar_cost_content content",
+        "class_content": "altar_cost_content",
         "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
@@ -9991,7 +10384,52 @@
             }
           ],
           "footer": {
-            "innerText": "BS <i class='fa-solid fa-arrow-right'></i> Bloodthirst Stones <object type='image/png' data='/static/image/svg/bloodthirst_stone.svg' width='16' height='16'></object> (<a href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_bloodthirst_stones.3F'>what is bloodstone ?</a>)"
+            "innerText": "BS <i class='fa-solid fa-arrow-right'></i> Bloodthirst Stones <object type='image/png' data='/static/image/svg/bloodthirst_stone.svg' width='16' height='16'></object> (<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_bloodthirst_stones.3F'>what is bloodstone ?</a>)"
+          },
+          "thumbnail": {
+            "src": "",
+            "alt": "",
+            "class": ""
+          }
+        }
+      }
+    },
+    "altar_boost": {
+      "type": "embed",
+      "displayName": "altar bonus ascensions <img src='/static/image/wiki-image/AltarImage.png' alt='archero altar boosts'>",
+      "classButton": "collapsible altar_boost",
+      "collapsible_container": {
+        "class_content": "altar_boost_content",
+        "border_color": "style='border-color: rgb(177,177,177);'",
+        "content": {
+          "title": {
+            "idTitle": "altar_boost_title",
+            "innerText": "Altar Bonus Ascensions"
+          },
+          "description": {
+            "idDesc": "altar_boost_desc",
+            "innerText": ""
+          },
+          "field": [
+            {
+              "name": "Lvl 10, 40, 70 and 100 :",
+              "value": "\u2022 Hp +5% <br><br>"
+            },
+            {
+              "name": "Lvl 20, 50, 80 and 110 :",
+              "value": "\u2022 Attack +5% <br><br>"
+            },
+            {
+              "name": "Lvl 30, 60, 90 and 120: ",
+              "value": "\u2022 (Gear Altar) Red Heart Healing Effect +5%<br>\u2022 (Hero Altar) Red Heart Drop Rate +5%<br><br>"
+            },
+            {
+              "name": "Overall bonus :",
+              "value": "\u2022 (Gear Altar) Item Base Stats Enhanced +x%<br>\u2022 (Gear Altar lvl30) Equipment Droprate +x%<br>\u2022 (Hero Altar) Hero Base Stats +x%<br>\u2022 (Hero Altar lvl50) Damage to Elite Enemies +x%<br>"
+            }
+          ],
+          "footer": {
+            "innerText": ""
           },
           "thumbnail": {
             "src": "",
@@ -10006,7 +10444,7 @@
       "displayName": "egg stats <img src='/static/image/wiki-image/Egg_icon.png' alt='egg icon archero'>",
       "classButton": "collapsible egg_stats",
       "collapsible_container": {
-        "class_content": "egg_stats_content content",
+        "class_content": "egg_stats_content",
         "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
@@ -10020,7 +10458,7 @@
           "field": [
             {
               "name": "Includes",
-              "value": "\u2022 List of available Monsters<br>\u2022 Numbers of kills required to hatch or complete quests<br>\u2022 Completed quest dialogue<br>\u2022 Automated hatch timers<br>\u2022 Where to find each Monster and which locations are recommended<br>\u2022 Monster training bonuses and costs (still Work in Progress)<br><a href='https://docs.google.com/spreadsheets/d/1p0xAb6ZrgwqhynromVXTqJSsfWlK1W8EDDt2HyvmRKE' target='_blank'>Google Sheets</a>"
+              "value": "\u2022 List of available Monsters<br>\u2022 Numbers of kills required to hatch or complete quests<br>\u2022 Completed quest dialogue<br>\u2022 Automated hatch timers<br>\u2022 Where to find each Monster and which locations are recommended<br>\u2022 Monster training bonuses and costs (still Work in Progress)<br><a class='styled_a' href='https://docs.google.com/spreadsheets/d/1p0xAb6ZrgwqhynromVXTqJSsfWlK1W8EDDt2HyvmRKE' target='_blank'>Google Sheets</a>"
             }
           ],
           "footer": {
@@ -10036,10 +10474,10 @@
     },
     "hidden_stats": {
       "type": "embed",
-      "displayName": "hidden stats <img src='/static/image/img-sidebar/advanced_stats.png' alt='hidden stats magnifying glass image archero'>",
+      "displayName": "hidden stats <img src='/static/image/img-sidebar/theorycraft.png' alt='archero calculation magnifying glass image archero'>",
       "classButton": "collapsible hidden_stats",
       "collapsible_container": {
-        "class_content": "hidden_stats_content content",
+        "class_content": "hidden_stats_content",
         "border_color": "style='border-color: rgb(177,177,177);'",
         "content": {
           "title": {
@@ -10072,7 +10510,7 @@
       }
     }
   },
-  "AdvancedStatsSharable": [
+  "Theorycraft": [
     {
       "id_item": "diagonal_arrows",
       "type":"skills",

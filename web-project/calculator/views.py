@@ -77,15 +77,15 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	## Get all Relics Stats
 	relics_stats:dict = relics_table_stats.relics_Stats()
 	## Get Altar Ascension Stats
-	altar_stuff_ascension_atk = local_data["StuffAltarAscension"][str(stuff_altar_ascension) + '_attack']
-	altar_stuff_ascension_hp = local_data["StuffAltarAscension"][str(stuff_altar_ascension) + '_hp']
-	altar_stuff_ascension_healing_effect = local_data["StuffAltarAscension"][str(stuff_altar_ascension) + '_healing_effect']
-	altar_stuff_ascension_equipment_base = local_data["StuffAltarAscension"][str(stuff_altar_ascension) + '_equipment_base']
-	altar_heros_ascension_atk = local_data['HerosAltarAscension'][str(heros_altar_ascension) + '_attack']
-	altar_heros_ascension_hp = local_data['HerosAltarAscension'][str(heros_altar_ascension) + '_hp']
-	altar_heros_ascension_hp_drop = local_data['HerosAltarAscension'][str(heros_altar_ascension) + '_hp_drop']
-	altar_heros_ascension_heros_base = local_data['HerosAltarAscension'][str(heros_altar_ascension) + '_heros_base']
-	altar_heros_ascension_dmg_elite = local_data['HerosAltarAscension'][str(heros_altar_ascension) + '_dmg_elite']
+	altar_stuff_ascension_atk = local_data["StuffAltarAscension"]['attack'][stuff_altar_ascension]
+	altar_stuff_ascension_hp = local_data["StuffAltarAscension"]['hp'][stuff_altar_ascension]
+	altar_stuff_ascension_healing_effect = local_data["StuffAltarAscension"]['healing_effect'][stuff_altar_ascension]
+	altar_stuff_ascension_equipment_base = local_data["StuffAltarAscension"]['equipment_base'][stuff_altar_ascension]
+	altar_heros_ascension_atk = local_data['HerosAltarAscension']['attack'][heros_altar_ascension]
+	altar_heros_ascension_hp = local_data['HerosAltarAscension']['hp'][heros_altar_ascension]
+	altar_heros_ascension_hp_drop = local_data['HerosAltarAscension']['hp_drop'][heros_altar_ascension]
+	altar_heros_ascension_heros_base = local_data['HerosAltarAscension']['heros_base'][heros_altar_ascension]
+	altar_heros_ascension_dmg_elite = local_data['HerosAltarAscension']['dmg_elite'][heros_altar_ascension]
 	## Get Altar Stats 
 	altar_stuff_atk = altar_table_stats.CalculAltar("stuff","attack",relics_stats.get('eqpm_altar_stats_var',0.0))
 	altar_stuff_hp = altar_table_stats.CalculAltar("stuff","hp",relics_stats.get('eqpm_altar_stats_var',0.0))

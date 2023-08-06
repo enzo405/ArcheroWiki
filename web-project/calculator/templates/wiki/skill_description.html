@@ -1,8 +1,8 @@
 {% extends "template.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.1">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.1">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.4b">
 <meta property="og:type" content="website">
 <meta name="description" content="Discover a comprehensive list of skills and abilities in Archero on our website. Explore detailed descriptions, effects, and strategies for each skill. Unleash the power of skills and abilities to dominate in the world of Archero.">
 {% if skill == "yes" %}
@@ -10,13 +10,13 @@
 <meta property="og:title" content="{{ name }}">
 <meta property="og:url" content="{{ url_cpy }}">
 <meta property="og:description" content="{{ skill_data.description }} {{ skill_data.stats }}">
-<meta property="og:image" content="{% static image_skill %}?version=1.6.1">
+<meta property="og:image" content="{% static image_skill %}?version=1.6.4b">
 {% else %}
 <title>Archero - Wiki</title>
 <meta property="og:title" content="Archero - Skill Description">
-<meta property="og:url" content="https://stats.wiki-archero.com/wiki/skill-list">
+<meta property="og:url" content="https://stats.wiki-archero.com/wiki/skill">
 <meta property="og:description" content="Discover a comprehensive list of skills and abilities in Archero on our website. Explore detailed descriptions, effects, and strategies for each skill. Unleash the power of skills and abilities to dominate in the world of Archero.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.1">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.4b">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -41,16 +41,24 @@
 				}
 			}
 		</script>
+		<a class="before_index arrow_searchbar" href="/wiki/skill/{{ index_before.value }}">
+            <img src="/static/image/skill/{{ index_before.value|lower }}.png" width="30" alt="{{ index_before.value }}">
+            <i class="fas fa-arrow-up"></i>
+        </a>
 		<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for skill.." value="{{ name }}">
 		<ul id="myUL" class="searchbar-ul-skill" style="display: none;">
 			{% for k,v in SkillData.items %}
 			<li>
-				<a href="/wiki/skill-list/{{ v.value }}">{{ k }}
+				<a href="/wiki/skill/{{ v.value }}">{{ k }}
 					<img class="img-dropdown-icon" src="/static/image/skill/{{ v.value|lower }}.png" alt="{{ k }}">
 				</a>
 			</li>
 			{% endfor %}
 		</ul>
+		<a class="after_index arrow_searchbar" href="/wiki/skill/{{ index_after.value }}">
+            <img src="/static/image/skill/{{ index_after.value|lower }}.png" width="30" alt="{{ index_after.value }}">
+            <i class="fas fa-arrow-up"></i>
+        </a>
 	</div>
 	<div class="embed-container">
 		<div class="kn3fae-0 ezpxFx">
@@ -67,11 +75,31 @@
 				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
 					<div class="sc-3qrykn-0 bdFBtt">
 						<div class="sc-3qrykn-1 bsDYtY">
-							<div class="sc-27l7o2-0 heOpKb" id="name_skill">{{ name }}</div>
+							<div class="sc-27l7o2-0 heOpKb thumbnail-title" id="name_skill">
+								<img src="/static/{{ image_skill }}" alt="Thumbnail" class="sc-3qrykn-7title" id="skill_image">
+								{{ name }}
+							</div>
 						</div>
 						<div class="sc-3qrykn-3 hXMbfy">
 							<div class="sc-27l7o2-0 heOpKb" id="skill_description">{{ skill_data.description|safe }}</div>
 						</div>
+						{% if skill_data.requirement != "" %}
+						<div class="sc-3qrykn-4 hQKgZF">
+							<div class="rgqgux-0 dQAxvm">
+								<div class="rgqgux-1 dHYyKL">
+									<div class="sc-27l7o2-0 heOpKb" style="color: white;">
+										<strong>Requirement</strong>
+									</div>
+								</div>
+								<div class="rgqgux-2 jFcAhO">
+									<div class="sc-27l7o2-0 heOpKb">
+										<div id="skill_base">{{ skill_data.requirement|safe }}</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+						{% if skill_data.stats != "" %}
 						<div class="sc-3qrykn-4 hQKgZF">
 							<div class="rgqgux-0 dQAxvm">
 								<div class="rgqgux-1 dHYyKL">
@@ -86,8 +114,9 @@
 								</div>
 							</div>
 						</div>
+						{% endif %}
 						<div class="sc-3qrykn-6 fTOqMH">
-							<img src="/static/{{ image_skill }}" alt="Thumbnail" class="sc-3qrykn-7 skill_image" id="skill_image">
+							<img src="/static/{{ image_skill }}" alt="Thumbnail" class="sc-3qrykn-7 fUliQq" id="skill_image">
 						</div>
 					</div>
 				</div>

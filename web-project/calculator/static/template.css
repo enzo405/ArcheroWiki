@@ -147,7 +147,7 @@
 	*{
 		font-family: Arial, Helvetica, sans-serif;
 	}
-	h1,h2,.txt-onclick-span, .new-tag a{
+	h1,h2,.txt-onclick-span{
 		font-family: 'Rubik';
 	}
 }
@@ -510,7 +510,7 @@ footer div, footer li{
 .sidebar-open #Sheet-sidebar-image:hover::after,
 .sidebar-open #Damage-sidebar-image:hover::after,
 .sidebar-open #Promos-sidebar-image:hover::after,
-.sidebar-open #AdvancedStats-sidebar-image:hover::after{
+.sidebar-open #Theorycraft-sidebar-image:hover::after{
 	position: fixed;
 	left: 75px;
     border: var(--lt-sidebaropen-content-border) 1px solid;
@@ -528,10 +528,10 @@ footer div, footer li{
 .sidebar-open #Wiki-sidebar-image:hover::after{ content: "Wiki";}
 .sidebar-open #Heroes-sidebar-image:hover::after{ content: "Heroes";}
 .sidebar-open #Stats-sidebar-image:hover::after{ content: "Stats";}
-.sidebar-open #Sheet-sidebar-image:hover::after{ content: "Sheet";}
+.sidebar-open #Sheet-sidebar-image:hover::after{ content: "Sheets";}
 .sidebar-open #Damage-sidebar-image:hover::after{ content: "Damage";}
 .sidebar-open #Promos-sidebar-image:hover::after{ content: "Promotion Code";}
-.sidebar-open #AdvancedStats-sidebar-image:hover::after{ content: "Advanced Stats";}
+.sidebar-open #Theorycraft-sidebar-image:hover::after{ content: "Theorycraft";}
 
 .bg-traveling{
 	background-color: var(--lt-sidebar-traveling-bg);
@@ -593,25 +593,50 @@ footer div, footer li{
 	align-items: center;
 	gap: 4px;
 }
-
+.li_wo_marker{
+	list-style-type: none;
+}
+#to-top-button {
+	display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	font-size: 24px;
+	line-height: 40px;
+	cursor: pointer;
+	z-index: 9999;
+	transition: opacity 0.3s, visibility 0.3s;
+}
+#to-top-button.show {
+	display: flex;
+    opacity: 1;
+    justify-content: center;
+    visibility: visible;
+    text-align: center;
+    align-items: center;
+}
 /* UPGRADE COST */
 /* ALL DESC PAGE */
 /* PROMO CODE PAGE */
-/* THEORYCRAFTING PAGE */
+/* WIKI PAGE */
 /* CHANGELOG PAGE */
 .content_container{
 	display: flex;
     flex-direction: column;
     align-items: center;
 	margin-bottom: 20px;
-	min-height: 75vh;
+	color: black;
+	min-height: 78.5vh;
 }
 .a_styled{
 	text-decoration: none;
-	color: var(--lt-theorycrafting-content-a-color);
-}
-.content_container{
-	color: black;
+	color: var(--lt-wiki-content-a-color);
 }
 .thcrft-name{
 	font-family: 'Rubik';
@@ -781,5 +806,5 @@ footer div, footer li{
 }
 .body_dark_mode .a_styled{
 	text-decoration: none;
-	color: var(--dt-theorycrafting-content-a-color);
+	color: var(--dt-wiki-content-a-color);
 }

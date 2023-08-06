@@ -1,3 +1,9 @@
+@media screen and (min-width : 401px){ /* pour résolution sup à 420px */
+	.thumbnail-title img{
+        display: none;
+    }
+}
+
 @media screen and (max-width : 400px){ /* pour résolution inf à 420px */
 	.container *{
         font-size: small;
@@ -9,9 +15,14 @@
     .fUliQq {
         display: none;
     }
-    .skill_image{
-        max-width: 70px;
-        max-height: 70px;
+    .thumbnail-title img{
+        display: block;
+        width: 28px;
+        height: auto;
+    }
+    .thumbnail-title{
+        display: flex;
+        gap: 6px;
     }
 }
 
@@ -242,7 +253,7 @@
     align-items: center;
 }
 
-.fUliQq, .skill_image {
+.fUliQq {
     max-width: 80px;
     max-height: 80px;
     border-radius: 4px;

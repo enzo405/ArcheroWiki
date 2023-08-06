@@ -89,13 +89,11 @@ def data(request):
 						json.dump(data, file, indent=4)
 			return HttpResponseRedirect(request.build_absolute_uri())
 	else:
-		request.session['error_message'] = f"You're not allowed to acces this page"
+		request.session['error_message'] = f"You're not allowed to access this page"
 		return HttpResponseRedirect('/')
 
 
 class CalculatorAPI(APIView):
-	authentication_classes = [SessionAuthentication]
-	permission_classes = [IsAuthenticated]
 
 	def get(self, request):
 		filter_query = request.query_params.get("q")

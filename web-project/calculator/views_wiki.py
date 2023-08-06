@@ -17,22 +17,21 @@ from const import WEBHOOK_URL, c_hostname, DISCORD_NOTIF_ROLE_ID, DISCORD_ERROR_
 lang = ["English","Francais","Deutsch","Russian","Española"]
 missing_data = []
 
+@db_maintenance
 @delete_visitor("menu")
 @checkMessages
-@db_maintenance
 def menu(request):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request)
 	MakeLogAddRequestJson(request,cookie_result)
-	new_list_article = list(articleMenu.objects.all().filter(_display=True, is_new=True))
-	list_article = list(articleMenu.objects.all().filter(_display=True, is_new=False))
-	return render(request, 'base/menu.html', {"darkmode": checkDarkMode(request), "header_msg": "Menu Archero Wiki", 'lang':lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result),"new_list_article":new_list_article, "list_article":list_article, "dev_mode":DEV_MODE})
+	list_article = list(articleMenu.objects.all().filter(display=True).order_by('index'))
+	return render(request, 'base/menu.html', {"darkmode": checkDarkMode(request), "header_msg": "Menu Archero Wiki", 'lang':lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result),"list_article":list_article, "dev_mode":DEV_MODE})
 
+@db_maintenance
 @delete_visitor("news")
 @checkMessages
-@db_maintenance
 def news(request,titleArticle=None):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
@@ -55,7 +54,7 @@ def maze(request):
 	MakeLogAddRequestJson(request,cookie_result)
 	with urlopen("https://config-archero.habby.mobi/data/config/MazeConfig.json") as url:
 		maze_data_api = json.load(url)
-	return render(request, 'wiki/get_maze.html', {"data_json":maze_data_api, "darkmode": checkDarkMode(request), "header_msg": "maze","lang":lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
+	return render(request, 'wiki/maze.html', {"data_json":maze_data_api, "darkmode": checkDarkMode(request), "header_msg": "maze","lang":lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
 
 def csrf_failure(request, reason=""):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
@@ -125,8 +124,8 @@ def login_processing(request, username_raw, id_raw):
 		send_embed(boolCheck["ingame_name"],"Login Failed",description_embed=boolCheck["error_message"],field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck['ingame_name']}`|`{boolCheck['ingame_id']}`\n\n**Response Cookies** : \n{response.cookies}",e_color="d50400",request=request, alert=True, admin_log=boolCheck.get('admin_log',None))
 	return response
 
-@delete_visitor("theorycrafting")
-def wiki_theorycrafting(request, article=None):
+@delete_visitor("wiki")
+def wiki_menu(request, article=None):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
@@ -141,16 +140,16 @@ def wiki_theorycrafting(request, article=None):
 		"darkmode": checkDarkMode(request),
 		"lang":lang,
 		"sidebarContent":SidebarContent,
-		"TheoryCraftingContent":local_data["TheoryCraftingContent"],
+		"WikiContent":local_data["WikiContent"],
 		"cookieUsername":makeCookieheader(cookie_result),
 		"name_title": name_title,
 		"article": article
 	}
-	if article is not None or local_data["TheoryCraftingContent"].get(article):
+	if article is not None or local_data["WikiContent"].get(article):
 		ctx["header_msg"] = f"{article_label} - Wiki"
 	else:
 		ctx["header_msg"] = "Wiki"
-	return render(request, "wiki/theorycraft.html", ctx)
+	return render(request, "wiki/menu.html", ctx)
 
 @delete_visitor("item_desc")
 def item_description(request, item=None):
@@ -169,15 +168,28 @@ def item_description(request, item=None):
 		"cookieUsername":makeCookieheader(cookie_result)
 	}
 	if item is None or not local_data["ItemData"].get(str(item).replace('_',' '),False):
-		item = "Brave_Bow"
+		item = "Expedition_Fist"
 	else:
 		ctx.update({"item":"yes"})
-	item_data = local_data["ItemData"][str(item).replace('_',' ')]
+	data = local_data["ItemData"]
+	item_name = str(item).replace('_',' ')
+	item_data = data[item_name]
+	temp = list(data)
+	try:
+		index_after = data[temp[temp.index(item_name) + 1]]
+	except (ValueError, IndexError):
+		index_after = data[str(temp[0]).replace('_',' ')]
+	try:
+		index_before = data[temp[temp.index(item_name) - 1]]
+	except (ValueError, IndexError):
+		index_before = data[str(temp[-1]).replace('_',' ')]
 	ctx.update({
 		"name":item_data['value'].replace('_',' '),
 		"item_data":item_data,
 		"url_cpy":request.build_absolute_uri(),
 		"header_msg": f"{item_data['value'].replace('_',' ')} - Description",
+		"index_after": index_after,
+		"index_before": index_before,
 	})
 	return render(request, "wiki/item_description.html", ctx)
 
@@ -187,30 +199,41 @@ def skill_description(request, skill=None):
 		local_data = json.load(f)
 	SidebarContent = local_data['SidebarContent']
 	cookie_result = checkCookie(request)
+	ctx = {}
 	MakeLogAddRequestJson(request,cookie_result)
-	ctx = {
-		"darkmode": checkDarkMode(request),
-		"header_msg": "Skill Description",
-		"lang":lang,
-		"skill":"no",
-		"sidebarContent":SidebarContent,
-		"SkillData":local_data["SkillData"],
-		"cookieUsername":makeCookieheader(cookie_result)
-	}
 	if skill is None or not local_data["SkillData"].get(skill.replace("_"," "),False):
-		skill = "Bouncy_Wall"
+		skill = "Attack_Boost"
+		ctx.update({"skill":"no"})
 	else:
 		ctx.update({"skill":"yes"})
 	skill_name = skill.replace("_"," ")
-	skill_data = local_data["SkillData"][skill_name]
+	data = local_data["SkillData"]
+	skill_data = data[skill_name]
 	image_skill = f"image/skill/{str(skill).lower().replace(' - ', '_').replace(' ', '_').replace('one-eyed', 'one_eyed')}.png"
 	url_cpy = request.build_absolute_uri()
+	temp = list(data)
+	try:
+		index_after = data[temp[temp.index(skill_name) + 1]]
+	except (ValueError, IndexError):
+		index_after = data[temp[0]]
+	try:
+		index_before = data[temp[temp.index(skill_name) - 1]]
+	except (ValueError, IndexError):
+		index_before = data[temp[-1]]
 	ctx.update({
+		"sidebarContent":SidebarContent,
+		"SkillData":local_data["SkillData"],
+		"cookieUsername":makeCookieheader(cookie_result),
+		"darkmode": checkDarkMode(request),
+		"header_msg": "Skill Description",
+		"lang":lang,
 		"name":skill_name,
 		"skill_data": skill_data,
 		"image_skill":image_skill,
 		"url_cpy":url_cpy,
 		"header_msg": f"{skill_name} - Description",
+		"index_after": index_after,
+		"index_before": index_before,
 	})
 	return render(request, "wiki/skill_description.html", ctx)
 
@@ -234,13 +257,25 @@ def heros_description(request, hero=None):
 		hero = "Taiga"
 	else:
 		ctx.update({"hero":"yes"})
-	hero_data = local_data["HeroData"][hero]
+	data = local_data["HeroData"]
+	hero_data = data[hero]
+	temp = list(data)
+	try:
+		index_after = temp[temp.index(hero) + 1]
+	except (ValueError, IndexError):
+		index_after = temp[0]
+	try:
+		index_before = temp[temp.index(hero) - 1]
+	except (ValueError, IndexError):
+		index_before = temp[-1]
 	ctx.update({
 		"name_hero": hero,
 		"hero_data": hero_data,
 		"hero_image": f'image/hero_icon/icon_{str(hero)}.png',
 		"url_cpy": request.build_absolute_uri(),
 		"header_msg": f"{hero} - Description",
+		"index_after": index_after,
+		"index_before": index_before,
 	})
 	return render(request, "wiki/heros_description.html",ctx)
 
@@ -492,11 +527,11 @@ def dmgCalc_processing(request,pbid):
 	## Get all Relics Stats
 	relics_stats:dict = relics_table_stats.relics_Stats()
 	## Get Altar Ascension Stats
-	altar_stuff_ascension_atk = local_data["StuffAltarAscension"][str(stuff_altar_ascension) + '_attack']
-	altar_stuff_ascension_equipment_base = local_data["StuffAltarAscension"][str(stuff_altar_ascension) + '_equipment_base']
-	altar_heros_ascension_atk = local_data['HerosAltarAscension'][str(heros_altar_ascension) + '_attack']
-	altar_heros_ascension_heros_base = local_data['HerosAltarAscension'][str(heros_altar_ascension) + '_heros_base']
-	altar_heros_ascension_dmg_elite = local_data['HerosAltarAscension'][str(heros_altar_ascension) + '_dmg_elite']
+	altar_stuff_ascension_atk = local_data["StuffAltarAscension"]['attack'][stuff_altar_ascension]
+	altar_stuff_ascension_equipment_base = local_data["StuffAltarAscension"]['equipment_base'][stuff_altar_ascension]
+	altar_heros_ascension_atk = local_data['HerosAltarAscension']['attack'][heros_altar_ascension]
+	altar_heros_ascension_heros_base = local_data['HerosAltarAscension']['heros_base'][heros_altar_ascension]
+	altar_heros_ascension_dmg_elite = local_data['HerosAltarAscension']['dmg_elite'][heros_altar_ascension]
 	## Get Altar Stats 
 	altar_stuff_atk = altar_table_stats.CalculAltar("stuff","attack",relics_stats.get('eqpm_altar_stats_var',0.0))
 	altar_hero_atk = altar_table_stats.CalculAltar("heros","attack",relics_stats.get('eqpm_altar_stats_var',0.0)) ##laisser le S (le nom du field prend un s)
@@ -904,21 +939,13 @@ def changelog(request):
 		commit_json = json.load(commit)
 	return render(request,'base/changelog.html',{"commit_json":commit_json,"darkmode": checkDarkMode(request), "header_msg": "Change Log", 'lang':lang, "sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(cookie_result)})
 
-@delete_visitor("advanced_stats")
-@login_required
-def advanced_stats(request):
-	user_credential = request.session['user_credential']
+@delete_visitor("theorycraft")
+def theorycraft(request):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
-	MakeLogAddRequestJson(request,user_credential)
-	SidebarContent = local_data['SidebarContent']
-	if checkContributor(user_credential,request):
-		AdvancedStats = local_data['AdvancedStats']
-		send_webhook(f"{user_credential} is looking at all Advanced stats",admin_log=True)
-		return render(request, "wiki/advanced_stats.html", {"darkmode":checkDarkMode(request), "header_msg": "Advanced Stats", "AdvancedStats":AdvancedStats,"sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(user_credential)})
-	else:
-		AdvancedStats = local_data['AdvancedStatsSharable']
-		return render(request, "wiki/advanced_stats.html", {"darkmode":checkDarkMode(request), "header_msg": "Advanced Stats", "AdvancedStats":AdvancedStats,"sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(user_credential)})
+	cookie_result = checkCookie(request)
+	MakeLogAddRequestJson(request,cookie_result)
+	return render(request, "wiki/theorycraft.html", {"darkmode":checkDarkMode(request), "header_msg": "Archero Calculation", "Theorycraft":local_data['Theorycraft'],"sidebarContent":local_data['SidebarContent'],"cookieUsername":makeCookieheader(cookie_result)})
 
 
 def delete_cookie(request:HttpResponse,key,name_redirect):
@@ -932,28 +959,27 @@ def delete_cookie(request:HttpResponse,key,name_redirect):
 		field_value=f"Redirected at {name_redirect}",
 		e_color="32ec08",
 		request=request,
-		alert=True
+		alert=False
 	)
 	return response
 
-def delete_session(request,key,name_redirect):
-	key_container = request.session.get(key,None)
+def delete_session(request):
+	key_container = request.session.get("user_credential",None)
 	if key_container != None:
-		del request.session[key]
-		send_embed(
-			author_name="",
-			title_embed="Deleted Session",
-			description_embed=f"",
-			field_name=f"Session Key {key}\n{key} was containing {key_container}",
-			field_value=f"Redirected at {name_redirect}",
-			e_color="32ec08",
-			request=request,
-			alert=True
-		)
+		del request.session["user_credential"]
+		send_webhook(f'User Credentials Deleted: Session Key {"user_credential"}\n{"user_credential"} was containing {key_container}')
 	else:
-		send_webhook(f"{key_container} doesn't have {key} in it.\nRedirected to {name_redirect}\n__**Cookie**__: {request.COOKIES}\n__**Session**__: {str(request.session.items())}")
-	return redirect(name_redirect)
+		send_webhook(f"{key_container} tried to logout.\nRedirected to menu\n__**Cookie**__: {request.COOKIES}\n__**Session**__: {str(request.session.items())}")
+	return redirect("menu")
 
+
+def redirect_skill(request, skill=None):
+	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
+		local_data = json.load(f)
+	if skill != None and local_data["SkillData"].get(skill.replace("_"," "),False):
+		return redirect(f"/wiki/skill/{skill}")
+	else:
+		return redirect("/wiki/skill")
 
 ## DEV MODE URL
 def set_cookie(request,key_cookie,value_cookie):

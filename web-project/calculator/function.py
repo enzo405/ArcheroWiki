@@ -201,7 +201,7 @@ def login_required(func):
 def editor_login(func):
 	def wrapper(request:HttpResponse|WSGIRequest, *args, **kwargs):
 		REDIRECT_URI = f"http://{request.META['HTTP_HOST']}/data/"
-		if request.user.is_authenticated:
+		if request.user.is_authenticated and request.session.get("status") != "authorized":
 			try:
 				token = Token.objects.get(user=request.user)
 				if checkTokenValidity(token.key,40):
@@ -224,7 +224,7 @@ def editor_login(func):
 					if 'access_token' in request.session:
 						access_token = request.session['access_token']
 						headers = {'Authorization': f'Bearer {access_token}'}
-						response = requests.get(f'https://discord.com/api/users/@me', headers=headers)
+						response = requests.get('https://discord.com/api/users/@me', headers=headers)
 						response_data = response.json()
 					else:
 						params = {
@@ -235,23 +235,24 @@ def editor_login(func):
 						}
 						authorize_url = 'https://discord.com/api/oauth2/authorize?' + urlencode(params)
 						return redirect(authorize_url)
-					headers = {'Authorization': f'Bearer {access_token}'}
-					response = requests.get('https://discord.com/api/users/@me', headers=headers)
-					response_data = response.json()
 					try:
-						token.discord_acc_rely = f"{response_data['username']}"
+						token.discord_acc_rely = response_data['username']
 						token.discord_user_id = response_data['id']
 						token.save()
 						request.session['response_data'] = response_data
 					except KeyError as e:
-						send_webhook(e)
-						request.session['response_data'] = {}
+						send_webhook(f"KeyError: {e}\nResponse Data: {response_data}\nHeaders: {headers}", admin_log=True)
+					except TypeError as e:
+						send_webhook(f"TypeError: {e}\nResponse Data: {response_data}\nHeaders: {headers}", admin_log=True)
 				else:
 					status = "not_auth"
 			except Token.DoesNotExist:
 				status = "not_auth"
 		else:
-			status = "not_auth"
+			if request.session.get("status") == "authorized":
+				status = "authorized"
+			else:
+				status = "not_auth"
 		request.session['status'] = status
 		return func(request, *args, **kwargs)
 	return wrapper
