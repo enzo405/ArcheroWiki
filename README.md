@@ -67,7 +67,6 @@ ___
 ```diff
 Todo list: 
 - export gsheet
-- add not allowed ingame_id
 ```
 ```diff
 Future Release:
@@ -82,7 +81,6 @@ Future Release:
 - details page add run boost from glyphs, dragon, stuff etc...
 - translate
 - item (especially for ring, get value with dict.get instead of having mythic_boost, titan_tales_boost etc....)
-- store cookie in session
 - remove space in key of local_data (skill)
 - maze soluce display only current week pattern
 - relics stat does apply if level, star and exclusive are = to 0
