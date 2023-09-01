@@ -178,9 +178,6 @@ img {
 .body_dark_mode .dropdown-menu a {
     color: #e7e7e7;
 }
-.body_dark_mode .dropdown-menu a:hover {
-    background-color: #f2f2f2;
-}
 .body_dark_mode .article {
     background: #545454a8;
     border: solid black 1px;

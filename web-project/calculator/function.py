@@ -48,27 +48,6 @@ def makeLog(request:HttpResponse|WSGIRequest):
 	if not DEV_MODE:
 		print(json_log)
 
-# def remove_same_int(string):
-# 	result = ''.join(sorted(set(string),key=string.index))
-# 	return result
-
-# def transform_token_id(initial_token):
-# 	token_result = ''
-# 	for i in str(initial_token):
-# 		all_string = string.ascii_uppercase + string.ascii_lowercase
-# 		str_int_shuffle = i.join(random.choice(all_string) for y in range(12))
-# 		str_token_order = remove_same_int(str_int_shuffle)
-# 		str_token = list(str_token_order)
-# 		random.shuffle(str_token)
-# 		result_first_string = ''.join(str_token)
-# 		token_result += result_first_string
-# 	return token_result
-
-# def chemin(type,name,rarity):
-# 	if name=="none":
-# 		return Path(f"calculator/static/image/{type}/none_common.png")
-# 	chemin =  Path(f"calculator/static/image/{type}/{name}_{rarity}.png")
-# 	return chemin
 
 def resize(img:Image.Image):
 	if img.size == (1,1):
@@ -165,17 +144,6 @@ def checkMessages(func):
 		return func(request, *args, **kwargs)
 	return wrapper
 
-# def delete_visitor(redirected_uri):
-# 	def _method_wrapper(view_method):
-# 		def _arguments_wrapper(request, *args, **kwargs):
-# 			credentials_check = request.session.get("user_credential")
-# 			if "visitor" in str(credentials_check):
-# 				return redirect(f"/delete_session/user_credential/{redirected_uri}/")
-# 			if request.COOKIES.get("visitor",None) != None:
-# 				return redirect(f"/delete_cookie/visitor/{redirected_uri}/")
-# 			return view_method(request, *args, **kwargs)
-# 		return _arguments_wrapper
-# 	return _method_wrapper
 
 def login_required(func):
 	"""
@@ -187,7 +155,7 @@ def login_required(func):
 		result = checkCookie(request)
 		if len(result) == 0:
 			if "visitor" in list(request.COOKIES.keys()):
-				return HttpResponseRedirect(f'/delete_cookie/visitor/menu/')
+				return HttpResponseRedirect('/delete_cookie/visitor/menu/')
 			messages.warning(request, _("You need to login first"))
 			return HttpResponseRedirect(f'/{get_language()}/login')
 		request.session['user_credential'] = result
@@ -196,7 +164,7 @@ def login_required(func):
 
 def editor_login(func):
 	def wrapper(request:HttpResponse|WSGIRequest, *args, **kwargs):
-		REDIRECT_URI = f"http://{request.META['HTTP_HOST']}/data/"
+		REDIRECT_URI = f"https://{request.META['HTTP_HOST']}/data/"
 		if request.user.is_authenticated and request.session.get("status") != "authorized":
 			try:
 				token = Token.objects.get(user=request.user)
@@ -253,13 +221,6 @@ def editor_login(func):
 		return func(request, *args, **kwargs)
 	return wrapper
 
-
-# def userExist(json, user) -> bool:
-# 	"""
-# 	Check if the user Exist in the specified json
-# 	"""
-# 	liste_username = [i['username'] for i in json['user']]
-# 	return str(user).lower() not in liste_username
 
 def similar(a, b):
 	return SequenceMatcher(None, a, b).ratio()
@@ -351,42 +312,6 @@ def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:
 	embed.set_footer(text=f'{request.COOKIES}', icon_url='')
 	webhook.add_embed(embed)
 	webhook.execute()
-
-
-# def MakeLogAddRequestJson(request:HttpResponse|WSGIRequest, cookie_result):
-# 	"""
-# 	cookie_result will always have 1 or 0 items
-# 	This function is a "global function" that call makeLog function
-# 	and add the username and number of request in the last 24h to the specified json file 
-# 	"""
-# 	makeLog(request)
-# 	if not DEV_MODE:
-# 		with open('calculator/static/json/requetes.json', "r") as jsonFile:
-# 			request_json_file = json.load(jsonFile)
-# 		if bool(cookie_result): ## si vide alors bool({}) => False sinon True
-# 			username = list(cookie_result.keys())[0]
-# 			username_id = list(cookie_result.values())[0]
-# 			if ADMIN_CREDENTIAL.get(username, None) == username_id:
-# 				encoded_string = encode_string(username_id)
-# 				username_id = encoded_string[:int(len(encoded_string)/2)]
-# 		else:
-# 			username = 'unknown'
-# 			username_id = "9-999999"
-# 		bool_func = userExist(request_json_file, username)
-# 		if bool_func:
-# 			data = {
-# 				"username": username.lower(),
-# 				"ingame_id": username_id,
-# 				"number_request": 1
-# 			}
-# 			request_json_file['user'].append(data)
-# 		else:
-# 			for i in request_json_file['user']:
-# 				if i['username'] == username:
-# 					i['number_request'] += 1
-# 					break
-# 		with open('calculator/static/json/requetes.json', "w") as jsonFile:
-# 			json.dump(request_json_file, jsonFile)
 
 
 def checkDarkMode(request:HttpResponse|WSGIRequest) -> bool:

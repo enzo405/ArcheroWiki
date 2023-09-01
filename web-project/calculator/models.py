@@ -214,7 +214,6 @@ class user(models.Model):
 			return {
 					"ingame_id": self.ingame_id,
 					"ingame_name": self.ingame_name,
-					"ingame_id": self.ingame_id,
 					'choosen_hero': self.choosen_hero,
 					'brave_privileges_level': self.brave_privileges_level,
 					'atk_base_stats_hero_choosen': self.atk_base_stats_hero_choosen,

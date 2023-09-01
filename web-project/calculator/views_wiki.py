@@ -89,7 +89,7 @@ def login_processing(request, username_raw, id_raw):
 		cookie_request_name,cookie_request_id = list(cookie_value.items())[0]
 		profile = getProfileWithCookie(cookie_request_id,cookie_request_name)
 		if profile[0]:
-			request.session['info_message'] = f"You are already logged in"
+			request.session['info_message'] = "You are already logged in"
 			return response
 		elif profile[0] == False and profile[1] != None:
 			# si il a pas de profil mais qu'il a un user_credential dans les cookies/session
@@ -107,7 +107,7 @@ def login_processing(request, username_raw, id_raw):
 			request.session['error_message'] = f"Login Failed (forbidden character \"{username_legal}\")"
 			return response
 		request.session['success_message'] = f"Successful Login ({boolCheck['ingame_name']})"
-		send_embed(boolCheck["ingame_name"],"Successful Login",description_embed=f"",field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck['ingame_name']}`|`{boolCheck['ingame_id']}`\n\n**Response Cookies** : \n{response.cookies}",e_color="32ec08",request=request, alert=False, admin_log=boolCheck.get('admin_log',None))
+		send_embed(boolCheck["ingame_name"],"Successful Login",description_embed="",field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck['ingame_name']}`|`{boolCheck['ingame_id']}`\n\n**Response Cookies** : \n{response.cookies}",e_color="32ec08",request=request, alert=False, admin_log=boolCheck.get('admin_log',None))
 	else:
 		request.session['error_message'] = f"Login Failed : {boolCheck['error_message']}"
 		send_embed(boolCheck["ingame_name"],"Login Failed",description_embed=boolCheck["error_message"],field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck['ingame_name']}`|`{boolCheck['ingame_id']}`\n\n**Response Cookies** : \n{response.cookies}",e_color="d50400",request=request, alert=True, admin_log=boolCheck.get('admin_log',None))
@@ -271,7 +271,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 				"currency2": [_('Scrolls :'),_('scroll')],
 			}
 		else:
-			messages.error(request,f"The levels need to be between 0 and {max_lvl}")
+			messages.error(request,_(f"The levels need to be between 0 and {max_lvl}"))
 			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "heroes":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
@@ -286,7 +286,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 				"currency2": [_('Sapphire :'),_('sapphire')],
 			}
 		else:
-			messages.error(request,f"The levels need to be between 0 and 120")
+			messages.error(request,_("The levels need to be between 0 and 120"))
 			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "talents":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 205) and (1 <= lvl2 <= 206):
@@ -301,7 +301,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 				"currency2": ['',''],
 			}
 		else:
-			messages.error(request,"The levels need to be between 0 and 206")
+			messages.error(request,_("The levels need to be between 0 and 206"))
 			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "dragons":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
@@ -317,10 +317,10 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 					"currency2": [_('Magestones :'),_('magestone')],
 				}
 			else:
-				messages.error(request,"The rank need to be whether A, S or SS")
+				messages.error(request,_("The rank need to be whether A, S or SS"))
 				return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/{lvl1}/{lvl2}/A/")
 		else:
-			messages.error(request,"The levels need to be between 0 and 120")
+			messages.error(request,_("The levels need to be between 0 and 120"))
 			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/{rank}/")
 	elif cost_type == "relics":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 29) and (1 <= lvl2 <= 30):
@@ -336,10 +336,10 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 					"currency2": [_('Starlight :'),_('starlight')],
 				}
 			else:
-				messages.error(request,"The rank need to be whether A, S or SS")
+				messages.error(request,_("The rank need to be whether A, S or SS"))
 				return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/{lvl1}/{lvl2}/A/")
 		else:
-			messages.error(request,"The levels need to be between 0 and 30")
+			messages.error(request,_("The levels need to be between 0 and 30"))
 			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/{rank}/")
 	ctx.update({"content":content})
 	return render(request, "wiki/upgrade_cost.html", ctx)
@@ -410,7 +410,7 @@ def damage(request):
 			selfHasProfil = "yes"
 		elif not profile[0] and profile[1] != None:
 			selfHasProfil = "login"
-			messages.error(request,f'You attempted to access {profile[1].ingame_name}<br>But your login username is "{ingame_name_cookie}".')
+			messages.error(request,_(f'You attempted to access {profile[1].ingame_name}<br>But your login username is "{ingame_name_cookie}".'))
 	else:
 		selfHasProfil = "login"
 	chapter_1_to_21 =  user.objects.get(ingame_id="0-000001").public_id
@@ -853,7 +853,7 @@ def handler500(request):
 	with open(f'calculator/static/traceback_file/{username}.txt','r', encoding='utf-8') as f:
 		webhook.add_file(file=f.read(), filename=f'{username}.txt')
 	webhook.execute()
-	messages.error(request,"Oops! Something went wrong<br>An error occurred while processing your request. Please try again later.")
+	messages.error(request,_("Oops! Something went wrong<br>An error occurred while processing your request. Please try again later."))
 	return render(request,'base/500.html', {'darkmode':checkDarkMode(request),"header_msg":_("Internal Server Error"),"sidebarContent":SidebarContent},status=500)
 
 
@@ -881,7 +881,7 @@ def delete_cookie(request:HttpResponse,key,name_redirect):
 	send_embed(
 		author_name="",
 		title_embed="Deleted Cookie",
-		description_embed=f"",
+		description_embed="",
 		field_name=f"Cookies key: {key}",
 		field_value=f"Redirected at {name_redirect}",
 		e_color="32ec08",

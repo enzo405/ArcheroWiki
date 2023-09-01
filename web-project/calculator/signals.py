@@ -35,7 +35,7 @@ def handle_new_log_entry(sender, instance, created, **kwargs):
 
 			avatar_url = f"{c_hostname}/static/image/favicon.png"
 			webhook = DiscordWebhook(url=WEBHOOK_URL, content="", rate_limit_retry=True)
-			embed = DiscordEmbed(title="A new LogEntry was created:", description=f"", color="F1C232")
+			embed = DiscordEmbed(title="A new LogEntry was created:", description="", color="F1C232")
 			embed.set_author(name=user,icon_url=avatar_url)
 			embed.add_embed_field(name=f"Object: {content_type} {instance.object_id}", value=str(message), inline=False)
 			webhook.add_embed(embed)
