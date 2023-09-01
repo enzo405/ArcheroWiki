@@ -3,7 +3,10 @@
 	src: url("/static/fonts/rubik.otf");
 }
 *{
-	font-family: 'Rubik';
+	font-family: 'Rubik', sans-serif;
+	margin: 0px; 
+	padding: 0px; 
+	box-sizing: border-box;
 }
 @media screen and (min-width : 850px){/* pour résolution supérieur à 850px */
 	.wrap-login100 {
@@ -50,11 +53,6 @@
 }
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
-* {
-	margin: 0px; 
-	padding: 0px; 
-	box-sizing: border-box;
-}
 body, html {
 	height: 100%;
 	font-family: sans-serif;

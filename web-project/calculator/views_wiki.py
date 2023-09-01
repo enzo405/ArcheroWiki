@@ -911,19 +911,23 @@ def set_session(request,key_cookie,value_cookie):
 	request.session["user_credential"] = {key_cookie:value_cookie}
 	return redirect("/")
 
+
 def page_set(request:WSGIRequest):
-	SidebarContent = LocalDataContentWiki['SidebarContent']
-	cookie_result = checkCookie(request)
-	select_choice = request.GET.get("select_choice")
-	key = request.GET.get("key")
-	value = request.GET.get("value")
-	ctx = {
-		"header_msg":_("Page Set Cookie/Session"),
-		"sidebarContent":SidebarContent,
-		"cookieUsername":makeCookieheader(cookie_result),
-		"cookie": request.COOKIES,
-		"session": request.session,
-	}
-	if select_choice and key and value:
-		return redirect(f'/set_{select_choice}/{key}/{value}/')
-	return render(request, 'base/page_set.html',ctx)
+	if DEV_MODE:
+		SidebarContent = LocalDataContentWiki['SidebarContent']
+		cookie_result = checkCookie(request)
+		select_choice = request.GET.get("select_choice")
+		key = request.GET.get("key")
+		value = request.GET.get("value")
+		ctx = {
+			"header_msg":_("Page Set Cookie/Session"),
+			"sidebarContent":SidebarContent,
+			"cookieUsername":makeCookieheader(cookie_result),
+			"cookie": request.COOKIES,
+			"session": request.session,
+		}
+		if select_choice and key and value:
+			return redirect(f'/set_{select_choice}/{key}/{value}/')
+		return render(request, 'base/page_set.html',ctx)
+	else:
+		return HttpResponseRedirect('/')

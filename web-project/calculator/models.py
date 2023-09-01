@@ -619,7 +619,7 @@ class AltarTable(models.Model,parentModel):
 	
 	def RoundTen(self,x) -> int:
 		if int(x) % 10==0:
-			x = x
+			pass
 		else:
 			while int(x) % 10>0:
 				x=x-1

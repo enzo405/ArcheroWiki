@@ -838,7 +838,6 @@ input:invalid {
     border-radius: 8px;
 }
 .header-relic-card img {
-	max-width: 100%;
 	max-height: 52px;
 	max-width: 52px;
 	display: flex;
