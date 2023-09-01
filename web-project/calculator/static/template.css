@@ -4,7 +4,7 @@
 }
 *{
     margin: 0;
-	font-family: 'Rubik';
+	font-family: 'Rubik', sans-serif;
 }
 
 @media screen and (max-width : 1350px){/* pour résolution inférieur à 1200px */
@@ -194,7 +194,7 @@
 		font-family: Arial, Helvetica, sans-serif;
 	}
 	h1,h2,.txt-onclick-span{
-		font-family: 'Rubik';
+		font-family: 'Rubik', sans-serif;
 	}
 	.dropdowns_header_container {
 		display: flex;
@@ -808,7 +808,7 @@ footer div, footer li{
 	color: var(--lt-wiki-content-a-color);
 }
 .thcrft-name{
-	font-family: 'Rubik';
+	font-family: 'Rubik', sans-serif;
 }
 /* NOSCRIPT MESSAGE */
 #no-script-message {

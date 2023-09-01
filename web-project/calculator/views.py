@@ -23,7 +23,7 @@ except:
 ## redirect allow messages.<type>(request,<message:str>)
 
 @db_maintenance
-def views_calc_stats(request,pbid:str,redirectPath:int):
+def views_calc_stats(request,pbid:int,redirectPath:int):
 	global missing_data
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
@@ -50,7 +50,7 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	RelicsTable_stats = other_model['RelicsTable']
 	WeaponSkinsTable_stats = other_model['WeaponSkinsTable']
 	try:
-		os.remove(f"calculator/static/image/stuff_save/{pbid}.png")
+		os.remove(f"calculator/static/image/stuff_save/{int(pbid)}.png")
 	except (FileNotFoundError,IsADirectoryError,OSError):
 		pass
 	################################# REQUÊTE DES ENTRÉES DE L'USERS #######################################################
@@ -395,20 +395,20 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	return HttpResponseRedirect(f'/{get_language()}{dict_Link.get(redirectPath,"/calculator/index/")}')
 
 @checkMessages
-def affiche_calc(request, pbid):
+def affiche_calc(request, pbid:int):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	user_credential = getCredentialForNonLoginRequired(request)['user_credential']
 	makeLog(request)
 	try:
-		user_stats = user.objects.get(public_id=pbid)
+		user_stats = user.objects.get(public_id=int(pbid))
 		DamageCalcTable_stats = DamageCalcTable.objects.get(user_profile=user_stats)
 	except DamageCalcTable.DoesNotExist:
-		return HttpResponseRedirect(f"/{get_language()}/stats/calc/{pbid}/1/?log=False")
+		return HttpResponseRedirect(f"/{get_language()}/stats/calc/{int(pbid)}/1/?log=False")
 	except user.DoesNotExist:
 		request.session['error_message'] = "User doesn't exist"
 		return HttpResponseRedirect(f'/{get_language()}')
-	if not os.path.exists(f"calculator/static/image/stuff_save/{pbid}.png"):
-		return HttpResponseRedirect(f"/stats/calc/{pbid}/0/?log=False")
+	if not os.path.exists(f"calculator/static/image/stuff_save/{int(pbid)}.png"):
+		return HttpResponseRedirect(f"/stats/calc/{int(pbid)}/0/?log=False")
 	valueError = "no"
 	if DamageCalcTable_stats.missing_data != "" and DamageCalcTable_stats.missing_data != "none":
 		valueError = "yes"
