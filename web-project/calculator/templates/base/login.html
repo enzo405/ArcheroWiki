@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 	{% load static %}
-	<title>Login</title>
+	{% load i18n %}
+	<title>{% blocktrans %}Login{% endblocktrans %}</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.6.4b">
+	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.7.2">
 	<link rel="icon" type="image/ong" href="{% static 'favicon.ico' %}">
-	<script src="{% static 'main.js' %}?version=1.6.4b"></script>
+	<script src="{% static 'main.js' %}?version=1.7.2"></script>
 </head>
 {% if darkmode == True %}
 <body class="body_dark_mode">
@@ -16,7 +17,7 @@
 {% endif %}
 <noscript>
 	<div id="no-script-message">
-		<p>Please enable JavaScript to use this website.</p>
+		<p>{% blocktrans %}Please enable JavaScript to use this website.{% endblocktrans %}</p>
 	</div>
 </noscript>
 {% if messages %}
@@ -31,7 +32,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="{% static 'img-01.png' %}" alt="IMG">
+					<img src="{% static 'img-01.png' %}" alt="background login">
 				</div>
 				<div class="form-row" id="form-row">
 					<div id="errorBox" class="error-box" style="display: none;">
@@ -40,17 +41,17 @@
 							<div id="error_msg"></div>
 						</div>
 					</div>
-					<span class="login100-form-title">Login</span>
+					<span class="login100-form-title">{% blocktrans %}Login{% endblocktrans %}</span>
 					<div class="wrap-input100 validate-input">
 						<fieldset class="fieldset-input">
-							<legend>Username</legend>
-							<input class="input-login-field username" id="username" type="text" placeholder="" pattern="^(?!.*visitor)[^\s]{3,20}$" required>
+							<legend>{% blocktrans %}Username{% endblocktrans %}</legend>
+							<input class="input-login-field username" id="username" type="text" placeholder="" pattern="^[^\s]{3,20}$" required>
 						</fieldset>
 						<ul>
-							<li class="list-info-login">Avoid space and special character for your username</li>
+							<li class="list-info-login">{% blocktrans %}Avoid space and special character for your username{% endblocktrans %}</li>
 						</ul><br>
 						<fieldset class="fieldset-input">
-							<legend>Ingame ID</legend>
+							<legend>{% blocktrans %}Ingame ID{% endblocktrans %}</legend>
 							<input class="input-login-field username" id="ingameid" type="text" placeholder="1-234567" pattern="^[0-9]{1}-[0-9]{5,12}$">
 						</fieldset>
 					</div>
@@ -61,11 +62,11 @@
 				<div id="confirmationBox" class="confirmation-box" style="display: none;">
 					<div class="container-confirmation">
 						<span class="close_span_confirmation">&times;</span>
-						<p>Please check one last time that you have entered the correct ID, this will affect the creation of your profile.</p>
-						<p>Do you still want to confirm ?</p>
+						<p>{% blocktrans %}Please check one last time that you have entered the correct ID, this will affect the creation of your profile.{% endblocktrans %}</p>
+						<p>{% blocktrans %}Do you still want to confirm ?{% endblocktrans %}</p>
 						<div class="container-action">
-							<button id="confirm">Yes</button>
-							<button id="cancel">No</button>
+							<button id="confirm">{% blocktrans %}Yes{% endblocktrans %}</button>
+							<button id="cancel">{% blocktrans %}No{% endblocktrans %}</button>
 						</div>
 					</div>
 				</div>
@@ -108,18 +109,18 @@
 		const username = usernameInput.value.trim();
 		const ingameId = ingameIdInput.value.trim();
 		if (!username) {
-			throw "Username must be between 3 and 15 characters long"
+			return createModale(`{% blocktrans %}Username must be between 3 and 15 characters long{% endblocktrans %}`, null, "errors");
 		} else if (username.length < 3 || username.length > 20) {
-			throw 'Username must be between 3 and 15 characters long';
+			return createModale(`{% blocktrans %}Username must be between 3 and 15 characters long{% endblocktrans %}`, null, "errors");
 		} else if (username === 'visitor') {
-			throw 'You cannot use this username';
+			return createModale(`{% blocktrans %}You cannot use this username{% endblocktrans %}`, null, "errors");
 		}
 		if (!ingameId) {
-			throw 'Ingame ID field cannot be empty';
+			return createModale(`{% blocktrans %}Ingame ID field cannot be empty{% endblocktrans %}`, null, "errors");
 		} else if (!ingameIdRegex.test(ingameId) && !adminRegex.test(ingameId)) {
-			throw 'Your id must fit this format: X-XXXXXXX';
+			return createModale(`{% blocktrans %}Your id must fit this format: X-XXXXXXX{% endblocktrans %}`, null, "errors");
 		} else if (ingameId.length > 11 ) {
-			throw 'Your id must be minimum 11 number';
+			return createModale(`{% blocktrans %}Your id must be maximum 11 numbers{% endblocktrans %}`, null, "errors");
 		}
 
 		async function submitLogin() {

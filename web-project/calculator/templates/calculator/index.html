@@ -1,14 +1,15 @@
 {% extends "template.html" %}
 {% load static %}
+{% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.6.4b">
-<title>Archero - Wiki - Calculator</title>
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.7.2">
+<title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero Stats Calculator">
 <meta property="og:url" content="https://stats.wiki-archero.com/calculator/index/">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players">
 <meta name="description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.4b">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.7.2">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
@@ -16,52 +17,52 @@
 	<div class="div-table-index">
 		{% if show_table == "no_profile" %}
 		<div class="div_formulaire">
-			<a href="/calculator/create/">Create profile</a>
+			<a href="/{{ LANGUAGE_CODE }}/calculator/create/">{% blocktrans %}Create profile{% endblocktrans %}</a>
 		</div>
 		{% elif show_table == "yes" %}
 		<div class="profile-card">
 			<div class="avatar-container">
-				<img src="{{ self_ingame_hero }}" alt="Avatar">
+				<img src="{{ self_ingame_hero }}" alt="User Avatar Hero">
 			</div>
 			<div class="info-container">
 				<h3>{{ self_ingame_name }}</h3>
 				<div class="stat-container">
 					<div class="stat">
-						<span class="label">Attack:</span>
+						<span class="label">{% blocktrans %}Attack:{% endblocktrans %}</span>
 						<span class="value">{{ self_global_atk_save }}</span>
 					</div>
 					<div class="stat">
-						<span class="label">Rank:</span>
+						<span class="label">{% blocktrans %}Rank:{% endblocktrans %}</span>
 						<span class="value">{{ rank }}</span>
 					</div>
 					<div class="stat">
-						<span class="label">HP:</span>
+						<span class="label">{% blocktrans %}HP:{% endblocktrans %}</span>
 						<span class="value">{{ self_global_hp_save }}</span>
 					</div>
 				</div>
 			</div>
 			<div class="button-container">
-				<a href='/calculator/show/{{ self_public_id }}/'><button class="btn-table">Show</button></a>
-				<a href='/calculator/update/{{ self_public_id }}/'><button class="btn-table">Update</button></a>
+				<a href='/{{ LANGUAGE_CODE }}/calculator/show/{{ self_public_id }}/'><button class="btn-table">{% blocktrans %}Show{% endblocktrans %}</button></a>
+				<a href='/{{ LANGUAGE_CODE }}/calculator/update/{{ self_public_id }}/'><button class="btn-table">{% blocktrans %}Update{% endblocktrans %}</button></a>
 			</div>
 		</div>
 		{% elif show_table == "visitor" %}
 		<div class="div_formulaire">
-			<a href="/login">Log-in</a>
+			<a href="/{{ LANGUAGE_CODE }}/login">{% blocktrans %}Login{% endblocktrans %}</a>
 		</div>
 		<div class="help-index-msg">
-			<p class="msg-index-no-profile">If you already have a profile, please contact me on <a href="https://discord.com/users/382930544385851392" target="_blank">Discord</a> or <a href="https://www.reddit.com/user/LuhCaran101" target="_blank">Reddit</a></p>
+			<p class="msg-index-no-profile">{% blocktrans %}If you already have a profile, please contact me{% endblocktrans %} <a href="https://discord.com/users/382930544385851392" target="_blank">Discord </a> <a href="https://www.reddit.com/user/LuhCaran101" target="_blank">Reddit</a></p>
 		</div>
 		{% endif %}
 		<div class="table-responsive" id="index-table">
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Username</th>
-						<th class="hero_row">Hero</th>
-						<th class="self_table_atk_row">Attack</th>
-						<th class="self_table_hp_row">Hp</th>
-						<th>Show</th>
+						<th>{% blocktrans %}Username{% endblocktrans %}</th>
+						<th class="hero_row">{% blocktrans %}Hero{% endblocktrans %}</th>
+						<th class="self_table_atk_row">{% blocktrans %}Attack{% endblocktrans %}</th>
+						<th class="self_table_hp_row">{% blocktrans %}Hp{% endblocktrans %}</th>
+						<th>{% blocktrans %}Show{% endblocktrans %}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -71,7 +72,7 @@
 						<td class="hero_row">{{ l.choosen_hero }}</td>
 						<td class="table_atk_row">{{ l.global_atk_save }}</td>
 						<td class="table_hp_row">{{ l.global_hp_save }}</td>
-						<td><a href='/calculator/show/{{ l.public_id }}/'><button class="btn-table">Show</button></a></td>
+						<td><a href='/{{ LANGUAGE_CODE }}/calculator/show/{{ l.public_id }}/'><button class="btn-table">{% blocktrans %}Show{% endblocktrans %}</button></a></td>
 					</tr>
 					{% endfor %}
 				</tbody>

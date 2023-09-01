@@ -1,6 +1,6 @@
 from .forms import DamageCalculatorForm
-from .models import articleMenu,user,stuff_table,hero_table,talent_table,skin_table,altar_table,jewel_level_table,egg_table,egg_equipped_table,dragon_table,runes_table,reforge_table,refine_table,medals_table,relics_table,weapon_skins_table,dmg_calc_table,promo_code
-from .function import delete_visitor,checkDarkMode,checkMessages,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,MakeLogAddRequestJson,calculatePrice,makeCookieheader,db_maintenance, getProfileWithCookie, login_required, checkContributor
+from .models import ArticleMenu,user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable,DamageCalcTable,PromoCode
+from .function import checkDarkMode,checkMessages,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,calculatePrice,makeCookieheader,db_maintenance, getProfileWithCookie, makeLog
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.handlers.wsgi import WSGIRequest
@@ -13,53 +13,44 @@ from discord_webhook import DiscordWebhook, DiscordEmbed
 from datetime import timedelta, datetime
 import json, os, sys, traceback
 from const import WEBHOOK_URL, c_hostname, DISCORD_NOTIF_ROLE_ID, DISCORD_ERROR_ROLE_ID, DEV_MODE
+from django.utils.translation import get_language, gettext as _, gettext
+from .local_data import LocalDataContentWiki
 
-lang = ["English","Francais","Deutsch","Russian","Española"]
 missing_data = []
 
 @db_maintenance
-@delete_visitor("menu")
 @checkMessages
 def menu(request):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
-	list_article = list(articleMenu.objects.all().filter(display=True).order_by('index'))
-	return render(request, 'base/menu.html', {"darkmode": checkDarkMode(request), "header_msg": "Menu Archero Wiki", 'lang':lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result),"list_article":list_article, "dev_mode":DEV_MODE})
+	makeLog(request)
+	list_article = list(ArticleMenu.objects.all().filter(display=True).order_by('index'))
+	return render(request, 'base/menu.html', {"darkmode": checkDarkMode(request), "header_msg":_("Menu Archero Wiki"), "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result),"list_article":list_article, "dev_mode":DEV_MODE})
 
 @db_maintenance
-@delete_visitor("news")
 @checkMessages
 def news(request,titleArticle=None):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
 	try:
-		article = articleMenu.objects.get(title=titleArticle)
-	except articleMenu.DoesNotExist:
-		request.session['error_message'] = f"{titleArticle} Article doesn't exist" 
-		return HttpResponseRedirect('/')
-	return render(request, 'wiki/article-news.html', {"darkmode": checkDarkMode(request), "header_msg": "Menu Archero Wiki", 'lang':lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result), "article":article})
+		article = ArticleMenu.objects.get(title=titleArticle)
+	except ArticleMenu.DoesNotExist:
+		request.session['error_message'] = f"{titleArticle} Article doesn't exist"
+		return HttpResponseRedirect(f'/{get_language()}/')
+	return render(request, 'wiki/article-news.html', {"darkmode": checkDarkMode(request), "header_msg":_("Menu Archero Wiki"), "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result), "article":article, "article_title": article.title})
 
 
 def maze(request):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
 	with urlopen("https://config-archero.habby.mobi/data/config/MazeConfig.json") as url:
 		maze_data_api = json.load(url)
-	return render(request, 'wiki/maze.html', {"data_json":maze_data_api, "darkmode": checkDarkMode(request), "header_msg": "maze","lang":lang, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
+	return render(request, 'wiki/maze.html', {"data_json":maze_data_api, "darkmode": checkDarkMode(request), "header_msg":_("maze"), "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
 
 def csrf_failure(request, reason=""):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
 	profil = "no"
 	public_id =''
@@ -72,16 +63,14 @@ def csrf_failure(request, reason=""):
 			public_id = user_stats.public_id
 	except IndexError:
 		pass
-	MakeLogAddRequestJson(request,cookie_result)
-	return render(request,'base/csrf_failure.html', {"darkmode": checkDarkMode(request), "header_msg": "CSRF FAILURE","lang":lang, "profil":profil, "public_id":public_id, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
+	makeLog(request)
+	return render(request,'base/csrf_failure.html', {"darkmode": checkDarkMode(request), "header_msg":_("CSRF FAILURE"), "profil":profil, "public_id":public_id, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
 
 @checkMessages
 def login(request):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_value = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_value)
+	makeLog(request)
 	if (len(cookie_value) >= 1 and "visitor" not in list(cookie_value)): ## normally len(cookie_value) will have maximum 1 length but to be sure 
 		cookie_request_name,cookie_request_id = list(cookie_value.items())[0]
 		profile = getProfileWithCookie(cookie_request_id,cookie_request_name)
@@ -89,12 +78,12 @@ def login(request):
 			return render(request, "base/login.html", {"darkmode":checkDarkMode(request), "sidebarContent":SidebarContent})
 		send_webhook(f'{cookie_value} tried to access Login but was redirected to Home\n{request.COOKIES}')
 		request.session['error_message'] = f"You can't login again, your username is {cookie_request_name}"
-		return HttpResponseRedirect("/")
+		return HttpResponseRedirect(f'/{get_language()}/')
 	else:
 		return render(request, "base/login.html", {"darkmode":checkDarkMode(request), "sidebarContent":SidebarContent})
 
 def login_processing(request, username_raw, id_raw):
-	response = redirect("/")
+	response = redirect(f"/{get_language()}")
 	cookie_value = checkCookie(request)
 	if len(cookie_value) != 0:
 		cookie_request_name,cookie_request_id = list(cookie_value.items())[0]
@@ -124,13 +113,10 @@ def login_processing(request, username_raw, id_raw):
 		send_embed(boolCheck["ingame_name"],"Login Failed",description_embed=boolCheck["error_message"],field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck['ingame_name']}`|`{boolCheck['ingame_id']}`\n\n**Response Cookies** : \n{response.cookies}",e_color="d50400",request=request, alert=True, admin_log=boolCheck.get('admin_log',None))
 	return response
 
-@delete_visitor("wiki")
 def wiki_menu(request, article=None):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
 	article_label = str(article).replace('_',' ').capitalize()
 	if article != None:
 		name_title = article_label
@@ -138,159 +124,128 @@ def wiki_menu(request, article=None):
 		name_title = None
 	ctx = {
 		"darkmode": checkDarkMode(request),
-		"lang":lang,
 		"sidebarContent":SidebarContent,
-		"WikiContent":local_data["WikiContent"],
+		"WikiContent":LocalDataContentWiki["WikiContent"],
 		"cookieUsername":makeCookieheader(cookie_result),
 		"name_title": name_title,
-		"article": article
+		"article": article,
+		"current_url": request.build_absolute_uri(),
+		"current_article": LocalDataContentWiki["WikiContent"].get(article),
 	}
-	if article is not None or local_data["WikiContent"].get(article):
-		ctx["header_msg"] = f"{article_label} - Wiki"
+	if article is not None or LocalDataContentWiki["WikiContent"].get(article):
+		ctx["header_msg"] = _(f"{article_label} - Wiki")
 	else:
-		ctx["header_msg"] = "Wiki"
+		ctx["header_msg"] = _("Wiki")
 	return render(request, "wiki/menu.html", ctx)
 
-@delete_visitor("item_desc")
 def item_description(request, item=None):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	
+	item_data = LocalDataContentWiki["ItemData"].get(str(item), None)
+	if item_data is None:
+		item = "Expedition_Fist"
+		item_data = LocalDataContentWiki["ItemData"][item]
+	
+	temp = list(LocalDataContentWiki["ItemData"])
+	index_after = temp[(temp.index(item) + 1) % len(temp)]
+	index_before = temp[(temp.index(item) - 1) % len(temp)]
+	
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
+	
 	ctx = {
 		"darkmode": checkDarkMode(request),
-		"header_msg": "Item Description",
-		"lang":lang,
-		"item":"no",
-		"sidebarContent":SidebarContent,
-		"ItemData":local_data["ItemData"],
-		"cookieUsername":makeCookieheader(cookie_result)
+		"item": "yes" if item_data else "no",
+		"sidebarContent": SidebarContent,
+		"ItemData": LocalDataContentWiki["ItemData"],
+		"cookieUsername": makeCookieheader(cookie_result),
+		"name": item_data['displayName'] if item_data else "",
+		"item_data": item_data,
+		"url_cpy": request.build_absolute_uri(),
+		"header_msg": item_data['displayName'] if item_data else "",
+		"index_after": [index_after,LocalDataContentWiki["ItemData"][index_after]],
+		"index_before": [index_before,LocalDataContentWiki["ItemData"][index_before]],
 	}
-	if item is None or not local_data["ItemData"].get(str(item).replace('_',' '),False):
-		item = "Expedition_Fist"
-	else:
-		ctx.update({"item":"yes"})
-	data = local_data["ItemData"]
-	item_name = str(item).replace('_',' ')
-	item_data = data[item_name]
-	temp = list(data)
-	try:
-		index_after = data[temp[temp.index(item_name) + 1]]
-	except (ValueError, IndexError):
-		index_after = data[str(temp[0]).replace('_',' ')]
-	try:
-		index_before = data[temp[temp.index(item_name) - 1]]
-	except (ValueError, IndexError):
-		index_before = data[str(temp[-1]).replace('_',' ')]
-	ctx.update({
-		"name":item_data['value'].replace('_',' '),
-		"item_data":item_data,
-		"url_cpy":request.build_absolute_uri(),
-		"header_msg": f"{item_data['value'].replace('_',' ')} - Description",
-		"index_after": index_after,
-		"index_before": index_before,
-	})
+	
 	return render(request, "wiki/item_description.html", ctx)
 
-@delete_visitor("skill_list")
 def skill_description(request, skill=None):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
-	cookie_result = checkCookie(request)
-	ctx = {}
-	MakeLogAddRequestJson(request,cookie_result)
-	if skill is None or not local_data["SkillData"].get(skill.replace("_"," "),False):
+
+	skill_data = LocalDataContentWiki["SkillData"].get(str(skill), None)
+	if skill_data is None:
 		skill = "Attack_Boost"
-		ctx.update({"skill":"no"})
-	else:
-		ctx.update({"skill":"yes"})
-	skill_name = skill.replace("_"," ")
-	data = local_data["SkillData"]
-	skill_data = data[skill_name]
-	image_skill = f"image/skill/{str(skill).lower().replace(' - ', '_').replace(' ', '_').replace('one-eyed', 'one_eyed')}.png"
-	url_cpy = request.build_absolute_uri()
-	temp = list(data)
-	try:
-		index_after = data[temp[temp.index(skill_name) + 1]]
-	except (ValueError, IndexError):
-		index_after = data[temp[0]]
-	try:
-		index_before = data[temp[temp.index(skill_name) - 1]]
-	except (ValueError, IndexError):
-		index_before = data[temp[-1]]
-	ctx.update({
-		"sidebarContent":SidebarContent,
-		"SkillData":local_data["SkillData"],
-		"cookieUsername":makeCookieheader(cookie_result),
+		skill_data = LocalDataContentWiki["SkillData"][skill]
+	
+	image_skill = f"image/skill/{skill.replace(' - ', '_').replace('one-eyed', 'one_eyed').lower()}.png"
+	
+	temp = list(LocalDataContentWiki["SkillData"])
+	index_after = temp[(temp.index(skill) + 1) % len(temp)]
+	index_before = temp[(temp.index(skill) - 1) % len(temp)]
+	
+	SidebarContent = LocalDataContentWiki['SidebarContent']
+	cookie_result = checkCookie(request)
+	makeLog(request)
+	
+	ctx = {
+		"sidebarContent": SidebarContent,
+		"SkillData": LocalDataContentWiki["SkillData"],
+		"cookieUsername": makeCookieheader(cookie_result),
 		"darkmode": checkDarkMode(request),
-		"header_msg": "Skill Description",
-		"lang":lang,
-		"name":skill_name,
+		"name": skill_data['displayName'],
+		"skill": "yes" if skill_data else "no",
 		"skill_data": skill_data,
-		"image_skill":image_skill,
-		"url_cpy":url_cpy,
-		"header_msg": f"{skill_name} - Description",
+		"image_skill": image_skill,
+		"url_cpy": request.build_absolute_uri(),
+		"header_msg": skill_data['displayName'] if skill_data else "",
 		"index_after": index_after,
-		"index_before": index_before,
-	})
+		"index_before": index_before
+	}
+	
 	return render(request, "wiki/skill_description.html", ctx)
 
-@delete_visitor("heroes_desc")
 def heros_description(request, hero=None):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	
+	hero_data = LocalDataContentWiki["HeroData"].get(hero, None)
+	if hero_data is None:
+		hero = "Taiga"
+		hero_data = LocalDataContentWiki["HeroData"][hero]
+	
+	temp = list(LocalDataContentWiki["HeroData"])
+	index_after = temp[(temp.index(hero) + 1) % len(temp)]
+	index_before = temp[(temp.index(hero) - 1) % len(temp)]
+	
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
+	
 	ctx = {
 		"darkmode": checkDarkMode(request),
-		"header_msg": "Heroes Description",
-		"lang":lang,
-		"hero":"no", ## keep this for the meta tag
-		"sidebarContent":SidebarContent,
-		"HeroData":local_data["HeroData"],
-		"cookieUsername":makeCookieheader(cookie_result)
-	}
-	if hero is None or not local_data["HeroData"].get(hero,False):
-		hero = "Taiga"
-	else:
-		ctx.update({"hero":"yes"})
-	data = local_data["HeroData"]
-	hero_data = data[hero]
-	temp = list(data)
-	try:
-		index_after = temp[temp.index(hero) + 1]
-	except (ValueError, IndexError):
-		index_after = temp[0]
-	try:
-		index_before = temp[temp.index(hero) - 1]
-	except (ValueError, IndexError):
-		index_before = temp[-1]
-	ctx.update({
-		"name_hero": hero,
+		"hero": "yes" if hero_data else "no",
+		"sidebarContent": SidebarContent,
+		"HeroData": LocalDataContentWiki["HeroData"],
+		"cookieUsername": makeCookieheader(cookie_result),
+		"hero_data_hero_assist_evolve": hero_data['hero_assist_evolve'],
+		"name_hero": hero_data['displayName'],
+		"name_hero_initial": hero,
 		"hero_data": hero_data,
-		"hero_image": f'image/hero_icon/icon_{str(hero)}.png',
+		"hero_image": f'image/hero_icon/icon_{hero}.png',
 		"url_cpy": request.build_absolute_uri(),
-		"header_msg": f"{hero} - Description",
+		"header_msg": hero_data['displayName'] if hero_data else "",
 		"index_after": index_after,
 		"index_before": index_before,
-	})
-	return render(request, "wiki/heros_description.html",ctx)
+	}
+	
+	return render(request, "wiki/heros_description.html", ctx)
 
-def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str="None"):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="None"):
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
 	all_rank = ["A","S","SS"]
 	content = ""
 	ctx = {
 		"darkmode": checkDarkMode(request),
-		"header_msg": "Upgrade Cost",
-		"lang":lang,
+		"header_msg":_("Upgrade Cost"),
 		"cost_type":cost_type,
 		"lvl1":lvl1,
 		"lvl2":lvl2,
@@ -307,100 +262,97 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=999,lvl2:int=999,rank:str
 				lvl2 = temp
 			price = calculatePrice(lvl1,lvl2,cost_type)
 			content = {
-				"eTitle": "Equipment Upgrade Cost",
-				"eDescription": f"To upgrade equipment from level {lvl1} to {lvl2}",
+				"eTitle": _("Equipment Upgrade Cost"),
+				"eDescription": _(f"To upgrade equipment from level {lvl1} to {lvl2}"),
 				"eImage": "/static/image/wiki-image/Cost_Item.png",
 				"eField1": f'{int(price[0]):,}',
 				"eField2": f'{int(price[1]):,}',
-				"currency1": ['Gold :','gold'],
-				"currency2": ['Scrolls :','scroll'],
+				"currency1": [_('Gold :'),_('gold')],
+				"currency2": [_('Scrolls :'),_('scroll')],
 			}
 		else:
 			messages.error(request,f"The levels need to be between 0 and {max_lvl}")
-			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/")
+			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "heroes":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
 			price = calculatePrice(lvl1,lvl2,cost_type)
 			content = {
-				"eTitle": "Heroes Upgrade Cost",
-				"eDescription": f"To upgrade heroes from level {lvl1} to {lvl2}",
+				"eTitle": _("Heroes Upgrade Cost"),
+				"eDescription": _(f"To upgrade heroes from level {lvl1} to {lvl2}"),
 				"eImage": "/static/image/wiki-image/Cost_Heroes.png",
 				"eField1": f'{int(price[0]):,}',
 				"eField2": f'{int(price[1]):,}',
-				"currency1": ['Gold :','gold'],
-				"currency2": ['Sapphire :','sapphire'],
+				"currency1": [_('Gold :'),_('gold')],
+				"currency2": [_('Sapphire :'),_('sapphire')],
 			}
 		else:
 			messages.error(request,f"The levels need to be between 0 and 120")
-			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/")
+			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "talents":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 205) and (1 <= lvl2 <= 206):
 			price = calculatePrice(lvl1,lvl2,cost_type)
 			content = {
-				"eTitle": "Talents Upgrade Cost",
-				"eDescription": f"To upgrade talents from level {lvl1} to {lvl2}",
+				"eTitle": _("Talents Upgrade Cost"),
+				"eDescription": _(f"To upgrade talents from level {lvl1} to {lvl2}"),
 				"eImage": "/static/image/wiki-image/Cost_Talent.png",
 				"eField1": f'{int(price):,}',
 				"eField2": f'<br>',
-				"currency1": ['Gold :','gold'],
+				"currency1": [_('Gold :'),_('gold')],
 				"currency2": ['',''],
 			}
 		else:
 			messages.error(request,"The levels need to be between 0 and 206")
-			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/")
+			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "dragons":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
 			if rank in all_rank:
 				price = calculatePrice(lvl1,lvl2,cost_type,rank)
 				content = {
-					"eTitle": "Dragon Upgrade Cost",
-					"eDescription": f"To upgrade dragons from level {lvl1} to {lvl2}",
+					"eTitle": _("Dragon Upgrade Cost"),
+					"eDescription": _(f"To upgrade dragons from level {lvl1} to {lvl2}"),
 					"eImage": "/static/image/wiki-image/Cost_Dragon" + str(rank).upper() + ".png",
 					"eField1": f'{int(price[0]):,}',
 					"eField2": f'{int(price[1]):,}',
-					"currency1": ['Gold :','gold'],
-					"currency2": ['Magestones :','magestone'],
+					"currency1": [_('Gold :'),_('gold')],
+					"currency2": [_('Magestones :'),_('magestone')],
 				}
 			else:
 				messages.error(request,"The rank need to be whether A, S or SS")
-				return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/{lvl1}/{lvl2}/A/")
+				return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/{lvl1}/{lvl2}/A/")
 		else:
 			messages.error(request,"The levels need to be between 0 and 120")
-			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/{rank}/")
+			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/{rank}/")
 	elif cost_type == "relics":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 29) and (1 <= lvl2 <= 30):
 			if rank in all_rank:
 				price = calculatePrice(lvl1,lvl2,cost_type,rank)
 				content = {
-					"eTitle": "Relics Upgrade Cost",
-					"eDescription": f"To upgrade relics from level {lvl1} to {lvl2}",
+					"eTitle": _("Relics Upgrade Cost"),
+					"eDescription": _(f"To upgrade relics from level {lvl1} to {lvl2}"),
 					"eImage": "/static/image/wiki-image/Cost_Relics" + str(rank).upper() + ".png",
 					"eField1": f'{int(price[0]):,}',
 					"eField2": f'{int(price[1]):,}',
-					"currency1": ['Gold :','gold'],
-					"currency2": ['Starlight :','starlight'],
+					"currency1": [_('Gold :'),_('gold')],
+					"currency2": [_('Starlight :'),_('starlight')],
 				}
 			else:
-				messages.error("The rank need to be whether A, S or SS")
-				return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/{lvl1}/{lvl2}/A/")
+				messages.error(request,"The rank need to be whether A, S or SS")
+				return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/{lvl1}/{lvl2}/A/")
 		else:
 			messages.error(request,"The levels need to be between 0 and 30")
-			return HttpResponseRedirect(f"/wiki/upgrade/{cost_type}/1/2/{rank}/")
+			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/{rank}/")
 	ctx.update({"content":content})
 	return render(request, "wiki/upgrade_cost.html", ctx)
 
 
-def ghssetGrid(request):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+def gsheetGrid(request):
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
 	ctx = {
 		'darkmode':checkDarkMode(request),
-		"header_msg": "Google Sheet Wiki",
-		"lang":lang,
-		"GsheetData":local_data['GsheetData'],
+		"header_msg":_("Google Sheet Wiki"),
+		"GsheetData":LocalDataContentWiki['GsheetData'],
 		"sidebarContent":SidebarContent,
 		"cookieUsername":makeCookieheader(cookie_result)
 	}
@@ -408,13 +360,11 @@ def ghssetGrid(request):
 
 @db_maintenance
 def promocode(request):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
 	all_active_code = []
-	promo_codes = promo_code.objects.all().filter(is_active=True)
+	promo_codes = PromoCode.objects.all().filter(is_active=True)
 	for i in promo_codes:
 		expireDate = i.expire
 		if i.expire == None:
@@ -434,8 +384,7 @@ def promocode(request):
 			all_active_code.append(result)
 	ctx = {
 		"darkmode": checkDarkMode(request),
-		"header_msg": "Promo Code",
-		"lang":lang,
+		"header_msg":_("Promo Code"),
 		"promo_code":all_active_code,
 		"len_promo":len(all_active_code),
 		"sidebarContent":SidebarContent,
@@ -446,11 +395,9 @@ def promocode(request):
 @db_maintenance
 @checkMessages
 def damage(request):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
 	user_stats = ""
 	selfHasProfil = "no"
 	if len(cookie_result) != 0:
@@ -472,10 +419,9 @@ def damage(request):
 	chapter_ch42 =  user.objects.get(ingame_id="0-000004").public_id
 	ctx = {
 		"darkmode": checkDarkMode(request),
-		"header_msg": "Damage Calculator",
+		"header_msg":_("Damage Calculator"),
 		"selfHasProfil":selfHasProfil,
 		"selfStats":user_stats,
-		"lang":lang,
 		"chapter_1_to_21":chapter_1_to_21,
 		"chapter_22_to_34":chapter_22_to_34,
 		"chapter_34_to_42":chapter_34_to_42,
@@ -491,41 +437,41 @@ def dmgCalc_processing(request,pbid):
 		local_data = json.load(f)
 	global missing_data
 	user_stats = user.objects.get(public_id=pbid)
-	stuff_table_stats = stuff_table.objects.get(user_profile=user_stats)
-	hero_table_stats = hero_table.objects.get(user_profile=user_stats)
-	talent_table_stats = talent_table.objects.get(user_profile=user_stats)
-	skin_table_stats = skin_table.objects.get(user_profile=user_stats)
-	altar_table_stats = altar_table.objects.get(user_profile=user_stats)
-	jewel_level_table_stats = jewel_level_table.objects.get(user_profile=user_stats)
-	egg_table_stats = egg_table.objects.get(user_profile=user_stats)
-	egg_equipped_table_stats = egg_equipped_table.objects.get(user_profile=user_stats)
-	dragon_table_stats = dragon_table.objects.get(user_profile=user_stats)
-	runes_table_stats = runes_table.objects.get(user_profile=user_stats)
-	reforge_table_stats = reforge_table.objects.get(user_profile=user_stats)
-	refine_table_stats = refine_table.objects.get(user_profile=user_stats)
-	medals_table_stats = medals_table.objects.get(user_profile=user_stats)
-	relics_table_stats = relics_table.objects.get(user_profile=user_stats)
-	weapon_skins_table_stats = weapon_skins_table.objects.get(user_profile=user_stats)
+	StuffTable_stats = StuffTable.objects.get(user_profile=user_stats)
+	HeroTable_stats = HeroTable.objects.get(user_profile=user_stats)
+	TalentTable_stats = TalentTable.objects.get(user_profile=user_stats)
+	SkinTable_stats = SkinTable.objects.get(user_profile=user_stats)
+	AltarTable_stats = AltarTable.objects.get(user_profile=user_stats)
+	JewelLevelTable_stats = JewelLevelTable.objects.get(user_profile=user_stats)
+	EggTable_stats = EggTable.objects.get(user_profile=user_stats)
+	EggEquippedTable_stats = EggEquippedTable.objects.get(user_profile=user_stats)
+	DragonTable_stats = DragonTable.objects.get(user_profile=user_stats)
+	RunesTable_stats = RunesTable.objects.get(user_profile=user_stats)
+	ReforgeTable_stats = ReforgeTable.objects.get(user_profile=user_stats)
+	RefineTable_stats = RefineTable.objects.get(user_profile=user_stats)
+	MedalsTable_stats = MedalsTable.objects.get(user_profile=user_stats)
+	RelicsTable_stats = RelicsTable.objects.get(user_profile=user_stats)
+	WeaponSkinsTable_stats = WeaponSkinsTable.objects.get(user_profile=user_stats)
 
 	atk_base_hero_choosen = user_stats.atk_base_stats_hero_choosen
-	stuff_altar_ascension = altar_table_stats.stuff_altar_ascension
-	heros_altar_ascension = altar_table_stats.heros_altar_ascension
-	refine_weapon_atk = refine_table_stats.weapon_refine_atk
-	refine_weapon_enhanced_equipment = int(refine_table_stats.weapon_refine_basic_stats)/100
-	refine_armor_enhanced_equipment = int(refine_table_stats.armor_refine_basic_stats)/100
-	refine_ring1_atk = refine_table_stats.ring1_refine_atk
-	refine_ring1_enhanced_equipment = int(refine_table_stats.ring1_refine_basic_stats)/100
-	refine_ring2_atk = refine_table_stats.ring2_refine_atk
-	refine_ring2_enhanced_equipment = int(refine_table_stats.ring2_refine_basic_stats)/100
-	refine_bracelet_atk = refine_table_stats.bracelet_refine_atk
-	refine_bracelet_enhanced_equipment = int(refine_table_stats.bracelet_refine_basic_stats)/100
-	refine_locket_enhanced_equipment = int(refine_table_stats.locket_refine_basic_stats)/100
-	refine_book_enhanced_equipment = int(refine_table_stats.book_refine_basic_stats)/100
+	stuff_altar_ascension = AltarTable_stats.stuff_altar_ascension
+	heros_altar_ascension = AltarTable_stats.heros_altar_ascension
+	refine_weapon_atk = RefineTable_stats.weapon_refine_atk
+	refine_weapon_enhanced_equipment = int(RefineTable_stats.weapon_refine_basic_stats)/100
+	refine_armor_enhanced_equipment = int(RefineTable_stats.armor_refine_basic_stats)/100
+	refine_ring1_atk = RefineTable_stats.ring1_refine_atk
+	refine_ring1_enhanced_equipment = int(RefineTable_stats.ring1_refine_basic_stats)/100
+	refine_ring2_atk = RefineTable_stats.ring2_refine_atk
+	refine_ring2_enhanced_equipment = int(RefineTable_stats.ring2_refine_basic_stats)/100
+	refine_bracelet_atk = RefineTable_stats.bracelet_refine_atk
+	refine_bracelet_enhanced_equipment = int(RefineTable_stats.bracelet_refine_basic_stats)/100
+	refine_locket_enhanced_equipment = int(RefineTable_stats.locket_refine_basic_stats)/100
+	refine_book_enhanced_equipment = int(RefineTable_stats.book_refine_basic_stats)/100
 	brave_privileges_level = int(user_stats.brave_privileges_level)
 	## Get Talents Stats
-	talent_stats_dict = talent_table_stats.getTalentStats()
+	talent_stats_dict = TalentTable_stats.getTalentStats()
 	## Get all Relics Stats
-	relics_stats:dict = relics_table_stats.relics_Stats()
+	relics_stats:dict = RelicsTable_stats.relics_Stats()
 	## Get Altar Ascension Stats
 	altar_stuff_ascension_atk = local_data["StuffAltarAscension"]['attack'][stuff_altar_ascension]
 	altar_stuff_ascension_equipment_base = local_data["StuffAltarAscension"]['equipment_base'][stuff_altar_ascension]
@@ -533,103 +479,103 @@ def dmgCalc_processing(request,pbid):
 	altar_heros_ascension_heros_base = local_data['HerosAltarAscension']['heros_base'][heros_altar_ascension]
 	altar_heros_ascension_dmg_elite = local_data['HerosAltarAscension']['dmg_elite'][heros_altar_ascension]
 	## Get Altar Stats 
-	altar_stuff_atk = altar_table_stats.CalculAltar("stuff","attack",relics_stats.get('eqpm_altar_stats_var',0.0))
-	altar_hero_atk = altar_table_stats.CalculAltar("heros","attack",relics_stats.get('eqpm_altar_stats_var',0.0)) ##laisser le S (le nom du field prend un s)
+	altar_stuff_atk = AltarTable_stats.CalculAltar("stuff","attack",relics_stats.get('eqpm_altar_stats_var',0.0))
+	altar_hero_atk = AltarTable_stats.CalculAltar("heros","attack",relics_stats.get('eqpm_altar_stats_var',0.0)) ##laisser le S (le nom du field prend un s)
 	# Get All Heroes Stats
-	hero_Atreus = hero_table_stats.HerosStatsRecup("Atreus")
-	hero_Urasil = hero_table_stats.HerosStatsRecup("Urasil")
-	hero_Phoren = hero_table_stats.HerosStatsRecup("Phoren")
-	hero_Taranis = hero_table_stats.HerosStatsRecup("Taranis")
-	hero_Helix = hero_table_stats.HerosStatsRecup("Helix") 
-	hero_Meowgik = hero_table_stats.HerosStatsRecup("Meowgik")
-	hero_Shari = hero_table_stats.HerosStatsRecup("Shari")
-	hero_Ayana = hero_table_stats.HerosStatsRecup("Ayana")
-	hero_Onir = hero_table_stats.HerosStatsRecup("Onir") 
-	hero_Rolla = hero_table_stats.HerosStatsRecup("Rolla")
-	hero_Bonnie = hero_table_stats.HerosStatsRecup("Bonnie")
-	hero_Sylvan = hero_table_stats.HerosStatsRecup("Sylvan")
-	hero_Shade = hero_table_stats.HerosStatsRecup("Shade") 
-	hero_Ophelia = hero_table_stats.HerosStatsRecup("Ophelia")
-	hero_Ryan = hero_table_stats.HerosStatsRecup("Ryan")
-	hero_Lina = hero_table_stats.HerosStatsRecup("Lina")
-	hero_Aquea = hero_table_stats.HerosStatsRecup("Aquea")
-	hero_Shingen = hero_table_stats.HerosStatsRecup("Shingen") 
-	hero_Gugu = hero_table_stats.HerosStatsRecup("Gugu")
-	hero_Iris = hero_table_stats.HerosStatsRecup("Iris")
-	hero_Blazo = hero_table_stats.HerosStatsRecup("Blazo")
-	hero_Melinda = hero_table_stats.HerosStatsRecup("Melinda")
-	hero_Elaine = hero_table_stats.HerosStatsRecup("Elaine")
-	hero_Bobo = hero_table_stats.HerosStatsRecup("Bobo")
-	hero_Stella = hero_table_stats.HerosStatsRecup("Stella")
+	hero_Atreus = HeroTable_stats.HerosStatsRecup("Atreus")
+	hero_Urasil = HeroTable_stats.HerosStatsRecup("Urasil")
+	hero_Phoren = HeroTable_stats.HerosStatsRecup("Phoren")
+	hero_Taranis = HeroTable_stats.HerosStatsRecup("Taranis")
+	hero_Helix = HeroTable_stats.HerosStatsRecup("Helix") 
+	hero_Meowgik = HeroTable_stats.HerosStatsRecup("Meowgik")
+	hero_Shari = HeroTable_stats.HerosStatsRecup("Shari")
+	hero_Ayana = HeroTable_stats.HerosStatsRecup("Ayana")
+	hero_Onir = HeroTable_stats.HerosStatsRecup("Onir") 
+	hero_Rolla = HeroTable_stats.HerosStatsRecup("Rolla")
+	hero_Bonnie = HeroTable_stats.HerosStatsRecup("Bonnie")
+	hero_Sylvan = HeroTable_stats.HerosStatsRecup("Sylvan")
+	hero_Shade = HeroTable_stats.HerosStatsRecup("Shade") 
+	hero_Ophelia = HeroTable_stats.HerosStatsRecup("Ophelia")
+	hero_Ryan = HeroTable_stats.HerosStatsRecup("Ryan")
+	hero_Lina = HeroTable_stats.HerosStatsRecup("Lina")
+	hero_Aquea = HeroTable_stats.HerosStatsRecup("Aquea")
+	hero_Shingen = HeroTable_stats.HerosStatsRecup("Shingen") 
+	hero_Gugu = HeroTable_stats.HerosStatsRecup("Gugu")
+	hero_Iris = HeroTable_stats.HerosStatsRecup("Iris")
+	hero_Blazo = HeroTable_stats.HerosStatsRecup("Blazo")
+	hero_Melinda = HeroTable_stats.HerosStatsRecup("Melinda")
+	hero_Elaine = HeroTable_stats.HerosStatsRecup("Elaine")
+	hero_Bobo = HeroTable_stats.HerosStatsRecup("Bobo")
+	hero_Stella = HeroTable_stats.HerosStatsRecup("Stella")
 	## Get Skin Atk and Hp
-	skin_atk_boost = skin_table_stats.skin_attack
+	skin_atk_boost = SkinTable_stats.skin_attack
 	## Get Passiv Stats From Type 1 Egg
-	egg_green_bat_passiv = egg_table_stats.GetPassivEggStats1("green_bat", missing_data)
-	egg_bomb_ghost_passiv = egg_table_stats.GetPassivEggStats1("bomb_ghost",missing_data)
-	egg_piranha_passiv = egg_table_stats.GetPassivEggStats1("piranha",missing_data)
+	egg_green_bat_passiv = EggTable_stats.GetPassivEggStats1("green_bat", missing_data)
+	egg_bomb_ghost_passiv = EggTable_stats.GetPassivEggStats1("bomb_ghost",missing_data)
+	egg_piranha_passiv = EggTable_stats.GetPassivEggStats1("piranha",missing_data)
 	## Get Passiv Stats From Type 2 Egg
-	egg_skeleton_archer_passiv = egg_table_stats.GetPassivEggStats2("skeleton_archer",missing_data)
-	egg_skeleton_soldier_passiv = egg_table_stats.GetPassivEggStats2("skeleton_soldier",missing_data)
-	egg_fire_mage_passiv = egg_table_stats.GetPassivEggStats2("fire_mage",missing_data)
-	egg_ice_mage_passiv = egg_table_stats.GetPassivEggStats2("ice_mage",missing_data)
-	egg_flame_ghost_passiv = egg_table_stats.GetPassivEggStats2("flame_ghost",missing_data)
-	egg_tornado_demon_passiv = egg_table_stats.GetPassivEggStats2("tornado_demon",missing_data)
-	egg_skull_wizard_passiv = egg_table_stats.GetPassivEggStats2("skull_wizard",missing_data)
-	egg_crazy_spider_passiv = egg_table_stats.GetPassivEggStats2("crazy_spider",missing_data)
-	egg_fire_element_passiv = egg_table_stats.GetPassivEggStats2("fire_element",missing_data)
-	egg_pea_shooter_passiv = egg_table_stats.GetPassivEggStats2("pea_shooter",missing_data)
-	egg_shadow_assassin_passiv = egg_table_stats.GetPassivEggStats2("shadow_assassin",missing_data)
-	egg_one_eyed_bat_passiv = egg_table_stats.GetPassivEggStats2("one_eyed_bat",missing_data)
-	egg_scarlet_mage_passiv = egg_table_stats.GetPassivEggStats2("scarlet_mage",missing_data)
-	egg_icefire_phantom_passiv = egg_table_stats.GetPassivEggStats2("icefire_phantom",missing_data)
-	egg_purple_phantom_passiv = egg_table_stats.GetPassivEggStats2("purple_phantom",missing_data)
-	egg_savage_spider_passiv = egg_table_stats.GetPassivEggStats2("savage_spider",missing_data)
-	egg_flaming_bug_passiv = egg_table_stats.GetPassivEggStats2("flaming_bug",missing_data)
-	egg_crimson_zombie_passiv = egg_table_stats.GetPassivEggStats2("crimson_zombie",missing_data)
-	egg_elite_archer_passiv = egg_table_stats.GetPassivEggStats2("elite_archer",missing_data)
+	egg_skeleton_archer_passiv = EggTable_stats.GetPassivEggStats2("skeleton_archer",missing_data)
+	egg_skeleton_soldier_passiv = EggTable_stats.GetPassivEggStats2("skeleton_soldier",missing_data)
+	egg_fire_mage_passiv = EggTable_stats.GetPassivEggStats2("fire_mage",missing_data)
+	egg_ice_mage_passiv = EggTable_stats.GetPassivEggStats2("ice_mage",missing_data)
+	egg_flame_ghost_passiv = EggTable_stats.GetPassivEggStats2("flame_ghost",missing_data)
+	egg_tornado_demon_passiv = EggTable_stats.GetPassivEggStats2("tornado_demon",missing_data)
+	egg_skull_wizard_passiv = EggTable_stats.GetPassivEggStats2("skull_wizard",missing_data)
+	egg_crazy_spider_passiv = EggTable_stats.GetPassivEggStats2("crazy_spider",missing_data)
+	egg_fire_element_passiv = EggTable_stats.GetPassivEggStats2("fire_element",missing_data)
+	egg_pea_shooter_passiv = EggTable_stats.GetPassivEggStats2("pea_shooter",missing_data)
+	egg_shadow_assassin_passiv = EggTable_stats.GetPassivEggStats2("shadow_assassin",missing_data)
+	egg_one_eyed_bat_passiv = EggTable_stats.GetPassivEggStats2("one_eyed_bat",missing_data)
+	egg_scarlet_mage_passiv = EggTable_stats.GetPassivEggStats2("scarlet_mage",missing_data)
+	egg_icefire_phantom_passiv = EggTable_stats.GetPassivEggStats2("icefire_phantom",missing_data)
+	egg_purple_phantom_passiv = EggTable_stats.GetPassivEggStats2("purple_phantom",missing_data)
+	egg_savage_spider_passiv = EggTable_stats.GetPassivEggStats2("savage_spider",missing_data)
+	egg_flaming_bug_passiv = EggTable_stats.GetPassivEggStats2("flaming_bug",missing_data)
+	egg_crimson_zombie_passiv = EggTable_stats.GetPassivEggStats2("crimson_zombie",missing_data)
+	egg_elite_archer_passiv = EggTable_stats.GetPassivEggStats2("elite_archer",missing_data)
 	## Get Passiv Stats From Type 3 Egg
-	egg_arch_leader_passiv = egg_table_stats.GetPassivEggStats3("arch_leader",missing_data)
-	egg_skeleton_king_passiv = egg_table_stats.GetPassivEggStats3("skeleton_king",missing_data)
-	egg_crimson_witch_passiv = egg_table_stats.GetPassivEggStats3("crimson_witch",missing_data)
-	egg_queen_bee_passiv = egg_table_stats.GetPassivEggStats3("queen_bee",missing_data)
-	egg_ice_worm_passiv = egg_table_stats.GetPassivEggStats3("ice_worm",missing_data)
-	egg_medusa_boss_passiv = egg_table_stats.GetPassivEggStats3("medusa_boss",missing_data)
-	egg_ice_demon_passiv = egg_table_stats.GetPassivEggStats3("ice_demon",missing_data)
-	egg_giant_owl_passiv = egg_table_stats.GetPassivEggStats3("giant_owl",missing_data)
-	egg_fire_demon_passiv = egg_table_stats.GetPassivEggStats3("fire_demon",missing_data)
-	egg_krab_boss_passiv = egg_table_stats.GetPassivEggStats3("krab_boss",missing_data)
-	egg_desert_goliath_passiv = egg_table_stats.GetPassivEggStats3("desert_goliath",missing_data)
-	egg_scythe_pharoah_passiv = egg_table_stats.GetPassivEggStats3("scythe_pharoah",missing_data)
-	egg_infernal_demon_passiv = egg_table_stats.GetPassivEggStats3("infernal_demon",missing_data)
-	egg_sinister_touch_passiv = egg_table_stats.GetPassivEggStats3("sinister_touch",missing_data)
-	egg_fireworm_queen_passiv = egg_table_stats.GetPassivEggStats3("fireworm_queen",missing_data)
+	egg_arch_leader_passiv = EggTable_stats.GetPassivEggStats3("arch_leader",missing_data)
+	egg_skeleton_king_passiv = EggTable_stats.GetPassivEggStats3("skeleton_king",missing_data)
+	egg_crimson_witch_passiv = EggTable_stats.GetPassivEggStats3("crimson_witch",missing_data)
+	egg_queen_bee_passiv = EggTable_stats.GetPassivEggStats3("queen_bee",missing_data)
+	egg_ice_worm_passiv = EggTable_stats.GetPassivEggStats3("ice_worm",missing_data)
+	egg_medusa_boss_passiv = EggTable_stats.GetPassivEggStats3("medusa_boss",missing_data)
+	egg_ice_demon_passiv = EggTable_stats.GetPassivEggStats3("ice_demon",missing_data)
+	egg_giant_owl_passiv = EggTable_stats.GetPassivEggStats3("giant_owl",missing_data)
+	egg_fire_demon_passiv = EggTable_stats.GetPassivEggStats3("fire_demon",missing_data)
+	egg_krab_boss_passiv = EggTable_stats.GetPassivEggStats3("krab_boss",missing_data)
+	egg_desert_goliath_passiv = EggTable_stats.GetPassivEggStats3("desert_goliath",missing_data)
+	egg_scythe_pharoah_passiv = EggTable_stats.GetPassivEggStats3("scythe_pharoah",missing_data)
+	egg_infernal_demon_passiv = EggTable_stats.GetPassivEggStats3("infernal_demon",missing_data)
+	egg_sinister_touch_passiv = EggTable_stats.GetPassivEggStats3("sinister_touch",missing_data)
+	egg_fireworm_queen_passiv = EggTable_stats.GetPassivEggStats3("fireworm_queen",missing_data)
 	## Get Brave Privilege Stats
 	brave_privileges_stats = local_data["BravePrivileges"]['level' + str(brave_privileges_level)]
 	## Get Special Bonus Stats
-	BonusSpe_jewel_weapon = jewel_level_table_stats.JewelSpeBonusStatsRecup('weapon',brave_privileges_stats['Weapon JSSSA'],relics_stats.get("jewel_attack_bonus_var",0))
-	BonusSpe_jewel_ring1 = jewel_level_table_stats.JewelSpeBonusStatsRecup('ring1',brave_privileges_stats['Ring JSSSA'])
-	BonusSpe_jewel_bracelet = jewel_level_table_stats.JewelSpeBonusStatsRecup('bracelet',brave_privileges_stats['Bracelet JSSSA'],relics_stats.get("jewel_attack_bonus_var",0))
-	BonusSpe_jewel_book = jewel_level_table_stats.JewelSpeBonusStatsRecup('book',brave_privileges_stats['Spellbook JSSSA'])
+	BonusSpe_jewel_weapon = JewelLevelTable_stats.JewelSpeBonusStatsRecup('weapon',brave_privileges_stats['Weapon JSSSA'],relics_stats.get("jewel_attack_bonus_var",0))
+	BonusSpe_jewel_ring1 = JewelLevelTable_stats.JewelSpeBonusStatsRecup('ring1',brave_privileges_stats['Ring JSSSA'])
+	BonusSpe_jewel_bracelet = JewelLevelTable_stats.JewelSpeBonusStatsRecup('bracelet',brave_privileges_stats['Bracelet JSSSA'],relics_stats.get("jewel_attack_bonus_var",0))
+	BonusSpe_jewel_book = JewelLevelTable_stats.JewelSpeBonusStatsRecup('book',brave_privileges_stats['Spellbook JSSSA'])
 	## DRAGON
 	relics_dragon_base_stats = relics_stats.get('dragon_base_stats_var',0.0)
-	dragon_stats_dict = dragon_table_stats.DragonStatueStats(relics_dragon_base_stats)
+	dragon_stats_dict = DragonTable_stats.DragonStatueStats(relics_dragon_base_stats)
 	## Get Dragon passiv Skills
-	dragons_skills = dragon_table_stats.getPassivSkillDragon()
+	dragons_skills = DragonTable_stats.getPassivSkillDragon()
 	## Get All Stats of Equipped Egg
-	activ_egg_stats = egg_equipped_table_stats.GetEggStats(missing_data)
+	activ_egg_stats = EggEquippedTable_stats.GetEggStats(missing_data)
 	## Get Reforge Stats
-	reforge_atk_power = reforge_table_stats.ReforgePowerCourage("power")
-	reforge_atk_courage = reforge_table_stats.ReforgePowerCourage("courage")
+	reforge_atk_power = ReforgeTable_stats.ReforgePowerCourage("power")
+	reforge_atk_courage = ReforgeTable_stats.ReforgePowerCourage("courage")
 	## Get Rune Line Stats
-	runelinePower = runes_table_stats.getValueLinePower()
-	runelineRecovery = runes_table_stats.getValueLineRecovery()
-	runelineCourage = runes_table_stats.getValueLineCourage()
+	runelinePower = RunesTable_stats.getValueLinePower()
+	runelineRecovery = RunesTable_stats.getValueLineRecovery()
+	runelineCourage = RunesTable_stats.getValueLineCourage()
 	## Get Weapon Skin Stats
-	weapon_skin_stats = weapon_skins_table_stats.getWeaponSkinStats()
+	weapon_skin_stats = WeaponSkinsTable_stats.getWeaponSkinStats()
 	## Get all Medals Stats
-	medal_stats = medals_table_stats.medal_calc()
+	medal_stats = MedalsTable_stats.medal_calc()
 	# Get All Jewel's Stats
-	stats_jewel_dict = jewel_level_table_stats.JewelStatsRecup(float(relics_stats.get("jewel_attack_bonus_var",0)),float(relics_stats.get("jewel_hp_bonus_var",0)))
+	stats_jewel_dict = JewelLevelTable_stats.JewelStatsRecup(float(relics_stats.get("jewel_attack_bonus_var",0)),float(relics_stats.get("jewel_hp_bonus_var",0)))
 ############################################## CALCUL #######################################################
 	egg_var_passiv_heros_power_up = int(egg_arch_leader_passiv[3]) + int(egg_medusa_boss_passiv[3]) + int(egg_fire_demon_passiv[3]) + int(egg_krab_boss_passiv[3]) + int(egg_skeleton_king_passiv[1]) + int(egg_skeleton_king_passiv[3]) + int(egg_desert_goliath_passiv[1]) + int(egg_desert_goliath_passiv[3]) + int(egg_ice_demon_passiv[1]) + int(egg_ice_demon_passiv[3]) + int(egg_fireworm_queen_passiv[3]) + int(egg_sinister_touch_passiv[1]) + int(egg_infernal_demon_passiv[3]) + int(egg_scythe_pharoah_passiv[3])
 	egg_var_passiv_enhanced_equipment = int(egg_crimson_witch_passiv[3]) + int(egg_queen_bee_passiv[3]) + int(egg_ice_worm_passiv[1]) + int(egg_ice_worm_passiv[3]) + int(egg_giant_owl_passiv[1]) + int(egg_giant_owl_passiv[3]) + int(egg_infernal_demon_passiv[1]) + int(egg_sinister_touch_passiv[3])
@@ -637,7 +583,7 @@ def dmgCalc_processing(request,pbid):
 	cumul_var_passiv_enhanced_equipment = (float(runelineRecovery.get('var_enhanced_eqpm',0.0)) + float(relics_stats.get('enhance_eqpm_var',0.0)) + float(medal_stats['enhance_equipment']) + float(talent_stats_dict['talents_enhanced_equipment']) + float(egg_var_passiv_enhanced_equipment) + float(altar_stuff_ascension_equipment_base))/100+1
 	
 	## Get Stuff Stats
-	stuff_activ_stats = stuff_table_stats.getStuffStats(cumul_var_passiv_enhanced_equipment,refine_weapon_enhanced_equipment,refine_armor_enhanced_equipment,refine_ring1_enhanced_equipment,refine_ring2_enhanced_equipment,refine_bracelet_enhanced_equipment,refine_locket_enhanced_equipment,refine_book_enhanced_equipment,weapon_skin_stats,relics_stats.get("ring_basic_stats_var",0.0))
+	stuff_activ_stats = StuffTable_stats.getStuffStats(cumul_var_passiv_enhanced_equipment,refine_weapon_enhanced_equipment,refine_armor_enhanced_equipment,refine_ring1_enhanced_equipment,refine_ring2_enhanced_equipment,refine_bracelet_enhanced_equipment,refine_locket_enhanced_equipment,refine_book_enhanced_equipment,weapon_skin_stats,relics_stats.get("ring_basic_stats_var",0.0))
 
 	cumul_talent_flat_passiv_atk = int(talent_stats_dict['talents_power'])
 	cumul_runes_flat_passiv_atk = int(reforge_atk_power) + int(reforge_atk_courage) # + int(runes_power_attack_flat) + int(runes_courage_attack_flat)
@@ -684,33 +630,30 @@ def dmgCalc_processing(request,pbid):
 
 	if request.method == "GET":
 		try:
-			calc_user_dmg = dmg_calc_table.objects.get(user_profile=user_stats)
+			calc_user_dmg = DamageCalcTable.objects.get(user_profile=user_stats)
 			calc_user_dmg.hero_atk = hero_atk_step
 			calc_user_dmg.save()
-			return HttpResponseRedirect(f"/wiki/damage-calculator/{pbid}/")
-		except dmg_calc_table.DoesNotExist:
+			return HttpResponseRedirect(f"/{get_language()}/wiki/damage-calculator/{pbid}/")
+		except DamageCalcTable.DoesNotExist:
 			return HttpResponseRedirect(f"/stats/calc/{pbid}/2/?log=False")
 	else :
-		return HttpResponseRedirect("/wiki/damage-calculator/")
+		return HttpResponseRedirect(f"/{get_language()}/wiki/damage-calculator/")
 
 @db_maintenance
 @checkMessages
 def damageCalc(request,pbid):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
 	try:
 		user_stats = user.objects.get(public_id=pbid)
-		calc_user_dmg = dmg_calc_table.objects.get(user_profile=user_stats.pk)
-		runes_table_stats = runes_table.objects.get(user_profile=user_stats.pk)
-	except (user.DoesNotExist,dmg_calc_table.DoesNotExist,runes_table.DoesNotExist):	
-		return HttpResponseRedirect(f"/wiki/damage-calculator/calc/{pbid}/")
+		calc_user_dmg = DamageCalcTable.objects.get(user_profile=user_stats.pk)
+		RunesTable_stats = RunesTable.objects.get(user_profile=user_stats.pk)
+	except (user.DoesNotExist,DamageCalcTable.DoesNotExist,RunesTable.DoesNotExist):	
+		return HttpResponseRedirect(f"/{get_language()}/wiki/damage-calculator/calc/{pbid}/")
 	ctx = {
 		'darkmode':checkDarkMode(request),
-		"header_msg": "Damage Calc",
-		"lang":lang,
+		"header_msg":_("Damage Calc"),
 		"sidebarContent":SidebarContent,
 		"cookieUsername":makeCookieheader(cookie_result)
 	}
@@ -718,8 +661,8 @@ def damageCalc(request,pbid):
 		damage_calc_form = DamageCalculatorForm()
 		resultCalcDamg = calc_user_dmg.calculDamage()
 		ctx['averageDamage'] = resultCalcDamg['averageDamageAll']
-		ctx['crit_dmg'] = float(calc_user_dmg.crit_dmg)
-		ctx['crit_rate'] = float(calc_user_dmg.crit_rate)
+		ctx['crit_dmg'] = str(calc_user_dmg.crit_dmg) + "%"
+		ctx['crit_rate'] = str(calc_user_dmg.crit_rate) + "%"
 		ctx["mob_ground_melee_damage"] = resultCalcDamg['mob_ground_melee_damage']
 		ctx["mob_ground_range_damage"] = resultCalcDamg['mob_ground_range_damage']
 		ctx["mob_airborne_melee_damage"] = resultCalcDamg['mob_airborne_melee_damage']
@@ -728,14 +671,14 @@ def damageCalc(request,pbid):
 		ctx["boss_ground_range_damage"] = resultCalcDamg['boss_ground_range_damage']
 		ctx["boss_airborne_melee_damage"] = resultCalcDamg['boss_airborne_melee_damage']
 		ctx["boss_airborne_range_damage"] = resultCalcDamg['boss_airborne_range_damage']
-		ctx["vars_dict"] =  runes_table_stats.getRunesDmgCalc()
+		ctx["vars_dict"] =  RunesTable_stats.getRunesDmgCalc()
 	elif request.method == "POST":
 		damage_calc_form = DamageCalculatorForm(request.POST)
 		if damage_calc_form.is_valid() and 'runes' in request.POST:
 			listHeroStepAtk = calc_user_dmg.hero_atk
-			param_runes_display = runes_table_stats.getRunesDmgCalc()
-			power_rune = runes_table_stats.getValueLinePower()
-			courage_rune = runes_table_stats.getValueLineCourage()
+			param_runes_display = RunesTable_stats.getRunesDmgCalc()
+			power_rune = RunesTable_stats.getValueLinePower()
+			courage_rune = RunesTable_stats.getValueLineCourage()
 			runes = damage_calc_form.cleaned_data['runes']
 			first_select = request.POST.get('firstSelect',None)
 			second_select = request.POST.get('secondSelect',None)
@@ -851,8 +794,8 @@ def damageCalc(request,pbid):
 				"method": request.method,"runes": runes,"vars_dict":vars_dict,
 				"firstSelect": first_select,"firstInput": first_input,"secondSelect": second_select,"secondInput": second_input,
 				"thirdSelect": third_select,"thirdInput": third_input,"fourthSelect": fourth_select,"fourthInput": fourth_input,
-				"fifthSelect": fifth_select,"fifthInput": fifth_input,"averageDamage": resultCalcDamg['averageDamageAll'],"crit_dmg": resultCalcDamg['crit_dmg'],
-				"crit_rate": resultCalcDamg['crit_rate'],"mob_ground_melee_damage": resultCalcDamg['mob_ground_melee_damage'],"mob_ground_range_damage": resultCalcDamg['mob_ground_range_damage'],
+				"fifthSelect": fifth_select,"fifthInput": fifth_input,"averageDamage": resultCalcDamg['averageDamageAll'],"crit_dmg": str(resultCalcDamg['crit_dmg']) + "%",
+				"crit_rate": str(resultCalcDamg['crit_rate']) + "%","mob_ground_melee_damage": resultCalcDamg['mob_ground_melee_damage'],"mob_ground_range_damage": resultCalcDamg['mob_ground_range_damage'],
 				"mob_airborne_melee_damage": resultCalcDamg['mob_airborne_melee_damage'],"mob_airborne_range_damage": resultCalcDamg['mob_airborne_range_damage'],
 				"boss_ground_melee_damage": resultCalcDamg['boss_ground_melee_damage'],"boss_ground_range_damage": resultCalcDamg['boss_ground_range_damage'],
 				"boss_airborne_melee_damage": resultCalcDamg['boss_airborne_melee_damage'],"boss_airborne_range_damage": resultCalcDamg['boss_airborne_range_damage'],
@@ -862,34 +805,29 @@ def damageCalc(request,pbid):
 			for k,v in form_error:
 				error_msg = f"{k} : {str(v[0])}"
 			request.session['error_message'] = error_msg
-			return HttpResponseRedirect(f"/wiki/damage-calculator/{pbid}/")
+			return HttpResponseRedirect(f"/{get_language()}/wiki/damage-calculator/{pbid}/")
 	else:
-		return HttpResponseRedirect(f"/wiki/damage-calculator/{pbid}/")
+		return HttpResponseRedirect(f"/{get_language()}/wiki/damage-calculator/{pbid}/")
 	ctx['damage_calc_form'] = damage_calc_form
 	return render(request, "wiki/dmg_calc.html", ctx)
 
 
 def handler404(request, exception):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
 	ctx = {
 		'darkmode':checkDarkMode(request),
-		"header_msg":"Page Not Found",
-		"lang":lang,
+		"header_msg":_("Page Not Found"),
 		"sidebarContent":SidebarContent,
 		"cookieUsername":makeCookieheader(cookie_result)
 	}
 	return render(request,'base/404.html', ctx, status=404)
 
 def handler500(request):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
 	allfile = os.listdir('calculator/static/traceback_file/')
 	for file in allfile:
 		os.remove(f'calculator/static/traceback_file/{file}')
@@ -916,36 +854,25 @@ def handler500(request):
 		webhook.add_file(file=f.read(), filename=f'{username}.txt')
 	webhook.execute()
 	messages.error(request,"Oops! Something went wrong<br>An error occurred while processing your request. Please try again later.")
-	return render(request,'base/500.html', {'darkmode':checkDarkMode(request),"header_msg":"Internal Server Error", 'lang':lang,"sidebarContent":SidebarContent},status=500)
-
-
-def rickroll(request):
-	send_webhook(f'Someone has been rickrolled')
-	return HttpResponseRedirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+	return render(request,'base/500.html', {'darkmode':checkDarkMode(request),"header_msg":_("Internal Server Error"),"sidebarContent":SidebarContent},status=500)
 
 
 def tos(request):
-	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
 	return render(request,'base/tos.html',{"darkmode": checkDarkMode(request)})
 
 def changelog(request):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
+	makeLog(request)
 	with open(f'calculator/static/json/commits.json','r', encoding='utf-8') as commit:
 		commit_json = json.load(commit)
-	return render(request,'base/changelog.html',{"commit_json":commit_json,"darkmode": checkDarkMode(request), "header_msg": "Change Log", 'lang':lang, "sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(cookie_result)})
+	return render(request,'base/changelog.html',{"commit_json":commit_json,"darkmode": checkDarkMode(request), "header_msg":_("Change Log"),  "sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(cookie_result)})
 
-@delete_visitor("theorycraft")
 def theorycraft(request):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
 	cookie_result = checkCookie(request)
-	MakeLogAddRequestJson(request,cookie_result)
-	return render(request, "wiki/theorycraft.html", {"darkmode":checkDarkMode(request), "header_msg": "Archero Calculation", "Theorycraft":local_data['Theorycraft'],"sidebarContent":local_data['SidebarContent'],"cookieUsername":makeCookieheader(cookie_result)})
+	makeLog(request)
+	return render(request, "wiki/theorycraft.html", {"darkmode":checkDarkMode(request), "header_msg":_("Archero Calculation"), "Theorycraft":LocalDataContentWiki['Theorycraft'],"sidebarContent":LocalDataContentWiki['SidebarContent'],"cookieUsername":makeCookieheader(cookie_result)})
 
 
 def delete_cookie(request:HttpResponse,key,name_redirect):
@@ -973,14 +900,6 @@ def delete_session(request):
 	return redirect("menu")
 
 
-def redirect_skill(request, skill=None):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	if skill != None and local_data["SkillData"].get(skill.replace("_"," "),False):
-		return redirect(f"/wiki/skill/{skill}")
-	else:
-		return redirect("/wiki/skill")
-
 ## DEV MODE URL
 def set_cookie(request,key_cookie,value_cookie):
 	response = redirect("/")
@@ -993,16 +912,13 @@ def set_session(request,key_cookie,value_cookie):
 	return redirect("/")
 
 def page_set(request:WSGIRequest):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
 	select_choice = request.GET.get("select_choice")
 	key = request.GET.get("key")
 	value = request.GET.get("value")
 	ctx = {
-		"header_msg": "Page Set Cookie/Session",
-		'lang':lang,
+		"header_msg":_("Page Set Cookie/Session"),
 		"sidebarContent":SidebarContent,
 		"cookieUsername":makeCookieheader(cookie_result),
 		"cookie": request.COOKIES,

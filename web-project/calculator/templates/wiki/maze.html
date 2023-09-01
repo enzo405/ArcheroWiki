@@ -1,18 +1,19 @@
 {% extends "template.html" %}
 {% load static %}
+{% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
-<title>Archero - Wiki - Maze Map</title>
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.5">
+<title>{% blocktrans %}Archero - Maze Map{% endblocktrans %}</title>
 <meta name="description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
 <div class="tutorial">
-	<b>Here is how you should read the Solution :</b><br>
+	{% blocktrans %}<b>Here is how you should read the Solution :</b><br>
 	For example In week 1, if you chose green portal in stage 0<br>
 	You will have green and purple as an option in stage 1.<br>
 	If you chose green in stage 1, you'll have purple and blue in stage 2 etc...<br><br>
-	You Can also take a look at this : <a href="https://www.reddit.com/r/Archero/comments/xwbxrp/ancient_maze_new_full_optimised_map/" target="_blank">Optimized Maze Map</a>
+	You Can also take a look at this : {% endblocktrans %}<a href="https://www.reddit.com/r/Archero/comments/xwbxrp/ancient_maze_new_full_optimised_map/" target="_blank">{% blocktrans %}Optimized Maze Map{% endblocktrans %}</a>
 </div>
 <main class="maze-main" id="main">
 </main>
@@ -23,10 +24,10 @@
 	let list = document.getElementById("main");
 
 	let author = document.createElement("p");
-	author.innerText = "Author: TigerShark14\nThis solution is auto-updated\nConnected to Archero Maze API"
+	author.innerHTML = "{% blocktrans %}Author: TigerShark14<br>This solution is auto-updated<br>Connected to Archero Maze API{% endblocktrans %}"
 	list.appendChild(author);
 	let contents = document.createElement("h2");
-	contents.innerText  = "Contents"
+	contents.innerText  = "{% blocktrans %}Contents{% endblocktrans %}"
 	list.appendChild(contents);
 	let contentsList = document.createElement("div");
 	list.appendChild(contentsList);
@@ -38,7 +39,7 @@
 	const maze_data_str = '{{ data_json }}'.replaceAll("&#x27","'").replaceAll("';",'"');
 	const maze = JSON.parse(maze_data_str)
 
-	let data = Object.values(maze.MazeLine).map((e)=>[e.ID, new Map(e.Line.replaceAll("a", "🟢").replaceAll("b", "🔵").replaceAll("c", "🟣").replaceAll("d", "🟠").replaceAll(",", " ").split("|").map(f => f.includes(";") ? f.split(";") : ["start", f] ))])
+	let data = Object.values(maze.MazeLine).map((e)=>[e.ID, new Map(e.Line.replaceAll("a", "🟢").replaceAll("b", "🔵").replaceAll("c", "🟣").replaceAll("d", "🟠").replaceAll(",", " ").split("|").map(f => f.includes(";") ? f.split(";") : ["{% blocktrans %}start{% endblocktrans %}", f] ))])
 
 	// first index is if it was in previous record, second is if it will display in this record.
 	let green = [true, true];
@@ -50,7 +51,6 @@
 		if(item[0]%1000 == 0) {
 			let dateConfig = maze.MazeConfig.filter(e => e.Line == item[0]);
 			let solution_content = document.createElement("div"); 
-			let linkToTop = document.createElement("a");
 			let linkToWeek = document.createElement("a");
 			let h2 = document.createElement("h2");
 			let dateList = document.createElement("div");
@@ -58,17 +58,13 @@
 
 			solution_content.id = "week_" + dateConfig[0].Line/1000;
 			solution_content.className = "weeks"
-			linkToTop.id = "linktotop-btn"
 
-			h2.innerText += "Week " + dateConfig[0].Line/1000;
-			linkToTop.innerText = "To the top   "
+			h2.innerText += "{% blocktrans %}Week {% endblocktrans %}" + dateConfig[0].Line/1000;
 			h2.id = h2.innerText.replaceAll(" ", "_");
 			linkToWeek.innerText = h2.innerText;
 
-			linkToTop.href = "#top"
 			linkToWeek.href = "#" + h2.id;
 
-			solution_content.appendChild(linkToTop)
 			mainWeek.appendChild(solution_content)
 			contentsList.appendChild(linkToWeek);
 			solution_content.appendChild(h2);
@@ -106,7 +102,7 @@
 		gold[0] = false;
 
 		item[1].forEach((value, key, map) => {
-			if(key == "start" || (green[1] == true && key == "🟢") || (blue[1] == true && key == "🔵") || (purple[1] == true && key == "🟣") || (gold[1] == true && key == "🟠")) {
+			if(key == "{% blocktrans %}start{% endblocktrans %}" || (green[1] == true && key == "🟢") || (blue[1] == true && key == "🔵") || (purple[1] == true && key == "🟣") || (gold[1] == true && key == "🟠")) {
 			if(value.includes("🟢")) green[0] = true;
 			if(value.includes("🔵")) blue[0] = true;
 			if(value.includes("🟣")) purple[0] = true;

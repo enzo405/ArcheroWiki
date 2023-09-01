@@ -87,16 +87,7 @@ button {
 button:hover {
 	cursor: pointer;
 }
-/*//////////////////////////////////////////////////////////////////
-[ Utility ]*/
-.txt2 {
-	font-size: 15px;
-	line-height: 1.5;
-	color: #666666;
-	margin-left: 27%;
-	overflow: hidden;
-	cursor: pointer;
-}
+
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
 .limiter {
@@ -120,13 +111,17 @@ button:hover {
 /*------------------------------------------------------------------
 [  ]*/
 .login100-pic {
-	width: 316px;
+	width: 20vw;
+	max-width: 316px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .login100-pic img {
 	max-width: 100%;
 }
 .wrap-login100 {
-	width: 960px;
+	width: 90vw;
 	background: #fff;
 	border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -135,6 +130,11 @@ button:hover {
 	overflow: hidden;
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;
+	align-content: center;
+	gap: 10px;
+	max-width: 960px;
 }
 /*------------------------------------------------------------------
 [  ]*/

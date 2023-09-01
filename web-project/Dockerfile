@@ -9,7 +9,7 @@ COPY root /var/spool/cron/crontabs/root
 
 RUN chmod +x /bin/send_webhook_cron.py
 RUN pip install -r requirements.txt
-RUN apt update && apt-get install -y cron nano
+RUN apt update && apt-get install -y cron nano && apt-get install -y gettext
 
 COPY . /app
 WORKDIR /app

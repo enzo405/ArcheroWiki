@@ -3,15 +3,16 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.core.handlers.wsgi import WSGIRequest
 from math import *
-from .forms import User,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelTypeTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinTable
+from .forms import UserForm,StuffForm,HeroForm,TalentForm,SkinForm,AltarForm,JewelTypeForm,JewelLevelForm,EggForm,EggEquippedForm,DragonForm,RunesForm,ReforgeForm,RefineForm,MedalsForm,RelicsForm,WeaponSkinForm
 from .image import create_image
-from .models import user,stuff_table,hero_table,talent_table,skin_table,altar_table,jewel_type_table,jewel_level_table,egg_table,egg_equipped_table,dragon_table,runes_table,reforge_table,refine_table,medals_table,relics_table,weapon_skins_table,dmg_calc_table,Contributor
-from .function import checkDarkMode,getCredentialForNonLoginRequired,checkMessages,all_formIsValid,findFormError,checkCookie,login_required,similar,create_unique_id,send_webhook,send_embed,MakeLogAddRequestJson, makeCookieheader, db_maintenance, checkContributor, getProfileWithCookie
+from .models import user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelTypeTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable,DamageCalcTable,Contributor
+from .function import checkDarkMode,getCredentialForNonLoginRequired,checkMessages,all_formIsValid,findFormError,checkCookie,login_required,similar,create_unique_id,send_embed,makeLog, makeCookieheader, db_maintenance, checkContributor, getProfileWithCookie
 import json, os
 from const import DEV_MODE, c_hostname, DEBUG_STATS
+from django.utils.translation import gettext as _, get_language
+from .local_data import LocalDataContentWiki
 
 missing_data = []
-lang = ["English","Francais","Deutsch","Russian","Española"]
 
 # Put a try catch if the database is empty, because when makeing `python manage.py makemigrations|migrate` it will give an error because the calculator_user relation doesn't exist
 try:
@@ -30,24 +31,24 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	try:
 		user_stats = user.objects.get(public_id=pbid)
 	except user.DoesNotExist:
-		return HttpResponseRedirect('/')
+		return HttpResponseRedirect(f'{get_language()}/')
 	ingame_name = user_stats.ingame_name
 	other_model = user_stats.getOtherModels()
-	stuff_table_stats = other_model['stuff_table']
-	hero_table_stats = other_model['hero_table']
-	talent_table_stats = other_model['talent_table']
-	skin_table_stats = other_model['skin_table']
-	altar_table_stats = other_model['altar_table']
-	jewel_level_table_stats = other_model['jewel_level_table']
-	egg_table_stats = other_model['egg_table']
-	egg_equipped_table_stats = other_model['egg_equipped_table']
-	dragon_table_stats = other_model['dragon_table']
-	runes_table_stats = other_model['runes_table']
-	reforge_table_stats = other_model['reforge_table']
-	refine_table_stats = other_model['refine_table']
-	medals_table_stats = other_model['medals_table']
-	relics_table_stats = other_model['relics_table']
-	weapon_skins_table_stats = other_model['weapon_skins_table']
+	StuffTable_stats = other_model['StuffTable']
+	HeroTable_stats = other_model['HeroTable']
+	TalentTable_stats = other_model['TalentTable']
+	SkinTable_stats = other_model['SkinTable']
+	AltarTable_stats = other_model['AltarTable']
+	JewelLevelTable_stats = other_model['JewelLevelTable']
+	EggTable_stats = other_model['EggTable']
+	EggEquippedTable_stats = other_model['EggEquippedTable']
+	DragonTable_stats = other_model['DragonTable']
+	RunesTable_stats = other_model['RunesTable']
+	ReforgeTable_stats = other_model['ReforgeTable']
+	RefineTable_stats = other_model['RefineTable']
+	MedalsTable_stats = other_model['MedalsTable']
+	RelicsTable_stats = other_model['RelicsTable']
+	WeaponSkinsTable_stats = other_model['WeaponSkinsTable']
 	try:
 		os.remove(f"calculator/static/image/stuff_save/{pbid}.png")
 	except (FileNotFoundError,IsADirectoryError,OSError):
@@ -55,27 +56,27 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	################################# REQUÊTE DES ENTRÉES DE L'USERS #######################################################
 	atk_base_hero_choosen = user_stats.atk_base_stats_hero_choosen
 	health_base_hero_choosen = user_stats.health_base_stats_hero_choosen
-	stuff_altar_ascension = altar_table_stats.stuff_altar_ascension
-	heros_altar_ascension = altar_table_stats.heros_altar_ascension
-	refine_weapon_atk = refine_table_stats.weapon_refine_atk
-	refine_weapon_enhanced_equipment = int(refine_table_stats.weapon_refine_basic_stats)/100
-	refine_armor_hp = refine_table_stats.armor_refine_hp
-	refine_armor_enhanced_equipment = int(refine_table_stats.armor_refine_basic_stats)/100
-	refine_ring1_atk = refine_table_stats.ring1_refine_atk
-	refine_ring1_enhanced_equipment = int(refine_table_stats.ring1_refine_basic_stats)/100
-	refine_ring2_atk = refine_table_stats.ring2_refine_atk
-	refine_ring2_enhanced_equipment = int(refine_table_stats.ring2_refine_basic_stats)/100
-	refine_bracelet_atk = refine_table_stats.bracelet_refine_atk
-	refine_bracelet_enhanced_equipment = int(refine_table_stats.bracelet_refine_basic_stats)/100
-	refine_locket_hp = refine_table_stats.locket_refine_hp
-	refine_locket_enhanced_equipment = int(refine_table_stats.locket_refine_basic_stats)/100
-	refine_book_hp = refine_table_stats.book_refine_hp
-	refine_book_enhanced_equipment = int(refine_table_stats.book_refine_basic_stats)/100
+	stuff_altar_ascension = AltarTable_stats.stuff_altar_ascension
+	heros_altar_ascension = AltarTable_stats.heros_altar_ascension
+	refine_weapon_atk = RefineTable_stats.weapon_refine_atk
+	refine_weapon_enhanced_equipment = int(RefineTable_stats.weapon_refine_basic_stats)/100
+	refine_armor_hp = RefineTable_stats.armor_refine_hp
+	refine_armor_enhanced_equipment = int(RefineTable_stats.armor_refine_basic_stats)/100
+	refine_ring1_atk = RefineTable_stats.ring1_refine_atk
+	refine_ring1_enhanced_equipment = int(RefineTable_stats.ring1_refine_basic_stats)/100
+	refine_ring2_atk = RefineTable_stats.ring2_refine_atk
+	refine_ring2_enhanced_equipment = int(RefineTable_stats.ring2_refine_basic_stats)/100
+	refine_bracelet_atk = RefineTable_stats.bracelet_refine_atk
+	refine_bracelet_enhanced_equipment = int(RefineTable_stats.bracelet_refine_basic_stats)/100
+	refine_locket_hp = RefineTable_stats.locket_refine_hp
+	refine_locket_enhanced_equipment = int(RefineTable_stats.locket_refine_basic_stats)/100
+	refine_book_hp = RefineTable_stats.book_refine_hp
+	refine_book_enhanced_equipment = int(RefineTable_stats.book_refine_basic_stats)/100
 	brave_privileges_level = int(user_stats.brave_privileges_level)
 	## Get Talents Stats
-	talent_stats_dict = talent_table_stats.getTalentStats()
+	talent_stats_dict = TalentTable_stats.getTalentStats()
 	## Get all Relics Stats
-	relics_stats:dict = relics_table_stats.relics_Stats()
+	relics_stats:dict = RelicsTable_stats.relics_Stats()
 	## Get Altar Ascension Stats
 	altar_stuff_ascension_atk = local_data["StuffAltarAscension"]['attack'][stuff_altar_ascension]
 	altar_stuff_ascension_hp = local_data["StuffAltarAscension"]['hp'][stuff_altar_ascension]
@@ -87,156 +88,156 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	altar_heros_ascension_heros_base = local_data['HerosAltarAscension']['heros_base'][heros_altar_ascension]
 	altar_heros_ascension_dmg_elite = local_data['HerosAltarAscension']['dmg_elite'][heros_altar_ascension]
 	## Get Altar Stats 
-	altar_stuff_atk = altar_table_stats.CalculAltar("stuff","attack",relics_stats.get('eqpm_altar_stats_var',0.0))
-	altar_stuff_hp = altar_table_stats.CalculAltar("stuff","hp",relics_stats.get('eqpm_altar_stats_var',0.0))
-	altar_stuff_healing_effect = altar_table_stats.CalculAltar("stuff","healing_effect",relics_stats.get('eqpm_altar_stats_var',0.0))
-	altar_hero_atk = altar_table_stats.CalculAltar("heros","attack",relics_stats.get('eqpm_altar_stats_var',0.0)) ##laisser le S (le nom du field prend un s)
-	altar_hero_hp = altar_table_stats.CalculAltar("heros","hp",relics_stats.get('eqpm_altar_stats_var',0.0))
-	altar_hero_projectile_resistance = altar_table_stats.CalculAltar("heros","projectile_resistance",relics_stats.get('eqpm_altar_stats_var',0.0))
+	altar_stuff_atk = AltarTable_stats.CalculAltar("stuff","attack",relics_stats.get('eqpm_altar_stats_var',0.0))
+	altar_stuff_hp = AltarTable_stats.CalculAltar("stuff","hp",relics_stats.get('eqpm_altar_stats_var',0.0))
+	altar_stuff_healing_effect = AltarTable_stats.CalculAltar("stuff","healing_effect",relics_stats.get('eqpm_altar_stats_var',0.0))
+	altar_hero_atk = AltarTable_stats.CalculAltar("heros","attack",relics_stats.get('eqpm_altar_stats_var',0.0)) ##laisser le S (le nom du field prend un s)
+	altar_hero_hp = AltarTable_stats.CalculAltar("heros","hp",relics_stats.get('eqpm_altar_stats_var',0.0))
+	altar_hero_projectile_resistance = AltarTable_stats.CalculAltar("heros","projectile_resistance",relics_stats.get('eqpm_altar_stats_var',0.0))
 	# Get All Heroes Stats
-	hero_Atreus = hero_table_stats.HerosStatsRecup("Atreus")
-	hero_Urasil = hero_table_stats.HerosStatsRecup("Urasil")
-	hero_Phoren = hero_table_stats.HerosStatsRecup("Phoren")
-	hero_Taranis = hero_table_stats.HerosStatsRecup("Taranis")
-	hero_Helix = hero_table_stats.HerosStatsRecup("Helix") 
-	hero_Meowgik = hero_table_stats.HerosStatsRecup("Meowgik")
-	hero_Shari = hero_table_stats.HerosStatsRecup("Shari")
-	hero_Ayana = hero_table_stats.HerosStatsRecup("Ayana")
-	hero_Onir = hero_table_stats.HerosStatsRecup("Onir") 
-	hero_Rolla = hero_table_stats.HerosStatsRecup("Rolla")
-	hero_Bonnie = hero_table_stats.HerosStatsRecup("Bonnie")
-	hero_Sylvan = hero_table_stats.HerosStatsRecup("Sylvan")
-	hero_Shade = hero_table_stats.HerosStatsRecup("Shade") 
-	hero_Ophelia = hero_table_stats.HerosStatsRecup("Ophelia")
-	hero_Ryan = hero_table_stats.HerosStatsRecup("Ryan")
-	hero_Lina = hero_table_stats.HerosStatsRecup("Lina")
-	hero_Aquea = hero_table_stats.HerosStatsRecup("Aquea")
-	hero_Shingen = hero_table_stats.HerosStatsRecup("Shingen") 
-	hero_Gugu = hero_table_stats.HerosStatsRecup("Gugu")
-	hero_Iris = hero_table_stats.HerosStatsRecup("Iris")
-	hero_Blazo = hero_table_stats.HerosStatsRecup("Blazo")
-	hero_Melinda = hero_table_stats.HerosStatsRecup("Melinda")
-	hero_Elaine = hero_table_stats.HerosStatsRecup("Elaine")
-	hero_Bobo = hero_table_stats.HerosStatsRecup("Bobo")
-	hero_Stella = hero_table_stats.HerosStatsRecup("Stella")
+	hero_Atreus = HeroTable_stats.HerosStatsRecup("Atreus")
+	hero_Urasil = HeroTable_stats.HerosStatsRecup("Urasil")
+	hero_Phoren = HeroTable_stats.HerosStatsRecup("Phoren")
+	hero_Taranis = HeroTable_stats.HerosStatsRecup("Taranis")
+	hero_Helix = HeroTable_stats.HerosStatsRecup("Helix") 
+	hero_Meowgik = HeroTable_stats.HerosStatsRecup("Meowgik")
+	hero_Shari = HeroTable_stats.HerosStatsRecup("Shari")
+	hero_Ayana = HeroTable_stats.HerosStatsRecup("Ayana")
+	hero_Onir = HeroTable_stats.HerosStatsRecup("Onir") 
+	hero_Rolla = HeroTable_stats.HerosStatsRecup("Rolla")
+	hero_Bonnie = HeroTable_stats.HerosStatsRecup("Bonnie")
+	hero_Sylvan = HeroTable_stats.HerosStatsRecup("Sylvan")
+	hero_Shade = HeroTable_stats.HerosStatsRecup("Shade") 
+	hero_Ophelia = HeroTable_stats.HerosStatsRecup("Ophelia")
+	hero_Ryan = HeroTable_stats.HerosStatsRecup("Ryan")
+	hero_Lina = HeroTable_stats.HerosStatsRecup("Lina")
+	hero_Aquea = HeroTable_stats.HerosStatsRecup("Aquea")
+	hero_Shingen = HeroTable_stats.HerosStatsRecup("Shingen") 
+	hero_Gugu = HeroTable_stats.HerosStatsRecup("Gugu")
+	hero_Iris = HeroTable_stats.HerosStatsRecup("Iris")
+	hero_Blazo = HeroTable_stats.HerosStatsRecup("Blazo")
+	hero_Melinda = HeroTable_stats.HerosStatsRecup("Melinda")
+	hero_Elaine = HeroTable_stats.HerosStatsRecup("Elaine")
+	hero_Bobo = HeroTable_stats.HerosStatsRecup("Bobo")
+	hero_Stella = HeroTable_stats.HerosStatsRecup("Stella")
 	## Get Skin Atk and Hp
-	skin_health_boost = skin_table_stats.skin_health
-	skin_atk_boost = skin_table_stats.skin_attack
+	skin_health_boost = SkinTable_stats.skin_health
+	skin_atk_boost = SkinTable_stats.skin_attack
 	## Get Passiv Stats From Type 1 Egg
-	egg_green_bat_passiv = egg_table_stats.GetPassivEggStats1("green_bat", missing_data)
-	egg_vase_passiv = egg_table_stats.GetPassivEggStats1("vase",missing_data)
-	egg_bomb_ghost_passiv = egg_table_stats.GetPassivEggStats1("bomb_ghost",missing_data)
-	egg_rock_puppet_passiv = egg_table_stats.GetPassivEggStats1("rock_puppet",missing_data)
-	egg_party_tree_passiv = egg_table_stats.GetPassivEggStats1("party_tree",missing_data)
-	egg_zombie_passiv = egg_table_stats.GetPassivEggStats1("zombie",missing_data)
-	egg_piranha_passiv = egg_table_stats.GetPassivEggStats1("piranha",missing_data)
+	egg_green_bat_passiv = EggTable_stats.GetPassivEggStats1("green_bat", missing_data)
+	egg_vase_passiv = EggTable_stats.GetPassivEggStats1("vase",missing_data)
+	egg_bomb_ghost_passiv = EggTable_stats.GetPassivEggStats1("bomb_ghost",missing_data)
+	egg_rock_puppet_passiv = EggTable_stats.GetPassivEggStats1("rock_puppet",missing_data)
+	egg_party_tree_passiv = EggTable_stats.GetPassivEggStats1("party_tree",missing_data)
+	egg_zombie_passiv = EggTable_stats.GetPassivEggStats1("zombie",missing_data)
+	egg_piranha_passiv = EggTable_stats.GetPassivEggStats1("piranha",missing_data)
 	## Get Passiv Stats From Type 2 Egg
-	egg_wolfhound_passiv = egg_table_stats.GetPassivEggStats2("wolfhound",missing_data)
-	egg_skeleton_archer_passiv = egg_table_stats.GetPassivEggStats2("skeleton_archer",missing_data)
-	egg_skeleton_soldier_passiv = egg_table_stats.GetPassivEggStats2("skeleton_soldier",missing_data)
-	egg_wasp_passiv = egg_table_stats.GetPassivEggStats2("wasp",missing_data)
-	egg_fire_mage_passiv = egg_table_stats.GetPassivEggStats2("fire_mage",missing_data)
-	egg_medusa_passiv = egg_table_stats.GetPassivEggStats2("medusa",missing_data)
-	egg_ice_mage_passiv = egg_table_stats.GetPassivEggStats2("ice_mage",missing_data)
-	egg_fire_lizard_passiv = egg_table_stats.GetPassivEggStats2("fire_lizard",missing_data)
-	egg_flame_ghost_passiv = egg_table_stats.GetPassivEggStats2("flame_ghost",missing_data)
-	egg_thorny_snake_passiv = egg_table_stats.GetPassivEggStats2("thorny_snake",missing_data)
-	egg_tornado_demon_passiv = egg_table_stats.GetPassivEggStats2("tornado_demon",missing_data)
-	egg_scarecrow_passiv = egg_table_stats.GetPassivEggStats2("scarecrow",missing_data)
-	egg_long_dragon_passiv = egg_table_stats.GetPassivEggStats2("long_dragon",missing_data)
-	egg_skull_wizard_passiv = egg_table_stats.GetPassivEggStats2("skull_wizard",missing_data)
-	egg_lava_golem_passiv = egg_table_stats.GetPassivEggStats2("lava_golem",missing_data)
-	egg_ice_golem_passiv = egg_table_stats.GetPassivEggStats2("ice_golem",missing_data)
-	egg_cactus_passiv = egg_table_stats.GetPassivEggStats2("cactus",missing_data)
-	egg_crazy_spider_passiv = egg_table_stats.GetPassivEggStats2("crazy_spider",missing_data)
-	egg_fire_element_passiv = egg_table_stats.GetPassivEggStats2("fire_element",missing_data)
-	egg_skeleton_swordsman_passiv = egg_table_stats.GetPassivEggStats2("skeleton_swordsman",missing_data)
-	egg_scythe_mage_passiv = egg_table_stats.GetPassivEggStats2("scythe_mage",missing_data)
-	egg_pea_shooter_passiv = egg_table_stats.GetPassivEggStats2("pea_shooter",missing_data)
-	egg_shadow_assassin_passiv = egg_table_stats.GetPassivEggStats2("shadow_assassin",missing_data)
-	egg_tornado_mage_passiv = egg_table_stats.GetPassivEggStats2("tornado_mage",missing_data)
-	egg_spitting_mushroom_passiv = egg_table_stats.GetPassivEggStats2("spitting_mushroom",missing_data)
-	egg_rolling_mushroom_passiv = egg_table_stats.GetPassivEggStats2("rolling_mushroom",missing_data)
-	egg_fallen_bat_passiv = egg_table_stats.GetPassivEggStats2("fallen_bat",missing_data)
-	egg_one_eyed_bat_passiv = egg_table_stats.GetPassivEggStats2("one_eyed_bat",missing_data)
-	egg_scarlet_mage_passiv = egg_table_stats.GetPassivEggStats2("scarlet_mage",missing_data)
-	egg_icefire_phantom_passiv = egg_table_stats.GetPassivEggStats2("icefire_phantom",missing_data)
-	egg_purple_phantom_passiv = egg_table_stats.GetPassivEggStats2("purple_phantom",missing_data)
-	egg_tundra_dragon_passiv = egg_table_stats.GetPassivEggStats2("tundra_dragon",missing_data)
-	egg_sandian_passiv = egg_table_stats.GetPassivEggStats2("sandian",missing_data)
-	egg_nether_puppet_passiv = egg_table_stats.GetPassivEggStats2("nether_puppet",missing_data)
-	egg_psionic_scarecrow_passiv = egg_table_stats.GetPassivEggStats2("psionic_scarecrow",missing_data)
-	egg_steel_dryad_passiv = egg_table_stats.GetPassivEggStats2("steel_dryad",missing_data)
-	egg_savage_spider_passiv = egg_table_stats.GetPassivEggStats2("savage_spider",missing_data)
-	egg_flaming_bug_passiv = egg_table_stats.GetPassivEggStats2("flaming_bug",missing_data)
-	egg_fat_bat_passiv = egg_table_stats.GetPassivEggStats2("fat_bat",missing_data)
-	egg_shark_bro_passiv = egg_table_stats.GetPassivEggStats2("shark_bro",missing_data)
-	egg_crimson_zombie_passiv = egg_table_stats.GetPassivEggStats2("crimson_zombie",missing_data)
-	egg_plainswolf_passiv = egg_table_stats.GetPassivEggStats2("plainswolf",missing_data)
-	egg_elite_archer_passiv = egg_table_stats.GetPassivEggStats2("elite_archer",missing_data)
-	egg_little_dragon_passiv = egg_table_stats.GetPassivEggStats2("little_dragon",missing_data)
-	egg_rage_golem_passiv = egg_table_stats.GetPassivEggStats2("rage_golem",missing_data)
+	egg_wolfhound_passiv = EggTable_stats.GetPassivEggStats2("wolfhound",missing_data)
+	egg_skeleton_archer_passiv = EggTable_stats.GetPassivEggStats2("skeleton_archer",missing_data)
+	egg_skeleton_soldier_passiv = EggTable_stats.GetPassivEggStats2("skeleton_soldier",missing_data)
+	egg_wasp_passiv = EggTable_stats.GetPassivEggStats2("wasp",missing_data)
+	egg_fire_mage_passiv = EggTable_stats.GetPassivEggStats2("fire_mage",missing_data)
+	egg_medusa_passiv = EggTable_stats.GetPassivEggStats2("medusa",missing_data)
+	egg_ice_mage_passiv = EggTable_stats.GetPassivEggStats2("ice_mage",missing_data)
+	egg_fire_lizard_passiv = EggTable_stats.GetPassivEggStats2("fire_lizard",missing_data)
+	egg_flame_ghost_passiv = EggTable_stats.GetPassivEggStats2("flame_ghost",missing_data)
+	egg_thorny_snake_passiv = EggTable_stats.GetPassivEggStats2("thorny_snake",missing_data)
+	egg_tornado_demon_passiv = EggTable_stats.GetPassivEggStats2("tornado_demon",missing_data)
+	egg_scarecrow_passiv = EggTable_stats.GetPassivEggStats2("scarecrow",missing_data)
+	egg_long_dragon_passiv = EggTable_stats.GetPassivEggStats2("long_dragon",missing_data)
+	egg_skull_wizard_passiv = EggTable_stats.GetPassivEggStats2("skull_wizard",missing_data)
+	egg_lava_golem_passiv = EggTable_stats.GetPassivEggStats2("lava_golem",missing_data)
+	egg_ice_golem_passiv = EggTable_stats.GetPassivEggStats2("ice_golem",missing_data)
+	egg_cactus_passiv = EggTable_stats.GetPassivEggStats2("cactus",missing_data)
+	egg_crazy_spider_passiv = EggTable_stats.GetPassivEggStats2("crazy_spider",missing_data)
+	egg_fire_element_passiv = EggTable_stats.GetPassivEggStats2("fire_element",missing_data)
+	egg_skeleton_swordsman_passiv = EggTable_stats.GetPassivEggStats2("skeleton_swordsman",missing_data)
+	egg_scythe_mage_passiv = EggTable_stats.GetPassivEggStats2("scythe_mage",missing_data)
+	egg_pea_shooter_passiv = EggTable_stats.GetPassivEggStats2("pea_shooter",missing_data)
+	egg_shadow_assassin_passiv = EggTable_stats.GetPassivEggStats2("shadow_assassin",missing_data)
+	egg_tornado_mage_passiv = EggTable_stats.GetPassivEggStats2("tornado_mage",missing_data)
+	egg_spitting_mushroom_passiv = EggTable_stats.GetPassivEggStats2("spitting_mushroom",missing_data)
+	egg_rolling_mushroom_passiv = EggTable_stats.GetPassivEggStats2("rolling_mushroom",missing_data)
+	egg_fallen_bat_passiv = EggTable_stats.GetPassivEggStats2("fallen_bat",missing_data)
+	egg_one_eyed_bat_passiv = EggTable_stats.GetPassivEggStats2("one_eyed_bat",missing_data)
+	egg_scarlet_mage_passiv = EggTable_stats.GetPassivEggStats2("scarlet_mage",missing_data)
+	egg_icefire_phantom_passiv = EggTable_stats.GetPassivEggStats2("icefire_phantom",missing_data)
+	egg_purple_phantom_passiv = EggTable_stats.GetPassivEggStats2("purple_phantom",missing_data)
+	egg_tundra_dragon_passiv = EggTable_stats.GetPassivEggStats2("tundra_dragon",missing_data)
+	egg_sandian_passiv = EggTable_stats.GetPassivEggStats2("sandian",missing_data)
+	egg_nether_puppet_passiv = EggTable_stats.GetPassivEggStats2("nether_puppet",missing_data)
+	egg_psionic_scarecrow_passiv = EggTable_stats.GetPassivEggStats2("psionic_scarecrow",missing_data)
+	egg_steel_dryad_passiv = EggTable_stats.GetPassivEggStats2("steel_dryad",missing_data)
+	egg_savage_spider_passiv = EggTable_stats.GetPassivEggStats2("savage_spider",missing_data)
+	egg_flaming_bug_passiv = EggTable_stats.GetPassivEggStats2("flaming_bug",missing_data)
+	egg_fat_bat_passiv = EggTable_stats.GetPassivEggStats2("fat_bat",missing_data)
+	egg_shark_bro_passiv = EggTable_stats.GetPassivEggStats2("shark_bro",missing_data)
+	egg_crimson_zombie_passiv = EggTable_stats.GetPassivEggStats2("crimson_zombie",missing_data)
+	egg_plainswolf_passiv = EggTable_stats.GetPassivEggStats2("plainswolf",missing_data)
+	egg_elite_archer_passiv = EggTable_stats.GetPassivEggStats2("elite_archer",missing_data)
+	egg_little_dragon_passiv = EggTable_stats.GetPassivEggStats2("little_dragon",missing_data)
+	egg_rage_golem_passiv = EggTable_stats.GetPassivEggStats2("rage_golem",missing_data)
 	## Get Passiv Stats From Type 3 Egg
-	egg_arch_leader_passiv = egg_table_stats.GetPassivEggStats3("arch_leader",missing_data)
-	egg_skeleton_king_passiv = egg_table_stats.GetPassivEggStats3("skeleton_king",missing_data)
-	egg_crimson_witch_passiv = egg_table_stats.GetPassivEggStats3("crimson_witch",missing_data)
-	egg_queen_bee_passiv = egg_table_stats.GetPassivEggStats3("queen_bee",missing_data)
-	egg_ice_worm_passiv = egg_table_stats.GetPassivEggStats3("ice_worm",missing_data)
-	egg_medusa_boss_passiv = egg_table_stats.GetPassivEggStats3("medusa_boss",missing_data)
-	egg_ice_demon_passiv = egg_table_stats.GetPassivEggStats3("ice_demon",missing_data)
-	egg_giant_owl_passiv = egg_table_stats.GetPassivEggStats3("giant_owl",missing_data)
-	egg_fire_demon_passiv = egg_table_stats.GetPassivEggStats3("fire_demon",missing_data)
-	egg_krab_boss_passiv = egg_table_stats.GetPassivEggStats3("krab_boss",missing_data)
-	egg_desert_goliath_passiv = egg_table_stats.GetPassivEggStats3("desert_goliath",missing_data)
-	egg_scythe_pharoah_passiv = egg_table_stats.GetPassivEggStats3("scythe_pharoah",missing_data)
-	egg_infernal_demon_passiv = egg_table_stats.GetPassivEggStats3("infernal_demon",missing_data)
-	egg_sinister_touch_passiv = egg_table_stats.GetPassivEggStats3("sinister_touch",missing_data)
-	egg_fireworm_queen_passiv = egg_table_stats.GetPassivEggStats3("fireworm_queen",missing_data)
+	egg_arch_leader_passiv = EggTable_stats.GetPassivEggStats3("arch_leader",missing_data)
+	egg_skeleton_king_passiv = EggTable_stats.GetPassivEggStats3("skeleton_king",missing_data)
+	egg_crimson_witch_passiv = EggTable_stats.GetPassivEggStats3("crimson_witch",missing_data)
+	egg_queen_bee_passiv = EggTable_stats.GetPassivEggStats3("queen_bee",missing_data)
+	egg_ice_worm_passiv = EggTable_stats.GetPassivEggStats3("ice_worm",missing_data)
+	egg_medusa_boss_passiv = EggTable_stats.GetPassivEggStats3("medusa_boss",missing_data)
+	egg_ice_demon_passiv = EggTable_stats.GetPassivEggStats3("ice_demon",missing_data)
+	egg_giant_owl_passiv = EggTable_stats.GetPassivEggStats3("giant_owl",missing_data)
+	egg_fire_demon_passiv = EggTable_stats.GetPassivEggStats3("fire_demon",missing_data)
+	egg_krab_boss_passiv = EggTable_stats.GetPassivEggStats3("krab_boss",missing_data)
+	egg_desert_goliath_passiv = EggTable_stats.GetPassivEggStats3("desert_goliath",missing_data)
+	egg_scythe_pharoah_passiv = EggTable_stats.GetPassivEggStats3("scythe_pharoah",missing_data)
+	egg_infernal_demon_passiv = EggTable_stats.GetPassivEggStats3("infernal_demon",missing_data)
+	egg_sinister_touch_passiv = EggTable_stats.GetPassivEggStats3("sinister_touch",missing_data)
+	egg_fireworm_queen_passiv = EggTable_stats.GetPassivEggStats3("fireworm_queen",missing_data)
 	## Get Brave Privilege Stats
 	brave_privileges_stats = local_data["BravePrivileges"]['level' + str(brave_privileges_level)]
 	## Get Special Bonus Stats
-	BonusSpe_jewel_weapon = jewel_level_table_stats.JewelSpeBonusStatsRecup('weapon',brave_privileges_stats['Weapon JSSSA'],relics_stats.get("jewel_attack_bonus_var",0))
-	BonusSpe_jewel_armor = jewel_level_table_stats.JewelSpeBonusStatsRecup('armor',brave_privileges_stats['Armor JSSSA'],relics_stats.get("jewel_hp_bonus_var",0))
-	BonusSpe_jewel_ring1 = jewel_level_table_stats.JewelSpeBonusStatsRecup('ring1',brave_privileges_stats['Ring JSSSA'])
-	BonusSpe_jewel_ring2 = jewel_level_table_stats.JewelSpeBonusStatsRecup('ring2',brave_privileges_stats['Ring JSSSA'])
-	BonusSpe_jewel_bracelet = jewel_level_table_stats.JewelSpeBonusStatsRecup('bracelet',brave_privileges_stats['Bracelet JSSSA'],relics_stats.get("jewel_attack_bonus_var",0))
-	BonusSpe_jewel_locket = jewel_level_table_stats.JewelSpeBonusStatsRecup('locket',brave_privileges_stats['Locket JSSSA'],relics_stats.get("jewel_attack_bonus_var",0))
-	BonusSpe_jewel_book = jewel_level_table_stats.JewelSpeBonusStatsRecup('book',brave_privileges_stats['Spellbook JSSSA'])
+	BonusSpe_jewel_weapon = JewelLevelTable_stats.JewelSpeBonusStatsRecup('weapon',brave_privileges_stats['Weapon JSSSA'],relics_stats.get("jewel_attack_bonus_var",0))
+	BonusSpe_jewel_armor = JewelLevelTable_stats.JewelSpeBonusStatsRecup('armor',brave_privileges_stats['Armor JSSSA'],relics_stats.get("jewel_hp_bonus_var",0))
+	BonusSpe_jewel_ring1 = JewelLevelTable_stats.JewelSpeBonusStatsRecup('ring1',brave_privileges_stats['Ring JSSSA'])
+	BonusSpe_jewel_ring2 = JewelLevelTable_stats.JewelSpeBonusStatsRecup('ring2',brave_privileges_stats['Ring JSSSA'])
+	BonusSpe_jewel_bracelet = JewelLevelTable_stats.JewelSpeBonusStatsRecup('bracelet',brave_privileges_stats['Bracelet JSSSA'],relics_stats.get("jewel_attack_bonus_var",0))
+	BonusSpe_jewel_locket = JewelLevelTable_stats.JewelSpeBonusStatsRecup('locket',brave_privileges_stats['Locket JSSSA'],relics_stats.get("jewel_attack_bonus_var",0))
+	BonusSpe_jewel_book = JewelLevelTable_stats.JewelSpeBonusStatsRecup('book',brave_privileges_stats['Spellbook JSSSA'])
 	## Get Global Jewel Level
-	all_jewel_lvl_dict = jewel_level_table_stats.allLevelForImage()
+	all_jewel_lvl_dict = JewelLevelTable_stats.allLevelForImage()
 	## DRAGON
 	relics_dragon_base_stats = relics_stats.get('dragon_base_stats_var',0.0)
-	dragons_stats_dict = dragon_table_stats.DragonStatueStats(relics_dragon_base_stats)
+	dragons_stats_dict = DragonTable_stats.DragonStatueStats(relics_dragon_base_stats)
 	## Get Dragon passiv Skills
-	dragons_skills = dragon_table_stats.getPassivSkillDragon()
+	dragons_skills = DragonTable_stats.getPassivSkillDragon()
 	## Get Dragon For Image
-	dragon_1 = dragon_table_stats.GetDragon("1")
-	dragon_2 = dragon_table_stats.GetDragon("2")
-	dragon_3 = dragon_table_stats.GetDragon("3")
+	dragon_1 = DragonTable_stats.GetDragon("1")
+	dragon_2 = DragonTable_stats.GetDragon("2")
+	dragon_3 = DragonTable_stats.GetDragon("3")
 	## Get All Stats of Equipped Egg
-	activ_egg_stats = egg_equipped_table_stats.GetEggStats(missing_data)
+	activ_egg_stats = EggEquippedTable_stats.GetEggStats(missing_data)
 	## Get Reforge Stats
-	reforge_atk_power = reforge_table_stats.ReforgePowerCourage("power")
-	reforge_atk_courage = reforge_table_stats.ReforgePowerCourage("courage")
-	reforge_hp_saviour = reforge_table_stats.ReforgeSaviourRecoLuck("saviour")
-	reforge_hp_recovery = reforge_table_stats.ReforgeSaviourRecoLuck("recovery")
-	reforge_hp_luck = reforge_table_stats.ReforgeSaviourRecoLuck("luck")
+	reforge_atk_power = ReforgeTable_stats.ReforgePowerCourage("power")
+	reforge_atk_courage = ReforgeTable_stats.ReforgePowerCourage("courage")
+	reforge_hp_saviour = ReforgeTable_stats.ReforgeSaviourRecoLuck("saviour")
+	reforge_hp_recovery = ReforgeTable_stats.ReforgeSaviourRecoLuck("recovery")
+	reforge_hp_luck = ReforgeTable_stats.ReforgeSaviourRecoLuck("luck")
 	## Get Rune Line Stats
-	runelinePower = runes_table_stats.getValueLinePower()
-	runelineSaviour = runes_table_stats.getValueLineSaviour()
-	runelineRecovery = runes_table_stats.getValueLineRecovery()
-	runelineCourage = runes_table_stats.getValueLineCourage()
-	runelineLuck = runes_table_stats.getValueLineLuck()
+	runelinePower = RunesTable_stats.getValueLinePower()
+	runelineSaviour = RunesTable_stats.getValueLineSaviour()
+	runelineRecovery = RunesTable_stats.getValueLineRecovery()
+	runelineCourage = RunesTable_stats.getValueLineCourage()
+	runelineLuck = RunesTable_stats.getValueLineLuck()
 	## Get Weapon Skin Stats
-	weapon_skin_stats = weapon_skins_table_stats.getWeaponSkinStats()
+	weapon_skin_stats = WeaponSkinsTable_stats.getWeaponSkinStats()
 	## Get name of skin
-	weapon_skin_activ = weapon_skins_table_stats.equippedSkin()
+	weapon_skin_activ = WeaponSkinsTable_stats.equippedSkin()
 	## Get Weapon Coeff Damage Multiplier
-	weapon_dmg_multiplier = stuff_table_stats.getWeaponCoeff()
+	weapon_dmg_multiplier = StuffTable_stats.getWeaponCoeff()
 	## Get all Medals Stats
-	medal_stats = medals_table_stats.medal_calc()
+	medal_stats = MedalsTable_stats.medal_calc()
 	# Get All Jewel's Stats
-	stats_jewel_dict = jewel_level_table_stats.JewelStatsRecup(float(relics_stats.get("jewel_attack_bonus_var",0)),float(relics_stats.get("jewel_hp_bonus_var",0)))
+	stats_jewel_dict = JewelLevelTable_stats.JewelStatsRecup(float(relics_stats.get("jewel_attack_bonus_var",0)),float(relics_stats.get("jewel_hp_bonus_var",0)))
 	############################################## CALCUL #######################################################
 	egg_var_passiv_heros_power_up = int(egg_arch_leader_passiv[3]) + int(egg_medusa_boss_passiv[3]) + int(egg_fire_demon_passiv[3]) + int(egg_krab_boss_passiv[3]) + int(egg_skeleton_king_passiv[1]) + int(egg_skeleton_king_passiv[3]) + int(egg_desert_goliath_passiv[1]) + int(egg_desert_goliath_passiv[3]) + int(egg_ice_demon_passiv[1]) + int(egg_ice_demon_passiv[3]) + int(egg_fireworm_queen_passiv[3]) + int(egg_sinister_touch_passiv[1]) + int(egg_infernal_demon_passiv[3]) + int(egg_scythe_pharoah_passiv[3])
 	egg_var_passiv_enhanced_equipment = int(egg_crimson_witch_passiv[3]) + int(egg_queen_bee_passiv[3]) + int(egg_ice_worm_passiv[1]) + int(egg_ice_worm_passiv[3]) + int(egg_giant_owl_passiv[1]) + int(egg_giant_owl_passiv[3]) + int(egg_infernal_demon_passiv[1]) + int(egg_sinister_touch_passiv[3])
@@ -244,8 +245,8 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	cumul_var_passiv_enhanced_equipment = (float(runelineRecovery.get('var_enhanced_eqpm',0.0)) + float(relics_stats.get('enhance_eqpm_var',0.0)) + float(medal_stats['enhance_equipment']) + float(talent_stats_dict['talents_enhanced_equipment']) + float(egg_var_passiv_enhanced_equipment) + float(altar_stuff_ascension_equipment_base))/100+1
 
 	## Get Stuff Stats
-	stuff_activ_stats = stuff_table_stats.getStuffStats(cumul_var_passiv_enhanced_equipment,refine_weapon_enhanced_equipment,refine_armor_enhanced_equipment,refine_ring1_enhanced_equipment,refine_ring2_enhanced_equipment,refine_bracelet_enhanced_equipment,refine_locket_enhanced_equipment,refine_book_enhanced_equipment,weapon_skin_stats,relics_stats.get("ring_basic_stats_var",0.0))
-	stuff_raw_stats = stuff_table_stats.GetRawStats()
+	stuff_activ_stats = StuffTable_stats.getStuffStats(cumul_var_passiv_enhanced_equipment,refine_weapon_enhanced_equipment,refine_armor_enhanced_equipment,refine_ring1_enhanced_equipment,refine_ring2_enhanced_equipment,refine_bracelet_enhanced_equipment,refine_locket_enhanced_equipment,refine_book_enhanced_equipment,weapon_skin_stats,relics_stats.get("ring_basic_stats_var",0.0))
+	stuff_raw_stats = StuffTable_stats.GetRawStats()
 
 	## Declare cumul variable 
 	cumul_talent_flat_passiv_atk = int(talent_stats_dict['talents_power'])
@@ -326,16 +327,16 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	global_stats_atk = global_stats_atk_flat + (global_stats_atk_flat*float(cumul_var_atk)) + (global_stats_atk_flat*float(cumul_stuff_var_activ_atk)) + (global_stats_atk_flat*float(cumul_jewel_var_activ_atk)) + cumul_jewel_flat_activ_atk + cumul_refine_flat_activ_atk
 	global_stats_hp = global_stats_hp_flat + (global_stats_hp_flat*float(cumul_var_hp)) + (global_stats_hp_flat*float(cumul_stuff_var_activ_hp)) + (global_stats_hp_flat*float(cumul_jewel_var_activ_hp)) + cumul_jewel_flat_activ_hp + cumul_refine_flat_activ_hp
 	###################### CREATION IMAGE STUFF#############################################################
-	create_image(pbid,str(stuff_table_stats.dictionnaire()['weapon_choosen'].lower().replace(" ","_")),
-		str(stuff_table_stats.dictionnaire()['weapon_rarity'].lower().replace(" ","_")),int(stuff_table_stats.dictionnaire()['weapon_level']),
-		str(stuff_table_stats.dictionnaire()['armor_choosen'].lower().replace(" ","_")),str(stuff_table_stats.dictionnaire()['armor_rarity'].lower().replace(" ","_")),int(stuff_table_stats.dictionnaire()['armor_level']),str(stuff_table_stats.dictionnaire()['ring1_choosen'].lower().replace(" ","_")),
-		str(stuff_table_stats.dictionnaire()['ring1_rarity'].lower().replace(" ","_")),int(stuff_table_stats.dictionnaire()['ring1_level']),
-		str(stuff_table_stats.dictionnaire()['ring2_choosen'].lower().replace(" ","_")),str(stuff_table_stats.dictionnaire()['ring2_rarity'].lower().replace(" ","_")),int(stuff_table_stats.dictionnaire()['ring2_level']),str(stuff_table_stats.dictionnaire()['pet1_choosen'].lower().replace(" ","_")),
-		str(stuff_table_stats.dictionnaire()['pet1_rarity'].lower().replace(" ","_")),int(stuff_table_stats.dictionnaire()['pet1_level']),
-		str(stuff_table_stats.dictionnaire()['pet2_choosen'].lower().replace(" ","_")),str(stuff_table_stats.dictionnaire()['pet2_rarity'].lower().replace(" ","_")),int(stuff_table_stats.dictionnaire()['pet2_level']),
-		str(stuff_table_stats.dictionnaire()['bracelet_choosen'].lower().replace(" ","_")),str(stuff_table_stats.dictionnaire()['bracelet_rarity'].lower().replace(" ","_")),int(stuff_table_stats.dictionnaire()['bracelet_level']),
-		str(stuff_table_stats.dictionnaire()['locket_choosen'].lower().replace(" ","_")),str(stuff_table_stats.dictionnaire()['locket_rarity'].lower().replace(" ","_")),int(stuff_table_stats.dictionnaire()['locket_level']),
-		str(stuff_table_stats.dictionnaire()['book_choosen'].lower().replace(" ","_")),str(stuff_table_stats.dictionnaire()['book_rarity'].lower().replace(" ","_")),int(stuff_table_stats.dictionnaire()['book_level']),
+	create_image(pbid,str(StuffTable_stats.dictionnaire()['weapon_choosen'].lower().replace(" ","_")),
+		str(StuffTable_stats.dictionnaire()['weapon_rarity'].lower().replace(" ","_")),int(StuffTable_stats.dictionnaire()['weapon_level']),
+		str(StuffTable_stats.dictionnaire()['armor_choosen'].lower().replace(" ","_")),str(StuffTable_stats.dictionnaire()['armor_rarity'].lower().replace(" ","_")),int(StuffTable_stats.dictionnaire()['armor_level']),str(StuffTable_stats.dictionnaire()['ring1_choosen'].lower().replace(" ","_")),
+		str(StuffTable_stats.dictionnaire()['ring1_rarity'].lower().replace(" ","_")),int(StuffTable_stats.dictionnaire()['ring1_level']),
+		str(StuffTable_stats.dictionnaire()['ring2_choosen'].lower().replace(" ","_")),str(StuffTable_stats.dictionnaire()['ring2_rarity'].lower().replace(" ","_")),int(StuffTable_stats.dictionnaire()['ring2_level']),str(StuffTable_stats.dictionnaire()['pet1_choosen'].lower().replace(" ","_")),
+		str(StuffTable_stats.dictionnaire()['pet1_rarity'].lower().replace(" ","_")),int(StuffTable_stats.dictionnaire()['pet1_level']),
+		str(StuffTable_stats.dictionnaire()['pet2_choosen'].lower().replace(" ","_")),str(StuffTable_stats.dictionnaire()['pet2_rarity'].lower().replace(" ","_")),int(StuffTable_stats.dictionnaire()['pet2_level']),
+		str(StuffTable_stats.dictionnaire()['bracelet_choosen'].lower().replace(" ","_")),str(StuffTable_stats.dictionnaire()['bracelet_rarity'].lower().replace(" ","_")),int(StuffTable_stats.dictionnaire()['bracelet_level']),
+		str(StuffTable_stats.dictionnaire()['locket_choosen'].lower().replace(" ","_")),str(StuffTable_stats.dictionnaire()['locket_rarity'].lower().replace(" ","_")),int(StuffTable_stats.dictionnaire()['locket_level']),
+		str(StuffTable_stats.dictionnaire()['book_choosen'].lower().replace(" ","_")),str(StuffTable_stats.dictionnaire()['book_rarity'].lower().replace(" ","_")),int(StuffTable_stats.dictionnaire()['book_level']),
 		int(round(global_stats_atk)),int(round(global_stats_hp)),int(all_jewel_lvl_dict['jewel_lvl_weapon']),int(all_jewel_lvl_dict['jewel_lvl_armor']),int(all_jewel_lvl_dict['jewel_lvl_ring1']),int(all_jewel_lvl_dict['jewel_lvl_ring2']),int(all_jewel_lvl_dict['jewel_lvl_pet1']),
 		int(all_jewel_lvl_dict['jewel_lvl_pet2']),int(all_jewel_lvl_dict['jewel_lvl_bracelet']),int(all_jewel_lvl_dict['jewel_lvl_locket']),int(all_jewel_lvl_dict['jewel_lvl_book']),str(user_stats.choosen_hero),str(dragon_1['dragon_type']),str(dragon_2['dragon_type']),
 		str(dragon_3['dragon_type']),str(dragon_1['dragon_rarity']),str(dragon_2['dragon_rarity']),str(dragon_3['dragon_rarity']),weapon_skin_activ)
@@ -344,9 +345,9 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	user_stats.global_hp_save = int(global_stats_hp)
 	user_stats.save()
 	try:
-		calc_user_dmg = dmg_calc_table.objects.get(user_profile=user_stats)
-	except dmg_calc_table.DoesNotExist:
-		calc_user_dmg = dmg_calc_table()
+		calc_user_dmg = DamageCalcTable.objects.get(user_profile=user_stats)
+	except DamageCalcTable.DoesNotExist:
+		calc_user_dmg = DamageCalcTable()
 		calc_user_dmg.user_profile = user_stats
 	finally:
 		calc_user_dmg.weapon_coeff = weapon_dmg_multiplier
@@ -391,27 +392,25 @@ def views_calc_stats(request,pbid:str,redirectPath:int):
 	messages.success(request=request,message=f"{ingame_name.capitalize()} updated with success")
 	if request.GET.get("log") != "False":
 		send_embed("New Entry",f"{user_stats.ingame_name} | {user_stats.ingame_id}","","",f"[Admin Panel Link User]({c_hostname}/luhcaran/calculator/user/{user_stats.id}/change/)\n[Profile]({c_hostname}/calculator/show/{user_stats.public_id}/) Stats : {user_stats.global_atk_save} | {user_stats.global_hp_save}","A200FF", request,False)
-	return HttpResponseRedirect(f'{dict_Link.get(redirectPath,"/calculator/index/")}')
+	return HttpResponseRedirect(f'/{get_language()}{dict_Link.get(redirectPath,"/calculator/index/")}')
 
 @checkMessages
 def affiche_calc(request, pbid):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	user_credential = getCredentialForNonLoginRequired(request)['user_credential']
-	MakeLogAddRequestJson(request,user_credential)
+	makeLog(request)
 	try:
 		user_stats = user.objects.get(public_id=pbid)
-		dmg_calc_table_stats = dmg_calc_table.objects.get(user_profile=user_stats)
-	except dmg_calc_table.DoesNotExist:
-		return HttpResponseRedirect(f"/stats/calc/{pbid}/1/?log=False")
+		DamageCalcTable_stats = DamageCalcTable.objects.get(user_profile=user_stats)
+	except DamageCalcTable.DoesNotExist:
+		return HttpResponseRedirect(f"/{get_language()}/stats/calc/{pbid}/1/?log=False")
 	except user.DoesNotExist:
 		request.session['error_message'] = "User doesn't exist"
-		return HttpResponseRedirect('/')
+		return HttpResponseRedirect(f'/{get_language()}')
 	if not os.path.exists(f"calculator/static/image/stuff_save/{pbid}.png"):
 		return HttpResponseRedirect(f"/stats/calc/{pbid}/0/?log=False")
 	valueError = "no"
-	if dmg_calc_table_stats.missing_data != "" and dmg_calc_table_stats.missing_data != "none":
+	if DamageCalcTable_stats.missing_data != "" and DamageCalcTable_stats.missing_data != "none":
 		valueError = "yes"
 	ctx = {
 		"pbid":pbid,
@@ -419,34 +418,33 @@ def affiche_calc(request, pbid):
 		"stats":user_stats,
 		"global_stats_atk":user_stats.global_atk_save,
 		"global_stats_hp":user_stats.global_hp_save,
-		'global_critic_damage': dmg_calc_table_stats.crit_dmg,
-		'global_crit_rate': dmg_calc_table_stats.crit_rate,
-		'global_dodge_chance': dmg_calc_table_stats.dodge_rate,
-		'global_boss_damage': dmg_calc_table_stats.flat_dmg_vs_boss,
-		'global_boss_damage_var': dmg_calc_table_stats.var_dmg_vs_boss,
-		'global_mobs_damage': dmg_calc_table_stats.flat_dmg_vs_mobs,
-		'global_mobs_damage_var': dmg_calc_table_stats.var_dmg_vs_mobs,
-		'global_ranged_damage': dmg_calc_table_stats.flat_dmg_vs_range,
-		'global_ranged_damage_var': dmg_calc_table_stats.var_dmg_vs_range,
-		'global_ground_damage': dmg_calc_table_stats.flat_dmg_vs_ground,
-		'global_ground_damage_var': dmg_calc_table_stats.var_dmg_vs_ground,
-		'global_airborne_damage': dmg_calc_table_stats.flat_dmg_vs_airborne,
-		'global_airborne_damage_var': dmg_calc_table_stats.var_dmg_vs_airborne,
-		'global_melee_damage': dmg_calc_table_stats.flat_dmg_vs_melee,
-		'global_melee_damage_var': dmg_calc_table_stats.var_dmg_vs_melee,
-		'global_elemental_damage': dmg_calc_table_stats.var_dmg_element,
-		"global_elite_damage_flat": dmg_calc_table_stats.flat_elite_dmg,
-		"global_normal_damage_flat": dmg_calc_table_stats.flat_normal_dmg,
-		"global_normal_damage_var": dmg_calc_table_stats.var_normal_dmg,
-		"global_elite_damage_var": dmg_calc_table_stats.var_elite_dmg,
-		"weapon_damage": dmg_calc_table_stats.weapon_damage,
-		"weapon_melee_damage": dmg_calc_table_stats.weapon_melee_damage,
-		"weapon_ranged_damage": dmg_calc_table_stats.weapon_ranged_damage,
+		'global_critic_damage': DamageCalcTable_stats.crit_dmg,
+		'global_crit_rate': DamageCalcTable_stats.crit_rate,
+		'global_dodge_chance': DamageCalcTable_stats.dodge_rate,
+		'global_boss_damage': DamageCalcTable_stats.flat_dmg_vs_boss,
+		'global_boss_damage_var': DamageCalcTable_stats.var_dmg_vs_boss,
+		'global_mobs_damage': DamageCalcTable_stats.flat_dmg_vs_mobs,
+		'global_mobs_damage_var': DamageCalcTable_stats.var_dmg_vs_mobs,
+		'global_ranged_damage': DamageCalcTable_stats.flat_dmg_vs_range,
+		'global_ranged_damage_var': DamageCalcTable_stats.var_dmg_vs_range,
+		'global_ground_damage': DamageCalcTable_stats.flat_dmg_vs_ground,
+		'global_ground_damage_var': DamageCalcTable_stats.var_dmg_vs_ground,
+		'global_airborne_damage': DamageCalcTable_stats.flat_dmg_vs_airborne,
+		'global_airborne_damage_var': DamageCalcTable_stats.var_dmg_vs_airborne,
+		'global_melee_damage': DamageCalcTable_stats.flat_dmg_vs_melee,
+		'global_melee_damage_var': DamageCalcTable_stats.var_dmg_vs_melee,
+		'global_elemental_damage': DamageCalcTable_stats.var_dmg_element,
+		"global_elite_damage_flat": DamageCalcTable_stats.flat_elite_dmg,
+		"global_normal_damage_flat": DamageCalcTable_stats.flat_normal_dmg,
+		"global_normal_damage_var": DamageCalcTable_stats.var_normal_dmg,
+		"global_elite_damage_var": DamageCalcTable_stats.var_elite_dmg,
+		"weapon_damage": DamageCalcTable_stats.weapon_damage,
+		"weapon_melee_damage": DamageCalcTable_stats.weapon_melee_damage,
+		"weapon_ranged_damage": DamageCalcTable_stats.weapon_ranged_damage,
 		"darkmode": checkDarkMode(request),
-		"header_msg": "Stats Calculator",
+		"header_msg":_("Stats Calculator"),
 		"ValueError": valueError,
-		"missing_data": dmg_calc_table_stats.missing_data,
-		"lang":lang,
+		"missing_data": DamageCalcTable_stats.missing_data,
 		"sidebarContent":SidebarContent,
 		"cookieUsername":makeCookieheader(user_credential),
 		'DEV_MODE':DEV_MODE
@@ -458,11 +456,9 @@ def affiche_calc(request, pbid):
 @db_maintenance
 @checkMessages
 def index_calc(request):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	ingame_name_cookie,ingame_id_cookie,user_credential = getCredentialForNonLoginRequired(request).values()
-	MakeLogAddRequestJson(request,user_credential)
+	makeLog(request)
 	profile = getProfileWithCookie(ingame_id_cookie,ingame_name_cookie)
 
 	notuserlist = ['0-000001','0-000002','0-000003','0-000004']
@@ -509,8 +505,7 @@ def index_calc(request):
 		"show_table": show_table,
 		"rank": rank,
 		"darkmode": checkDarkMode(request),
-		"header_msg": "Stats Calculator",
-		"lang":lang,
+		"header_msg":_("Stats Calculator"),
 		"number_user":number_user,
 		"ingame_name_cookie":ingame_name_cookie,
 		"sidebarContent":SidebarContent,
@@ -536,37 +531,35 @@ def formulaire_calc(request):
 		new_tempUser.public_id = 1678471785674909
 		new_tempUser.public_profile = False
 		new_tempUser.save()
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	user_credential = request.session['user_credential']
-	MakeLogAddRequestJson(request,user_credential)
+	makeLog(request)
 	cookie_request_name,cookie_request_id = list(user_credential.items())[0]
 	profile = getProfileWithCookie(cookie_request_id,cookie_request_name)
 	if request.method == "POST" or profile[0]:
 		request.session['info_message'] = f"{profile[1].ingame_name}'s Profile already exists"
-		return HttpResponseRedirect("/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
+		return HttpResponseRedirect(f"/{get_language()}/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":_("Stats Calculator"),"sidebarContent":SidebarContent})
 	elif profile[0] == False and profile[1] != None:
 		request.session['error_message'] = f'You can\'t create a new profile, this id is already used by {profile[1].ingame_name}.'
-		return HttpResponseRedirect("/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
+		return HttpResponseRedirect(f"/{get_language()}/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":_("Stats Calculator"),"sidebarContent":SidebarContent})
 	else :
-		form_User = User()
-		form_StuffTable = StuffTable()
-		form_HeroTable = HeroTable()
-		form_TalentTable = TalentTable()
-		form_SkinTable = SkinTable()
-		form_AltarTable = AltarTable()
-		form_JewelTypeTable = JewelTypeTable()
-		form_JewelLevelTable = JewelLevelTable()
-		form_EggTable = EggTable()
-		form_EggEquippedTable = EggEquippedTable()
-		form_DragonTable = DragonTable()
-		form_RunesTable = RunesTable()
-		form_ReforgeTable = ReforgeTable()
-		form_RefineTable = RefineTable()
-		form_MedalTable = MedalsTable()
-		form_RelicsTable = RelicsTable()
-		form_WeaponSkinTable = WeaponSkinTable()
+		form_User = UserForm()
+		form_StuffTable = StuffForm()
+		form_HeroTable = HeroForm()
+		form_TalentTable = TalentForm()
+		form_SkinTable = SkinForm()
+		form_AltarTable = AltarForm()
+		form_JewelTypeTable = JewelTypeForm()
+		form_JewelLevelTable = JewelLevelForm()
+		form_EggTable = EggForm()
+		form_EggEquippedTable = EggEquippedForm()
+		form_DragonTable = DragonForm()
+		form_RunesTable = RunesForm()
+		form_ReforgeTable = ReforgeForm()
+		form_RefineTable = RefineForm()
+		form_MedalTable = MedalsForm()
+		form_RelicsTable = RelicsForm()
+		form_WeaponSkinTable = WeaponSkinForm()
 		user_init = user.objects.get(id=user_init_primary_key)
 		ctx = {
 			'form_User': form_User,
@@ -590,8 +583,7 @@ def formulaire_calc(request):
 			'cookie_request_id': cookie_request_id,
 			'cookie_request_name': cookie_request_name,
 			"darkmode": checkDarkMode(request),
-			"header_msg": "Create Profile",
-			"lang":lang,
+			"header_msg":_("Create Profile"),
 			"pk_id":user_init.pk,
 			"sidebarContent":SidebarContent,
 			"cookieUsername":makeCookieheader(user_credential)
@@ -602,36 +594,34 @@ def formulaire_calc(request):
 @login_required
 def traitement_calc(request):
 	if request.method == "POST":
-		with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-			local_data = json.load(f)
-		SidebarContent = local_data['SidebarContent']
+		SidebarContent = LocalDataContentWiki['SidebarContent']
 		user_credential = request.session['user_credential']
-		MakeLogAddRequestJson(request,user_credential)
+		makeLog(request)
 		cookie_request_name,cookie_request_id = list(user_credential.items())[0]
 		profile = getProfileWithCookie(cookie_request_id,cookie_request_name)
 		if profile[0]:
 			request.session['info_message'] = f"{profile[1].ingame_name}'s Profile already exists"
-			return HttpResponseRedirect("/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
+			return HttpResponseRedirect(f"/{get_language()}/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":_("Stats Calculator"),"sidebarContent":SidebarContent})
 		elif profile[0] == False and profile[1] != None:
 			request.session['error_message'] = f'You attempted to access {profile[1].ingame_name}<br>But your login username is "{cookie_request_name}".'
-			return HttpResponseRedirect("/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
-		form_User = User(request.POST)
-		form_StuffTable = StuffTable(request.POST)
-		form_HeroTable = HeroTable(request.POST)
-		form_TalentTable = TalentTable(request.POST)
-		form_SkinTable = SkinTable(request.POST)
-		form_AltarTable = AltarTable(request.POST)
-		form_JewelTypeTable = JewelTypeTable(request.POST)
-		form_JewelLevelTable = JewelLevelTable(request.POST)
-		form_EggTable = EggTable(request.POST)
-		form_EggEquippedTable = EggEquippedTable(request.POST)
-		form_DragonTable = DragonTable(request.POST)
-		form_RunesTable = RunesTable(request.POST)
-		form_ReforgeTable = ReforgeTable(request.POST)
-		form_RefineTable = RefineTable(request.POST)
-		form_MedalTable = MedalsTable(request.POST)
-		form_RelicsTable = RelicsTable(request.POST)
-		form_WeaponSkinTable = WeaponSkinTable(request.POST)
+			return HttpResponseRedirect(f"/{get_language()}/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":_("Stats Calculator"),"sidebarContent":SidebarContent})
+		form_User = UserForm(request.POST)
+		form_StuffTable = StuffForm(request.POST)
+		form_HeroTable = HeroForm(request.POST)
+		form_TalentTable = TalentForm(request.POST)
+		form_SkinTable = SkinForm(request.POST)
+		form_AltarTable = AltarForm(request.POST)
+		form_JewelTypeTable = JewelTypeForm(request.POST)
+		form_JewelLevelTable = JewelLevelForm(request.POST)
+		form_EggTable = EggForm(request.POST)
+		form_EggEquippedTable = EggEquippedForm(request.POST)
+		form_DragonTable = DragonForm(request.POST)
+		form_RunesTable = RunesForm(request.POST)
+		form_ReforgeTable = ReforgeForm(request.POST)
+		form_RefineTable = RefineForm(request.POST)
+		form_MedalTable = MedalsForm(request.POST)
+		form_RelicsTable = RelicsForm(request.POST)
+		form_WeaponSkinTable = WeaponSkinForm(request.POST)
 		form_validation = all_formIsValid(form_User.is_valid(),form_StuffTable.is_valid(),form_HeroTable.is_valid(),form_TalentTable.is_valid(),form_SkinTable.is_valid(),form_AltarTable.is_valid(),form_JewelTypeTable.is_valid(),form_JewelLevelTable.is_valid(),form_EggTable.is_valid(),form_EggEquippedTable.is_valid(),form_DragonTable.is_valid(),form_RunesTable.is_valid(),form_ReforgeTable.is_valid(),form_RefineTable.is_valid(), form_MedalTable.is_valid(), form_RelicsTable.is_valid(), form_WeaponSkinTable.is_valid())
 		if form_validation:
 			stats_User = form_User.save()
@@ -687,23 +677,23 @@ def traitement_calc(request):
 			pbid_for_url = stats_User.public_id
 			return HttpResponseRedirect(f"/stats/calc/{pbid_for_url}/0/")
 		else:
-			form_User = User(request.POST)
-			form_StuffTable = StuffTable(request.POST)
-			form_HeroTable = HeroTable(request.POST)
-			form_TalentTable = TalentTable(request.POST)
-			form_SkinTable = SkinTable(request.POST)
-			form_AltarTable = AltarTable(request.POST)
-			form_JewelTypeTable = JewelTypeTable(request.POST)
-			form_JewelLevelTable = JewelLevelTable(request.POST)
-			form_EggTable = EggTable(request.POST)
-			form_EggEquippedTable = EggEquippedTable(request.POST)
-			form_DragonTable = DragonTable(request.POST)
-			form_RunesTable = RunesTable(request.POST)
-			form_ReforgeTable = ReforgeTable(request.POST)
-			form_RefineTable = RefineTable(request.POST)
-			form_MedalTable = MedalsTable(request.POST)
-			form_RelicsTable = RelicsTable(request.POST)
-			form_WeaponSkinTable = WeaponSkinTable(request.POST)
+			form_User = UserForm(request.POST)
+			form_StuffTable = StuffForm(request.POST)
+			form_HeroTable = HeroForm(request.POST)
+			form_TalentTable = TalentForm(request.POST)
+			form_SkinTable = SkinForm(request.POST)
+			form_AltarTable = AltarForm(request.POST)
+			form_JewelTypeTable = JewelTypeForm(request.POST)
+			form_JewelLevelTable = JewelLevelForm(request.POST)
+			form_EggTable = EggForm(request.POST)
+			form_EggEquippedTable = EggEquippedForm(request.POST)
+			form_DragonTable = DragonForm(request.POST)
+			form_RunesTable = RunesForm(request.POST)
+			form_ReforgeTable = ReforgeForm(request.POST)
+			form_RefineTable = RefineForm(request.POST)
+			form_MedalTable = MedalsForm(request.POST)
+			form_RelicsTable = RelicsForm(request.POST)
+			form_WeaponSkinTable = WeaponSkinForm(request.POST)
 			pbid = create_unique_id()
 			ingame_id = form_User['ingame_id'].data
 			ingame_name = form_User['ingame_name'].data
@@ -715,19 +705,17 @@ def traitement_calc(request):
 				'form_JewelTypeTable' :form_JewelTypeTable,'form_JewelLevelTable' :form_JewelLevelTable,'form_EggTable' :form_EggTable,
 				'form_EggEquippedTable' :form_EggEquippedTable,'form_DragonTable' :form_DragonTable,'form_RunesTable' :form_RunesTable,
 				'form_ReforgeTable' :form_ReforgeTable,'form_RefineTable' :form_RefineTable,'form_MedalTable' :form_MedalTable,'form_RelicsTable' :form_RelicsTable,
-				'form_WeaponSkinTable' :form_WeaponSkinTable,'darkmode': checkDarkMode(request), 'header_msg': 'Create Profile','lang':lang, "public_id":pbid,"cookie_request_id":ingame_id,
+				'form_WeaponSkinTable' :form_WeaponSkinTable,'darkmode': checkDarkMode(request), "header_msg":_("Create Profile"), "public_id":pbid,"cookie_request_id":ingame_id,
 				"cookie_request_name":ingame_name,"pk_id":pk_id,"sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(user_credential)})
 	else:
-		return HttpResponseRedirect("/calculator/index")
+		return HttpResponseRedirect(f"/{get_language()}/calculator/index")
 
 @db_maintenance
 @login_required
 def update_calc(request, pbid):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
-	SidebarContent = local_data['SidebarContent']
+	SidebarContent = LocalDataContentWiki['SidebarContent']
 	user_credential = request.session['user_credential']
-	MakeLogAddRequestJson(request,user_credential)
+	makeLog(request)
 	ingame_name_cookie,ingame_id_cookie = list(user_credential.items())[0]
 	profile = getProfileWithCookie(ingame_id_cookie,ingame_name_cookie,public_id=pbid)
 	if profile[0] or DEBUG_STATS:
@@ -737,44 +725,44 @@ def update_calc(request, pbid):
 	elif profile[0] == False:
 		if profile[1] != None:
 			request.session['error_message'] = f'You attempted to access {profile[1].ingame_name}<br>But your login username is "{ingame_name_cookie}".'
-		return HttpResponseRedirect("/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":"Stats Calculator","lang":lang,"sidebarContent":SidebarContent})
+		return HttpResponseRedirect(f"/{get_language()}/calculator/index/", {"darkmode": checkDarkMode(request),"header_msg":_("Stats Calculator"),"sidebarContent":SidebarContent})
 	if request.method == "GET":
-		stuff_table_stats = stuff_table.objects.get(user_profile=user_stats)
-		hero_table_stats = hero_table.objects.get(user_profile=user_stats)
-		talent_table_stats = talent_table.objects.get(user_profile=user_stats)
-		skin_table_stats = skin_table.objects.get(user_profile=user_stats)
-		altar_table_stats = altar_table.objects.get(user_profile=user_stats)
-		jewel_type_table_stats = jewel_type_table.objects.get(user_profile=user_stats)
-		jewel_level_table_stats = jewel_level_table.objects.get(user_profile=user_stats)
-		egg_table_stats = egg_table.objects.get(user_profile=user_stats)
-		egg_equipped_table_stats = egg_equipped_table.objects.get(user_profile=user_stats)
-		dragon_table_stats = dragon_table.objects.get(user_profile=user_stats)
-		runes_table_stats = runes_table.objects.get(user_profile=user_stats)
-		reforge_table_stats = reforge_table.objects.get(user_profile=user_stats)
-		refine_table_stats = refine_table.objects.get(user_profile=user_stats)
-		medal_table_stats = medals_table.objects.get(user_profile=user_stats)
-		relics_table_stats = relics_table.objects.get(user_profile=user_stats)
-		weapon_skins_table_stats = weapon_skins_table.objects.get(user_profile=user_stats)
+		StuffTable_stats = StuffTable.objects.get(user_profile=user_stats)
+		HeroTable_stats = HeroTable.objects.get(user_profile=user_stats)
+		TalentTable_stats = TalentTable.objects.get(user_profile=user_stats)
+		SkinTable_stats = SkinTable.objects.get(user_profile=user_stats)
+		AltarTable_stats = AltarTable.objects.get(user_profile=user_stats)
+		JewelTypeTable_stats = JewelTypeTable.objects.get(user_profile=user_stats)
+		JewelLevelTable_stats = JewelLevelTable.objects.get(user_profile=user_stats)
+		EggTable_stats = EggTable.objects.get(user_profile=user_stats)
+		EggEquippedTable_stats = EggEquippedTable.objects.get(user_profile=user_stats)
+		DragonTable_stats = DragonTable.objects.get(user_profile=user_stats)
+		RunesTable_stats = RunesTable.objects.get(user_profile=user_stats)
+		ReforgeTable_stats = ReforgeTable.objects.get(user_profile=user_stats)
+		RefineTable_stats = RefineTable.objects.get(user_profile=user_stats)
+		MedalTable_stats = MedalsTable.objects.get(user_profile=user_stats)
+		RelicsTable_stats = RelicsTable.objects.get(user_profile=user_stats)
+		WeaponSkinsTable_stats = WeaponSkinsTable.objects.get(user_profile=user_stats)
 		user_id = user_stats.ingame_id
 		username = user_stats.ingame_name
 		public_id = user_stats.public_id
-		form_User = User(user_stats.dictionnaire())
-		form_StuffTable = StuffTable(stuff_table_stats.dictionnaire())
-		form_HeroTable = HeroTable(hero_table_stats.dictionnaire())
-		form_TalentTable = TalentTable(talent_table_stats.dictionnaire())
-		form_SkinTable = SkinTable(skin_table_stats.dictionnaire())
-		form_AltarTable = AltarTable(altar_table_stats.dictionnaire())
-		form_JewelTypeTable = JewelTypeTable(jewel_type_table_stats.dictionnaire())
-		form_JewelLevelTable = JewelLevelTable(jewel_level_table_stats.dictionnaire())
-		form_EggTable = EggTable(egg_table_stats.dictionnaire())
-		form_EggEquippedTable = EggEquippedTable(egg_equipped_table_stats.dictionnaire())
-		form_DragonTable = DragonTable(dragon_table_stats.dictionnaire())
-		form_RunesTable = RunesTable(runes_table_stats.dictionnaire())
-		form_ReforgeTable = ReforgeTable(reforge_table_stats.dictionnaire())
-		form_RefineTable = RefineTable(refine_table_stats.dictionnaire())
-		form_MedalTable = MedalsTable(medal_table_stats.dictionnaire())
-		form_RelicsTable = RelicsTable(relics_table_stats.dictionnaire())
-		form_WeaponSkinTable = WeaponSkinTable(weapon_skins_table_stats.dictionnaire())
+		form_User = UserForm(user_stats.dictionnaire())
+		form_StuffTable = StuffForm(StuffTable_stats.dictionnaire())
+		form_HeroTable = HeroForm(HeroTable_stats.dictionnaire())
+		form_TalentTable = TalentForm(TalentTable_stats.dictionnaire())
+		form_SkinTable = SkinForm(SkinTable_stats.dictionnaire())
+		form_AltarTable = AltarForm(AltarTable_stats.dictionnaire())
+		form_JewelTypeTable = JewelTypeForm(JewelTypeTable_stats.dictionnaire())
+		form_JewelLevelTable = JewelLevelForm(JewelLevelTable_stats.dictionnaire())
+		form_EggTable = EggForm(EggTable_stats.dictionnaire())
+		form_EggEquippedTable = EggEquippedForm(EggEquippedTable_stats.dictionnaire())
+		form_DragonTable = DragonForm(DragonTable_stats.dictionnaire())
+		form_RunesTable = RunesForm(RunesTable_stats.dictionnaire())
+		form_ReforgeTable = ReforgeForm(ReforgeTable_stats.dictionnaire())
+		form_RefineTable = RefineForm(RefineTable_stats.dictionnaire())
+		form_MedalTable = MedalsForm(MedalTable_stats.dictionnaire())
+		form_RelicsTable = RelicsForm(RelicsTable_stats.dictionnaire())
+		form_WeaponSkinTable = WeaponSkinForm(WeaponSkinsTable_stats.dictionnaire())
 		ctx = {
 			'form_User': form_User,
 			'form_StuffTable': form_StuffTable,
@@ -798,65 +786,62 @@ def update_calc(request, pbid):
 			"ingame_name": username,
 			"pk_id": user_stats.pk,
 			"id_token": pbid,
-			"form_dragon_1": dragon_table_stats.dragon1_type,
-			"form_dragon_2": dragon_table_stats.dragon2_type,
-			"form_dragon_3": dragon_table_stats.dragon3_type,
+			"form_dragon_1": DragonTable_stats.dragon1_type,
+			"form_dragon_2": DragonTable_stats.dragon2_type,
+			"form_dragon_3": DragonTable_stats.dragon3_type,
 			"darkmode": checkDarkMode(request),
-			"header_msg": "Stats Calculator",
-			"lang":lang,
+			"header_msg":_("Stats Calculator"),
 			"sidebarContent":SidebarContent,
 			"cookieUsername":makeCookieheader(user_credential)
 		}
 		return render(request,'calculator/formulaire.html',ctx)
 	else:
-		return HttpResponseRedirect("/calculator/index/")
+		return HttpResponseRedirect(f"/{get_language()}/calculator/index/")
 
 @login_required
 def updatetraitement_calc(request, pbid):
 	if request.method == "POST":
-		with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-			local_data = json.load(f)
-		SidebarContent = local_data['SidebarContent']
+		SidebarContent = LocalDataContentWiki['SidebarContent']
 		try:
 			user_instance = user.objects.get(public_id=pbid)
 		except:
 			request.session['error_message'] = f'User doesn\'t exist'
-			return HttpResponseRedirect("/calculator/index/")
+			return HttpResponseRedirect(f"/{get_language()}/calculator/index/")
 		user_credential = request.session['user_credential']
-		MakeLogAddRequestJson(request,user_credential)
-		stuff_table_stats = stuff_table.objects.get(user_profile=user_instance)
-		hero_table_stats = hero_table.objects.get(user_profile=user_instance)
-		talent_table_stats = talent_table.objects.get(user_profile=user_instance)
-		skin_table_stats = skin_table.objects.get(user_profile=user_instance)
-		altar_table_stats = altar_table.objects.get(user_profile=user_instance)
-		jewel_type_table_stats = jewel_type_table.objects.get(user_profile=user_instance)
-		jewel_level_table_stats = jewel_level_table.objects.get(user_profile=user_instance)
-		egg_table_stats = egg_table.objects.get(user_profile=user_instance)
-		egg_equipped_table_stats = egg_equipped_table.objects.get(user_profile=user_instance)
-		dragon_table_stats = dragon_table.objects.get(user_profile=user_instance)
-		runes_table_stats = runes_table.objects.get(user_profile=user_instance)
-		reforge_table_stats = reforge_table.objects.get(user_profile=user_instance)
-		refine_table_stats = refine_table.objects.get(user_profile=user_instance)
-		medal_table_stats = medals_table.objects.get(user_profile=user_instance)
-		relics_table_stats = relics_table.objects.get(user_profile=user_instance)
-		weapon_skins_table_stats = weapon_skins_table.objects.get(user_profile=user_instance)
-		form_User = User(request.POST,instance=user_instance)
-		form_StuffTable = StuffTable(request.POST,instance=stuff_table_stats)
-		form_HeroTable = HeroTable(request.POST,instance=hero_table_stats)
-		form_TalentTable = TalentTable(request.POST,instance=talent_table_stats)
-		form_SkinTable = SkinTable(request.POST,instance=skin_table_stats)
-		form_AltarTable = AltarTable(request.POST,instance=altar_table_stats)
-		form_JewelTypeTable = JewelTypeTable(request.POST,instance=jewel_type_table_stats)
-		form_JewelLevelTable = JewelLevelTable(request.POST,instance=jewel_level_table_stats)
-		form_EggTable = EggTable(request.POST,instance=egg_table_stats)
-		form_EggEquippedTable = EggEquippedTable(request.POST,instance=egg_equipped_table_stats)
-		form_DragonTable = DragonTable(request.POST,instance=dragon_table_stats)
-		form_RunesTable = RunesTable(request.POST,instance=runes_table_stats)
-		form_ReforgeTable = ReforgeTable(request.POST,instance=reforge_table_stats)
-		form_RefineTable = RefineTable(request.POST,instance=refine_table_stats)
-		form_MedalTable = MedalsTable(request.POST,instance=medal_table_stats)
-		form_RelicsTable = RelicsTable(request.POST,instance=relics_table_stats)
-		form_WeaponSkinTable = WeaponSkinTable(request.POST,instance=weapon_skins_table_stats)
+		makeLog(request)
+		StuffTable_stats = StuffTable.objects.get(user_profile=user_instance)
+		HeroTable_stats = HeroTable.objects.get(user_profile=user_instance)
+		TalentTable_stats = TalentTable.objects.get(user_profile=user_instance)
+		SkinTable_stats = SkinTable.objects.get(user_profile=user_instance)
+		AltarTable_stats = AltarTable.objects.get(user_profile=user_instance)
+		JewelTypeTable_stats = JewelTypeTable.objects.get(user_profile=user_instance)
+		JewelLevelTable_stats = JewelLevelTable.objects.get(user_profile=user_instance)
+		EggTable_stats = EggTable.objects.get(user_profile=user_instance)
+		EggEquippedTable_stats = EggEquippedTable.objects.get(user_profile=user_instance)
+		DragonTable_stats = DragonTable.objects.get(user_profile=user_instance)
+		RunesTable_stats = RunesTable.objects.get(user_profile=user_instance)
+		ReforgeTable_stats = ReforgeTable.objects.get(user_profile=user_instance)
+		RefineTable_stats = RefineTable.objects.get(user_profile=user_instance)
+		MedalTableStats = MedalsTable.objects.get(user_profile=user_instance)
+		RelicsTable_stats = RelicsTable.objects.get(user_profile=user_instance)
+		WeaponSkinsTable_stats = WeaponSkinsTable.objects.get(user_profile=user_instance)
+		form_User = UserForm(request.POST,instance=user_instance)
+		form_StuffTable = StuffForm(request.POST,instance=StuffTable_stats)
+		form_HeroTable = HeroForm(request.POST,instance=HeroTable_stats)
+		form_TalentTable = TalentForm(request.POST,instance=TalentTable_stats)
+		form_SkinTable = SkinForm(request.POST,instance=SkinTable_stats)
+		form_AltarTable = AltarForm(request.POST,instance=AltarTable_stats)
+		form_JewelTypeTable = JewelTypeForm(request.POST,instance=JewelTypeTable_stats)
+		form_JewelLevelTable = JewelLevelForm(request.POST,instance=JewelLevelTable_stats)
+		form_EggTable = EggForm(request.POST,instance=EggTable_stats)
+		form_EggEquippedTable = EggEquippedForm(request.POST,instance=EggEquippedTable_stats)
+		form_DragonTable = DragonForm(request.POST,instance=DragonTable_stats)
+		form_RunesTable = RunesForm(request.POST,instance=RunesTable_stats)
+		form_ReforgeTable = ReforgeForm(request.POST,instance=ReforgeTable_stats)
+		form_RefineTable = RefineForm(request.POST,instance=RefineTable_stats)
+		form_MedalTable = MedalsForm(request.POST,instance=MedalTableStats)
+		form_RelicsTable = RelicsForm(request.POST,instance=RelicsTable_stats)
+		form_WeaponSkinTable = WeaponSkinForm(request.POST,instance=WeaponSkinsTable_stats)
 		form_validation = all_formIsValid(form_User.is_valid(),form_StuffTable.is_valid(),form_HeroTable.is_valid(),form_TalentTable.is_valid(),form_SkinTable.is_valid(),form_AltarTable.is_valid(),form_JewelTypeTable.is_valid(),form_JewelLevelTable.is_valid(),form_EggTable.is_valid(),form_EggEquippedTable.is_valid(),form_DragonTable.is_valid(),form_RunesTable.is_valid(),form_ReforgeTable.is_valid(),form_RefineTable.is_valid(), form_MedalTable.is_valid(), form_RelicsTable.is_valid(), form_WeaponSkinTable.is_valid())
 		if form_validation:
 			stats_User = form_User.save(commit=False)
@@ -901,23 +886,23 @@ def updatetraitement_calc(request, pbid):
 			stats_WeaponSkinTable.save()
 			return HttpResponseRedirect(f"/stats/calc/{user_instance.public_id}/0/")
 		else:
-			form_User = User(request.POST,instance=user_instance)
-			form_StuffTable = StuffTable(request.POST,instance=stuff_table_stats)
-			form_HeroTable = HeroTable(request.POST,instance=hero_table_stats)
-			form_TalentTable = TalentTable(request.POST,instance=talent_table_stats)
-			form_SkinTable = SkinTable(request.POST,instance=skin_table_stats)
-			form_AltarTable = AltarTable(request.POST,instance=altar_table_stats)
-			form_JewelTypeTable = JewelTypeTable(request.POST,instance=jewel_type_table_stats)
-			form_JewelLevelTable = JewelLevelTable(request.POST,instance=jewel_level_table_stats)
-			form_EggTable = EggTable(request.POST,instance=egg_table_stats)
-			form_EggEquippedTable = EggEquippedTable(request.POST,instance=egg_equipped_table_stats)
-			form_DragonTable = DragonTable(request.POST,instance=dragon_table_stats)
-			form_RunesTable = RunesTable(request.POST,instance=runes_table_stats)
-			form_ReforgeTable = ReforgeTable(request.POST,instance=reforge_table_stats)
-			form_RefineTable = RefineTable(request.POST,instance=refine_table_stats)
-			form_MedalTable = MedalsTable(request.POST,instance=medal_table_stats)
-			form_RelicsTable = RelicsTable(request.POST,instance=relics_table_stats)
-			form_WeaponSkinTable = WeaponSkinTable(request.POST,instance=weapon_skins_table_stats)
+			form_User = UserForm(request.POST,instance=user_instance)
+			form_StuffTable = StuffForm(request.POST,instance=StuffTable_stats)
+			form_HeroTable = HeroForm(request.POST,instance=HeroTable_stats)
+			form_TalentTable = TalentForm(request.POST,instance=TalentTable_stats)
+			form_SkinTable = SkinForm(request.POST,instance=SkinTable_stats)
+			form_AltarTable = AltarForm(request.POST,instance=AltarTable_stats)
+			form_JewelTypeTable = JewelTypeForm(request.POST,instance=JewelTypeTable_stats)
+			form_JewelLevelTable = JewelLevelForm(request.POST,instance=JewelLevelTable_stats)
+			form_EggTable = EggForm(request.POST,instance=EggTable_stats)
+			form_EggEquippedTable = EggEquippedForm(request.POST,instance=EggEquippedTable_stats)
+			form_DragonTable = DragonForm(request.POST,instance=DragonTable_stats)
+			form_RunesTable = RunesForm(request.POST,instance=RunesTable_stats)
+			form_ReforgeTable = ReforgeForm(request.POST,instance=ReforgeTable_stats)
+			form_RefineTable = RefineForm(request.POST,instance=RefineTable_stats)
+			form_MedalTable = MedalsForm(request.POST,instance=MedalTableStats)
+			form_RelicsTable = RelicsForm(request.POST,instance=RelicsTable_stats)
+			form_WeaponSkinTable = WeaponSkinForm(request.POST,instance=WeaponSkinsTable_stats)
 			form_error = findFormError(form_User, form_StuffTable, form_HeroTable, form_TalentTable, form_SkinTable, form_AltarTable, form_JewelTypeTable, form_JewelLevelTable, form_EggTable, form_EggEquippedTable, form_DragonTable, form_RunesTable, form_ReforgeTable, form_RefineTable, form_MedalTable, form_RelicsTable, form_WeaponSkinTable)
 			value_error_msg = (str(form_error).split("'")[1].replace("_"," ") + ": " + str(form_error).split("'")[3]).title()
 			ctx = {
@@ -925,20 +910,20 @@ def updatetraitement_calc(request, pbid):
 				"public_id":user_instance.public_id,
 				"ingame_name": user_instance.ingame_name,
 				"pk_id": user_instance.pk,
-				"form_dragon_1": dragon_table_stats.dragon1_type,
-				"form_dragon_2": dragon_table_stats.dragon2_type,
-				"form_dragon_3": dragon_table_stats.dragon3_type,
+				"form_dragon_1": DragonTable_stats.dragon1_type,
+				"form_dragon_2": DragonTable_stats.dragon2_type,
+				"form_dragon_3": DragonTable_stats.dragon3_type,
 				'form_User': form_User,'form_StuffTable': form_StuffTable,
 				'form_HeroTable' :form_HeroTable,'form_TalentTable' :form_TalentTable,'form_SkinTable' :form_SkinTable,'form_AltarTable' :form_AltarTable,
 				'form_JewelTypeTable' :form_JewelTypeTable,'form_JewelLevelTable' :form_JewelLevelTable,'form_EggTable' :form_EggTable,
 				'form_EggEquippedTable' :form_EggEquippedTable,'form_DragonTable' :form_DragonTable,'form_RunesTable' :form_RunesTable,
 				'form_ReforgeTable' :form_ReforgeTable,'form_RefineTable' :form_RefineTable,"form_MedalTable":form_MedalTable,"form_RelicsTable":form_RelicsTable,
 				"form_WeaponSkinTable":form_WeaponSkinTable,"id_token": pbid, "value_error": value_error_msg,"darkmode": checkDarkMode(request),
-				"header_msg": "Stats Calculator", "lang":lang,"sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(user_credential)
+				"header_msg":_("Stats Calculator"),"sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(user_credential)
 			}
 			return render(request,"calculator/formulaire.html",ctx)
 	else:
-		return HttpResponseRedirect("/calculator/index")
+		return HttpResponseRedirect(f"/{get_language()}/calculator/index")
 
 @db_maintenance
 def delete_user(request, pbid):
@@ -956,7 +941,7 @@ def delete_user(request, pbid):
 		except:
 			ingame_name_cookie = "unknown"
 		send_embed(ingame_name_cookie,target.ingame_name,f"{ingame_name_cookie} tried to delete {target.ingame_name}'s profile","","",'FF0000',request,True)
-	return HttpResponseRedirect(f"/calculator/index")
+	return HttpResponseRedirect(f"/{get_language()}/calculator/index")
 
 
 @db_maintenance
@@ -969,4 +954,4 @@ def admin_reload_stats(request,pbid):
 			pass
 		return HttpResponseRedirect(f"/calculator/show/{pbid}/?log=False")
 	else:
-		return HttpResponseRedirect(f"/calculator/index")
+		return HttpResponseRedirect(f"/{get_language()}/calculator/index")

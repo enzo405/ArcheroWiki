@@ -1,9 +1,10 @@
 {% extends "template.html" %}
 {% load static %}
+{% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.6.4b">
-<title>{{ name }} Stats - Wiki</title>
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.4b">
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.7.2">
+<title>{% blocktrans %}{{ name }} Stats - Wiki{% endblocktrans  %}</title>
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.7.2">
 <meta name="description" content="{{ name }} Stats - Wiki">
 <meta property="og:url" content="https://stats.wiki-archero.com/calculator/show/{{pbid}}/">
 <meta property="og:type" content="website">
@@ -16,9 +17,9 @@
 <main class="main-affiche">
 	{% if ValueError == "yes" %}
 		<div class="error_data_missing">
-			<i class="fa fa-exclamation-triangle" aria-hidden="true"> Error </i>
+			<i class="fa fa-exclamation-triangle" aria-hidden="true"> {% blocktrans %}Error{% endblocktrans %} </i>
 			<div class="id_error_msg">
-				Missing Data : {{ missing_data }}⭐
+				{% blocktrans %}Missing Data : {{ missing_data }}⭐{% endblocktrans  %}
 			</div>
 		</div>
 	{% endif %}
@@ -52,180 +53,180 @@
 		<div class="dev_div"><a href="/api_view/{{ pbid }}/">Show API Stats</a></div>
 	</div>
 	{% endif %}
-	<div class="go_to_details" onclick="toggleDetailStats()">Switch Stats/Details</div>
+	<div class="go_to_details" onclick="toggleDetailStats()">{% blocktrans %}Switch Stats/Details{% endblocktrans %}</div>
 	<div id="contain-image-stuff" class="contain-image-stuff" style="display: flex;">
 		<div class="image-div-stuff">
 			<div class="image-stuff-result-container">
-				<img alt="{{ name }}'s Stuff emulator image" class="image-stuff-result" src="{% static 'image/stuff_save/'|add:pbid|add:'.png' %}?version=1.6.4b">
+				<img alt="{{ name }}'s Stuff emulator image" class="image-stuff-result" src="{% static 'image/stuff_save/'|add:pbid|add:'.png' %}?version=1.7.2">
 			</div>
 		</div>
 	</div>
 	<div id="detail-stats" class="detail-stats" style="display: none;">
 		<div class="stats-box">
-			<h3>Critic Damage / Critic Rate</h3>
+			<h3>{% blocktrans %}Critic Damage{% endblocktrans %} / {% blocktrans %}Critic Rate{% endblocktrans %}</h3>
 			<div class="damage_container_box">
 				<div class="stat-item">
-					<p title="Critic Damage">+{{ global_critic_damage }}%</p>
+					<p title="{% blocktrans %}Critic Damage{% endblocktrans %}">+{{ global_critic_damage }}%</p>
 				</div>
 				<div class="stat-item">
-					<img class="image_damage_type_stats" alt="Critic value image" title="Critic value" src="/static/image/wiki-image/CritValue.png">
+					<img class="image_damage_type_stats" alt="Critic value image" title="{% blocktrans %}Critic value{% endblocktrans %}" src="/static/image/wiki-image/CritValue.png">
 				</div>
 				<div class="stat-item">
-					<p title="Critic Rate">+{{ global_crit_rate }}%</p>
+					<p title="{% blocktrans %}Critic Rate{% endblocktrans %}">+{{ global_crit_rate }}%</p>
 				</div>
 			</div>
 		</div>
 		<div class="stats-box dodge">
-			<h3>Dodge Rate</h3>
+			<h3>{% blocktrans %}Dodge Rate{% endblocktrans %}</h3>
 			<div class="damage_container_box">
 				<div class="stat-item">
-					<p title="Dodge Rate">+{{ global_dodge_chance }}%</p>
+					<p title="{% blocktrans %}Dodge Rate{% endblocktrans %}">+{{ global_dodge_chance }}%</p>
 				</div>
 				<div class="stat-item">
-					<img class="image_damage_type_stats" title="Dodge Rate" alt="Dodge Rate image" width="50" height="50" src="/static/image/wiki-image/dodge_skill.png">
+					<img class="image_damage_type_stats" title="{% blocktrans %}Dodge Rate{% endblocktrans %}" alt="Dodge Rate image" width="50" height="50" src="/static/image/wiki-image/dodge_skill.png">
 				</div>
 			</div>
 		</div>
 		<div class="stats-box dodge">
-			<h3>Elemental Damage</h3>
+			<h3>{% blocktrans %}Elemental Damage{% endblocktrans %}</h3>
 			<div class="damage_container_box">
 				<div class="stat-item">
-					<p title="Elemental Damage">+{{ global_elemental_damage }}%</p>
+					<p title="{% blocktrans %}Elemental Damage{% endblocktrans %}">+{{ global_elemental_damage }}%</p>
 				</div>
 				<div class="stat-item">
-					<img class="image_damage_type_stats" title="Elemental Damage" alt="Elemental Damage image" width="50" height="50" src="/static/image/wiki-image/elemental_damage.png">
+					<img class="image_damage_type_stats" title="{% blocktrans %}Elemental Damage{% endblocktrans %}" alt="Elemental Damage image" width="50" height="50" src="/static/image/wiki-image/elemental_damage.png">
 				</div>
 			</div>
 		</div>
 		<div class="stats-box monster_damage">
-			<h3>Mobs damage</h3>
+			<h3>{% blocktrans %}Mobs damage{% endblocktrans %}</h3>
 			<div class="damage_container_box">
 				<div class="stat-item">
-					<p title="Damage to Mob">+{{ global_mobs_damage }}</p>
+					<p title="{% blocktrans %}Damage to Mob{% endblocktrans %}">+{{ global_mobs_damage }}</p>
 				</div>
 				<div class="stat-item">
-					<img class="image_damage_type_stats" title="Damage to Mob" alt="Damage to Mob image" src="/static/image/wiki-image/HitToMonster.png">
+					<img class="image_damage_type_stats" title="{% blocktrans %}Damage to Mob{% endblocktrans %}" alt="Damage to Mob image" src="/static/image/wiki-image/HitToMonster.png">
 				</div>
 				<div class="stat-item">
-					<p title="Damage to Mob %">+{{ global_mobs_damage_var }}%</p>
+					<p title="{% blocktrans %}Damage to Mob{% endblocktrans %}">+{{ global_mobs_damage_var }}%</p>
 			  </div>
 			</div>
 		</div>
 		<div class="stats-box boss_damage">
-			<h3>Boss damage</h3>
+			<h3>{% blocktrans %}Boss damage{% endblocktrans %}</h3>
 			<div class="damage_container_box">
 				<div class="stat-item">
-					<p title="Damage to Boss">+{{ global_boss_damage }}</p>
+					<p title="{% blocktrans %}Damage to Boss{% endblocktrans %}">+{{ global_boss_damage }}</p>
 				</div>
 				<div class="stat-item">
-					<img class="image_damage_type_stats" title="Damage to Boss" alt="Damage to Boss image" src="/static/image/wiki-image/HitToBoss.png">
+					<img class="image_damage_type_stats" title="{% blocktrans %}Damage to Boss{% endblocktrans %}" alt="Damage to Boss image" src="/static/image/wiki-image/HitToBoss.png">
 				</div>
 				<div class="stat-item">
-					<p title="Damage to Boss %">+{{ global_boss_damage_var }}%</p>
+					<p title="{% trans 'Damage to Boss' %}">+{{ global_boss_damage_var }}%</p>
 				</div>
 			</div>
 		</div>
 		<div class="stats-box ranged_damage">
-			<h3>Ranged damage</h3>
+			<h3>{% blocktrans %}Ranged damage{% endblocktrans %}</h3>
 			<div class="damage_container_box">
 				<div class="stat-item">
-					<p title="Damage to Ranged Units">+{{ global_ranged_damage }}</p>
+					<p title="{% blocktrans %}Damage to Ranged Units{% endblocktrans %}">+{{ global_ranged_damage }}</p>
 				</div>
 				<div class="stat-item">
-					<img class="image_damage_type_stats" title="Damage to Ranged" alt="Damage to Ranged image" src="/static/image/wiki-image/HitToFar.png">
+					<img class="image_damage_type_stats" title="{% blocktrans %}Damage to Ranged{% endblocktrans %}" alt="Damage to Ranged image" src="/static/image/wiki-image/HitToFar.png">
 				</div>
 				<div class="stat-item">
-					<p title="Damage to Ranged Units %">+{{ global_ranged_damage_var }}%</p>
+					<p title="{% trans 'Damage to Ranged Units' %}">+{{ global_ranged_damage_var }}%</p>
 				</div>
 			</div>
 		</div>
 		<div class="stats-box ground_damage">
-			<h3>Ground damage</h3>
+			<h3>{% blocktrans %}Ground damage{% endblocktrans %}</h3>
 			<div class="damage_container_box">
 				<div class="stat-item">
-					<p title="Damage to Ground Units %">+{{ global_ground_damage }}</p>
+					<p title="{% trans 'Damage to Ground Units' %}">+{{ global_ground_damage }}</p>
 				</div>
 				<div class="stat-item">
-					<img class="image_damage_type_stats" title="Damage to Ground" alt="Damage to Ground image" src="/static/image/wiki-image/HitToGround.png">
+					<img class="image_damage_type_stats" title="{% blocktrans %}Damage to Ground{% endblocktrans %}" alt="Damage to Ground image" src="/static/image/wiki-image/HitToGround.png">
 				</div>
 				<div class="stat-item">
-					<p title="Damage to Ground Units %">+{{ global_ground_damage_var }}%</p>
+					<p title="{% trans 'Damage to Ground Units' %}">+{{ global_ground_damage_var }}%</p>
 				</div>
 			</div>
 		</div>
 		<div class="stats-box airborne_damage">
-			<h3>Airborne damage</h3>
+			<h3>{% blocktrans %}Airborne damage{% endblocktrans %}</h3>
 			<div class="damage_container_box">
 				<div class="stat-item">
-					<p title="Damage to Airborne Units">+{{ global_airborne_damage }}</p>
+					<p title="{% blocktrans %}Damage to Airborne Units{% endblocktrans %}">+{{ global_airborne_damage }}</p>
 				</div>
 				<div class="stat-item">
-					<img class="image_damage_type_stats" title="Damage to Airborne" alt="Damage to Airborne image" src="/static/image/wiki-image/HitToFly.png">
+					<img class="image_damage_type_stats" title="{% blocktrans %}Damage to Airborne{% endblocktrans %}" alt="Damage to Airborne image" src="/static/image/wiki-image/HitToFly.png">
 				</div>
 				<div class="stat-item">
-					<p title="Damage to Airborne Units %">+{{ global_airborne_damage_var }}%</p>
+					<p title="{% trans 'Damage to Airborne Units' %}">+{{ global_airborne_damage_var }}%</p>
 				</div>
 			</div>
 		</div>
 		<div class="stats-box melee_damage">
-			<h3>Melee damage</h3>
+			<h3>{% blocktrans %}Melee damage{% endblocktrans %}</h3>
 			<div class="damage_container_box">
 				<div class="stat-item">
-					<p title="Melee Damage">+{{ global_melee_damage }}</p>
+					<p title="{% blocktrans %}Melee Damage{% endblocktrans %}">+{{ global_melee_damage }}</p>
 				</div>
 				<div class="stat-item">
-					<img class="image_damage_type_stats" title="Damage to Melee" alt="Damage to Melee image" src="/static/image/wiki-image/HitToNear.png">
+					<img class="image_damage_type_stats" title="{% blocktrans %}Damage to Melee{% endblocktrans %}" alt="Damage to Melee image" src="/static/image/wiki-image/HitToNear.png">
 				</div>
 				<div class="stat-item">
-					<p title="Melee Damage %">+{{ global_melee_damage_var }}%</p>
+					<p title="{% trans 'Melee Damage' %}">+{{ global_melee_damage_var }}%</p>
 				</div>
 			</div>
 		</div>
 		<div class="stats-box elite_damage">
-			<h3>Elite Monsters Damage</h3>
+			<h3>{% blocktrans %}Elite Monsters Damage{% endblocktrans %}</h3>
 			<div class="damage_container_box">
 				<div class="stat-item">
-					<p title="Elite Monster Damage">+{{ global_elite_damage_flat }}</p>
+					<p title="{% blocktrans %}Elite Monster Damage{% endblocktrans %}">+{{ global_elite_damage_flat }}</p>
 				</div>
 				<div class="stat-item">
-					<img class="image_damage_type_stats" title="Damage to Elite Monsters" alt="Damage to Elite Monsters" src="/static/image/wiki-image/EliteMonster.png">
+					<img class="image_damage_type_stats" title="{% blocktrans %}Damage to Elite Monsters{% endblocktrans %}" alt="Damage to Elite Monsters" src="/static/image/wiki-image/EliteMonster.png">
 				</div>
 				<div class="stat-item">
-					<p title="Elite Monster Damage %">+{{ global_elite_damage_var }}%</p>
+					<p title="{% trans 'Elite Monster Damage' %}">+{{ global_elite_damage_var }}%</p>
 				</div>
 			</div>
 		</div>
 		<div class="stats-box elite_damage">
-			<h3>Normal Monsters Damage</h3>
+			<h3>{% blocktrans %}Normal Monsters Damage{% endblocktrans %}</h3>
 			<div class="damage_container_box">
 				<div class="stat-item">
-					<p title="Normal Monster Damage">+{{ global_normal_damage_flat }}</p>
+					<p title="{% blocktrans %}Normal Monster Damage{% endblocktrans %}">+{{ global_normal_damage_flat }}</p>
 				</div>
 				<div class="stat-item">
-					<img class="image_damage_type_stats" title="Damage to Normal Monsters" alt="Damage to Normal Monsters" src="/static/image/wiki-image/NormalMonster.png">
+					<img class="image_damage_type_stats" title="{% blocktrans %}Damage to Normal Monsters{% endblocktrans %}" alt="Damage to Normal Monsters" src="/static/image/wiki-image/NormalMonster.png">
 				</div>
 				<div class="stat-item">
-					<p title="Normal Monster Damage %">+{{ global_normal_damage_var }}%</p>
+					<p title="{% trans 'Normal Monster Damage' %}">+{{ global_normal_damage_var }}%</p>
 				</div>
 			</div>
 		</div>
 		<div class="stats-box elite_damage">
-			<h3>Weapon Damage</h3>
+			<h3>{% blocktrans %}Weapon Damage{% endblocktrans %}</h3>
 			<div class="center_content">
 				<div class="stat-item">
-					<p title="Normal Monster Damage">+{{ weapon_damage }}%</p>
+					<p title="{% blocktrans %}Weapon Damage{% endblocktrans %}">+{{ weapon_damage }}%</p>
 				</div>
 			</div>
-			<h3>Melee Weapon Damage</h3>
+			<h3>{% blocktrans %}Melee Weapon Damage{% endblocktrans %}</h3>
 			<div class="center_content">
 				<div class="stat-item">
-					<p title="Normal Monster Damage">+{{ weapon_melee_damage }}%</p>
+					<p title="{% blocktrans %}Melee Weapon Damage{% endblocktrans %}">+{{ weapon_melee_damage }}%</p>
 				</div>
 			</div>
-			<h3>Ranged Weapon Damage</h3>
+			<h3>{% blocktrans %}Ranged Weapon Damage{% endblocktrans %}</h3>
 			<div class="center_content">
 				<div class="stat-item">
-					<p title="Normal Monster Damage %">+{{ weapon_ranged_damage }}%</p>
+					<p title="{% trans 'Ranged Weapon Damage' %}">+{{ weapon_ranged_damage }}%</p>
 				</div>
 			</div>
 		</div>

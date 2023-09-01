@@ -4,25 +4,11 @@
 		flex-direction: column;
 		gap: 10px;
 	}
-	.sec-half-altar{
-		margin-left: 0px;
-	}
 	.tierlist_img, .tierlist_img_myt{
 		width: 100%;
 	}
-	.fusion_item_img{
-		width: 100%;
-		object-fit: contain;
-	}
-	.div-onclick-menu, .feedback-container{
-		width: 50%;
-	}
-}
-
-
-@media screen and (min-width : 1420px){ /* pour résolution inf à 1070px */	
-	.fusion_item_img{
-		width: auto;
+	.div-onclick-menu, .feedback-container, .select-href hr{
+		width: 60%;
 	}
 }
 
@@ -33,13 +19,10 @@
 		flex-direction: row;
 		gap: 10px;
 	}
-	.sec-half-altar{
-		margin-left: 90px;
-	}
 	.tierlist_img, .tierlist_img_myt{
 		width: 70%;
 	}
-	.div-onclick-menu, .feedback-container{
+	.div-onclick-menu, .feedback-container, .select-href hr{
 		width: 40%;
 	}
 	.comming-soon{
@@ -74,8 +57,7 @@
 	#all_week_div{
 		display: grid;
 		grid-template-columns: repeat(2,auto);
-	}   
-	
+	}
 	#week_1, #week_2, #week_3, #week_4, #week_5, #week_6, #week_7, #week_8, #week_9{
 		padding-top: 20px;
 		padding-bottom: 10px;
@@ -123,7 +105,7 @@
 	}
 }
 @media screen and (max-width : 440px){ /* pour résolution inférieur à 400px */
-	.div-onclick-menu, .feedback-container{
+	.div-onclick-menu, .feedback-container, .select-href hr{
 		width: 75%;
 	}
 	.commit_date{
@@ -350,9 +332,6 @@
 /*################  MAZE.HTML  ##################*/
 /*################  MAZE.HTML  ##################*/
 /*################  MAZE.HTML  ##################*/
-.body_maze{
-	height: 100%;
-}
 .maze-main{
     text-align: center;
     display: block;
@@ -441,26 +420,21 @@
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
+	gap: 10px;
 	min-height: 78.5vh;
 }
 .div-onclick-menu {
-	display: inline-block;
 	text-align: center;
 	padding: 5px;
-  }
-.div-onclick-menu{
 	display: inline-block;
-	text-align: center;
-	height: 4vh;
+	height: 4.2vh;
 	cursor: pointer;
 	background-color: var(--lt-menu-onclick-bg);
 	border-radius: 6px;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	-o-border-radius: 6px;
-	text-align: center;
 	color: var(--lt-menu-onclick-color);
-	margin-top: 10px;
 	border: solid 0px;
 	text-decoration: none;
 }
@@ -484,7 +458,8 @@
 }
 .txt-onclick-span{
 	display: flex;
-    align-items: center;
+	overflow: auto;
+	align-items: center;
 }
 .new-label {
 	position: relative;
@@ -497,42 +472,6 @@
 	border-radius: 50%;
 }
 /* Styles for the article container */
-.article-new-box {
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 20px;
-	background-color: #f5f5f5;
-	border-radius: 5px;
-	margin-bottom: 40px;
-}
-.is-primary {
-	background-color: #336699;
-	color: #fff;
-	padding: 10px;
-	border-radius: 5px;
-	margin-bottom: 20px;
-}
-.article-news-container iframe{
-	max-width: 100%;
-}
-.article-new-body {
-	text-align: center;
-}
-.article-new-title {
-	font-size: 24px;
-	font-weight: bold;
-	margin-bottom: 10px;
-}
-.article-new-subtitle {
-	font-size: 14px;
-	margin-bottom: 20px;
-}
-.article-new-content {
-	margin-bottom: 20px;
-}
-.article-new-content p {
-	margin-bottom: 10px;
-}
 
 .error-csrf-content{ /* Fait aussi 500.html et 404.html */
 	height: 72vh;
@@ -546,14 +485,32 @@
 	max-width: 600px;
 	margin: 0 auto;
 	position: relative;
-}  
+	display: flex;
+    text-align: center;
+    padding: 10px;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    border-radius: 5px;
+    align-items: center;
+}
 .feedback-title {
 	text-align: center;
 	border-top: 1px var(--lt-menu-feedback-title-border-top) solid;
 	font-size: 0.82em;
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-weight: 600;
-}  
+}
+.image-feedback-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .feedback-container {
 	cursor: pointer;
 	display: flex;
@@ -566,40 +523,16 @@
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	-o-border-radius: 6px;
-}  
-.image-feedback-container {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}  
-.image-feedback {
-	width: 100%;
-	height: auto;
-	max-width: 200px;
-}
-.feedback {
-	display: flex;
-    text-align: center;
-    padding: 10px;
-    justify-content: center;
-    flex-direction: column;
-    box-sizing: border-box;
-    border-radius: 5px;
-    align-items: center;
-}
-.feedback-container{
 	text-decoration: none;
 	width: min-content;
     height: 60px;
     padding: 0;
-	margin-top: 10px;
 	background: none;
-	cursor: auto;
+}
+.image-feedback {
+	width: 100%;
+	height: auto;
+	max-width: 200px;
 }
 .feedback-container:hover{
 	transform: none;
@@ -614,17 +547,11 @@
 /*################  WIKI.HTML  ##################*/
 /*################  WIKI.HTML  ##################*/
 /*################  WIKI.HTML  ##################*/
-.main-flexbox{
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	min-height: 90vh;
-}
 .flex-box{
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
-	gap: 3px;
+	gap: 5px;
 }
 .thcrft-name{
 	user-select: none;
@@ -718,12 +645,6 @@
 	margin-bottom: 25px;
 	width: 100%;
 }
-.searchbar-container{
-	width: 100%;
-	display: flex;
-	text-align: center;
-	justify-content: center;
-}
 .search-bar{
 	margin-top: 10px;
 	width: 100%;
@@ -759,7 +680,6 @@
 	-moz-border-radius: 6px;
 	-o-border-radius: 6px;
 	border-radius: 6px;
-
 	top: 0;
 }
 #myUL li a {
@@ -828,6 +748,8 @@
 }
 .arrow_searchbar img{
 	display: block;
+	object-fit: contain;
+	max-height: 5dvh;
 }
 .rarity-desc{
 	display: flex;
@@ -967,10 +889,6 @@
 	flex-direction: row;
     justify-content: center;
 }
-.saviour, .recovery, .luck{
-	filter: brightness(0.4);
-	cursor: not-allowed;
-}
 .courage, .power{
 	cursor: pointer;
 }
@@ -1080,15 +998,6 @@
 .ies-container{
 	margin: 30px;
 }
-.get-back-ies{
-	color: var(--lt-ies-back-color);
-	cursor: pointer;
-}
-.msg-admin-ies{
-	color: var(--lt-ies-msgadmin-color);
-	font-size: large;
-	font-style: italic;
-}
 .error-csrf-content a{
 	font-size: larger;
 }
@@ -1176,6 +1085,9 @@ select, select::after {
 label {
   font-size: 1.125rem;
   font-weight: 500;
+}
+.upgrade_cost_e{
+	margin: 10px;
 }
 .input-cost{
 	margin-top: 20px;

@@ -1,22 +1,30 @@
 {% extends "template.html" %}
 {% load static %}
+{% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.4b">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.7.2">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.7.2">
 <meta property="og:type" content="website">
 <meta name="description" content="Discover the extensive collection of heroes in Archero, each with unique star boosts, base skills, and descriptions. Explore our comprehensive list to uncover the full potential of each character. Make strategic choices and harness the power of your heroes to overcome challenges and triumph in Archero.">
 {% if hero == "yes" %}
-<title>Archero - Wiki - {{ name_hero }}</title>
+<title>{% blocktrans %}Archero - {{ name_hero }}{% endblocktrans %}</title>
 <meta property="og:title" content="{{ name_hero }}">
 <meta property="og:url" content="{{ url_cpy }}">
-<meta property="og:description" content="{{ hero_data.hero_description|safe }} {{ hero_data.skill|safe }} {{ hero_data.skill_details|safe }}">
-<meta property="og:image" content="{% static hero_image %}?version=1.6.4b">
+{% block meta_description %}
+<meta property="og:description" content="{{ hero_data.description|safe }} 
+{{ hero_data.skill|safe }} 
+{{ hero_data.skill_details|safe }} 
+• Base Attack: {{ hero_data.base_atk }}
+• Base Hp: {{ hero_data.base_hp }}
+{{ hero_data.price }}">
+{% endblock %}
+<meta property="og:image" content="{% static hero_image %}?version=1.7.2">
 {% else %}
-<title>Archero - Wiki</title>
+<title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Heroes Description">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/heroes">
 <meta property="og:description" content="Discover the extensive collection of heroes in Archero, each with unique star boosts, base skills, and descriptions. Explore our comprehensive list to uncover the full potential of each character. Make strategic choices and harness the power of your heroes to overcome challenges and triumph in Archero.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.4b">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.7.2">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -41,18 +49,18 @@
 				}
 			}
 		</script>
-		<a class="before_index arrow_searchbar" href="/wiki/heroes/{{ index_before }}/">
-			<img src="/static/image/hero_icon/icon_{{ index_before }}.png" width="30" alt="{{ index_before }}">
+		<a class="before_index arrow_searchbar" href="/{{ LANGUAGE_CODE }}/wiki/heroes/{{ index_before }}/">
+			<img src="/static/image/hero_icon/icon_{{ index_before }}.png" width="30" alt="Archero Wiki Hero {{ index_before }}">
 			<i class="fas fa-arrow-up"></i>
 		</a>
-		<input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for hero.." value="{{ name_hero }}">
+		<input type="text" id="myInput" onkeyup="filterList()" placeholder="{% blocktrans %}Search for hero..{% endblocktrans %}" value="{{ name_hero }}">
 		<ul id="myUL" class="searchbar-ul-hero" style="display: none;">
-			{% for k in HeroData %}
-			<li><a class="toggle-display-list" href="/wiki/heroes/{{ k }}/"><div class="item_name">{{ k }}</div><div class="siimg"><img src="/static/image/hero_icon/icon_{{ k }}.png" width="26" alt="{{ k }}"></div></a></li>
+			{% for k,v in HeroData.items %}
+			<li><a class="toggle-display-list" href="/{{ LANGUAGE_CODE }}/wiki/heroes/{{ k }}/"><div class="item_name">{{ v.displayName }}</div><div class="siimg"><img src="/static/image/hero_icon/icon_{{ k }}.png" width="26" alt="Archero Wiki Hero {{ k }}"></div></a></li>
 			{% endfor %}
 		</ul>
-		<a class="after_index arrow_searchbar" href="/wiki/heroes/{{ index_after }}/">
-			<img src="/static/image/hero_icon/icon_{{ index_after }}.png" width="30" alt="{{ index_after }}">
+		<a class="after_index arrow_searchbar" href="/{{ LANGUAGE_CODE }}/wiki/heroes/{{ index_after }}/">
+			<img src="/static/image/hero_icon/icon_{{ index_after }}.png" width="30" alt="Archero Wiki Hero {{ index_after }}">
 			<i class="fas fa-arrow-up"></i>
 		</a>
 	</div>
@@ -62,14 +70,14 @@
 				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(109, 109, 109);">
 					<div class="sc-3qrykn-0 bdFBtt">
 						<div class="sc-3qrykn-1 bsDYtY">
-							<div class="heOpKb" style="color: rgb(255, 255, 255); text-align: center;">Jump to</div>
+							<div class="heOpKb" style="color: rgb(255, 255, 255); text-align: center;">{% blocktrans %}Jump to{% endblocktrans %}</div>
 						</div>
 						<div class="sc-3qrykn-3 hXMbfy">
 							<ul class="toc-hero-desc">
-								<li class="li_wo_marker"><a class="styled_a center_content" href="#Hero"><object type="image/png" data="/static/image/svg/hero.svg" width="15" height="15"></object>Hero</a></li>
-								<li class="li_wo_marker"><a class="styled_a center_content" href="#Star"><object type="image/png" data="/static/image/svg/star.svg" width="15" height="15"></object>Star</a></li>
-								<li class="li_wo_marker"><a class="styled_a center_content" href="#Assist"><object type="image/png" data="/static/image/svg/assist.svg" width="15" height="15"></object>Assist</a></li>
-								<li class="li_wo_marker"><a class="styled_a center_content" href="#Skins"><object type="image/png" data="/static/image/svg/icon-characterskin-cloth.svg" width="15" height="15"></object>Skins</a></li>
+								<li class="li_wo_marker"><a class="styled_a center_content" href="#Hero"><object type="image/png" data="/static/image/svg/hero.svg" width="15" height="15"></object>{% blocktrans %}Hero{% endblocktrans %}</a></li>
+								<li class="li_wo_marker"><a class="styled_a center_content" href="#Star"><object type="image/png" data="/static/image/svg/star.svg" width="15" height="15"></object>{% blocktrans %}Star{% endblocktrans %}</a></li>
+								<li class="li_wo_marker"><a class="styled_a center_content" href="#Assist"><object type="image/png" data="/static/image/svg/assist.svg" width="15" height="15"></object>{% blocktrans %}Assist{% endblocktrans %}</a></li>
+								<li class="li_wo_marker"><a class="styled_a center_content" href="#Skins"><object type="image/png" data="/static/image/svg/icon-characterskin-cloth.svg" width="15" height="15"></object>{% blocktrans %}Skins{% endblocktrans %}</a></li>
 							</ul>
 						</div>
 					</div>
@@ -81,10 +89,9 @@
 		<div class="kn3fae-0 ezpxFx">
 			<div class="sgp62q-0 iuJdTu">
 				<a title="TigerShark's Bot">
-					<img src="/static/image/wiki-image/sylvanpfp3.png" alt="User avatar" class="sgp62q-1 dLWNvE">
+					<img src="/static/image/wiki-image/sylvanpfp3.png" alt="Archero Hero Description Embed Thumbnail" class="sgp62q-1 dLWNvE">
 					<h1 class="sgp62q-2 hfwuZw">Sylvan</h1>
 					<span class="sgp62q-3 cTBPsI">BOT</span>
-					<span class="sc-1idsap7-0 dyOqmJ" id="date"></span>
 				</a>
 				<span id="{{ name_hero|lower }}" class="span-share"><a onclick="createModale(this,false,'info')" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
 			</div>
@@ -93,7 +100,7 @@
 					<div class="sc-3qrykn-0 bdFBtt">
 						<div class="sc-3qrykn-1 bsDYtY">
 							<div class="sc-27l7o2-0 heOpKb thumbnail-title" id="name_hero">
-								<img src="/static/{{ hero_image }}" alt="Thumbnail" class="sc-3qrykn-7" id="hero_image">
+								<img src="/static/{{ hero_image }}" alt="Archero Hero {{ name_hero }}" class="sc-3qrykn-7" id="hero_image">
 								{{ name_hero }}
 							</div>
 						</div>
@@ -104,30 +111,42 @@
 							<div class="rgqgux-0 dQAxvm">
 								<div class="rgqgux-1 dHYyKL">
 									<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-										<strong>Stats</strong>
+										<strong>{% blocktrans %}Stats{% endblocktrans %}</strong>
 									</div>
 								</div>
 								<div class="rgqgux-2 jFcAhO">
 									<div class="sc-27l7o2-0 heOpKb">
-										<div id="base_atk">• Base Attack: {{ hero_data.base_atk }}</div>
-										<div id="base_hp">• Base Hp: {{ hero_data.base_hp }}</div><br>
+										<div id="base_atk">• {% blocktrans %}Base Attack{% endblocktrans %}: {{ hero_data.base_atk }}</div>
+										<div id="base_hp">• {% blocktrans %}Base Hp{% endblocktrans %}: {{ hero_data.base_hp }}</div><br>
 									</div>
 								</div>
 								<div class="rgqgux-1 dHYyKL">
 									<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-										<strong>Attributes</strong>
+										<strong>{% blocktrans %}Attributes{% endblocktrans %}</strong>
 									</div>
 								</div>
 								<div class="rgqgux-2 jFcAhO">
 									<div class="sc-27l7o2-0 heOpKb">
 										<div id="lvl_stats">
-											{{ hero_data.attributes|safe }}
+											{% if name != "Shari" %}
+											&#x2022; {% trans "Lv 20" %} : {{ hero_data.attributes.20 }} <span class="all_effect_span">{% trans "All Heroes" %}</span><br>
+											&#x2022; {% trans "Lv 40" %} : {{ hero_data.attributes.40 }}<br>
+											&#x2022; {% trans "Lv 60" %} : {{ hero_data.attributes.60 }} <span class="all_effect_span">{% trans "All Heroes" %}</span><br>
+											&#x2022; {% trans "Lv 80" %} : {{ hero_data.attributes.80 }}<br>
+											&#x2022; {% trans "Lv 120" %} : {{ hero_data.attributes.120 }} <span class="all_effect_span">{% trans "All Heroes" %}</span><br>
+											{% else %}
+											&#x2022; {% trans "Lv 20" %} : {{ hero_data.attributes.20 }}<br>
+											&#x2022; {% trans "Lv 40" %} : {{ hero_data.attributes.40 }} <span class="all_effect_span">{% trans "All Heroes" %}</span><br>
+											&#x2022; {% trans "Lv 60" %} : {{ hero_data.attributes.60 }}<br>
+											&#x2022; {% trans "Lv 80" %} : {{ hero_data.attributes.80 }} <span class="all_effect_span">{% trans "All Heroes" %}</span><br>
+											&#x2022; {% trans "Lv 120" %} : {{ hero_data.attributes.120 }} <span class="all_effect_span">{% trans "All Heroes" %}</span><br>
+											{% endif %}
 										</div><br>
 									</div>
 								</div>
 								<div class="rgqgux-1 dHYyKL">
 									<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-										<strong>Price</strong>
+										<strong>{% blocktrans %}Price{% endblocktrans %}</strong>
 									</div>
 								</div>
 								<div class="rgqgux-2 jFcAhO">
@@ -140,21 +159,26 @@
 								<div class="rgqgux-2 jFcAhO">
 									<div class="sc-27l7o2-0 heOpKb">
 										<div id="skill_details">
+											<br>
+											{% if hero_data.skill_details != "" %}
+											<b>{% blocktrans %}Skill Details:{% endblocktrans %}</b><br>
 											{{ hero_data.skill_details|safe }}
+											<br><br>
+											{% endif %}
 										</div>
 									</div>
 								</div>
 								<div class="rgqgux-2 jFcAhO">
 									<div class="sc-27l7o2-0 heOpKb">
 										<div id="skill">
-											<span class="center_content"><object type="image/png" data="/static/image/svg/icon-skill-{{ name_hero }}.svg" width="22" height="22"></object>{{ hero_data.skill|safe }}</span>
+											<span class="center_content"><object type="image/png" data="/static/image/svg/icon-skill-{{ name_hero_initial }}.svg" width="22" height="22"></object>{{ hero_data.skill|safe }}</span>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="sc-3qrykn-6 fTOqMH">
-							<img src="/static/{{ hero_image }}" alt="Thumbnail" class="sc-3qrykn-7 fUliQq" id="hero_image">
+							<img src="/static/{{ hero_image }}" alt="{{ name_hero }}'s active skill" class="sc-3qrykn-7 fUliQq" id="hero_image">
 						</div>
 					</div>
 				</div>
@@ -164,7 +188,7 @@
 					<div class="sc-3qrykn-0 bdFBtt">
 						<div class="rgqgux-1 dHYyKL">
 							<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-								<strong>Star Boost</strong>
+								<strong>{% blocktrans %}Star Boost{% endblocktrans %}</strong>
 							</div>
 						</div>
 						<div class="sc-3qrykn-4 hQKgZF">
@@ -174,7 +198,7 @@
 										{% for k,v in hero_data.star.items %}
 										<b>{{ k }} <object type="image/png" data="/static/image/svg/star.svg" width="14" height="14"></object></b>
 										<div id="star_{{ k }}">
-											{{ v|safe }}
+											<span>{{ v|safe }}</span>
 										</div><br>
 										{% endfor %}
 									</div>
@@ -189,30 +213,38 @@
 					<div class="sc-3qrykn-0 bdFBtt">
 						<div class="rgqgux-1 dHYyKL">
 							<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-								<strong>Assist Brave</strong>
+								<strong>{% blocktrans %}Assist Brave{% endblocktrans %}</strong>
 							</div>
 							<div class="sc-3qrykn-3 hXMbfy">
-								<div class="sc-27l7o2-0 heOpKb center_content" style="color: rgb(243 243 243);">Needs <object type='image/png' data='/static/image/svg/{{ hero_data.hero_assist_evolve }}' width='18' height='18'></object> to evolve assist bravery level</div>
+								<div class="sc-27l7o2-0 heOpKb center_content" style="color: rgb(243 243 243);">{% blocktrans %}Needs <object type='image/png' data='/static/image/svg/{{ hero_data_hero_assist_evolve }}' width='18' height='18'></object> to evolve assist bravery level{% endblocktrans %}</div>
 							</div>
 						</div>
 						<div class="sc-3qrykn-4 hQKgZF">
 							<div class="rgqgux-0 dQAxvm">
 								<div class="rgqgux-2 jFcAhO">
 									<div class="content-embed-assist sc-27l7o2-0 heOpKb">
-										{% for k,v in hero_data.hero_assist.items %}
-										<span class="center_content"><object type="image/png" data="/static/image/svg/{{ k }}_assist_icon.svg" width="22" height="22"></object>{{ v|safe }}</span><br>
-										{% endfor %}
+										<span class="center_content"><object type="image/png" data="/static/image/svg/10_assist_icon.svg" width="22" height="22"></object><span>{{ hero_data.hero_assist.10 }}</span></span><br>
+										<span class="center_content"><object type="image/png" data="/static/image/svg/20_assist_icon.svg" width="22" height="22"></object><span>{{ hero_data.hero_assist.20 }} <span class='all_effect_span'>{% trans "All Heroes" %}</span></span></span><br>
+										<span class="center_content"><object type="image/png" data="/static/image/svg/30_assist_icon.svg" width="22" height="22"></object><span>{{ hero_data.hero_assist.30 }}</span></span><br>
+										<span class="center_content"><object type="image/png" data="/static/image/svg/30_assist_icon.svg" width="22" height="22"></object><span>{{ hero_data.hero_assist.30_1 }} <span class='all_effect_span'>{% trans "Assist Effect" %}</span></span></span><br>
+										<span class="center_content"><object type="image/png" data="/static/image/svg/40_assist_icon.svg" width="22" height="22"></object><span>{{ hero_data.hero_assist.40 }} <span class='all_effect_span'>{% trans "All Heroes" %}</span></span></span><br>
+										<span class="center_content"><object type="image/png" data="/static/image/svg/50_assist_icon.svg" width="22" height="22"></object><span>{{ hero_data.hero_assist.50 }}</span></span><br>
+										<span class="center_content"><object type="image/png" data="/static/image/svg/60_assist_icon.svg" width="22" height="22"></object><span>{{ hero_data.hero_assist.60 }} <span class='all_effect_span'>{% trans "Assist Effect" %}</span></span></span><br>
+										<span class="center_content"><object type="image/png" data="/static/image/svg/70_assist_icon.svg" width="22" height="22"></object><span>{{ hero_data.hero_assist.70 }}</span></span><br>
+										<span class="center_content"><object type="image/png" data="/static/image/svg/80_assist_icon.svg" width="22" height="22"></object><span>{{ hero_data.hero_assist.80 }} <span class='all_effect_span'>{% trans "Assist Effect" %}</span></span></span><br>
+										<span class="center_content"><object type="image/png" data="/static/image/svg/90_assist_icon.svg" width="22" height="22"></object><span>{{ hero_data.hero_assist.90 }}</span></span><br>
+										<span class="center_content"><object type="image/png" data="/static/image/svg/100_assist_icon.svg" width="22" height="22"></object><span>{{ hero_data.hero_assist.100 }} <span class='all_effect_span'>{% trans "All Heroes" %}</span></span></span><br>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="rgqgux-1 dHYyKL">
 							<div class="sc-3qrykn-3 hXMbfy" style="margin: 0;">
-								<div class="sc-27l7o2-0 heOpKb" style="color: rgb(243 243 243);">Available assist heroes:</div>
+								<div class="sc-27l7o2-0 heOpKb" style="color: rgb(243 243 243);">{% blocktrans %}Available assist heroes:{% endblocktrans %}</div>
 							</div>
 							<div class="sc-27l7o2-0 heOpKb center_content" style="margin-bottom: 0.6vh;margin-top: 0.4vh;overflow: auto;">
 								{% for h in hero_data.list_hero_assist %}
-									<a href='/wiki/heroes/{{ h }}/' class="styled_a center_content"><img src="/static/image/hero_icon/icon_{{ h }}.png" width="27" height="27"></img></a>
+									<a href='/{{ LANGUAGE_CODE }}/wiki/heroes/{{ h }}/' class="styled_a center_content"><img src="/static/image/hero_icon/icon_{{ h }}.png" width="27" height="27"></img></a>
 								{% endfor %}
 							</div>
 						</div>
@@ -225,7 +257,7 @@
 					<div class="sc-3qrykn-0 bdFBtt">
 						<div class="rgqgux-1 dHYyKL">
 							<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-								<strong>Skins</strong>
+								<strong>{% blocktrans %}Skins{% endblocktrans %}</strong>
 							</div>
 						</div>
 						<div class="sc-3qrykn-4 hQKgZF">
@@ -233,13 +265,13 @@
 							<div class="rgqgux-0 dQAxvm">
 								<div class="rgqgux-2 jFcAhO">
 									<div class="content-embed-skin sc-27l7o2-0 heOpKb">
-										<img src="/static/image/hero_skin/{{ name_hero }}_{{ skin.src }}.png?version=1.6.4b" alt="{{ name_hero }}'s' {{ skin.name }} skin thumbnail">
+										<img src="/static/image/hero_skin/{{ name_hero_initial }}_{{ skin.src }}.png?version=1.7.2" alt="Archero {{ name_hero }}'s {{ skin.name }} skin thumbnail">
 										<div>
 											<h3>{{ skin.name }}</h3>
 											<div>
-												<span>{{ skin.activ_boost|safe }}</span>
-												<span>{{ skin.passiv_boost|safe }}</span>
-												<span>{{ skin.price|safe }}</span>
+												<span>&#x2022; {{ skin.activ_boost|safe }}</span>
+												<span>&#x2022; <object type='image/png' data='/static/image/svg/lock.svg' width='16' height='16'></object> {{ skin.passiv_boost|safe }} <span class="all_effect_span">{% trans "All Heroes" %}</span></span>
+												<span>&#x2022; {{ skin.price|safe }}</span>
 											</div>
 										</div>
 									</div>
@@ -262,12 +294,6 @@
 	var search_bar = document.getElementById('myInput');
 	var ul_li = document.getElementById('myUL');
 	var hero_li_a = document.querySelectorAll(".toggle-display-list");
-
-	var n =  new Date();
-	var y = n.getFullYear();
-	var m = n.getMonth() + 1;
-	var d = n.getDate();
-	document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
 
 	search_bar.addEventListener('click', function(){
 		if(ul_li.style.display == "none"){

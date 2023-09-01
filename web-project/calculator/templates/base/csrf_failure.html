@@ -1,20 +1,21 @@
 {% extends "template.html" %}
 {% load static %}
+{% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.7.2">
 <title>{{ message }}</title>
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
 <div class="error-csrf-content">
 	<h1>(403)</h1>
-	<h3>You have this page because you're browser doesn't allow cookie, or you haven't load CSRF cookie</h3>
+	<h3>{% blocktrans %}You have this page because you're browser doesn't allow cookie, or you haven't load CSRF cookie{% endblocktrans %}</h3>
 	{% if profil == "yes" %}
-	<h3>Go <a href='/calculator/update/{{ public_id }}'>here</a> if you want to load CSRF cookie</h3>
+	<h3>{% blocktrans %}Go <a href='/{{ LANGUAGE_CODE }}/calculator/update/{{ public_id }}'>here</a>{% endblocktrans %} {% blocktrans %}if you want to load CSRF cookie{% endblocktrans %}</h3>
 	{% elif profil == "no" %}
-	<h3>Login <a href='/login/'>here</a> first if you want to load CSRF cookie</h3>
+	<h3><a href='/{{ LANGUAGE_CODE }}/login/'>{% blocktrans %}Login{% endblocktrans %} </a> {% blocktrans %}first if you want to load CSRF cookie{% endblocktrans %}</h3>
 	{% endif %}
-	<h3>If this persist, you may need to allow cookie for this website</h3>
+	<h3>{% blocktrans %}If this persist, you may need to allow cookie for this website{% endblocktrans %}</h3>
 </div>
 {% endblock %}
 {% block javascript %}

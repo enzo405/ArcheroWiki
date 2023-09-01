@@ -1,27 +1,69 @@
 from django.contrib import admin
 from calculator.models import *
+from django.contrib.admin.models import LogEntry
+from django.contrib.auth.models import Group, Permission
+from django.contrib.contenttypes.models import ContentType
 
-admin.site.register(ServerManagement)
-admin.site.register(user)
-admin.site.register(stuff_table)
-admin.site.register(hero_table)
-admin.site.register(talent_table)
-admin.site.register(skin_table)
-admin.site.register(altar_table)
-admin.site.register(jewel_type_table)
-admin.site.register(jewel_level_table)
-admin.site.register(egg_table)
-admin.site.register(egg_equipped_table)
-admin.site.register(dragon_table)
-admin.site.register(runes_table)
-admin.site.register(reforge_table)
-admin.site.register(refine_table)
-admin.site.register(dmg_calc_table)
-admin.site.register(medals_table)
-admin.site.register(relics_table)
-admin.site.register(weapon_skins_table)
-admin.site.register(promo_code)
-admin.site.register(Token)
-admin.site.register(UserQueue)
-admin.site.register(Contributor)
-admin.site.register(articleMenu)
+@admin.register(LogEntry)
+class LogEntryAdmin(admin.ModelAdmin):
+	# to have a date-based drilldown navigation in the admin page
+	date_hierarchy = 'action_time'
+
+	# to filter the resultes by users, content types and action flags
+	list_filter = [
+		'user',
+		'content_type',
+		'action_flag'
+	]
+
+	# when searching the user will be able to search in both object_repr and change_message
+	search_fields = [
+		'object_repr',
+		'change_message'
+	]
+
+	list_display = [
+		'action_time',
+		'user',
+		'content_type',
+		'action_flag',
+	]
+
+
+def group(model:models.Model):
+	# Register the model to the admin panel
+	admin.site.register(model)
+	# Create customized group to be able to edit the model when needed
+	content_type = ContentType.objects.get_for_model(model)
+	# Check if the permissions already exist
+	view_permission, view_created = Permission.objects.get_or_create(codename=f'view_{model.__name__.lower()}',content_type=content_type,defaults={'name': f'Can View {model.__name__}'})
+	add_permission, add_created = Permission.objects.get_or_create(codename=f'add_{model.__name__.lower()}',content_type=content_type,defaults={'name': f'Can Add {model.__name__}'})
+	change_permission, change_created = Permission.objects.get_or_create(codename=f'change_{model.__name__.lower()}',content_type=content_type,defaults={'name': f'Can Change {model.__name__}'})
+	group_name = f'{model.__name__}Editor'
+	custom_group, created = Group.objects.get_or_create(name=group_name)
+	custom_group.permissions.add(view_permission, add_permission, change_permission)
+
+group(ServerManagement)
+group(user)
+group(StuffTable)
+group(HeroTable)
+group(TalentTable)
+group(SkinTable)
+group(AltarTable)
+group(JewelTypeTable)
+group(JewelLevelTable)
+group(EggTable)
+group(EggEquippedTable)
+group(DragonTable)
+group(RunesTable)
+group(ReforgeTable)
+group(RefineTable)
+group(DamageCalcTable)
+group(MedalsTable)
+group(RelicsTable)
+group(WeaponSkinsTable)
+group(PromoCode)
+group(Token)
+group(UserQueue)
+group(Contributor)
+group(ArticleMenu)

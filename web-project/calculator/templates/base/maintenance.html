@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+{% load static %}
+<html lang="{{ LANGUAGE_CODE }}">
 	<head>
-		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.6.4b">
+		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.7.2">
 		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-		<script src="{% static 'main.js' %}?version=1.6.4b"></script>
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
-		<title>{{ message }}</title>
+		<script src="{% static 'main.js' %}?version=1.7.2"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.7.2">
+		<title>{% blocktrans %}Database Maintenance{% endblocktrans %}</title>
 		<style>
 			#error-image {
 				display: block;
@@ -28,25 +32,25 @@
 {% endif %}
 <noscript>
 	<div id="no-script-message">
-		<p>Please enable JavaScript to use this website.</p>
+		<p>{% blocktrans %}Please enable JavaScript to use this website.{% endblocktrans %}</p>
 	</div>
 </noscript>
 	<aside class="sidebar sidebar-open sidebar-position-f" id="sidebar">
 		<div class="sidebar-icon" id="sidebar-icon">
-			<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
+			<div class="leftsidebarc" id="lscimg"> <div class="lcontent"></div></div>
 			<div class="rightsidebarc" id="rscimg">
 				<svg id="svg-filter-sidebar" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
 			</div>
 		</div>
 		<div class="traveling" id="traveling">
 			{% for key,value in sidebarContent.items %}
-			<a href="{{ value.onclick }}" class="traveling-inline-div" id="{{ key }}-sidebar-image">
+			<a href="/{{ LANGUAGE_CODE }}{{ value.onclick }}" class="traveling-inline-div" id="{{ key }}-sidebar-image">
 				<div class="leftsidebarc traveling-left">
 					<div class="shcl">{{ value.childs_container.leftsidebar.child_content }}</div>
 				</div>
 				<div class="rightsidebarc traveling-right">
 					<div class="shcr">
-						<img alt="{{ key }}" id="{{ value.childs_container.rightsidebar.child_content.image_id }}" src="{{ value.childs_container.rightsidebar.child_content.image_src }}" width="{{ value.childs_container.rightsidebar.child_content.image_width }}" height="{{ value.childs_container.rightsidebar.child_content.image_height }}">
+						<img alt="{{ key }} Archero" id="{{ value.childs_container.rightsidebar.child_content.image_id }}" src="{{ value.childs_container.rightsidebar.child_content.image_src }}" width="{{ value.childs_container.rightsidebar.child_content.image_width }}" height="{{ value.childs_container.rightsidebar.child_content.image_height }}">
 					</div>
 				</div>
 			</a>
@@ -59,14 +63,11 @@
 			<div class="header-container-2 header_msg"><h1 class="header-h1">{{ header_msg }}</h1><span class="cookieUsername">{{ cookieUsername }}</span></div>
 			<div class="header-container-3 globe_header_icon">
 				<div class="traveling-inline-div" id="switch_dark_mode">
-					<div class="leftsidebarc traveling-left">
-						<div class="shcl">Theme</div>
-					</div>
 					<div class="rightsidebarc traveling-right">
 						{% if darkmode == True %}
-						<img alt="button switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/moon.png">
+						<img alt="switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/moon.png">
 						{% elif darkmode == False %}
-						<img alt="button switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/sun.png">
+						<img alt="switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/sun.png">
 						{% endif %}
 					</div>
 				</div>
@@ -76,40 +77,41 @@
 			<div class="ies-container">
 				<img id="error-image" src="/static/image/background/Melonda.png" alt="internal error server">
 			</div>
-			<footer class="empty-page-footer">
+			<footer>
 				<div class="footer-content">
 					<div class="footer-about">
-						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.6.4b" alt="image game icon">
+						<img class="footer-img-icon" fetchpriority="high" src="{% static 'image/archero_icon.png' %}?version=1.7.2" alt="Archero 5.1.0 game icon">
 						<div class="about-content">
-							<h2>Archero :</h2>
-							<div>Archero Update will be added with a certains delay</div>
+							<h1>Archero 5.1.1</h1>
 							<div class="contact-me">
-								<div>Contact <b><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran#9802</a></b></div>
+								<span>{% blocktrans %}Contact{% endblocktrans %} <a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran</a> <a href="https://www.reddit.com/user/LuhCaran101" target="_blank"><i class="fab fa-reddit"></i> u/LuhCaran101</a></span>
 							</div>
-							<div class="f_content_info"><a href="/Terms-of-Use/">Terms of Use</a></div>
-							<div class="f_content_info"><a href="/changelog/">ChangeLog</a></div>
-							<div class="f_content_info">Build v1.6.4b</div>
+							<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/Terms-of-Use/">{% blocktrans %}Terms of Use{% endblocktrans %}</a></div>
+							<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/changelog/">{% blocktrans %}ChangeLog{% endblocktrans %}</a></div>
+							<div class="f_content_info">Build v1.7.2</div>
 						</div>
 					</div>
 					<div class="discord_link">
-						<div class="container_dlink">
-							<div style="font-size: large;font-weight: bold;">Community Links:</div> 
-							<a href="https://discord.gg/d7w6FxhHjj" target="_blank"><li> LeMutique's Server</li></a>
-							<a href="https://discord.gg/eAqZquTF6X" target="_blank"><li> TigerShark's Server</li></a>
+						<div style="font-size: large;font-weight: bold;">{% blocktrans %}Community Links{% endblocktrans %}:</div>
+						<div class="container-link">
+							<a href="http://discord.gg/AsGcUrT" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>{% blocktrans %}LeMutique's Server{% endblocktrans %}</a>
 						</div>
-						<div class="container_rlink">
-							<a href="https://www.reddit.com/r/Archero/" target="_blank"><li> r/Archero</li></a>
+						<div class="container-link">
+							<a href="https://discord.gg/eAqZquTF6X" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>{% blocktrans %}TigerShark's Server{% endblocktrans %}</a>
 						</div>
-						<div class="container_flink">
-							<a href="https://www.facebook.com/archerogame/" target="_blank"><li> FB Archero</li></a>
+						<div class="container-link">
+							<a href="https://www.reddit.com/r/Archero/" target="_blank"><span class="link-icon"><i class="fab fa-reddit"></i></span>r/Archero</a>
+						</div>
+						<div class="container-link">
+							<a href="https://www.facebook.com/archerogame/" target="_blank"><span class="link-icon"><i class="fab fa-facebook"></i></span>{% blocktrans %}FB Archero{% endblocktrans %}</a>
 						</div>
 					</div>
 					<div class="thanks">
-						<div style="font-size: large;font-weight: bold;">Shout-out :</div>
-						<div class="shout-out">Special thanks : <b>Deth, SonHaon and TigerShark14</b></div>
-						<div class="shout-out">Thanks to : Pew, Lorenz, RedsMeName</div>
-						<div class="shout-out">KeithShade, Craggy94, Kang Greenstrider</div>
-						<div class="shout-out">Chaos, Mahanaxar, Pelmens, PNE241, Lovii</div>
+						<div style="font-size: large;font-weight: bold;">{% blocktrans %}Shout-out :{% endblocktrans %}</div>
+						<div class="shout-out">{% blocktrans %}Special thanks{% endblocktrans %} : <b>Deth, TigerShark14, zkn</b></div>
+						<div class="shout-out">{% blocktrans %}Thanks to{% endblocktrans %} : Chaos, pew, Mahanaxar</div>
+						<div class="shout-out">Pelmens, Lorenz, RedsMeName, whatever</div>
+						<div class="shout-out">Kang Greenstrider, PNE241, Drunkie</div>
 					</div>
 				</div>
 			</footer>
