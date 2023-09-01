@@ -125,10 +125,10 @@ def create_user_queue(request):
 			user_queue = form.save(commit=False)
 			user_queue.save()
 			url = request.build_absolute_uri(reverse('validate_user_queue', kwargs={'pk': user_queue.pk}))
-			messages.success(request,_(f"An Admin have been warned and will take care of you demand"))
+			messages.success(request,_("An Admin have been warned and will take care of you demand"))
 			send_webhook(f'A new user queue was created. Click here to validate: {url}\n{user_credential}')
 		else:
-			messages.error(request,_(f"{form.errors.as_text}"))
+			messages.error(request,str(form.errors.as_text))
 		return HttpResponseRedirect('/')
 	else:
 		form = UserQueueForm()
@@ -158,7 +158,7 @@ def json_payload_profile(request,pbid):
 	try:
 		user_profile = user.objects.get(public_id=pbid)
 	except user.DoesNotExist:
-		return HttpResponseRedirect(f"/calculator/index")
+		return HttpResponseRedirect("/calculator/index")
 	other_model = user_profile.getOtherModels()
 	StuffTable_stats = other_model['StuffTable']
 	HeroTable_stats = other_model['HeroTable']

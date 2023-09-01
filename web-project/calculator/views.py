@@ -389,7 +389,7 @@ def views_calc_stats(request,pbid:int,redirectPath:int):
 		1:f"/calculator/index/", # pour ne pas faire de boucle infini de redirection (utilisé dans affiche_calc)
 		2:f"/wiki/damage-calculator/",
 	}
-	messages.success(request=request,message=f"{ingame_name.capitalize()} updated with success")
+	messages.success(request=request,message=_(f"{ingame_name.capitalize()} updated with success"))
 	if request.GET.get("log") != "False":
 		send_embed("New Entry",f"{user_stats.ingame_name} | {user_stats.ingame_id}","","",f"[Admin Panel Link User]({c_hostname}/luhcaran/calculator/user/{user_stats.id}/change/)\n[Profile]({c_hostname}/calculator/show/{user_stats.public_id}/) Stats : {user_stats.global_atk_save} | {user_stats.global_hp_save}","A200FF", request,False)
 	return HttpResponseRedirect(f'/{get_language()}{dict_Link.get(redirectPath,"/calculator/index/")}')
@@ -473,14 +473,14 @@ def index_calc(request):
 	self_global_atk_save = user_stats.global_atk_save if user_stats else ""
 	self_global_hp_save = user_stats.global_hp_save if user_stats else ""
 	rank = "?"
-	avatar_src = f"/static/image/hero_icon/icon_unknown.png"
+	avatar_src = "/static/image/hero_icon/icon_unknown.png"
 	if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
 		show_table = "visitor"
 	elif ingame_id_cookie == "9-999999" and ingame_name_cookie == "unknown":
 		show_table = "visitor"
 	elif profile and not profile[0] and user_stats:
 		show_table = "visitor"
-		messages.error(request, f'You attempted to access {self_ingame_name}<br>But your login username is "{ingame_name_cookie}".')
+		messages.error(request, _(f'You attempted to access {self_ingame_name}<br>But your login username is "{ingame_name_cookie}".'))
 	elif profile and user_stats:
 		self_ingame_name = user_stats.ingame_name
 		self_ingame_hero = user_stats.choosen_hero
@@ -805,7 +805,7 @@ def updatetraitement_calc(request, pbid):
 		try:
 			user_instance = user.objects.get(public_id=pbid)
 		except:
-			request.session['error_message'] = f'User doesn\'t exist'
+			request.session['error_message'] = 'User doesn\'t exist'
 			return HttpResponseRedirect(f"/{get_language()}/calculator/index/")
 		user_credential = request.session['user_credential']
 		makeLog(request)

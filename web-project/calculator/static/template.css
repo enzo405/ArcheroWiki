@@ -241,9 +241,6 @@
 	.header-container-2{
 		width: 69vw;
 	}
-	.lang_dropdown {
-		top: 40px;
-	}
 	.sidebar{
 		width: 16%;
 		min-width: 28px;
@@ -297,6 +294,7 @@
 		border-bottom-left-radius: 19px;
 	}
 	.lang_dropdown {
+		top: 40px;
 		margin-top: -5px;
 		flex-direction: column;
 		position: absolute;
@@ -494,8 +492,6 @@ footer div, footer li{
 }
 .globe_header_icon i{
 	font-size: large;
-}
-.globe_header_icon i{
 	color: var(--lt-header-font-color);
 }
 .lang_header_container {
