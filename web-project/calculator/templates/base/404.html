@@ -1,13 +1,14 @@
 {% extends "template.html" %}
 {% load static %}
+{% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.7.2">
 <title>{{ message }}</title>
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
 <div class="error-csrf-content">
-	<p class="comming-soon">PAGE NOT FOUND</p>
+	<p class="comming-soon">{% blocktrans %}PAGE NOT FOUND{% endblocktrans %}</p>
 </div>
 {% endblock %}
 {% block javascript %}

@@ -4,6 +4,8 @@ from calculator import api
 from calculator import views_wiki
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from const import DEV_MODE
+from django.utils.translation import gettext_lazy as _
+
 
 urlpatterns = [
     path('', views_wiki.menu, name='menu'),
@@ -33,15 +35,13 @@ urlpatterns = [
     path('wiki/damage-calculator/', views_wiki.damage, name='damage_calc'),
     path('wiki/damage-calculator/calc/<str:pbid>/', views_wiki.dmgCalc_processing, name='damage_calc_process'),
     path('wiki/damage-calculator/<str:pbid>/', views_wiki.damageCalc, name='damage_calc_calc'),
-    path('wiki/google-sheet/', views_wiki.ghssetGrid, name='google_sheet'),
+    path('wiki/google-sheet/', views_wiki.gsheetGrid, name='google_sheet'),
     path('wiki/upgrade/', views_wiki.upgrade_cost, name='upgrade_cost'),
     path('wiki/upgrade/<str:cost_type>/<int:lvl1>/<int:lvl2>/', views_wiki.upgrade_cost),
     path('wiki/upgrade/<str:cost_type>/<int:lvl1>/<int:lvl2>/<str:rank>/', views_wiki.upgrade_cost),
     path('wiki/promo-code/', views_wiki.promocode, name='promo_code'),
     path('wiki/theorycraft/', views_wiki.theorycraft, name='theorycraft'),
-    path('wiki/news/', views_wiki.news, name='news'),
-    path('wiki/news/<str:titleArticle>/', views_wiki.news, name='news'),
-    path('habby-secret/', views_wiki.rickroll),
+    path('wiki/<str:titleArticle>/', views_wiki.news, name='news'),
     path('stats/calc/<str:pbid>/<int:redirectPath>/', views.views_calc_stats, name='stats_calc_api'),
     path('data/', api.data),
     path('del_dev/<int:pbid>/', views.admin_reload_stats),
@@ -50,10 +50,6 @@ urlpatterns = [
     path('validate_user_queue/<int:pk>/', api.validate_user_queue, name='validate_user_queue'), ## keep the name attribute for the reverse function in api.py
     path('delete_cookie/<str:key>/<str:name_redirect>/', views_wiki.delete_cookie),
     path('logout/', views_wiki.delete_session),
-
-    ## fix url redirect 
-    path('wiki/skill-list/', views_wiki.redirect_skill),
-    path('wiki/skill-list/<str:skill>/', views_wiki.redirect_skill),
 ]
 
 if DEV_MODE:

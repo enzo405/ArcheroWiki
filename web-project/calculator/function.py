@@ -1,16 +1,17 @@
 from PIL import Image
-from pathlib import Path
 from django.shortcuts import render, redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.core.handlers.wsgi import WSGIRequest
-from urllib.parse import urlencode
-from const import ADMIN_LOG_WEBHOOK_URL,WEBHOOK_URL, DEV_MODE, DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, c_hostname, DISCORD_NOTIF_ROLE_ID, ADMIN_CREDENTIAL
+from urllib.parse import urlencode, unquote
+from const import ADMIN_LOG_WEBHOOK_URL,WEBHOOK_URL, DEV_MODE, DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, c_hostname, ADMIN_CREDENTIAL, DISCORD_NOTIF_ROLE_ID
 import random as random
 import hashlib
 from .models import Token, ServerManagement, Contributor, user
 from difflib import SequenceMatcher
 from django.contrib import messages
+from django.utils.translation import get_language, gettext_lazy as _
 from discord_webhook import DiscordWebhook, DiscordEmbed
+from .local_data import LocalDataContentWiki
 # :param url: your discord webhook url (type: str)
 # :keyword id: webhook id (type: str)
 # :keyword content: the message contents (type: str)
@@ -47,27 +48,27 @@ def makeLog(request:HttpResponse|WSGIRequest):
 	if not DEV_MODE:
 		print(json_log)
 
-def remove_same_int(string):
-	result = ''.join(sorted(set(string),key=string.index))
-	return result
+# def remove_same_int(string):
+# 	result = ''.join(sorted(set(string),key=string.index))
+# 	return result
 
-def transform_token_id(initial_token):
-	token_result = ''
-	for i in str(initial_token):
-		all_string = string.ascii_uppercase + string.ascii_lowercase
-		str_int_shuffle = i.join(random.choice(all_string) for y in range(12))
-		str_token_order = remove_same_int(str_int_shuffle)
-		str_token = list(str_token_order)
-		random.shuffle(str_token)
-		result_first_string = ''.join(str_token)
-		token_result += result_first_string
-	return token_result
+# def transform_token_id(initial_token):
+# 	token_result = ''
+# 	for i in str(initial_token):
+# 		all_string = string.ascii_uppercase + string.ascii_lowercase
+# 		str_int_shuffle = i.join(random.choice(all_string) for y in range(12))
+# 		str_token_order = remove_same_int(str_int_shuffle)
+# 		str_token = list(str_token_order)
+# 		random.shuffle(str_token)
+# 		result_first_string = ''.join(str_token)
+# 		token_result += result_first_string
+# 	return token_result
 
-def chemin(type,name,rarity):
-	if name=="none":
-		return Path(f"calculator/static/image/{type}/none_common.png")
-	chemin =  Path(f"calculator/static/image/{type}/{name}_{rarity}.png")
-	return chemin
+# def chemin(type,name,rarity):
+# 	if name=="none":
+# 		return Path(f"calculator/static/image/{type}/none_common.png")
+# 	chemin =  Path(f"calculator/static/image/{type}/{name}_{rarity}.png")
+# 	return chemin
 
 def resize(img:Image.Image):
 	if img.size == (1,1):
@@ -99,20 +100,21 @@ def findFormError(valid_User, valid_StuffTable, valid_HeroTable, valid_TalentTab
 
 ################################# FONCTION RESTE #######################################################
 
-def checkCookie(request:WSGIRequest) -> dict:
+def checkCookie(request: WSGIRequest) -> dict:
 	"""
 	This function will always return one or zero key,value, 
 	if it return 1, then this is the cookie/session username and ingame_id
 	else the returned value will be an empty dict {} (wich can be turned into False with bool(empty_dict))
 	"""
-	result = {}
-	for k,v in request.COOKIES.items():
-		if checkUsernameCredentials(k,v)["access"]:
-			result[k] = v
-			break
-	if len(result) != 0:
-		result = {list(result.keys())[0]: list(result.values())[0]}
-	return result # renvoie toujours max 1 clé et 1 valeur
+	dont_check = ['csrftoken', 'sessionid', 'windowInnerWidth', 'windowInnerHeight', 'modeDisplay', 'messages']
+	def valid_cookie(username, ingame_id):
+		if username in dont_check:
+			return False
+		return checkUsernameCredentials(username, ingame_id)["access"]
+	valid_cookies = {username: ingame_id for username, ingame_id in request.COOKIES.items() if valid_cookie(username, ingame_id)}
+	if len(valid_cookies) == 1:
+		return valid_cookies
+	return {}
 
 
 def checkTokenValidity(token, length):
@@ -131,7 +133,6 @@ def checkTokenValidity(token, length):
 		return False
 	return True
 
-
 def db_maintenance(func):
 	def wrapper(request:HttpResponse|WSGIRequest, *args, **kwargs):
 		try:
@@ -142,10 +143,8 @@ def db_maintenance(func):
 			## si ça n'existe pas alors on affiche database maintenance car cela veut dire que soit la db n'est pas crée
 			#  (lors d'une monté de version) soit que j'ai pas recrée l'instance ServerManagement
 		if isMaintenance:
-			with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-				local_data = json.load(f)
-			SidebarContent = local_data['SidebarContent']
-			return render(request, "base/maintenance.html", {"darkmode": checkDarkMode(request),"header_msg": "Database Maintenance","sidebarContent":SidebarContent})
+			SidebarContent = LocalDataContentWiki['SidebarContent']
+			return render(request, "base/maintenance.html", {"darkmode": checkDarkMode(request),"header_msg":_("Database Maintenance"),"sidebarContent":SidebarContent})
 		else:
 			return func(request, *args, **kwargs)
 	return wrapper
@@ -166,19 +165,17 @@ def checkMessages(func):
 		return func(request, *args, **kwargs)
 	return wrapper
 
-
-def delete_visitor(redirected_uri):
-	def _method_wrapper(view_method):
-		def _arguments_wrapper(request, *args, **kwargs):
-			credentials_check = request.session.get("user_credential")
-			if "visitor" in str(credentials_check):
-				return redirect(f"/delete_session/user_credential/{redirected_uri}/")
-			if request.COOKIES.get("visitor",None) != None:
-				return redirect(f"/delete_cookie/visitor/{redirected_uri}/")
-			return view_method(request, *args, **kwargs)
-		return _arguments_wrapper
-	return _method_wrapper
-
+# def delete_visitor(redirected_uri):
+# 	def _method_wrapper(view_method):
+# 		def _arguments_wrapper(request, *args, **kwargs):
+# 			credentials_check = request.session.get("user_credential")
+# 			if "visitor" in str(credentials_check):
+# 				return redirect(f"/delete_session/user_credential/{redirected_uri}/")
+# 			if request.COOKIES.get("visitor",None) != None:
+# 				return redirect(f"/delete_cookie/visitor/{redirected_uri}/")
+# 			return view_method(request, *args, **kwargs)
+# 		return _arguments_wrapper
+# 	return _method_wrapper
 
 def login_required(func):
 	"""
@@ -191,12 +188,11 @@ def login_required(func):
 		if len(result) == 0:
 			if "visitor" in list(request.COOKIES.keys()):
 				return HttpResponseRedirect(f'/delete_cookie/visitor/menu/')
-			messages.warning(request, f"You need to login first")
-			return HttpResponseRedirect('/login')
+			messages.warning(request, _("You need to login first"))
+			return HttpResponseRedirect(f'/{get_language()}/login')
 		request.session['user_credential'] = result
 		return func(request, *args, **kwargs)
 	return wrapper
-
 
 def editor_login(func):
 	def wrapper(request:HttpResponse|WSGIRequest, *args, **kwargs):
@@ -258,21 +254,19 @@ def editor_login(func):
 	return wrapper
 
 
-def userExist(json, user) -> bool:
-	"""
-	Check if the user Exist in the specified json
-	"""
-	liste_username = [i['username'] for i in json['user']]
-	return str(user).lower() not in liste_username
+# def userExist(json, user) -> bool:
+# 	"""
+# 	Check if the user Exist in the specified json
+# 	"""
+# 	liste_username = [i['username'] for i in json['user']]
+# 	return str(user).lower() not in liste_username
 
 def similar(a, b):
 	return SequenceMatcher(None, a, b).ratio()
 
-
 def create_unique_id():
 	unique_id = str(time.time()).replace('.','')
 	return unique_id
-
 
 def checkUsernameCredentials(username_raw,id_raw, **kwargs) -> dict:
 	"""
@@ -290,9 +284,9 @@ def checkUsernameCredentials(username_raw,id_raw, **kwargs) -> dict:
 		return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": "Ingame Id not allowed"}
 	"""
 	pattern = re.compile(r'^\d{1}-\d{6,12}$')    # Compile un motif de regex pour les identifiants de jeu valides
-	decoded_bytes = urllib.parse.unquote(username_raw).encode('utf-8') # Décode le nom d'utilisateur brut en octets et encode la chaîne de caractères décodée en octets
+	decoded_bytes = unquote(username_raw).encode('utf-8') # Décode le nom d'utilisateur brut en octets et encode la chaîne de caractères décodée en octets
 	ingame_name = decoded_bytes.decode('utf-8') # Remplace tous les caractères illégaux par "*" après avoir converti la chaîne de bytes en une chaîne de caractères en utf-8
-	ingame_id = urllib.parse.unquote(id_raw)   # Décode l'identifiant de jeu brut
+	ingame_id = unquote(id_raw)   # Décode l'identifiant de jeu brut
 	unavailable_username = ['csrftoken','sessionid','windowInnerWidth','windowInnerHeight', 'modeDisplay', 'messages']
 	unavailable_ingame_id = ["0-000001","0-000002","0-000003","0-000004"]
 	if kwargs.get("login"):
@@ -306,11 +300,11 @@ def checkUsernameCredentials(username_raw,id_raw, **kwargs) -> dict:
 			if re.fullmatch(pattern, ingame_id) and ingame_id != "" and ingame_id != None and all(c.isdigit() or c == '-' for c in ingame_id):
 				return {"access":True,"ingame_name": ingame_name.replace(' ',''),"ingame_id": ingame_id}
 			else:
-				return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": "Ingame id doesn't match or is too short"}
+				return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": _("Ingame id doesn't match or is too short")}
 		else:
-			return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": "Username not allowed"}
+			return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": _("Username not allowed")}
 	elif ingame_id in unavailable_ingame_id:
-		return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": "Ingame Id not allowed"}
+		return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": _("Ingame Id not allowed")}
 
 
 def checkIllegalKey(string:str):
@@ -359,40 +353,40 @@ def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:
 	webhook.execute()
 
 
-def MakeLogAddRequestJson(request:HttpResponse|WSGIRequest, cookie_result):
-	"""
-	cookie_result will always have 1 or 0 items
-	This function is a "global function" that call makeLog function
-	and add the username and number of request in the last 24h to the specified json file 
-	"""
-	makeLog(request)
-	if not DEV_MODE:
-		with open('calculator/static/json/requetes.json', "r") as jsonFile:
-			request_json_file = json.load(jsonFile)
-		if bool(cookie_result): ## si vide alors bool({}) => False sinon True
-			username = list(cookie_result.keys())[0]
-			username_id = list(cookie_result.values())[0]
-			if ADMIN_CREDENTIAL.get(username, None) == username_id:
-				encoded_string = encode_string(username_id)
-				username_id = encoded_string[:int(len(encoded_string)/2)]
-		else:
-			username = 'unknown'
-			username_id = "9-999999"
-		bool_func = userExist(request_json_file, username)
-		if bool_func:
-			data = {
-				"username": username.lower(),
-				"ingame_id": username_id,
-				"number_request": 1
-			}
-			request_json_file['user'].append(data)
-		else:
-			for i in request_json_file['user']:
-				if i['username'] == username:
-					i['number_request'] += 1
-					break
-		with open('calculator/static/json/requetes.json', "w") as jsonFile:
-			json.dump(request_json_file, jsonFile)
+# def MakeLogAddRequestJson(request:HttpResponse|WSGIRequest, cookie_result):
+# 	"""
+# 	cookie_result will always have 1 or 0 items
+# 	This function is a "global function" that call makeLog function
+# 	and add the username and number of request in the last 24h to the specified json file 
+# 	"""
+# 	makeLog(request)
+# 	if not DEV_MODE:
+# 		with open('calculator/static/json/requetes.json', "r") as jsonFile:
+# 			request_json_file = json.load(jsonFile)
+# 		if bool(cookie_result): ## si vide alors bool({}) => False sinon True
+# 			username = list(cookie_result.keys())[0]
+# 			username_id = list(cookie_result.values())[0]
+# 			if ADMIN_CREDENTIAL.get(username, None) == username_id:
+# 				encoded_string = encode_string(username_id)
+# 				username_id = encoded_string[:int(len(encoded_string)/2)]
+# 		else:
+# 			username = 'unknown'
+# 			username_id = "9-999999"
+# 		bool_func = userExist(request_json_file, username)
+# 		if bool_func:
+# 			data = {
+# 				"username": username.lower(),
+# 				"ingame_id": username_id,
+# 				"number_request": 1
+# 			}
+# 			request_json_file['user'].append(data)
+# 		else:
+# 			for i in request_json_file['user']:
+# 				if i['username'] == username:
+# 					i['number_request'] += 1
+# 					break
+# 		with open('calculator/static/json/requetes.json', "w") as jsonFile:
+# 			json.dump(request_json_file, jsonFile)
 
 
 def checkDarkMode(request:HttpResponse|WSGIRequest) -> bool:
@@ -446,7 +440,7 @@ def makeCookieheader(cookieResult: dict) -> str:
 	under the header of each page
 	"""
 	result = ""
-	if "visitor" not in cookieResult and "unknown" not in cookieResult:
+	if "unknown" not in cookieResult:
 		result = " - ".join([key + " | " + value for key, value in cookieResult.items()])
 	return result
 
@@ -489,7 +483,7 @@ def getProfileWithCookie(ingame_id: str, ingame_name: str, **kwargs) -> tuple[bo
 	if resultSimilarity >= 1 or resultSimilarity >= 0.7:
 		return True, user_profile
 	else:
-		send_webhook(f"{ingame_name.lower()} accessed {user_profile.ingame_name.lower()}'s Profile and the similarity is {resultSimilarity}\n[Admin Panel Link User]({c_hostname}/luhcaran/calculator/user/{user_profile.pk}/change/)")
+		send_webhook(f"{ingame_name.lower()} tried to accessed {user_profile.ingame_name.lower()}'s Profile and the similarity is {resultSimilarity}\n[Admin Panel Link User]({c_hostname}/luhcaran/calculator/user/{user_profile.pk}/change/)")
 		return False, user_profile
 	
 def encode_string(string):

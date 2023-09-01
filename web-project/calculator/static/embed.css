@@ -17,8 +17,8 @@
     }
     .thumbnail-title img{
         display: block;
-        width: 28px;
-        height: auto;
+        width: 4rem;
+        object-fit: contain;
     }
     .thumbnail-title{
         display: flex;

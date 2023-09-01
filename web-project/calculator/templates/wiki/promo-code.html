@@ -1,9 +1,10 @@
 {% extends "template.html" %}
 {% load static %}
+{% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.4b">
-<title>Archero - Wiki - Promo Codes</title>
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.7.2">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.7.2">
+<title>{% blocktrans %}Archero - Promo Codes{% endblocktrans %}</title>
 <meta name="description" content="Discover the latest promo codes and gift codes for Archero on our website. Unlock exclusive rewards, gems, and valuable items by redeeming these codes.">
 <meta property="og:title" content="Archero - Promo Codes">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/promo-code">
@@ -19,7 +20,7 @@ Rewards: {% for x in i.2 %} | {{ x.0 }} {{ x.1 }} | {% endfor %}{% endfor %}
 {% endif %}">
 {% endblock %}
 <meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.4b">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.7.2">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
@@ -27,17 +28,16 @@ Rewards: {% for x in i.2 %} | {{ x.0 }} {{ x.1 }} | {% endfor %}{% endfor %}
 	<div class="kn3fae-0 ezpxFx">
 		<div class="sgp62q-0 iuJdTu">
 			<a title="TigerShark's Bot">
-				<img src="/static/image/wiki-image/sylvanpfp3.png" alt="User avatar" class="sgp62q-1 dLWNvE">
+				<img src="/static/image/wiki-image/sylvanpfp3.png" alt="promo code embed thumbnail" class="sgp62q-1 dLWNvE">
 				<h1 class="sgp62q-2 hfwuZw">Sylvan</h1>
 				<span class="sgp62q-3 cTBPsI">BOT</span>
-				<span class="sc-1idsap7-0 dyOqmJ" id="date"></span>
 			</a>
 		</div>
 		<div class="kn3fae-2 eKjosW">
 			<div class="z4zgh4-0 jiJPTS" style="border-color: rgba(0,190,207,255);">
 				<div class="sc-3qrykn-0 bdFBtt">
 					<span class="sc-3qrykn-1 bsDYtY">
-						<a href="https://h5-archero.habby.com/" target="_blank" class="heOpKb promocode_title" id="e_title">Promotion Codes</a>
+						<a href="https://h5-archero.habby.com/" target="_blank" class="heOpKb promocode_title" id="e_title">{% blocktrans %}Promotion Codes{% endblocktrans %}</a>
 					</span>
 					<div class="sc-3qrykn-4 hQKgZF">
 						<div class="rgqgux-0 dQAxvm">
@@ -50,17 +50,17 @@ Rewards: {% for x in i.2 %} | {{ x.0 }} {{ x.1 }} | {% endfor %}{% endfor %}
 								</div>
 								<div class="rgqgux-2 jFcAhO reward_field">
 									<div class="sc-27l7o2-0 heOpKb reward_text">
-										Rewards: {% for x in i.2 %} {{ x.0 }} <object type="image/png" data="/static/image/svg/{{ x.1 }}.svg" width="18" height="18"></object>{% endfor %} 
+										{% blocktrans %}Rewards: {% endblocktrans %}{% for x in i.2 %} {{ x.0 }} <object type="image/png" data="/static/image/svg/{{ x.1 }}.svg" width="18" height="18"></object>{% endfor %} 
 									</div>
 								</div>
 								<div class="rgqgux-2 jFcAhO expire_field">
-									Expires on: {{ i.1 }}
+									{% blocktrans %}Expires on: {% endblocktrans %}{{ i.1 }}
 								</div>
 								{% endfor %}
 							{% else %}
 							<div class="rgqgux-1 dHYyKL code_field">
 								<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-									<strong>- There are no promocodes available at this time -</strong>
+									<strong>- {% blocktrans %}There are no promocodes available at this time -{% endblocktrans %}</strong>
 								</div>
 							</div>
 							{% endif %}
@@ -70,7 +70,7 @@ Rewards: {% for x in i.2 %} | {{ x.0 }} {{ x.1 }} | {% endfor %}{% endfor %}
 						<div class="rgqgux-0 dQAxvm">
 							<div class="rgqgux-1 dHYyKL">
 								<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-									<strong>Redeem Promocodes here:</strong>
+									<strong>{% blocktrans %}Redeem Promocodes here:{% endblocktrans %}</strong>
 								</div>
 							</div>
 							<div class="rgqgux-2 jFcAhO">
@@ -80,10 +80,10 @@ Rewards: {% for x in i.2 %} | {{ x.0 }} {{ x.1 }} | {% endfor %}{% endfor %}
 							</div>
 						</div>
 					</div>
-					<img src="/static/image/wiki-image/titlepic.png" class="reward_page_pic" width="100%" height="100%" alt="Reward Page Picture">
-					<div class="sc-1wl8gx1-0 khpRBf"><span class="sc-1wl8gx1-2 frwlEK">Disclaimer: Codes may expire before they are removed from here</span></div>
+					<img src="/static/image/wiki-image/titlepic.png" class="reward_page_pic" width="100%" height="100%" alt="Archero Promo Code Reward Page Picture">
+					<div class="sc-1wl8gx1-0 khpRBf"><span class="sc-1wl8gx1-2 frwlEK">{% blocktrans %}Disclaimer: Codes may expire before they are removed from here{% endblocktrans %}</span></div>
 					<div class="sc-3qrykn-6 fTOqMH">
-						<img src="/static/image/wiki-image/meowgik_pointing.png" alt="Thumbnail" id="e_image" class="sc-3qrykn-7 fUliQq">
+						<img src="/static/image/wiki-image/meowgik_pointing.png" alt="Archero Meowgik Promo Code" id="e_image" class="sc-3qrykn-7 fUliQq">
 					</div>
 				</div>
 			</div>
@@ -92,13 +92,6 @@ Rewards: {% for x in i.2 %} | {{ x.0 }} {{ x.1 }} | {% endfor %}{% endfor %}
 </div>
 {% endblock %}
 {% block javascript %}
-<script>
-	n =  new Date();
-	y = n.getFullYear();
-	m = n.getMonth() + 1;
-	d = n.getDate();
-	document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
-</script>
 <script>
 	const self_inline_div_traveling = document.getElementById('Promos-sidebar-image')
 	self_inline_div_traveling.classList.add('bg-traveling') 

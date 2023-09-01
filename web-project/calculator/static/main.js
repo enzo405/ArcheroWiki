@@ -9,13 +9,13 @@ function createModale(element, urlNeedParentid, type){
     var url = window.location.href
     if(element.nodeType === Node.ELEMENT_NODE){
         titremodals = document.createElement("h3");
-        titremodals.innerHTML = `Link copied : <a href='${url}'>${element.parentElement.id}</a>`;
+        titremodals.innerHTML = `<a href='${url}'>${element.parentElement.id}</a>`;
         if(urlNeedParentid == true){
             var url = url.split('?')[0]
-            titremodals.innerHTML = `Link copied : <a href='/wiki/menu/${element.parentElement.id}/' target="_blank">${(element.parentElement.id).replaceAll('_',' ').toUpperCase()}</a>`;
+            titremodals.innerHTML = `<a href='/wiki/menu/${element.parentElement.id}/' target="_blank">${(element.parentElement.id).replaceAll('_',' ').toUpperCase()}</a>`;
             navigator.clipboard.writeText(`https://stats.wiki-archero.com/wiki/menu/${element.parentElement.id}/`)
         }else{
-            titremodals.innerHTML = `Link copied : <a href='${url}'>${element.parentElement.id}</a>`;
+            titremodals.innerHTML = `<a href='${url}'>${element.parentElement.id}</a>`;
             navigator.clipboard.writeText(url)
         }
     }else{
@@ -25,11 +25,11 @@ function createModale(element, urlNeedParentid, type){
     const modals = document.createElement("div");
     modals.classList.add("modals");
     const contenumodals = document.createElement("div");
-    contenumodals.classList.add("modals-contenu");
+    contenumodals.classList.add(`${type}-messages`);
+    contenumodals.classList.add(`modals-contenu`);
     contenumodals.appendChild(titremodals);
     const boutonFermer = document.createElement("button");
     boutonFermer.textContent = "Close";
-    boutonFermer.classList.add(`${type}-button`);
     boutonFermer.addEventListener("click", () => {
         document.body.removeChild(modals);
     });
@@ -39,7 +39,9 @@ function createModale(element, urlNeedParentid, type){
     setTimeout(function(){
         modals.style.opacity = 0;
         setTimeout(function() {
-            document.body.removeChild(modals);
+            try{
+                document.body.removeChild(modals);
+            }catch{}
         }, 5000);
     }, 5000);
 }

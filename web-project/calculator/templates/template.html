@@ -1,15 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+{% load static %}
+{% load custom_template_tag %}
+<html lang="{{ LANGUAGE_CODE }}">
 	<head>
-		{% load static %}
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.6.4b">
-		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}?version=1.6.4b">
+		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.7.2">
+		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}?version=1.7.2">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="apple-touch-icon" href="{% static 'image/favicon.png' %}?version=1.7.2">
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-		<script src="{% static 'main.js' %}?version=1.6.4b"></script>
+		<script src="{% static 'main.js' %}?version=1.7.2"></script>
 		{% block head %}
 		{% endblock %}
+		<style>
+			.sidebar-open #Menu-sidebar-image:hover::after{ content: "{% trans 'Menu' %}";}
+			.sidebar-open #Item-sidebar-image:hover::after{ content: "{% trans 'Item' %}";}
+			.sidebar-open #Upgrade-sidebar-image:hover::after{ content: "{% trans 'Upgrade' %}";}
+			.sidebar-open #Skill-sidebar-image:hover::after{ content: "{% trans 'Skill' %}";}
+			.sidebar-open #Maze-sidebar-image:hover::after{ content: "{% trans 'Maze' %}";}
+			.sidebar-open #Wiki-sidebar-image:hover::after{ content: "{% trans 'Wiki' %}";}
+			.sidebar-open #Heroes-sidebar-image:hover::after{ content: "{% trans 'Heroes' %}";}
+			.sidebar-open #Stats-sidebar-image:hover::after{ content: "{% trans 'Stats' %}";}
+			.sidebar-open #Sheet-sidebar-image:hover::after{ content: "{% trans 'Sheets' %}";}
+			.sidebar-open #Damage-sidebar-image:hover::after{ content: "{% trans 'Damage' %}";}
+			.sidebar-open #Promos-sidebar-image:hover::after{ content: "{% trans 'Promotion Code' %}";}
+			.sidebar-open #Theorycraft-sidebar-image:hover::after{ content: "{% trans 'Theorycraft' %}";}
+		</style>
 	</head>
 {% if darkmode == True %}
 <body class="body_dark_mode">
@@ -18,54 +38,71 @@
 {% endif %}
 <noscript>
 	<div id="no-script-message">
-		<p>Please enable JavaScript to use this website.</p>
+		<p>{% blocktrans %}Please enable JavaScript to use this website.{% endblocktrans %}</p>
 	</div>
 </noscript>
 	<aside class="sidebar sidebar-open sidebar-position-f" id="sidebar">
 		<div class="sidebar-icon" id="sidebar-icon">
-			<div class="leftsidebarc" id="lscimg"> <div class="lcontent">SIDEBAR</div></div>
+			<div class="leftsidebarc" id="lscimg"> <div class="lcontent"></div></div>
 			<div class="rightsidebarc" id="rscimg">
 				<svg id="svg-filter-sidebar" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" class="ScIconSVG-sc-1q25cff-1 dSicFr"><g><path d="M4 16V4H2v12h2zM13 15l-1.5-1.5L14 11H6V9h8l-2.5-2.5L13 5l5 5-5 5z"></path></g></svg>
 			</div>
 		</div>
 		<div class="traveling" id="traveling">
 			{% for key,value in sidebarContent.items %}
-			<a href="{{ value.onclick }}" class="traveling-inline-div" id="{{ key }}-sidebar-image">
+			<a href="/{{ LANGUAGE_CODE }}{{ value.onclick }}" class="traveling-inline-div" id="{{ key }}-sidebar-image">
 				<div class="leftsidebarc traveling-left">
-					<div class="shcl">{{ value.childs_container.leftsidebar.child_content }}</div>
+					<div class="shcl">
+						{{ value.childs_container.leftsidebar.child_content }}
+					</div>
 				</div>
 				<div class="rightsidebarc traveling-right">
 					<div class="shcr">
-						<img alt="{{ key }}" id="{{ value.childs_container.rightsidebar.child_content.image_id }}" src="{{ value.childs_container.rightsidebar.child_content.image_src }}?version=1.6.4b" width="{{ value.childs_container.rightsidebar.child_content.image_width }}" height="{{ value.childs_container.rightsidebar.child_content.image_height }}">
+						<img alt="{{ key }} Archero" id="{{ value.childs_container.rightsidebar.child_content.image_id }}" src="{{ value.childs_container.rightsidebar.child_content.image_src }}?version=1.7.2" width="{{ value.childs_container.rightsidebar.child_content.image_width }}" height="{{ value.childs_container.rightsidebar.child_content.image_height }}">
 					</div>
 				</div>
 			</a>
 			{% endfor %}
 		</div>
 	</aside>
-	<main class="container-hcf">
+	<main class="container-hcf" id="container-hcf">
 		<header class="header-container">
+			<!-- Left part of the header -->
 			<div class="header-container-1"></div>
-			<div class="header-container-2 header_msg"><h1 class="header-h1">{% block header_content %}{% endblock %}</h1><span class="cookieUsername">{{ cookieUsername }}</span></div>
+			<!-- Middle part of the header -->
+			<div class="header-container-2 header_msg">
+				<h1 class="header-h1">{% block header_content %}{% endblock %}</h1>
+				<span class="cookieUsername">{{ cookieUsername }}</span>
+			</div>
+			<!-- Right part of the header -->
 			<div class="header-container-3 globe_header_icon">
-				<div class="traveling-inline-div" id="switch_dark_mode">
-					<div class="leftsidebarc traveling-left">
-						<div class="shcl">Theme</div>
-					</div>
-					<div class="rightsidebarc traveling-right">
+				<!-- Container for the settings icon that act as a button (only showing on phone when the user click this, it will change dropdowns_header_container to display flex instead of none)-->
+				<div id="container_setting_icon" class="setting-icon">
+					<i class="fas fa-ellipsis-h fa-rotate-90"></i>
+				</div>
+				<!-- Dropdown for the settings button on phone resolution, and on PC it's just a simple display flex, with flex-direction row -->
+				<div class="dropdowns_header_container" id="dropdown_setting">
+					<!-- Switch theme icon a simple button to switch dark and light theme mode -->
+					<div id="switch_dark_mode" class="icon-header">
 						{% if darkmode == True %}
-						<img alt="button switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/moon.png">
+						<img alt="switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/moon.png">
 						{% elif darkmode == False %}
-						<img alt="button switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/sun.png">
+						<img alt="switch theme" id="darkmodeSWITCH" width="21" height="21" src="/static/image/img-sidebar/sun.png">
 						{% endif %}
 					</div>
+					<!-- Language selection dropdown -->
+					<div class="lang_header_container icon-header">
+						<!-- When the user click .button_globe, hide_lang_dropdown will become show_lang_dropdown and make the dropdown appear -->
+						<button id="button_globe" class="button_globe"><i class="fa-solid fa-globe"></i></button>
+						<div class="hide_lang_dropdown lang_dropdown" id="langheader_content">
+							{% for language in languages %}
+								<a href="{{ request.path|add_lang_code:language.code }}" class="language-option">
+									<span class="item_language_code">{{ language.code }} </span><span class="flag"><object type="image/png" data="/static/image/svg/flag/{{ language.code }}.svg" width="15" height="15"></object></span>
+								</a>
+							{% endfor %}
+						</div>
+					</div>
 				</div>
-				<!-- <label for="lang"><i class="fa-solid fa-globe"></i></label>
-				<select name="lang" id="lang">
-					{% for language in lang %}
-					<option value="{{language}}">{{language}}</option>
-					{% endfor %}
-				</select> -->
 			</div>
 		</header>
 		<section class="section-c-f">
@@ -74,38 +111,38 @@
 			<footer>
 				<div class="footer-content">
 					<div class="footer-about">
-						<img class="footer-img-icon" src="{% static 'image/archero_icon.png' %}?version=1.6.4b" alt="image game icon">
+						<img class="footer-img-icon" fetchpriority="high" src="{% static 'image/archero_icon.png' %}?version=1.7.2" alt="Archero 5.1.0 game icon">
 						<div class="about-content">
-							<h1>Archero 5.1.0</h1>
+							<h1>Archero 5.2.2</h1>
 							<div class="contact-me">
-								<span>Contact <a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran</a> <a href="https://www.reddit.com/user/LuhCaran101" target="_blank"><i class="fab fa-reddit"></i> u/LuhCaran101</a></span>
+								<span>{% blocktrans %}Contact{% endblocktrans %} <a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran</a> <a href="https://www.reddit.com/user/LuhCaran101" target="_blank"><i class="fab fa-reddit"></i> u/LuhCaran101</a></span>
 							</div>
-							<div class="f_content_info"><a href="/Terms-of-Use/">Terms of Use</a></div>
-							<div class="f_content_info"><a href="/changelog/">ChangeLog</a></div>
-							<div class="f_content_info">Build v1.6.4b</div>
+							<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/Terms-of-Use/">{% blocktrans %}Terms of Use{% endblocktrans %}</a></div>
+							<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/changelog/">{% blocktrans %}ChangeLog{% endblocktrans %}</a></div>
+							<div class="f_content_info">Build v1.7.2</div>
 						</div>
 					</div>
 					<div class="discord_link">
-						<div style="font-size: large;font-weight: bold;">Community Links:</div>
+						<div style="font-size: large;font-weight: bold;">{% blocktrans %}Community Links{% endblocktrans %}:</div>
 						<div class="container-link">
-							<a href="http://discord.gg/AsGcUrT" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>LeMutique's Server</a>
+							<a href="http://discord.gg/AsGcUrT" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>{% blocktrans %}LeMutique's Server{% endblocktrans %}</a>
 						</div>
 						<div class="container-link">
-							<a href="https://discord.gg/eAqZquTF6X" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>TigerShark's Server</a>
+							<a href="https://discord.gg/eAqZquTF6X" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>{% blocktrans %}TigerShark's Server{% endblocktrans %}</a>
 						</div>
 						<div class="container-link">
 							<a href="https://www.reddit.com/r/Archero/" target="_blank"><span class="link-icon"><i class="fab fa-reddit"></i></span>r/Archero</a>
 						</div>
 						<div class="container-link">
-							<a href="https://www.facebook.com/archerogame/" target="_blank"><span class="link-icon"><i class="fab fa-facebook"></i></span>FB Archero</a>
+							<a href="https://www.facebook.com/archerogame/" target="_blank"><span class="link-icon"><i class="fab fa-facebook"></i></span>{% blocktrans %}FB Archero{% endblocktrans %}</a>
 						</div>
 					</div>
 					<div class="thanks">
-						<div style="font-size: large;font-weight: bold;">Shout-out :</div>
-						<div class="shout-out">Special thanks : <b>Deth, TigerShark14, zkn</b></div>
-						<div class="shout-out">Thanks to : Chaos, pew, Mahanaxar</div>
+						<div style="font-size: large;font-weight: bold;">{% blocktrans %}Shout-out :{% endblocktrans %}</div>
+						<div class="shout-out">{% blocktrans %}Special thanks{% endblocktrans %} : <b>Deth, TigerShark14, zkn</b></div>
+						<div class="shout-out">{% blocktrans %}Thanks to{% endblocktrans %} : Chaos, pew, Mahanaxar</div>
 						<div class="shout-out">Pelmens, Lorenz, RedsMeName, whatever</div>
-						<div class="shout-out">Kang Greenstrider, PNE241, Drunkie</div>
+						<div class="shout-out">Kang Greenstrider, PNE241, Drunkie, zug</div>
 					</div>
 				</div>
 			</footer>
@@ -125,20 +162,20 @@
 	{% endif %}
 <script>
 	var switchModeBtn = document.getElementById('switch_dark_mode');
-	switchModeBtn.addEventListener('click', function toggleClassDarkMode(){
-		var date = new Date()
-		var darkmodeSWITCH = document.getElementById('darkmodeSWITCH')
-		date.setTime(date.getTime() + (365*24*60*60*1000));
+	switchModeBtn.addEventListener('click', function toggleClassDarkMode() {
+		var date = new Date();
+		var darkmodeSWITCH = document.getElementById('darkmodeSWITCH');
+		date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
 		var body = document.body;
-		body.classList.toggle("body_dark_mode");
-		if(body.className == "body_dark_mode"){
+		body.classList.toggle("body_dark_mode"); // Toggle the dark mode class on the body
+		if (body.classList.contains("body_dark_mode")) {
 			document.cookie = "modeDisplay=True; expires=" + date.toUTCString() + "; path=/";
-			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\moon.png"
-		}else{
+			darkmodeSWITCH.src = "/static/image/img-sidebar/moon.png";
+		} else {
 			document.cookie = 'modeDisplay=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			darkmodeSWITCH.src = "\\static\\image\\img-sidebar\\sun.png"
+			darkmodeSWITCH.src = "/static/image/img-sidebar/sun.png";
 		}
-	})
+	});
 
 	var sidebarBtn = document.getElementById('sidebar-icon');
 	sidebarBtn.addEventListener('click', function toggleSideBarClass(){
@@ -146,6 +183,31 @@
 		sidebar.classList.toggle('sidebar-active')
 		sidebar.classList.toggle('sidebar-open')
 	})
+</script>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		// Toggle the settings dropdown on settings icon click
+		const CONTAINER_SETTING_ICON = document.getElementById("container_setting_icon");
+		CONTAINER_SETTING_ICON.addEventListener("click", function () {
+			document.getElementById("dropdown_setting").classList.toggle("show_dropdown");
+			document.getElementById("dropdown_setting").classList.toggle("dropdowns_header_container");
+		});
+		// Toggle language selection dropdown on globe icon click
+		const BUTTON_GLOBE = document.getElementById("button_globe");
+		const LANG_HEADER_CONTENT = document.getElementById("langheader_content");
+		BUTTON_GLOBE.addEventListener("click", function (event) {
+			event.stopPropagation(); // Prevent the click event from reaching the window
+			LANG_HEADER_CONTENT.classList.toggle("hide_lang_dropdown");
+			LANG_HEADER_CONTENT.classList.toggle("show_lang_dropdown");
+		});
+		// Close the language selection dropdown when clicking outside
+		window.addEventListener("click", function (event) {
+			if (!event.target.matches("#button_globe")) {
+				LANG_HEADER_CONTENT.classList.remove("show_lang_dropdown");
+				LANG_HEADER_CONTENT.classList.add("hide_lang_dropdown");
+			}
+		});
+	});
 </script>
 <script>
 	window.addEventListener('scroll', function() {

@@ -16,16 +16,8 @@
 }
 
 @media screen and (max-width : 1300px){ /* pour résolution inférieur à 1300px */
-	
 	.skin_form{
 		margin-left: 4px;
-	}
-	.image_stuff{
-		width: 350.7px;
-		height: 350.7px;
-		background-image: url(image/hero_background/atreus.png);
-		background-size: contain;
-		background-repeat: no-repeat;
 	}
 	.talent{
 		flex-direction: column;
@@ -37,9 +29,6 @@
 		margin-left: 10px;
 		height: 215px;
 	}
-	.talent_image{
-		min-width: 195px;
-	}
 	.jewel_form{
 		grid-template-columns: repeat(auto-fill,200px);
 		grid-gap: 40px;
@@ -49,19 +38,8 @@
 }
 
 @media screen and (min-width : 1300px){ /* pour résolution supérieur à 1300px */
-	.image_stuff{
-		width: 350.7px;
-		height: 350.7px;
-		background-image: url(image/hero_background/atreus.png);
-		background-size: contain;
-		background-repeat: no-repeat;
-	}
 	.skin_form{
 		margin-left: 10px;
-	}
-	.talent_image{
-		margin-left: 10px;
-		margin-right: 10px;
 	}
 	.jewel_form{
 		grid-template-columns: repeat(auto-fill,220px);
@@ -98,7 +76,7 @@
 	}
 }
 
-@media screen and (min-width: 780px){ /* pour résolution inférieur à 780px */
+@media screen and (min-width: 780px){ /* pour résolution supérieur à 780px */
 	.index-table th, .index-table #td-table-stats-index{
 		padding-left: 10px;
 		padding-right: 10px;
@@ -120,9 +98,6 @@
 }
 
 @media screen and (max-width: 780px){ /* pour résolution inférieur à 780px */
-	.owner-error, .value-error{
-		font-size: small;
-	}
 	.skin_image{
 		width: 60%;
 	}
@@ -147,13 +122,6 @@
 }
 
 @media screen and (min-width : 614px){/* pour résolution supérieur à 614px */
-	.button-jewel{
-		position: relative;
-		width: 73px;
-		background-color: transparent;
-		left: 117px;
-		top: -100px;
-	}
 	.img-light{
 		position: relative;
 		background-color: transparent;
@@ -176,18 +144,6 @@
 }
 
 @media screen and (max-width : 613px){/* pour résolution inférieur à 613px */
-	.button-jewel{
-		display: none;
-	}
-	.button-dragon{
-		display: none;
-	}
-	.img-light1{
-		display: none;
-	}
-	.img-light2{
-		display: none;
-	}
 	.image-div-stuff{
 		max-height: 600px;
 		max-width: 550px;
@@ -203,6 +159,12 @@
 	.altar{
 		display: flex;
 		flex-direction: column;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.table th,.table td {
+		padding: 0.75rem;
 	}
 }
 @media screen and (max-width: 600px) {
@@ -228,6 +190,9 @@
 	}
 	form{
 		width: 100%;
+	}
+	.table th,.table td {
+		padding: 0.6rem;
 	}
 }
 
@@ -411,19 +376,9 @@ input{
 	border-radius: 5px;
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
-.main-container{
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	min-height: 90vh;
-}
 main{
 	display: flex;
     flex-direction: column;
-}
-.main-form{
-	align-items: center;
 }
 /*       AFFICHE.HTML          */
 /*       AFFICHE.HTML          */
@@ -481,13 +436,6 @@ main{
 	background-color: #272222;
 	color: white;
 }
-.body_dark_mode .go_to_details{
-	background-color: #525a6c;
-	color: white;
-}
-.body_dark_mode .go_to_details a{
-	color: #1C1459;
-}
 .image-stuff-result-container{
 	border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -507,9 +455,6 @@ main{
 .detail-stats{
 	width: calc(100% - 20px);
 	max-width: 550px;
-}
-.input-detail #crit_rune_drag{
-	width: 50px;
 }
 .stats-box {
 	background-color: #F8D48B;
@@ -531,12 +476,6 @@ main{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-}
-.body_dark_mode .stats-box{
-	background-color: #4b4b4b;
-    color: rgb(228, 228, 228);
-    border: solid 0px;
-    border-bottom: 1px solid;
 }
 .stat-item {
 	width: 30%;
@@ -606,9 +545,6 @@ main{
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	-o-border-radius: 10px;
-}
-.altar_img{
-	width: 50%;
 }
 .egg_form{
 	display: grid;
@@ -722,9 +658,6 @@ main{
 	margin:  10px 0px 10px 0px;
 	background-color: #F8D48B;
 }
-.body_dark_mode .container{
-	background-color: #525a6c;
-}
 .runes_form{
 	grid-template-columns: repeat(auto-fill,285px);
 	display: grid;
@@ -735,11 +668,7 @@ main{
     width: -webkit-fill-available;
 	border-radius: 8px;
 }
-.body_dark_mode .container_rune,
-.body_dark_mode .jewel_table,
-.body_dark_mode .dragon_box{
-	border: black solid 1px;
-}
+
 .legend_rune_container{
 	display: flex;
 	flex-direction: row;
@@ -751,10 +680,6 @@ main{
 }
 .container_rune select{
 	width: 70px;
-}
-.icon-rune{
-	width: 20px;
-	height: 20px;
 }
 .fa-percent:before, .fa-percentage:before{
 	color: #1c2429;
@@ -778,12 +703,6 @@ main{
 	border: solid 1px #777;
     border-radius: 12px;
     padding: 25px 10px 13px 30px;
-}
-.body_dark_mode .jewel_table{
-	filter: drop-shadow(2px 4px 6px black);
-}
-.body_dark_mode .jewel_table th{
-	color: rgb(228, 228, 228);
 }
 .weapon_jewel_table{background-repeat: no-repeat;background-image: url(image/background/jewel_weapon_background.png);}
 .armor_jewel_table{background-repeat: no-repeat;background-image: url(image/background/jewel_armor_background.png);}
@@ -825,49 +744,8 @@ main{
 	font-size: 20px;
 	margin-top: 15px;
 }
-.body_dark_mode .ingame-name{
-	color: rgb(228, 228, 228);
-}
-.owner-error, .value-error{
-	display: flex;
-	flex-direction: row;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
-}
 input:invalid {
 	border: red solid 3px;
-}
-.fa-percent{
-	color: white;
-	position: relative;
-	left: -14px;
-	top: 1px;
-}
-.about{
-	padding: 10px 10px 10px 10px;
-    box-shadow: inset 0px 0px 20px 3px white;
-	-webkit-box-shadow: inset 0px 0px 20px 3px white;
-	-moz-box-shadow: inset 0px 0px 20px 3px white;
-	-o-box-shadow: inset 0px 0px 20px 3px white;
-	-ms-box-shadow: inset 0px 0px 20px 3px white;
-    background-color: #F8D48B;
-    color: black;
-    width: fit-content;
-	font-weight: bold;
-	border-style: none;
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	-o-border-radius: 10px;
-}
-.body_dark_mode .about{
-	background-color: #8750e1;
-	box-shadow: inset 0px 0px 20px 3px aliceblue;
-	-webkit-box-shadow: inset 0px 0px 20px 3px aliceblue;
-	-moz-box-shadow: inset 0px 0px 20px 3px aliceblue;
-	-o-box-shadow: inset 0px 0px 20px 3px aliceblue;
-	-ms-box-shadow: inset 0px 0px 20px 3px aliceblue;
 }
 .error_data_missing{
 	display: flex;
@@ -1027,9 +905,6 @@ input:invalid {
 	filter: grayscale(0);
 	background-color: #e95858;
 }
-.body_dark_mode .checkbox-weapon-skin input[type="checkbox"]:checked + label {
-	background-color: #272222;
-}
 @media (max-width: 767px) {
 	.checkbox-weapon-skin label {
 	  width: 40px;
@@ -1059,20 +934,11 @@ input:invalid {
 	color: white;
     text-decoration: none;
 }
-.body_dark_mode .div_formulaire{
-	background: radial-gradient(ellipse at top, #8750e1, #6539b2);
-}
-.body_dark_mode .div_formulaire a{
-	color: rgb(228, 228, 228);
-}
 .main-index{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	height: 100%;
-}
-.container_table_all{
-	min-height: 70vh;
 }
 .btn-table{
 	line-height: 1;
@@ -1085,11 +951,6 @@ input:invalid {
 	font-size: 0.9rem;
 	color: #fff;
 	background-color: #00bfff;
-}
-.body_dark_mode .btn-table{
-	background: #525a6c;
-	color: rgb(228, 228, 228);
-	border: solid 1px #000;
 }
 .div-table-index{
 	display: flex;
@@ -1109,7 +970,6 @@ input:invalid {
 }
 .table th,
 .table td {
-	padding: 0.75rem;
 	vertical-align: top;
 	border-top: 1px solid #dee2e6;
 }
@@ -1179,13 +1039,6 @@ input:invalid {
 	display: flex;
 	justify-content: space-between;
 }
-.body_dark_mode .msg-index-no-profile{
-	color: white;
-}
-.body_dark_mode .msg-index-no-profile a{
-	text-decoration: none;
-	color: #c58af9;
-}
 #pagination{
 	display: flex;
 	flex-wrap: nowrap;
@@ -1204,29 +1057,6 @@ input:invalid {
 #pagination button.active {
 	background-color: #2eb8e6;
 	color: white;
-}
-.body_dark_mode #pagination button.active {
-	background-color: #45385c;
-}
-.index-damage-calc{
-	display: flex;
-	justify-content: end;
-	width: 100%;
-	height: 100%;
-}
-.index-damage-calc a{
-	width: 33%;
-	color: black;
-	background-color: #F8D48B;
-	text-decoration: none;
-	border-radius: 5px;
-	margin-right: 4px;
-	padding: 3px 0px 3px 0px;
-}
-.body_dark_mode .index-damage-calc a{
-	color: rgb(228, 228, 228);
-	background-color: #4a5162;
-	border: solid 1px #1C1459;
 }
 .help-index-msg{
 	display: flex;
@@ -1271,81 +1101,57 @@ input:invalid {
 .body_dark_mode .profile-card .button-container .btn-table:hover {
     background-color: #0080ff;
 }
-/*       ANIMATION          */
-/*       ANIMATION          */
-/*       ANIMATION          */
-/*       ANIMATION          */
-/*       ANIMATION          */
-/*       ANIMATION          */
-/*       ANIMATION          */
-.button-jewel{
-    position: relative;
-    background-color: transparent;
-	left: 118px;
-	top: 2px;
+.body_dark_mode .go_to_details{
+	background-color: #525a6c;
+	color: white;
 }
-.button-dragon{
-    position: relative;
-    background-color: transparent;
-	left: 135px;
-	top: -93px;
+.body_dark_mode .go_to_details a{
+	color: #1C1459;
 }
-.img-light1{
-	position: relative;
-	background-color: transparent;
-	width: 205px;
-	left: -210px;
-	top: 65px;
+.body_dark_mode .stats-box{
+	background-color: #4b4b4b;
+    color: rgb(228, 228, 228);
+    border: solid 0px;
+    border-bottom: 1px solid;
 }
-.img-light2{
-	position: relative;
-	background-color: transparent;
-	width: 205px;
-	left: 260px;
-	top: 55px;
+.body_dark_mode .container{
+	background-color: #525a6c;
 }
-.orb-jewel{
-	position: relative;
-	top: 227px;
+.body_dark_mode .container_rune,
+.body_dark_mode .jewel_table,
+.body_dark_mode .dragon_box{
+	border: black solid 1px;
 }
-@-webkit-keyframes rotating /* Safari and Chrome */ {
-    from {
-      -webkit-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
-    }
-    to {
-      -webkit-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
-    }
-  }
-  @keyframes rotating {
-    from {
-      -ms-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -webkit-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
-    }
-    to {
-      -ms-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -webkit-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
-    }
-  }
-  .rotating {
-    -webkit-animation: rotating 5s linear infinite;
-    -moz-animation: rotating 5s linear infinite;
-    -ms-animation: rotating 5s linear infinite;
-    -o-animation: rotating 5s linear infinite;
-    animation: rotating 5s linear infinite;
-	filter: blur(4px);
-  }
-
-.img-test{
-	position: relative;
-	width: 548px;
+.body_dark_mode .jewel_table{
+	filter: drop-shadow(2px 4px 6px black);
+}
+.body_dark_mode .jewel_table th{
+	color: rgb(228, 228, 228);
+}
+.body_dark_mode .ingame-name{
+	color: rgb(228, 228, 228);
+}
+.body_dark_mode .checkbox-weapon-skin input[type="checkbox"]:checked + label {
+	background-color: #272222;
+}
+.body_dark_mode .div_formulaire{
+	background: radial-gradient(ellipse at top, #8750e1, #6539b2);
+}
+.body_dark_mode .div_formulaire a{
+	color: rgb(228, 228, 228);
+}
+.body_dark_mode .btn-table{
+	background: #525a6c;
+	color: rgb(228, 228, 228);
+	border: solid 1px #000;
+}
+.body_dark_mode .msg-index-no-profile{
+	color: white;
+}
+.body_dark_mode .msg-index-no-profile a{
+	text-decoration: none;
+	color: #c58af9;
+}
+.body_dark_mode #pagination button.active {
+	background-color: #45385c;
 }

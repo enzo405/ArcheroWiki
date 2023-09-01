@@ -132,6 +132,44 @@ img {
     }
 }
 
+
+.article-new-box {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f5f5f5;
+	border-radius: 5px;
+	margin-bottom: 40px;
+}
+.is-primary {
+	background-color: #336699;
+	color: #fff;
+	padding: 10px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+.article-news-container iframe{
+	max-width: 100%;
+}
+.article-new-body {
+	text-align: center;
+}
+.article-new-title {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.article-new-subtitle {
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+.article-new-content {
+	margin-bottom: 20px;
+}
+.article-new-content p {
+	margin-bottom: 10px;
+}
+
 /* Darkmode part */
 
 .body_dark_mode .dropdown-menu {

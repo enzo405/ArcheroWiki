@@ -188,22 +188,22 @@ class user(models.Model):
 
 	def getOtherModels(self):
 			return {
-				"stuff_table":self.stuff_table_set.get(),
-				"hero_table":self.hero_table_set.get(),
-				"talent_table":self.talent_table_set.get(),
-				"skin_table":self.skin_table_set.get(),
-				"altar_table":self.altar_table_set.get(),
-				"jewel_type_table":self.jewel_type_table_set.get(),
-				"jewel_level_table":self.jewel_level_table_set.get(),
-				"egg_table":self.egg_table_set.get(),
-				"egg_equipped_table":self.egg_equipped_table_set.get(),
-				"dragon_table":self.dragon_table_set.get(),
-				"runes_table":self.runes_table_set.get(),
-				"reforge_table":self.reforge_table_set.get(),
-				"refine_table":self.refine_table_set.get(),
-				"medals_table":self.medals_table_set.get(),
-				"relics_table":self.relics_table_set.get(),
-				"weapon_skins_table":self.weapon_skins_table_set.get(),
+				"StuffTable": self.stufftable_set.get(),
+				"HeroTable":self.herotable_set.get(),
+				"TalentTable":self.talenttable_set.get(),
+				"SkinTable":self.skintable_set.get(),
+				"AltarTable":self.altartable_set.get(),
+				"JewelTypeTable":self.jeweltypetable_set.get(),
+				"JewelLevelTable":self.jewelleveltable_set.get(),
+				"EggTable":self.eggtable_set.get(),
+				"EggEquippedTable":self.eggequippedtable_set.get(),
+				"DragonTable":self.dragontable_set.get(),
+				"RunesTable":self.runestable_set.get(),
+				"ReforgeTable":self.reforgetable_set.get(),
+				"RefineTable":self.refinetable_set.get(),
+				"MedalsTable":self.medalstable_set.get(),
+				"RelicsTable":self.relicstable_set.get(),
+				"WeaponSkinsTable":self.weaponskinstable_set.get(),
 			}
 
 	def __str__(self):
@@ -221,7 +221,7 @@ class user(models.Model):
 					'health_base_stats_hero_choosen': self.health_base_stats_hero_choosen,
 					}
 
-class stuff_table(models.Model,parentModel):
+class StuffTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	weapon_choosen = models.CharField(max_length=20 ,choices=stuff_weapon, default="None")
 	weapon_level = models.BigIntegerField(default=1, validators=[MaxValueValidator(170)]) 
@@ -418,7 +418,7 @@ class stuff_table(models.Model,parentModel):
 		return result
 
 
-class hero_table(models.Model,parentModel):
+class HeroTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	atreus_level = models.IntegerField(choices=hero_level, default=0)
 	atreus_star = models.IntegerField(choices=star_hero, default=0) 
@@ -541,7 +541,7 @@ class hero_table(models.Model,parentModel):
 		return Blvl20, Blvl40, Blvl60, Blvl80, Blvl120, Bs2, Bs7, Bs8
 
 
-class talent_table(models.Model,parentModel):
+class TalentTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	strength_level = models.IntegerField(validators=[MaxValueValidator(25)], default=0)
 	power_level = models.IntegerField(validators=[MaxValueValidator(25)], default=0)
@@ -581,7 +581,7 @@ class talent_table(models.Model,parentModel):
 		}
 
 
-class skin_table(models.Model,parentModel):
+class SkinTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	skin_health = models.IntegerField(default=0)
 	skin_attack = models.IntegerField(default=0)
@@ -598,7 +598,7 @@ class skin_table(models.Model,parentModel):
 
 
 
-class altar_table(models.Model,parentModel):
+class AltarTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	stuff_altar_level = models.IntegerField(default=0, validators=[MaxValueValidator(120)]) 
 	stuff_altar_ascension = models.IntegerField(choices=altar_ascension_level, default=0)
@@ -646,7 +646,7 @@ class altar_table(models.Model,parentModel):
 		return total
 
 
-class jewel_type_table(models.Model,parentModel):
+class JewelTypeTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	weapon_jewel1_type = models.CharField(max_length=10, choices=atk_jewel, default="none")
 	weapon_jewel2_type = models.CharField(max_length=10, choices=atk_jewel, default="none")
@@ -730,7 +730,7 @@ class jewel_type_table(models.Model,parentModel):
 		return chaine
 
 
-class jewel_level_table(models.Model,parentModel):
+class JewelLevelTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	weapon_jewel1_level = models.IntegerField(default=0, validators=[MinValueValidator(0),MaxValueValidator(13)])
 	weapon_jewel2_level = models.IntegerField(default=0, validators=[MinValueValidator(0),MaxValueValidator(13)])
@@ -814,7 +814,7 @@ class jewel_level_table(models.Model,parentModel):
 		return chaine
 
 	def JewelStatsRecup(self,attack_jewel_base:float,hp_jewel_base:float):
-		jewels_type = list(jewel_type_table.objects.get(user_profile=self.user_profile).dictionnaire().values())
+		jewels_type = list(JewelTypeTable.objects.get(user_profile=self.user_profile).dictionnaire().values())
 		jewels_level = list(self.dictionnaire().values())
 		list_type = []
 		result =  {}
@@ -845,7 +845,7 @@ class jewel_level_table(models.Model,parentModel):
 	def JewelSpeBonusStatsRecup(self,type_jewel,brave_boost,relic_jewel_base=0)->dict:
 		result = {}
 		JewelSpeBonus = self.local_data['JewelSpeBonus']
-		jewel_type = jewel_type_table.objects.get(user_profile=self.user_profile).dictionnaire()
+		jewel_type = JewelTypeTable.objects.get(user_profile=self.user_profile).dictionnaire()
 		jewel1_type = jewel_type[str(type_jewel)+"_jewel1_type"]
 		jewel2_type = jewel_type[str(type_jewel)+"_jewel2_type"]
 		jewel3_type = jewel_type[str(type_jewel)+"_jewel3_type"]
@@ -880,7 +880,7 @@ class jewel_level_table(models.Model,parentModel):
 		return result
 
 	def allLevelForImage(self):
-		jewel_type = jewel_type_table.objects.get(user_profile=self.user_profile).dictionnaire()
+		jewel_type = JewelTypeTable.objects.get(user_profile=self.user_profile).dictionnaire()
 		weapon_jewel1_level = self.weapon_jewel1_level if jewel_type['weapon_jewel1_type'] != "none" else 0
 		weapon_jewel2_level = self.weapon_jewel2_level if jewel_type['weapon_jewel2_type'] != "none" else 0
 		weapon_jewel3_level = self.weapon_jewel3_level if jewel_type['weapon_jewel3_type'] != "none" else 0
@@ -932,7 +932,7 @@ class jewel_level_table(models.Model,parentModel):
 
 
 
-class egg_table(models.Model,parentModel):
+class EggTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	green_bat = models.IntegerField(choices=level_egg_mobs, default=0)
 	vase = models.IntegerField(choices=level_egg_mobs, default=0)
@@ -1142,7 +1142,7 @@ class egg_table(models.Model,parentModel):
 		return passiv_stats
 
 
-class egg_equipped_table(models.Model,parentModel):
+class EggEquippedTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	egg_equipped1 = models.CharField(max_length=30, choices=all_egg, default="Choose")
 	egg_equipped2 = models.CharField(max_length=30, choices=all_egg, default="Choose")
@@ -1164,7 +1164,7 @@ class egg_equipped_table(models.Model,parentModel):
 		return chaine
 	
 	def GetEggStats(self,missing_data):
-		all_egg = egg_table.objects.get(user_profile=self.user_profile).dictionnaire()
+		all_egg = EggTable.objects.get(user_profile=self.user_profile).dictionnaire()
 		all_equipped = [self.egg_equipped1, self.egg_equipped2, self.egg_equipped3, self.egg_equipped4, self.egg_equipped5]
 		dict_stats = {
 					"none": 0,
@@ -1220,7 +1220,7 @@ class egg_equipped_table(models.Model,parentModel):
 
 
 
-class dragon_table(models.Model,parentModel):
+class DragonTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	dragon1_type = models.CharField(max_length=30, choices=all_dragon, default="None")
 	dragon2_type = models.CharField(max_length=30, choices=all_dragon, default="None")
@@ -1351,7 +1351,7 @@ class dragon_table(models.Model,parentModel):
 
 
 
-class runes_table(models.Model,parentModel):
+class RunesTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	power_line_1 = models.CharField(choices=power_rune_all,default="none", max_length=30)
 	power_line_2 = models.CharField(choices=power_rune_all,default="none", max_length=30)
@@ -1530,7 +1530,7 @@ class runes_table(models.Model,parentModel):
 		}
 
 
-class reforge_table(models.Model,parentModel):
+class ReforgeTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	reforge_power = models.IntegerField(choices=reforge, default=0)
 	reforge_saviour = models.IntegerField(choices=reforge, default=0)
@@ -1568,7 +1568,7 @@ class reforge_table(models.Model,parentModel):
 		return stats_reforge
 
 
-class refine_table(models.Model,parentModel):
+class RefineTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	weapon_refine_atk = models.IntegerField(default=0, validators=[MaxValueValidator(8000)])
 	weapon_refine_basic_stats = models.FloatField(default=0, validators=[MaxValueValidator(100)])
@@ -1608,7 +1608,7 @@ class refine_table(models.Model,parentModel):
 		return chaine
 
 
-class dmg_calc_table(models.Model,parentModel):
+class DamageCalcTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	hero_atk = models.JSONField(default=dict,blank=False)
 
@@ -1683,7 +1683,7 @@ class dmg_calc_table(models.Model,parentModel):
 		return result
 
 
-class medals_table(models.Model,parentModel):
+class MedalsTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	medals_1001 = models.BooleanField(blank=True, default=False)
 	medals_1002 = models.BooleanField(blank=True, default=False)
@@ -1834,7 +1834,7 @@ class medals_table(models.Model,parentModel):
 			print(f"\nMedals Stats :{result}\n")
 		return result
 
-class relics_table(models.Model,parentModel):
+class RelicsTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	wraith_mask_level = models.IntegerField(default=0, choices=relics_level)
 	wraith_mask_star = models.IntegerField(default=0, choices=rare_relics_star)
@@ -1893,7 +1893,7 @@ class relics_table(models.Model,parentModel):
 	maidens_pearl_earring_star = models.IntegerField(default=0, choices=rare_relics_star)
 	ancient_shield_level = models.IntegerField(default=0, choices=relics_level)
 	ancient_shield_star = models.IntegerField(default=0, choices=rare_relics_star)
-	ancient_shield_effective = models.FloatField(default=0,validators=[MaxValueValidator(200)]) ## TODO check this (60,120,150,??)
+	ancient_shield_effective = models.FloatField(default=0,validators=[MaxValueValidator(200)])
 	supreme_trinity_alpha_level = models.IntegerField(default=0, choices=relics_level)
 	supreme_trinity_alpha_star = models.IntegerField(default=0, choices=radiant_relics_star)
 	supreme_trinity_alpha_effective = models.FloatField(default=0,validators=[MaxValueValidator(500)])
@@ -1971,14 +1971,14 @@ class relics_table(models.Model,parentModel):
 	dusken_cask_star = models.IntegerField(default=0, choices=radiant_relics_star)
 	dragon_eye_level = models.IntegerField(default=0, choices=relics_level)
 	dragon_eye_star = models.IntegerField(default=0, choices=radiant_relics_star)
-	dragon_eye_effective = models.FloatField(default=0,validators=[MaxValueValidator(10)]) ##TODO 2%, ??, ??, ??
+	dragon_eye_effective = models.FloatField(default=0,validators=[MaxValueValidator(10)])
 	ring_of_greed_level = models.IntegerField(default=0, choices=relics_level)
 	ring_of_greed_star = models.IntegerField(default=0, choices=radiant_relics_star)
 	genesis_staff_level = models.IntegerField(default=0, choices=relics_level)
 	genesis_staff_star = models.IntegerField(default=0, choices=holy_relics_star)
 	bloodstained_sword_level = models.IntegerField(default=0, choices=relics_level)
 	bloodstained_sword_star = models.IntegerField(default=0, choices=holy_relics_star)
-	bloodstained_sword_effective = models.FloatField(default=0,validators=[MaxValueValidator(9)]) ##TODO 1.2%	3%	6%	??
+	bloodstained_sword_effective = models.FloatField(default=0,validators=[MaxValueValidator(9)])
 	starcluster_rage_level = models.IntegerField(default=0, choices=relics_level)
 	starcluster_rage_star = models.IntegerField(default=0, choices=holy_relics_star)
 	starcluster_rage_effective = models.FloatField(default=0,validators=[MaxValueValidator(10)])
@@ -2012,12 +2012,12 @@ class relics_table(models.Model,parentModel):
 	cupids_necklace_star = models.IntegerField(default=0, choices=holy_relics_star)
 	life_staff_level = models.IntegerField(default=0, choices=relics_level)
 	life_staff_star = models.IntegerField(default=0, choices=holy_relics_star)
-	life_staff_effective = models.FloatField(default=0,validators=[MaxValueValidator(2000)]) ## TODO 150	500	1050	??
+	life_staff_effective = models.FloatField(default=0,validators=[MaxValueValidator(2000)])
 	light_grail_level = models.IntegerField(default=0, choices=relics_level)
 	light_grail_star = models.IntegerField(default=0, choices=holy_relics_star)
 	primal_fire_level = models.IntegerField(default=0, choices=relics_level)
 	primal_fire_star = models.IntegerField(default=0, choices=holy_relics_star)
-	primal_fire_effective = models.FloatField(default=0,validators=[MaxValueValidator(600)]) ## TODO 60	??	??	??
+	primal_fire_effective = models.FloatField(default=0,validators=[MaxValueValidator(600)])
 	
 	def dictionnaire(self):
 		return {
@@ -2131,7 +2131,7 @@ class relics_table(models.Model,parentModel):
 		return result
 
 
-class promo_code(models.Model,parentModel):
+class PromoCode(models.Model,parentModel):
 	code = models.CharField(max_length=30, blank=False)
 	is_active = models.BooleanField(default=False)
 	reward_1_type = models.CharField(max_length=20,choices= type_reward, default=" ")
@@ -2150,7 +2150,7 @@ class promo_code(models.Model,parentModel):
 
 
 
-class weapon_skins_table(models.Model,parentModel):
+class WeaponSkinsTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
 	demon_blade_rain_1 = models.BooleanField(blank=True, default=False)
 	demon_blade_rain_2 = models.BooleanField(blank=True, default=False)
@@ -2200,7 +2200,7 @@ class weapon_skins_table(models.Model,parentModel):
 
 
 	def equippedSkin(self):
-		weapon_choosen = stuff_table.objects.get(user_profile=self.user_profile).weapon_choosen.replace(" ","_").lower()
+		weapon_choosen = StuffTable.objects.get(user_profile=self.user_profile).weapon_choosen.replace(" ","_").lower()
 		list_weapon_noskin = ['mini_atreus']
 		## pour prochain skin faudra rajouter un moyen pour savoir quelle skin est équipé
 		if weapon_choosen == "tornado":
@@ -2238,7 +2238,7 @@ class weapon_skins_table(models.Model,parentModel):
 	
 isImage = RegexValidator(r"([-\w]+\.(?:png))", "Your string be an image.")
 
-class articleMenu(models.Model):
+class ArticleMenu(models.Model):
 	title = models.CharField(max_length=255)
 	intro = models.TextField()
 	body = models.TextField()
@@ -2251,15 +2251,14 @@ class articleMenu(models.Model):
 	meta_description = models.CharField(max_length=255, default=None, blank=True, null=True)
 
 	def save(self, *args, **kwargs):
-		from .function import send_webhook
 		pk_article = self.pk
 		try:
-			articleMenu.objects.get(pk=pk_article)
+			ArticleMenu.objects.get(pk=pk_article)
 			self.last_change = f"Updated on {datetime.datetime.now().strftime('%m/%d/%Y')}"
-			send_webhook(f"Update : `{self}`")
 		except:
-			send_webhook(f"New Article : `{self}`")
-		super(articleMenu, self).save(*args, **kwargs)
+			# article being created
+			pass
+		super(ArticleMenu, self).save(*args, **kwargs)
 
 	def __str__(self):
 		chaine = f"{self.title} | display {self.display} | is_new {self.is_new}"

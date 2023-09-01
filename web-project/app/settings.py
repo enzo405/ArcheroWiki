@@ -23,6 +23,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -68,18 +69,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
-USE_I18N = True
-USE_TZ = True
-
-
-#CSRF_FAILURE_VIEW = os.environ.get('CSRF_FAILURE_VIEW')
-#CSRF_USE_SESSION = os.environ.get('CSRF_USE_SESSION')
-#CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE')
-#CSRF_COOKIE_DOMAIN = os.environ.get('CSRF_COOKIE_DOMAIN')
-#CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS')
-
 
 CSRF_FAILURE_VIEW = c_CSRF_FAILURE_VIEW
 CSRF_USE_SESSION = c_CSRF_USE_SESSION
@@ -93,3 +82,26 @@ STATIC_ROOT = os.path.join(BASE_DIR, "calculator/static/")
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_TZ = True
+
+from django.utils.translation import gettext_lazy as _
+
+
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('fr', _('French')),
+    ('de', _('German')),
+    ('ru', _('Russian')),
+    ('br', _('Brazilian')),
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)

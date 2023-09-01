@@ -1,9 +1,10 @@
 {% extends "template.html" %}
 {% load static %}
+{% load i18n %}
 {% block head %}
-	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
-	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.4b">
-	<title>Archero - Wiki</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.7.2">
+	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.7.2">
+	<title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 	<meta property="og:type" content="website">
 	<meta name="description" content="Welcome to the Archero wiki, your ultimate resource for the popular mobile game by HABBY. Explore upgrade costs for relics, dragons, talents, items, and heroes. Discover comprehensive guides and strategies to optimize your gameplay.">
 	{% if content != "" %}
@@ -17,21 +18,21 @@
 		<meta property="og:title" content="Archero - Upgrade Cost">
 		<meta property="og:url" content="https://stats.wiki-archero.com/wiki/upgrade">
 		<meta property="og:description" content="Welcome to the Archero wiki, your ultimate resource for the popular mobile game by HABBY. Explore upgrade costs for relics, dragons, talents, items, and heroes. Discover comprehensive guides and strategies to optimize your gameplay.">
-		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.4b">
+		<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.7.2">
 	{% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
 <div class="content_container">
 	<div class="select-cost">
-		<label class="category-cost" for="cost_type">Choose the Category :</label>
+		<label class="category-cost" for="cost_type">{% blocktrans %}Choose the Category :{% endblocktrans %}</label>
 		<div class="select">
 			<select id="cost_type">
-				<option value="items">Items</option>
-				<option value="heroes">Heroes</option>
-				<option value="talents">Talents</option>
-				<option value="dragons">Dragons</option>
-				<option value="relics">Relics</option>
+				<option value="items">{% blocktrans %}Items{% endblocktrans %}</option>
+				<option value="heroes">{% blocktrans %}Heroes{% endblocktrans %}</option>
+				<option value="talents">{% blocktrans %}Talents{% endblocktrans %}</option>
+				<option value="dragons">{% blocktrans %}Dragons{% endblocktrans %}</option>
+				<option value="relics">{% blocktrans %}Relics{% endblocktrans %}</option>
 			</select>
 			<script>
 				var costType = "{{ cost_type }}"; // assuming "cost_type" is the header parameter name
@@ -46,29 +47,29 @@
 		</div>
 	</div>
 	<div class="input-cost">
-		Insert the level (from x to y)
+		{% blocktrans %}Insert the level (from x to y){% endblocktrans %}
 		<div class="cost_input_container">
 			{% if content != "" %}
-			<input id="level1" class="cost_input" type="number" value="{{ lvl1 }}" placeholder="level 1" required>
-			<input id="level2" class="cost_input" type="number" value="{{ lvl2 }}" placeholder="level 2" required>
+			<input id="level1" class="cost_input" type="number" value="{{ lvl1 }}" placeholder="{% blocktrans %}level 1{% endblocktrans %}" required>
+			<input id="level2" class="cost_input" type="number" value="{{ lvl2 }}" placeholder="{% blocktrans %}level 2{% endblocktrans %}" required>
 			{% else %}
-			<input id="level1" class="cost_input" type="number" placeholder="level 1" required>
-			<input id="level2" class="cost_input" type="number" placeholder="level 2" required>
+			<input id="level1" class="cost_input" type="number" placeholder="{% blocktrans %}level 1{% endblocktrans %}" required>
+			<input id="level2" class="cost_input" type="number" placeholder="{% blocktrans %}level 2{% endblocktrans %}" required>
 			{% endif %}
 		</div>
 		<fieldset class="rank_input" id="rank_container" style="display: none;">
 			<legend id="title_legend"></legend>
 			<div class="fieldset_container">
 				<input type="radio" id="a_rank" name="rank" value="a" style="display: none;">
-				<label class="label_fieldset" for="a_rank"><img src="" id="img_rank_input1" width="30" height="30" alt="a rank dragon"></label>
+				<label class="label_fieldset" for="a_rank"><img src="" id="img_rank_input1" width="30" height="30" alt="form a rank dragon"></label>
 			</div>
 			<div class="fieldset_container">
 				<input type="radio" id="s_rank" name="rank" value="s" style="display: none;">
-				<label class="label_fieldset" for="s_rank"><img src="" id="img_rank_input2" width="30" height="30" alt="s rank dragon"></label>
+				<label class="label_fieldset" for="s_rank"><img src="" id="img_rank_input2" width="30" height="30" alt="form s rank dragon"></label>
 			</div>
 			<div class="fieldset_container">
 				<input type="radio" id="ss_rank" name="rank" value="ss" style="display: none;">
-				<label class="label_fieldset" for="ss_rank"><img src="" id="img_rank_input3" width="30" height="30" alt="ss rank dragon"></label>
+				<label class="label_fieldset" for="ss_rank"><img src="" id="img_rank_input3" width="30" height="30" alt="form ss rank dragon"></label>
 			</div>
 		</fieldset>
 		<script>
@@ -121,7 +122,7 @@
 							</div>
 						</div>
 						<div class="sc-3qrykn-6 fTOqMH">
-							<img src="{{ content.eImage }}" alt="Thumbnail" id="e_image" class="sc-3qrykn-7 fUliQq">
+							<img src="{{ content.eImage }}" alt="Archero Upgrade Cost Image Thumbnail" id="e_image" class="sc-3qrykn-7 fUliQq">
 						</div>
 					</div>
 				</div>
@@ -139,9 +140,9 @@
 			var level2 = document.getElementById('level2').value || "2";
 			if (type == "dragons" || type === "relics"){
 				var rankInput = document.querySelector('input[name="rank"]:checked').value.toUpperCase() || "A";
-				window.location.href = `/wiki/upgrade/${type}/${level1}/${level2}/${rankInput}/`
+				window.location.href = `/{{ LANGUAGE_CODE }}/wiki/upgrade/${type}/${level1}/${level2}/${rankInput}/`
 			}else{
-				window.location.href = `/wiki/upgrade/${type}/${level1}/${level2}/` 
+				window.location.href = `/{{ LANGUAGE_CODE }}/wiki/upgrade/${type}/${level1}/${level2}/` 
 			}
 		})
 		
@@ -156,13 +157,13 @@
 			const img_rank_input3 = document.getElementById('img_rank_input3');
 			if (type === "dragons") {
 				rank_container.style.display = "grid";
-				title_legend.innerHTML = "Dragons Rank";
+				title_legend.innerHTML = "{% blocktrans %}Dragons Rank{% endblocktrans %}";
 				img_rank_input1.src = "/static/image/dragon/A.png";
 				img_rank_input2.src = "/static/image/dragon/S.png";
 				img_rank_input3.src = "/static/image/dragon/SS.png";
 			} else if (type === "relics") {
 				rank_container.style.display = "grid";
-				title_legend.innerHTML = "Relics Rank";
+				title_legend.innerHTML = "{% blocktrans %}Relics Rank{% endblocktrans %}";
 				img_rank_input1.src = "/static/image/rarity/great.png";
 				img_rank_input2.src = "/static/image/rarity/epic.png";
 				img_rank_input3.src = "/static/image/rarity/legendary.png";

@@ -1,14 +1,15 @@
 {% extends "template.html" %}
 {% load static %}
+{% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
-<title>Archero - Wiki</title>
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.7.2">
+<title>{% blocktrans %}Archero - Damage Calculator{% endblocktrans %}</title>
 <meta property="og:title" content="Archero Emulator Runes">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/damage-calculator">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Welcome to the Archero wiki, optimize your damage output in Archero with our powerful damage calculator tool. Easily calculate and analyze your in-game damage based on various factors, including gear, abilities, and runes. Take control of your build by experimenting with different runes swapping strategies to maximize your potential.">
 <meta name="description" content="Welcome to the Archero wiki, optimize your damage output in Archero with our powerful damage calculator tool. Easily calculate and analyze your in-game damage based on various factors, including gear, abilities, and runes. Take control of your build by experimenting with different runes swapping strategies to maximize your potential.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.4b">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.7.2">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
@@ -19,11 +20,11 @@
 			<div class="runes-choice">
 				<div id="power" class="fieldset_container" onclick="runesClicked('power')">
 					<input type="radio" id="power_rune" name="runes" value="power" style="display: none;">
-					<label class="label_fieldset" for="power_rune"><img class="rchrch" src="/static/image/wiki-image/rune_101.png" alt="runes power"></label>
+					<label class="label_fieldset" for="power_rune"><img class="rchrch" src="/static/image/wiki-image/rune_101.png" alt="runes power damage calculator"></label>
 				</div>
 				<div id="courage" class="fieldset_container" onclick="runesClicked('courage')">
 					<input type="radio" id="courage_rune" name="runes" value="courage" style="display: none;">
-					<label class="label_fieldset" for="courage_rune"><img class="rchrch" src="/static/image/wiki-image/rune_104.png" alt="runes courage"></label>
+					<label class="label_fieldset" for="courage_rune"><img class="rchrch" src="/static/image/wiki-image/rune_104.png" alt="runes courage damage calculator"></label>
 				</div>
 			</div>
 			<script>
@@ -32,19 +33,19 @@
 			<div class="runes_input">
 				<div class="select-runes">
 					<select id="id_firstSelect" class="runes-line" name="firstSelect">
-						<option value="none">--Choose a Runes--</option>
+						<option value="none">{% blocktrans %}--Choose a Runes--{% endblocktrans %}</option>
 					</select>
 					<select id="id_secondSelect" class="runes-line" name="secondSelect">
-						<option value="none">--Choose a Runes--</option>
+						<option value="none">{% blocktrans %}--Choose a Runes--{% endblocktrans %}</option>
 					</select>
 					<select id="id_thirdSelect" class="runes-line" name="thirdSelect">
-						<option value="none">--Choose a Runes--</option>
+						<option value="none">{% blocktrans %}--Choose a Runes--{% endblocktrans %}</option>
 					</select>
 					<select id="id_fourthSelect" class="runes-line" name="fourthSelect">
-						<option value="none">--Choose a Runes--</option>
+						<option value="none">{% blocktrans %}--Choose a Runes--{% endblocktrans %}</option>
 					</select>
 					<select id="id_fifthSelect" class="runes-line" name="fifthSelect">
-						<option value="none">--Choose a Runes--</option>
+						<option value="none">{% blocktrans %}--Choose a Runes--{% endblocktrans %}</option>
 					</select>
 				</div>
 				<div class="input-runes">
@@ -56,7 +57,7 @@
 				</div>
 			</div>
 			<div class="container-submit-form">
-				<button type="submit" class="btn-generate-damage">Generate Damage</button>
+				<button type="submit" class="btn-generate-damage">{% blocktrans %}Generate Damage{% endblocktrans %}</button>
 			</div>
 		</form>
 	</div>
@@ -65,42 +66,42 @@
 			<tr>
 				<th colspan="1" class="table-outrow popup-dmgcalc" onclick="damagePopupFunction()"><i class="fa fa-info-circle" aria-hidden="true"></i></th>
 					<span class="popup_container" id="damage_popup">
-						• Generate Damage show damage with the runes input above<br>
-						• Here you see a table with the damage in game<br>
+						• {% blocktrans %}Generate Damage show damage with the runes input above{% endblocktrans %}<br>
+						• {% blocktrans %}Here you see a table with the damage in game{% endblocktrans %}<br>
 					</span>
-				<th colspan="2" class="distance-type-th">Melee</th>
-				<th colspan="2" class="distance-type-th">Range</th>
+				<th colspan="2" class="distance-type-th">{% blocktrans %}Melee{% endblocktrans %}</th>
+				<th colspan="2" class="distance-type-th">{% blocktrans %}Range{% endblocktrans %}</th>
 			</tr>
 			<tr>
-				<th class="table-outrow"><a class="btn-reset" href="">Reset</a></th>
-				<th class="damage-type-th">Normal Dmg</th>
-				<th class="damage-type-th">Critical Dmg</th>
-				<th class="damage-type-th">Normal Dmg</th>
-				<th class="damage-type-th">Critical Dmg</th>
+				<th class="table-outrow"><a class="btn-reset" href="">{% blocktrans %}Reset{% endblocktrans %}</a></th>
+				<th class="damage-type-th">{% blocktrans %}Normal Dmg{% endblocktrans %}</th>
+				<th class="damage-type-th">{% blocktrans %}Critical Dmg{% endblocktrans %}</th>
+				<th class="damage-type-th">{% blocktrans %}Normal Dmg{% endblocktrans %}</th>
+				<th class="damage-type-th">{% blocktrans %}Critical Dmg{% endblocktrans %}</th>
 			</tr>
 			<tr>
-				<td class="mobs-type-td">Ground Mobs</td>
+				<td class="mobs-type-td">{% blocktrans %}Ground Mobs{% endblocktrans %}</td>
 				<td class="td-value-damage" id="damageMeleeNormalGroundM">{{ mob_ground_melee_damage.0 }}</td>
 				<td class="td-value-damage" id="damageMeleeCriticGroundM">{{ mob_ground_melee_damage.1 }}</td>
 				<td class="td-value-damage" id="damageRangeNormalGroundM">{{ mob_ground_range_damage.0 }}</td>
 				<td class="td-value-damage" id="damageRangeCriticGroundM">{{ mob_ground_range_damage.1 }}</td>
 			</tr>
 			<tr>
-				<td class="mobs-type-td">Airborne Mobs</td>
+				<td class="mobs-type-td">{% blocktrans %}Airborne Mobs{% endblocktrans %}</td>
 				<td class="td-value-damage" id="damageMeleeNormalAirborneM">{{ mob_airborne_melee_damage.0 }}</td>
 				<td class="td-value-damage" id="damageMeleeCriticAirborneM">{{ mob_airborne_melee_damage.1 }}</td>
 				<td class="td-value-damage" id="damageRangeNormalAirborneM">{{ mob_airborne_range_damage.0 }}</td>
 				<td class="td-value-damage" id="damageRangeCriticAirborneM">{{ mob_airborne_range_damage.1 }}</td>
 			</tr>
 			<tr>
-				<td class="mobs-type-td">Ground Boss</td>
+				<td class="mobs-type-td">{% blocktrans %}Ground Boss{% endblocktrans %}</td>
 				<td class="td-value-damage" id="damageMeleeNormalGroundB">{{ boss_ground_melee_damage.0 }}</td>
 				<td class="td-value-damage" id="damageMeleeCriticGroundB">{{ boss_ground_melee_damage.1 }}</td>
 				<td class="td-value-damage" id="damageRangeNormalGroundB">{{ boss_ground_range_damage.0 }}</td>
 				<td class="td-value-damage" id="damageRangeCriticGroundB">{{ boss_ground_range_damage.1 }}</td>
 			</tr>
 			<tr>
-				<td class="mobs-type-td">Airborne Boss</td>
+				<td class="mobs-type-td">{% blocktrans %}Airborne Boss{% endblocktrans %}</td>
 				<td class="td-value-damage" id="damageMeleeNormalAirborneB">{{ boss_airborne_melee_damage.0 }}</td>
 				<td class="td-value-damage" id="damageMeleeCriticAirborneB">{{ boss_airborne_melee_damage.1 }}</td>
 				<td class="td-value-damage" id="damageRangeNormalAirborneB">{{ boss_airborne_range_damage.0 }}</td>
@@ -108,10 +109,10 @@
 			</tr>
 		</table><br>
 		<div class="averageDamage">
-			This is average damage with:
-			<li><b id="critdmg">{{ crit_dmg }}</b>% of Critical Damage</li>
-			<li><b id="critrate">{{ crit_rate }}</b>% chance of Critical Hit</li>
-			Your average Damage is : <b id="averageDamage">{{ averageDamage }}</b>
+			{% blocktrans %}This is average damage with:{% endblocktrans %}
+			<li><b id="critdmg">{{ crit_dmg }}</b> {% blocktrans %}of Critical Damage{% endblocktrans %}</li>
+			<li><b id="critrate">{{ crit_rate }}</b> {% blocktrans %}chance of Critical Hit{% endblocktrans %}</li>
+			{% blocktrans %}Your average Damage is : {% endblocktrans %}<b id="averageDamage">{{ averageDamage }}</b>
 		</div>
 	</div>
 </div>
@@ -127,8 +128,8 @@
 	})
 </script>
 <script>
-	var powerRunesLines = [["none", "None"],['attack_flat','Attack'],['attack_var','Attack%'],["flat_dmg_airborne", "Damage to Airborne Units"],["var_dmg_airborne", "Damage to Airborne Units %"],["flat_dmg_ground", "Damage to Ground Units"],["var_dmg_ground", "Damage to Ground Units %"],["flat_dmg_melee", "Damage to Melee Units"],["var_dmg_melee", "Damage to Melee Units %"],["flat_dmg_ranged", "Damage to Ranged Units"],["var_dmg_ranged", "Damage to Ranged Units %"],["flat_dmg_boss", "Damage to Bosses Units"],["var_dmg_boss", "Damage to Bosses Units %"],["flat_dmg_mob", "Damage to Mobs Units"],["var_dmg_mob", "Damage to Mobs Units %"],["var_dmg_hero", "Damage to Heroes %"],["var_all_dmg", "All Damage %"],["var_elemental_dmg", "Elemental Damage %"],["var_atk_speed", "Attack Speed %"],["var_crit_rate", "Critic Chance %"],["var_crit_dmg", "Critic Damage %"]]
-	var courageRunesLines = [["none", "None"],['attack_flat','Attack'],['attack_var','Attack%'],['courage_hero_attack_flat','Hero base ATK'],['courage_hero_attack_var','Hero base ATK %'],['other','other ...']]
+	var powerRunesLines = [["none", "{% trans 'None' %}"],["attack_flat", "{% trans 'Attack' %}%"],["attack_var", "{% trans 'Attack' %}%"],["flat_dmg_airborne", "{% trans 'Damage to Airborne Units' %}"],["var_dmg_airborne", "{% trans 'Damage to Airborne Units' %} %"],["flat_dmg_ground", "{% trans 'Damage to Ground Units' %}"],["var_dmg_ground", "{% trans 'Damage to Ground Units' %} %"],["flat_dmg_melee", "{% trans 'Damage to Melee Units' %}"],["var_dmg_melee", "{% trans 'Damage to Melee Units' %} %"],["flat_dmg_ranged", "{% trans 'Damage to Ranged Units' %}"],["var_dmg_ranged", "{% trans 'Damage to Ranged Units' %} %"],["flat_dmg_boss", "{% trans 'Damage to Bosses Units' %}"],["var_dmg_boss", "{% trans 'Damage to Bosses Units' %} %"],["flat_dmg_mob", "{% trans 'Damage to Mobs Units' %}"],["var_dmg_mob", "{% trans 'Damage to Mobs Units' %} %"],["var_dmg_hero", "{% trans 'Damage to Heroes' %} %"],["var_all_dmg", "{% trans 'All Damage' %} %"],["var_elemental_dmg", "{% trans 'Elemental Damage' %} %"],["var_atk_speed", "{% trans 'Attack Speed' %} %"],["var_crit_rate", "{% trans 'Critic Chance' %} %"],["var_crit_dmg", "{% trans 'Critic Damage' %}%"]]
+	var courageRunesLines = [["none", "{% trans 'None' %}"],["attack_flat", "{% trans 'Attack' %}"],["attack_var", "{% trans 'Attack' %}%"],["courage_hero_attack_flat", "{% trans 'Hero base ATK' %}"],["courage_hero_attack_var", "{% trans 'Hero base ATK' %} %"],["other", "{% trans 'other ...' %}"]]
 	function runesClicked(runesType) {
 		var allSelect = document.getElementsByClassName('runes-line');
 		var inputRuneContainer = document.getElementsByClassName('runes_input');
@@ -166,15 +167,15 @@
 				}
 			});
 			firstSelect.value = "{{ vars_dict.power_first_select }}";
-			firstInput.value = "{{ vars_dict.power_first_input }}";
+			firstInput.value = parseFloat("{{ vars_dict.power_first_input }}".replace(',', '.'));
 			secondSelect.value = "{{ vars_dict.power_second_select }}";
-			secondInput.value = "{{ vars_dict.power_second_input }}";
-			thirdSelect.value = "{{ vars_dict.power_third_select }}"
-			thirdInput.value = "{{ vars_dict.power_third_input }}";
-			fourthSelect.value = "{{ vars_dict.power_fourth_select }}"
-			fourthInput.value = "{{ vars_dict.power_fourth_input }}";
-			fifthSelect.value = "{{ vars_dict.power_fifth_select }}"
-			fifthInput.value = "{{ vars_dict.power_fifth_input }}";
+			secondInput.value = parseFloat("{{ vars_dict.power_second_input }}".replace(',', '.'));
+			thirdSelect.value = "{{ vars_dict.power_third_select }}";
+			thirdInput.value = parseFloat("{{ vars_dict.power_third_input }}".replace(',', '.'));
+			fourthSelect.value = "{{ vars_dict.power_fourth_select }}";
+			fourthInput.value = parseFloat("{{ vars_dict.power_fourth_input }}".replace(',', '.'));
+			fifthSelect.value = "{{ vars_dict.power_fifth_select }}";
+			fifthInput.value = parseFloat("{{ vars_dict.power_fifth_input }}".replace(',', '.'));
 		} else if(runesType === "courage"){
 			inputRuneContainer[0].id = 'courage'
 			runesLine.forEach(select => {
@@ -193,15 +194,15 @@
 				}
 			});
 			firstSelect.value = "{{ vars_dict.courage_first_select }}";
-			firstInput.value = "{{ vars_dict.courage_first_input }}";
+			firstInput.value = parseFloat("{{ vars_dict.courage_first_input }}".replace(',', '.'));
 			secondSelect.value = "{{ vars_dict.courage_second_select }}";
-			secondInput.value = "{{ vars_dict.courage_second_input }}";
+			secondInput.value = parseFloat("{{ vars_dict.courage_second_input }}".replace(',', '.'));
 			thirdSelect.value = "{{ vars_dict.courage_third_select }}";
-			thirdInput.value = "{{ vars_dict.courage_third_input }}";
+			thirdInput.value = parseFloat("{{ vars_dict.courage_third_input }}".replace(',', '.'));
 			fourthSelect.value = "{{ vars_dict.courage_fourth_select }}";
-			fourthInput.value = "{{ vars_dict.courage_fourth_input }}";
+			fourthInput.value = parseFloat("{{ vars_dict.courage_fourth_input }}".replace(',', '.'));
 			fifthSelect.value = "{{ vars_dict.courage_fifth_select }}";
-			fifthInput.value = "{{ vars_dict.courage_fifth_input }}";
+			fifthInput.value = parseFloat("{{ vars_dict.courage_fifth_input }}".replace(',', '.'));
 		}
 	}
 	if("{{ method }}" === "POST"){

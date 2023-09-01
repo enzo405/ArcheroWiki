@@ -1,7 +1,13 @@
-<html lang="en">
+<!DOCTYPE html>
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+{% load static %}
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
 	<meta charset="UTF-8">
-	<title>Legal Notices</title>
+	<title>{% blocktrans %}Legal Notices{% endblocktrans %}</title>
 	<meta name="description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
@@ -115,36 +121,36 @@
 <body>
 {% endif %}
 	<header>
-		<h1>Legal Notices</h1>
+		<h1>{% blocktrans %}Legal Notices{% endblocktrans %}</h1>
 		<div class="header-lowerpart">
-			<h2><a href="/">Home <i class="fa fa-home" aria-hidden="true"></i></a></h2>
+			<h2><a href="/">{% blocktrans %}Home{% endblocktrans %} <i class="fa fa-home" aria-hidden="true"></i></a></h2>
 			<div class="traveling-inline-div" id="switch_dark_mode">
 				{% if darkmode == True %}
-				<img alt="button switch theme" id="darkmodeSWITCH" width="26" height="26" src="/static/image/img-sidebar/moon.png">
+				<img alt="switch theme" id="darkmodeSWITCH" width="26" height="26" src="/static/image/img-sidebar/moon.png">
 				{% elif darkmode == False %}
-				<img alt="button switch theme" id="darkmodeSWITCH" width="26" height="26" src="/static/image/img-sidebar/sun.png">
+				<img alt="switch theme" id="darkmodeSWITCH" width="26" height="26" src="/static/image/img-sidebar/sun.png">
 				{% endif %}
 			</div>
 		</div>
 	</header>
 	<main>
-		<h2>Website publisher</h2>
+		<h2>{% blocktrans %}Website publisher{% endblocktrans %}</h2>
 		<p>LuhCaran</p>
-		<p>Email address: luhcaran.dev@gmail.com</p>
-		<h2>Website host</h2>
-		<p>LuhCaran, hosted in France</p>
-		<h2>Cookies</h2>
-		<p>This website uses cookies to record the user's screen size to improve the website's display. The cookies also record the user's Archero ingame id and username.</p>
-		<h2>Editorial responsibility</h2>
-		<p>LuhCaran is responsible for the content published on this website and undertakes to comply with the laws in force regarding intellectual property and copyright.</p>
-		<h2>Intellectual property</h2>
-		<p>The content of this website is protected by copyright. Any reproduction, copying or use of the content without prior authorization is prohibited.</p>
-		<h2>External links</h2>
-		<p>This website may contain links to other websites. LuhCaran is not responsible for the content of these sites, and the user accesses these sites at their own risk.</p>
-		<h2>Terms of use</h2>
-		<p>The use of this website is subject to the following rules: no spamming, illegal content, harassment, fake information, etc.</p>
+		<p>{% blocktrans %}Email address{% endblocktrans %}: luhcaran.dev@gmail.com</p>
+		<h2>{% blocktrans %}Website host{% endblocktrans %}</h2>
+		<p>{% blocktrans %}LuhCaran, hosted in France{% endblocktrans %}</p>
+		<h2>{% blocktrans %}Cookies{% endblocktrans %}</h2>
+		<p>{% blocktrans %}This website uses cookies to record the user's screen size to improve the website's display. The cookies also record the user's Archero ingame id and username.{% endblocktrans %}</p>
+		<h2>{% blocktrans %}Editorial responsibility{% endblocktrans %}</h2>
+		<p>{% blocktrans %}LuhCaran is responsible for the content published on this website and undertakes to comply with the laws in force regarding intellectual property and copyright.{% endblocktrans %}</p>
+		<h2>{% blocktrans %}Intellectual property{% endblocktrans %}</h2>
+		<p>{% blocktrans %}The content of this website is protected by copyright. Any reproduction, copying or use of the content without prior authorization is prohibited.{% endblocktrans %}</p>
+		<h2>{% blocktrans %}External links{% endblocktrans %}</h2>
+		<p>{% blocktrans %}This website may contain links to other websites. LuhCaran is not responsible for the content of these sites, and the user accesses these sites at their own risk.{% endblocktrans %}</p>
+		<h2>{% blocktrans %}Terms of use{% endblocktrans %}</h2>
+		<p>{% blocktrans %}The use of this website is subject to the following rules: no spamming, illegal content, harassment, fake information, etc.{% endblocktrans %}</p>
 		<br><br>
-		<h3 class="github-link">For those of you who are curious, here is the link to the open-source project on Github.<br>
+		<h3 class="github-link">{% blocktrans %}For those of you who are curious, here is the link to the open-source project on Github.{% endblocktrans %}<br>
 			<a href="https://github.com/enzo405/public-archero-wiki-docker" target="_blank">https://github.com/enzo405/public-archero-wiki-docker</a>
 		</h3>
 	</main>

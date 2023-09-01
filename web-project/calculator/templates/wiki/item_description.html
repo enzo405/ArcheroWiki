@@ -1,22 +1,26 @@
 {% extends "template.html" %}
 {% load static %}
+{% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.4b">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.6.4b">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.7.2">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.7.2">
 <meta name="description" content="Explore a comprehensive list of items in Archero, including weapons, armor, rings, pets, lockets, bracelets, and spellbooks. Discover the stats, hidden stats, and descriptions for each item rarity. Unlock the full potential of your loadout with invaluable insights and make strategic choices to dominate your enemies in Archero.">
 <meta property="og:type" content="website">
 {% if item == "yes" %}
-<title>Archero - Wiki - {{ name }}</title>
+<title>{% blocktrans %}Archero - {{ name }}{% endblocktrans %}</title>
 <meta property="og:title" content="{{ name }}">
 <meta property="og:url" content="{{ url_cpy }}">
-<meta property="og:description" content="{{ item_data.description|safe }}">
-<meta property="og:image" content="{% static item_data.item_image %}?version=1.6.4b">
+{% block meta_description %}
+<meta property="og:description" content="{{ hero_data.description|safe }}{% for k,v in item_data.rarity.items %}{% if v != '' %}
+{{ v|safe }}{% else %}{% endif %}{% endfor %}">
+{% endblock %}
+<meta property="og:image" content="{% static item_data.item_image %}?version=1.7.2">
 {% else %}
-<title>Archero - Wiki</title>
+<title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Item Description">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/item">
 <meta property="og:description" content="Explore a comprehensive list of items in Archero, including weapons, armor, rings, pets, lockets, bracelets, and spellbooks. Discover the stats, hidden stats, and descriptions for each item rarity. Unlock the full potential of your loadout with invaluable insights and make strategic choices to dominate your enemies in Archero.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.6.4b">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.7.2">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -41,25 +45,25 @@
 				}
 			}
 		</script>
-		<a class="before_index arrow_searchbar" href="/wiki/item/{{ index_before.value }}/">
-            <img src="/static/{{ index_before.image }}" width="30" alt="{{ index_before.value }}">
+		<a class="before_index arrow_searchbar" href="/{{ LANGUAGE_CODE }}/wiki/item/{{ index_before.0 }}/">
+            <img src="/static/{{ index_before.1.image }}" width="30" alt="Archero Item {{ index_before.1.displayName }}">
             <i class="fas fa-arrow-up"></i>
         </a>
-        <input type="text" id="myInput" onkeyup="filterList()" placeholder="Search for items.." value="{{ name }}">
+        <input type="text" id="myInput" onkeyup="filterList()" placeholder="{% blocktrans %}Search for items..{% endblocktrans %}" value="{{ name }}">
 		<ul id="myUL" class="searchbar-ul-hero" style="display: none;">
 			{% for k,v in ItemData.items %}
                 <li>
-                    <a class="toggle-display-list" href="/wiki/item/{{ v.value }}/">
-                        <div class="item_name">{{ k }}</div>
+                    <a class="toggle-display-list" href="/{{ LANGUAGE_CODE }}/wiki/item/{{ k }}/">
+                        <div class="item_name">{{ v.displayName }}</div>
                         <div class="siimg">
-                            <img src="/static/{{ v.image }}" alt="{{ k }}" width="26">
+                            <img src="/static/{{ v.image }}" alt="Archero Item {{ k }}" width="26">
                         </div>
                     </a>
                 </li>
             {% endfor %}
 		</ul>
-		<a class="after_index arrow_searchbar" href="/wiki/item/{{ index_after.value }}/">
-            <img src="/static/{{ index_after.image }}" width="30" alt="{{ index_after.value }}">
+		<a class="after_index arrow_searchbar" href="/{{ LANGUAGE_CODE }}/wiki/item/{{ index_after.0 }}/">
+            <img src="/static/{{ index_after.1.image }}" width="30" alt="Archero Item {{ index_after.1.displayName }}">
             <i class="fas fa-arrow-up"></i>
         </a>
 	</div>
@@ -67,10 +71,9 @@
 		<div class="kn3fae-0 ezpxFx">
 			<div class="sgp62q-0 iuJdTu">
 				<a title="TigerShark's Bot">
-					<img src="/static/image/wiki-image/sylvanpfp3.png" alt="User avatar" class="sgp62q-1 dLWNvE">
+					<img src="/static/image/wiki-image/sylvanpfp3.png" alt="Archero Item Description Embed Thumbnail" class="sgp62q-1 dLWNvE">
 					<h1 class="sgp62q-2 hfwuZw">Sylvan</h1>
 					<span class="sgp62q-3 cTBPsI">BOT</span>
-					<span class="sc-1idsap7-0 dyOqmJ" id="date"></span>
 				</a>
 				<span id="{{ item_data.value|lower }}" class="span-share"><a onclick="createModale(this,false,'info')" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span>
 			</div>
@@ -79,7 +82,7 @@
 					<div class="sc-3qrykn-0 bdFBtt">
 						<div class="sc-3qrykn-1 bsDYtY">
 							<div class="sc-27l7o2-0 heOpKb thumbnail-title" id="name_item">
-								<img src="/static/{{ item_data.image }}" alt="Thumbnail-{{ item_data.image }}" class="sc-3qrykn-7" id="item_image">
+								<img src="/static/{{ item_data.image }}" alt="Archero Item {{ name }}" class="sc-3qrykn-7" id="item_image">
 								{{ name }}
 							</div>
 						</div>
@@ -87,7 +90,7 @@
 							<div class="sc-27l7o2-0 heOpKb" id="item_description">{{ item_data.description|safe }}</div>
 							{% if item_data.hidden_stats %}
 							<div class="e_hidden_stats " id="hidden_stats">
-								<b>Hidden Stats</b>
+								<b>{% blocktrans %}Hidden Stats{% endblocktrans %}</b>
 								{% for rarity,boost in item_data.hidden_stats.items %}
 								<span>{{ boost|safe }}</span>
 								{% endfor %}
@@ -98,14 +101,14 @@
 							<div class="rgqgux-0 dQAxvm">
 								<div class="rgqgux-1 dHYyKL">
 									<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-										<strong>Stats</strong>
+										<strong>{% blocktrans %}Stats{% endblocktrans %}</strong>
 									</div>
 								</div>
 								<div class="rgqgux-2 jFcAhO">
 									<div class="sc-27l7o2-0 heOpKb container-rarity">
 										{% for k,v in item_data.rarity.items %}
 										{% if v != "" %}
-											<div class="rarity-desc" id="{{ k }}-rarity"><span class="span-rarity-item-desc"><img src="/static/image/rarity/{{ k }}.png" alt="{{ k }} rarity icon"></span>{{ v|safe }}</div>
+											<div class="rarity-desc" id="{{ k }}-rarity"><span class="span-rarity-item-desc"><img src="/static/image/rarity/{{ k }}.png" alt="Archero {{ name }} {{ k }} rarity icon"></span>{{ v|safe }}</div>
 										{% endif %}
 										{% endfor %}
 									</div>
@@ -113,7 +116,7 @@
 							</div>
 						</div>
 						<div class="sc-3qrykn-6 fTOqMH">
-							<img src="/static/{{ item_data.image }}" alt="Thumbnail-{{ item_data.image }}" class="sc-3qrykn-7 fUliQq" id="item_image">
+							<img src="/static/{{ item_data.image }}" alt="Archero Item {{ name }}" class="sc-3qrykn-7 fUliQq" id="item_image">
 						</div>
 					</div>
 				</div>
@@ -128,12 +131,6 @@
 	var search_bar = document.getElementById('myInput');
 	var ul_li = document.getElementById('myUL');
 	var item_li_a = document.querySelectorAll(".toggle-display-list");
-
-	var n =  new Date();
-	var y = n.getFullYear();
-	var m = n.getMonth() + 1;
-	var d = n.getDate();
-	document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
 
 	search_bar.addEventListener('click', function(){
 		if(ul_li.style.display == "none"){
