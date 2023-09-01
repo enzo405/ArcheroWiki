@@ -74,10 +74,10 @@
 			</tr>
 			<tr>
 				<th class="table-outrow"><a class="btn-reset" href="">{% blocktrans %}Reset{% endblocktrans %}</a></th>
-				<th class="damage-type-th">{% blocktrans %}Normal Dmg{% endblocktrans %}</th>
-				<th class="damage-type-th">{% blocktrans %}Critical Dmg{% endblocktrans %}</th>
-				<th class="damage-type-th">{% blocktrans %}Normal Dmg{% endblocktrans %}</th>
-				<th class="damage-type-th">{% blocktrans %}Critical Dmg{% endblocktrans %}</th>
+				<th class="damage-type-th" id="dmg-normalmob-type">{% blocktrans %}Normal Dmg{% endblocktrans %}</th>
+				<th class="damage-type-th" id="dmg-criticalmob-type">{% blocktrans %}Critical Dmg{% endblocktrans %}</th>
+				<th class="damage-type-th" id="dmg-normalboss-type">{% blocktrans %}Normal Dmg{% endblocktrans %}</th>
+				<th class="damage-type-th" id="dmg-normalboss-type">{% blocktrans %}Critical Dmg{% endblocktrans %}</th>
 			</tr>
 			<tr>
 				<td class="mobs-type-td">{% blocktrans %}Ground Mobs{% endblocktrans %}</td>
@@ -110,8 +110,8 @@
 		</table><br>
 		<div class="averageDamage">
 			{% blocktrans %}This is average damage with:{% endblocktrans %}
-			<li><b id="critdmg">{{ crit_dmg }}</b> {% blocktrans %}of Critical Damage{% endblocktrans %}</li>
-			<li><b id="critrate">{{ crit_rate }}</b> {% blocktrans %}chance of Critical Hit{% endblocktrans %}</li>
+			<span><b id="critdmg">{{ crit_dmg }}</b> {% blocktrans %}of Critical Damage{% endblocktrans %}</span>
+			<span><b id="critrate">{{ crit_rate }}</b> {% blocktrans %}chance of Critical Hit{% endblocktrans %}</span>
 			{% blocktrans %}Your average Damage is : {% endblocktrans %}<b id="averageDamage">{{ averageDamage }}</b>
 		</div>
 	</div>
