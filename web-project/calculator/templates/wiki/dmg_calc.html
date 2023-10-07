@@ -2,14 +2,14 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.7.2">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.8.1">
 <title>{% blocktrans %}Archero - Damage Calculator{% endblocktrans %}</title>
 <meta property="og:title" content="Archero Emulator Runes">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/damage-calculator">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Welcome to the Archero wiki, optimize your damage output in Archero with our powerful damage calculator tool. Easily calculate and analyze your in-game damage based on various factors, including gear, abilities, and runes. Take control of your build by experimenting with different runes swapping strategies to maximize your potential.">
 <meta name="description" content="Welcome to the Archero wiki, optimize your damage output in Archero with our powerful damage calculator tool. Easily calculate and analyze your in-game damage based on various factors, including gear, abilities, and runes. Take control of your build by experimenting with different runes swapping strategies to maximize your potential.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.7.2">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.8.1">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
@@ -112,7 +112,7 @@
 			{% blocktrans %}This is average damage with:{% endblocktrans %}
 			<span><b id="critdmg">{{ crit_dmg }}</b> {% blocktrans %}of Critical Damage{% endblocktrans %}</span>
 			<span><b id="critrate">{{ crit_rate }}</b> {% blocktrans %}chance of Critical Hit{% endblocktrans %}</span>
-			{% blocktrans %}Your average Damage is : {% endblocktrans %}<b id="averageDamage">{{ averageDamage }}</b>
+			<span>{% blocktrans %}Your average Damage is : {% endblocktrans %}<b id="averageDamage">{{ averageDamage }}</b></span>
 		</div>
 	</div>
 </div>
@@ -128,7 +128,7 @@
 	})
 </script>
 <script>
-	var powerRunesLines = [["none", "{% trans 'None' %}"],["attack_flat", "{% trans 'Attack' %}%"],["attack_var", "{% trans 'Attack' %}%"],["flat_dmg_airborne", "{% trans 'Damage to Airborne Units' %}"],["var_dmg_airborne", "{% trans 'Damage to Airborne Units' %} %"],["flat_dmg_ground", "{% trans 'Damage to Ground Units' %}"],["var_dmg_ground", "{% trans 'Damage to Ground Units' %} %"],["flat_dmg_melee", "{% trans 'Damage to Melee Units' %}"],["var_dmg_melee", "{% trans 'Damage to Melee Units' %} %"],["flat_dmg_ranged", "{% trans 'Damage to Ranged Units' %}"],["var_dmg_ranged", "{% trans 'Damage to Ranged Units' %} %"],["flat_dmg_boss", "{% trans 'Damage to Bosses Units' %}"],["var_dmg_boss", "{% trans 'Damage to Bosses Units' %} %"],["flat_dmg_mob", "{% trans 'Damage to Mobs Units' %}"],["var_dmg_mob", "{% trans 'Damage to Mobs Units' %} %"],["var_dmg_hero", "{% trans 'Damage to Heroes' %} %"],["var_all_dmg", "{% trans 'All Damage' %} %"],["var_elemental_dmg", "{% trans 'Elemental Damage' %} %"],["var_atk_speed", "{% trans 'Attack Speed' %} %"],["var_crit_rate", "{% trans 'Critic Chance' %} %"],["var_crit_dmg", "{% trans 'Critic Damage' %}%"]]
+	var powerRunesLines = [["none", "{% trans 'None' %}"],["attack_flat", "{% trans 'Attack' %}"],["attack_var", "{% trans 'Attack' %}%"],["flat_dmg_airborne", "{% trans 'Damage to Airborne Units' %}"],["var_dmg_airborne", "{% trans 'Damage to Airborne Units' %} %"],["flat_dmg_ground", "{% trans 'Damage to Ground Units' %}"],["var_dmg_ground", "{% trans 'Damage to Ground Units' %} %"],["flat_dmg_melee", "{% trans 'Damage to Melee Units' %}"],["var_dmg_melee", "{% trans 'Damage to Melee Units' %} %"],["flat_dmg_ranged", "{% trans 'Damage to Ranged Units' %}"],["var_dmg_ranged", "{% trans 'Damage to Ranged Units' %} %"],["flat_dmg_boss", "{% trans 'Damage to Bosses Units' %}"],["var_dmg_boss", "{% trans 'Damage to Bosses Units' %} %"],["flat_dmg_mob", "{% trans 'Damage to Mobs Units' %}"],["var_dmg_mob", "{% trans 'Damage to Mobs Units' %} %"],["var_dmg_hero", "{% trans 'Damage to Heroes' %} %"],["var_all_dmg", "{% trans 'All Damage' %} %"],["var_elemental_dmg", "{% trans 'Elemental Damage' %} %"],["var_atk_speed", "{% trans 'Attack Speed' %} %"],["var_crit_rate", "{% trans 'Critic Chance' %} %"],["var_crit_dmg", "{% trans 'Critic Damage' %}%"]]
 	var courageRunesLines = [["none", "{% trans 'None' %}"],["attack_flat", "{% trans 'Attack' %}"],["attack_var", "{% trans 'Attack' %}%"],["courage_hero_attack_flat", "{% trans 'Hero base ATK' %}"],["courage_hero_attack_var", "{% trans 'Hero base ATK' %} %"],["other", "{% trans 'other ...' %}"]]
 	function runesClicked(runesType) {
 		var allSelect = document.getElementsByClassName('runes-line');

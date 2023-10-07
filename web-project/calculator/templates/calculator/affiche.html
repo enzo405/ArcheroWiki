@@ -2,9 +2,9 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.7.2">
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.8.1">
 <title>{% blocktrans %}{{ name }} Stats - Wiki{% endblocktrans  %}</title>
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.7.2">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.8.1">
 <meta name="description" content="{{ name }} Stats - Wiki">
 <meta property="og:url" content="https://stats.wiki-archero.com/calculator/show/{{pbid}}/">
 <meta property="og:type" content="website">
@@ -57,7 +57,7 @@
 	<div id="contain-image-stuff" class="contain-image-stuff" style="display: flex;">
 		<div class="image-div-stuff">
 			<div class="image-stuff-result-container">
-				<img alt="{{ name }}'s Stuff emulator image" class="image-stuff-result" src="{% static 'image/stuff_save/'|add:pbid|add:'.png' %}?version=1.7.2">
+				<img alt="{{ name }}'s Stuff emulator image" class="image-stuff-result" src="/static/image/stuff_save/{{ pbid }}.png?version=1.8.1">
 			</div>
 		</div>
 	</div>

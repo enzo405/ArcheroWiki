@@ -945,6 +945,18 @@ def delete_user(request, pbid):
 
 
 @db_maintenance
+def duplicate_user(request):
+	if request.user.is_superuser and request.method == "GET":
+		user_list = user.objects.all()
+		SidebarContent = LocalDataContentWiki['SidebarContent']
+		return render(request, "calculator/duplicate_user.html", {"user_list":user_list, "sidebarContent":SidebarContent, "header_msg": "Duplicate User"})
+	elif request.user.is_superuser and request.method == "POST":
+		pbid_from_post = request.POST['pbid']
+		target = user.objects.get(public_id=pbid_from_post)
+		target.duplicate(request.POST['ingame_name'],request.POST['ingame_id'])
+	return HttpResponseRedirect(f"/{get_language()}/calculator/index")
+
+@db_maintenance
 def admin_reload_stats(request,pbid):
 	user_credential = request.session['user_credential']
 	if checkContributor(user_credential,request):

@@ -502,6 +502,9 @@ footer div, footer li{
 	width: 100%;
 	background: inherit;
 }
+.item_language_code{
+	user-select: none;
+}
 .button_globe {
     background-color: var(--lt-header-bg);
     color: var(--lt-header-font-color);
@@ -671,9 +674,9 @@ footer div, footer li{
 	filter: invert(1) sepia(1) hue-rotate(172deg);
 }
 .sidebar-open #Menu-sidebar-image:hover::after,
-.sidebar-open #Item-sidebar-image:hover::after,
+.sidebar-open #Items-sidebar-image:hover::after,
 .sidebar-open #Upgrade-sidebar-image:hover::after,
-.sidebar-open #Skill-sidebar-image:hover::after,
+.sidebar-open #Skills-sidebar-image:hover::after,
 .sidebar-open #Maze-sidebar-image:hover::after,
 .sidebar-open #Wiki-sidebar-image:hover::after,
 .sidebar-open #Heroes-sidebar-image:hover::after,

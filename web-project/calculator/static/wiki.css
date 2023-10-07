@@ -503,13 +503,10 @@
 }
 .image-feedback-container {
 	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;
 	height: 100%;
 	display: flex;
 	justify-content: center;
-	align-items: center;
 }
 .feedback-container {
 	cursor: pointer;
@@ -531,8 +528,10 @@
 }
 .image-feedback {
 	width: 100%;
-	height: auto;
-	max-width: 200px;
+    height: auto;
+    max-width: 200px;
+    object-fit: cover;
+    border-radius: 12px;
 }
 .feedback-container:hover{
 	transform: none;
@@ -1020,12 +1019,8 @@
 /* DAMAGE CALC */
 /* DAMAGE CALC */
 .popup-dmgcalc {
-	position: relative;
-	display: inline-block;
 	cursor: pointer;
 	user-select: none;
-	font-size: 78%;
-	margin-right: 15px;
 }
 .popup_container {
 	visibility: hidden;
@@ -1050,6 +1045,11 @@
 }
 .show {
 	visibility: visible;
+}
+.averageDamage{
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
 }
 
 /* UPGRADE COST */
