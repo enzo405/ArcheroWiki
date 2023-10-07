@@ -1,0 +1,46 @@
+{% extends "template.html" %}
+{% load static %}
+{% load i18n %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.8.1">
+<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+<title>Duplicate User</title>
+<meta property="og:title" content="Archero Stats Calculator">
+<meta property="og:url" content="https://stats.wiki-archero.com/calculator/index/">
+<meta property="og:type" content="website">
+<meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+<meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.8.1">
+{% endblock %}
+{% block header_content %}{{ header_msg }}{% endblock %}
+{% block content %}
+<div class="container-form">
+	<form method="POST" action="">
+	{% csrf_token %}
+	<script>
+		document.cookie = " csrftoken= "+document.querySelector('[name=csrfmiddlewaretoken]').value + ";path=/";
+	</script>
+    <label for="user-select">Choose a user:</label>
+    <select name="pbid" id="user-select">
+        {% for user in user_list %}
+        <option value="{{ user.public_id }}">{{ user }}</option>
+        {% endfor %}
+    </select>
+    <fieldset class="fieldset-input">
+        <legend>Username</legend>
+        <input name="ingame_name" id="username" type="text" placeholder="" pattern="^[^\s]{3,20}$" required>
+    </fieldset>
+    <fieldset class="fieldset-input">
+        <legend>Ingame ID</legend>
+        <input name="ingame_id" id="ingameid" type="text" placeholder="1-234567" pattern="^[0-9]{1}-[0-9]{5,12}$">
+    </fieldset>
+	<input class="submit-input" type="submit" value="Submit"\>
+	</form>
+</div>
+{% endblock %}
+{% block javascript %}
+<script>
+	const self_inline_div_traveling = document.getElementById('Stats-sidebar-image')
+	self_inline_div_traveling.classList.add('bg-traveling') 
+</script>
+{% endblock %} 

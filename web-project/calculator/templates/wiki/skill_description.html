@@ -2,8 +2,8 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.7.2">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.7.2">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.8.1">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.8.1">
 <meta property="og:type" content="website">
 <meta name="description" content="Discover a comprehensive list of skills and abilities in Archero on our website. Explore detailed descriptions, effects, and strategies for each skill. Unleash the power of skills and abilities to dominate in the world of Archero.">
 {% if skill == "yes" %}
@@ -11,13 +11,13 @@
 <meta property="og:title" content="{{ name }}">
 <meta property="og:url" content="{{ url_cpy }}">
 <meta property="og:description" content="{{ skill_data.description }} {{ skill_data.stats }}">
-<meta property="og:image" content="{% static image_skill %}?version=1.7.2">
+<meta property="og:image" content="{% static image_skill %}?version=1.8.1">
 {% else %}
 <title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Skill Description">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/skill">
 <meta property="og:description" content="Discover a comprehensive list of skills and abilities in Archero on our website. Explore detailed descriptions, effects, and strategies for each skill. Unleash the power of skills and abilities to dominate in the world of Archero.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.7.2">
+<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.8.1">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -147,7 +147,7 @@
 	})
 </script>
 <script>
-	const self_inline_div_traveling = document.getElementById('Skill-sidebar-image')
+	const self_inline_div_traveling = document.getElementById('Skills-sidebar-image')
 	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
 {% endblock %} 

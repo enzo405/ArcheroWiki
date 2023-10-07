@@ -249,14 +249,13 @@ def checkUsernameCredentials(username_raw,id_raw, **kwargs) -> dict:
 	ingame_name = decoded_bytes.decode('utf-8') # Remplace tous les caractères illégaux par "*" après avoir converti la chaîne de bytes en une chaîne de caractères en utf-8
 	ingame_id = unquote(id_raw)   # Décode l'identifiant de jeu brut
 	unavailable_username = ['csrftoken','sessionid','windowInnerWidth','windowInnerHeight', 'modeDisplay', 'messages']
-	unavailable_ingame_id = ["0-000001","0-000002","0-000003","0-000004"]
+	unavailable_ingame_id = re.compile(r'^(?!0-00000|9-99999).*')
 	if kwargs.get("login"):
-		unavailable_ingame_id.extend(["9-999999","0-000000"])
 		unavailable_username.extend(["unknown","visitor"])
 	for k,v in ADMIN_CREDENTIAL.items():
 		if ingame_id == v and ingame_name.lower() == k:
 			return {"access":True,"ingame_name": ingame_name.replace(' ',''),"ingame_id": ingame_id,"admin_log":True}
-	if ingame_id not in unavailable_ingame_id:
+	if re.fullmatch(unavailable_ingame_id,ingame_id):
 		if 3 <= len(ingame_name) < 20 and ingame_name not in unavailable_username:
 			if re.fullmatch(pattern, ingame_id) and ingame_id != "" and ingame_id != None and all(c.isdigit() or c == '-' for c in ingame_id):
 				return {"access":True,"ingame_name": ingame_name.replace(' ',''),"ingame_id": ingame_id}
@@ -264,7 +263,7 @@ def checkUsernameCredentials(username_raw,id_raw, **kwargs) -> dict:
 				return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": _("Ingame id doesn't match or is too short")}
 		else:
 			return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": _("Username not allowed")}
-	elif ingame_id in unavailable_ingame_id:
+	else:
 		return {"access":False,"ingame_name": ingame_name,"ingame_id": ingame_id,"error_message": _("Ingame Id not allowed")}
 
 

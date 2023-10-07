@@ -186,7 +186,7 @@ class user(models.Model):
 	public_id = models.BigIntegerField(default=0, blank=False)
 	public_profile = models.BooleanField(default=True, blank=False)
 
-	def getOtherModels(self):
+	def getOtherModels(self)->dict:
 			return {
 				"StuffTable": self.stufftable_set.get(),
 				"HeroTable":self.herotable_set.get(),
@@ -205,6 +205,19 @@ class user(models.Model):
 				"RelicsTable":self.relicstable_set.get(),
 				"WeaponSkinsTable":self.weaponskinstable_set.get(),
 			}
+
+	def duplicate(self, new_Userusername, new_Useringameid):
+		from .function import create_unique_id
+		target = user.objects.get(pk=self.pk)
+		self.pk = None
+		self.ingame_id = new_Useringameid
+		self.ingame_name = new_Userusername
+		self.public_id = create_unique_id()
+		self.save()
+		for childTarget in target.getOtherModels().values():
+			childTarget.pk = None
+			childTarget.user_profile = self
+			childTarget.save()
 
 	def __str__(self):
 		chaine = f"{self.ingame_name}'s stats ({self.ingame_id})"

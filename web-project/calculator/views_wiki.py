@@ -413,22 +413,16 @@ def damage(request):
 			messages.error(request,_(f'You attempted to access {profile[1].ingame_name}<br>But your login username is "{ingame_name_cookie}".'))
 	else:
 		selfHasProfil = "login"
-	chapter_1_to_21 =  user.objects.get(ingame_id="0-000001").public_id
-	chapter_22_to_34 = user.objects.get(ingame_id="0-000002").public_id
-	chapter_34_to_42 = user.objects.get(ingame_id="0-000003").public_id
-	chapter_ch42 =  user.objects.get(ingame_id="0-000004").public_id
+	list_damage_profile = user.objects.filter(ingame_id__iregex=r'^0-00000(?!0)').order_by('ingame_id')
 	ctx = {
 		"darkmode": checkDarkMode(request),
 		"header_msg":_("Damage Calculator"),
 		"selfHasProfil":selfHasProfil,
 		"selfStats":user_stats,
-		"chapter_1_to_21":chapter_1_to_21,
-		"chapter_22_to_34":chapter_22_to_34,
-		"chapter_34_to_42":chapter_34_to_42,
-		"chapter_ch42":chapter_ch42,
 		"sidebarContent":SidebarContent,
-		"cookieUsername":makeCookieheader(cookie_result)
-		}
+		"cookieUsername":makeCookieheader(cookie_result),
+		"list_damage_profile":list_damage_profile
+	}
 	return render(request, "wiki/damage.html", ctx)
 
 @db_maintenance

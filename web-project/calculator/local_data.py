@@ -932,9 +932,10 @@ LocalDataContentWiki = {
       "displayName": _("Demon Blade Rain"),
       "description": _("Legendary demon blade can devour the soul of the enemy."),
       "hidden_stats": {
-        "1": _("Damage Multiplier<br>x1.18 (Ranged)<br>x1.85 (Melee)"),
+        "1": _("Damage Multiplier<br>x1.5 (Ranged)<br>x1.85 (Melee)"),
         "2": _("Base Attack Speed x?"),
-        "3": _("During Melee attack +100% Front Collision Resistance")
+        "3": _("During Melee attack +100% Front Collision Resistance"),
+        "4": _("[Epic] +x1.18% Damage to enemies above 8% HP")
       },
       "image": "image/items/demon_blade_rain_mythic.png",
       "rarity": {
@@ -3866,14 +3867,14 @@ LocalDataContentWiki = {
         }
       }
     },
-    "Item": {
+    "Items": {
       "class": "traveling-inline-div",
       "onclick": "/wiki/item",
       "childs_container": {
         "leftsidebar": {
           "self_class": "leftsidebarc traveling-left",
           "child_class": "shcl",
-          "child_content": _("Item")
+          "child_content": _("Items")
         },
         "rightsidebar": {
           "self_class": "rightsidebarc traveling-right ",
@@ -3887,14 +3888,14 @@ LocalDataContentWiki = {
         }
       }
     },
-    "Skill": {
+    "Skills": {
       "class": "traveling-inline-div",
       "onclick": "/wiki/skill",
       "childs_container": {
         "leftsidebar": {
           "self_class": "leftsidebarc traveling-left",
           "child_class": "shcl",
-          "child_content": _("Skill")
+          "child_content": _("Skills")
         },
         "rightsidebar": {
           "self_class": "rightsidebarc traveling-right ",
@@ -4872,11 +4873,11 @@ LocalDataContentWiki = {
             },
             {
               "name": "",
-              "value": _("•  Ring n°1 → While Standing still reduces incomming Bullets Damage.")
+              "value": _("•  Ring n°1 → While Standing still reduces incoming Bullets Damage.")
             },
             {
               "name": "",
-              "value": _("•  Ring n°2 → While Standing still reduces incomming Colision Damage.")
+              "value": _("•  Ring n°2 → While Standing still reduces incoming Colision Damage.")
             },
             {
               "name": "",

@@ -1,4 +1,4 @@
-# Wiki Actual Version : v1.7.2
+# Wiki Actual Version : v1.8.1
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -66,25 +66,23 @@ ___
 
 ```diff
 Todo list: 
-- export gsheet
++ update /wiki/damage/ with new damage formula
++ fill up Archero Calculation page with formula & additionnal info
 ```
 ```diff
-Future Release:
-- altar_hero_projectile_resistance incrementation data wrong
-- login ask if this profile is yours and use it if yes etc...
+TODO LIST :
+- translate form stats calc content (meaning db field too)
+- add a way to see how much user for each language with libraires already made
+- add links everywhere to those guide & tierlist etc.... for better referencement
+- humge searchbar
+- export profile to gsheet?
 - security sql injection fix (owasp zap)
-- damage calc add new var
-- jewel/dragon guide
 - make universal name for e.g : "range_dmg_var" or "ranged_dmg_var" ?
-- add all heroes star for future information in profile page
 - add page for emulator skill in fight with skill you can check (don't forget medals boost)
 - details page add run boost from glyphs, dragon, stuff etc...
-- translate
 - item (especially for ring, get value with dict.get instead of having mythic_boost, titan_tales_boost etc....)
-- remove space in key of local_data (skill)
 - maze soluce display only current week pattern
 - relics stat does apply if level, star and exclusive are = to 0
-- damage fix with HACKER profile, and also when looking at other profile, because stats doesn't load
 ```
 
-Update May 29, 2023 6:45 PM
+Update Octobre 07, 2023 6:03 PM
