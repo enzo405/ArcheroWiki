@@ -2,13 +2,14 @@ from django.urls import reverse
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.admin.models import LogEntry
-from const import c_hostname, WEBHOOK_URL
+from conf.global_variable import c_hostname, WEBHOOK_URL
 from discord_webhook import DiscordWebhook, DiscordEmbed
-from django.contrib.auth.models import User
+from .function import checkDbMaintenance
 
 @receiver(post_save, sender=LogEntry)
 def handle_new_log_entry(sender, instance, created, **kwargs):
-	if created:
+	isMaintenance = checkDbMaintenance()
+	if isMaintenance and created:
 		user = instance.user.username if instance.user else "Unknown User"
 		if user != "Unknown User" and not instance.user.is_superuser:
 			action_time_timestamp = int(instance.action_time.timestamp())

@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.core.handlers.wsgi import WSGIRequest
 from urllib.parse import urlencode, unquote
-from const import ADMIN_LOG_WEBHOOK_URL,WEBHOOK_URL, DEV_MODE, DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, c_hostname, ADMIN_CREDENTIAL, DISCORD_NOTIF_ROLE_ID
+from conf.global_variable import ADMIN_LOG_WEBHOOK_URL,WEBHOOK_URL, DEV_MODE, DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, c_hostname, ADMIN_CREDENTIAL, DISCORD_NOTIF_ROLE_ID
 import random as random
 import hashlib
 from .models import Token, ServerManagement, Contributor, user
@@ -22,7 +22,7 @@ from .local_data import LocalDataContentWiki
 # :keyword filename: apply custom file name on attached file content(s)
 # :keyword embeds: list of embedded rich content
 # :keyword allowed_mentions: allowed mentions for the message
-import json, string, time, re, urllib.parse, string, datetime, requests, os, http.cookies
+import json, string, time, re, string, datetime, requests, os, http.cookies
 
 APP_VERSION = os.environ.get('APP_VERSION')
 # docker-compose up -d --env-file=myenvfile.env
@@ -112,115 +112,15 @@ def checkTokenValidity(token, length):
 		return False
 	return True
 
-def db_maintenance(func):
-	def wrapper(request:HttpResponse|WSGIRequest, *args, **kwargs):
-		try:
-			server_instance = ServerManagement.objects.get(pk=1)
-			isMaintenance = server_instance.isMaintenance
-		except ServerManagement.DoesNotExist:
-			isMaintenance = True
-			## si ça n'existe pas alors on affiche database maintenance car cela veut dire que soit la db n'est pas crée
-			#  (lors d'une monté de version) soit que j'ai pas recrée l'instance ServerManagement
-		if isMaintenance:
-			SidebarContent = LocalDataContentWiki['SidebarContent']
-			return render(request, "base/maintenance.html", {"darkmode": checkDarkMode(request),"header_msg":_("Database Maintenance"),"sidebarContent":SidebarContent})
-		else:
-			return func(request, *args, **kwargs)
-	return wrapper
-
-# decorator function that remove the messages from session
-def checkMessages(func):
-	"""
-	This decorator check if there is messages in the user session,
-	If there is then it will remove it from the session and send the content of it in the views
-	"""
-	def wrapper(request:HttpResponse|WSGIRequest, *args, **kwargs):
-		message_types = ['error_message', 'info_message', 'success_message']
-		for message_type in message_types:
-			message = request.session.pop(message_type, None)
-			if message:
-				message_function = getattr(messages, message_type.split('_')[0])
-				message_function(request, message)
-		return func(request, *args, **kwargs)
-	return wrapper
-
-
-def login_required(func):
-	"""
-	This decorator store user cookies in a result variable (will only be 1 or 0 length),
-	If the lenght of this variable is 0 and the user is logged as visitor,	then the user will be redirected to the views with visitor credentials in session,
-	else he will be redirected in login page
-	"""
-	def wrapper(request:HttpResponse|WSGIRequest, *args, **kwargs):
-		result = checkCookie(request)
-		if len(result) == 0:
-			if "visitor" in list(request.COOKIES.keys()):
-				return HttpResponseRedirect('/delete_cookie/visitor/menu/')
-			messages.warning(request, _("You need to login first"))
-			return HttpResponseRedirect(f'/{get_language()}/login')
-		request.session['user_credential'] = result
-		return func(request, *args, **kwargs)
-	return wrapper
-
-def editor_login(func):
-	def wrapper(request:HttpResponse|WSGIRequest, *args, **kwargs):
-		REDIRECT_URI = f"https://{request.META['HTTP_HOST']}/data/"
-		if request.user.is_authenticated and request.session.get("status") != "authorized":
-			try:
-				token = Token.objects.get(user=request.user)
-				if checkTokenValidity(token.key,40):
-					status = "authorized"
-					if request.GET.get("code",None) != None:
-						code = request.GET.get('code')
-						data = {
-							'client_id': DISCORD_CLIENT_ID,
-							'client_secret': DISCORD_CLIENT_SECRET,
-							'grant_type': 'authorization_code',
-							'code': code,
-							'redirect_uri': REDIRECT_URI,
-							'scope': 'identify',
-						}
-						headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-						response = requests.post('https://discord.com/api/oauth2/token', data=data, headers=headers)
-						response_data = response.json()
-						request.session['access_token'] = response_data['access_token']
-						return redirect(REDIRECT_URI)
-					if 'access_token' in request.session:
-						access_token = request.session['access_token']
-						headers = {'Authorization': f'Bearer {access_token}'}
-						response = requests.get('https://discord.com/api/users/@me', headers=headers)
-						response_data = response.json()
-					else:
-						params = {
-							'client_id': DISCORD_CLIENT_ID,
-							'redirect_uri': REDIRECT_URI,
-							'response_type': 'code',
-							'scope': 'identify',
-						}
-						authorize_url = 'https://discord.com/api/oauth2/authorize?' + urlencode(params)
-						return redirect(authorize_url)
-					try:
-						token.discord_acc_rely = response_data['username']
-						token.discord_user_id = response_data['id']
-						token.save()
-						request.session['response_data'] = response_data
-					except KeyError as e:
-						send_webhook(f"KeyError: {e}\nResponse Data: {response_data}\nHeaders: {headers}", admin_log=True)
-					except TypeError as e:
-						send_webhook(f"TypeError: {e}\nResponse Data: {response_data}\nHeaders: {headers}", admin_log=True)
-				else:
-					status = "not_auth"
-			except Token.DoesNotExist:
-				status = "not_auth"
-		else:
-			if request.session.get("status") == "authorized":
-				status = "authorized"
-			else:
-				status = "not_auth"
-		request.session['status'] = status
-		return func(request, *args, **kwargs)
-	return wrapper
-
+def checkDbMaintenance():
+	try:
+		server_instance = ServerManagement.objects.get(pk=1)
+		isMaintenance = server_instance.isMaintenance
+	except ServerManagement.DoesNotExist:
+		isMaintenance = True
+	## si ça n'existe pas alors on affiche database maintenance car cela veut dire que soit la db n'est pas crée
+	#  (lors d'une monté de version) soit que j'ai pas recrée l'instance ServerManagement
+	return isMaintenance
 
 def similar(a, b):
 	return SequenceMatcher(None, a, b).ratio()
@@ -232,7 +132,7 @@ def create_unique_id():
 def checkUsernameCredentials(username_raw,id_raw, **kwargs) -> dict:
 	"""
 	Check if the username and id passed in the argument are valid !
-	If the user is an admin in const.py then it will return access True and admin_log True\n
+	If the user is an admin in conf.global_variable.py then it will return access True and admin_log True\n
 	if ingame_id not in unavailable_ingame_id:
 		if 3 <= len(ingame_name) < 20 and ingame_name is unavailable:
 			if ingame_id match the regex and ingame_id != "" and ingame_id != None:
@@ -446,3 +346,128 @@ def getCredentialForNonLoginRequired(request:HttpResponse|WSGIRequest, **kwargs)
 		"ingame_id_cookie": ingame_id_cookie,
 		"user_credential": user_credential
 	}
+
+
+## PARENT DECORATOR 
+
+def loadContent(**param_manager):
+    """
+    Decorator that is the parent of every views.
+
+    Parameters:
+    - **param_manager: checkMessages|db_maintenance|editor_login|login_required.
+    """
+    def _method_wrapper(view_method):
+        def _arguments_wrapper(request, *args, **kwargs):
+            if param_manager.get("login_required"):
+                login_required(request, view_method, *args, **kwargs)
+            if param_manager.get("db_maintenance"):
+                db_maintenance(request, view_method, *args, **kwargs)
+            if param_manager.get("checkMessages"):
+                checkMessages(request, view_method, *args, **kwargs)
+            if param_manager.get("editor_login"):
+                editor_login(request, view_method, *args, **kwargs)
+            return view_method(request, *args, **kwargs)
+        return _arguments_wrapper
+    return _method_wrapper
+
+
+
+## CHILD DECORATOR 
+
+def login_required(request, view_method, *args, **kwargs):
+    """
+    This function stores user cookies in a result variable (will only be 1 or 0 length),
+    If the length of this variable is 0 and the user is logged as a visitor, then the user will be redirected to the views with visitor credentials in session,
+    else they will be redirected to the login page.
+    """
+    result = checkCookie(request)
+    if len(result) == 0:
+        if "visitor" in list(request.COOKIES.keys()):
+            return HttpResponseRedirect('/delete_cookie/visitor/menu/')
+        messages.warning(request, _("You need to log in first"))
+        return HttpResponseRedirect(f'/{get_language()}/login')
+    request.session['user_credential'] = result
+    return view_method(request, *args, **kwargs)
+
+
+def db_maintenance(request, view_method, *args, **kwargs):
+	isMaintenance = checkDbMaintenance()
+	if isMaintenance:
+		SidebarContent = LocalDataContentWiki['SidebarContent']
+		return render(request, "base/maintenance.html", {"darkmode": checkDarkMode(request),"header_msg":_("Database Maintenance"),"sidebarContent":SidebarContent})
+	return view_method(request, *args, **kwargs)
+
+
+# decorator function that remove the messages from session
+def checkMessages(request, view_method, *args, **kwargs):
+	"""
+	This decorator check if there is messages in the user session,
+	If there is then it will remove it from the session and send the content of it in the views
+	"""
+	message_types = ['error_message', 'info_message', 'success_message']
+	for message_type in message_types:
+		message = request.session.pop(message_type, None)
+		if message:
+			message_function = getattr(messages, message_type.split('_')[0])
+			message_function(request, message)
+	return view_method(request, *args, **kwargs)
+
+
+def editor_login(request, view_method, *args, **kwargs):
+	REDIRECT_URI = f"https://{request.META['HTTP_HOST']}/data/"
+	if request.user.is_authenticated and request.session.get("status") != "authorized":
+		try:
+			token = Token.objects.get(user=request.user)
+			if checkTokenValidity(token.key,40):
+				status = "authorized"
+				if request.GET.get("code",None) != None:
+					code = request.GET.get('code')
+					data = {
+						'client_id': DISCORD_CLIENT_ID,
+						'client_secret': DISCORD_CLIENT_SECRET,
+						'grant_type': 'authorization_code',
+						'code': code,
+						'redirect_uri': REDIRECT_URI,
+						'scope': 'identify',
+					}
+					headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+					response = requests.post('https://discord.com/api/oauth2/token', data=data, headers=headers)
+					response_data = response.json()
+					request.session['access_token'] = response_data['access_token']
+					return redirect(REDIRECT_URI)
+				if 'access_token' in request.session:
+					access_token = request.session['access_token']
+					headers = {'Authorization': f'Bearer {access_token}'}
+					response = requests.get('https://discord.com/api/users/@me', headers=headers)
+					response_data = response.json()
+				else:
+					params = {
+						'client_id': DISCORD_CLIENT_ID,
+						'redirect_uri': REDIRECT_URI,
+						'response_type': 'code',
+						'scope': 'identify',
+					}
+					authorize_url = 'https://discord.com/api/oauth2/authorize?' + urlencode(params)
+					return redirect(authorize_url)
+				try:
+					token.discord_acc_rely = response_data['username']
+					token.discord_user_id = response_data['id']
+					token.save()
+					request.session['response_data'] = response_data
+				except KeyError as e:
+					send_webhook(f"KeyError: {e}\nResponse Data: {response_data}\nHeaders: {headers}", admin_log=True)
+				except TypeError as e:
+					send_webhook(f"TypeError: {e}\nResponse Data: {response_data}\nHeaders: {headers}", admin_log=True)
+			else:
+				status = "not_auth"
+		except Token.DoesNotExist:
+			status = "not_auth"
+	else:
+		if request.session.get("status") == "authorized":
+			status = "authorized"
+		else:
+			status = "not_auth"
+	request.session['status'] = status
+	return view_method(request, *args, **kwargs)
+

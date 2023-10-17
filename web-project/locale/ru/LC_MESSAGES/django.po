@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-06 19:02+0200\n"
+"POT-Creation-Date: 2023-10-12 23:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,15 +83,15 @@ msgstr "Обслуживание баз данных"
 msgid "You need to login first"
 msgstr "Сначала необходимо войти в систему"
 
-#: .\calculator\function.py:264
+#: .\calculator\function.py:263
 msgid "Ingame id doesn't match or is too short"
 msgstr "Игровой идентификатор не совпадает или слишком короткий"
 
-#: .\calculator\function.py:266
+#: .\calculator\function.py:265
 msgid "Username not allowed"
 msgstr "Имя пользователя не разрешено"
 
-#: .\calculator\function.py:268
+#: .\calculator\function.py:267
 msgid "Ingame Id not allowed"
 msgstr "Игровой идентификатор запрещен"
 
@@ -1654,11 +1654,9 @@ msgstr "[Истории титанов+1] Основные показатели 
 msgid "[Titan Tales+2] Ring Basic Stats +10%"
 msgstr "[Истории титанов+2] Основные показатели кольца +10%"
 
-#: .\calculator\local_data.py:776 .\calculator\local_data.py:1489
-#: .\calculator\local_data.py:1514 .\calculator\local_data.py:1539
-#: .\calculator\local_data.py:1564 .\calculator\local_data.py:1756
-msgid "[Titan Tales+3] Mythic Skill Effect Upgraded (+12%)"
-msgstr "[Истории титанов+3] Улучшен эффект мифического умения (+12%)"
+#: .\calculator\local_data.py:776
+msgid "[Titan Tales+3] Mythic Skill Effect Upgraded (+13%)"
+msgstr "[Истории титанов+3] Улучшен эффект мифического умения (+13%)"
 
 #: .\calculator\local_data.py:777
 msgid "[Chaos] Knockback +7%"
@@ -2794,6 +2792,12 @@ msgstr "[Мифический+2] Улучшен эффект эпическог�
 #: .\calculator\local_data.py:1486
 msgid "[Titan Tales] Damage Ground Units +10%"
 msgstr "[Истории титанов] Урон наземных юнитов +10%"
+
+#: .\calculator\local_data.py:1489 .\calculator\local_data.py:1514
+#: .\calculator\local_data.py:1539 .\calculator\local_data.py:1564
+#: .\calculator\local_data.py:1756
+msgid "[Titan Tales+3] Mythic Skill Effect Upgraded (+12%)"
+msgstr "[Истории титанов+3] Улучшен эффект мифического умения (+12%)"
 
 #: .\calculator\local_data.py:1490
 msgid "[Chaos] Greatly Increases fire Damage."
@@ -7771,61 +7775,61 @@ msgstr "Пожалуйста, включите JavaScript для использ�
 
 #: .\calculator\templates\base\500.html:88
 #: .\calculator\templates\base\maintenance.html:87
-#: .\calculator\templates\template.html:118
+#: .\calculator\templates\template.html:110
 msgid "Contact"
 msgstr "Связаться с"
 
 #: .\calculator\templates\base\500.html:90
 #: .\calculator\templates\base\maintenance.html:89
-#: .\calculator\templates\template.html:120
+#: .\calculator\templates\template.html:112
 msgid "Terms of Use"
 msgstr "Условия использования"
 
 #: .\calculator\templates\base\500.html:91
 #: .\calculator\templates\base\maintenance.html:90
-#: .\calculator\templates\template.html:121
+#: .\calculator\templates\template.html:113
 msgid "ChangeLog"
 msgstr "ChangeLog"
 
 #: .\calculator\templates\base\500.html:96
 #: .\calculator\templates\base\maintenance.html:95
-#: .\calculator\templates\template.html:126
+#: .\calculator\templates\template.html:118
 msgid "Community Links"
 msgstr "Ссылки на сообщества"
 
 #: .\calculator\templates\base\500.html:98
 #: .\calculator\templates\base\maintenance.html:97
-#: .\calculator\templates\template.html:128
+#: .\calculator\templates\template.html:120
 msgid "LeMutique's Server"
 msgstr "Сервер LeMutique"
 
 #: .\calculator\templates\base\500.html:101
 #: .\calculator\templates\base\maintenance.html:100
-#: .\calculator\templates\template.html:131
+#: .\calculator\templates\template.html:123
 msgid "TigerShark's Server"
 msgstr "Сервер TigerShark"
 
 #: .\calculator\templates\base\500.html:107
 #: .\calculator\templates\base\maintenance.html:106
-#: .\calculator\templates\template.html:137
+#: .\calculator\templates\template.html:129
 msgid "FB Archero"
 msgstr "FB Archero"
 
 #: .\calculator\templates\base\500.html:111
 #: .\calculator\templates\base\maintenance.html:110
-#: .\calculator\templates\template.html:141
+#: .\calculator\templates\template.html:133
 msgid "Shout-out :"
 msgstr "Выдержка"
 
 #: .\calculator\templates\base\500.html:112
 #: .\calculator\templates\base\maintenance.html:111
-#: .\calculator\templates\template.html:142
+#: .\calculator\templates\template.html:134
 msgid "Special thanks"
 msgstr "Особая благодарность"
 
 #: .\calculator\templates\base\500.html:113
 #: .\calculator\templates\base\maintenance.html:112
-#: .\calculator\templates\template.html:143
+#: .\calculator\templates\template.html:135
 msgid "Thanks to"
 msgstr "Благодаря"
 
@@ -7925,7 +7929,7 @@ msgstr "Ваш идентификатор должен состоять не б�
 msgid "New"
 msgstr "Новое"
 
-#: .\calculator\templates\base\menu.html:50 .\calculator\views_wiki.py:422
+#: .\calculator\templates\base\menu.html:50 .\calculator\views_wiki.py:419
 msgid "Damage Calculator"
 msgstr "Калькулятор ущерба"
 
@@ -8254,22 +8258,6 @@ msgstr "Archero - %(article_title)s"
 #: .\calculator\templates\wiki\damage.html:17
 msgid "Choose a profile you want to test the runes on or look the damage :"
 msgstr "Выберите профиль, на котором вы хотите проверить руны, или посмотрите повреждения:"
-
-#: .\calculator\templates\wiki\damage.html:29
-msgid "Chapter 1 to 21 "
-msgstr "Глава 1 - 21"
-
-#: .\calculator\templates\wiki\damage.html:30
-msgid "Chapter 22 to 34 "
-msgstr "Глава 22 - 34"
-
-#: .\calculator\templates\wiki\damage.html:31
-msgid "Chapter 34 to 42 "
-msgstr "Глава 34 - 42"
-
-#: .\calculator\templates\wiki\damage.html:32
-msgid "Chapter +ch42 "
-msgstr "Глава +ch42"
 
 #: .\calculator\templates\wiki\dmg_calc.html:6
 msgid "Archero - Damage Calculator"
@@ -8794,30 +8782,30 @@ msgstr "Промокод"
 msgid "You attempted to access {profile[1].ingame_name}<br>But your login username is \"{ingame_name_cookie}\"."
 msgstr "Вы попытались получить доступ к {profile[1].ingame_name}<br>Но ваше имя пользователя \"{ingame_name_cookie}\"."
 
-#: .\calculator\views_wiki.py:656
+#: .\calculator\views_wiki.py:650
 msgid "Damage Calc"
 msgstr "Расчет ущерба"
 
-#: .\calculator\views_wiki.py:821
+#: .\calculator\views_wiki.py:815
 msgid "Page Not Found"
 msgstr "Страница не найдена"
 
-#: .\calculator\views_wiki.py:856
+#: .\calculator\views_wiki.py:850
 msgid "Oops! Something went wrong<br>An error occurred while processing your request. Please try again later."
 msgstr "Oops! Что-то пошло не так<br>При обработке вашего запроса произошла ошибка. Пожалуйста, повторите попытку позже."
 
-#: .\calculator\views_wiki.py:857
+#: .\calculator\views_wiki.py:851
 msgid "Internal Server Error"
 msgstr "Внутренняя ошибка сервера"
 
-#: .\calculator\views_wiki.py:870
+#: .\calculator\views_wiki.py:864
 msgid "Change Log"
 msgstr "Журнал изменений"
 
-#: .\calculator\views_wiki.py:875
+#: .\calculator\views_wiki.py:869
 msgid "Archero Calculation"
 msgstr "Расчет арки"
 
-#: .\calculator\views_wiki.py:923
+#: .\calculator\views_wiki.py:917
 msgid "Page Set Cookie/Session"
 msgstr "Page Set Cookie/Session"

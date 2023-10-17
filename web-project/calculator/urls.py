@@ -3,7 +3,7 @@ from calculator import views
 from calculator import api
 from calculator import views_wiki
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from const import DEV_MODE
+from conf.global_variable import DEV_MODE
 from django.utils.translation import gettext_lazy as _
 
 

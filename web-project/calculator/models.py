@@ -3,9 +3,11 @@ from django.core.validators import MaxValueValidator, MinValueValidator, RegexVa
 import datetime, math, json
 from django.contrib.auth.models import User as BuiltinDjangoUser
 from django.utils.crypto import get_random_string
-from const import DEBUG_STATS
+from conf.global_variable import DEBUG_STATS
 
 class ServerManagement(models.Model):
+	archeroVersion = models.CharField(max_length=20, default='Archero', blank=False, null=False)
+	archeroIconLink = models.CharField(max_length=255, default='https://play-lh.googleusercontent.com/cMYvvKCxCnhIg0Gc4pbI0CgCqNw9l5lAFUAmAv4aXkK1nynqwiye8P8NxArULW9eMQ', blank=False, null=False)
 	isMaintenance = models.BooleanField(default=False, blank=False)
 
 class UserQueue(models.Model):
@@ -595,8 +597,8 @@ class TalentTable(models.Model,parentModel):
 
 class SkinTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)
-	skin_health = models.IntegerField(default=0)
-	skin_attack = models.IntegerField(default=0)
+	skin_health = models.IntegerField(default=0, validators=[MaxValueValidator(18000)])
+	skin_attack = models.IntegerField(default=0, validators=[MaxValueValidator(3800)])
 
 	def dictionnaire(self):
 			return {
@@ -1390,31 +1392,31 @@ class RunesTable(models.Model,parentModel):
 	luck_line_3 = models.CharField(choices=luck_rune_all,default="none", max_length=30)
 	luck_line_4 = models.CharField(choices=luck_rune_all,default="none", max_length=30)
 	luck_line_5 = models.CharField(choices=luck_rune_all,default="none", max_length=30)
-	value_power_line_1 = models.FloatField(default=0, blank=False)
-	value_power_line_2 = models.FloatField(default=0, blank=False)
-	value_power_line_3 = models.FloatField(default=0, blank=False)
-	value_power_line_4 = models.FloatField(default=0, blank=False)
-	value_power_line_5 = models.FloatField(default=0, blank=False)
-	value_saviour_line_1 = models.FloatField(default=0, blank=False)
-	value_saviour_line_2 = models.FloatField(default=0, blank=False)
-	value_saviour_line_3 = models.FloatField(default=0, blank=False)
-	value_saviour_line_4 = models.FloatField(default=0, blank=False)
-	value_saviour_line_5 = models.FloatField(default=0, blank=False)
-	value_recovery_line_1 = models.FloatField(default=0, blank=False)
-	value_recovery_line_2 = models.FloatField(default=0, blank=False)
-	value_recovery_line_3 = models.FloatField(default=0, blank=False)
-	value_recovery_line_4 = models.FloatField(default=0, blank=False)
-	value_recovery_line_5 = models.FloatField(default=0, blank=False)
-	value_courage_line_1 = models.FloatField(default=0, blank=False)
-	value_courage_line_2 = models.FloatField(default=0, blank=False)
-	value_courage_line_3 = models.FloatField(default=0, blank=False)
-	value_courage_line_4 = models.FloatField(default=0, blank=False)
-	value_courage_line_5 = models.FloatField(default=0, blank=False)
-	value_luck_line_1 = models.FloatField(default=0, blank=False)
-	value_luck_line_2 = models.FloatField(default=0, blank=False)
-	value_luck_line_3 = models.FloatField(default=0, blank=False)
-	value_luck_line_4 = models.FloatField(default=0, blank=False)
-	value_luck_line_5 = models.FloatField(default=0, blank=False)
+	value_power_line_1 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(750)])
+	value_power_line_2 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(750)])
+	value_power_line_3 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(750)])
+	value_power_line_4 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(750)])
+	value_power_line_5 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(750)])
+	value_saviour_line_1 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2800)])
+	value_saviour_line_2 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2800)])
+	value_saviour_line_3 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2800)])
+	value_saviour_line_4 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2800)])
+	value_saviour_line_5 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2800)])
+	value_recovery_line_1 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2250)])
+	value_recovery_line_2 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2250)])
+	value_recovery_line_3 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2250)])
+	value_recovery_line_4 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2250)])
+	value_recovery_line_5 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2250)])
+	value_courage_line_1 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(750)])
+	value_courage_line_2 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(750)])
+	value_courage_line_3 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(750)])
+	value_courage_line_4 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(750)])
+	value_courage_line_5 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(750)])
+	value_luck_line_1 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2800)])
+	value_luck_line_2 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2800)])
+	value_luck_line_3 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2800)])
+	value_luck_line_4 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2800)])
+	value_luck_line_5 = models.FloatField(default=0, blank=False, validators=[MaxValueValidator(2800)])
 
 
 	def dictionnaire(self):
@@ -2247,8 +2249,8 @@ class WeaponSkinsTable(models.Model,parentModel):
 		if DEBUG_STATS:
 			print(f"\ngetWeaponSkinStats :{result}\n")
 		return result
-	
-isImage = RegexValidator(r"([-\w]+\.(?:png))", "Your string be an image.")
+
+isImage = RegexValidator(r"([-\w]+\.(?:png))", "Your string need to be an image.")
 
 class ArticleMenu(models.Model):
 	title = models.CharField(max_length=255)

@@ -2,15 +2,13 @@ import json
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from .function import send_webhook, login_required, send_embed, editor_login,db_maintenance, checkContributor, getCredentialForNonLoginRequired
+from .function import send_webhook, login_required, send_embed, editor_login,db_maintenance, checkContributor, getCredentialForNonLoginRequired, loadContent
 from .models import UserQueue, Token, user
 from django.contrib import messages
 from .forms import UserQueueForm
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.authentication import SessionAuthentication
-from rest_framework.permissions import IsAuthenticated
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from .local_data import LocalDataContentWiki
@@ -33,8 +31,7 @@ missing_data = []
 # - after this, the user will need to send a GET request to another views that will redirect the user to the menu of the website at / and in the backend will send a notification with the request, username, password (hashed), token
 # - Then once i've got the token, i will search in the admin pannel the user and add it the token in order to get POST access on the API
 
-@db_maintenance
-@editor_login
+@loadContent(db_maintenance=True, editor_login=True)
 def data(request):
 	user_credential = getCredentialForNonLoginRequired(request)['user_credential']
 	if checkContributor(user_credential,request):
@@ -114,8 +111,7 @@ class CalculatorAPI(APIView):
 		return Response(data)
 
 
-@db_maintenance
-@login_required
+@loadContent(db_maintenance=True, login_required=True)
 def create_user_queue(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	if request.method == "POST":
@@ -134,8 +130,7 @@ def create_user_queue(request):
 		form = UserQueueForm()
 	return render(request, 'base/create_user_queue.html', {'form': form,"sidebarContent":SidebarContent})
 
-@db_maintenance
-@login_required
+@loadContent(db_maintenance=True, login_required=True)
 def validate_user_queue(request, pk):
 	if request.user.is_superuser:
 		try:
@@ -153,7 +148,7 @@ def validate_user_queue(request, pk):
 	else:
 		return HttpResponseRedirect('/luhcaran/login/?next=' + request.build_absolute_uri())
 	
-
+@loadContent()
 def json_payload_profile(request,pbid):
 	try:
 		user_profile = user.objects.get(public_id=pbid)
@@ -786,8 +781,7 @@ def json_payload_profile(request,pbid):
 	return JsonResponse(data, safe=False)
 
 
-@db_maintenance
-@login_required
+@loadContent(db_maintenance=True)
 def show_debug(request, pbid):
 	user_credential = request.session['user_credential']
 	if checkContributor(user_credential,request):

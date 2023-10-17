@@ -1,6 +1,6 @@
 from .forms import DamageCalculatorForm
 from .models import ArticleMenu,user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable,DamageCalcTable,PromoCode
-from .function import checkDarkMode,checkMessages,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,calculatePrice,makeCookieheader,db_maintenance, getProfileWithCookie, makeLog
+from .function import checkDarkMode,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,calculatePrice,makeCookieheader, getProfileWithCookie, makeLog, loadContent
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.handlers.wsgi import WSGIRequest
@@ -12,14 +12,13 @@ from urllib.request import urlopen
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from datetime import timedelta, datetime
 import json, os, sys, traceback
-from const import WEBHOOK_URL, c_hostname, DISCORD_NOTIF_ROLE_ID, DISCORD_ERROR_ROLE_ID, DEV_MODE
+from conf.global_variable import WEBHOOK_URL, c_hostname, DISCORD_NOTIF_ROLE_ID, DISCORD_ERROR_ROLE_ID, DEV_MODE
 from django.utils.translation import get_language, gettext as _, gettext
 from .local_data import LocalDataContentWiki
 
 missing_data = []
 
-@db_maintenance
-@checkMessages
+@loadContent(checkMessages=True, db_maintenance=True)
 def menu(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -27,8 +26,7 @@ def menu(request):
 	list_article = list(ArticleMenu.objects.all().filter(display=True).order_by('index'))
 	return render(request, 'base/menu.html', {"darkmode": checkDarkMode(request), "header_msg":_("Menu Archero Wiki"), "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result),"list_article":list_article, "dev_mode":DEV_MODE})
 
-@db_maintenance
-@checkMessages
+@loadContent(checkMessages=True, db_maintenance=True)
 def news(request,titleArticle=None):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -40,7 +38,7 @@ def news(request,titleArticle=None):
 		return HttpResponseRedirect(f'/{get_language()}/')
 	return render(request, 'wiki/article-news.html', {"darkmode": checkDarkMode(request), "header_msg":_("Menu Archero Wiki"), "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result), "article":article, "article_title": article.title})
 
-
+@loadContent()
 def maze(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -49,6 +47,7 @@ def maze(request):
 		maze_data_api = json.load(url)
 	return render(request, 'wiki/maze.html', {"data_json":maze_data_api, "darkmode": checkDarkMode(request), "header_msg":_("maze"), "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
 
+@loadContent()
 def csrf_failure(request, reason=""):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -66,7 +65,7 @@ def csrf_failure(request, reason=""):
 	makeLog(request)
 	return render(request,'base/csrf_failure.html', {"darkmode": checkDarkMode(request), "header_msg":_("CSRF FAILURE"), "profil":profil, "public_id":public_id, "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
 
-@checkMessages
+@loadContent(checkMessages=True)
 def login(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_value = checkCookie(request)
@@ -113,6 +112,7 @@ def login_processing(request, username_raw, id_raw):
 		send_embed(boolCheck["ingame_name"],"Login Failed",description_embed=boolCheck["error_message"],field_name=f"login/processing/{username_raw}/{id_raw}/",field_value=f"Credentials : `{boolCheck['ingame_name']}`|`{boolCheck['ingame_id']}`\n\n**Response Cookies** : \n{response.cookies}",e_color="d50400",request=request, alert=True, admin_log=boolCheck.get('admin_log',None))
 	return response
 
+@loadContent()
 def wiki_menu(request, article=None):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -138,6 +138,7 @@ def wiki_menu(request, article=None):
 		ctx["header_msg"] = _("Wiki")
 	return render(request, "wiki/menu.html", ctx)
 
+@loadContent()
 def item_description(request, item=None):
 	
 	item_data = LocalDataContentWiki["ItemData"].get(str(item), None)
@@ -169,6 +170,7 @@ def item_description(request, item=None):
 	
 	return render(request, "wiki/item_description.html", ctx)
 
+@loadContent()
 def skill_description(request, skill=None):
 
 	skill_data = LocalDataContentWiki["SkillData"].get(str(skill), None)
@@ -203,6 +205,7 @@ def skill_description(request, skill=None):
 	
 	return render(request, "wiki/skill_description.html", ctx)
 
+@loadContent()
 def heros_description(request, hero=None):
 	
 	hero_data = LocalDataContentWiki["HeroData"].get(hero, None)
@@ -237,6 +240,7 @@ def heros_description(request, hero=None):
 	
 	return render(request, "wiki/heros_description.html", ctx)
 
+@loadContent()
 def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="None"):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -344,7 +348,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 	ctx.update({"content":content})
 	return render(request, "wiki/upgrade_cost.html", ctx)
 
-
+@loadContent()
 def gsheetGrid(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -358,7 +362,7 @@ def gsheetGrid(request):
 	}
 	return render(request, "wiki/gsheet.html", ctx)
 
-@db_maintenance
+@loadContent(db_maintenance=True)
 def promocode(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -392,8 +396,7 @@ def promocode(request):
 	}
 	return render(request, "wiki/promo-code.html", ctx)
 
-@db_maintenance
-@checkMessages
+@loadContent(db_maintenance=True,checkMessages=True)
 def damage(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -425,7 +428,7 @@ def damage(request):
 	}
 	return render(request, "wiki/damage.html", ctx)
 
-@db_maintenance
+@loadContent(db_maintenance=True)
 def dmgCalc_processing(request,pbid):
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
 		local_data = json.load(f)
@@ -633,8 +636,7 @@ def dmgCalc_processing(request,pbid):
 	else :
 		return HttpResponseRedirect(f"/{get_language()}/wiki/damage-calculator/")
 
-@db_maintenance
-@checkMessages
+@loadContent(db_maintenance=True,checkMessages=True)
 def damageCalc(request,pbid):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -805,7 +807,7 @@ def damageCalc(request,pbid):
 	ctx['damage_calc_form'] = damage_calc_form
 	return render(request, "wiki/dmg_calc.html", ctx)
 
-
+@loadContent()
 def handler404(request, exception):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -818,6 +820,7 @@ def handler404(request, exception):
 	}
 	return render(request,'base/404.html', ctx, status=404)
 
+@loadContent()
 def handler500(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -851,10 +854,12 @@ def handler500(request):
 	return render(request,'base/500.html', {'darkmode':checkDarkMode(request),"header_msg":_("Internal Server Error"),"sidebarContent":SidebarContent},status=500)
 
 
+@loadContent()
 def tos(request):
 	makeLog(request)
 	return render(request,'base/tos.html',{"darkmode": checkDarkMode(request)})
 
+@loadContent()
 def changelog(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -863,6 +868,7 @@ def changelog(request):
 		commit_json = json.load(commit)
 	return render(request,'base/changelog.html',{"commit_json":commit_json,"darkmode": checkDarkMode(request), "header_msg":_("Change Log"),  "sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(cookie_result)})
 
+@loadContent()
 def theorycraft(request):
 	cookie_result = checkCookie(request)
 	makeLog(request)
@@ -905,7 +911,7 @@ def set_session(request,key_cookie,value_cookie):
 	request.session["user_credential"] = {key_cookie:value_cookie}
 	return redirect("/")
 
-
+@loadContent()
 def page_set(request:WSGIRequest):
 	if DEV_MODE:
 		SidebarContent = LocalDataContentWiki['SidebarContent']

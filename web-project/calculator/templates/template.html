@@ -103,9 +103,9 @@
 			<footer>
 				<div class="footer-content">
 					<div class="footer-about">
-						<img class="footer-img-icon" fetchpriority="high" src="{% static 'image/archero_icon.png' %}?version=1.8.1" alt="Archero 5.1.0 game icon">
+						<img class="footer-img-icon" fetchpriority="high" src="{{ request.archero_icon_link }}" alt="{{ request.archero_version }} game icon">
 						<div class="about-content">
-							<h1>Archero 5.2.2</h1>
+							<h1>{{ request.archero_version }}</h1>
 							<div class="contact-me">
 								<span>{% blocktrans %}Contact{% endblocktrans %} <a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran</a> <a href="https://www.reddit.com/user/LuhCaran101" target="_blank"><i class="fab fa-reddit"></i> u/LuhCaran101</a></span>
 							</div>

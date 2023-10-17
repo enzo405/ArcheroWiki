@@ -1,14 +1,13 @@
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib import messages
-from django.core.handlers.wsgi import WSGIRequest
 from math import *
 from .forms import UserForm,StuffForm,HeroForm,TalentForm,SkinForm,AltarForm,JewelTypeForm,JewelLevelForm,EggForm,EggEquippedForm,DragonForm,RunesForm,ReforgeForm,RefineForm,MedalsForm,RelicsForm,WeaponSkinForm
 from .image import create_image
-from .models import user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelTypeTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable,DamageCalcTable,Contributor
-from .function import checkDarkMode,getCredentialForNonLoginRequired,checkMessages,all_formIsValid,findFormError,checkCookie,login_required,similar,create_unique_id,send_embed,makeLog, makeCookieheader, db_maintenance, checkContributor, getProfileWithCookie
+from .models import user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelTypeTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable,DamageCalcTable
+from .function import checkDarkMode,getCredentialForNonLoginRequired,checkMessages,all_formIsValid,findFormError,checkCookie,login_required,create_unique_id,send_embed,makeLog, makeCookieheader, db_maintenance, checkContributor, getProfileWithCookie, loadContent
 import json, os
-from const import DEV_MODE, c_hostname, DEBUG_STATS
+from conf.global_variable import DEV_MODE, c_hostname, DEBUG_STATS
 from django.utils.translation import gettext as _, get_language
 from .local_data import LocalDataContentWiki
 
@@ -22,7 +21,7 @@ except:
 ## HHttpResponseRedirect doesn't allow messages.<type>(request,<message:str>) because the messages are stored in the user's session, and a new request means a new session.
 ## redirect allow messages.<type>(request,<message:str>)
 
-@db_maintenance
+@loadContent(db_maintenance=True)
 def views_calc_stats(request,pbid:int,redirectPath:int):
 	global missing_data
 	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
@@ -394,7 +393,7 @@ def views_calc_stats(request,pbid:int,redirectPath:int):
 		send_embed("New Entry",f"{user_stats.ingame_name} | {user_stats.ingame_id}","","",f"[Admin Panel Link User]({c_hostname}/luhcaran/calculator/user/{user_stats.id}/change/)\n[Profile]({c_hostname}/calculator/show/{user_stats.public_id}/) Stats : {user_stats.global_atk_save} | {user_stats.global_hp_save}","A200FF", request,False)
 	return HttpResponseRedirect(f'/{get_language()}{dict_Link.get(redirectPath,"/calculator/index/")}')
 
-@checkMessages
+@loadContent(checkMessages=True)
 def affiche_calc(request, pbid:int):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	user_credential = getCredentialForNonLoginRequired(request)['user_credential']
@@ -453,8 +452,7 @@ def affiche_calc(request, pbid:int):
 		ctx['DEV_MODE'] = True
 	return render(request,'calculator/affiche.html',ctx)
 
-@db_maintenance
-@checkMessages
+@loadContent(db_maintenance=True,checkMessages=True)
 def index_calc(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	ingame_name_cookie,ingame_id_cookie,user_credential = getCredentialForNonLoginRequired(request).values()
@@ -512,8 +510,7 @@ def index_calc(request):
 		"cookieUsername":makeCookieheader(user_credential)
 	})
 
-@db_maintenance
-@login_required
+@loadContent(db_maintenance=True, login_required=True)
 def formulaire_calc(request):
 	try:
 		user.objects.get(pk=user_init_primary_key)
@@ -590,8 +587,7 @@ def formulaire_calc(request):
 		}
 	return render(request,"calculator/formulaire.html",ctx)
 
-@db_maintenance
-@login_required
+@loadContent(db_maintenance=True, login_required=True)
 def traitement_calc(request):
 	if request.method == "POST":
 		SidebarContent = LocalDataContentWiki['SidebarContent']
@@ -710,8 +706,7 @@ def traitement_calc(request):
 	else:
 		return HttpResponseRedirect(f"/{get_language()}/calculator/index")
 
-@db_maintenance
-@login_required
+@loadContent(db_maintenance=True, login_required=True)
 def update_calc(request, pbid):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	user_credential = request.session['user_credential']
@@ -798,7 +793,7 @@ def update_calc(request, pbid):
 	else:
 		return HttpResponseRedirect(f"/{get_language()}/calculator/index/")
 
-@login_required
+@loadContent(login_required=True)
 def updatetraitement_calc(request, pbid):
 	if request.method == "POST":
 		SidebarContent = LocalDataContentWiki['SidebarContent']
@@ -925,7 +920,7 @@ def updatetraitement_calc(request, pbid):
 	else:
 		return HttpResponseRedirect(f"/{get_language()}/calculator/index")
 
-@db_maintenance
+@loadContent(db_maintenance=True)
 def delete_user(request, pbid):
 	target = user.objects.get(public_id=pbid)
 	if request.user.is_superuser:
@@ -944,7 +939,7 @@ def delete_user(request, pbid):
 	return HttpResponseRedirect(f"/{get_language()}/calculator/index")
 
 
-@db_maintenance
+@loadContent(db_maintenance=True)
 def duplicate_user(request):
 	if request.user.is_superuser and request.method == "GET":
 		user_list = user.objects.all()
@@ -956,7 +951,7 @@ def duplicate_user(request):
 		target.duplicate(request.POST['ingame_name'],request.POST['ingame_id'])
 	return HttpResponseRedirect(f"/{get_language()}/calculator/index")
 
-@db_maintenance
+@loadContent(db_maintenance=True)
 def admin_reload_stats(request,pbid):
 	user_credential = request.session['user_credential']
 	if checkContributor(user_credential,request):

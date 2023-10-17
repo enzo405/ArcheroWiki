@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
-from const import c_DEBUG, c_DATABASES, c_CSRF_FAILURE_VIEW, c_CSRF_USE_SESSION, c_CSRF_COOKIE_SECURE, c_CSRF_COOKIE_DOMAIN, c_CSRF_TRUSTED_ORIGINS, c_ALLOWED_HOSTS, c_SECRET_KEY
+from conf.global_variable import c_DEBUG, c_DATABASES, c_CSRF_FAILURE_VIEW, c_CSRF_USE_SESSION, c_CSRF_COOKIE_SECURE, c_CSRF_COOKIE_DOMAIN, c_CSRF_TRUSTED_ORIGINS, c_ALLOWED_HOSTS, c_SECRET_KEY
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,6 +30,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'app.wiki_middleware.CustomHeaderMiddleware'
 ]
 
 ROOT_URLCONF = 'app.urls'
