@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-06 19:02+0200\n"
+"POT-Creation-Date: 2023-10-12 23:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,15 +83,15 @@ msgstr "Wartung der Datenbank"
 msgid "You need to login first"
 msgstr "Sie müssen sich zuerst anmelden"
 
-#: .\calculator\function.py:264
+#: .\calculator\function.py:263
 msgid "Ingame id doesn't match or is too short"
 msgstr "Die Ingame-ID stimmt nicht überein oder ist zu kurz"
 
-#: .\calculator\function.py:266
+#: .\calculator\function.py:265
 msgid "Username not allowed"
 msgstr "Benutzername nicht erlaubt"
 
-#: .\calculator\function.py:268
+#: .\calculator\function.py:267
 msgid "Ingame Id not allowed"
 msgstr "Ingame-Id nicht erlaubt"
 
@@ -1654,11 +1654,9 @@ msgstr "[Geschichten der Titanen+1] Ring Grundwerte +10%"
 msgid "[Titan Tales+2] Ring Basic Stats +10%"
 msgstr "[Geschichten der Titanen+2] Ring Grundwerte +10%"
 
-#: .\calculator\local_data.py:776 .\calculator\local_data.py:1489
-#: .\calculator\local_data.py:1514 .\calculator\local_data.py:1539
-#: .\calculator\local_data.py:1564 .\calculator\local_data.py:1756
-msgid "[Titan Tales+3] Mythic Skill Effect Upgraded (+12%)"
-msgstr "[Geschichten der Titanen+3] Mythischer Fertigkeitseffekt verbessert (+12%)"
+#: .\calculator\local_data.py:776
+msgid "[Titan Tales+3] Mythic Skill Effect Upgraded (+13%)"
+msgstr "[Geschichten der Titanen+3] Mythischer Fertigkeitseffekt verbessert (+13%)"
 
 #: .\calculator\local_data.py:777
 msgid "[Chaos] Knockback +7%"
@@ -2794,6 +2792,12 @@ msgstr "[Mythisch+2] Epischer Fertigkeitseffekt verbessert (+15%)"
 #: .\calculator\local_data.py:1486
 msgid "[Titan Tales] Damage Ground Units +10%"
 msgstr "[Geschichten der Titanen] Schaden an Bodeneinheiten +10%"
+
+#: .\calculator\local_data.py:1489 .\calculator\local_data.py:1514
+#: .\calculator\local_data.py:1539 .\calculator\local_data.py:1564
+#: .\calculator\local_data.py:1756
+msgid "[Titan Tales+3] Mythic Skill Effect Upgraded (+12%)"
+msgstr "[Geschichten der Titanen+3] Mythischer Fertigkeitseffekt verbessert (+12%)"
 
 #: .\calculator\local_data.py:1490
 msgid "[Chaos] Greatly Increases fire Damage."
@@ -7771,61 +7775,61 @@ msgstr "Bitte aktivieren Sie JavaScript, um diese Website zu nutzen."
 
 #: .\calculator\templates\base\500.html:88
 #: .\calculator\templates\base\maintenance.html:87
-#: .\calculator\templates\template.html:118
+#: .\calculator\templates\template.html:110
 msgid "Contact"
 msgstr "Kontakt"
 
 #: .\calculator\templates\base\500.html:90
 #: .\calculator\templates\base\maintenance.html:89
-#: .\calculator\templates\template.html:120
+#: .\calculator\templates\template.html:112
 msgid "Terms of Use"
 msgstr "Nutzungsbedingungen"
 
 #: .\calculator\templates\base\500.html:91
 #: .\calculator\templates\base\maintenance.html:90
-#: .\calculator\templates\template.html:121
+#: .\calculator\templates\template.html:113
 msgid "ChangeLog"
 msgstr "Änderungsprotokoll"
 
 #: .\calculator\templates\base\500.html:96
 #: .\calculator\templates\base\maintenance.html:95
-#: .\calculator\templates\template.html:126
+#: .\calculator\templates\template.html:118
 msgid "Community Links"
 msgstr "Gemeinschaftliche Links"
 
 #: .\calculator\templates\base\500.html:98
 #: .\calculator\templates\base\maintenance.html:97
-#: .\calculator\templates\template.html:128
+#: .\calculator\templates\template.html:120
 msgid "LeMutique's Server"
 msgstr "LeMutique's Server"
 
 #: .\calculator\templates\base\500.html:101
 #: .\calculator\templates\base\maintenance.html:100
-#: .\calculator\templates\template.html:131
+#: .\calculator\templates\template.html:123
 msgid "TigerShark's Server"
 msgstr "TigerSharks Server"
 
 #: .\calculator\templates\base\500.html:107
 #: .\calculator\templates\base\maintenance.html:106
-#: .\calculator\templates\template.html:137
+#: .\calculator\templates\template.html:129
 msgid "FB Archero"
 msgstr "FB Archero"
 
 #: .\calculator\templates\base\500.html:111
 #: .\calculator\templates\base\maintenance.html:110
-#: .\calculator\templates\template.html:141
+#: .\calculator\templates\template.html:133
 msgid "Shout-out :"
 msgstr "Ausrufezeichen:"
 
 #: .\calculator\templates\base\500.html:112
 #: .\calculator\templates\base\maintenance.html:111
-#: .\calculator\templates\template.html:142
+#: .\calculator\templates\template.html:134
 msgid "Special thanks"
 msgstr "Besonderer Dank"
 
 #: .\calculator\templates\base\500.html:113
 #: .\calculator\templates\base\maintenance.html:112
-#: .\calculator\templates\template.html:143
+#: .\calculator\templates\template.html:135
 msgid "Thanks to"
 msgstr "Dank an"
 
@@ -7925,7 +7929,7 @@ msgstr "Ihr Ausweis darf maximal 11 Zahlen enthalten"
 msgid "New"
 msgstr "Neu"
 
-#: .\calculator\templates\base\menu.html:50 .\calculator\views_wiki.py:422
+#: .\calculator\templates\base\menu.html:50 .\calculator\views_wiki.py:419
 msgid "Damage Calculator"
 msgstr "Schaden-Rechner"
 
@@ -8254,22 +8258,6 @@ msgstr "Archero - %(article_title)s"
 #: .\calculator\templates\wiki\damage.html:17
 msgid "Choose a profile you want to test the runes on or look the damage :"
 msgstr "Wählen Sie ein Profil, an dem Sie die Runen testen möchten, oder sehen Sie sich den Schaden an:"
-
-#: .\calculator\templates\wiki\damage.html:29
-msgid "Chapter 1 to 21 "
-msgstr "Kapitel 1 bis 21"
-
-#: .\calculator\templates\wiki\damage.html:30
-msgid "Chapter 22 to 34 "
-msgstr "Kapitel 22 bis 34"
-
-#: .\calculator\templates\wiki\damage.html:31
-msgid "Chapter 34 to 42 "
-msgstr "Kapitel 34 bis 42"
-
-#: .\calculator\templates\wiki\damage.html:32
-msgid "Chapter +ch42 "
-msgstr "Kapitel +ch42"
 
 #: .\calculator\templates\wiki\dmg_calc.html:6
 msgid "Archero - Damage Calculator"
@@ -8794,30 +8782,30 @@ msgstr "Promo-Code"
 msgid "You attempted to access {profile[1].ingame_name}<br>But your login username is \"{ingame_name_cookie}\"."
 msgstr "Sie haben versucht, auf {profile[1].ingame_name}<br>zuzugreifen, aber Ihr Login-Benutzername lautet \"{ingame_name_cookie}\"."
 
-#: .\calculator\views_wiki.py:656
+#: .\calculator\views_wiki.py:650
 msgid "Damage Calc"
 msgstr "Schadensberechnung"
 
-#: .\calculator\views_wiki.py:821
+#: .\calculator\views_wiki.py:815
 msgid "Page Not Found"
 msgstr "Seite nicht gefunden"
 
-#: .\calculator\views_wiki.py:856
+#: .\calculator\views_wiki.py:850
 msgid "Oops! Something went wrong<br>An error occurred while processing your request. Please try again later."
 msgstr "Oops! Etwas ist schief gelaufen<br>Bei der Bearbeitung Ihrer Anfrage ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal."
 
-#: .\calculator\views_wiki.py:857
+#: .\calculator\views_wiki.py:851
 msgid "Internal Server Error"
 msgstr "Interner Serverfehler"
 
-#: .\calculator\views_wiki.py:870
+#: .\calculator\views_wiki.py:864
 msgid "Change Log"
 msgstr "Änderungsprotokoll"
 
-#: .\calculator\views_wiki.py:875
+#: .\calculator\views_wiki.py:869
 msgid "Archero Calculation"
 msgstr "Archero-Berechnung"
 
-#: .\calculator\views_wiki.py:923
+#: .\calculator\views_wiki.py:917
 msgid "Page Set Cookie/Session"
 msgstr "Seite setzen Cookie/Sitzung"

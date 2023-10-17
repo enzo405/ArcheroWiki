@@ -773,7 +773,7 @@ LocalDataContentWiki = {
         "titan_tales": _("[Titan Tales] Battle XP Gain +4%"),
         "titan_tales+1": _("[Titan Tales+1] Ring Basic Stats +10%"),
         "titan_tales+2": _("[Titan Tales+2] Ring Basic Stats +10%"),
-        "titan_tales+3": _("[Titan Tales+3] Mythic Skill Effect Upgraded (+12%)"),
+        "titan_tales+3": _("[Titan Tales+3] Mythic Skill Effect Upgraded (+13%)"),
         "chaos": _("[Chaos] Knockback +7%")
       }
     },
