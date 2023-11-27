@@ -1,6 +1,13 @@
 from pathlib import Path
 import os
-from conf.global_variable import c_DEBUG, c_DATABASES, c_CSRF_FAILURE_VIEW, c_CSRF_USE_SESSION, c_CSRF_COOKIE_SECURE, c_CSRF_COOKIE_DOMAIN, c_CSRF_TRUSTED_ORIGINS, c_ALLOWED_HOSTS, c_SECRET_KEY
+
+try:
+    if os.path.exists('conf/global_variable_local.py'):
+        from conf.global_variable_local import *
+    else:
+        from conf.global_variable import *
+except ImportError:
+    from conf.global_variable import *
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -30,7 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'app.wiki_middleware.CustomHeaderMiddleware'
+    'calculator.wikiMiddleware.CustomHeaderMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'

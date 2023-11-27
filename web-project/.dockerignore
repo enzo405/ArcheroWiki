@@ -1,0 +1,9 @@
+# Temp file loaded in the code
+calculator/migrations/*
+calculator/static/image/stuff_save/*
+
+# Byte-compiled / optimized / DLL files
+__pycache__
+
+# Setting file 
+conf/global_variable_local.py

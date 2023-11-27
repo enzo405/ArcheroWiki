@@ -954,7 +954,7 @@ input:invalid {
 .div-table-index{
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
+	gap: 25px;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
@@ -1052,6 +1052,7 @@ input:invalid {
 	margin: 8px;
 	padding: 8px 16px;
 	text-align: center;
+	border-radius: 8px;
 }
 #pagination button.active {
 	background-color: #2eb8e6;

@@ -66,6 +66,7 @@ class HeroForm(ModelForm):
 				'elaine_level', 'elaine_star',
 				'bobo_level', 'bobo_star',
 				'stella_level', 'stella_star',
+				'taiga_level', 'taiga_star',
 )
 
 

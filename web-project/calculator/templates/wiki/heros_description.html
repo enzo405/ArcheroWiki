@@ -2,8 +2,8 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.8.1">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.8.1">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.1">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.9.1">
 <meta property="og:type" content="website">
 <meta name="description" content="Discover the extensive collection of heroes in Archero, each with unique star boosts, base skills, and descriptions. Explore our comprehensive list to uncover the full potential of each character. Make strategic choices and harness the power of your heroes to overcome challenges and triumph in Archero.">
 {% if hero == "yes" %}
@@ -18,13 +18,13 @@
 • Base Hp: {{ hero_data.base_hp }}
 {{ hero_data.price }}">
 {% endblock %}
-<meta property="og:image" content="{% static hero_image %}?version=1.8.1">
+<meta property="og:image" content="{% static hero_image %}?version=1.9.1">
 {% else %}
 <title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Heroes Description">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/heroes">
 <meta property="og:description" content="Discover the extensive collection of heroes in Archero, each with unique star boosts, base skills, and descriptions. Explore our comprehensive list to uncover the full potential of each character. Make strategic choices and harness the power of your heroes to overcome challenges and triumph in Archero.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.8.1">
+<meta property="og:image" content="{{ request.archero_icon_link }}">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -265,7 +265,7 @@
 							<div class="rgqgux-0 dQAxvm">
 								<div class="rgqgux-2 jFcAhO">
 									<div class="content-embed-skin sc-27l7o2-0 heOpKb">
-										<img src="/static/image/hero_skin/{{ name_hero_initial }}_{{ skin.src }}.png?version=1.8.1" alt="Archero {{ name_hero }}'s {{ skin.name }} skin thumbnail">
+										<img src="/static/image/hero_skin/{{ name_hero_initial }}_{{ skin.src }}.png?version=1.9.1" alt="Archero {{ name_hero }}'s {{ skin.name }} skin thumbnail">
 										<div>
 											<h3>{{ skin.name }}</h3>
 											<div>

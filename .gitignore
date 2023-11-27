@@ -1,1 +1,12 @@
+# Temp file loaded in the code
+web-project/calculator/migrations/*
+web-project/calculator/static/image/stuff_save/*
+
+# Byte-compiled / optimized / DLL files
+.venv
+.vscode
 __pycache__
+
+# Setting file 
+*_local.py
+*_local.json

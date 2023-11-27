@@ -2,8 +2,8 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.8.1">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.8.1">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.1">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.9.1">
 <title>{% blocktrans %}Archero - Promo Codes{% endblocktrans %}</title>
 <meta name="description" content="Discover the latest promo codes and gift codes for Archero on our website. Unlock exclusive rewards, gems, and valuable items by redeeming these codes.">
 <meta property="og:title" content="Archero - Promo Codes">
@@ -12,15 +12,15 @@
 {% block meta_description %}
 <meta property="og:description" content="Discover the latest promo codes and gift codes for Archero on our website:
 {% if len_promo != 0 %}
-{% for i in promo_code %}
-• {{ i.0 }}
-Rewards: {% for x in i.2 %} | {{ x.0 }} {{ x.1 }} | {% endfor %}{% endfor %}
+{% for promo,rewards in promo_code.items %}
+• {{ promo.code }}
+Rewards: {% for reward in rewards %} {{ reward.reward_type }} {{ reward.reward_amount }} {% endfor %}{% endfor %}
 {% else %}
 - There are no promocodes available at this time -
 {% endif %}">
 {% endblock %}
 <meta name="description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.8.1">
+<meta property="og:image" content="{{ request.archero_icon_link }}">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
@@ -42,19 +42,21 @@ Rewards: {% for x in i.2 %} | {{ x.0 }} {{ x.1 }} | {% endfor %}{% endfor %}
 					<div class="sc-3qrykn-4 hQKgZF">
 						<div class="rgqgux-0 dQAxvm">
 							{% if len_promo != 0 %}
-								{% for i in promo_code %}
+								{% for promo,rewards in promo_code.items %}
 								<div class="rgqgux-1 dHYyKL code_field">
 									<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-										<strong>• {{ i.0 }}</strong>
+										<strong>• {{ promo.code }}</strong>
 									</div>
 								</div>
 								<div class="rgqgux-2 jFcAhO reward_field">
 									<div class="sc-27l7o2-0 heOpKb reward_text">
-										{% blocktrans %}Rewards: {% endblocktrans %}{% for x in i.2 %} {{ x.0 }} <object type="image/png" data="/static/image/svg/{{ x.1 }}.svg" width="18" height="18"></object>{% endfor %} 
+										{% blocktrans %}Rewards: {% endblocktrans %}{% for reward in rewards %}
+											{{ reward.reward_amount }} <object type="image/png" data="/static/image/svg/{{ reward.reward_type }}.svg" height="18"> {{ reward.reward_type }}</object>
+										{% endfor %}
 									</div>
 								</div>
 								<div class="rgqgux-2 jFcAhO expire_field">
-									{% blocktrans %}Expires on: {% endblocktrans %}{{ i.1 }}
+									{% blocktrans %}Expires on: {% endblocktrans %}{{ promo.expire }}
 								</div>
 								{% endfor %}
 							{% else %}

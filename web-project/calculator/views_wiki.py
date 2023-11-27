@@ -1,5 +1,5 @@
 from .forms import DamageCalculatorForm
-from .models import ArticleMenu,user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable,DamageCalcTable,PromoCode
+from .models import ArticleMenu,user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable,DamageCalcTable,PromoCode,PromoCodeReward
 from .function import checkDarkMode,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,calculatePrice,makeCookieheader, getProfileWithCookie, makeLog, loadContent
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -12,9 +12,11 @@ from urllib.request import urlopen
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from datetime import timedelta, datetime
 import json, os, sys, traceback
-from conf.global_variable import WEBHOOK_URL, c_hostname, DISCORD_NOTIF_ROLE_ID, DISCORD_ERROR_ROLE_ID, DEV_MODE
-from django.utils.translation import get_language, gettext as _, gettext
+from app.settings import WEBHOOK_URL, c_hostname, DISCORD_NOTIF_ROLE_ID, DISCORD_ERROR_ROLE_ID, DEV_MODE
+from django.utils.translation import get_language, gettext as _, gettext_lazy
+from django.utils.text import format_lazy
 from .local_data import LocalDataContentWiki
+from datetime import datetime
 
 missing_data = []
 
@@ -267,12 +269,12 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 			price = calculatePrice(lvl1,lvl2,cost_type)
 			content = {
 				"eTitle": _("Equipment Upgrade Cost"),
-				"eDescription": _(f"To upgrade equipment from level {lvl1} to {lvl2}"),
+				"eDescription": format_lazy("{intro} {level1} {to} {level2}", intro=gettext_lazy("To upgrade equipment from level "),level1=lvl1, to=gettext_lazy("to"), level2=lvl2),
 				"eImage": "/static/image/wiki-image/Cost_Item.png",
 				"eField1": f'{int(price[0]):,}',
 				"eField2": f'{int(price[1]):,}',
-				"currency1": [_('Gold :'),_('gold')],
-				"currency2": [_('Scrolls :'),_('scroll')],
+				"currency1": [_('Gold :'),'gold'],
+				"currency2": [_('Scrolls :'),'scroll'],
 			}
 		else:
 			messages.error(request,_(f"The levels need to be between 0 and {max_lvl}"))
@@ -282,13 +284,14 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 			price = calculatePrice(lvl1,lvl2,cost_type)
 			content = {
 				"eTitle": _("Heroes Upgrade Cost"),
-				"eDescription": _(f"To upgrade heroes from level {lvl1} to {lvl2}"),
+				"eDescription": format_lazy("{intro} {level1} {to} {level2}", intro=gettext_lazy("To upgrade heroes from level "),level1=lvl1, to=gettext_lazy("to"), level2=lvl2),
 				"eImage": "/static/image/wiki-image/Cost_Heroes.png",
 				"eField1": f'{int(price[0]):,}',
 				"eField2": f'{int(price[1]):,}',
-				"currency1": [_('Gold :'),_('gold')],
-				"currency2": [_('Sapphire :'),_('sapphire')],
+				"currency1": [_('Gold :'),'gold'],
+				"currency2": [_('Sapphire :'),'sapphire'],
 			}
+			print(content)
 		else:
 			messages.error(request,_("The levels need to be between 0 and 120"))
 			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/")
@@ -297,11 +300,11 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 			price = calculatePrice(lvl1,lvl2,cost_type)
 			content = {
 				"eTitle": _("Talents Upgrade Cost"),
-				"eDescription": _(f"To upgrade talents from level {lvl1} to {lvl2}"),
+				"eDescription": format_lazy("{intro} {level1} {to} {level2}", intro=gettext_lazy("To upgrade talents from level "),level1=lvl1, to=gettext_lazy("to"), level2=lvl2),
 				"eImage": "/static/image/wiki-image/Cost_Talent.png",
 				"eField1": f'{int(price):,}',
 				"eField2": f'<br>',
-				"currency1": [_('Gold :'),_('gold')],
+				"currency1": [_('Gold :'),'gold'],
 				"currency2": ['',''],
 			}
 		else:
@@ -313,12 +316,12 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 				price = calculatePrice(lvl1,lvl2,cost_type,rank)
 				content = {
 					"eTitle": _("Dragon Upgrade Cost"),
-					"eDescription": _(f"To upgrade dragons from level {lvl1} to {lvl2}"),
+					"eDescription": format_lazy("{intro} {level1} {to} {level2}", intro=gettext_lazy("To upgrade dragons from level "),level1=lvl1, to=gettext_lazy("to"), level2=lvl2),
 					"eImage": "/static/image/wiki-image/Cost_Dragon" + str(rank).upper() + ".png",
 					"eField1": f'{int(price[0]):,}',
 					"eField2": f'{int(price[1]):,}',
-					"currency1": [_('Gold :'),_('gold')],
-					"currency2": [_('Magestones :'),_('magestone')],
+					"currency1": [_('Gold :'),'gold'],
+					"currency2": [_('Magestones :'),'magestone'],
 				}
 			else:
 				messages.error(request,_("The rank need to be whether A, S or SS"))
@@ -332,12 +335,12 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 				price = calculatePrice(lvl1,lvl2,cost_type,rank)
 				content = {
 					"eTitle": _("Relics Upgrade Cost"),
-					"eDescription": _(f"To upgrade relics from level {lvl1} to {lvl2}"),
+					"eDescription": format_lazy("{intro} {level1} {to} {level2}", intro=gettext_lazy("To upgrade relics from level "),level1=lvl1, to=gettext_lazy("to"), level2=lvl2),
 					"eImage": "/static/image/wiki-image/Cost_Relics" + str(rank).upper() + ".png",
 					"eField1": f'{int(price[0]):,}',
 					"eField2": f'{int(price[1]):,}',
-					"currency1": [_('Gold :'),_('gold')],
-					"currency2": [_('Starlight :'),_('starlight')],
+					"currency1": [_('Gold :'),'gold'],
+					"currency2": [_('Starlight :'),'starlight'],
 				}
 			else:
 				messages.error(request,_("The rank need to be whether A, S or SS"))
@@ -367,30 +370,23 @@ def promocode(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
 	makeLog(request)
-	all_active_code = []
-	promo_codes = PromoCode.objects.all().filter(is_active=True)
-	for i in promo_codes:
-		expireDate = i.expire
-		if i.expire == None:
-			expireDate = "Unknown"
-		r1 = [i.reward_1_amount,i.reward_1_type]
-		r2 = [i.reward_2_amount,i.reward_2_type]
-		r3 = [i.reward_3_amount,i.reward_3_type]
-		r4 = [i.reward_4_amount,i.reward_4_type]
-		if str(r1[1]) != "none":
-			result = [i.code,expireDate,[r1]]
-			if str(r2[1]) != "none":
-				result = [i.code,expireDate,[r1,r2]]
-				if str(r3[1]) != "none":
-					result = [i.code,expireDate,[r1,r2,r3]]
-					if str(r4[1]) != "none":
-						result = [i.code,expireDate,[r1,r2,r3,r4]]
-			all_active_code.append(result)
+	allActiveCode = {}
+	promoCodes = PromoCode.objects.all().filter(is_active=True)
+	for promoCode in promoCodes:
+		if promoCode.deactivateIfExpired():
+			datetime_object = datetime.strptime(str(promoCode.expire), "%Y-%m-%d")
+			send_webhook(f"Promo Code {promoCode.code} has been deactivated because it expired <t:{int(datetime_object.timestamp())}:F>")
+			continue
+		promoData = []
+		codeRewards = PromoCodeReward.objects.all().filter(promocodeId=promoCode.pk)
+		for reward in codeRewards:
+			promoData.append(reward)
+		allActiveCode[promoCode] = promoData
 	ctx = {
 		"darkmode": checkDarkMode(request),
 		"header_msg":_("Promo Code"),
-		"promo_code":all_active_code,
-		"len_promo":len(all_active_code),
+		"promo_code":allActiveCode,
+		"len_promo":len(allActiveCode.keys()),
 		"sidebarContent":SidebarContent,
 		"cookieUsername":makeCookieheader(cookie_result)
 	}
@@ -504,6 +500,7 @@ def dmgCalc_processing(request,pbid):
 	hero_Elaine = HeroTable_stats.HerosStatsRecup("Elaine")
 	hero_Bobo = HeroTable_stats.HerosStatsRecup("Bobo")
 	hero_Stella = HeroTable_stats.HerosStatsRecup("Stella")
+	hero_Taiga = HeroTable_stats.HerosStatsRecup("Taiga")
 	## Get Skin Atk and Hp
 	skin_atk_boost = SkinTable_stats.skin_attack
 	## Get Passiv Stats From Type 1 Egg
@@ -592,9 +589,9 @@ def dmgCalc_processing(request,pbid):
 	cumul_old_flat_passiv_atk = int(cumul_talent_flat_passiv_atk) + int(cumul_runes_flat_passiv_atk) + int(cumul_hero_flat_passiv_atk) + int(cumul_skin_flat_passiv_atk) + int(cumul_egg_flat_passiv_atk)
 	cumul_refine_flat_activ_atk =  int(refine_weapon_atk) + int(refine_ring1_atk) + int(refine_ring2_atk) + int(refine_bracelet_atk)
 	cumul_dragon_flat_activ_atk = int(dragon_stats_dict.get("Attack",0))
-	cumul_stuff_flat_activ_atk = round(stuff_activ_stats['weapon_total'] + stuff_activ_stats['bracelet_total'])
+	cumul_stuff_flat_activ_atk = round(stuff_activ_stats['weapon_total'] + stuff_activ_stats['bracelet_total'] + stuff_activ_stats.get("ring_attack_flat",0))
 
-	cumul_heros_var_passiv_atk = float(hero_Taranis[2]) + float(hero_Meowgik[2]) + float(hero_Ayana[2]) + float(hero_Rolla[2]) + float(hero_Sylvan[2]) + float(hero_Aquea[2]) + float(hero_Iris[2]) + float(hero_Bonnie[4]) + float(hero_Shade[7]) + float(hero_Melinda[7]) + float(hero_Bobo[1]) + float(hero_Bobo[4]) + float(hero_Stella[2])
+	cumul_heros_var_passiv_atk = float(hero_Taranis[2]) + float(hero_Meowgik[2]) + float(hero_Ayana[2]) + float(hero_Rolla[2]) + float(hero_Sylvan[2]) + float(hero_Aquea[2]) + float(hero_Iris[2]) + float(hero_Bonnie[4]) + float(hero_Shade[7]) + float(hero_Melinda[7]) + float(hero_Bobo[1]) + float(hero_Bobo[4]) + float(hero_Stella[2]) + float(hero_Taiga[6])
 	cumul_heros_var_activ_atk = float(hero_Onir[3]) + float(hero_Bonnie[3])
 	cumul_altar_var_passiv_atk = float(altar_heros_ascension_atk) + float(altar_stuff_ascension_atk)
 	cumul_privileges_var_passiv_atk = float(brave_privileges_stats['Attack Var'])

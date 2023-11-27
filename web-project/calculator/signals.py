@@ -2,7 +2,7 @@ from django.urls import reverse
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.admin.models import LogEntry
-from conf.global_variable import c_hostname, WEBHOOK_URL
+from app.settings import c_hostname, WEBHOOK_URL
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from .function import checkDbMaintenance
 

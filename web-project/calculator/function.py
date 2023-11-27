@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.core.handlers.wsgi import WSGIRequest
 from urllib.parse import urlencode, unquote
-from conf.global_variable import ADMIN_LOG_WEBHOOK_URL,WEBHOOK_URL, DEV_MODE, DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, c_hostname, ADMIN_CREDENTIAL, DISCORD_NOTIF_ROLE_ID
+from app.settings import ADMIN_LOG_WEBHOOK_URL,WEBHOOK_URL, DEV_MODE, DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, c_hostname, ADMIN_CREDENTIAL, DISCORD_NOTIF_ROLE_ID
 import random as random
 import hashlib
 from .models import Token, ServerManagement, Contributor, user
@@ -258,22 +258,24 @@ def calculatePrice(lvl1, lvl2, type, rank=None):
 		elif rank == "SS":
 			return [int(result[0])*2,int(result[1])*2]
 
-def makeCookieheader(cookieResult: dict) -> str:
+def makeCookieheader(cookieResult: dict|None) -> str:
 	"""
 	Concatenate the key and value of cookieResult to make the sub-header
 	under the header of each page
 	"""
 	result = ""
-	if "unknown" not in cookieResult:
+	if cookieResult != None and "unknown" not in cookieResult:
 		result = " - ".join([key + " | " + value for key, value in cookieResult.items()])
 	return result
 
 
-def checkContributor(cookie_result:dict, request:HttpResponse) -> bool:
+def checkContributor(cookie_result:dict|None, request:HttpResponse) -> bool:
 	"""
 	Check if the user is in the Contributor database or if the user is superuser
 	"username|username_id"
 	"""
+	if cookie_result == None:
+		return False
 	username,ingame_id = list(cookie_result.items())[0]
 	if Contributor.objects.filter(label=f"{username}|{ingame_id}").exists() or request.user.is_superuser:
 		return True
@@ -351,56 +353,60 @@ def getCredentialForNonLoginRequired(request:HttpResponse|WSGIRequest, **kwargs)
 ## PARENT DECORATOR 
 
 def loadContent(**param_manager):
-    """
-    Decorator that is the parent of every views.
+	"""
+	Decorator that is the parent of every views.
 
-    Parameters:
-    - **param_manager: checkMessages|db_maintenance|editor_login|login_required.
-    """
-    def _method_wrapper(view_method):
-        def _arguments_wrapper(request, *args, **kwargs):
-            if param_manager.get("login_required"):
-                login_required(request, view_method, *args, **kwargs)
-            if param_manager.get("db_maintenance"):
-                db_maintenance(request, view_method, *args, **kwargs)
-            if param_manager.get("checkMessages"):
-                checkMessages(request, view_method, *args, **kwargs)
-            if param_manager.get("editor_login"):
-                editor_login(request, view_method, *args, **kwargs)
-            return view_method(request, *args, **kwargs)
-        return _arguments_wrapper
-    return _method_wrapper
+	Parameters:
+	- **param_manager: checkMessages|db_maintenance|editor_login|login_required.
+	"""
+	def _method_wrapper(view_method):
+		def _arguments_wrapper(request, *args, **kwargs):
+			if param_manager.get("db_maintenance"):
+				_ = db_maintenance(request)
+				if _ != None:
+					return _
+			if param_manager.get("login_required"):
+				_ = login_required(request)
+				if _ != None:
+					return _
+			if param_manager.get("checkMessages"):
+				_ = checkMessages(request)
+				if _ != None:
+					return _
+			if param_manager.get("editor_login"):
+				_ = editor_login(request)
+				if _ != None:
+					return _
+			return view_method(request, *args, **kwargs)
+		return _arguments_wrapper
+	return _method_wrapper
 
 
 
 ## CHILD DECORATOR 
 
-def login_required(request, view_method, *args, **kwargs):
-    """
-    This function stores user cookies in a result variable (will only be 1 or 0 length),
-    If the length of this variable is 0 and the user is logged as a visitor, then the user will be redirected to the views with visitor credentials in session,
-    else they will be redirected to the login page.
-    """
-    result = checkCookie(request)
-    if len(result) == 0:
-        if "visitor" in list(request.COOKIES.keys()):
-            return HttpResponseRedirect('/delete_cookie/visitor/menu/')
-        messages.warning(request, _("You need to log in first"))
-        return HttpResponseRedirect(f'/{get_language()}/login')
-    request.session['user_credential'] = result
-    return view_method(request, *args, **kwargs)
+def login_required(request):
+	"""
+	This function stores user cookies in a result variable (will only be 1 or 0 length),
+	If the length of this variable is 0 and the user is logged as a visitor, then the user will be redirected to the views with visitor credentials in session,
+	else they will be redirected to the login page.
+	"""
+	result = checkCookie(request)
+	if len(result) == 0:
+		messages.warning(request, _("You need to log in first"))
+		return HttpResponseRedirect(f'/{get_language()}/login')
+	request.session['user_credential'] = result
 
 
-def db_maintenance(request, view_method, *args, **kwargs):
+def db_maintenance(request):
 	isMaintenance = checkDbMaintenance()
 	if isMaintenance:
 		SidebarContent = LocalDataContentWiki['SidebarContent']
 		return render(request, "base/maintenance.html", {"darkmode": checkDarkMode(request),"header_msg":_("Database Maintenance"),"sidebarContent":SidebarContent})
-	return view_method(request, *args, **kwargs)
 
 
 # decorator function that remove the messages from session
-def checkMessages(request, view_method, *args, **kwargs):
+def checkMessages(request):
 	"""
 	This decorator check if there is messages in the user session,
 	If there is then it will remove it from the session and send the content of it in the views
@@ -411,10 +417,9 @@ def checkMessages(request, view_method, *args, **kwargs):
 		if message:
 			message_function = getattr(messages, message_type.split('_')[0])
 			message_function(request, message)
-	return view_method(request, *args, **kwargs)
 
 
-def editor_login(request, view_method, *args, **kwargs):
+def editor_login(request):	
 	REDIRECT_URI = f"https://{request.META['HTTP_HOST']}/data/"
 	if request.user.is_authenticated and request.session.get("status") != "authorized":
 		try:
@@ -469,5 +474,3 @@ def editor_login(request, view_method, *args, **kwargs):
 		else:
 			status = "not_auth"
 	request.session['status'] = status
-	return view_method(request, *args, **kwargs)
-

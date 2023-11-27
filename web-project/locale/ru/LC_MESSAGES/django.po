@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-12 23:02+0200\n"
+"POT-Creation-Date: 2023-11-01 00:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,82 +18,82 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\app\settings.py:101
+#: .\app\settings.py:102
 msgid "English"
 msgstr "русский"
 
-#: .\app\settings.py:102
+#: .\app\settings.py:103
 msgid "French"
 msgstr "Французский"
 
-#: .\app\settings.py:103
+#: .\app\settings.py:104
 msgid "German"
 msgstr "Немецкий язык"
 
-#: .\app\settings.py:104
+#: .\app\settings.py:105
 msgid "Russian"
 msgstr "Русский"
 
-#: .\app\settings.py:105
+#: .\app\settings.py:106
 msgid "Brazilian"
 msgstr "Бразилия"
 
-#: .\calculator\api.py:48
+#: .\calculator\api.py:45
 #, python-brace-format
 msgid "Error: {e}"
 msgstr "Ошибка: {e}"
 
-#: .\calculator\api.py:57
+#: .\calculator\api.py:54
 #, python-brace-format
 msgid "Query Error :{e}"
 msgstr "Ошибка запроса :{e}"
 
-#: .\calculator\api.py:65
+#: .\calculator\api.py:62
 msgid "Website Data"
 msgstr "Данные сайта"
 
-#: .\calculator\api.py:80
+#: .\calculator\api.py:77
 #, python-brace-format
 msgid "The type of the old value must be the same for the new value {e}"
 msgstr "Тип старого значения должен совпадать с типом нового значения {e}"
 
-#: .\calculator\api.py:128
+#: .\calculator\api.py:124
 msgid "An Admin have been warned and will take care of you demand"
 msgstr "Админ предупрежден и позаботится о вашем требовании"
 
-#: .\calculator\api.py:144
+#: .\calculator\api.py:139
 #, python-brace-format
 msgid "The user with {pk} as Primary Key doesn't exist"
 msgstr "Пользователь с {pk} в качестве первичного ключа не существует"
 
-#: .\calculator\api.py:151
+#: .\calculator\api.py:146
 #, python-brace-format
 msgid "The user \"{user.username}\" was validated and added to the Django User model. Token: {token.key}"
 msgstr "Пользователь \"{user.username}\" был проверен и добавлен в модель Django User. Токен: {token.key}"
 
-#: .\calculator\api.py:799
+#: .\calculator\api.py:795
 msgid "user doesn't exists"
 msgstr "пользователь не существует"
 
-#: .\calculator\function.py:126 .\calculator\templates\base\maintenance.html:16
-msgid "Database Maintenance"
-msgstr "Обслуживание баз данных"
-
-#: .\calculator\function.py:159
-msgid "You need to login first"
-msgstr "Сначала необходимо войти в систему"
-
-#: .\calculator\function.py:263
+#: .\calculator\function.py:163
 msgid "Ingame id doesn't match or is too short"
 msgstr "Игровой идентификатор не совпадает или слишком короткий"
 
-#: .\calculator\function.py:265
+#: .\calculator\function.py:165
 msgid "Username not allowed"
 msgstr "Имя пользователя не разрешено"
 
-#: .\calculator\function.py:267
+#: .\calculator\function.py:167
 msgid "Ingame Id not allowed"
 msgstr "Игровой идентификатор запрещен"
+
+#: .\calculator\function.py:396
+msgid "You need to log in first"
+msgstr "Сначала необходимо войти в систему"
+
+#: .\calculator\function.py:405 .\calculator\templates\base\maintenance.html:16
+msgid "Database Maintenance"
+msgstr "Обслуживание баз данных"
 
 #: .\calculator\local_data.py:7
 msgid "Absolute Strike"
@@ -6524,7 +6524,7 @@ msgstr "Урон от призв. лет. предмета +30%"
 
 #: .\calculator\local_data.py:3450
 msgid "Extra arrows can deal critical heats and penetrate"
-msgstr "Дополнительные стрелы могут наносить критическое тепло и пробивать"
+msgstr "Дополнительные стрелы могут наносить критические удары и пробивать"
 
 #: .\calculator\local_data.py:3459
 msgid "Baking Sweety"
@@ -7157,7 +7157,7 @@ msgid "Stats"
 msgstr "Параметры"
 
 #: .\calculator\local_data.py:3835 .\calculator\templates\base\menu.html:46
-#: .\calculator\templates\template.html:25 .\calculator\views_wiki.py:138
+#: .\calculator\templates\template.html:25 .\calculator\views_wiki.py:139
 msgid "Wiki"
 msgstr "Вики"
 
@@ -7773,71 +7773,71 @@ msgstr "СТРАНИЦА НЕ НАЙДЕНА"
 msgid "Please enable JavaScript to use this website."
 msgstr "Пожалуйста, включите JavaScript для использования этого сайта."
 
-#: .\calculator\templates\base\500.html:88
-#: .\calculator\templates\base\maintenance.html:87
-#: .\calculator\templates\template.html:110
+#: .\calculator\templates\base\500.html:89
+#: .\calculator\templates\base\maintenance.html:88
+#: .\calculator\templates\template.html:111
 msgid "Contact"
 msgstr "Связаться с"
-
-#: .\calculator\templates\base\500.html:90
-#: .\calculator\templates\base\maintenance.html:89
-#: .\calculator\templates\template.html:112
-msgid "Terms of Use"
-msgstr "Условия использования"
 
 #: .\calculator\templates\base\500.html:91
 #: .\calculator\templates\base\maintenance.html:90
 #: .\calculator\templates\template.html:113
+msgid "Terms of Use"
+msgstr "Условия использования"
+
+#: .\calculator\templates\base\500.html:92
+#: .\calculator\templates\base\maintenance.html:91
+#: .\calculator\templates\template.html:114
 msgid "ChangeLog"
 msgstr "ChangeLog"
 
-#: .\calculator\templates\base\500.html:96
-#: .\calculator\templates\base\maintenance.html:95
-#: .\calculator\templates\template.html:118
+#: .\calculator\templates\base\500.html:97
+#: .\calculator\templates\base\maintenance.html:96
+#: .\calculator\templates\template.html:119
 msgid "Community Links"
 msgstr "Ссылки на сообщества"
 
-#: .\calculator\templates\base\500.html:98
-#: .\calculator\templates\base\maintenance.html:97
-#: .\calculator\templates\template.html:120
+#: .\calculator\templates\base\500.html:99
+#: .\calculator\templates\base\maintenance.html:98
+#: .\calculator\templates\template.html:121
 msgid "LeMutique's Server"
 msgstr "Сервер LeMutique"
 
-#: .\calculator\templates\base\500.html:101
-#: .\calculator\templates\base\maintenance.html:100
-#: .\calculator\templates\template.html:123
+#: .\calculator\templates\base\500.html:102
+#: .\calculator\templates\base\maintenance.html:101
+#: .\calculator\templates\template.html:124
 msgid "TigerShark's Server"
 msgstr "Сервер TigerShark"
 
-#: .\calculator\templates\base\500.html:107
-#: .\calculator\templates\base\maintenance.html:106
-#: .\calculator\templates\template.html:129
+#: .\calculator\templates\base\500.html:108
+#: .\calculator\templates\base\maintenance.html:107
+#: .\calculator\templates\template.html:130
 msgid "FB Archero"
 msgstr "FB Archero"
-
-#: .\calculator\templates\base\500.html:111
-#: .\calculator\templates\base\maintenance.html:110
-#: .\calculator\templates\template.html:133
-msgid "Shout-out :"
-msgstr "Выдержка"
 
 #: .\calculator\templates\base\500.html:112
 #: .\calculator\templates\base\maintenance.html:111
 #: .\calculator\templates\template.html:134
-msgid "Special thanks"
-msgstr "Особая благодарность"
+msgid "Shout-out :"
+msgstr "Выдержка"
 
 #: .\calculator\templates\base\500.html:113
 #: .\calculator\templates\base\maintenance.html:112
 #: .\calculator\templates\template.html:135
+msgid "Special thanks"
+msgstr "Особая благодарность"
+
+#: .\calculator\templates\base\500.html:114
+#: .\calculator\templates\base\maintenance.html:113
+#: .\calculator\templates\template.html:136
 msgid "Thanks to"
 msgstr "Благодаря"
 
-#: .\calculator\templates\base\changelog.html:6
+#: .\calculator\templates\base\changelog.html:7
 msgid "Archero - Changelog"
 msgstr "Archero - Changelog"
 
-#: .\calculator\templates\base\changelog.html:25
+#: .\calculator\templates\base\changelog.html:18
 msgid "Started on 25th June 2022."
 msgstr "Начало работы - 25 июня 2022 года."
 
@@ -7929,11 +7929,11 @@ msgstr "Ваш идентификатор должен состоять не б�
 msgid "New"
 msgstr "Новое"
 
-#: .\calculator\templates\base\menu.html:50 .\calculator\views_wiki.py:419
+#: .\calculator\templates\base\menu.html:50 .\calculator\views_wiki.py:424
 msgid "Damage Calculator"
 msgstr "Калькулятор ущерба"
 
-#: .\calculator\templates\base\menu.html:51 .\calculator\views_wiki.py:248
+#: .\calculator\templates\base\menu.html:51 .\calculator\views_wiki.py:253
 msgid "Upgrade Cost"
 msgstr "Стоимость модернизации"
 
@@ -8625,28 +8625,28 @@ msgstr "Ранг реликвии"
 msgid "{ingame_name.capitalize()} updated with success"
 msgstr "{ingame_name.capitalize()} обновлено с успехом"
 
-#: .\calculator\views.py:445 .\calculator\views.py:508
-#: .\calculator\views.py:541 .\calculator\views.py:544
-#: .\calculator\views.py:604 .\calculator\views.py:607
-#: .\calculator\views.py:728 .\calculator\views.py:793
-#: .\calculator\views.py:922
+#: .\calculator\views.py:445 .\calculator\views.py:507
+#: .\calculator\views.py:539 .\calculator\views.py:542
+#: .\calculator\views.py:601 .\calculator\views.py:604
+#: .\calculator\views.py:724 .\calculator\views.py:789
+#: .\calculator\views.py:918
 msgid "Stats Calculator"
 msgstr "Калькулятор статистики"
 
-#: .\calculator\views.py:483
+#: .\calculator\views.py:482
 #, python-brace-format
 msgid "You attempted to access {self_ingame_name}<br>But your login username is \"{ingame_name_cookie}\"."
 msgstr "Вы попытались получить доступ к {self_ingame_name}<br>Но ваше имя пользователя \"{ingame_name_cookie}\"."
 
-#: .\calculator\views.py:586 .\calculator\views.py:708
+#: .\calculator\views.py:584 .\calculator\views.py:705
 msgid "Create Profile"
 msgstr "Создать профиль"
 
-#: .\calculator\views_wiki.py:28 .\calculator\views_wiki.py:41
+#: .\calculator\views_wiki.py:28 .\calculator\views_wiki.py:40
 msgid "Menu Archero Wiki"
 msgstr "Меню Archero Wiki"
 
-#: .\calculator\views_wiki.py:50
+#: .\calculator\views_wiki.py:49
 msgid "maze"
 msgstr "лабиринт"
 
@@ -8654,158 +8654,137 @@ msgstr "лабиринт"
 msgid "CSRF FAILURE"
 msgstr "CSRF FAILURE"
 
-#: .\calculator\views_wiki.py:136
+#: .\calculator\views_wiki.py:137
 #, python-brace-format
 msgid "{article_label} - Wiki"
 msgstr "{article_label} - Вики"
 
-#: .\calculator\views_wiki.py:265
+#: .\calculator\views_wiki.py:270
 msgid "Equipment Upgrade Cost"
 msgstr "Стоимость модернизации оборудования"
 
-#: .\calculator\views_wiki.py:266
-#, python-brace-format
-msgid "To upgrade equipment from level {lvl1} to {lvl2}"
-msgstr "Чтобы повысить уровень оборудования с {lvl1} до {lvl2}"
+#: .\calculator\views_wiki.py:271
+msgid "To upgrade equipment from level "
+msgstr "Чтобы повысить уровень оборудования с "
 
-#: .\calculator\views_wiki.py:270 .\calculator\views_wiki.py:285
-#: .\calculator\views_wiki.py:300 .\calculator\views_wiki.py:316
-#: .\calculator\views_wiki.py:335
+#: .\calculator\views_wiki.py:271 .\calculator\views_wiki.py:286
+#: .\calculator\views_wiki.py:302 .\calculator\views_wiki.py:318
+#: .\calculator\views_wiki.py:337
+msgid "to"
+msgstr "до"
+
+#: .\calculator\views_wiki.py:275 .\calculator\views_wiki.py:290
+#: .\calculator\views_wiki.py:306 .\calculator\views_wiki.py:322
+#: .\calculator\views_wiki.py:341
 msgid "Gold :"
 msgstr "Золото :"
 
-#: .\calculator\views_wiki.py:270 .\calculator\views_wiki.py:285
-#: .\calculator\views_wiki.py:300 .\calculator\views_wiki.py:316
-#: .\calculator\views_wiki.py:335
-msgid "gold"
-msgstr "золото"
-
-#: .\calculator\views_wiki.py:271
+#: .\calculator\views_wiki.py:276
 msgid "Scrolls :"
 msgstr "Свитки"
 
-#: .\calculator\views_wiki.py:271
-msgid "scroll"
-msgstr "Свиток"
-
-#: .\calculator\views_wiki.py:274
+#: .\calculator\views_wiki.py:279
 #, python-brace-format
 msgid "The levels need to be between 0 and {max_lvl}"
 msgstr "Уровни должны находиться в диапазоне от 0 до {max_lvl}"
 
-#: .\calculator\views_wiki.py:280
+#: .\calculator\views_wiki.py:285
 msgid "Heroes Upgrade Cost"
 msgstr "Стоимость модернизации героев"
 
-#: .\calculator\views_wiki.py:281
-#, python-brace-format
-msgid "To upgrade heroes from level {lvl1} to {lvl2}"
-msgstr "Чтобы повысить уровень героев с {lvl1} до {lvl2}"
-
 #: .\calculator\views_wiki.py:286
+msgid "To upgrade heroes from level "
+msgstr "Чтобы увеличить уровень героев с "
+
+#: .\calculator\views_wiki.py:291
 msgid "Sapphire :"
 msgstr "Сапфир"
 
-#: .\calculator\views_wiki.py:286
-msgid "sapphire"
-msgstr "Сапфиры"
-
-#: .\calculator\views_wiki.py:289 .\calculator\views_wiki.py:323
+#: .\calculator\views_wiki.py:295 .\calculator\views_wiki.py:329
 msgid "The levels need to be between 0 and 120"
 msgstr "Уровни должны находиться в диапазоне от 0 до 120"
 
-#: .\calculator\views_wiki.py:295
+#: .\calculator\views_wiki.py:301
 msgid "Talents Upgrade Cost"
 msgstr "Стоимость модернизации талантов"
 
-#: .\calculator\views_wiki.py:296
-#, python-brace-format
-msgid "To upgrade talents from level {lvl1} to {lvl2}"
-msgstr "Чтобы повысить уровень талантов с {lvl1} до {lvl2}"
+#: .\calculator\views_wiki.py:302
+msgid "To upgrade talents from level "
+msgstr "Чтобы увеличить уровень талантов с "
 
-#: .\calculator\views_wiki.py:304
+#: .\calculator\views_wiki.py:310
 msgid "The levels need to be between 0 and 206"
 msgstr "Уровни должны находиться в диапазоне от 0 до 206"
 
-#: .\calculator\views_wiki.py:311
+#: .\calculator\views_wiki.py:317
 msgid "Dragon Upgrade Cost"
 msgstr "Стоимость модернизации дракона"
 
-#: .\calculator\views_wiki.py:312
-#, python-brace-format
-msgid "To upgrade dragons from level {lvl1} to {lvl2}"
-msgstr "Чтобы повысить уровень драконов с {lvl1} до {lvl2}"
+#: .\calculator\views_wiki.py:318
+msgid "To upgrade dragons from level "
+msgstr "Повысить уровень драконов с "
 
-#: .\calculator\views_wiki.py:317
+#: .\calculator\views_wiki.py:323
 msgid "Magestones :"
 msgstr "Магестоны"
 
-#: .\calculator\views_wiki.py:317
-msgid "magestone"
-msgstr "Магестоны"
-
-#: .\calculator\views_wiki.py:320 .\calculator\views_wiki.py:339
+#: .\calculator\views_wiki.py:326 .\calculator\views_wiki.py:345
 msgid "The rank need to be whether A, S or SS"
 msgstr "Ранг должен быть таким: A, S или SS"
 
-#: .\calculator\views_wiki.py:330
+#: .\calculator\views_wiki.py:336
 msgid "Relics Upgrade Cost"
 msgstr "Стоимость модернизации реликвий"
 
-#: .\calculator\views_wiki.py:331
-#, python-brace-format
-msgid "To upgrade relics from level {lvl1} to {lvl2}"
-msgstr "Чтобы повысить уровень реликвий с {lvl1} до {lvl2}"
-
-#: .\calculator\views_wiki.py:336
-msgid "Starlight :"
-msgstr "Starlight :"
-
-#: .\calculator\views_wiki.py:336
-msgid "starlight"
-msgstr "starlight"
+#: .\calculator\views_wiki.py:337
+msgid "To upgrade relics from level "
+msgstr "Повысить уровень реликвий с "
 
 #: .\calculator\views_wiki.py:342
+msgid "Starlight :"
+msgstr "Камень света звезд :"
+
+#: .\calculator\views_wiki.py:348
 msgid "The levels need to be between 0 and 30"
 msgstr "Уровни должны находиться в диапазоне от 0 до 30"
 
-#: .\calculator\views_wiki.py:354
+#: .\calculator\views_wiki.py:360
 msgid "Google Sheet Wiki"
 msgstr "Google Sheet Wiki"
 
-#: .\calculator\views_wiki.py:387
+#: .\calculator\views_wiki.py:393
 msgid "Promo Code"
 msgstr "Промокод"
 
-#: .\calculator\views_wiki.py:413
+#: .\calculator\views_wiki.py:418
 #, python-brace-format
 msgid "You attempted to access {profile[1].ingame_name}<br>But your login username is \"{ingame_name_cookie}\"."
 msgstr "Вы попытались получить доступ к {profile[1].ingame_name}<br>Но ваше имя пользователя \"{ingame_name_cookie}\"."
 
-#: .\calculator\views_wiki.py:650
+#: .\calculator\views_wiki.py:655
 msgid "Damage Calc"
 msgstr "Расчет ущерба"
 
-#: .\calculator\views_wiki.py:815
+#: .\calculator\views_wiki.py:820
 msgid "Page Not Found"
 msgstr "Страница не найдена"
 
-#: .\calculator\views_wiki.py:850
+#: .\calculator\views_wiki.py:856
 msgid "Oops! Something went wrong<br>An error occurred while processing your request. Please try again later."
 msgstr "Oops! Что-то пошло не так<br>При обработке вашего запроса произошла ошибка. Пожалуйста, повторите попытку позже."
 
-#: .\calculator\views_wiki.py:851
+#: .\calculator\views_wiki.py:857
 msgid "Internal Server Error"
 msgstr "Внутренняя ошибка сервера"
 
-#: .\calculator\views_wiki.py:864
+#: .\calculator\views_wiki.py:872
 msgid "Change Log"
 msgstr "Журнал изменений"
 
-#: .\calculator\views_wiki.py:869
+#: .\calculator\views_wiki.py:878
 msgid "Archero Calculation"
 msgstr "Расчет арки"
 
-#: .\calculator\views_wiki.py:917
+#: .\calculator\views_wiki.py:926
 msgid "Page Set Cookie/Session"
 msgstr "Page Set Cookie/Session"

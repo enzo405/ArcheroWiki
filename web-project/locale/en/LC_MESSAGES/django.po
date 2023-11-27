@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-12 23:02+0200\n"
+"POT-Creation-Date: 2023-11-01 00:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,81 +18,81 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\app\settings.py:101
+#: .\app\settings.py:102
 msgid "English"
 msgstr ""
 
-#: .\app\settings.py:102
+#: .\app\settings.py:103
 msgid "French"
 msgstr ""
 
-#: .\app\settings.py:103
+#: .\app\settings.py:104
 msgid "German"
 msgstr ""
 
-#: .\app\settings.py:104
+#: .\app\settings.py:105
 msgid "Russian"
 msgstr ""
 
-#: .\app\settings.py:105
+#: .\app\settings.py:106
 msgid "Brazilian"
 msgstr ""
 
-#: .\calculator\api.py:48
+#: .\calculator\api.py:45
 #, python-brace-format
 msgid "Error: {e}"
 msgstr ""
 
-#: .\calculator\api.py:57
+#: .\calculator\api.py:54
 #, python-brace-format
 msgid "Query Error :{e}"
 msgstr ""
 
-#: .\calculator\api.py:65
+#: .\calculator\api.py:62
 msgid "Website Data"
 msgstr ""
 
-#: .\calculator\api.py:80
+#: .\calculator\api.py:77
 #, python-brace-format
 msgid "The type of the old value must be the same for the new value {e}"
 msgstr ""
 
-#: .\calculator\api.py:128
+#: .\calculator\api.py:124
 msgid "An Admin have been warned and will take care of you demand"
 msgstr ""
 
-#: .\calculator\api.py:144
+#: .\calculator\api.py:139
 #, python-brace-format
 msgid "The user with {pk} as Primary Key doesn't exist"
 msgstr ""
 
-#: .\calculator\api.py:151
+#: .\calculator\api.py:146
 #, python-brace-format
 msgid "The user \"{user.username}\" was validated and added to the Django User model. Token: {token.key}"
 msgstr ""
 
-#: .\calculator\api.py:799
+#: .\calculator\api.py:795
 msgid "user doesn't exists"
 msgstr ""
 
-#: .\calculator\function.py:126 .\calculator\templates\base\maintenance.html:16
-msgid "Database Maintenance"
-msgstr ""
-
-#: .\calculator\function.py:159
-msgid "You need to login first"
-msgstr ""
-
-#: .\calculator\function.py:263
+#: .\calculator\function.py:163
 msgid "Ingame id doesn't match or is too short"
 msgstr ""
 
-#: .\calculator\function.py:265
+#: .\calculator\function.py:165
 msgid "Username not allowed"
 msgstr ""
 
-#: .\calculator\function.py:267
+#: .\calculator\function.py:167
 msgid "Ingame Id not allowed"
+msgstr ""
+
+#: .\calculator\function.py:396
+msgid "You need to log in first"
+msgstr ""
+
+#: .\calculator\function.py:405 .\calculator\templates\base\maintenance.html:16
+msgid "Database Maintenance"
 msgstr ""
 
 #: .\calculator\local_data.py:7
@@ -6560,7 +6560,7 @@ msgid "Summoned flying object damage +30%"
 msgstr ""
 
 #: .\calculator\local_data.py:3450
-msgid "Extra arrows can deal critical heats and penetrate"
+msgid "Extra arrows can deal critical hits and penetrate"
 msgstr ""
 
 #: .\calculator\local_data.py:3459
@@ -7154,7 +7154,7 @@ msgid "Stats"
 msgstr ""
 
 #: .\calculator\local_data.py:3835 .\calculator\templates\base\menu.html:46
-#: .\calculator\templates\template.html:25 .\calculator\views_wiki.py:138
+#: .\calculator\templates\template.html:25 .\calculator\views_wiki.py:139
 msgid "Wiki"
 msgstr ""
 
@@ -7772,71 +7772,71 @@ msgstr ""
 msgid "Please enable JavaScript to use this website."
 msgstr ""
 
-#: .\calculator\templates\base\500.html:88
-#: .\calculator\templates\base\maintenance.html:87
-#: .\calculator\templates\template.html:110
+#: .\calculator\templates\base\500.html:89
+#: .\calculator\templates\base\maintenance.html:88
+#: .\calculator\templates\template.html:111
 msgid "Contact"
-msgstr ""
-
-#: .\calculator\templates\base\500.html:90
-#: .\calculator\templates\base\maintenance.html:89
-#: .\calculator\templates\template.html:112
-msgid "Terms of Use"
 msgstr ""
 
 #: .\calculator\templates\base\500.html:91
 #: .\calculator\templates\base\maintenance.html:90
 #: .\calculator\templates\template.html:113
+msgid "Terms of Use"
+msgstr ""
+
+#: .\calculator\templates\base\500.html:92
+#: .\calculator\templates\base\maintenance.html:91
+#: .\calculator\templates\template.html:114
 msgid "ChangeLog"
 msgstr ""
 
-#: .\calculator\templates\base\500.html:96
-#: .\calculator\templates\base\maintenance.html:95
-#: .\calculator\templates\template.html:118
+#: .\calculator\templates\base\500.html:97
+#: .\calculator\templates\base\maintenance.html:96
+#: .\calculator\templates\template.html:119
 msgid "Community Links"
 msgstr ""
 
-#: .\calculator\templates\base\500.html:98
-#: .\calculator\templates\base\maintenance.html:97
-#: .\calculator\templates\template.html:120
+#: .\calculator\templates\base\500.html:99
+#: .\calculator\templates\base\maintenance.html:98
+#: .\calculator\templates\template.html:121
 msgid "LeMutique's Server"
 msgstr ""
 
-#: .\calculator\templates\base\500.html:101
-#: .\calculator\templates\base\maintenance.html:100
-#: .\calculator\templates\template.html:123
+#: .\calculator\templates\base\500.html:102
+#: .\calculator\templates\base\maintenance.html:101
+#: .\calculator\templates\template.html:124
 msgid "TigerShark's Server"
 msgstr ""
 
-#: .\calculator\templates\base\500.html:107
-#: .\calculator\templates\base\maintenance.html:106
-#: .\calculator\templates\template.html:129
+#: .\calculator\templates\base\500.html:108
+#: .\calculator\templates\base\maintenance.html:107
+#: .\calculator\templates\template.html:130
 msgid "FB Archero"
-msgstr ""
-
-#: .\calculator\templates\base\500.html:111
-#: .\calculator\templates\base\maintenance.html:110
-#: .\calculator\templates\template.html:133
-msgid "Shout-out :"
 msgstr ""
 
 #: .\calculator\templates\base\500.html:112
 #: .\calculator\templates\base\maintenance.html:111
 #: .\calculator\templates\template.html:134
-msgid "Special thanks"
+msgid "Shout-out :"
 msgstr ""
 
 #: .\calculator\templates\base\500.html:113
 #: .\calculator\templates\base\maintenance.html:112
 #: .\calculator\templates\template.html:135
+msgid "Special thanks"
+msgstr ""
+
+#: .\calculator\templates\base\500.html:114
+#: .\calculator\templates\base\maintenance.html:113
+#: .\calculator\templates\template.html:136
 msgid "Thanks to"
 msgstr ""
 
-#: .\calculator\templates\base\changelog.html:6
+#: .\calculator\templates\base\changelog.html:7
 msgid "Archero - Changelog"
 msgstr ""
 
-#: .\calculator\templates\base\changelog.html:25
+#: .\calculator\templates\base\changelog.html:18
 msgid "Started on 25th June 2022."
 msgstr ""
 
@@ -7928,11 +7928,11 @@ msgstr ""
 msgid "New"
 msgstr ""
 
-#: .\calculator\templates\base\menu.html:50 .\calculator\views_wiki.py:419
+#: .\calculator\templates\base\menu.html:50 .\calculator\views_wiki.py:424
 msgid "Damage Calculator"
 msgstr ""
 
-#: .\calculator\templates\base\menu.html:51 .\calculator\views_wiki.py:248
+#: .\calculator\templates\base\menu.html:51 .\calculator\views_wiki.py:253
 msgid "Upgrade Cost"
 msgstr ""
 
@@ -8619,28 +8619,28 @@ msgstr ""
 msgid "{ingame_name.capitalize()} updated with success"
 msgstr ""
 
-#: .\calculator\views.py:445 .\calculator\views.py:508
-#: .\calculator\views.py:541 .\calculator\views.py:544
-#: .\calculator\views.py:604 .\calculator\views.py:607
-#: .\calculator\views.py:728 .\calculator\views.py:793
-#: .\calculator\views.py:922
+#: .\calculator\views.py:445 .\calculator\views.py:507
+#: .\calculator\views.py:539 .\calculator\views.py:542
+#: .\calculator\views.py:601 .\calculator\views.py:604
+#: .\calculator\views.py:724 .\calculator\views.py:789
+#: .\calculator\views.py:918
 msgid "Stats Calculator"
 msgstr ""
 
-#: .\calculator\views.py:483
+#: .\calculator\views.py:482
 #, python-brace-format
 msgid "You attempted to access {self_ingame_name}<br>But your login username is \"{ingame_name_cookie}\"."
 msgstr ""
 
-#: .\calculator\views.py:586 .\calculator\views.py:708
+#: .\calculator\views.py:584 .\calculator\views.py:705
 msgid "Create Profile"
 msgstr ""
 
-#: .\calculator\views_wiki.py:28 .\calculator\views_wiki.py:41
+#: .\calculator\views_wiki.py:28 .\calculator\views_wiki.py:40
 msgid "Menu Archero Wiki"
 msgstr ""
 
-#: .\calculator\views_wiki.py:50
+#: .\calculator\views_wiki.py:49
 msgid "maze"
 msgstr ""
 
@@ -8648,158 +8648,137 @@ msgstr ""
 msgid "CSRF FAILURE"
 msgstr ""
 
-#: .\calculator\views_wiki.py:136
+#: .\calculator\views_wiki.py:137
 #, python-brace-format
 msgid "{article_label} - Wiki"
 msgstr ""
 
-#: .\calculator\views_wiki.py:265
+#: .\calculator\views_wiki.py:270
 msgid "Equipment Upgrade Cost"
 msgstr ""
 
-#: .\calculator\views_wiki.py:266
-#, python-brace-format
-msgid "To upgrade equipment from level {lvl1} to {lvl2}"
+#: .\calculator\views_wiki.py:271
+msgid "To upgrade equipment from level "
 msgstr ""
 
-#: .\calculator\views_wiki.py:270 .\calculator\views_wiki.py:285
-#: .\calculator\views_wiki.py:300 .\calculator\views_wiki.py:316
-#: .\calculator\views_wiki.py:335
+#: .\calculator\views_wiki.py:271 .\calculator\views_wiki.py:286
+#: .\calculator\views_wiki.py:302 .\calculator\views_wiki.py:318
+#: .\calculator\views_wiki.py:337
+msgid "to"
+msgstr ""
+
+#: .\calculator\views_wiki.py:275 .\calculator\views_wiki.py:290
+#: .\calculator\views_wiki.py:306 .\calculator\views_wiki.py:322
+#: .\calculator\views_wiki.py:341
 msgid "Gold :"
 msgstr ""
 
-#: .\calculator\views_wiki.py:270 .\calculator\views_wiki.py:285
-#: .\calculator\views_wiki.py:300 .\calculator\views_wiki.py:316
-#: .\calculator\views_wiki.py:335
-msgid "gold"
-msgstr ""
-
-#: .\calculator\views_wiki.py:271
+#: .\calculator\views_wiki.py:276
 msgid "Scrolls :"
 msgstr ""
 
-#: .\calculator\views_wiki.py:271
-msgid "scroll"
-msgstr ""
-
-#: .\calculator\views_wiki.py:274
+#: .\calculator\views_wiki.py:279
 #, python-brace-format
 msgid "The levels need to be between 0 and {max_lvl}"
 msgstr ""
 
-#: .\calculator\views_wiki.py:280
+#: .\calculator\views_wiki.py:285
 msgid "Heroes Upgrade Cost"
 msgstr ""
 
-#: .\calculator\views_wiki.py:281
-#, python-brace-format
-msgid "To upgrade heroes from level {lvl1} to {lvl2}"
+#: .\calculator\views_wiki.py:286
+msgid "To upgrade heroes from level "
 msgstr ""
 
-#: .\calculator\views_wiki.py:286
+#: .\calculator\views_wiki.py:291
 msgid "Sapphire :"
 msgstr ""
 
-#: .\calculator\views_wiki.py:286
-msgid "sapphire"
-msgstr ""
-
-#: .\calculator\views_wiki.py:289 .\calculator\views_wiki.py:323
+#: .\calculator\views_wiki.py:295 .\calculator\views_wiki.py:329
 msgid "The levels need to be between 0 and 120"
 msgstr ""
 
-#: .\calculator\views_wiki.py:295
+#: .\calculator\views_wiki.py:301
 msgid "Talents Upgrade Cost"
 msgstr ""
 
-#: .\calculator\views_wiki.py:296
-#, python-brace-format
-msgid "To upgrade talents from level {lvl1} to {lvl2}"
+#: .\calculator\views_wiki.py:302
+msgid "To upgrade talents from level "
 msgstr ""
 
-#: .\calculator\views_wiki.py:304
+#: .\calculator\views_wiki.py:310
 msgid "The levels need to be between 0 and 206"
 msgstr ""
 
-#: .\calculator\views_wiki.py:311
+#: .\calculator\views_wiki.py:317
 msgid "Dragon Upgrade Cost"
 msgstr ""
 
-#: .\calculator\views_wiki.py:312
-#, python-brace-format
-msgid "To upgrade dragons from level {lvl1} to {lvl2}"
+#: .\calculator\views_wiki.py:318
+msgid "To upgrade dragons from level "
 msgstr ""
 
-#: .\calculator\views_wiki.py:317
+#: .\calculator\views_wiki.py:323
 msgid "Magestones :"
 msgstr ""
 
-#: .\calculator\views_wiki.py:317
-msgid "magestone"
-msgstr ""
-
-#: .\calculator\views_wiki.py:320 .\calculator\views_wiki.py:339
+#: .\calculator\views_wiki.py:326 .\calculator\views_wiki.py:345
 msgid "The rank need to be whether A, S or SS"
 msgstr ""
 
-#: .\calculator\views_wiki.py:330
+#: .\calculator\views_wiki.py:336
 msgid "Relics Upgrade Cost"
 msgstr ""
 
-#: .\calculator\views_wiki.py:331
-#, python-brace-format
-msgid "To upgrade relics from level {lvl1} to {lvl2}"
-msgstr ""
-
-#: .\calculator\views_wiki.py:336
-msgid "Starlight :"
-msgstr ""
-
-#: .\calculator\views_wiki.py:336
-msgid "starlight"
+#: .\calculator\views_wiki.py:337
+msgid "To upgrade relics from level "
 msgstr ""
 
 #: .\calculator\views_wiki.py:342
+msgid "Starlight :"
+msgstr ""
+
+#: .\calculator\views_wiki.py:348
 msgid "The levels need to be between 0 and 30"
 msgstr ""
 
-#: .\calculator\views_wiki.py:354
+#: .\calculator\views_wiki.py:360
 msgid "Google Sheet Wiki"
 msgstr ""
 
-#: .\calculator\views_wiki.py:387
+#: .\calculator\views_wiki.py:393
 msgid "Promo Code"
 msgstr ""
 
-#: .\calculator\views_wiki.py:413
+#: .\calculator\views_wiki.py:418
 #, python-brace-format
 msgid "You attempted to access {profile[1].ingame_name}<br>But your login username is \"{ingame_name_cookie}\"."
 msgstr ""
 
-#: .\calculator\views_wiki.py:650
+#: .\calculator\views_wiki.py:655
 msgid "Damage Calc"
 msgstr ""
 
-#: .\calculator\views_wiki.py:815
+#: .\calculator\views_wiki.py:820
 msgid "Page Not Found"
 msgstr ""
 
-#: .\calculator\views_wiki.py:850
+#: .\calculator\views_wiki.py:856
 msgid "Oops! Something went wrong<br>An error occurred while processing your request. Please try again later."
 msgstr ""
 
-#: .\calculator\views_wiki.py:851
+#: .\calculator\views_wiki.py:857
 msgid "Internal Server Error"
 msgstr ""
 
-#: .\calculator\views_wiki.py:864
+#: .\calculator\views_wiki.py:872
 msgid "Change Log"
 msgstr ""
 
-#: .\calculator\views_wiki.py:869
+#: .\calculator\views_wiki.py:878
 msgid "Archero Calculation"
 msgstr ""
 
-#: .\calculator\views_wiki.py:917
+#: .\calculator\views_wiki.py:926
 msgid "Page Set Cookie/Session"
 msgstr ""

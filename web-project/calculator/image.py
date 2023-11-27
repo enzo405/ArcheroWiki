@@ -25,68 +25,73 @@ items={
         "mythic":Path("calculator/static/image/items/demon_blade_rain_mythic.png"),
         "demon_blade_rain_1":Path("calculator/static/image/weapon_skin/demon_blade_rain_1.png"),
         "demon_blade_rain_2":Path("calculator/static/image/weapon_skin/demon_blade_rain_2.png")
-        },
+    },
     "brave_bow":{
         "common":Path("calculator/static/image/items/brave_bow_common.png"),
         "epic":Path("calculator/static/image/items/brave_bow_epic.png"),
         "mythic":Path("calculator/static/image/items/brave_bow_mythic.png"),
         "brave_bow_1":Path("calculator/static/image/weapon_skin/brave_bow_1.png"),
         "brave_bow_2":Path("calculator/static/image/weapon_skin/brave_bow_2.png")
-        },
+    },
     "brightspear":{
         "common":Path("calculator/static/image/items/brightspear_common.png"),
         "epic":Path("calculator/static/image/items/brightspear_epic.png"),
         "mythic":Path("calculator/static/image/items/brightspear_mythic.png"),
         "brightspear_1":Path("calculator/static/image/weapon_skin/brightspear_1.png"),
         "brightspear_2":Path("calculator/static/image/weapon_skin/brightspear_2.png")
-        },
+    },
     "death_scythe":{
         "common":Path("calculator/static/image/items/death_scythe_common.png"),
         "epic":Path("calculator/static/image/items/death_scythe_epic.png"),
         "mythic":Path("calculator/static/image/items/death_scythe_mythic.png"),
         "death_scythe_1":Path("calculator/static/image/weapon_skin/death_scythe_1.png"),
         "death_scythe_2":Path("calculator/static/image/weapon_skin/death_scythe_2.png")
-        },
+    },
     "gale_force":{
         "common":Path("calculator/static/image/items/gale_force_common.png"),
         "epic":Path("calculator/static/image/items/gale_force_epic.png"),
         "mythic":Path("calculator/static/image/items/gale_force_mythic.png"),
         "gale_force_1":Path("calculator/static/image/weapon_skin/gale_force_1.png"),
         "gale_force_2":Path("calculator/static/image/weapon_skin/gale_force_2.png")
-        },
+    },
     "mini_atreus":{
         "common":Path("calculator/static/image/items/mini_atreus.png"),
         "epic":Path("calculator/static/image/items/mini_atreus.png"),
         "mythic":Path("calculator/static/image/items/mini_atreus.png")
-        },
+    },
     "saw_blade":{
         "common":Path("calculator/static/image/items/saw_blade_common.png"),
         "epic":Path("calculator/static/image/items/saw_blade_epic.png"),
         "mythic":Path("calculator/static/image/items/saw_blade_mythic.png"),
         "saw_blade_1":Path("calculator/static/image/weapon_skin/saw_blade_1.png"),
         "saw_blade_2":Path("calculator/static/image/weapon_skin/saw_blade_2.png")
-        },
+    },
     "stalker_staff":{
         "common":Path("calculator/static/image/items/stalker_staff_common.png"),
         "epic":Path("calculator/static/image/items/stalker_staff_epic.png"),
         "mythic":Path("calculator/static/image/items/stalker_staff_mythic.png"),
         "stalker_staff_1":Path("calculator/static/image/weapon_skin/stalker_staff_1.png"),
         "stalker_staff_2":Path("calculator/static/image/weapon_skin/stalker_staff_2.png")
-        },
+    },
     "tornado":{
         "common":Path("calculator/static/image/items/tornado_common.png"),
         "epic":Path("calculator/static/image/items/tornado_epic.png"),
         "mythic":Path("calculator/static/image/items/tornado_mythic.png"),
         "boomerang_1":Path("calculator/static/image/weapon_skin/boomerang_1.png"),
         "boomerang_2":Path("calculator/static/image/weapon_skin/boomerang_2.png")
-        },
+    },
     "antiquated_sword":{
         "common":Path("calculator/static/image/items/antiquated_sword_common.png"),
         "epic":Path("calculator/static/image/items/antiquated_sword_epic.png"),
         "mythic":Path("calculator/static/image/items/antiquated_sword_mythic.png"),
         "antiquated_sword_1":Path("calculator/static/image/weapon_skin/antiquated_sword_1.png"),
         "antiquated_sword_2":Path("calculator/static/image/weapon_skin/antiquated_sword_2.png")
-        },
+    },
+    "expedition_fist":{
+        "common":Path("calculator/static/image/items/expedition_fist_epic.png"),
+        "epic":Path("calculator/static/image/items/expedition_fist_epic.png"),
+        "mythic":Path("calculator/static/image/items/expedition_fist_mythic.png"),
+    },
 
     "bright_robe":Path("calculator/static/image/items/bright_robe.png"),
     "golden_chestplate":Path("calculator/static/image/items/golden_chestplate.png"),
@@ -94,39 +99,44 @@ items={
     "shadow_robe":Path("calculator/static/image/items/shadow_robe.png"),
     "vest_of_dexterity":Path("calculator/static/image/items/vest_of_dexterity.png"),
     "void_robe":Path("calculator/static/image/items/void_robe.png"),
+    "expedition_plate":Path("calculator/static/image/items/expedition_plate.png"),
 
     "vilebat_ring":{
         "common":Path("calculator/static/image/items/vilebat_ring_common.png"),
         "epic":Path("calculator/static/image/items/vilebat_ring_epic.png")
-        },
+    },
     "dragon_ring":{
         "common":Path("calculator/static/image/items/dragon_ring_common.png"),
         "epic":Path("calculator/static/image/items/dragon_ring_epic.png")
-        },
+    },
     "bear_ring":{
         "common":Path("calculator/static/image/items/bear_ring_common.png"),
         "epic":Path("calculator/static/image/items/bear_ring_epic.png")
-        },
+    },
     "bull_ring":{
         "common":Path("calculator/static/image/items/bull_ring_common.png"),
         "epic":Path("calculator/static/image/items/bull_ring_epic.png")
-        },
+    },
     "falcon_ring":{
         "common":Path("calculator/static/image/items/falcon_ring_common.png"),
         "epic":Path("calculator/static/image/items/falcon_ring_epic.png")
-        },
+    },
     "lion_ring":{
         "common":Path("calculator/static/image/items/lion_ring_common.png"),
         "epic":Path("calculator/static/image/items/lion_ring_epic.png")
-        },
+    },
     "serpent_ring":{
         "common":Path("calculator/static/image/items/serpent_ring_common.png"),
         "epic":Path("calculator/static/image/items/serpent_ring_epic.png")
-        },
+    },
     "wolf_ring":{
         "common":Path("calculator/static/image/items/wolf_ring_common.png"),
         "epic":Path("calculator/static/image/items/wolf_ring_epic.png")
-        },
+    },
+    "expedition_ring":{
+        "common":Path("calculator/static/image/items/expedition_ring.png"),
+        "epic":Path("calculator/static/image/items/expedition_ring.png")
+    },
 
     "bone_warrior":Path("calculator/static/image/items/bone_warrior.png"),
     "elf":Path("calculator/static/image/items/elf.png"),
@@ -143,6 +153,7 @@ items={
     "split_bracelet":Path("calculator/static/image/items/split_bracelet.png"),
     "thunder_bracelet":Path("calculator/static/image/items/thunder_bracelet.png"),
     "shield_bracelet":Path("calculator/static/image/items/shield_bracelet.png"),
+    "expedition_bracelet":Path("calculator/static/image/items/expedition_bracelet.png"),
 
     "agile_locket":Path("calculator/static/image/items/agile_locket.png"),
     "angel_locket":Path("calculator/static/image/items/angel_locket.png"),
@@ -151,6 +162,7 @@ items={
     "iron_locket":Path("calculator/static/image/items/iron_locket.png"),
     "piercer_locket":Path("calculator/static/image/items/piercer_locket.png"),
     "counterattack_locket":Path("calculator/static/image/items/counterattack_locket.png"),
+    "expedition_locket":Path("calculator/static/image/items/expedition_locket.png"),
 
     "arcane_archer":Path("calculator/static/image/items/arcane_archer.png"),
     "art_of_combat":Path("calculator/static/image/items/art_of_combat.png"),
@@ -159,11 +171,21 @@ items={
     "ice_realm":Path("calculator/static/image/items/ice_realm.png"),
     "spectre_book":Path("calculator/static/image/items/spectre_book.png"),
     "arcanum_of_time":Path("calculator/static/image/items/arcanum_of_time.png"),
+    "expedition_spellbook":Path("calculator/static/image/items/expedition_spellbook.png"),
 
     "none":Path("calculator/static/image/items/none.png"),
     "none_dict":{
         "common":Path("calculator/static/image/items/none.png")
     }
+}
+
+list_s_eqpm = {
+    "weapon": ["expedition_fist"],
+    "armor": ["expedition_plate"],
+    "ring": ["expedition_ring"],
+    "bracelet": ["expedition_bracelet"],
+    "locket": ["expedition_locket"],
+    "spellbook": ["expedition_spellbook"]
 }
 
 rarity_weapon={
@@ -266,6 +288,7 @@ heros={
     "Elaine":Path("calculator/static/image/heros/Elaine.png"),
     "Bobo":Path("calculator/static/image/heros/Bobo.png"),
     "Stella":Path("calculator/static/image/heros/Stella2.png"),
+    "Taiga":Path("calculator/static/image/heros/Taiga.png"),
 }
 
 jewel = {
@@ -289,6 +312,14 @@ position = {
     "bracelet": (78,832),
     "book": (494,822),
     "locket": (930,832),
+
+    "s_icon_weapon": (55,220), ## (from the left, from the bottom)
+    "s_icon_armor": (905,220),
+    "s_icon_ring1": (55,470),
+    "s_icon_ring2": (905,470),
+    "s_icon_bracelet": (55,970),
+    "s_icon_locket": (905,970),
+    "s_icon_spellbook": (470,978),
 
     "jewel_weapon": (56,68), ## (from the left, from the bottom)
     "jewel_armor": (907,68),
@@ -390,6 +421,7 @@ dragon = {
     "SS":Path("calculator/static/image/dragon/SS.png")
 }
 
+s_grade_eqpm = Path("calculator/static/image/dragon/S.png")
 button_jewel = Path("calculator/static/image/round_jewel/button.png")
 
 
@@ -473,7 +505,7 @@ def create_image(pbid:str,weapon_name:str,weapon_rarity:str,weapon_lvl:int,
         box=position["locket"],mask=Image.open(fond_items[locket_rarity]).resize((218,218)))
 
     if weapon_skin_activ == "None":
-        base.paste(im=Image.open(items[weapon_name][rarity_weapon[weapon_rarity]]).resize((218,218)),
+        base.paste(im=Image.open(items[weapon_name].get(rarity_weapon[weapon_rarity],"common")).resize((218,218)),
             box=position["weapon"],mask=Image.open(items[weapon_name][rarity_weapon[weapon_rarity]]).resize((218,218)))
     else:
         base.paste(im=Image.open(items[weapon_name][weapon_skin_activ]).resize((218,218)),
@@ -494,6 +526,14 @@ def create_image(pbid:str,weapon_name:str,weapon_rarity:str,weapon_lvl:int,
         box=position["book"],mask=Image.open(items[book_name]).resize((235,235)))
     base.paste(im=Image.open(items[locket_name]).resize((218,218)),
         box=position["locket"],mask=Image.open(items[locket_name]).resize((218,218)))
+
+    if weapon_name in list_s_eqpm['weapon']: base.paste(im=Image.open(s_grade_eqpm).resize((82,82)),box=position["s_icon_weapon"],mask=Image.open(s_grade_eqpm).resize((82,82)))
+    if armor_name in list_s_eqpm['armor']: base.paste(Image.open(s_grade_eqpm).resize((82,82)),box=position["s_icon_armor"],mask=Image.open(s_grade_eqpm).resize((82,82)))
+    if ring_name1 in list_s_eqpm['ring']: base.paste(Image.open(s_grade_eqpm).resize((82,82)),box=position["s_icon_ring1"],mask=Image.open(s_grade_eqpm).resize((82,82)))
+    if ring_name2 in list_s_eqpm['ring']: base.paste(Image.open(s_grade_eqpm).resize((82,82)),box=position["s_icon_ring2"],mask=Image.open(s_grade_eqpm).resize((82,82)))
+    if bracelet_name in list_s_eqpm['bracelet']: base.paste(Image.open(s_grade_eqpm).resize((82,82)),box=position["s_icon_bracelet"],mask=Image.open(s_grade_eqpm).resize((82,82)))
+    if locket_name in list_s_eqpm['locket']: base.paste(Image.open(s_grade_eqpm).resize((82,82)),box=position["s_icon_locket"],mask=Image.open(s_grade_eqpm).resize((82,82)))
+    if book_name in list_s_eqpm['spellbook']: base.paste(Image.open(s_grade_eqpm).resize((82,82)),box=position["s_icon_spellbook"],mask=Image.open(s_grade_eqpm).resize((82,82)))
 
     number_SubQuality = ImageDraw.Draw(base)
     if weapon_rarity[-1].isdigit():
@@ -541,6 +581,7 @@ def create_image(pbid:str,weapon_name:str,weapon_rarity:str,weapon_lvl:int,
         base.paste(im=Image.open(subQuality[book_rarity]).resize((62,62)),box=position["subQuality_book"],mask=Image.open(subQuality[book_rarity]).resize((62,62)))
         number_SubQuality.text((602,816),str(number),(255,255,255),font=ImageFont.truetype("calculator/static/fonts/archero_font_white.otf",40))
         number_SubQuality.text((602,816),str(number),(0,0,0),font=ImageFont.truetype("calculator/static/fonts/archero_font_black.otf",40))
+    
     base.paste(Image.open(jewel[-1]).resize((82,82)),box=position["bg_jewel_weapon"],mask=Image.open(jewel[-1]).resize((82,82)))
     base.paste(Image.open(jewel[-1]).resize((82,82)),box=position["bg_jewel_armor"],mask=Image.open(jewel[-1]).resize((82,82)))
     base.paste(Image.open(jewel[-1]).resize((82,82)),box=position["bg_jewel_ring1"],mask=Image.open(jewel[-1]).resize((82,82)))

@@ -2,14 +2,14 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.8.1">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.1">
 <title>{% blocktrans %}Archero - Google Sheets Community{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Google Sheet Archives">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/google-sheet/">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Discover a curated collection of Archero Google Sheets created by the passionate Archero community. Explore a variety of useful spreadsheets, including tier lists, damage calculators, and more. Access valuable tools and insights to enhance your gameplay and stay ahead in Archero with the help of our comprehensive Google Sheets resource.">
 <meta name="description" content="Discover a curated collection of Archero Google Sheets created by the passionate Archero community. Explore a variety of useful spreadsheets, including tier lists, damage calculators, and more. Access valuable tools and insights to enhance your gameplay and stay ahead in Archero with the help of our comprehensive Google Sheets resource.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.8.1">
+<meta property="og:image" content="{{ request.archero_icon_link }}">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}

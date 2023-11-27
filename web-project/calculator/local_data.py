@@ -3447,7 +3447,7 @@ LocalDataContentWiki = {
         "40": _("Attack+5%"),
         "50": _("Melinda's base HP +10%"),
         "60": _("Summoned flying object damage +30%"),
-        "70": _("Extra arrows can deal critical heats and penetrate"),
+        "70": _("Extra arrows can deal critical hits and penetrate"),
         "80": _("Can deploy at any time to assist in Battle"),
         "90": _("Weapon Damage +7%"),
         "100": _("Attack +10%")

@@ -3,7 +3,7 @@ from calculator import views
 from calculator import api
 from calculator import views_wiki
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from conf.global_variable import DEV_MODE
+from app.settings import DEV_MODE
 from django.utils.translation import gettext_lazy as _
 
 
@@ -19,10 +19,8 @@ urlpatterns = [
     path('calculator/update/<int:pbid>/', views.update_calc, name='update_calc'),
     path('calculator/updatecalc/<int:pbid>/', views.updatetraitement_calc, name='traitement_update_calc'),
     path('calculator/delete/<int:pbid>/', views.delete_user),
-    path('calculator/show_debug/<int:pbid>/', api.show_debug, name='show_debug'),
     path('calculator/duplicate/', views.duplicate_user, name='duplicate_user'),
     path('stats/calc/<int:pbid>/<int:redirectPath>/', views.views_calc_stats, name='stats_calc_api'),
-    path('api_view/<int:pbid>/', api.json_payload_profile, name='api_view'),
     path('login/', views_wiki.login, name='login'),
     path('login/processing/<str:username_raw>/<str:id_raw>/', views_wiki.login_processing, name='login_process'),
     path('wiki/maze/', views_wiki.maze, name='maze'),
@@ -46,7 +44,8 @@ urlpatterns = [
     path('wiki/<str:titleArticle>/', views_wiki.news, name='news'),
     path('data/', api.data),
     path('del_dev/<int:pbid>/', views.admin_reload_stats),
-    path('api/', api.CalculatorAPI.as_view()),
+    path('api/calculator/', api.CalculatorAPI.as_view()),
+    path('api/wiki/', api.WikiAPI.as_view()),
     path('create_user_queue/', api.create_user_queue),
     path('validate_user_queue/<int:pk>/', api.validate_user_queue, name='validate_user_queue'), ## keep the name attribute for the reverse function in api.py
     path('delete_cookie/<str:key>/<str:name_redirect>/', views_wiki.delete_cookie),

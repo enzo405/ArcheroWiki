@@ -2,8 +2,8 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.8.1">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.8.1">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.1">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.9.1">
 {% if name_title != None %}
 	<title>{% blocktrans %}Archero - {{ name_title }}{% endblocktrans %}</title>
 	<meta property="og:title" content="Archero - {{ name_title }}">
@@ -15,9 +15,9 @@
 	{% endblock %}
 	<meta name="description" content="Welcome to the Archero Wiki, your ultimate resource for the popular mobile game by HABBY. Explore comprehensive guides, tier lists, hero breakdowns, and item stats on our extensive Wiki. Level up your gameplay with expert strategies and unleash your full potential in the world of Archero.">
 	{% if current_article.type == 'img' %}
-	<meta property="og:image" content="{% static current_article.collapsible_container.content.field.src %}?version=1.8.1">
+	<meta property="og:image" content="{% static current_article.collapsible_container.content.field.src %}?version=1.9.1">
 	{% else %}
-	<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.8.1">
+	<meta property="og:image" content="{{ request.archero_icon_link }}">
 	{% endif %}
 {% else %}
 	<title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
@@ -26,7 +26,7 @@
 	<meta property="og:type" content="website">
 	<meta property="og:description" content="Welcome to the Archero Wiki, your ultimate resource for the popular mobile game by HABBY. Explore comprehensive guides, tier lists, hero breakdowns, and item stats on our extensive Wiki. Level up your gameplay with expert strategies and unleash your full potential in the world of Archero.">
 	<meta name="description" content="Welcome to the Archero Wiki, your ultimate resource for the popular mobile game by HABBY. Explore comprehensive guides, tier lists, hero breakdowns, and item stats on our extensive Wiki. Level up your gameplay with expert strategies and unleash your full potential in the world of Archero.">
-	<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.8.1">
+	<meta property="og:image" content="{{ request.archero_icon_link }}">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
@@ -38,7 +38,7 @@
 			<div class="button-wiki-collaps {{ v.classButton }}"><span class="thcrft-name" id="{{ k }}">{{ v.displayName }} {{ v.displayNameImg|safe }}<a onclick="createModale(this,true,'info')" class="copy-icon-container"><i class="fa fa-share-alt" aria-hidden="true"></i></a></span></div>
 			<div class="{{ v.collapsible_container.class_content }} content">
 			{% if v.type == "img" %}
-				<img src="{% static v.collapsible_container.content.field.src %}?version=1.8.1" class="{{ v.collapsible_container.content.field.class }}" alt="{{ v.collapsible_container.content.field.alt }}" loading="eager">
+				<img src="{% static v.collapsible_container.content.field.src %}?version=1.9.1" class="{{ v.collapsible_container.content.field.class }}" alt="{{ v.collapsible_container.content.field.alt }}" loading="lazy">
 			{% elif v.type == "embed" %}
 				<div class="kn3fae-0 ezpxFx">
 					<div class="kn3fae-2 eKjosW">

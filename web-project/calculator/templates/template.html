@@ -8,12 +8,12 @@
 <html lang="{{ LANGUAGE_CODE }}">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.8.1">
-		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}?version=1.8.1">
+		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.9.1">
+		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}?version=1.9.1">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="apple-touch-icon" href="{% static 'image/favicon.png' %}?version=1.8.1">
+		<link rel="apple-touch-icon" href="{% static 'image/favicon.png' %}?version=1.9.1">
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-		<script src="{% static 'main.js' %}?version=1.8.1"></script>
+		<script src="{% static 'main.js' %}?version=1.9.1"></script>
 		{% block head %}
 		{% endblock %}
 		<style>
@@ -58,7 +58,7 @@
 				</div>
 				<div class="rightsidebarc traveling-right">
 					<div class="shcr">
-						<img alt="{{ key }} Archero" id="{{ value.childs_container.rightsidebar.child_content.image_id }}" src="{{ value.childs_container.rightsidebar.child_content.image_src }}?version=1.8.1" width="{{ value.childs_container.rightsidebar.child_content.image_width }}" height="{{ value.childs_container.rightsidebar.child_content.image_height }}">
+						<img alt="{{ key }} Archero" id="{{ value.childs_container.rightsidebar.child_content.image_id }}" src="{{ value.childs_container.rightsidebar.child_content.image_src }}?version=1.9.1" width="{{ value.childs_container.rightsidebar.child_content.image_width }}" height="{{ value.childs_container.rightsidebar.child_content.image_height }}">
 					</div>
 				</div>
 			</a>
@@ -100,45 +100,45 @@
 		<section class="section-c-f">
 			{% block content %}
 			{% endblock %}
-			<footer>
-				<div class="footer-content">
-					<div class="footer-about">
-						<img class="footer-img-icon" fetchpriority="high" src="{{ request.archero_icon_link }}" alt="{{ request.archero_version }} game icon">
-						<div class="about-content">
-							<h1>{{ request.archero_version }}</h1>
-							<div class="contact-me">
-								<span>{% blocktrans %}Contact{% endblocktrans %} <a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran</a> <a href="https://www.reddit.com/user/LuhCaran101" target="_blank"><i class="fab fa-reddit"></i> u/LuhCaran101</a></span>
-							</div>
-							<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/Terms-of-Use/">{% blocktrans %}Terms of Use{% endblocktrans %}</a></div>
-							<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/changelog/">{% blocktrans %}ChangeLog{% endblocktrans %}</a></div>
-							<div class="f_content_info">Build v1.8.1</div>
+		</section>
+		<footer>
+			<div class="footer-content">
+				<div class="footer-about">
+					<img class="footer-img-icon" fetchpriority="high" src="{{ request.archero_icon_link }}" alt="{{ request.archero_version }} game icon">
+					<div class="about-content">
+						<h1>{{ request.archero_version }}</h1>
+						<div class="contact-me">
+							<span>{% blocktrans %}Contact{% endblocktrans %} <a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran</a> <a href="https://www.reddit.com/user/LuhCaran101" target="_blank"><i class="fab fa-reddit"></i> u/LuhCaran101</a></span>
 						</div>
-					</div>
-					<div class="discord_link">
-						<div style="font-size: large;font-weight: bold;">{% blocktrans %}Community Links{% endblocktrans %}:</div>
-						<div class="container-link">
-							<a href="https://discord.gg/AsGcUrT" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>{% blocktrans %}LeMutique's Server{% endblocktrans %}</a>
-						</div>
-						<div class="container-link">
-							<a href="https://discord.gg/eAqZquTF6X" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>{% blocktrans %}TigerShark's Server{% endblocktrans %}</a>
-						</div>
-						<div class="container-link">
-							<a href="https://www.reddit.com/r/Archero/" target="_blank"><span class="link-icon"><i class="fab fa-reddit"></i></span>r/Archero</a>
-						</div>
-						<div class="container-link">
-							<a href="https://www.facebook.com/archerogame/" target="_blank"><span class="link-icon"><i class="fab fa-facebook"></i></span>{% blocktrans %}FB Archero{% endblocktrans %}</a>
-						</div>
-					</div>
-					<div class="thanks">
-						<div style="font-size: large;font-weight: bold;">{% blocktrans %}Shout-out :{% endblocktrans %}</div>
-						<div class="shout-out">{% blocktrans %}Special thanks{% endblocktrans %} : <b>Deth, TigerShark14, zkn</b></div>
-						<div class="shout-out">{% blocktrans %}Thanks to{% endblocktrans %} : Chaos, pew, Mahanaxar</div>
-						<div class="shout-out">Pelmens, Lorenz, RedsMeName, whatever</div>
-						<div class="shout-out">Kang Greenstrider, PNE241, Drunkie, zug</div>
+						<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/Terms-of-Use/">{% blocktrans %}Terms of Use{% endblocktrans %}</a></div>
+						<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/changelog/">{% blocktrans %}ChangeLog{% endblocktrans %}</a></div>
+						<div class="f_content_info">Build v1.9.1</div>
 					</div>
 				</div>
-			</footer>
-		</section>
+				<div class="discord_link">
+					<div style="font-size: large;font-weight: bold;">{% blocktrans %}Community Links{% endblocktrans %}:</div>
+					<div class="container-link">
+						<a href="https://discord.gg/AsGcUrT" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>{% blocktrans %}LeMutique's Server{% endblocktrans %}</a>
+					</div>
+					<div class="container-link">
+						<a href="https://discord.gg/eAqZquTF6X" target="_blank"><span class="link-icon"><i class="fab fa-discord"></i></span>{% blocktrans %}TigerShark's Server{% endblocktrans %}</a>
+					</div>
+					<div class="container-link">
+						<a href="https://www.reddit.com/r/Archero/" target="_blank"><span class="link-icon"><i class="fab fa-reddit"></i></span>r/Archero</a>
+					</div>
+					<div class="container-link">
+						<a href="https://www.facebook.com/archerogame/" target="_blank"><span class="link-icon"><i class="fab fa-facebook"></i></span>{% blocktrans %}FB Archero{% endblocktrans %}</a>
+					</div>
+				</div>
+				<div class="thanks">
+					<div style="font-size: large;font-weight: bold;">{% blocktrans %}Shout-out :{% endblocktrans %}</div>
+					<div class="shout-out">{% blocktrans %}Special thanks{% endblocktrans %} : <b>Deth, TigerShark14, zkn</b></div>
+					<div class="shout-out">{% blocktrans %}Thanks to{% endblocktrans %} : Chaos, pew, Mahanaxar</div>
+					<div class="shout-out">Pelmens, Lorenz, RedsMeName, whatever</div>
+					<div class="shout-out">Kang Greenstrider, PNE241, Drunkie, zug</div>
+				</div>
+			</div>
+		</footer>
 	</main>
 	<!-- "To the top" button -->
 	<div id="to-top-button">
