@@ -2,8 +2,8 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.8.1">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.8.1">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.1">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.9.1">
 <meta name="description" content="Explore a comprehensive list of items in Archero, including weapons, armor, rings, pets, lockets, bracelets, and spellbooks. Discover the stats, hidden stats, and descriptions for each item rarity. Unlock the full potential of your loadout with invaluable insights and make strategic choices to dominate your enemies in Archero.">
 <meta property="og:type" content="website">
 {% if item == "yes" %}
@@ -14,13 +14,13 @@
 <meta property="og:description" content="{{ hero_data.description|safe }}{% for k,v in item_data.rarity.items %}{% if v != '' %}
 {{ v|safe }}{% else %}{% endif %}{% endfor %}">
 {% endblock %}
-<meta property="og:image" content="{% static item_data.item_image %}?version=1.8.1">
+<meta property="og:image" content="{% static item_data.item_image %}?version=1.9.1">
 {% else %}
 <title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Item Description">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/item">
 <meta property="og:description" content="Explore a comprehensive list of items in Archero, including weapons, armor, rings, pets, lockets, bracelets, and spellbooks. Discover the stats, hidden stats, and descriptions for each item rarity. Unlock the full potential of your loadout with invaluable insights and make strategic choices to dominate your enemies in Archero.">
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.8.1">
+<meta property="og:image" content="{{ request.archero_icon_link }}">
 {% endif %}
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}

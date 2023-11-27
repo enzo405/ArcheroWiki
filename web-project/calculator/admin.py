@@ -3,6 +3,7 @@ from calculator.models import *
 from django.contrib.admin.models import LogEntry
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
+from .function import send_webhook
 
 @admin.register(LogEntry)
 class LogEntryAdmin(admin.ModelAdmin):
@@ -68,5 +69,6 @@ try:
 	group(UserQueue)
 	group(Contributor)
 	group(ArticleMenu)
+	group(PromoCodeReward)
 except Exception as e:
-	print(f"Admin panel initialization failed : {e}")
+	send_webhook(f"Admin panel initialization failed : {e}", admin_log=True)

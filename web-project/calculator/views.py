@@ -7,7 +7,7 @@ from .image import create_image
 from .models import user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelTypeTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable,DamageCalcTable
 from .function import checkDarkMode,getCredentialForNonLoginRequired,checkMessages,all_formIsValid,findFormError,checkCookie,login_required,create_unique_id,send_embed,makeLog, makeCookieheader, db_maintenance, checkContributor, getProfileWithCookie, loadContent
 import json, os
-from conf.global_variable import DEV_MODE, c_hostname, DEBUG_STATS
+from app.settings import DEV_MODE, c_hostname, DEBUG_STATS
 from django.utils.translation import gettext as _, get_language
 from .local_data import LocalDataContentWiki
 
@@ -119,6 +119,7 @@ def views_calc_stats(request,pbid:int,redirectPath:int):
 	hero_Elaine = HeroTable_stats.HerosStatsRecup("Elaine")
 	hero_Bobo = HeroTable_stats.HerosStatsRecup("Bobo")
 	hero_Stella = HeroTable_stats.HerosStatsRecup("Stella")
+	hero_Taiga = HeroTable_stats.HerosStatsRecup("Taiga")
 	## Get Skin Atk and Hp
 	skin_health_boost = SkinTable_stats.skin_health
 	skin_atk_boost = SkinTable_stats.skin_attack
@@ -253,7 +254,7 @@ def views_calc_stats(request,pbid:int,redirectPath:int):
 	cumul_runes_flat_passiv_atk = int(reforge_atk_power) + int(reforge_atk_courage) + int(runelinePower.get('attack_flat',0)) + int(runelineCourage.get('attack_flat',0))
 	cumul_runes_flat_passiv_hp = int(reforge_hp_recovery) + int(reforge_hp_saviour) + int(reforge_hp_luck) + int(runelineRecovery.get("hp_flat",0)) + int(runelineSaviour.get("hp_flat",0)) + int(runelineLuck.get("hp_flat",0))
 	cumul_hero_flat_passiv_atk = int(hero_Atreus[5]) + int(hero_Urasil[0]) + int(hero_Phoren[6]) + int(hero_Helix[5]) + int(hero_Meowgik[0]) + int(hero_Ayana[6]) + int(hero_Rolla[0]) + int(hero_Bonnie[5]) + int(hero_Shade[6]) + int(hero_Ophelia[0]) + int(hero_Ophelia[2]) + int(hero_Lina[0]) + int(hero_Lina[5]) + int(hero_Aquea[5]) + int(hero_Iris[5]) + int(hero_Melinda[6]) + int(hero_Iris[1]) + int(hero_Blazo[1]) + int(hero_Stella[0])
-	cumul_hero_flat_passiv_hp = int(hero_Atreus[0]) + int(hero_Atreus[6]) + int(hero_Urasil[5]) + int(hero_Taranis[5]) + int(hero_Meowgik[6]) + int(hero_Shari[1]) + int(hero_Shari[5]) + int(hero_Onir[0]) + int(hero_Onir[5]) + int(hero_Bonnie[6]) + int(hero_Sylvan[0]) + int(hero_Lina[6]) + int(hero_Aquea[0]) + int(hero_Aquea[6]) + int(hero_Shingen[6]) + int(hero_Iris[0]) + int(hero_Blazo[6]) + int(hero_Elaine[5]) + int(hero_Elaine[6]) + int(hero_Bobo[5]) + int(hero_Bobo[6])
+	cumul_hero_flat_passiv_hp = int(hero_Atreus[0]) + int(hero_Atreus[6]) + int(hero_Urasil[5]) + int(hero_Taranis[5]) + int(hero_Meowgik[6]) + int(hero_Shari[1]) + int(hero_Shari[5]) + int(hero_Onir[0]) + int(hero_Onir[5]) + int(hero_Bonnie[6]) + int(hero_Sylvan[0]) + int(hero_Lina[6]) + int(hero_Aquea[0]) + int(hero_Aquea[6]) + int(hero_Shingen[6]) + int(hero_Iris[0]) + int(hero_Blazo[6]) + int(hero_Elaine[5]) + int(hero_Elaine[6]) + int(hero_Bobo[5]) + int(hero_Bobo[6]) + int(hero_Bobo[0])
 	cumul_skin_flat_passiv_atk = int(skin_atk_boost)
 	cumul_skin_flat_passiv_hp = int(skin_health_boost)
 	cumul_egg_flat_passiv_atk = int(egg_bomb_ghost_passiv[1]) + int(egg_green_bat_passiv[1]) + int(egg_piranha_passiv[1]) + int(egg_crazy_spider_passiv[1]) + int(egg_fire_mage_passiv[1]) + int(egg_skeleton_archer_passiv[1]) + int(egg_skeleton_soldier_passiv[1]) + int(egg_fire_element_passiv[1]) + int(egg_flame_ghost_passiv[1]) + int(egg_ice_mage_passiv[1]) + int(egg_pea_shooter_passiv[1]) + int(egg_shadow_assassin_passiv[1]) + int(egg_skull_wizard_passiv[1]) + int(egg_tornado_demon_passiv[1]) + int(egg_savage_spider_passiv[1]) + int(egg_flaming_bug_passiv[1]) + int(egg_one_eyed_bat_passiv[1]) + int(egg_elite_archer_passiv[1]) + int(egg_icefire_phantom_passiv[1]) + int(egg_purple_phantom_passiv[1]) + int(egg_scarlet_mage_passiv[1]) + int(egg_arch_leader_passiv[0]) + int(egg_crimson_witch_passiv[0]) + int(egg_medusa_boss_passiv[0]) + int(egg_ice_worm_passiv[0]) + int(egg_desert_goliath_passiv[0]) + int(egg_ice_demon_passiv[0]) + int(egg_fire_demon_passiv[1]) + int(egg_crimson_zombie_passiv[1]) + int(egg_scythe_pharoah_passiv[1]) + int(egg_infernal_demon_passiv[0]) + int(egg_fireworm_queen_passiv[0])
@@ -268,13 +269,13 @@ def views_calc_stats(request,pbid:int,redirectPath:int):
 	cumul_refine_flat_activ_hp = int(refine_armor_hp) + int(refine_locket_hp) + int(refine_book_hp)
 	cumul_dragon_flat_activ_atk = int(dragons_stats_dict.get("Attack",0))
 	cumul_dragon_flat_activ_hp = int(dragons_stats_dict.get("Max Hp",0))
-	cumul_stuff_flat_activ_atk = round(stuff_activ_stats['weapon_total'] + stuff_activ_stats['bracelet_total'])
+	cumul_stuff_flat_activ_atk = round(stuff_activ_stats['weapon_total'] + stuff_activ_stats['bracelet_total'] + stuff_activ_stats.get("ring_attack_flat",0))
 	cumul_stuff_flat_activ_hp = round(stuff_activ_stats['armor_total'] + stuff_activ_stats['locket_total'] + stuff_activ_stats['book_total'])
 
 	cumul_runes_var_passiv_atk = float(runelinePower.get('attack_var',0)) + float(runelineCourage.get('attack_var',0))
 	cumul_runes_var_passiv_hp = float(runelineSaviour.get("hp_var",0.0)) + float(runelineLuck.get("hp_var",0.0))
-	cumul_heros_var_passiv_atk = float(hero_Taranis[2]) + float(hero_Meowgik[2]) + float(hero_Ayana[2]) + float(hero_Rolla[2]) + float(hero_Sylvan[2]) + float(hero_Aquea[2]) + float(hero_Iris[2]) + float(hero_Bonnie[4]) + float(hero_Shade[7]) + float(hero_Melinda[7]) + float(hero_Bobo[1]) + float(hero_Bobo[4]) + float(hero_Stella[2])
-	cumul_heros_var_passiv_hp = float(hero_Atreus[2]) + float(hero_Helix[2]) + float(hero_Bonnie[2]) + float(hero_Shade[2]) + float(hero_Lina[2]) + float(hero_Shingen[2]) + float(hero_Blazo[2]) + float(hero_Ryan[4]) + float(hero_Gugu[4]) + float(hero_Blazo[4]) + float(hero_Atreus[7]) + float(hero_Rolla[7])  + float(hero_Elaine[7]) + float(hero_Elaine[2])
+	cumul_heros_var_passiv_atk = float(hero_Taranis[2]) + float(hero_Meowgik[2]) + float(hero_Ayana[2]) + float(hero_Rolla[2]) + float(hero_Sylvan[2]) + float(hero_Aquea[2]) + float(hero_Iris[2]) + float(hero_Bonnie[4]) + float(hero_Shade[7]) + float(hero_Melinda[7]) + float(hero_Bobo[1]) + float(hero_Bobo[4]) + float(hero_Stella[2]) + float(hero_Taiga[6])
+	cumul_heros_var_passiv_hp = float(hero_Atreus[2]) + float(hero_Helix[2]) + float(hero_Bonnie[2]) + float(hero_Shade[2]) + float(hero_Lina[2]) + float(hero_Shingen[2]) + float(hero_Blazo[2]) + float(hero_Ryan[4]) + float(hero_Gugu[4]) + float(hero_Blazo[4]) + float(hero_Atreus[7]) + float(hero_Rolla[7])  + float(hero_Elaine[7]) + float(hero_Elaine[2]) + float(hero_Taiga[2])
 	cumul_heros_var_activ_atk = float(hero_Onir[3]) + float(hero_Bonnie[3])
 	cumul_heros_var_activ_hp = float(hero_Urasil[3]) + float(hero_Sylvan[3]) + float(hero_Ophelia[3]) + float(hero_Ryan[1]) + float(hero_Elaine[1]) 
 	cumul_altar_var_passiv_atk = float(altar_heros_ascension_atk) + float(altar_stuff_ascension_atk)
@@ -294,11 +295,11 @@ def views_calc_stats(request,pbid:int,redirectPath:int):
 	hero_modified_base_atk = (int(atk_base_hero_choosen) - int(runelineCourage.get('courage_hero_attack_flat',0))) * (float(runelineCourage.get('courage_hero_attack_var',0.0)/100) + float(cumul_var_passiv_power_up_hero) + 1) + int(runelineCourage.get('courage_hero_attack_flat',0))
 	hero_modified_base_hp = (int(health_base_hero_choosen) - int(runelineCourage.get('courage_hero_hp_flat',0))) * (float(runelineCourage.get('courage_hero_hp_var',0.0)/100) + float(cumul_var_passiv_power_up_hero) + 1) + int(runelineCourage.get('courage_hero_hp_flat',0))
 	############################################# RESULT #############################################
-	global_critic_damage = 200 + float(dragons_skills.get("Crit Damage",0.0)) + float(runelinePower.get('var_crit_dmg',0.0)) + float(stats_jewel_dict.get('crit_damage',0.0)) + float(stuff_raw_stats['weapon_crit_raw']) + float(stuff_raw_stats['ring1_crit_damage_raw']) + float(stuff_raw_stats['ring2_crit_damage_raw']) + float(stuff_raw_stats['bracelet_crit_raw']) + float(activ_egg_stats['Critic Damage']) + float(cumul_heros_var_passiv_crit_dmg) + float(BonusSpe_jewel_weapon.get('crit_damage',0))
+	global_critic_damage = 200 + float(dragons_skills.get("Crit Damage",0.0)) + float(runelinePower.get('var_crit_dmg',0.0)) + float(stats_jewel_dict.get('crit_damage',0.0)) + float(stuff_raw_stats['weapon_critdmg_raw']) + float(stuff_raw_stats['ring1_crit_damage_raw']) + float(stuff_raw_stats['ring2_crit_damage_raw']) + float(stuff_raw_stats['bracelet_crit_raw']) + float(activ_egg_stats['Critic Damage']) + float(cumul_heros_var_passiv_crit_dmg) + float(BonusSpe_jewel_weapon.get('crit_damage',0)) + float(hero_Taiga[4])
 	global_elemental_damage_flat = 0
 	global_elemental_damage_var = float(runelinePower.get('var_elemental_dmg',0.0)) + float(relics_stats.get('elemental_damage_var',0.0)) + float(brave_privileges_stats['Elemental Damage']) + float(stats_jewel_dict.get('elemental_damage_var',0.0)) + float(hero_Sylvan[7])
-	global_dodge_chance = 1 - (1-(float(dragons_skills.get("Dodge rate",0.0)))*1-(float(runelineSaviour.get('dodge',0.0)))*1-(float(relics_stats.get('dodge_var',0.0)))*1-(float(BonusSpe_jewel_ring1.get('dodge_var',0.0)))*1-(float(dragons_stats_dict.get("Dodge",0.0)))*1-(float(stuff_raw_stats['armor_dodge_raw']))*1-(float(stuff_raw_stats['locket_dodge_raw']))*1-(float(stuff_raw_stats['ring1_dodge_raw']))*1-(float(stuff_raw_stats['ring2_dodge_raw']))*1-(float(hero_Meowgik[4]))*1-(float(hero_Meowgik[7]))*1-(float(hero_Meowgik[1]))*1-(float(hero_Ayana[3]))*1-(float(hero_Rolla[3]))*1-(float(hero_Lina[1]))*1-(float(hero_Gugu[1]))*1-(float(hero_Iris[3])))
-	global_crit_rate = float(15) + float(runelinePower.get('var_crit_rate',0.0)) + float(BonusSpe_jewel_weapon.get('crit_chance',0)) + float(relics_stats.get('crit_chance',0.0)) + float(brave_privileges_stats['Critic Rate']) + float(stuff_raw_stats['ring1_crit_chance_raw']) + float(stuff_raw_stats['ring2_crit_chance_raw']) + float(cumul_heros_var_passiv_crit_rate)
+	global_dodge_chance = 1 - (1-(float(dragons_skills.get("Dodge rate",0.0)))*1-(float(runelineSaviour.get('dodge',0.0)))*1-(float(relics_stats.get('dodge_var',0.0)))*1-(float(BonusSpe_jewel_ring1.get('dodge_var',0.0)))*1-(float(dragons_stats_dict.get("Dodge",0.0)))*1-(float(stuff_raw_stats['armor_dodge_raw']))*1-(float(stuff_raw_stats['locket_dodge_raw']))*1-(float(stuff_raw_stats['ring1_dodge_raw']))*1-(float(stuff_raw_stats['ring2_dodge_raw']))*1-(float(hero_Meowgik[4]))*1-(float(hero_Meowgik[7]))*1-(float(hero_Meowgik[1]))*1-(float(hero_Ayana[3]))*1-(float(hero_Rolla[3]))*1-(float(hero_Lina[1]))*1-(float(hero_Gugu[1]))*1-(float(hero_Iris[3]))*1-(float(hero_Taiga[5]))*1-(float(hero_Taiga[1])))
+	global_crit_rate = float(15) + float(runelinePower.get('var_crit_rate',0.0)) + float(BonusSpe_jewel_weapon.get('crit_chance',0)) + float(relics_stats.get('crit_chance',0.0)) + float(brave_privileges_stats['Critic Rate']) + float(stuff_raw_stats['ring1_crit_chance_raw']) + float(stuff_raw_stats['ring2_crit_chance_raw']) + float(cumul_heros_var_passiv_crit_rate) + float(stuff_raw_stats['weapon_critrate_raw'])
 	global_boss_damage_flat = int(runelinePower.get('flat_dmg_boss',0)) + int(relics_stats.get('damage_bosses_flat',0)) + int(activ_egg_stats['Damage To Bosses']) + int(stuff_activ_stats.get('boss units dmg',0)) + int(stuff_activ_stats.get('boss units dmg',0)) + int(stats_jewel_dict.get('damage_bosses_flat',0))
 	global_boss_damage_var = float(stats_jewel_dict.get('damage_bosses_var',0.0)) + float(stuff_activ_stats.get('boss units dmg var',0.0)) + float(runelinePower.get('var_dmg_boss',0.0)) + float(relics_stats.get('damage_bosses_var',0.0))
 	global_mobs_damage_flat = int(runelinePower.get('flat_dmg_mob',0)) + int(relics_stats.get('damage_mobs_flat',0)) + int(dragons_stats_dict.get("Damage To Mobs",0)) + int(activ_egg_stats['Damage To Mobs']) + int(stuff_activ_stats.get('mobs units dmg',0)) + int(stuff_activ_stats.get('mobs units dmg',0)) + int(stats_jewel_dict.get('damage_mobs_flat',0)) + int(hero_Bobo[0])
@@ -396,7 +397,7 @@ def views_calc_stats(request,pbid:int,redirectPath:int):
 @loadContent(checkMessages=True)
 def affiche_calc(request, pbid:int):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
-	user_credential = getCredentialForNonLoginRequired(request)['user_credential']
+	user_credential = getCredentialForNonLoginRequired(request).get('user_credential')
 	makeLog(request)
 	try:
 		user_stats = user.objects.get(public_id=int(pbid))
@@ -953,7 +954,7 @@ def duplicate_user(request):
 
 @loadContent(db_maintenance=True)
 def admin_reload_stats(request,pbid):
-	user_credential = request.session['user_credential']
+	user_credential = request.session.get('user_credential')
 	if checkContributor(user_credential,request):
 		try:
 			os.remove(f"calculator/static/image/stuff_save/{pbid}.png")

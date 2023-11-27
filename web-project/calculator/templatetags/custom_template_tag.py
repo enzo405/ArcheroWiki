@@ -2,7 +2,6 @@ from django import template
 from django.template.defaultfilters import stringfilter
 from django.conf import settings
 
-
 import markdown as md
 
 register = template.Library()

@@ -421,7 +421,6 @@
 	align-items: center;
 	text-align: center;
 	gap: 10px;
-	min-height: 78.5vh;
 }
 .div-onclick-menu {
 	text-align: center;
@@ -1170,10 +1169,6 @@ label {
 /* CHANGELOG */
 /* CHANGELOG */
 /* CHANGELOG */
-.commits_container{
-	display: block;
-	margin-left: 10px;
-}
 .commit-li{
 	margin-top: 10px;
     margin-bottom: 10px;

@@ -23,33 +23,17 @@ ADMIN_CREDENTIAL = {
     "#####":"#####"
 }
 
-if DEV_MODE:
-    c_hostname = "http://127.0.0.1:8000"
-    WEBHOOK_URL = "https://discord.com/api/webhooks/###########/#################################"
-    ADMIN_LOG_WEBHOOK_URL = "https://discord.com/api/webhooks/###########/#################################"
-    c_DEBUG = True
-    c_DATABASES = {
-        'default': {
-            'ENGINE': '######',
-            'NAME': '#####',
-            'USER': '#####',
-            'HOST': 'localhost',
-            'PASSWORD': '#####',
-            'PORT': '#####',
-        }
+WEBHOOK_URL = "https://discord.com/api/webhooks/#####################/###############################################################"
+ADMIN_LOG_WEBHOOK_URL = "https://discord.com/api/webhooks/#####################/###############################################################"
+c_DEBUG = False
+c_hostname = "http://127.0.0.1:8000"
+c_DATABASES = {
+    'default': {
+        'ENGINE': '######',
+        'NAME': '#####',
+        'USER': '#####',
+        'HOST': 'localhost',
+        'PASSWORD': '#####',
+        'PORT': '#####'
     }
-else:
-    c_hostname = "https://stats.wiki-archero.com"
-    WEBHOOK_URL = "https://discord.com/api/webhooks/###########/#################################"
-    ADMIN_LOG_WEBHOOK_URL = "https://discord.com/api/webhooks/###########/#################################"
-    c_DEBUG = False
-    c_DATABASES = {
-        'default': {
-            'ENGINE': '######',
-            'NAME': '#####',
-            'USER': '#####',
-            'HOST': 'db',
-            'PASSWORD': '####',
-            'PORT': '#####',
-        }
-    }
+}

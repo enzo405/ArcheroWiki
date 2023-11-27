@@ -3,7 +3,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator, RegexVa
 import datetime, math, json
 from django.contrib.auth.models import User as BuiltinDjangoUser
 from django.utils.crypto import get_random_string
-from conf.global_variable import DEBUG_STATS
+from app.settings import DEBUG_STATS
+from django.utils import timezone
 
 class ServerManagement(models.Model):
 	archeroVersion = models.CharField(max_length=20, default='Archero', blank=False, null=False)
@@ -76,14 +77,14 @@ dragon_rarity_index = {
 #(actual value, human readable name)
 # default selected must be the value and not the human readable
 # e.g : power_rune_all = (("none","None"),("attack_flat","Attack")) must be models.charField(.....default="none")
-all_heros = (("Atreus","Atreus"),("Urasil","Urasil"),("Phoren","Phoren"),("Taranis","Taranis"),("Helix","Helix"),("Meowgik","Meowgik"),("Shari","Shari"),("Ayana","Ayana"),("Onir","Onir"),("Rolla","Rolla"),("Bonnie","Bonnie"),("Sylvan","Sylvan"),("Shade","Shade"),("Ophelia","Ophelia"),("Ryan","Ryan"),("Lina","Lina"),("Aquea","Aquea"),("Shingen","Shingen"),("Gugu","Gugu"),("Iris","Iris"),("Blazo","Blazo"),("Melinda","Melinda"),("Elaine","Elaine"),("Bobo","Bobo"),("Stella","Stella"))
-stuff_weapon = (("None","None"),("Brave Bow","Brave Bow"),("Death Scythe","Death Scythe"),("Saw Blade","Saw Blade"),("Tornado","Tornado"),("Brightspear","Brightspear"),("Stalker Staff","Stalker Staff"),("Gale Force","Gale Force"),("Demon Blade Rain","Demon Blade Rain"),("Mini Atreus","Mini Atreus"),("Antiquated Sword","Antiquated Sword"))
-stuff_armor = (("None","None"),("Phantom Cloak","Phantom Cloak"),("Vest of Dexterity","Vest of Dexterity"),("Golden Chestplate","Golden Chestplate"),("Void Robe","Void Robe"),("Bright Robe","Bright Robe"),("Shadow Robe","Shadow Robe"))
-stuff_ring = (("None","None"),("Bear Ring","Bear Ring"),("Wolf Ring","Wolf Ring"),("Falcon Ring","Falcon Ring"),("Serpent Ring","Serpent Ring"),("Bull Ring","Bull Ring"),("Lion Ring","Lion Ring"),("Vilebat Ring","Vilebat Ring"),("Dragon Ring","Dragon Ring"))
+all_heros = (("Atreus","Atreus"),("Urasil","Urasil"),("Phoren","Phoren"),("Taranis","Taranis"),("Helix","Helix"),("Meowgik","Meowgik"),("Shari","Shari"),("Ayana","Ayana"),("Onir","Onir"),("Rolla","Rolla"),("Bonnie","Bonnie"),("Sylvan","Sylvan"),("Shade","Shade"),("Ophelia","Ophelia"),("Ryan","Ryan"),("Lina","Lina"),("Aquea","Aquea"),("Shingen","Shingen"),("Gugu","Gugu"),("Iris","Iris"),("Blazo","Blazo"),("Melinda","Melinda"),("Elaine","Elaine"),("Bobo","Bobo"),("Stella","Stella"),("Taiga","Taiga"))
+stuff_weapon = (("None","None"),("Brave Bow","Brave Bow"),("Death Scythe","Death Scythe"),("Saw Blade","Saw Blade"),("Tornado","Tornado"),("Brightspear","Brightspear"),("Stalker Staff","Stalker Staff"),("Gale Force","Gale Force"),("Demon Blade Rain","Demon Blade Rain"),("Mini Atreus","Mini Atreus"),("Antiquated Sword","Antiquated Sword"),("Expedition Fist","Expedition Fist"))
+stuff_armor = (("None","None"),("Phantom Cloak","Phantom Cloak"),("Vest of Dexterity","Vest of Dexterity"),("Golden Chestplate","Golden Chestplate"),("Void Robe","Void Robe"),("Bright Robe","Bright Robe"),("Shadow Robe","Shadow Robe"),("Expedition Plate","Expedition Plate"))
+stuff_ring = (("None","None"),("Bear Ring","Bear Ring"),("Wolf Ring","Wolf Ring"),("Falcon Ring","Falcon Ring"),("Serpent Ring","Serpent Ring"),("Bull Ring","Bull Ring"),("Lion Ring","Lion Ring"),("Vilebat Ring","Vilebat Ring"),("Dragon Ring","Dragon Ring"),("Expedition Ring","Expedition Ring"))
 stuff_pet = (("None","None"),("Laser Bat","Laser Bat"),("Scythe Mage","Scythe Mage"),("Elf","Elf"),("Living Bomb","Living Bomb"),("Noisy Owl","Noisy Owl"),("Flaming Ghost","Flaming Ghost"),("Bone Warrior","Bone Warrior"))
-stuff_bracelet = (("None","None"),("Thunder Bracelet","Thunder Bracelet"),("Frozen Bracelet","Frozen Bracelet"),("Blazing Bracelet","Blazing Bracelet"),("Split Bracelet","Split Bracelet"),("Invincible Bracelet","Invincible Bracelet"),("Quickshot Bracelet","Quickshot Bracelet"),("Shield Bracelet","Shield Bracelet"))
-stuff_locket = (("None","None"),("Agile Locket","Agile Locket"),("Iron Locket","Iron Locket"),("Angel Locket","Angel Locket"),("Bulletproof Locket","Bulletproof Locket"),("Piercer Locket","Piercer Locket"),("Bloodthirsty Locket","Bloodthirsty Locket"),("Counterattack Locket","Counterattack Locket"))
-stuff_book = (("None","None"),("Arcane Archer","Arcane Archer"),("Art of Combat","Art of Combat"),("Ice Realm","Ice Realm"),("Enlightenment","Enlightenment"),("Giants Contract","Giants Contract"),("Spectre Book","Spectre Book"),("Arcanum of Time","Arcanum of Time"))
+stuff_bracelet = (("None","None"),("Thunder Bracelet","Thunder Bracelet"),("Frozen Bracelet","Frozen Bracelet"),("Blazing Bracelet","Blazing Bracelet"),("Split Bracelet","Split Bracelet"),("Invincible Bracelet","Invincible Bracelet"),("Quickshot Bracelet","Quickshot Bracelet"),("Shield Bracelet","Shield Bracelet"),("Expedition Bracelet","Expedition Bracelet"))
+stuff_locket = (("None","None"),("Agile Locket","Agile Locket"),("Iron Locket","Iron Locket"),("Angel Locket","Angel Locket"),("Bulletproof Locket","Bulletproof Locket"),("Piercer Locket","Piercer Locket"),("Bloodthirsty Locket","Bloodthirsty Locket"),("Counterattack Locket","Counterattack Locket"),("Expedition Locket","Expedition Locket"))
+stuff_book = (("None","None"),("Arcane Archer","Arcane Archer"),("Art of Combat","Art of Combat"),("Ice Realm","Ice Realm"),("Enlightenment","Enlightenment"),("Giants Contract","Giants Contract"),("Spectre Book","Spectre Book"),("Arcanum of Time","Arcanum of Time"),("Expedition Spellbook","Expedition Spellbook"))
 hero_level = ((120,"120"),(80,"80"),(60,"60"),(40,"40"),(20,"20"),(0,"0"))
 star_hero = ((8,"8⭐"),(7,"7⭐"),(6,"6⭐"),(5,"5⭐"),(4,"4⭐"),(3,"3⭐"),(2,"2⭐"),(1,"1⭐"),(0,"0⭐"))
 stuff_rarity = (("Common","Common"),("Great","Great"),("Rare","Rare"),("Epic","Epic"),("Perfect Epic","Perfect Epic"),("Legendary","Legendary"),("Ancient Legendary","Ancient Legendary"),("Mythic","Mythic"),("Mythic_1","Mythic+1"),("Mythic_2","Mythic+2"),("Titan Tales","Titan Tales"),("Titan Tales_1","Titan Tales+1"),("Titan Tales_2","Titan Tales+2"),("Titan Tales_3","Titan Tales+3"),("Chaos","Chaos"))
@@ -104,7 +105,6 @@ altar_ascension_level = ((12,12),(11,11),(10,10),(9,9),(8,8),(7,7),(6,6),(5,5),(
 jewel_level = ((13,13),(12,12),(11,11),(10,10),(9,9),(8,8),(7,7),(6,6),(5,5),(4,4),(3,3),(2,2),(1,1))
 dragon_skill_level = ((10,10),(9,9),(8,8),(7,7),(6,6),(5,5),(4,4),(3,3),(2,2),(1,1),(0,0))
 brave_level_choice = ((1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20))
-type_reward = (("none","none"),("gem","gem"),("celestite_keys","celestite_keys"),("purple_ticket","purple_ticket"),("premium_ticket","premium_ticket"),("gold","gold"),("random_shards","random_shards"),("obsidian_keys","obsidian_keys"),("energy","energy"),("gold_keys","gold_keys"))
 relics_level = ((0,0),(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(27,27),(28,28),(29,29),(30,30))
 rare_relics_star = ((0,0),(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8))
 radiant_relics_star = ((0,0),(1,1),(2,2),(3,3),(4,4),(5,5),(6,6))
@@ -305,7 +305,8 @@ class StuffTable(models.Model,parentModel):
 			'weapon_inc_raw' : self.local_data["StatsWeapon"][str(weapon_name)]["inc"][rarity_index[str(weapon_rarity)]],
 			'weapon_base_raw' : self.local_data["StatsWeapon"][str(weapon_name)]["base"][rarity_index[str(weapon_rarity)]],
 			'weapon_var_raw' : self.local_data["StatsWeapon"][str(weapon_name)]["var_atk"][rarity_index[str(weapon_rarity)]],
-			'weapon_crit_raw' : self.local_data["StatsWeapon"][str(weapon_name)]["crit"][rarity_index[str(weapon_rarity)]],
+			'weapon_critdmg_raw' : self.local_data["StatsWeapon"][str(weapon_name)]["crit"][rarity_index[str(weapon_rarity)]],
+			'weapon_critrate_raw' : self.local_data["StatsWeapon"][str(weapon_name)]["crit_rate"][rarity_index[str(weapon_rarity)]],
 			'weapon_basic_stats' : self.local_data["StatsWeapon"][str(weapon_name)]["basic_stats"][rarity_index[str(weapon_rarity)]],
 			'weapon_damage_stats' : self.local_data["StatsWeapon"][str(weapon_name)]["weapon_damage"][rarity_index[str(weapon_rarity)]],
 
@@ -484,6 +485,8 @@ class HeroTable(models.Model,parentModel):
 	bobo_star = models.IntegerField(choices=star_hero, default=0)
 	stella_level = models.IntegerField(choices=hero_level, default=0)
 	stella_star = models.IntegerField(choices=star_hero, default=0)
+	taiga_level = models.IntegerField(choices=hero_level, default=0)
+	taiga_star = models.IntegerField(choices=star_hero, default=0)
 
 
 	def dictionnaire(self):
@@ -514,6 +517,7 @@ class HeroTable(models.Model,parentModel):
 					'elaine_level': self.elaine_level, 'elaine_star': self.elaine_star,
 					'bobo_level': self.bobo_level, 'bobo_star': self.bobo_star,
 					'stella_level': self.stella_level, 'stella_star': self.stella_star,
+					'taiga_level': self.taiga_level, 'taiga_star': self.taiga_star,
 					}
 	def __str__(self):
 		chaine = f"{self.user_profile.ingame_id} | {self.user_profile.ingame_name}"
@@ -2148,21 +2152,26 @@ class RelicsTable(models.Model,parentModel):
 class PromoCode(models.Model,parentModel):
 	code = models.CharField(max_length=30, blank=False)
 	is_active = models.BooleanField(default=False)
-	reward_1_type = models.CharField(max_length=20,choices= type_reward, default=" ")
-	reward_1_amount = models.CharField(max_length=10, default=" ", blank=True, null=True)
-	reward_2_type = models.CharField(max_length=20,choices= type_reward, default=" ")
-	reward_2_amount = models.CharField(max_length=10, default=" ", blank=True, null=True)
-	reward_3_type = models.CharField(max_length=20,choices= type_reward, default=" ")
-	reward_3_amount = models.CharField(max_length=10, default=" ", blank=True, null=True)
-	reward_4_type = models.CharField(max_length=20,choices= type_reward, default=" ")
-	reward_4_amount = models.CharField(max_length=10, default=" ", blank=True, null=True)
 	expire = models.DateField(blank=True, default=datetime.datetime.now, null=True)
 
 	def __str__(self):
 		return f"{self.code}"
-	
+
+	def deactivateIfExpired(self) -> bool:
+		if self.expire < timezone.now().date():
+			self.is_active = False
+			self.save()
+			return True
+		return False
 
 
+class PromoCodeReward(models.Model):
+	promocodeId = models.ForeignKey(PromoCode, blank=False, null=True, on_delete=models.CASCADE)
+	reward_type = models.CharField(max_length=20, default="", help_text="Write down the name of the image of the reward (gem,celestite_keys,purple_ticket,premium_ticket,gold,random_shards,obsidian_keys,energy,gold_keys)")
+	reward_amount = models.CharField(max_length=10, default="", help_text="Write down the amount of reward", blank=True, null=True)
+
+	def __str__(self):
+		return f"{self.promocodeId.code} |  {self.reward_type} x{self.reward_amount}"
 
 class WeaponSkinsTable(models.Model,parentModel):
 	user_profile = models.ForeignKey(user,blank=False, on_delete=models.CASCADE, null=True)

@@ -2,9 +2,9 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.8.1">
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.9.1">
 <title>{% blocktrans %}{{ name }} Stats - Wiki{% endblocktrans  %}</title>
-<meta property="og:image" content="{% static 'image/archero_icon.png' %}?version=1.8.1">
+<meta property="og:image" content="{{ request.archero_icon_link }}">
 <meta name="description" content="{{ name }} Stats - Wiki">
 <meta property="og:url" content="https://stats.wiki-archero.com/calculator/show/{{pbid}}/">
 <meta property="og:type" content="website">
@@ -48,16 +48,14 @@
 	{% if DEV_MODE %}
 	<div class="debug_container">
 		<div class="dev_div"><a href="/del_dev/{{ pbid }}/">Reload Stats</a></div>
-		<div class="dev_div"><a href="/calculator/update/{{ pbid }}/">Update Profile (only dev mode)</a></div>
-		<div class="dev_div"><a href="/calculator/show_debug/{{ pbid }}/">Show Debug Stats</a></div>
-		<div class="dev_div"><a href="/api_view/{{ pbid }}/">Show API Stats</a></div>
+		<div class="dev_div"><a href="/calculator/update/{{ pbid }}/">Update Profile</a></div>
 	</div>
 	{% endif %}
 	<div class="go_to_details" onclick="toggleDetailStats()">{% blocktrans %}Switch Stats/Details{% endblocktrans %}</div>
 	<div id="contain-image-stuff" class="contain-image-stuff" style="display: flex;">
 		<div class="image-div-stuff">
 			<div class="image-stuff-result-container">
-				<img alt="{{ name }}'s Stuff emulator image" class="image-stuff-result" src="/static/image/stuff_save/{{ pbid }}.png?version=1.8.1">
+				<img alt="{{ name }}'s Stuff emulator image" class="image-stuff-result" src="/static/image/stuff_save/{{ pbid }}.png?version=1.9.1">
 			</div>
 		</div>
 	</div>

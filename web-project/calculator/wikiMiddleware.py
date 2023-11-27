@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from calculator.models import ServerManagement
 
 class CustomHeaderMiddleware:
