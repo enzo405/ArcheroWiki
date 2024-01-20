@@ -18,6 +18,7 @@ The application is built using a range of technologies, including:
 - CSS
 - JSON
 - crontab
+- postgreSQL
 
 It also uses Docker for deployment, with a PostgreSQL database.
 
