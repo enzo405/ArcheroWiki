@@ -1,6 +1,6 @@
 from .forms import DamageCalculatorForm
-from .models import ArticleMenu,user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable,DamageCalcTable,PromoCode,PromoCodeReward
-from .function import checkDarkMode,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,calculatePrice,makeCookieheader, getProfileWithCookie, makeLog, loadContent
+from .models import ArticleMenu,user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable,DamageCalcTable,PromoCode,PromoCodeReward,GoogleSheet, TheorycraftingArticle
+from .function import checkDarkMode,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,calculatePrice,makeCookieheader, getProfileWithCookie, makeLog, loadContent, getSuggestedTitle, get_nested_item_by_prefix
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.handlers.wsgi import WSGIRequest
@@ -15,18 +15,33 @@ import json, os, sys, traceback
 from app.settings import WEBHOOK_URL, c_hostname, DISCORD_NOTIF_ROLE_ID, DISCORD_ERROR_ROLE_ID, DEV_MODE
 from django.utils.translation import get_language, gettext as _, gettext_lazy
 from django.utils.text import format_lazy
-from .local_data import LocalDataContentWiki
+from .data.wiki_data import LocalDataContentWiki
 from datetime import datetime
 
 missing_data = []
 
 @loadContent(checkMessages=True, db_maintenance=True)
 def menu(request):
-	SidebarContent = LocalDataContentWiki['SidebarContent']
-	cookie_result = checkCookie(request)
+	current_date = datetime.now().strftime("%m-%Y")
+	suggestedTitleFilePath = "calculator/data/tempSuggestedTitle"
+	if os.path.exists(f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json"):
+		with open(f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json", 'r', encoding="utf-8") as f:
+			suggestedTitle = json.load(f)
+	else:
+		suggestedTitle = getSuggestedTitle()
+		with open(f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json", 'w', encoding="utf-8") as f:
+			json.dump(suggestedTitle, f, indent=4)
 	makeLog(request)
-	list_article = list(ArticleMenu.objects.all().filter(display=True).order_by('index'))
-	return render(request, 'base/menu.html', {"darkmode": checkDarkMode(request), "header_msg":_("Menu Archero Wiki"), "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result),"list_article":list_article, "dev_mode":DEV_MODE})
+	ctx = {
+		"darkmode": checkDarkMode(request),
+		"header_msg":_("Menu Archero Wiki"),
+		"sidebarContent":LocalDataContentWiki['SidebarContent'],
+		"cookieUsername":makeCookieheader(checkCookie(request)),
+		"list_article":list(ArticleMenu.objects.all().filter(display=True).order_by('index')),
+		"dev_mode":DEV_MODE,
+		"suggestedContent": suggestedTitle
+	}
+	return render(request, 'base/menu.html', ctx)
 
 @loadContent(checkMessages=True, db_maintenance=True)
 def news(request,titleArticle=None):
@@ -72,7 +87,7 @@ def login(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_value = checkCookie(request)
 	makeLog(request)
-	if (len(cookie_value) >= 1 and "visitor" not in list(cookie_value)): ## normally len(cookie_value) will have maximum 1 length but to be sure 
+	if len(cookie_value) >= 1:
 		cookie_request_name,cookie_request_id = list(cookie_value.items())[0]
 		profile = getProfileWithCookie(cookie_request_id,cookie_request_name)
 		if profile[0] == False and profile[1] != None:
@@ -98,7 +113,6 @@ def login_processing(request, username_raw, id_raw):
 			request.session.clear()
 	boolCheck = checkUsernameCredentials(username_raw,id_raw,login=True)
 	if boolCheck["access"]:
-		response.delete_cookie('visitor', path='/')
 		expires = datetime.now() + timedelta(days=365)
 		try:
 			response.set_cookie(key=boolCheck["ingame_name"], value=boolCheck["ingame_id"], expires=expires, httponly=True, samesite="Strict")
@@ -122,8 +136,10 @@ def wiki_menu(request, article=None):
 	article_label = str(article).replace('_',' ').capitalize()
 	if article != None:
 		name_title = article_label
+		current_article = get_nested_item_by_prefix(LocalDataContentWiki["WikiContent"], article)
 	else:
 		name_title = None
+		current_article = None
 	ctx = {
 		"darkmode": checkDarkMode(request),
 		"sidebarContent":SidebarContent,
@@ -132,9 +148,9 @@ def wiki_menu(request, article=None):
 		"name_title": name_title,
 		"article": article,
 		"current_url": request.build_absolute_uri(),
-		"current_article": LocalDataContentWiki["WikiContent"].get(article),
+		"current_article": current_article,
 	}
-	if article is not None or LocalDataContentWiki["WikiContent"].get(article):
+	if article is not None or current_article:
 		ctx["header_msg"] = _(f"{article_label} - Wiki")
 	else:
 		ctx["header_msg"] = _("Wiki")
@@ -212,7 +228,7 @@ def heros_description(request, hero=None):
 	
 	hero_data = LocalDataContentWiki["HeroData"].get(hero, None)
 	if hero_data is None:
-		hero = "Taiga"
+		hero = "Atreus"
 		hero_data = LocalDataContentWiki["HeroData"][hero]
 	
 	temp = list(LocalDataContentWiki["HeroData"])
@@ -291,7 +307,6 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 				"currency1": [_('Gold :'),'gold'],
 				"currency2": [_('Sapphire :'),'sapphire'],
 			}
-			print(content)
 		else:
 			messages.error(request,_("The levels need to be between 0 and 120"))
 			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/")
@@ -351,7 +366,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 	ctx.update({"content":content})
 	return render(request, "wiki/upgrade_cost.html", ctx)
 
-@loadContent()
+@loadContent(db_maintenance=True)
 def gsheetGrid(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
@@ -359,7 +374,7 @@ def gsheetGrid(request):
 	ctx = {
 		'darkmode':checkDarkMode(request),
 		"header_msg":_("Google Sheet Wiki"),
-		"GsheetData":LocalDataContentWiki['GsheetData'],
+		"sheets":GoogleSheet.objects.all().filter(display=True).order_by('-index'),
 		"sidebarContent":SidebarContent,
 		"cookieUsername":makeCookieheader(cookie_result)
 	}
@@ -402,9 +417,7 @@ def damage(request):
 	if len(cookie_result) != 0:
 		ingame_name_cookie,ingame_id_cookie = list(cookie_result.items())[0]
 		profile = getProfileWithCookie(ingame_id_cookie,ingame_name_cookie)
-		if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
-			selfHasProfil = "login"
-		elif profile[0]:
+		if profile[0]:
 			user_stats = profile[1]
 			selfHasProfil = "yes"
 		elif not profile[0] and profile[1] != None:
@@ -426,8 +439,8 @@ def damage(request):
 
 @loadContent(db_maintenance=True)
 def dmgCalc_processing(request,pbid):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
+	with open("calculator/data/calculator_data.json", 'r', encoding="utf-8") as f:
+		calculator_data = json.load(f)
 	global missing_data
 	user_stats = user.objects.get(public_id=pbid)
 	StuffTable_stats = StuffTable.objects.get(user_profile=user_stats)
@@ -466,11 +479,11 @@ def dmgCalc_processing(request,pbid):
 	## Get all Relics Stats
 	relics_stats:dict = RelicsTable_stats.relics_Stats()
 	## Get Altar Ascension Stats
-	altar_stuff_ascension_atk = local_data["StuffAltarAscension"]['attack'][stuff_altar_ascension]
-	altar_stuff_ascension_equipment_base = local_data["StuffAltarAscension"]['equipment_base'][stuff_altar_ascension]
-	altar_heros_ascension_atk = local_data['HerosAltarAscension']['attack'][heros_altar_ascension]
-	altar_heros_ascension_heros_base = local_data['HerosAltarAscension']['heros_base'][heros_altar_ascension]
-	altar_heros_ascension_dmg_elite = local_data['HerosAltarAscension']['dmg_elite'][heros_altar_ascension]
+	altar_stuff_ascension_atk = calculator_data["StuffAltarAscension"]['attack'][stuff_altar_ascension]
+	altar_stuff_ascension_equipment_base = calculator_data["StuffAltarAscension"]['equipment_base'][stuff_altar_ascension]
+	altar_heros_ascension_atk = calculator_data['HerosAltarAscension']['attack'][heros_altar_ascension]
+	altar_heros_ascension_heros_base = calculator_data['HerosAltarAscension']['heros_base'][heros_altar_ascension]
+	altar_heros_ascension_dmg_elite = calculator_data['HerosAltarAscension']['dmg_elite'][heros_altar_ascension]
 	## Get Altar Stats 
 	altar_stuff_atk = AltarTable_stats.CalculAltar("stuff","attack",relics_stats.get('eqpm_altar_stats_var',0.0))
 	altar_hero_atk = AltarTable_stats.CalculAltar("heros","attack",relics_stats.get('eqpm_altar_stats_var',0.0)) ##laisser le S (le nom du field prend un s)
@@ -544,7 +557,7 @@ def dmgCalc_processing(request,pbid):
 	egg_sinister_touch_passiv = EggTable_stats.GetPassivEggStats3("sinister_touch",missing_data)
 	egg_fireworm_queen_passiv = EggTable_stats.GetPassivEggStats3("fireworm_queen",missing_data)
 	## Get Brave Privilege Stats
-	brave_privileges_stats = local_data["BravePrivileges"]['level' + str(brave_privileges_level)]
+	brave_privileges_stats = calculator_data["BravePrivileges"]['level' + str(brave_privileges_level)]
 	## Get Special Bonus Stats
 	BonusSpe_jewel_weapon = JewelLevelTable_stats.JewelSpeBonusStatsRecup('weapon',brave_privileges_stats['Weapon JSSSA'],relics_stats.get("jewel_attack_bonus_var",0))
 	BonusSpe_jewel_ring1 = JewelLevelTable_stats.JewelSpeBonusStatsRecup('ring1',brave_privileges_stats['Ring JSSSA'])
@@ -770,18 +783,19 @@ def damageCalc(request,pbid):
 				('var_all_dmg', 0.0, 'var_dmg_all')
 			]
 
-			input_values = {}
+			input_values = []
 			for attr, default_value, attr_name in attributes:
 				input_value = inputRune.get(attr, False)
-				input_values[attr_name] = float(input_value) - float(power_rune.get(attr, default_value)) if input_value != False else 0
-				# Calcul de la valeur en soustrayant la valeur d'entrée de la valeur de 'power_rune' (utilise la valeur par défaut si la clé n'existe pas)
-  				# Si la valeur d'entrée est False, la valeur est mise à 0
+				result = float(input_value) - float(power_rune.get(attr, default_value)) if input_value != False else 0
+				input_values.append((attr, result, attr_name))
 
 			result_values = {}
-			for attr_name in input_values:
-				result_values[attr_name] = input_values[attr_name] + getattr(calc_user_dmg, attr_name)
-				# Ajout de la valeur d'entrée à la valeur correspondante dans l'objet 'calc_user_dmg'
-
+			for attr, value, attr_name in input_values:
+				result = value + getattr(calc_user_dmg, attr_name)
+				if attr not in inputRune:
+					result = result - power_rune.get(attr,0) # valeur présente dans la table Runes de l'user
+				result_values[attr_name] = result
+				
 			resultCalcDamg = calc_user_dmg.calculDamage(global_atk_save=global_stats_atk, **result_values)
 			ctx.update({
 				"method": request.method,"runes": runes,"vars_dict":vars_dict,
@@ -869,7 +883,8 @@ def changelog(request):
 def theorycraft(request):
 	cookie_result = checkCookie(request)
 	makeLog(request)
-	return render(request, "wiki/theorycraft.html", {"darkmode":checkDarkMode(request), "header_msg":_("Archero Calculation"), "Theorycraft":LocalDataContentWiki['Theorycraft'],"sidebarContent":LocalDataContentWiki['SidebarContent'],"cookieUsername":makeCookieheader(cookie_result)})
+	articlesTheorycrafing = TheorycraftingArticle.objects.all()
+	return render(request, "wiki/theorycraft.html", {"darkmode":checkDarkMode(request), "header_msg":_("Archero Calculation"),"sidebarContent":LocalDataContentWiki['SidebarContent'],"cookieUsername":makeCookieheader(cookie_result), "articles": articlesTheorycrafing})
 
 
 def delete_cookie(request:HttpResponse,key,name_redirect):

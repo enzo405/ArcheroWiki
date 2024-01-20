@@ -3,15 +3,13 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.core.handlers.wsgi import WSGIRequest
 from urllib.parse import urlencode, unquote
-from app.settings import ADMIN_LOG_WEBHOOK_URL,WEBHOOK_URL, DEV_MODE, DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, c_hostname, ADMIN_CREDENTIAL, DISCORD_NOTIF_ROLE_ID
-import random as random
-import hashlib
-from .models import Token, ServerManagement, Contributor, user
+from app.settings import ADMIN_LOG_WEBHOOK_URL,WEBHOOK_URL, DEV_MODE, MATOMO_TOKEN_VIEW_ACCESS, c_hostname, ADMIN_CREDENTIAL, DISCORD_NOTIF_ROLE_ID, MATOMO_INSTANCE
+from .models import ServerManagement, Contributor, user
 from difflib import SequenceMatcher
 from django.contrib import messages
 from django.utils.translation import get_language, gettext_lazy as _
 from discord_webhook import DiscordWebhook, DiscordEmbed
-from .local_data import LocalDataContentWiki
+from .data.wiki_data import LocalDataContentWiki
 # :param url: your discord webhook url (type: str)
 # :keyword id: webhook id (type: str)
 # :keyword content: the message contents (type: str)
@@ -22,7 +20,7 @@ from .local_data import LocalDataContentWiki
 # :keyword filename: apply custom file name on attached file content(s)
 # :keyword embeds: list of embedded rich content
 # :keyword allowed_mentions: allowed mentions for the message
-import json, string, time, re, string, datetime, requests, os, http.cookies
+import json, time, re, datetime, requests, os, http.cookies, hashlib, random, fuzzysearch
 
 APP_VERSION = os.environ.get('APP_VERSION')
 # docker-compose up -d --env-file=myenvfile.env
@@ -76,6 +74,15 @@ def findFormError(valid_User, valid_StuffTable, valid_HeroTable, valid_TalentTab
 		else:
 			return
 
+def get_nested_item_by_prefix(data, prefix):
+	for k, v in data.items():
+		if k == prefix:
+			return v
+		else:
+			item = get_nested_item_by_prefix(v, prefix)
+			if item is not None:
+				return item
+	return None
 
 ################################# FONCTION RESTE #######################################################
 
@@ -95,22 +102,6 @@ def checkCookie(request: WSGIRequest) -> dict:
 		return valid_cookies
 	return {}
 
-
-def checkTokenValidity(token, length):
-	"""
-	This function check the Token Validity with his length and the token value
-	It will check if it exist in the Token database and if it contain a non ascii letters
-	"""
-	if len(token) != length:
-		return False
-	for c in token:
-		if c not in string.ascii_letters and not c.isdigit():
-			return False
-	try:
-		Token.objects.get(key=token)
-	except Token.DoesNotExist:
-		return False
-	return True
 
 def checkDbMaintenance():
 	try:
@@ -132,7 +123,7 @@ def create_unique_id():
 def checkUsernameCredentials(username_raw,id_raw, **kwargs) -> dict:
 	"""
 	Check if the username and id passed in the argument are valid !
-	If the user is an admin in conf.global_variable.py then it will return access True and admin_log True\n
+	If the user is an admin in conf.conf.py then it will return access True and admin_log True\n
 	if ingame_id not in unavailable_ingame_id:
 		if 3 <= len(ingame_name) < 20 and ingame_name is unavailable:
 			if ingame_id match the regex and ingame_id != "" and ingame_id != None:
@@ -208,7 +199,6 @@ def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:
 	)
 	embed.add_embed_field(name=str(field_name), value=str(field_value), inline=False)
 	embed.add_embed_field(name="", value=browser, inline=True)
-	embed.set_footer(text=f'{request.COOKIES}', icon_url='')
 	webhook.add_embed(embed)
 	webhook.execute()
 
@@ -224,22 +214,22 @@ def checkDarkMode(request:HttpResponse|WSGIRequest) -> bool:
 
 
 def calculatePrice(lvl1, lvl2, type, rank=None):
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
+	with open("calculator/data/calculator_data.json", 'r', encoding="utf-8") as f:
+		calculator_data = json.load(f)
 	if type == "talents":
-		talent_cost_gold = local_data["DataPrice"]['talent']['gold']
+		talent_cost_gold = calculator_data["DataPrice"]['talent']['gold']
 		return talent_cost_gold[lvl2] - talent_cost_gold[lvl1]
 	elif type == "items":
-		item_cost_gold = local_data["DataPrice"]['item']['gold']
-		item_cost_scroll = local_data["DataPrice"]['item']['scroll']
+		item_cost_gold = calculator_data["DataPrice"]['item']['gold']
+		item_cost_scroll = calculator_data["DataPrice"]['item']['scroll']
 		return [item_cost_gold[lvl2] - item_cost_gold[lvl1], item_cost_scroll[lvl2] - item_cost_scroll[lvl1]]
 	elif type == "heroes":
-		heros_cost_gold = local_data["DataPrice"]['hero']['gold']
-		heros_cost_sapphire = local_data["DataPrice"]['hero']['sapphire']
+		heros_cost_gold = calculator_data["DataPrice"]['hero']['gold']
+		heros_cost_sapphire = calculator_data["DataPrice"]['hero']['sapphire']
 		return [heros_cost_gold[lvl2] - heros_cost_gold[lvl1], heros_cost_sapphire[lvl2] - heros_cost_sapphire[lvl1]]
 	elif type == "dragons":
-		dragon_cost_gold = local_data["DataPrice"]['dragon']['gold']
-		dragon_cost_magestone = local_data["DataPrice"]['dragon']['magestone']
+		dragon_cost_gold = calculator_data["DataPrice"]['dragon']['gold']
+		dragon_cost_magestone = calculator_data["DataPrice"]['dragon']['magestone']
 		result = [dragon_cost_gold[lvl2] - dragon_cost_gold[lvl1], dragon_cost_magestone[lvl2] - dragon_cost_magestone[lvl1]]
 		if rank == "A":
 			return [result[0],result[1]]
@@ -248,8 +238,8 @@ def calculatePrice(lvl1, lvl2, type, rank=None):
 		elif rank == "SS":
 			return [int(result[0])*2,int(result[1])*2]
 	elif type == "relics":
-		relics_cost_gold = local_data["DataPrice"]['relics']['gold']
-		relics_cost_starlight = local_data["DataPrice"]['relics']['starlight']
+		relics_cost_gold = calculator_data["DataPrice"]['relics']['gold']
+		relics_cost_starlight = calculator_data["DataPrice"]['relics']['starlight']
 		result = [relics_cost_gold[lvl2] - relics_cost_gold[lvl1], relics_cost_starlight[lvl2] - relics_cost_starlight[lvl1]]
 		if rank == "A":
 			return [result[0],result[1]]
@@ -373,14 +363,9 @@ def loadContent(**param_manager):
 				_ = checkMessages(request)
 				if _ != None:
 					return _
-			if param_manager.get("editor_login"):
-				_ = editor_login(request)
-				if _ != None:
-					return _
 			return view_method(request, *args, **kwargs)
 		return _arguments_wrapper
 	return _method_wrapper
-
 
 
 ## CHILD DECORATOR 
@@ -417,60 +402,37 @@ def checkMessages(request):
 		if message:
 			message_function = getattr(messages, message_type.split('_')[0])
 			message_function(request, message)
+			
+# Matomo API Function
+
+def getSuggestedTitle() -> dict:
+	"""
+	Makes an API Call to the Matomo API to retrieve the most searched titles page.
+	Return a dictionary containing the first 10 pages.
+	Each item of the dictionary is made of the label and the url of the page.
+	"""
+	url = f"{MATOMO_INSTANCE}/index.php?module=API&method=Actions.getPageTitles&idSite=1&period=range&date=2021-01-01,today&format=JSON&token_auth={MATOMO_TOKEN_VIEW_ACCESS}&filter_limit=10"
+	response = requests.get(url)
+	data = response.json()
+	result = {}
+
+	for i in range(10):
+		label = data[i]['label'].replace(" Archero - ","")
+		url = getURLForLabel(label)
+		result[label] = url.replace("https://stats.wiki-archero.com","")
+	return result
 
 
-def editor_login(request):	
-	REDIRECT_URI = f"https://{request.META['HTTP_HOST']}/data/"
-	if request.user.is_authenticated and request.session.get("status") != "authorized":
-		try:
-			token = Token.objects.get(user=request.user)
-			if checkTokenValidity(token.key,40):
-				status = "authorized"
-				if request.GET.get("code",None) != None:
-					code = request.GET.get('code')
-					data = {
-						'client_id': DISCORD_CLIENT_ID,
-						'client_secret': DISCORD_CLIENT_SECRET,
-						'grant_type': 'authorization_code',
-						'code': code,
-						'redirect_uri': REDIRECT_URI,
-						'scope': 'identify',
-					}
-					headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-					response = requests.post('https://discord.com/api/oauth2/token', data=data, headers=headers)
-					response_data = response.json()
-					request.session['access_token'] = response_data['access_token']
-					return redirect(REDIRECT_URI)
-				if 'access_token' in request.session:
-					access_token = request.session['access_token']
-					headers = {'Authorization': f'Bearer {access_token}'}
-					response = requests.get('https://discord.com/api/users/@me', headers=headers)
-					response_data = response.json()
-				else:
-					params = {
-						'client_id': DISCORD_CLIENT_ID,
-						'redirect_uri': REDIRECT_URI,
-						'response_type': 'code',
-						'scope': 'identify',
-					}
-					authorize_url = 'https://discord.com/api/oauth2/authorize?' + urlencode(params)
-					return redirect(authorize_url)
-				try:
-					token.discord_acc_rely = response_data['username']
-					token.discord_user_id = response_data['id']
-					token.save()
-					request.session['response_data'] = response_data
-				except KeyError as e:
-					send_webhook(f"KeyError: {e}\nResponse Data: {response_data}\nHeaders: {headers}", admin_log=True)
-				except TypeError as e:
-					send_webhook(f"TypeError: {e}\nResponse Data: {response_data}\nHeaders: {headers}", admin_log=True)
-			else:
-				status = "not_auth"
-		except Token.DoesNotExist:
-			status = "not_auth"
-	else:
-		if request.session.get("status") == "authorized":
-			status = "authorized"
-		else:
-			status = "not_auth"
-	request.session['status'] = status
+def getURLForLabel(label: str) -> str:
+	"""
+	Get the URL of the label passed in parameter.
+	"""
+	url = ""
+	with open(f"calculator/data/label_url.json", 'r', encoding="utf-8") as f:
+		allUrl = json.load(f)
+	for k,v in allUrl.items():
+		# use fuzzysearch to get the best match
+		if fuzzysearch.find_near_matches(label, k, max_l_dist=1):
+			url = v
+			break
+	return url

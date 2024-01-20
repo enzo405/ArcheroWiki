@@ -8,12 +8,13 @@
 <html lang="{{ LANGUAGE_CODE }}">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.9.1">
-		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}?version=1.9.1">
+		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.9.4a">
+		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}?version=1.9.4a">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="apple-touch-icon" href="{% static 'image/favicon.png' %}?version=1.9.1">
+		<link rel="apple-touch-icon" href="{% static 'image/favicon.png' %}?version=1.9.4a">
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-		<script src="{% static 'main.js' %}?version=1.9.1"></script>
+		<script src="{% static 'main.js' %}?version=1.9.4a"></script>
+		<script src="{% static 'app-core.js' %}?version=1.9.4a"></script>
 		{% block head %}
 		{% endblock %}
 		<style>
@@ -58,7 +59,7 @@
 				</div>
 				<div class="rightsidebarc traveling-right">
 					<div class="shcr">
-						<img alt="{{ key }} Archero" id="{{ value.childs_container.rightsidebar.child_content.image_id }}" src="{{ value.childs_container.rightsidebar.child_content.image_src }}?version=1.9.1" width="{{ value.childs_container.rightsidebar.child_content.image_width }}" height="{{ value.childs_container.rightsidebar.child_content.image_height }}">
+						<img alt="{{ key }} Archero" id="{{ value.childs_container.rightsidebar.child_content.image_id }}" src="{{ value.childs_container.rightsidebar.child_content.image_src }}?version=1.9.4a" width="{{ value.childs_container.rightsidebar.child_content.image_width }}" height="{{ value.childs_container.rightsidebar.child_content.image_height }}">
 					</div>
 				</div>
 			</a>
@@ -108,11 +109,14 @@
 					<div class="about-content">
 						<h1>{{ request.archero_version }}</h1>
 						<div class="contact-me">
-							<span>{% blocktrans %}Contact{% endblocktrans %} <a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran</a> <a href="https://www.reddit.com/user/LuhCaran101" target="_blank"><i class="fab fa-reddit"></i> u/LuhCaran101</a></span>
+							<span>{% blocktrans %}Contact{% endblocktrans %} 
+                                <span class="dontbrek"><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran</a></span> 
+                                <span class="dontbrek"><a href="https://www.reddit.com/user/LuhCaran101" target="_blank"><i class="fab fa-reddit"></i> u/LuhCaran101</a></span>
+                            </span>
 						</div>
 						<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/Terms-of-Use/">{% blocktrans %}Terms of Use{% endblocktrans %}</a></div>
 						<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/changelog/">{% blocktrans %}ChangeLog{% endblocktrans %}</a></div>
-						<div class="f_content_info">Build v1.9.1</div>
+						<div class="f_content_info">Build v1.9.4a</div>
 					</div>
 				</div>
 				<div class="discord_link">
@@ -128,6 +132,9 @@
 					</div>
 					<div class="container-link">
 						<a href="https://www.facebook.com/archerogame/" target="_blank"><span class="link-icon"><i class="fab fa-facebook"></i></span>{% blocktrans %}FB Archero{% endblocktrans %}</a>
+					</div>
+					<div class="container-link">
+						<a href="https://archero.wiki/ステージ/イベント/ヒーローデュオ#装備" target="_blank"><span class="link-icon"><i class="fa-solid fa-earth-asia"></i></span>{% blocktrans %}Chinese Wiki Archero{% endblocktrans %}</a>
 					</div>
 				</div>
 				<div class="thanks">

@@ -1,9 +1,3 @@
-function cookieInitialize(){
-    document.cookie = "windowInnerHeight=" + window.innerHeight +  "; path=/";
-    document.cookie = "windowInnerWidth=" + window.innerWidth +  "; path=/";
-}
-cookieInitialize()
-
 function createModale(element, urlNeedParentid, type){
     var titremodals = "";
     var url = window.location.href

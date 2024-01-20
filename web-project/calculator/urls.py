@@ -22,7 +22,9 @@ urlpatterns = [
     path('calculator/duplicate/', views.duplicate_user, name='duplicate_user'),
     path('stats/calc/<int:pbid>/<int:redirectPath>/', views.views_calc_stats, name='stats_calc_api'),
     path('login/', views_wiki.login, name='login'),
+    path('logout/', views_wiki.delete_session),
     path('login/processing/<str:username_raw>/<str:id_raw>/', views_wiki.login_processing, name='login_process'),
+    path('delete_cookie/<str:key>/<str:name_redirect>/', views_wiki.delete_cookie),
     path('wiki/maze/', views_wiki.maze, name='maze'),
     path('wiki/menu/', views_wiki.wiki_menu, name='wiki'),
     path('wiki/menu/<str:article>/', views_wiki.wiki_menu, name='wiki'),
@@ -42,14 +44,8 @@ urlpatterns = [
     path('wiki/promo-code/', views_wiki.promocode, name='promo_code'),
     path('wiki/theorycraft/', views_wiki.theorycraft, name='theorycraft'),
     path('wiki/<str:titleArticle>/', views_wiki.news, name='news'),
-    path('data/', api.data),
     path('del_dev/<int:pbid>/', views.admin_reload_stats),
-    path('api/calculator/', api.CalculatorAPI.as_view()),
-    path('api/wiki/', api.WikiAPI.as_view()),
-    path('create_user_queue/', api.create_user_queue),
-    path('validate_user_queue/<int:pk>/', api.validate_user_queue, name='validate_user_queue'), ## keep the name attribute for the reverse function in api.py
-    path('delete_cookie/<str:key>/<str:name_redirect>/', views_wiki.delete_cookie),
-    path('logout/', views_wiki.delete_session),
+    path('api/wiki/', api.get),
 ]
 
 if DEV_MODE:

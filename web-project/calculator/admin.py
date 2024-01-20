@@ -65,10 +65,10 @@ try:
 	group(RelicsTable)
 	group(WeaponSkinsTable)
 	group(PromoCode)
-	group(Token)
-	group(UserQueue)
 	group(Contributor)
 	group(ArticleMenu)
 	group(PromoCodeReward)
+	group(GoogleSheet)
+	group(TheorycraftingArticle)
 except Exception as e:
 	send_webhook(f"Admin panel initialization failed : {e}", admin_log=True)

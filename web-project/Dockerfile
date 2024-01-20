@@ -7,8 +7,6 @@ RUN pip install --upgrade pip
 # Copie des fichiers de configuration dans /bin/conf/ de l'image
 COPY conf/requirements.txt requirements.txt
 COPY conf/root /var/spool/cron/crontabs/root
-COPY conf/commands/databaseDump.py /bin/conf/databaseDump.py
-COPY conf/global_variable.py /bin/conf/global_variable.py
 
 # Installation des dépendances Python spécifiées dans requirements.txt
 RUN pip install -r requirements.txt

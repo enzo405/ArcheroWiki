@@ -6,4 +6,4 @@ calculator/static/image/stuff_save/*
 __pycache__
 
 # Setting file 
-conf/global_variable_local.py
+conf/conf_local.py

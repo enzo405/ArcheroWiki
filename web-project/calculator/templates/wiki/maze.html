@@ -4,18 +4,18 @@
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.6.5">
 <title>{% blocktrans %}Archero - Maze Map{% endblocktrans %}</title>
-<meta name="description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.">
+<meta name="description" content="{% blocktrans %}Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.{% endblocktrans %}">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
-<div class="tutorial">
+<div class="tutorial need-small">
 	{% blocktrans %}<b>Here is how you should read the Solution :</b><br>
 	For example In week 1, if you chose green portal in stage 0<br>
 	You will have green and purple as an option in stage 1.<br>
 	If you chose green in stage 1, you'll have purple and blue in stage 2 etc...<br><br>
 	You Can also take a look at this : {% endblocktrans %}<a href="https://www.reddit.com/r/Archero/comments/xwbxrp/ancient_maze_new_full_optimised_map/" target="_blank">{% blocktrans %}Optimized Maze Map{% endblocktrans %}</a>
 </div>
-<main class="maze-main" id="main">
+<main class="maze-main need-small" id="main">
 </main>
 {% endblock %}
 {% block javascript %}

@@ -2,8 +2,8 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.1">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.9.1">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.4a">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.9.4a">
 <meta property="og:type" content="website">
 <meta name="description" content="Discover the extensive collection of heroes in Archero, each with unique star boosts, base skills, and descriptions. Explore our comprehensive list to uncover the full potential of each character. Make strategic choices and harness the power of your heroes to overcome challenges and triumph in Archero.">
 {% if hero == "yes" %}
@@ -18,7 +18,7 @@
 • Base Hp: {{ hero_data.base_hp }}
 {{ hero_data.price }}">
 {% endblock %}
-<meta property="og:image" content="{% static hero_image %}?version=1.9.1">
+<meta property="og:image" content="{% static hero_image %}?version=1.9.4a">
 {% else %}
 <title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Heroes Description">
@@ -29,7 +29,7 @@
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
-<div class="content_container">
+<div class="content_container need-small">
 	<div class="search-bar" id="search-bar">
 		<script>
 			function filterList() {
@@ -156,22 +156,17 @@
 										</div>
 									</div>
 								</div>
-								<div class="rgqgux-2 jFcAhO">
+                                <br>
+                                <div class="rgqgux-2 jFcAhO">
 									<div class="sc-27l7o2-0 heOpKb">
 										<div id="skill_details">
-											<br>
-											{% if hero_data.skill_details != "" %}
+                                            <span class="center_content"><object type="image/png" data="/static/image/svg/icon-skill-{{ name_hero_initial }}.svg" width="22" height="22"></object>{{ hero_data.skill|safe }}</span>
+                                            {% if hero_data.skill_details != "" %}
+                                            <br>
 											<b>{% blocktrans %}Skill Details:{% endblocktrans %}</b><br>
 											{{ hero_data.skill_details|safe }}
 											<br><br>
 											{% endif %}
-										</div>
-									</div>
-								</div>
-								<div class="rgqgux-2 jFcAhO">
-									<div class="sc-27l7o2-0 heOpKb">
-										<div id="skill">
-											<span class="center_content"><object type="image/png" data="/static/image/svg/icon-skill-{{ name_hero_initial }}.svg" width="22" height="22"></object>{{ hero_data.skill|safe }}</span>
 										</div>
 									</div>
 								</div>
@@ -208,6 +203,7 @@
 					</div>
 				</div>
 			</div>
+            {% if hero_data.hero_assist %}
 			<div class="kn3fae-2 eKjosW" id="Assist">
 				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
 					<div class="sc-3qrykn-0 bdFBtt">
@@ -251,6 +247,7 @@
 					</div>
 				</div>
 			</div>
+            {% endif %}
 			{% if hero_data.skins %}
 			<div class="kn3fae-2 eKjosW" id="Skins">
 				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
@@ -265,7 +262,7 @@
 							<div class="rgqgux-0 dQAxvm">
 								<div class="rgqgux-2 jFcAhO">
 									<div class="content-embed-skin sc-27l7o2-0 heOpKb">
-										<img src="/static/image/hero_skin/{{ name_hero_initial }}_{{ skin.src }}.png?version=1.9.1" alt="Archero {{ name_hero }}'s {{ skin.name }} skin thumbnail">
+										<img src="/static/image/hero_skin/{{ name_hero_initial }}_{{ skin.src }}.png?version=1.9.4a" alt="Archero {{ name_hero }}'s {{ skin.name }} skin thumbnail">
 										<div>
 											<h3>{{ skin.name }}</h3>
 											<div>

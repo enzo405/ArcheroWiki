@@ -5,12 +5,18 @@ DISCORD_NOTIF_ROLE_ID = '######'
 DISCORD_ERROR_ROLE_ID = '######'
 DEV_MODE = True
 DEBUG_STATS = False ## if True : get the print() of all calculation function in models.py and be able to access update views for all users
+
+# If you want to have analytics locally, you'll need to install Matomo on your server and change the following variables
+MATOMO_TOKEN_VIEW_ACCESS = "#############"
+MATOMO_INSTANCE = "https://analytics.matomo.com"   # <---- Change this to your Matomo instance URL
+
 c_CSRF_FAILURE_VIEW = 'calculator.views_wiki.csrf_failure'
 c_CSRF_USE_SESSION = True
 c_CSRF_COOKIE_SECURE = True
 c_CSRF_COOKIE_DOMAIN = [""]
 c_CSRF_TRUSTED_ORIGINS = [""]
 c_ALLOWED_HOSTS = [""]
+
 # Follow the steps below to generate a Django secret key:
 
 # Access the Python Interactive Shell

@@ -2,8 +2,8 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.1">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.9.1">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.4a">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.9.4a">
 <meta name="description" content="Explore a comprehensive list of items in Archero, including weapons, armor, rings, pets, lockets, bracelets, and spellbooks. Discover the stats, hidden stats, and descriptions for each item rarity. Unlock the full potential of your loadout with invaluable insights and make strategic choices to dominate your enemies in Archero.">
 <meta property="og:type" content="website">
 {% if item == "yes" %}
@@ -11,10 +11,10 @@
 <meta property="og:title" content="{{ name }}">
 <meta property="og:url" content="{{ url_cpy }}">
 {% block meta_description %}
-<meta property="og:description" content="{{ hero_data.description|safe }}{% for k,v in item_data.rarity.items %}{% if v != '' %}
+<meta property="og:description" content="{{ item_data.description|safe }}{% for k,v in item_data.rarity.items %}{% if v != '' %}
 {{ v|safe }}{% else %}{% endif %}{% endfor %}">
 {% endblock %}
-<meta property="og:image" content="{% static item_data.item_image %}?version=1.9.1">
+<meta property="og:image" content="{% static item_data.image %}?version=1.9.4a">
 {% else %}
 <title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Item Description">
@@ -25,7 +25,7 @@
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
-<div class="content_container">
+<div class="content_container need-small">
 	<div class="search-bar" id="search-bar">
 		<script>
 			function filterList() {
