@@ -1,4 +1,4 @@
-# Wiki Actual Version : v1.9.1
+# Wiki Actual Version : v1.9.4
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -18,6 +18,7 @@ The application is built using a range of technologies, including:
 - CSS
 - JSON
 - crontab
+- postgreSQL
 
 It also uses Docker for deployment, with a PostgreSQL database.
 
@@ -65,24 +66,9 @@ ___
 
 
 ```diff
-Todo list: 
-+ update /wiki/damage/ with new damage formula
-+ fill up Archero Calculation page with formula & additionnal info
-```
-```diff
 TODO LIST :
-- translate form stats calc content (meaning db field too)
-- add a way to see how much user for each language with libraires already made
-- add links everywhere to those guide & tierlist etc.... for better referencement
-- humge searchbar
-- export profile to gsheet?
-- security sql injection fix (owasp zap)
-- make universal name for e.g : "range_dmg_var" or "ranged_dmg_var" ?
-- add page for emulator skill in fight with skill you can check (don't forget medals boost)
-- details page add run boost from glyphs, dragon, stuff etc...
-- item (especially for ring, get value with dict.get instead of having mythic_boost, titan_tales_boost etc....)
-- maze soluce display only current week pattern
-- relics stat does apply if level, star and exclusive are = to 0
+- Update content for Theorycrafting page
+- Put new damage formula into the /damage/calc page
 ```
 
-Update Octobre 07, 2023 6:03 PM
+Update Januar 20, 2024 03:38 AM
