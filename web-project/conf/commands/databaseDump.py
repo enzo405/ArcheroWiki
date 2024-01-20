@@ -1,6 +1,6 @@
 #!/usr/bin/conf/python
 from discord_webhook import DiscordWebhook, DiscordWebhook
-from global_variable import ADMIN_LOG_WEBHOOK_URL
+from conf.conf import ADMIN_LOG_WEBHOOK_URL
 import os
 
 current_directory = os.getcwd()
@@ -15,8 +15,8 @@ class SendWebhook():
 
 	def database_dump(self):
 		webhook = self.webhook
-		os.system(f"python -Xutf8 /app/manage.py dumpdata > {current_directory}/database/database_dump.json")
-		with open(f'{current_directory}/database/database_dump.json','r', encoding='utf-8') as f:
+		os.system(f"python -Xutf8 /app/manage.py dumpdata > /app/conf/database/database_dump.json")
+		with open(f'/app/conf/database/database_dump.json','r', encoding='utf-8') as f:
 			webhook.add_file(file=f.read(), filename='database_dump.json')
 
 

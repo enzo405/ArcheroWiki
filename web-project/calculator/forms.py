@@ -1,5 +1,5 @@
 from django.forms import ModelForm, widgets
-from .models import UserQueue,user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelTypeTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable
+from .models import user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelTypeTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable
 from django import forms
 
 
@@ -421,14 +421,8 @@ class WeaponSkinForm(ModelForm):
 RUNE_CHOICES = [('power', 'Power'), ('courage', 'Courage')]
 class DamageCalculatorForm(forms.Form):
 	runes = forms.ChoiceField(choices=RUNE_CHOICES, widget=forms.RadioSelect)
-	firstInput = forms.DecimalField(max_digits=6, decimal_places=2)
-	secondInput = forms.DecimalField(max_digits=6, decimal_places=2)
-	thirdInput = forms.DecimalField(max_digits=6, decimal_places=2)
-	fourthInput = forms.DecimalField(max_digits=6, decimal_places=2)
-	fifthInput = forms.DecimalField(max_digits=6, decimal_places=2)
-
-
-class UserQueueForm(forms.ModelForm):
-    class Meta:
-        model = UserQueue
-        fields = ['username', 'email', 'password']
+	firstInput = forms.DecimalField(max_digits=6, decimal_places=2, error_messages={'required': 'Please enter a valid number'})
+	secondInput = forms.DecimalField(max_digits=6, decimal_places=2, error_messages={'required': 'Please enter a valid number'})
+	thirdInput = forms.DecimalField(max_digits=6, decimal_places=2, error_messages={'required': 'Please enter a valid number'})
+	fourthInput = forms.DecimalField(max_digits=6, decimal_places=2, error_messages={'required': 'Please enter a valid number'})
+	fifthInput = forms.DecimalField(max_digits=6, decimal_places=2, error_messages={'required': 'Please enter a valid number'})

@@ -435,6 +435,12 @@ LocalDataContentWiki = {
       "requirement": "",
       "stats": _("Become invincible for 2 seconds every 10 seconds (1/6th of total time)")
     },
+    "Monkey_Offspring": {
+      "displayName": _("Monkey Offspring"),
+      "description": _("On each attack, chance to turn monkey hairs into Monkey Offspring that perform powerfull attacks"),
+      "requirement": "",
+      "stats": _("Only available while using <a class='a_styled' href='/wiki/heroes/Wukong/'>Wukong</a> and unlocked the Heavenly Havoc skill")
+    },
     "Mirror_Punch": {
       "displayName": _("Mirror Punch"),
       "description": _("When Melee attacks deal critical hits, they leave behind 1-2 melee range Shadow Clones"),
@@ -839,7 +845,7 @@ LocalDataContentWiki = {
         "perfect_epic": _("[Perfect Epic] (ULT.) Each Red Heart spawns +1 Shadow Clone"),
         "legendary": _("[Legendary] (ULT.) Max Red Hearts +1"),
         "ancient_legendary": _("[Ancient Legendary] (ULT.) Red Hearts can temporarily raise Movement Speed and Damage Reduction. Can be stacked"),
-        "mythic": _("[Mythic] (ULT.) For every 15 Red Hearts obtained, summon +1 Angel"),
+        "mythic": _("[Mythic] (ULT.) For every 15 Expedition book's Red Hearts obtained, summon +1 Angel"),
         "mythic+1": _("[Mythic+1] Spellbook Basic Stats +10%"),
         "mythic+2": _("[Mythic+2] Epic Skill Effect Upgraded"),
         "titan_tales": _("[Titan Tales] Enhance equipment +12%"),
@@ -1655,7 +1661,7 @@ LocalDataContentWiki = {
         "perfect_epic": "",
         "legendary": _("[Legendary] HP drops +20%"),
         "ancient_legendary": "",
-        "mythic": _("[Mythic] Collision Damage Resistance +12%"),
+        "mythic": _("[Mythic] Collision Damage Resistance +15%"),
         "mythic+1": _("[Mythic+1] Ring Basic Stats +5%"),
         "mythic+2": _("[Mythic+2] Epic Skill Effect Upgraded"),
         "titan_tales": _("[Titan Tales] Damage Normal Units +10%"),
@@ -2168,7 +2174,7 @@ LocalDataContentWiki = {
         "120": _("Projectile Resistance +7%")
       },
       "price": _("Free"),
-      "skill": _("Atreus does not have a unique ability"),
+      "skill": _("Once 3rd star is reached, give +1 Max in-game level"),
       "skill_details": "",
       "star": {
         "1": _("Patrol Gold Earnings +[x]%"),
@@ -2209,7 +2215,7 @@ LocalDataContentWiki = {
         "80": _("Max HP +6%"),
         "120": _("Damage to Melee Units +9%")
       },
-      "price": _("Free (Unlocked after clearing stage 1 of chapter 2)"),
+      "price": _("Free (Unlocked after clearing stage 50 from chapter 2)"),
       "skill": _("Your attacks cause an enhanced Poison effect"),
       "skill_details": _("40% of base damage per second"),
       "star": {
@@ -2266,7 +2272,7 @@ LocalDataContentWiki = {
         "80": _("Critical Chance +5%"),
         "120": _("Damage to Ranged Units +9%")
       },
-      "price": _("50,000 <object type='image/png' data='/static/image/svg/gold.svg' width='16' height='16'></object>"),
+      "price": _("50,000 <object type='image/png' data='/static/image/svg/gold.svg' width='16' height='16'></object> or 30 Phoren Shards"),
       "skill": _("Your attacks cause an enhanced Flame effect"),
       "skill_details": "",
       "star": {
@@ -2307,7 +2313,7 @@ LocalDataContentWiki = {
           "src": "Brawler",
           "passiv_boost": _("[Lvl50] Attack +85"),
           "activ_boost": _("Chance to instakill enemies. Enemies explode when taking Fire damage over time."),
-          "price": _("Obtainable from Exclusive Event (Worldcup event december 2022)")
+          "price": _("Obtainable from Exclusive Event")
         }
       ]
     },
@@ -2365,6 +2371,13 @@ LocalDataContentWiki = {
           "passiv_boost": _("[Lvl 60]: Max HP +320"),
           "activ_boost": _("Gain the Phoenix's blessing, increasing Movement Speed, Attack Speed, and Dodge. Attacks are imbued with fire for every 20 enemies hit."),
           "price": _("Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 50")
+        },
+        {
+          "name": _("Pharaoh Taranis"),
+          "src": "Pharaoh_Taranis",
+          "passiv_boost": _("[Lvl 60]: Max HP +500"),
+          "activ_boost": _("The lower the HP, the higher the lightning damage. When HP is below 25%, golden hammers will hurled repeatedly."),
+          "price": _("Obtainable from Exclusive Event")
         }
       ]
     },
@@ -2386,7 +2399,7 @@ LocalDataContentWiki = {
       "star": {
         "1": _("Patrol Gold Earnings +[x]%"),
         "2": _("Attack +40 <span class='all_effect_span'>All Heroes</span>"),
-        "3": _("Rage - Fury: When losing HP, attack is increased"),
+        "3": _("Rage - Fury: When losing HP, attack is increased (Increase up to x1.3% per 1% health lost)"),
         "4": _("Trait - Irritant: After losing HP, damage is increased on next attack"),
         "5": _("Spirit - Upgrade: Spirit has faster attack speed"),
         "6": _("Rage - Nimble: When HP is lower than 25%, movement speed increased slightly"),
@@ -2514,6 +2527,13 @@ LocalDataContentWiki = {
           "passiv_boost": _("[Lvl 50] Max HP +600"),
           "activ_boost": _("Increases attack after Crit attack. Meowspirit has a chance to cause Fire damage."),
           "price": _("Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 150")
+        },
+        {
+          "name": _("Reindeer Meowgik"),
+          "src": "Reindeer",
+          "passiv_boost": _("[Lvl 70] Max HP +600"),
+          "activ_boost": _("Chance for Gold Star to appear when attacking. Gold Stars can deal damage. 7 Gold Stars can turn into an invincible Star."),
+          "price": _("Obtainable from Exclusive Event")
         }
       ]
     },
@@ -2634,7 +2654,7 @@ LocalDataContentWiki = {
           "src": "Enchantress",
           "passiv_boost": _("[Lvl 50] Attack +110"),
           "activ_boost": _("Continuously charms nearby enemies."),
-          "price": _("Obtained from Valentine's Day limited-time event. Cannot be Price: purchased <object type='image/png' data='/static/image/svg/purple_ticket.svg' width='18' height='18'></object with> at the moment.")
+          "price": _("Obtained from Valentine's Day limited-time event. Price: cannot be purchased at the moment.")
         }
       ]
     },
@@ -2748,6 +2768,13 @@ LocalDataContentWiki = {
           "src": "Sweet_Proposal",
           "passiv_boost": _("[Lvl 50]: Attack +100"),
           "activ_boost": _("Continuously attacking the enemy will increase attack and dodge rate, can be stack up to 10%"),
+          "price": _("Obtainable from Exclusive Event")
+        },
+        {
+          "name": _("Turkey Celebration"),
+          "src": "Turkey_Celebration",
+          "passiv_boost": _("[Lvl 60] Max HP +400"),
+          "activ_boost": _("Damage reduction +4%. The more on-screen enemies the higher the effect."),
           "price": _("Obtainable from Exclusive Event")
         }
       ]
@@ -2933,7 +2960,7 @@ LocalDataContentWiki = {
           "src": "Crimson_Blade",
           "passiv_boost": _("[Lvl 50]: Attack +120"),
           "activ_boost": _("Lower the HP, faster the movement speed"),
-          "price": _("3000 Honor Points in Honor Shop (for 7d unlock and infinite Attack Boost) or Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 100")
+          "price": _("3000 Honor Points in Honor Shop (for 7d unlock and infinite Attack Boost)")
         },
         {
           "name": _("Diver Pro"),
@@ -2993,11 +3020,11 @@ LocalDataContentWiki = {
           "price": _("Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 55")
         },
         {
-        "name": "Present Envoy",
+        "name": _("Present Envoy"),
         "src": "Present_Envoy",
-        "passiv_boost": "[Lvl 50]: Attack +100 <span class='all_effect_span'>All Heroes</span>",
-        "activ_boost": "Summons a Christmas mimic that attacks enemies after Soul absorption.",
-        "price": "Obtainable from Exclusive Event"
+        "passiv_boost": _("[Lvl 50]: Attack +100 <span class='all_effect_span'>All Heroes</span>"),
+        "activ_boost": _("Summons a Christmas mimic that attacks enemies after Soul absorption."),
+        "price": _("Obtainable from Exclusive Event")
         }
       ]
     },
@@ -3264,7 +3291,7 @@ LocalDataContentWiki = {
       },
       "price": _("50 Gugu Shards"),
       "skill": _("Small chance to summon an owl guardian on hitting enemies. Owl guardians can resist damage and strengthen their hero."),
-      "skill_details": _("Small chance to summon an owl guardian on hitting enemies. Owl guardians can resist damage and strengthen their hero.<br><br><FONT color='red'>Red Owl</FONT>: Increased attack, can be stacked.(Increases Attack by 0.1%. Attack is doubled [0.2%] when there are two red owls)<br><FONT color='yellow'>Yellow Owl</FONT>: Killing enemies can restore HP, can be stacked.(Gain 0.7% of Base HP on enemy kills. The amount of Healing is doubled [1.4%] when there are two yellow owls)<br><FONT color='blue'>Blue Owl</FONT>: Increased attack speed, can be stacked. (No data)<br><FONT color='green'>Green Owl</FONT>: Increased attack crit rate, can be stacked. (No data)"),
+      "skill_details": _("<FONT color='red'>Red Owl</FONT>: Increased attack, can be stacked.(Increases Attack by 0.1%. Attack is doubled [0.2%] when there are two red owls)<br><FONT color='yellow'>Yellow Owl</FONT>: Killing enemies can restore HP, can be stacked.(Gain 0.7% of Base HP on enemy kills. The amount of Healing is doubled [1.4%] when there are two yellow owls)<br><FONT color='blue'>Blue Owl</FONT>: Increased attack speed, can be stacked. (No data)<br><FONT color='green'>Green Owl</FONT>: Increased attack crit rate, can be stacked. (No data)"),
       "star": {
         "1": _("Patrol Sapphire Earnings +[x]%"),
         "2": _("Damage to Airborne Units +60 <span class='all_effect_span'>All Heroes</span>"),
@@ -3554,9 +3581,9 @@ LocalDataContentWiki = {
         "80": _("MP Strength +20%"),
         "120": _("Attack +6%")
       },
-      "price": _("4000 <object type='image/png' data='/static/image/svg/gem.svg' width='16' height='16'></object>"),
+      "price": _("4000 <object type='image/png' data='/static/image/svg/gem.svg' width='16' height='16'></object> or 50 Bobo Shards"),
       "skill": _("Increases leveling speed. Attack increases with level in a chamber"),
-      "skill_details": _("Bobo has 12.5% atk boost at start, and gains around 8.5% attack per lvl (credit to Chaos)"),
+      "skill_details": _("Bobo has 12.5% atk boost at start, and gains around 7.5% attack per lvl (credit to Chaos)"),
       "star": {
         "1": _("Patrol XP Earnings +[x]%"),
         "2": _("Max HP +240 <span class='all_effect_span'>All Heroes</span>"),
@@ -3646,6 +3673,13 @@ LocalDataContentWiki = {
           "passiv_boost": _("[Lvl 70] Attack +200"),
           "activ_boost": _("Poisons all enemies in the room when taking damage. The lower the HP of Poisoned enemies, the higher the poison damage. Last 8s"),
           "price": _("Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 160")
+        },
+        {
+          "name": _("Kitchen's Secret"),
+          "src": "Kitchens_Secret",
+          "passiv_boost": _("[Lvl 80] Max Hp +820"),
+          "activ_boost": _("Attacks deal Fire Damage"),
+          "price": _("Obtainable from Exclusive Event")
         }
       ]
     },
@@ -3693,93 +3727,68 @@ LocalDataContentWiki = {
         {
           "name": _("Asura"),
           "src": "Asura",
-          "passiv_boost": _("Attack +1%"),
+          "passiv_boost": _("[Lvl 60] Attack +1%"),
           "activ_boost": _("Chance to trigger Tiger Punch when enemy is hit. Chance increases with Crit Rate. Invincible for 3s when almost dead"),
           "price": _("Price: <object type='image/png' data='/static/image/svg/premium_ticket.svg' width='18' height='18'></object> 200")
+        },
+        {
+          "name": _("Mandarin Taiga"),
+          "src": "Mandarin_Taiga",
+          "passiv_boost": _("[Lvl 80] Max Hp +1%"),
+          "activ_boost": _("Body turns stiff, reducing damage taken by 8%, but also reduces Attack speed by 3%. Thrists for fresh blood; Bloodthirst effect +25%"),
+          "price": _("Obtainable from Exclusive Event")
         }
       ]
-    }
-  },
-  "GsheetData": {
-    "Archero 5.0 Assist Brave": {
-      "thumbnail": "https://lh3.googleusercontent.com/docs/AOD9vFpGrkGqlMgZTq641m-_CwFtpS02-f41oJjEmsJ0MHGpOKkdMtZsAAyKOMvxJxGyWsh1bUKmmlX6iGKlfGWtF_SghXwoxezVpiJNTyFvBqbZ=w1200-h630-p",
-      "description": _("List of all Hero's Assist brave boost for Update 5.0 ⬇️"),
-      "url": "https://docs.google.com/spreadsheets/d/1NJIbXr8LtmNpdjJE4o5HXnoN850XkULXukvZLzIiOPY/"
     },
-    "Archero Relics 4.14": {
-      "thumbnail": "https://lh3.googleusercontent.com/docs/AOD9vFrQYjPz3yB2iSBsKlBg4Tri1ZdrkJrpntBYSGkGAYQyvD34AY6gAMh-DXcZRqL0aZLlKOuuytigqG6L2Db7RR4vu6TzvaHUsi5RdreRrzgQ=w1200-h630-p",
-      "description": _("Relic Name,Base Effect,Advanced Effect, Exclusive effect for all Relics ⬇️"),
-      "url": "https://docs.google.com/spreadsheets/d/1rPOm5BHlc6d5slelRB1MSZDAYMOAUKjVh35huyMRO0w"
-    },
-    "Archero Stats Calculator 5.0 (by Pelmens)": {
-      "thumbnail": "https://lh3.googleusercontent.com/docs/AOD9vFoDubV5ZrzQAPst5VK42eTiFwqEkWFuft-X9S_snvdaBolRZ7Q4-ovxS5UxgbV-3nWvYKYKWLmlwL0KdYB-ZIl6J2_cXKiWLb17EIT82A=w1200-h630-p",
-      "description": _("Archero Stats Calculator, you can export the data of your profile to this google sheet. Make a copy of this file and then you can add all your values. I you have found some ..."),
-      "url": "https://docs.google.com/spreadsheets/d/14KR0LT-g1VptikoPyob0YL7UxHytHd8hmnjhbAqoAIM"
-    },
-    "Archero Medals (by KeithShade)": {
-      "thumbnail": "https://images-ext-2.discordapp.net/external/ZsDT1l5orZpai68x5CiADPuP4kc96SjsCeuoj9tWPMc/https/lh4.googleusercontent.com/NWM-lnXoGJMGFZIAF3ekkQK-gzwLAI5Xmtz3LsvT9rN6bSz9DT8fUOiS6yDVRvAlcBu9sOT9lzViLA%3Dw1200-h630-p",
-      "description": _("-List of the Medals of 4.8 update\n-Medal name\n-Trigger\n-Rarity\n-Enhancement"),
-      "url": "https://docs.google.com/spreadsheets/d/1In0CS_bJsHR9xO7KDgEftXgogPxMYrW-20nlEp-s8WI"
-    },
-    "Archero Hatchery 4.14.0 (LanderZ, mrb, Shusaku, Abstrusity, LuhCaran)": {
-      "thumbnail": "https://images-ext-1.discordapp.net/external/Wr4YOONrx0-ZrldaKK6-ej3gnnFj4Be5seFuSk7Webo/https/lh6.googleusercontent.com/t6U7OU0W2oEP2ECobzUm8UJWLmG-oqunPtygosBafiCgNIbWotsVx9JIFQdGkmb37iMn9JE0-aBlFg%3Dw1200-h630-p",
-      "description": _("-List of available Monsters\n-Numbers of kills required to hatch or complete quests\n-Completed quest dialogue\n-Automated hatch timers\n-Where to find each Monster and which locations are recommended\n-Monster training bonuses and costs (still Work in Progress)"),
-      "url": "https://docs.google.com/spreadsheets/d/1p0xAb6ZrgwqhynromVXTqJSsfWlK1W8EDDt2HyvmRKE"
-    },
-    "Relics 4.14 (LuhCaran, Hollmanovec, RedsMeName)": {
-      "thumbnail": "https://images-ext-2.discordapp.net/external/-Uz7vgaHAmL8pV5TP0tsN3RQEXljKR__UwkC8ggld34/https/lh6.googleusercontent.com/4JXx6B6snH453Vv-toFLnMwKsiTEd11kBbwDQ87-mbkyd7iI9p6zWuW_nIOIWdCKeqMkrl1hOZC0oQ%3Dw1200-h630-p",
-      "description": _("This Google Sheet is inventoring all the Relics Stats (4.8.4). Name of Relics,Base Effect,Advance Effect,Exclusive Effect,Effective Exclusive Effect,Resonance Effect"),
-      "url": "https://docs.google.com/spreadsheets/d/1SWsyuI6PwYVHHeIpbHyGe3w6nS4C4d_QzlOPAyKh_2Y"
-    },
-    "Jewels Stats (LuhCaran on 4.14)": {
-      "thumbnail": "https://images-ext-2.discordapp.net/external/qvZ57PWuTO0Zq9NcFueJZ7fMZqFR-Xu4B5zxOt9BkLU/https/lh4.googleusercontent.com/pps5MNL0e1UjKyt5UKbeTyjTmD5U4stUPMXTUlaDCOcWaEtmTurONg9Y9iTSbbQsvVt-TgExWaw2EA%3Dw1200-h630-p",
-      "description": _("This Google Sheet will be inventoring all the Jewel Stats (4.8.4), you can help us collecting the stats by asking LuhCaran#9802 on discord\nName,Kunzite,Ruby,Tourmaline,Emerald,Lapis,Calaite,Amber,Topaz,Amethyst"),
-      "url": "https://docs.google.com/spreadsheets/d/1h81qU9p1H6TkeyPrZlRzh2U6W28x3S2q2pOrVeusw94"
-    },
-    "Archero Skin 4.10": {
-      "thumbnail": "https://images-ext-1.discordapp.net/external/2m6_dLBYX7gokkd_QjfWbwgulPgYLYBl00fH3UbiJgI/https/lh4.googleusercontent.com/J1thV7jB_Gg8hJSGGUBBbmXLpnN4tKOhudzTg_rti3uFvw7lEcQcljnKI_NwYQXQKJYYknCboGfDdQ%3Dw1200-h630-p",
-      "description": _("In here you will find all the Outfit / Skin / Coupon / Type / Bonus / Unit / Value that are in the game right now"),
-      "url": "https://docs.google.com/spreadsheets/d/1EcvyN2NGT3k8hDrIk14CsUmyILzMDOJidKKEDDB2dSU"
-    },
-    "QuickRaid 4.14 (LuhCaran, Pelmens, tkn)": {
-      "thumbnail": "https://images-ext-1.discordapp.net/external/O49IU7I7N0xrxgeEv4_olqJXCTCuzbP0o8MdDSvoNsI/https/lh4.googleusercontent.com/E-QN8HZJy2uCkSHmt9_Q-KQ2IXLUafedztTrXxtWsfqN_Z3CO9Vx3qoYO5UygUIjQIlYuvAQJq5cTw%3Dw1200-h630-p",
-      "description": _("Please don't change the formula, if you did it by accident just @ me on discord (LuhCaran#9802)\nMode,Heroic Mode\nN° de Chapitre / Chapter LVL,35"),
-      "url": "https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w"
-    },
-    "Item Description (mythic+)": {
-      "thumbnail": "https://images-ext-1.discordapp.net/external/czQ0LN7etS2v5FIfmopYfX14sWgDx4_gl4Pa5-jbRrE/https/lh3.googleusercontent.com/dBzSz7clcARHTP_G2zKF0k70DsUx__lbzUtrL5ADqT5RpQRCS7ukWRffTXCU0_11MYiJxPn7NjO7oQ%3Dw1200-h630-p",
-      "description": _("Item Description for mythic and plus rarity (Source: Cheaters)"),
-      "url": "https://docs.google.com/spreadsheets/d/1ftmm6he4cP_3bt8il8gq7DYTUh0ml2gLphjTOWB9s04"
-    },
-    "Archero Damage Calculator (u/raytheblue)": {
-      "thumbnail": "https://images-ext-1.discordapp.net/external/Tn91MQaYwILZoP4sgFgb0LvCvQQx4Zz5CvqdaLpYSos/https/lh5.googleusercontent.com/j8pbCp_DWmtcBd4eUppd8Iw4B9U6m8ID0nHvxERjhMjckFNhFyCPxCnMDPHten5nkId9c785-8smHw%3Dw1200-h630-p",
-      "description": _("Damage Calculator by u/raytheblue - Version 4.8.2 updated 17 January 2023 (RELIC WORK IN PROGRESS)\nInstructions\nMake a copy of this to input your own data. File → Make a copy\n<- Key in data here\n< - White cells are calculated by formula\n<- Take note of these rows when checking ..."),
-      "url": "https://docs.google.com/spreadsheets/d/1-xLV4JSE71lI9W3SbXn9G_BNganA9VkzbnC5FmH3DaA"
-    },
-    "Archero Dragon Statues Abilities": {
-      "thumbnail": "https://images-ext-2.discordapp.net/external/fkzJepRKpWrthq96krfQ8p2dhO090DJXyQ9WeWCliEM/https/lh3.googleusercontent.com/uyA_RxDbcP1bUYq8M-jYf-8LSk5XYLSIyE8udfavG_XHYOKF0hgoUNBkPwGXTi6nrTKkGyDzXYTOVg%3Dw1200-h630-p",
-      "description": _("This chart shows all the abilities of each dragon\nMagestone,MP cost,Stats (epic rarity start up number),Ancient Legendary stats,Epic skills ,Perfect Epic,Legendary,Mythic\nGlacion,A,Ice,Defense,Mid,Rear Dmg Resit 300(+6)/Max HP 1500(+32),Healing effect of hearts +20%,Icy Breath ..."),
-      "url": "https://docs.google.com/spreadsheets/d/1Sl6_e7Iyu8cmcQTgoGK0SITdDOonjrPzGS-X3P0eQjA"
-    },
-    "Archero - Dragon Statues": {
-      "thumbnail": "https://images-ext-2.discordapp.net/external/AccfaoPsbN10zENGhYENIzgPNl7MOfp6cwg8xFnC2bs/https/lh6.googleusercontent.com/GLeFmoEr2flz378z-wM6QrpH6lAU_TvA2yjsyG4hPebNrQaoUV14n0_vwP4ZTknjvaTa-1YEAXTCvQ%3Dw1200-h630-p",
-      "description": _("How to use\nSelect Dragon name, rarity and level using coloured cells below\nFigures pull through Data tab - please let me know if there are any errors (4-13-20 on discord)\nNote: If table shows all zeroes, I don't have any data for this dragon at this rarity - you can help by sending me a s..."),
-      "url": "https://docs.google.com/spreadsheets/d/10wp79kS7-eLptmo6tiOXEk4zS9w-2VB5R8KJ9j0cJ8E"
-    },
-    "Archero Glyphs (pelmens#9812)": {
-      "thumbnail": "https://images-ext-1.discordapp.net/external/13k54r0tWfjKogpCB0UlEXZsbssP1gyGPCPvjBbtsbg/https/lh5.googleusercontent.com/NzRlN2dNJbshgumbnKzYPpaxsm0zQpD1mimzMRcki3DY5hCn6Py9yX1bAOVP8z4fIvphdSD0-S0Rew%3Dw1200-h630-p",
-      "description": _("Rare,Epic,Epic+1,Epic+2,PE,PE+1,PE+2,PE+3,L,L+1,L+2,L+3,AL\nS,All glyphs,Attack,-,200,310,400,490,580,670,970\nStrike - Rip and Tear,Upon 8 consecutive hits, inflict bleed for x seconds,-,3s,4s\nMovement - Crit,After moving, crit chance increased,-,5%,6%,7%\nSlaughter - Assault,Upon killing 1..."),
-      "url": "https://docs.google.com/spreadsheets/d/1Z0bGaCJ8EuKZQSqeW8q1eS5bWl_5z6E237-JAuf9pFk"
-    },
-    "Runes Effect (Chaos)": {
-      "thumbnail": "https://images-ext-2.discordapp.net/external/TTjY-t704t-k3Hm9EDO1k8cTLzhfvoe_LTANNVEEJEk/https/lh3.googleusercontent.com/Sp8ouH5BX7skeBQa-Kq6NuKSBES9euh9rKxfjV6X-AUfxCo-CR2Zb6txry5ZydslPT68gF-b3qh6OA%3Dw1200-h630-p",
-      "description": _("Power,Saviour,Recovery (Level 40),Courage (Level 60),Luck (Level 80)\nSlot 1,Atk +X,Max HP +X,Healing effect of red heart +X,Atk +X,Max HP +X\nSlot 2,Crit damage + %,Projectile resistance +X,Diagonal arrows chance increased + %,Atreus base HP +X,All sword skills damage +X\nDamage to ..."),
-      "url": "https://docs.google.com/spreadsheets/d/1Y2C0yY-Ht5XDEYcA85XSnM51G8bguFIWE8LL7AMCVc0"
-    },
-    "Archero Evolution (LanderZ)": {
-      "thumbnail": "https://images-ext-2.discordapp.net/external/OohKn7EI8dFn2uigdC4FlebSrx-7M5TqEXvUrQd0Guo/https/lh5.googleusercontent.com/_tmOT-weBwZ-hbMq_1GZxMT7ADTjF2L_6MBzUbmcP1dy7JaSURZqJnKwmas891kJWZk%3Dw1200-h630-p",
-      "description": _("Archero Compilation Document\n-Put together and compiled by LanderZ\n-Assistance in gathering this data comes from dozens of amazing sources, including Kang Greenstrider, Abstrusity, Player99 and far, far too many to list all of them. Without your help, this would not be possi..."),
-      "url": "https://docs.google.com/spreadsheets/d/1HkQweiilqoxMN61CugBrITqGZtQZVleO"
+    "Wukong": {
+      "displayName": _("Wukong"),
+      "description": _("A spirit monkey borne of a sagestone when Heaven cleaved the earth, proclaimed to be the Monkey King."),
+      "base_atk": "350 (+25)",
+      "base_hp": "1300 (+75)",
+      "attributes": {
+        "20": _("Max Hp +500"),
+        "40": _("Damage Resistance +5%"),
+        "60": _("Attack +8%"),
+        "80": _("Elemental Damage Resistance +15%"),
+        "120": _("Max Hp +10%")
+      },
+      "price": _("60 Wukong's Shards"),
+      "skill": _("Attacks have a chance to hurl Goldwish Cudgel that can penetrate walls and enemies. When moving, cudgel will appear and attack enemies."),
+      "skill_details": _("<span class='center_content'><object type='image/png' data='/static/image/svg/icon-skill-Wukong-1.svg' width='22' height='22'></object>Heavenly Havoc :</span>Unlock condition: Raised to Lv.70<br>Unlock in-stage skill - Heavenly Havoc. Swings Goldwish Cudgel in a spin and destroys enemies.<br><span class='center_content'><object type='image/png' data='/static/image/svg/icon-skill-Wukong-2.svg' width='22' height='22'></object>Three Life-saving Hairs :</span>Unlock condition: Evolved to 7-Star<br>Chance to get 1 Life-saving hair that blocks damage each time you are damaged, get a Heart and defeat a boss."),
+      "star": {
+        "1": _("Skill - Bouncy Wall: Goldwish Cudgel bounces off walls."),
+        "2": _("Attack +5% <span class='all_effect_span'>All Heroes</span>"),
+        "3": _("Trait - Eradicating Evil: Damage +20% on enemies below 25% HP."),
+        "4": _("Skill - Bolstered Bravery: 1 Goldwish Cudgel appears to attack enemies each time you take damage. Chance to summon 1-2 Monkey Mirages"),
+        "5": _("Unseal - Exclusive Skill: Able to learn \"72 Forms\" and \"Monkey Mirage\" in stages."),
+        "6": _("Skill - More the Merrier: Chance to summon 1-2 Monkey Mirages when Goldwish Cudgel hits enemies."),
+        "7": _("Unseal - Relic: Activates Supreme Treasure - Goldwish Cudgel's seal effect (Deals damage to elite enemies +10%)."),
+        "8": _("All Damage Increased +6% <span class='all_effect_span'>All Heroes</span>")
+      },
+      "hero_assist": {
+            "10": _("Wukong's base Attack +7%"),
+            "20": _("Attack +320"),
+            "30": _("Increased Attack and Dodge rate after taking damage."),
+            "30_1": _("Crit Chance +7%"),
+            "40": _("Damage to Bosses +15%"),
+            "50": _("Wukong's base HP +15%"),
+            "60": _("Auto-throws cudgel after moving a certain distance."),
+            "70": _("Deals damage to undead +15%"),
+            "80": _("Can deploy at any time to assist in Battle"),
+            "90": _("Weapon Damage +10%"),
+            "100": _("Attack +15%")
+      },
+      "hero_assist_evolve":"eternal-trialstone.svg",
+      "list_hero_assist": ["Atreus","Shari","Bobo","Shade","Ryan","Lina","Aquea","Gugu","Melinda", "Elaine", "Stella", "Taiga"],
+      "skins" :[
+        {
+          "name": _("Golden Eyes"),
+          "src": "Golden_Eyes",
+          "passiv_boost": _("[Lvl 60] Max Hp +2%"),
+          "activ_boost": _("After taking damage, moving leaves fiery trails. Gain higher Fire damage boost and Fire damage Resistance."),
+          "price": _("Obtainable from Exclusive Event")
+        }
+      ]
     }
   },
   "SidebarContent": {
@@ -4037,879 +4046,887 @@ LocalDataContentWiki = {
     }
   },
   "WikiContent": {
-    "fusion_item": {
-      "type": "img",
-      "displayName": _("fusion item"),
-      "displayNameImg": "<img src='/static/image/rarity/epic.png' alt='epic rarity image fusion item'> - <img src='/static/image/rarity/mythic.png' alt='mythic rarity image fusion item'>",
-      "classButton": "collapsible fusion",
-      "collapsible_container": {
-        "class_content": "fusion",
-        "content": {
-          "field": {
-            "src": "image/wiki-image/Fusing_Hierarchy.png",
-            "class": "fusion_collaps_img",
-            "alt": "Fusion Archero Hierarchy"
-          }
-        }
-      }
-    },
-    "fusion_item_above_mythic": {
-      "type": "img",
-      "displayName": _("fusion item mythic+"),
-      "displayNameImg": "<img src='/static/image/rarity/mythic.png' alt='mythic rarity image fusion item'> - <img src='/static/image/rarity/chaos.png' alt='chaos rarity image fusion item'>",
-      "classButton": "collapsible fusion",
-      "collapsible_container": {
-        "class_content": "fusion",
-        "content": {
-          "field": {
-            "src": "image/wiki-image/Fusing_Hierarchy2.png",
-            "class": "fusion_collaps_img",
-            "alt": "Fusion Archero Hierarchy2"
-          }
-        }
-      }
-    },
-    "fusion_item_s_grade": {
-      "type": "img",
-      "displayName": _("fusion item s grade"),
-      "displayNameImg": "<img src='/static/image/dragon/S.png' alt='S grade image fusion item'>",
-      "classButton": "collapsible fusion",
-      "collapsible_container": {
-        "class_content": "fusion",
-        "content": {
-          "field": {
-            "src": "image/wiki-image/Fusing_Hierarchy_S.png",
-            "class": "fusion_collaps_img",
-            "alt": "Fusion Chart Archero Item S grade"
-          }
-        }
-      }
-    },
-    "fusion_dragon": {
-      "type": "img",
-      "displayName": _("fusion dragon"),
-      "displayNameImg": "<img src='/static/image/wiki-image/Currency_Dragon_Random_RarityQuality_12.png' alt='great rarity image dragon'> - <img src='/static/image/wiki-image/Currency_Dragon_Random_RarityQuality_14.png' alt='epic rarity image dragon'>",
-      "classButton": "collapsible fusion",
-      "collapsible_container": {
-        "class_content": "fusion",
-        "content": {
-          "field": {
-            "src": "image/wiki-image/Dragon-Rarity-Guide.png",
-            "class": "fusion_collaps_img",
-            "alt": "Achero rarity guide"
-          }
-        }
-      }
-    },
-    "tierlist_hero": {
-      "type": "img",
-      "displayName": _("tierlist hero"),
-      "displayNameImg": "<img src='/static/image/img-sidebar/hero.png' alt='tierlist hero archero 2023'>",
-      "classButton": "collapsible tierlist",
-      "collapsible_container": {
-        "class_content": "tierlist",
-        "content": {
-          "field": {
-            "src": "image/wiki-image/HeroTierlist2023.png",
-            "class": "tierlist_img",
-            "alt": "Tierlist Hero Archero"
-          }
-        }
-      }
-    },
-    "tierlist_item": {
-      "type": "img",
-      "displayName": _("tierlist item normal"),
-      "displayNameImg": "<img src='/static/image/rarity/epic.png' alt='epic rarity image tierlist archero'> - <img src='/static/image/rarity/ancient_legendary.png' alt='ancient legendary rarity image tierlist archero'>",
-      "classButton": "collapsible tierlist",
-      "collapsible_container": {
-        "class_content": "tierlist",
-        "content": {
-          "field": {
-            "src": "image/wiki-image/General-Tier-List_1.png",
-            "class": "tierlist_img",
-            "alt": "Tierlist Archero"
-          }
-        }
-      }
-    },
-    "tierlist_item_mythic": {
-      "type": "img",
-      "displayName": _("tierlist item mythic"),
-      "displayNameImg": "<img src='/static/image/rarity/mythic.png' alt='mythic rarity image tierlist archero'>",
-      "classButton": "collapsible tierlist",
-      "collapsible_container": {
-        "class_content": "tierlist",
-        "content": {
-          "field": {
-            "src": "image/wiki-image/Mythic-Tier-List2023.png",
-            "class": "tierlist_img_myt",
-            "alt": "Tierlist 2023 Archero"
-          }
-        }
-      }
-    },
-    "faq": {
-      "type": "embed",
-      "displayName": _("Frequently Asked Questions"),
-      "displayNameImg": "<img src='/static/image/wiki-image/question_mark.png' alt='question mark archero'>",
-      "classButton": "collapsible faq-container",
-      "collapsible_container": {
-        "class_content": "faq",
-        "border_color": "style='border-color: rgb(177,177,177);'",
-        "content": {
-          "title": {
-            "idTitle": "title_faq",
-            "innerText": _("Frequently Asked Questions")
-          },
-          "description": {
-            "idDesc": "desc_faq",
-            "innerText": ""
-          },
-          "field": [
-            {
-              "name": _("• Frequently Asked Questions •"),
-              "value": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_should_i_dismantle_or_exchange_items.3F'>Should I dismantle or exchange items?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_loadout.3F'>What is the best loadout?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_are_the_best_abilities.3F'>What are the best abilities?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_stutterstepping.3F'>What is stutterstepping?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_eggs_of_certain_monsters.2Feggs.3F'>Where do I find eggs of certain monsters/eggs?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_can_i_transfer_my_progress_from_ios_to_android_or_from_android_to_ios.3F'>Can I transfer my progress from iOS \u27f7 Android ?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_why_did_i_not_get_the_latest_archero_update_yet.3F'>Why did I not get the latest Archero update yet?</a>"
-            },
-            {
-              "name": _("• Farming •"),
-              "value": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_why_did_i_not_receive_my_loot_that_dropped_in_a_stage.3F'>Why did I not receive my loot ?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_place_to_farm.3F'>What is the best place to farm?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_place_to_farm_a_specific_item.3F'>What is the best place to farm a specific item?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_bloodthirst_stones.3F'>Where do I find Bloodthirst Stones?</a>"
-            },
-            {
-              "name": _("• Progressing •"),
-              "value": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_do_i_get_more_gems.3F'>How do I get more gems?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_i_can.27t_beat_chapter_x.2C_what_should_i_do.3F'>I can't beat chapter x, what should I do?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_do_i_get_more_atk_and_hp.3F'>How do I get more ATK and HP?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_far_can_i_upgrade_my_talents.3F'>How far can I upgrade my talents?</a>"
-            },
-            {
-              "name": _("• When do I unlock ... ?"),
-              "value": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.ancient_maze'>Ancient Maze</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.expedition_hero_mode'>Expedition Hero mode</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.quick_raids'>Quick Raids</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.equipment_altar'>Equipment Altar</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.hero_altar'>Hero Altar</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.dragon_statues'>Dragon Statues</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.great_.28green.29_item_drops_in_chapters'>Great item drops</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.refining.2Fglyphs'>Refining/Glyphs</a>"
+    "fusion": {
+        "fusion_item": {
+            "type": "img",
+            "displayName": _("item"),
+            "displayNameImg": "<img src='/static/image/rarity/epic.png' alt='epic rarity image fusion item'> - <img src='/static/image/rarity/mythic.png' alt='mythic rarity image fusion item'>",
+            "classButton": "collapsible fusion",
+            "collapsible_container": {
+                "class_content": "fusion",
+                "content": {
+                "field": {
+                    "src": "image/wiki-image/Fusing_Hierarchy.webp",
+                    "class": "fusion_collaps_img",
+                    "alt": "Fusion Archero Hierarchy"
+                }
+                }
             }
-          ],
-          "footer": {
-            "innerText": _("Source : Reddit r/Archero")
-          },
-          "thumbnail": {
-            "src": "",
-            "alt": "",
-            "class": ""
-          }
-        }
-      }
-    },
-    "evo_cost": {
-      "type": "img",
-      "displayName": _("hero evolution cost"),
-      "displayNameImg": "<img src='/static/image/wiki-image/cookie.png' alt='cookie image archero'><img src='/static/image/wiki-image/Random_HeroFragment.png' alt='shards image archero'>",
-      "classButton": "collapsible evo_cost",
-      "collapsible_container": {
-        "class_content": "evo_cost",
-        "content": {
-          "field": {
-            "src": "image/wiki-image/EvolutionCost.png",
-            "class": "evo_cost_img",
-            "alt": "Evolution cost Archero"
-          }
-        }
-      }
-    },
-    "gems_spending_guide": {
-      "type": "embed",
-      "displayName": _("Gems guide"),
-      "displayNameImg": "<img src='/static/image/wiki-image/Gem.png' alt='gem image archero'>",
-      "classButton": "collapsible gems_spending_guide",
-      "collapsible_container": {
-        "class_content": "gems_spending_guide_child",
-        "border_color": "style='border-color: rgb(0,249,54);'",
-        "content": {
-          "title": {
-            "idTitle": "title_gems_guide",
-            "innerText": _("Gem Guide")
-          },
-          "description": {
-            "idDesc": "desc_gems_guide",
-            "innerText": ""
-          },
-          "field": [
-            {
-              "name": _("Earning:"),
-              "value": ""
-            },
-            {
-              "name": "",
-              "value": _("• Daily Quests: Up to 40 Gems per day")
-            },
-            {
-              "name": "",
-              "value": _("• Weekly Quests: Up to 230 Gems per week")
-            },
-            {
-              "name": "",
-              "value": _("• Daily Ad Pack: 30 Gems per day")
-            },
-            {
-              "name": "",
-              "value": _("• Ad Boss wheel: Up to 100 Gems per day")
-            },
-            {
-              "name": "",
-              "value": _("• Hero Duo")
-            },
-            {
-              "name": "",
-              "value": _("• Hero Duel: Profit if you win ≥ 62% of 40 Gem matches or ≥ 67% of 100 Gem matches")
-            },
-            {
-              "name": "",
-              "value": _("• Monster Farm: Clean up obstacles for a chance to receive Gems")
-            },
-            {
-              "name": "",
-              "value": _("• Clear new chapters")
-            },
-            {
-              "name": "",
-              "value": _("• Clear Expedition stages")
-            },
-            {
-              "name": "",
-              "value": "<br>"
-            },
-            {
-              "name": _("Spending:"),
-              "value": ""
-            },
-            {
-              "name": "",
-              "value": _("• At least one main hero (Helix is recommended)")
-            },
-            {
-              "name": "",
-              "value": _("• Extra hatchery slots, to speed up egg hatching")
-            },
-            {
-              "name": "",
-              "value": _("• Extra monster book slots, to get more bonuses from monsters in use")
-            },
-            {
-              "name": "",
-              "value": _("• Extra attempt for Ancient Maze, if you can consistently finish it on Extreme/Misery difficulty")
-            },
-            {
-              "name": "",
-              "value": _("• Extra energy to farm Hero chapters or play events")
-            },
-            {
-              "name": "",
-              "value": _("• Extra attempt(s) for Up-Close Dangers, if you are at the point where you earn relatively high amounts of coins from it compared to chapter runs")
-            },
-            {
-              "name": "",
-              "value": _("• Mystery Chest in your Farm, if it shows up")
-            },
-            {
-              "name": "",
-              "value": _("• Login Rewards Event <a class='styled_a' href='https://cdn.discordapp.com/attachments/1018889785571540994/1113272516136407061/LoginRewardsEvent.png' target='_blank'>[Example]</a><br>")
+        },
+        "fusion_item_above_mythic": {
+            "type": "img",
+            "displayName": _("item mythic+"),
+            "displayNameImg": "<img src='/static/image/rarity/mythic.png' alt='mythic rarity image fusion item'> - <img src='/static/image/rarity/chaos.png' alt='chaos rarity image fusion item'>",
+            "classButton": "collapsible fusion",
+            "collapsible_container": {
+                "class_content": "fusion",
+                "content": {
+                    "field": {
+                        "src": "image/wiki-image/Fusing_Hierarchy2.webp",
+                        "class": "fusion_collaps_img",
+                        "alt": "Fusion Archero Hierarchy2"
+                    }
+                }
             }
-          ],
-          "footer": {
-            "innerText": ""
-          },
-          "thumbnail": {
-            "src": "/static/image/wiki-image/Gem.png",
-            "alt": "Gems Spending Thumbnail",
-            "class": ""
-          }
-        }
-      }
-    },
-    "gold_guide": {
-      "type": "embed",
-      "displayName": _("gold guide"),
-      "displayNameImg": "<img src='/static/image/wiki-image/Gold.png' alt='gold image archero'>",
-      "classButton": "collapsible gold_guide",
-      "collapsible_container": {
-        "class_content": "gold_guide_child",
-        "border_color": "style='border-color: rgb(255,196,0);'",
-        "content": {
-          "title": {
-            "idTitle": "title_gold_guide",
-            "innerText": _("Gold Guide")
-          },
-          "description": {
-            "idDesc": "desc_gold_guide",
-            "innerText": ""
-          },
-          "field": [
-            {
-              "name": _("Earning:"),
-              "value": _("• Use any other rings than Lion,Vilebat,Dragon Rings for +10% coins from battle")
-            },
-            {
-              "name": "",
-              "value": _("• In your Spirit jewel slots, have an overall level of 8 or higher, for +5% Coins from battle")
-            },
-            {
-              "name": "",
-              "value": _("• Play the Up-close Dangers event every time it is active (Tuesday, Thursday, Saturday, Sunday)")
-            },
-            {
-              "name": "",
-              "value": _("• Play the clan event (Monster Treasure) every day")
-            },
-            {
-              "name": "",
-              "value": _("• Watch 3 ads per day at the bottom of the Shop tab")
-            },
-            {
-              "name": "",
-              "value": _("• Watch 4 ads per day for 5 energy each by clicking on your energy at the top, use this energy to play chapters")
-            },
-            {
-              "name": "",
-              "value": _("• Hero Mode Boss chapters (7, 14, 21, 28, 35, 42)")
-            },
-            {
-              "name": "",
-              "value": "<br>"
-            },
-            {
-              "name": _("What should i spend my gold on ?"),
-              "value": "• <a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_should_i_spend_my_gold_on.3F' target='_blank'>Reddit</a>"
+        },
+        "fusion_item_s_grade": {
+            "type": "img",
+            "displayName": _("item s grade"),
+            "displayNameImg": "<img src='/static/image/dragon/S.png' alt='S grade image fusion item'>",
+            "classButton": "collapsible fusion",
+            "collapsible_container": {
+                "class_content": "fusion",
+                "content": {
+                    "field": {
+                        "src": "image/wiki-image/Fusing_Hierarchy_S.webp",
+                        "class": "fusion_collaps_img",
+                        "alt": "Fusion Chart Archero Item S grade"
+                    }
+                }
             }
-          ],
-          "footer": {
-            "innerText": _("Credit: zkn#4789")
-          },
-          "thumbnail": {
-            "src": "/static/image/wiki-image/Gold.png",
-            "alt": "Gold Farming Thumbnail",
-            "class": ""
-          }
-        }
-      }
-    },
-    "gear_farming_guide": {
-      "type": "embed",
-      "displayName": _("gear farming guide"),
-      "displayNameImg": "<img src='/static/image/wiki-image/Inventory.png' alt='gear farming inventory image archero'>",
-      "classButton": "collapsible gear_farming_guide",
-      "collapsible_container": {
-        "class_content": "gear_farming_guide_child",
-        "border_color": "style='border-color: rgb(177,177,177);'",
-        "content": {
-          "title": {
-            "idTitle": "title_gear_guide",
-            "innerText": _("Gear Farming Guide")
-          },
-          "description": {
-            "idDesc": "desc_gear_guide",
-            "innerText": _("TIP: Always wait for dropped items to reach your character! If you proceed to the next stage and the items did not reach your character, you will not get those items.")
-          },
-          "field": [
-            {
-              "name": _("Flying Bullets"),
-              "value": ""
-            },
-            {
-              "name": "",
-              "value": _("• Can drop more than 5 items per run")
-            },
-            {
-              "name": "",
-              "value": _("• Drops relatively many scrolls")
-            },
-            {
-              "name": "",
-              "value": "<br>"
-            },
-            {
-              "name": _("Farm Chapters :"),
-              "value": ""
-            },
-            {
-              "name": "",
-              "value": _("• Farm the highest hero boss chapter you are able to clear (7, 14, 21, 28, 35, 42)")
-            },
-            {
-              "name": "",
-              "value": _("• Making QuickRaid of weapon and bracelet hero chapters is recommended (list can be found <a class='styled_a' href='https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w/'>here</a>)")
-            },
-            {
-              "name": "",
-              "value": _("• Clearing normal chapter 21 as well as hero chapter 17 enables great rarity(green) item drops from chapters")
-            },
-            {
-              "name": "",
-              "value": _("• Clearing normal chapter 35 as well as hero chapter 30 enables rare rarity(blue) item drops from chapters")
+        },
+        "fusion_dragon": {
+            "type": "img",
+            "displayName": _("dragon"),
+            "displayNameImg": "<img src='/static/image/wiki-image/Currency_Dragon_Random_RarityQuality_12.png' alt='great rarity image dragon'> - <img src='/static/image/wiki-image/Currency_Dragon_Random_RarityQuality_14.png' alt='epic rarity image dragon'>",
+            "classButton": "collapsible fusion",
+            "collapsible_container": {
+                "class_content": "fusion",
+                "content": {
+                    "field": {
+                        "src": "image/wiki-image/Dragon-Rarity-Guide.webp",
+                        "class": "fusion_collaps_img",
+                        "alt": "Achero rarity guide"
+                    }
+                }
             }
-          ],
-          "footer": {
-            "innerText": _("Credit: zkn#4789")
-          },
-          "thumbnail": {
-            "src": "/static/image/wiki-image/CommonWeapon.png",
-            "alt": "Gear Farming Thumbnail",
-            "class": ""
-          }
-        }
-      }
+        },
     },
-    "runes_guide": {
-      "type": "embed",
-      "displayName": _("rune guide"),
-      "displayNameImg": "<img src='/static/image/wiki-image/Runes.png' alt='runes guide image archero'>",
-      "classButton": "collapsible runes_guide",
-      "collapsible_container": {
-        "class_content": "runes_guide_child",
-        "border_color": "style='border-color: rgb(177,177,177);'",
-        "content": {
-          "title": {
-            "idTitle": "title_runes_guide",
-            "innerText": _("Runes Guide")
-          },
-          "description": {
-            "idDesc": "desc_runes_guide",
-            "innerText": _("TIP: For Power|Courage rune you can also test on the <a class='a_styled' href='/wiki/damage-calculator/'>damage emulator here</a>.")
-          },
-          "field": [
-            {
-              "name": _("🔴 Power"),
-              "value": ""
-            },
-            {
-              "name": "",
-              "value": _("All Damage +x% > Crit Chance +x% > Attack +x% > Damage to <unit type> +x% (ground, airborne, undead etc...) > Rest")
-            },
-            {
-              "name": _("🔵 Saviour"),
-              "value": ""
-            },
-            {
-              "name": "",
-              "value": _("Damage Resistance +x% > Projectile Resistance or Collision Resistance +x% > Resistance +x% > Enhanced equipment +x% > HP +x% (not as important, mostly for flexing) > Rest")
-            },
-            {
-              "name": _("🟢 Recovery"),
-              "value": ""
-            },
-            {
-              "name": "",
-              "value": _("+x% Heal and +x% HP > +x% Chance for good skill (rage, rico most important) > Rest")
-            },
-            {
-              "name": _("🟣 Courage"),
-              "value": ""
-            },
-            {
-              "name": "",
-              "value": _("Attack +x% and Attack +x > Elemental Damage +x% (optional) > +x% Base Stats for <Hero> (don't waste runes on base stats rune, it's not worth)")
-            },
-            {
-              "name": _("🟡 Luck"),
-              "value": ""
-            },
-            {
-              "name": "",
-              "value": _("HP+ and HP +% > Egg hatch boost if you have many > Counterattack Rate/Damage for CA Locket players > Rest")
-            },
-          ],
-          "footer": {
-            "innerText": ""
-          },
-          "thumbnail": {
-            "src": "/static/image/wiki-image/Runes.png",
-            "alt": "Runes Thumbnail",
-            "class": ""
-          }
-        }
-      }
-    },
-    "glyphs": {
-      "type": "embed",
-      "displayName": _("glyphs guide"),
-      "displayNameImg": "<img src='/static/image/wiki-image/RandomGlyph.png' alt='glyph guide image archero'>",
-      "classButton": "collapsible glyphs",
-      "collapsible_container": {
-        "class_content": "glyphs",
-        "border_color": "style='border-color: rgb(177,177,177);'",
-        "content": {
-          "title": {
-            "idTitle": "title_glyph_guide",
-            "innerText": _("Glyphs: ")
-          },
-          "description": {
-            "idDesc": "desc_glyph_guide",
-            "innerText": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/refinement_guide/' target='_blank'>reddit guide</a>"
-          },
-          "field": [
-            {
-              "name": _("There is 2 type of glyphs :"),
-              "value": _("• Base Glyphs (without rank)<br>• Special Glyphs (rank A / S / SS)")
-            },
-            {
-              "name": _("How to get glyphs ??"),
-              "value": _("- you need to sacrifice stuff starting from epic to ancient legendary")
-            },
-            {
-              "name": "",
-              "value": _("- When you sacrificed your stuff you can get random rarity & number of the same glyphs")
-            },
-            {
-              "name": "",
-              "value": _("- There is a chance you will get duplicates of the same Glyphs.")
-            },
-            {
-              "name": "",
-              "value": _("- Each item gives different glyphs, S Item always gives special glyphs (A/S/SS) (S item are obtainable in obsidian or prisma chest)")
+    "tierlist": {
+        "tierlist_hero": {
+            "type": "img",
+            "displayName": _("hero"),
+            "displayNameImg": "<img src='/static/image/img-sidebar/hero.png' alt='tierlist hero archero 2023'>",
+            "classButton": "collapsible tierlist",
+            "collapsible_container": {
+                "class_content": "tierlist",
+                "content": {
+                    "field": {
+                        "src": "image/wiki-image/HeroTierlist2023.webp",
+                        "class": "tierlist_img",
+                        "alt": "Tierlist Hero Archero"
+                    }
+                }
             }
-          ],
-          "footer": {
-            "innerText": _("Glyph System - Unlocked at Chapter 17, you will need a Legendary item in order to access it.")
-          },
-          "thumbnail": {
-            "src": "",
-            "alt": "",
-            "class": ""
-          }
-        }
-      }
-    },
-    "refinement": {
-      "type": "embed",
-      "displayName": _("refinements guide"),
-      "displayNameImg": "<img src='/static/image/wiki-image/RandomGlyph.png' alt='refinement guide image archero'>",
-      "classButton": "collapsible refinement",
-      "collapsible_container": {
-        "class_content": "refinement",
-        "border_color": "style='border-color: rgb(177,177,177);'",
-        "content": {
-          "title": {
-            "idTitle": "title_refinement_guide",
-            "innerText": _("Refine: ")
-          },
-          "description": {
-            "idDesc": "desc_refinement_guide",
-            "innerText": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/refinement_guide/' target='_blank'>reddit guide</a>"
-          },
-          "field": [
-            {
-              "name": _("How to unlock them:"),
-              "value": _("Refinement rarity starts at Epic, to unlock the second slot, Perfect Epic, you need to refine 8 times. Same goes for the next rarities.")
-            },
-            {
-              "name": "",
-              "value": _("• 1st Slot (Epic) → Can only equip Normal Glyphs")
-            },
-            {
-              "name": "",
-              "value": _("• 2nd Slot (Perfect Epic) → Unlocks Special Glyph slot")
-            },
-            {
-              "name": "",
-              "value": _("• 3rd Slot (Legendary) → Unlocks Normal Glyph slot")
-            },
-            {
-              "name": "",
-              "value": _("• 4th Slot (Ancient Legendary) → Unlocks Normal Glyph slot")
+        },
+        "tierlist_item": {
+            "type": "img",
+            "displayName": _("item normal"),
+            "displayNameImg": "<img src='/static/image/rarity/epic.png' alt='epic rarity image tierlist archero'> - <img src='/static/image/rarity/ancient_legendary.png' alt='ancient legendary rarity image tierlist archero'>",
+            "classButton": "collapsible tierlist",
+            "collapsible_container": {
+                "class_content": "tierlist",
+                "content": {
+                    "field": {
+                        "src": "image/wiki-image/General-Tier-List_1.webp",
+                        "class": "tierlist_img",
+                        "alt": "Tierlist Archero"
+                    }
+                }
             }
-          ],
-          "footer": {
-            "innerText": "<a class='styled_a' href='https://docs.google.com/spreadsheets/d/1Z0bGaCJ8EuKZQSqeW8q1eS5bWl_5z6E237-JAuf9pFk' target='_blank'>Glyph Sheets</a>"
-          },
-          "thumbnail": {
-            "src": "",
-            "alt": "",
-            "class": ""
-          }
-        }
-      }
-    },
-    "quickraid": {
-      "type": "img",
-      "displayName": _("quick raid rewards"),
-      "displayNameImg": "<img src='/static/image/wiki-image/Quickraid_icon.png' alt='quickraid icon image archero'>",
-      "classButton": "collapsible quickraid",
-      "collapsible_container": {
-        "class_content": "quickraid",
-        "content": {
-          "field": {
-            "src": "image/wiki-image/qr_chart.png",
-            "class": "qr-chart-img",
-            "alt": "Archero quickraid drop"
-          }
-        }
-      }
-    },
-    "altar_cost": {
-      "type": "embed",
-      "displayName": _("altar cost"),
-      "displayNameImg": "<img src='/static/image/wiki-image/BloodthirstStone.png' alt='bloodthirst stone image archero'>",
-      "classButton": "collapsible altar_cost",
-      "collapsible_container": {
-        "class_content": "altar_cost_content",
-        "border_color": "style='border-color: rgb(177,177,177);'",
-        "content": {
-          "title": {
-            "idTitle": "altar_cost_title",
-            "innerText": _("Altar Cost lvl0 to 120")
-          },
-          "description": {
-            "idDesc": "altar_cost_desc",
-            "innerText": ""
-          },
-          "field": [
-            {
-              "name": "",
-              "value": "0 <i class='fa-solid fa-arrow-right'></i> 5 = 5 x 5 BS<br>5 <i class='fa-solid fa-arrow-right'></i> 10 = 5 x 10 BS"
-            },
-            {
-              "name": _("Ascension n°10 = 100 BS"),
-              "value": "10 <i class='fa-solid fa-arrow-right'></i> 15 = 5 x 20 BS<br>15 <i class='fa-solid fa-arrow-right'></i> 20 = 5 x 30 BS"
-            },
-            {
-              "name": _("Ascension n°20 = 250 BS"),
-              "value": "20 <i class='fa-solid fa-arrow-right'></i> 25 = 5 x 50 BS<br>25 <i class='fa-solid fa-arrow-right'></i> 30 = 5 x 70 BS"
-            },
-            {
-              "name": _("Ascension n°30 = 450 BS"),
-              "value": "30 <i class='fa-solid fa-arrow-right'></i> 35 = 5 x 100 BS<br>35 <i class='fa-solid fa-arrow-right'></i> 40 = 5 x 150 BS"
-            },
-            {
-              "name": _("Ascension n°40 = 750 BS"),
-              "value": "40 <i class='fa-solid fa-arrow-right'></i> 45 = 5 x 200 BS<br>45 <i class='fa-solid fa-arrow-right'></i> 50 = 5 x 250 BS"
-            },
-            {
-              "name": _("Ascension n°50 = 1250 BS"),
-              "value": "50 <i class='fa-solid fa-arrow-right'></i> 55 = 5 x 300 BS<br>55 <i class='fa-solid fa-arrow-right'></i> 60 = 5 x 350 BS"
-            },
-            {
-              "name": _("Ascension n°60 = 2000 BS"),
-              "value": "60 <i class='fa-solid fa-arrow-right'></i> 65 = 5 x 400 BS<br>65 <i class='fa-solid fa-arrow-right'></i> 70 = 5 x 450 BS"
-            },
-            {
-              "name": _("Ascension n°70 = 3000 BS"),
-              "value": "70 <i class='fa-solid fa-arrow-right'></i> 75 = 5 x 500 BS<br>75 <i class='fa-solid fa-arrow-right'></i> 80 = 5 x 600 BS"
-            },
-            {
-              "name": _("Ascension n°80 = 4000 BS"),
-              "value": "80 <i class='fa-solid fa-arrow-right'></i> 85 = 5 x 700 BS<br>85 <i class='fa-solid fa-arrow-right'></i> 90 = 5 x 800 BS"
-            },
-            {
-              "name": _("Ascension n°90 = 5000 BS"),
-              "value": "90 <i class='fa-solid fa-arrow-right'></i> 95 = 5 x 900 BS<br>95 <i class='fa-solid fa-arrow-right'></i> 100 = 5 x 1000 BS"
-            },
-            {
-              "name": _("Ascension n°100 = 7500 BS"),
-              "value": "100 <i class='fa-solid fa-arrow-right'></i> 105 = 5 x 1200 BS<br>105 <i class='fa-solid fa-arrow-right'></i> 110 = 5 x 1400 BS"
-            },
-            {
-              "name": _("Ascension n°110 = 10000 BS"),
-              "value": "110 <i class='fa-solid fa-arrow-right'></i> 115 = 5 x 1600 BS<br>115 <i class='fa-solid fa-arrow-right'></i> 120 = 5 x 1800 BS"
+        },
+        "tierlist_item_mythic": {
+            "type": "img",
+            "displayName": _("item mythic"),
+            "displayNameImg": "<img src='/static/image/rarity/mythic.png' alt='mythic rarity image tierlist archero'>",
+            "classButton": "collapsible tierlist",
+            "collapsible_container": {
+                "class_content": "tierlist",
+                "content": {
+                    "field": {
+                        "src": "image/wiki-image/Mythic-Tier-List2023.webp",
+                        "class": "tierlist_img_myt",
+                        "alt": "Tierlist 2023 Archero"
+                    }
+                }
             }
-          ],
-          "footer": {
-            "innerText": "BS <i class='fa-solid fa-arrow-right'></i> Bloodthirst Stones <object type='image/png' data='/static/image/svg/bloodthirst_stone.svg' width='16' height='16'></object> (<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_bloodthirst_stones.3F'>what is bloodstone ?</a>)"
-          },
-          "thumbnail": {
-            "src": "",
-            "alt": "",
-            "class": ""
-          }
-        }
-      }
+        },
     },
-    "altar_boost": {
-      "type": "embed",
-      "displayName": _("altar bonus ascensions"),
-      "displayNameImg": "<img src='/static/image/wiki-image/AltarImage.png' alt='archero altar boosts'>",
-      "classButton": "collapsible altar_boost",
-      "collapsible_container": {
-        "class_content": "altar_boost_content",
-        "border_color": "style='border-color: rgb(177,177,177);'",
-        "content": {
-          "title": {
-            "idTitle": "altar_boost_title",
-            "innerText": _("Altar Bonus Ascensions")
-          },
-          "description": {
-            "idDesc": "altar_boost_desc",
-            "innerText": ""
-          },
-          "field": [
-            {
-              "name": _("Lvl 10, 40, 70 and 100 :"),
-              "value": "• Hp +5%"
-            },
-            {
-              "name": "",
-              "value": "<br><br>"
-            },
-            {
-              "name": _("Lvl 20, 50, 80 and 110 :"),
-              "value": _("• Attack +5%")
-            },
-            {
-              "name": "",
-              "value": "<br><br>"
-            },
-            {
-              "name": _("Lvl 30, 60, 90 and 120: "),
-              "value": _("• (Gear Altar) Red Heart Healing Effect +5%<br>• (Hero Altar) Red Heart Drop Rate +5%")
-            },
-            {
-              "name": "",
-              "value": "<br><br>"
-            },
-            {
-              "name": _("Overall bonus :"),
-              "value": _("• (Gear Altar) Item Base Stats Enhanced +[x]%")
-            },
-            {
-              "name": "",
-              "value": _("• (Gear Altar lvl30) Equipment Droprate +[x]%")
-            },
-            {
-              "name": "",
-              "value": _("• (Hero Altar) Hero Base Stats +[x]%")
-            },
-            {
-              "name": "",
-              "value": _("• (Hero Altar lvl50) Damage to Elite Enemies +[x]%")
+    "guide": {
+        "faq": {
+            "type": "embed",
+            "displayName": _("Frequently Asked Questions"),
+            "displayNameImg": "<img src='/static/image/wiki-image/question_mark.png' alt='question mark archero'>",
+            "classButton": "collapsible faq-container",
+            "collapsible_container": {
+                "class_content": "faq",
+                "border_color": "style='border-color: rgb(177,177,177);'",
+                "content": {
+                    "title": {
+                        "idTitle": "title_faq",
+                        "innerText": _("Frequently Asked Questions")
+                    },
+                    "description": {
+                        "idDesc": "desc_faq",
+                        "innerText": ""
+                    },
+                    "field": [
+                        {
+                        "name": _("• Frequently Asked Questions •"),
+                        "value": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_should_i_dismantle_or_exchange_items.3F'>Should I dismantle or exchange items?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_loadout.3F'>What is the best loadout?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_are_the_best_abilities.3F'>What are the best abilities?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_stutterstepping.3F'>What is stutterstepping?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_eggs_of_certain_monsters.2Feggs.3F'>Where do I find eggs of certain monsters/eggs?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_can_i_transfer_my_progress_from_ios_to_android_or_from_android_to_ios.3F'>Can I transfer my progress from iOS \u27f7 Android ?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_why_did_i_not_get_the_latest_archero_update_yet.3F'>Why did I not get the latest Archero update yet?</a>"
+                        },
+                        {
+                        "name": _("• Farming •"),
+                        "value": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_why_did_i_not_receive_my_loot_that_dropped_in_a_stage.3F'>Why did I not receive my loot ?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_place_to_farm.3F'>What is the best place to farm?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_is_the_best_place_to_farm_a_specific_item.3F'>What is the best place to farm a specific item?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_bloodthirst_stones.3F'>Where do I find Bloodthirst Stones?</a>"
+                        },
+                        {
+                        "name": _("• Progressing •"),
+                        "value": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_do_i_get_more_gems.3F'>How do I get more gems?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_i_can.27t_beat_chapter_x.2C_what_should_i_do.3F'>I can't beat chapter x, what should I do?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_do_i_get_more_atk_and_hp.3F'>How do I get more ATK and HP?</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_how_far_can_i_upgrade_my_talents.3F'>How far can I upgrade my talents?</a>"
+                        },
+                        {
+                        "name": _("• When do I unlock ... ?"),
+                        "value": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.ancient_maze'>Ancient Maze</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.expedition_hero_mode'>Expedition Hero mode</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.quick_raids'>Quick Raids</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.equipment_altar'>Equipment Altar</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.hero_altar'>Hero Altar</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.dragon_statues'>Dragon Statues</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.great_.28green.29_item_drops_in_chapters'>Great item drops</a><br><a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_.refining.2Fglyphs'>Refining/Glyphs</a>"
+                        }
+                    ],
+                    "footer": {
+                        "innerText": _("Source : Reddit r/Archero")
+                    },
+                    "thumbnail": {
+                        "src": "",
+                        "alt": "",
+                        "class": ""
+                    }
+                }
             }
-          ],
-          "footer": {
-            "innerText": ""
-          },
-          "thumbnail": {
-            "src": "",
-            "alt": "",
-            "class": ""
-          }
-        }
-      }
-    },
-    "egg_stats": {
-      "type": "embed",
-      "displayName": _("egg stats"),
-      "displayNameImg": "<img src='/static/image/wiki-image/Egg_icon.png' alt='egg icon archero'>",
-      "classButton": "collapsible egg_stats",
-      "collapsible_container": {
-        "class_content": "egg_stats_content",
-        "border_color": "style='border-color: rgb(177,177,177);'",
-        "content": {
-          "title": {
-            "idTitle": "title_egg_stats",
-            "innerText": _("Archero Hatchery and Egg Farming Compilation (edited by @Abstrusity, @Luhcaran, @Shusaku, @𝗺𝗿𝗯)")
-          },
-          "description": {
-            "idDesc": "desc_egg_stats",
-            "innerText": ""
-          },
-          "field": [
-            {
-              "name": _("Includes"),
-              "value": _("• List of available Monsters")
-            },
-            {
-              "name": "",
-              "value": _("• Numbers of kills required to hatch or complete quests")
-            },
-            {
-              "name": "",
-              "value": _("• Completed quest dialogue")
-            },
-            {
-              "name": "",
-              "value": _("• Automated hatch timers")
-            },
-            {
-              "name": "",
-              "value": _("• Where to find each Monster and which locations are recommended")
-            },
-            {
-              "name": "",
-              "value": _("• Monster training bonuses and costs (still Work in Progress)")
-            },
-            {
-              "name": "",
-              "value": "<a class='styled_a' href='https://docs.google.com/spreadsheets/d/1p0xAb6ZrgwqhynromVXTqJSsfWlK1W8EDDt2HyvmRKE' target='_blank'>Google Sheets</a>"
-            }    
-          ],
-          "footer": {
-            "innerText": _("Initially made by LanderZ")
-          },
-          "thumbnail": {
-            "src": "",
-            "alt": "",
-            "class": ""
-          }
-        }
-      }
-    },
-    "hidden_stats": {
-      "type": "embed",
-      "displayName": _("hidden stats"),
-      "displayNameImg": "<img src='/static/image/img-sidebar/theorycraft.png' alt='archero calculation magnifying glass image archero'>",
-      "classButton": "collapsible hidden_stats",
-      "collapsible_container": {
-        "class_content": "hidden_stats_content",
-        "border_color": "style='border-color: rgb(177,177,177);'",
-        "content": {
-          "title": {
-            "idTitle": "title_refine_stats",
-            "innerText": _("Stats unlocked when reaching Mythic Refinement")
-          },
-          "description": {
-            "idDesc": "desc_refine_stats",
-            "innerText": ""
-          },
-          "field": [
-            {
-              "name": "",
-              "value": _("•  Weapon → For a brief while after taking damage, the next hit fires an extra shot.")
-            },
-            {
-              "name": "",
-              "value": _("•  Armor → The Higher the HP, the higher the Attack.")
-            },
-            {
-              "name": "",
-              "value": _("•  Ring n°1 → While Standing still reduces incoming Bullets Damage.")
-            },
-            {
-              "name": "",
-              "value": _("•  Ring n°2 → While Standing still reduces incoming Colision Damage.")
-            },
-            {
-              "name": "",
-              "value": _("•  Bracelet → When recovering HP in the Angel room, there is a chance to receive 3x healing.")
-            },
-            {
-              "name": "",
-              "value": _("•  Pets n°1 & Pets n°2 → After 2 attacks, the next attack deals double damage. ")
-            },
-            {
-              "name": "",
-              "value": _("•  Locket → For the first 3s after entering a room, increases movement speed.")
-            },
-            {
-              "name": "",
-              "value": _("•  SpellBook → SpellBook can gain energy from Hearts.")
-            },
-            {
-              "name": _("Comments"),
-              "value": _("•  Pets n°1 & Pets n°2 → Works only for the pet attack.")
+        },
+        "gems_spending_guide": {
+            "type": "embed",
+            "displayName": _("Gems"),
+            "displayNameImg": "<img src='/static/image/wiki-image/Gem.png' alt='gem image archero'>",
+            "classButton": "collapsible gems_spending_guide",
+            "collapsible_container": {
+                "class_content": "gems_spending_guide_child",
+                "border_color": "style='border-color: rgb(0,249,54);'",
+                "content": {
+                    "title": {
+                        "idTitle": "title_gems_guide",
+                        "innerText": _("Gem Guide")
+                    },
+                    "description": {
+                        "idDesc": "desc_gems_guide",
+                        "innerText": ""
+                    },
+                    "field": [
+                        {
+                        "name": _("Earning:"),
+                        "value": ""
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Daily Quests: Up to 40 Gems per day")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Weekly Quests: Up to 230 Gems per week")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Daily Ad Pack: 30 Gems per day")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Ad Boss wheel: Up to 100 Gems per day")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Hero Duo")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Hero Duel: Profit if you win ≥ 62% of 40 Gem matches or ≥ 67% of 100 Gem matches")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Monster Farm: Clean up obstacles for a chance to receive Gems")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Clear new chapters")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Clear Expedition stages")
+                        },
+                        {
+                        "name": "",
+                        "value": "<br>"
+                        },
+                        {
+                        "name": _("Spending:"),
+                        "value": ""
+                        },
+                        {
+                        "name": "",
+                        "value": _("• At least one main hero (Helix is recommended)")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Extra hatchery slots, to speed up egg hatching")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Extra monster book slots, to get more bonuses from monsters in use")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Extra attempt for Ancient Maze, if you can consistently finish it on Extreme/Misery difficulty")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Extra energy to farm Hero chapters or play events")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Extra attempt(s) for Up-Close Dangers, if you are at the point where you earn relatively high amounts of coins from it compared to chapter runs")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Mystery Chest in your Farm, if it shows up")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Login Rewards Event <a class='styled_a' href='https://cdn.discordapp.com/attachments/1018889785571540994/1113272516136407061/LoginRewardsEvent.png' target='_blank'>[Example]</a><br>")
+                        }
+                    ],
+                    "footer": {
+                        "innerText": ""
+                    },
+                    "thumbnail": {
+                        "src": "/static/image/wiki-image/Gem.png",
+                        "alt": "Gems Spending Thumbnail",
+                        "class": ""
+                    }
+                }
             }
-          ],
-          "footer": {
-            "innerText": ""
-          },
-          "thumbnail": {
-            "src": "",
-            "alt": "",
-            "class": ""
-          }
+        },
+        "gold_guide": {
+            "type": "embed",
+            "displayName": _("gold"),
+            "displayNameImg": "<img src='/static/image/wiki-image/Gold.png' alt='gold image archero'>",
+            "classButton": "collapsible gold_guide",
+            "collapsible_container": {
+                "class_content": "gold_guide_child",
+                "border_color": "style='border-color: rgb(255,196,0);'",
+                "content": {
+                    "title": {
+                        "idTitle": "title_gold_guide",
+                        "innerText": _("Gold Guide")
+                    },
+                    "description": {
+                        "idDesc": "desc_gold_guide",
+                        "innerText": ""
+                    },
+                    "field": [
+                        {
+                        "name": _("Earning:"),
+                        "value": _("• Use any other rings than Lion,Vilebat,Dragon Rings for +10% coins from battle")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• In your Spirit jewel slots, have an overall level of 8 or higher, for +5% Coins from battle")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Play the Up-close Dangers event every time it is active (Tuesday, Thursday, Saturday, Sunday)")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Play the clan event (Monster Treasure) every day")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Watch 3 ads per day at the bottom of the Shop tab")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Watch 4 ads per day for 5 energy each by clicking on your energy at the top, use this energy to play chapters")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Hero Mode Boss chapters (7, 14, 21, 28, 35, 42)")
+                        },
+                        {
+                        "name": "",
+                        "value": "<br>"
+                        },
+                        {
+                        "name": _("What should i spend my gold on ?"),
+                        "value": "• <a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_what_should_i_spend_my_gold_on.3F' target='_blank'>Reddit</a>"
+                        }
+                    ],
+                    "footer": {
+                        "innerText": _("Credit: zkn#4789")
+                    },
+                    "thumbnail": {
+                        "src": "/static/image/wiki-image/Gold.png",
+                        "alt": "Gold Farming Thumbnail",
+                        "class": ""
+                    }
+                }
+            }
+        },
+        "gear_farming_guide": {
+            "type": "embed",
+            "displayName": _("gear farming"),
+            "displayNameImg": "<img src='/static/image/wiki-image/Inventory.png' alt='gear farming inventory image archero'>",
+            "classButton": "collapsible gear_farming_guide",
+            "collapsible_container": {
+                "class_content": "gear_farming_guide_child",
+                "border_color": "style='border-color: rgb(177,177,177);'",
+                "content": {
+                    "title": {
+                        "idTitle": "title_gear_guide",
+                        "innerText": _("Gear Farming Guide")
+                    },
+                    "description": {
+                        "idDesc": "desc_gear_guide",
+                        "innerText": _("TIP: Always wait for dropped items to reach your character! If you proceed to the next stage and the items did not reach your character, you will not get those items.")
+                    },
+                    "field": [
+                        {
+                        "name": _("Flying Bullets"),
+                        "value": ""
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Can drop more than 5 items per run")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Drops relatively many scrolls")
+                        },
+                        {
+                        "name": "",
+                        "value": "<br>"
+                        },
+                        {
+                        "name": _("Farm Chapters :"),
+                        "value": ""
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Farm the highest hero boss chapter you are able to clear (7, 14, 21, 28, 35, 42)")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Making QuickRaid of weapon and bracelet hero chapters is recommended (list can be found <a class='styled_a' href='https://docs.google.com/spreadsheets/d/1gI3lxMxjVT3iLb-71kyNrAGE8a4rhAp_tSo7IDwNm3w/'>here</a>)")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Clearing normal chapter 21 or hero chapter 17 enables great rarity(green) item drops from chapters")
+                        },
+                        {
+                        "name": "",
+                        "value": _("• Clearing normal chapter 35 or hero chapter 30 enables rare rarity(blue) item drops from chapters")
+                        }
+                    ],
+                    "footer": {
+                        "innerText": _("Credit: zkn#4789")
+                    },
+                    "thumbnail": {
+                        "src": "/static/image/wiki-image/CommonWeapon.png",
+                        "alt": "Gear Farming Thumbnail",
+                        "class": ""
+                    }
+                }
+            }
+        },
+        "runes_guide": {
+            "type": "embed",
+            "displayName": _("rune"),
+            "displayNameImg": "<img src='/static/image/wiki-image/Runes.png' alt='runes guide image archero'>",
+            "classButton": "collapsible runes_guide",
+            "collapsible_container": {
+                "class_content": "runes_guide_child",
+                "border_color": "style='border-color: rgb(177,177,177);'",
+                "content": {
+                    "title": {
+                        "idTitle": "title_runes_guide",
+                        "innerText": _("Runes Guide")
+                    },
+                    "description": {
+                        "idDesc": "desc_runes_guide",
+                        "innerText": _("TIP: For Power|Courage rune you can also test on the <a class='a_styled' href='/wiki/damage-calculator/'>damage emulator here</a>.")
+                    },
+                    "field": [
+                        {
+                        "name": _("🔴 Power"),
+                        "value": ""
+                        },
+                        {
+                        "name": "",
+                        "value": _("All Damage +x% > Crit Chance +x% > Attack +x% > Damage to <unit type> +x% (ground, airborne, undead etc...) > Rest")
+                        },
+                        {
+                        "name": _("🔵 Saviour"),
+                        "value": ""
+                        },
+                        {
+                        "name": "",
+                        "value": _("Damage Resistance +x% > Projectile Resistance or Collision Resistance +x% > Resistance +x% > Enhanced equipment +x% > HP +x% (not as important, mostly for flexing) > Rest")
+                        },
+                        {
+                        "name": _("🟢 Recovery"),
+                        "value": ""
+                        },
+                        {
+                        "name": "",
+                        "value": _("+x% Heal and +x% HP > +x% Chance for good skill (rage, rico most important) > Rest")
+                        },
+                        {
+                        "name": _("🟣 Courage"),
+                        "value": ""
+                        },
+                        {
+                        "name": "",
+                        "value": _("Attack +x% and Attack +x > Elemental Damage +x% (optional) > +x% Base Stats for <Hero> (don't waste runes on base stats rune, it's not worth)")
+                        },
+                        {
+                        "name": _("🟡 Luck"),
+                        "value": ""
+                        },
+                        {
+                        "name": "",
+                        "value": _("HP+ and HP +% > Egg hatch boost if you have many > Counterattack Rate/Damage for CA Locket players > Rest")
+                        },
+                    ],
+                    "footer": {
+                        "innerText": ""
+                    },
+                    "thumbnail": {
+                        "src": "/static/image/wiki-image/Runes.png",
+                        "alt": "Runes Thumbnail",
+                        "class": ""
+                    }
+                }
+            }
+        },
+    },
+    "other": {
+        "evo_cost": {
+            "type": "img",
+            "displayName": _("hero evolution cost"),
+            "displayNameImg": "<img src='/static/image/wiki-image/cookie.png' alt='cookie image archero'><img src='/static/image/wiki-image/Random_HeroFragment.png' alt='shards image archero'>",
+            "classButton": "collapsible evo_cost",
+            "collapsible_container": {
+                "class_content": "evo_cost",
+                "content": {
+                    "field": {
+                        "src": "image/wiki-image/EvolutionCost.webp",
+                        "class": "evo_cost_img",
+                        "alt": "Evolution cost Archero"
+                    }
+                }
+            }
+        },
+        "glyphs": {
+            "type": "embed",
+            "displayName": _("glyphs"),
+            "displayNameImg": "<img src='/static/image/wiki-image/RandomGlyph.png' alt='glyph guide image archero'>",
+            "classButton": "collapsible glyphs",
+            "collapsible_container": {
+                "class_content": "glyphs",
+                "border_color": "style='border-color: rgb(177,177,177);'",
+                "content": {
+                    "title": {
+                        "idTitle": "title_glyph_guide",
+                        "innerText": _("Glyphs: ")
+                    },
+                    "description": {
+                        "idDesc": "desc_glyph_guide",
+                        "innerText": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/refinement_guide/' target='_blank'>reddit guide</a>"
+                    },
+                    "field": [
+                        {
+                        "name": _("There is 2 type of glyphs :"),
+                        "value": _("• Base Glyphs (without rank)<br>• Special Glyphs (rank A / S / SS)")
+                        },
+                        {
+                        "name": _("How to get glyphs ??"),
+                        "value": _("- you need to sacrifice stuff starting from epic to ancient legendary")
+                        },
+                        {
+                        "name": "",
+                        "value": _("- When you sacrificed your stuff you can get random rarity & number of the same glyphs")
+                        },
+                        {
+                        "name": "",
+                        "value": _("- There is a chance you will get duplicates of the same Glyphs.")
+                        },
+                        {
+                        "name": "",
+                        "value": _("- Each item gives different glyphs, S Item always gives special glyphs (S/SS) (S item are obtainable in obsidian or prisma chest)")
+                        }
+                    ],
+                    "footer": {
+                        "innerText": _("Glyph System - Unlocked at Chapter 17, you will need a Legendary item in order to access it.")
+                    },
+                    "thumbnail": {
+                        "src": "",
+                        "alt": "",
+                        "class": ""
+                    }
+                }
+            }
+        },
+        "refinement": {
+        "type": "embed",
+        "displayName": _("refinements guide"),
+        "displayNameImg": "<img src='/static/image/wiki-image/RandomGlyph.png' alt='refinement guide image archero'>",
+        "classButton": "collapsible refinement",
+        "collapsible_container": {
+            "class_content": "refinement",
+            "border_color": "style='border-color: rgb(177,177,177);'",
+            "content": {
+            "title": {
+                "idTitle": "title_refinement_guide",
+                "innerText": _("Refine: ")
+            },
+            "description": {
+                "idDesc": "desc_refinement_guide",
+                "innerText": "<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/refinement_guide/' target='_blank'>reddit guide</a>"
+            },
+            "field": [
+                {
+                "name": _("How to unlock them:"),
+                "value": _("Refinement rarity starts at Epic, to unlock the second slot, Perfect Epic, you need to refine 8 times. Same goes for the next rarities.")
+                },
+                {
+                "name": "",
+                "value": _("• 1st Slot (Epic) → Can only equip Normal Glyphs")
+                },
+                {
+                "name": "",
+                "value": _("• 2nd Slot (Perfect Epic) → Unlocks Special Glyph slot")
+                },
+                {
+                "name": "",
+                "value": _("• 3rd Slot (Legendary) → Unlocks Normal Glyph slot")
+                },
+                {
+                "name": "",
+                "value": _("• 4th Slot (Ancient Legendary) → Unlocks Normal Glyph slot")
+                }
+            ],
+            "footer": {
+                "innerText": "<a class='styled_a' href='https://docs.google.com/spreadsheets/d/1Z0bGaCJ8EuKZQSqeW8q1eS5bWl_5z6E237-JAuf9pFk' target='_blank'>Glyph Sheets</a>"
+            },
+            "thumbnail": {
+                "src": "",
+                "alt": "",
+                "class": ""
+            }
+            }
         }
-      }
+        },
+        "quickraid": {
+        "type": "img",
+        "displayName": _("quick raid rewards"),
+        "displayNameImg": "<img src='/static/image/wiki-image/Quickraid_icon.png' alt='quickraid icon image archero'>",
+        "classButton": "collapsible quickraid",
+        "collapsible_container": {
+            "class_content": "quickraid",
+            "content": {
+            "field": {
+                "src": "image/wiki-image/qr_chart.webp",
+                "class": "qr-chart-img",
+                "alt": "Archero quickraid drop"
+            }
+            }
+        }
+        },
+        "altar_cost": {
+        "type": "embed",
+        "displayName": _("altar cost"),
+        "displayNameImg": "<img src='/static/image/wiki-image/BloodthirstStone.png' alt='bloodthirst stone image archero'>",
+        "classButton": "collapsible altar_cost",
+        "collapsible_container": {
+            "class_content": "altar_cost_content",
+            "border_color": "style='border-color: rgb(177,177,177);'",
+            "content": {
+            "title": {
+                "idTitle": "altar_cost_title",
+                "innerText": _("Altar Cost lvl0 to 120")
+            },
+            "description": {
+                "idDesc": "altar_cost_desc",
+                "innerText": ""
+            },
+            "field": [
+                {
+                "name": "",
+                "value": "0 <i class='fa-solid fa-arrow-right'></i> 5 = 5 x 5 BS<br>5 <i class='fa-solid fa-arrow-right'></i> 10 = 5 x 10 BS"
+                },
+                {
+                "name": _("Ascension n°10 = 100 BS"),
+                "value": "10 <i class='fa-solid fa-arrow-right'></i> 15 = 5 x 20 BS<br>15 <i class='fa-solid fa-arrow-right'></i> 20 = 5 x 30 BS"
+                },
+                {
+                "name": _("Ascension n°20 = 250 BS"),
+                "value": "20 <i class='fa-solid fa-arrow-right'></i> 25 = 5 x 50 BS<br>25 <i class='fa-solid fa-arrow-right'></i> 30 = 5 x 70 BS"
+                },
+                {
+                "name": _("Ascension n°30 = 450 BS"),
+                "value": "30 <i class='fa-solid fa-arrow-right'></i> 35 = 5 x 100 BS<br>35 <i class='fa-solid fa-arrow-right'></i> 40 = 5 x 150 BS"
+                },
+                {
+                "name": _("Ascension n°40 = 750 BS"),
+                "value": "40 <i class='fa-solid fa-arrow-right'></i> 45 = 5 x 200 BS<br>45 <i class='fa-solid fa-arrow-right'></i> 50 = 5 x 250 BS"
+                },
+                {
+                "name": _("Ascension n°50 = 1250 BS"),
+                "value": "50 <i class='fa-solid fa-arrow-right'></i> 55 = 5 x 300 BS<br>55 <i class='fa-solid fa-arrow-right'></i> 60 = 5 x 350 BS"
+                },
+                {
+                "name": _("Ascension n°60 = 2000 BS"),
+                "value": "60 <i class='fa-solid fa-arrow-right'></i> 65 = 5 x 400 BS<br>65 <i class='fa-solid fa-arrow-right'></i> 70 = 5 x 450 BS"
+                },
+                {
+                "name": _("Ascension n°70 = 3000 BS"),
+                "value": "70 <i class='fa-solid fa-arrow-right'></i> 75 = 5 x 500 BS<br>75 <i class='fa-solid fa-arrow-right'></i> 80 = 5 x 600 BS"
+                },
+                {
+                "name": _("Ascension n°80 = 4000 BS"),
+                "value": "80 <i class='fa-solid fa-arrow-right'></i> 85 = 5 x 700 BS<br>85 <i class='fa-solid fa-arrow-right'></i> 90 = 5 x 800 BS"
+                },
+                {
+                "name": _("Ascension n°90 = 5000 BS"),
+                "value": "90 <i class='fa-solid fa-arrow-right'></i> 95 = 5 x 900 BS<br>95 <i class='fa-solid fa-arrow-right'></i> 100 = 5 x 1000 BS"
+                },
+                {
+                "name": _("Ascension n°100 = 7500 BS"),
+                "value": "100 <i class='fa-solid fa-arrow-right'></i> 105 = 5 x 1200 BS<br>105 <i class='fa-solid fa-arrow-right'></i> 110 = 5 x 1400 BS"
+                },
+                {
+                "name": _("Ascension n°110 = 10000 BS"),
+                "value": "110 <i class='fa-solid fa-arrow-right'></i> 115 = 5 x 1600 BS<br>115 <i class='fa-solid fa-arrow-right'></i> 120 = 5 x 1800 BS"
+                }
+            ],
+            "footer": {
+                "innerText": "BS <i class='fa-solid fa-arrow-right'></i> Bloodthirst Stones <object type='image/png' data='/static/image/svg/bloodthirst_stone.svg' width='16' height='16'></object> (<a class='styled_a' href='https://www.reddit.com/r/Archero/wiki/faq/#wiki_where_do_i_find_bloodthirst_stones.3F'>what is bloodstone ?</a>)"
+            },
+            "thumbnail": {
+                "src": "",
+                "alt": "",
+                "class": ""
+            }
+            }
+        }
+        },
+        "altar_boost": {
+        "type": "embed",
+        "displayName": _("altar bonus ascensions"),
+        "displayNameImg": "<img src='/static/image/wiki-image/AltarImage.png' alt='archero altar boosts'>",
+        "classButton": "collapsible altar_boost",
+        "collapsible_container": {
+            "class_content": "altar_boost_content",
+            "border_color": "style='border-color: rgb(177,177,177);'",
+            "content": {
+            "title": {
+                "idTitle": "altar_boost_title",
+                "innerText": _("Altar Bonus Ascensions")
+            },
+            "description": {
+                "idDesc": "altar_boost_desc",
+                "innerText": ""
+            },
+            "field": [
+                {
+                "name": _("Lvl 10, 40, 70 and 100 :"),
+                "value": "• Hp +5%"
+                },
+                {
+                "name": "",
+                "value": "<br><br>"
+                },
+                {
+                "name": _("Lvl 20, 50, 80 and 110 :"),
+                "value": _("• Attack +5%")
+                },
+                {
+                "name": "",
+                "value": "<br><br>"
+                },
+                {
+                "name": _("Lvl 30, 60, 90 and 120: "),
+                "value": _("• (Gear Altar) Red Heart Healing Effect +5%<br>• (Hero Altar) Red Heart Drop Rate +5%")
+                },
+                {
+                "name": "",
+                "value": "<br><br>"
+                },
+                {
+                "name": _("Overall bonus :"),
+                "value": _("• (Gear Altar) Item Base Stats Enhanced +[x]%")
+                },
+                {
+                "name": "",
+                "value": _("• (Gear Altar lvl30) Equipment Droprate +[x]%")
+                },
+                {
+                "name": "",
+                "value": _("• (Hero Altar) Hero Base Stats +[x]%")
+                },
+                {
+                "name": "",
+                "value": _("• (Hero Altar lvl50) Damage to Elite Enemies +[x]%")
+                }
+            ],
+            "footer": {
+                "innerText": ""
+            },
+            "thumbnail": {
+                "src": "",
+                "alt": "",
+                "class": ""
+            }
+            }
+        }
+        },
+        "egg_stats": {
+        "type": "embed",
+        "displayName": _("egg stats"),
+        "displayNameImg": "<img src='/static/image/wiki-image/Egg_icon.png' alt='egg icon archero'>",
+        "classButton": "collapsible egg_stats",
+        "collapsible_container": {
+            "class_content": "egg_stats_content",
+            "border_color": "style='border-color: rgb(177,177,177);'",
+            "content": {
+            "title": {
+                "idTitle": "title_egg_stats",
+                "innerText": _("Archero Hatchery and Egg Farming Compilation (edited by @Abstrusity, @Luhcaran, @Shusaku, @𝗺𝗿𝗯)")
+            },
+            "description": {
+                "idDesc": "desc_egg_stats",
+                "innerText": ""
+            },
+            "field": [
+                {
+                "name": _("Includes"),
+                "value": _("• List of available Monsters")
+                },
+                {
+                "name": "",
+                "value": _("• Numbers of kills required to hatch or complete quests")
+                },
+                {
+                "name": "",
+                "value": _("• Completed quest dialogue")
+                },
+                {
+                "name": "",
+                "value": _("• Automated hatch timers")
+                },
+                {
+                "name": "",
+                "value": _("• Where to find each Monster and which locations are recommended")
+                },
+                {
+                "name": "",
+                "value": _("• Monster training bonuses and costs (still Work in Progress)")
+                },
+                {
+                "name": "",
+                "value": "<a class='styled_a' href='https://docs.google.com/spreadsheets/d/1p0xAb6ZrgwqhynromVXTqJSsfWlK1W8EDDt2HyvmRKE' target='_blank'>Google Sheets</a>"
+                }    
+            ],
+            "footer": {
+                "innerText": _("Initially made by LanderZ")
+            },
+            "thumbnail": {
+                "src": "",
+                "alt": "",
+                "class": ""
+            }
+            }
+        }
+        },
+        "hidden_stats": {
+        "type": "embed",
+        "displayName": _("hidden stats"),
+        "displayNameImg": "<img src='/static/image/img-sidebar/theorycraft.png' alt='archero calculation magnifying glass image archero'>",
+        "classButton": "collapsible hidden_stats",
+        "collapsible_container": {
+            "class_content": "hidden_stats_content",
+            "border_color": "style='border-color: rgb(177,177,177);'",
+            "content": {
+            "title": {
+                "idTitle": "title_refine_stats",
+                "innerText": _("Stats unlocked when reaching Mythic Refinement")
+            },
+            "description": {
+                "idDesc": "desc_refine_stats",
+                "innerText": ""
+            },
+            "field": [
+                {
+                "name": "",
+                "value": _("•  Weapon → For a brief while after taking damage, the next hit fires an extra shot.")
+                },
+                {
+                "name": "",
+                "value": _("•  Armor → The Higher the HP, the higher the Attack.")
+                },
+                {
+                "name": "",
+                "value": _("•  Ring n°1 → While Standing still reduces incoming Bullets Damage.")
+                },
+                {
+                "name": "",
+                "value": _("•  Ring n°2 → While Standing still reduces incoming Colision Damage.")
+                },
+                {
+                "name": "",
+                "value": _("•  Bracelet → When recovering HP in the Angel room, there is a chance to receive 3x healing.")
+                },
+                {
+                "name": "",
+                "value": _("•  Pets n°1 & Pets n°2 → After 2 attacks, the next attack deals double damage. ")
+                },
+                {
+                "name": "",
+                "value": _("•  Locket → For the first 3s after entering a room, increases movement speed.")
+                },
+                {
+                "name": "",
+                "value": _("•  SpellBook → SpellBook can gain energy from Hearts.")
+                },
+                {
+                "name": _("Comments"),
+                "value": _("•  Pets n°1 & Pets n°2 → Works only for the pet attack.")
+                }
+            ],
+            "footer": {
+                "innerText": ""
+            },
+            "thumbnail": {
+                "src": "",
+                "alt": "",
+                "class": ""
+            }
+            }
+        }
+        }
     }
   },
   "Theorycraft": [

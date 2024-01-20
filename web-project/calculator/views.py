@@ -9,7 +9,7 @@ from .function import checkDarkMode,getCredentialForNonLoginRequired,checkMessag
 import json, os
 from app.settings import DEV_MODE, c_hostname, DEBUG_STATS
 from django.utils.translation import gettext as _, get_language
-from .local_data import LocalDataContentWiki
+from .data.wiki_data import LocalDataContentWiki
 
 missing_data = []
 
@@ -24,8 +24,8 @@ except:
 @loadContent(db_maintenance=True)
 def views_calc_stats(request,pbid:int,redirectPath:int):
 	global missing_data
-	with open("calculator/local_data.json", 'r', encoding="utf-8") as f:
-		local_data = json.load(f)
+	with open("calculator/data/calculator_data.json", 'r', encoding="utf-8") as f:
+		calculator_data = json.load(f)
 	missing_data.clear()
 	try:
 		user_stats = user.objects.get(public_id=pbid)
@@ -77,15 +77,15 @@ def views_calc_stats(request,pbid:int,redirectPath:int):
 	## Get all Relics Stats
 	relics_stats:dict = RelicsTable_stats.relics_Stats()
 	## Get Altar Ascension Stats
-	altar_stuff_ascension_atk = local_data["StuffAltarAscension"]['attack'][stuff_altar_ascension]
-	altar_stuff_ascension_hp = local_data["StuffAltarAscension"]['hp'][stuff_altar_ascension]
-	altar_stuff_ascension_healing_effect = local_data["StuffAltarAscension"]['healing_effect'][stuff_altar_ascension]
-	altar_stuff_ascension_equipment_base = local_data["StuffAltarAscension"]['equipment_base'][stuff_altar_ascension]
-	altar_heros_ascension_atk = local_data['HerosAltarAscension']['attack'][heros_altar_ascension]
-	altar_heros_ascension_hp = local_data['HerosAltarAscension']['hp'][heros_altar_ascension]
-	altar_heros_ascension_hp_drop = local_data['HerosAltarAscension']['hp_drop'][heros_altar_ascension]
-	altar_heros_ascension_heros_base = local_data['HerosAltarAscension']['heros_base'][heros_altar_ascension]
-	altar_heros_ascension_dmg_elite = local_data['HerosAltarAscension']['dmg_elite'][heros_altar_ascension]
+	altar_stuff_ascension_atk = calculator_data["StuffAltarAscension"]['attack'][stuff_altar_ascension]
+	altar_stuff_ascension_hp = calculator_data["StuffAltarAscension"]['hp'][stuff_altar_ascension]
+	altar_stuff_ascension_healing_effect = calculator_data["StuffAltarAscension"]['healing_effect'][stuff_altar_ascension]
+	altar_stuff_ascension_equipment_base = calculator_data["StuffAltarAscension"]['equipment_base'][stuff_altar_ascension]
+	altar_heros_ascension_atk = calculator_data['HerosAltarAscension']['attack'][heros_altar_ascension]
+	altar_heros_ascension_hp = calculator_data['HerosAltarAscension']['hp'][heros_altar_ascension]
+	altar_heros_ascension_hp_drop = calculator_data['HerosAltarAscension']['hp_drop'][heros_altar_ascension]
+	altar_heros_ascension_heros_base = calculator_data['HerosAltarAscension']['heros_base'][heros_altar_ascension]
+	altar_heros_ascension_dmg_elite = calculator_data['HerosAltarAscension']['dmg_elite'][heros_altar_ascension]
 	## Get Altar Stats 
 	altar_stuff_atk = AltarTable_stats.CalculAltar("stuff","attack",relics_stats.get('eqpm_altar_stats_var',0.0))
 	altar_stuff_hp = AltarTable_stats.CalculAltar("stuff","hp",relics_stats.get('eqpm_altar_stats_var',0.0))
@@ -194,7 +194,7 @@ def views_calc_stats(request,pbid:int,redirectPath:int):
 	egg_sinister_touch_passiv = EggTable_stats.GetPassivEggStats3("sinister_touch",missing_data)
 	egg_fireworm_queen_passiv = EggTable_stats.GetPassivEggStats3("fireworm_queen",missing_data)
 	## Get Brave Privilege Stats
-	brave_privileges_stats = local_data["BravePrivileges"]['level' + str(brave_privileges_level)]
+	brave_privileges_stats = calculator_data["BravePrivileges"]['level' + str(brave_privileges_level)]
 	## Get Special Bonus Stats
 	BonusSpe_jewel_weapon = JewelLevelTable_stats.JewelSpeBonusStatsRecup('weapon',brave_privileges_stats['Weapon JSSSA'],relics_stats.get("jewel_attack_bonus_var",0))
 	BonusSpe_jewel_armor = JewelLevelTable_stats.JewelSpeBonusStatsRecup('armor',brave_privileges_stats['Armor JSSSA'],relics_stats.get("jewel_hp_bonus_var",0))
@@ -473,11 +473,7 @@ def index_calc(request):
 	self_global_hp_save = user_stats.global_hp_save if user_stats else ""
 	rank = "?"
 	avatar_src = "/static/image/hero_icon/icon_unknown.png"
-	if ingame_id_cookie == "0-000000" and ingame_name_cookie == "visitor":
-		show_table = "visitor"
-	elif ingame_id_cookie == "9-999999" and ingame_name_cookie == "unknown":
-		show_table = "visitor"
-	elif profile and not profile[0] and user_stats:
+	if (ingame_id_cookie == "9-999999" and ingame_name_cookie == "unknown") or (profile and not profile[0] and user_stats):
 		show_table = "visitor"
 		messages.error(request, _(f'You attempted to access {self_ingame_name}<br>But your login username is "{ingame_name_cookie}".'))
 	elif profile and user_stats:

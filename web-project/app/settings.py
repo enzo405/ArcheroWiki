@@ -1,13 +1,14 @@
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 import os
 
 try:
-    if os.path.exists('conf/global_variable_local.py'):
-        from conf.global_variable_local import *
+    if os.path.exists('conf/conf_local.py'):
+        from conf.conf_local import *
     else:
-        from conf.global_variable import *
+        from conf.conf import *
 except ImportError:
-    from conf.global_variable import *
+    from conf.conf import *
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -37,7 +39,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'calculator.wikiMiddleware.CustomHeaderMiddleware',
+    'calculator.middlewares.wikiMiddleware.CustomHeaderMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -82,27 +84,16 @@ AUTH_PASSWORD_VALIDATORS = [
 CSRF_FAILURE_VIEW = c_CSRF_FAILURE_VIEW
 CSRF_USE_SESSION = c_CSRF_USE_SESSION
 CSRF_COOKIE_SECURE = c_CSRF_COOKIE_SECURE
-CSRF_COOKIE_DOMAIN = c_CSRF_COOKIE_DOMAIN
 CSRF_TRUSTED_ORIGINS = c_CSRF_TRUSTED_ORIGINS
-
+CSRF_COOKIE_SAMESITE = c_CSRF_COOKIE_SAMESITE
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "calculator/static/")
-
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
-
-from django.utils.translation import gettext_lazy as _
-
-
 LANGUAGE_CODE = 'en'
-
 LANGUAGES = (
     ('en', _('English')),
     ('fr', _('French')),
@@ -110,7 +101,6 @@ LANGUAGES = (
     ('ru', _('Russian')),
     ('br', _('Brazilian')),
 )
-
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale/'),
 )

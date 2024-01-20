@@ -2,18 +2,18 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.1">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.4a">
 <title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero Emulator Runes">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/damage-calculator">
 <meta property="og:type" content="website">
-<meta property="og:description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.">
-<meta name="description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.">
+<meta property="og:description" content="{% blocktrans %}Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.{% endblocktrans %}">
+<meta name="description" content="{% blocktrans %}Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.{% endblocktrans %}">
 <meta property="og:image" content="{{ request.archero_icon_link }}">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
-<div class="select-href">
+<div class="select-href" style="margin-bottom: 50px;">
 	<div class="chooseProfilMsg">{% blocktrans %}Choose a profile you want to test the runes on or look the damage :{% endblocktrans %}</div>
 	{% if selfHasProfil == "yes" %}
 	<a href="/{{ LANGUAGE_CODE }}/wiki/damage-calculator/calc/{{ selfStats.public_id }}/" class="div-onclick-menu" style="cursor: pointer;"><div class="menu-onclick-img"><span class="txt-onclick-span">{{ selfStats.ingame_name }} </span></div></a>

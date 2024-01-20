@@ -262,6 +262,7 @@ heros={
         "phantom_cloak":Path("calculator/static/image/heros/Atreus_phantom_cloak.png"),
         "golden_chestplate":Path("calculator/static/image/heros/Atreus_golden_chestplate.png"),
         "bright_robe":Path("calculator/static/image/heros/Atreus_bright_robe.png"),
+        "expedition_plate":Path("calculator/static/image/heros/Atreus_none.png"), # TODO add Atreus cropped photo with expedition plate
         "none":Path("calculator/static/image/heros/Atreus_none.png"),
     },
     "Phoren":Path("calculator/static/image/heros/Phoren.png"),

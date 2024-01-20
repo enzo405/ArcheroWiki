@@ -6,9 +6,9 @@
 	<title>{% blocktrans %}Login{% endblocktrans %}</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.9.1">
+	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.9.4a">
 	<link rel="icon" type="image/ong" href="{% static 'favicon.ico' %}">
-	<script src="{% static 'main.js' %}?version=1.9.1"></script>
+	<script src="{% static 'main.js' %}?version=1.9.4a"></script>
 </head>
 {% if darkmode == True %}
 <body class="body_dark_mode">
@@ -74,9 +74,6 @@
 		</div>
 	</div>
 <script>
-	document.cookie = 'visitor=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-</script>
-<script>
 	var span2 = document.getElementsByClassName("close_span_confirmation")[0];
 	var no_action = document.getElementById('cancel');
 
@@ -112,7 +109,7 @@
 			return createModale(`{% blocktrans %}Username must be between 3 and 15 characters long{% endblocktrans %}`, null, "errors");
 		} else if (username.length < 3 || username.length > 20) {
 			return createModale(`{% blocktrans %}Username must be between 3 and 15 characters long{% endblocktrans %}`, null, "errors");
-		} else if (username === 'visitor') {
+		} else if (username === 'unknown') {
 			return createModale(`{% blocktrans %}You cannot use this username{% endblocktrans %}`, null, "errors");
 		}
 		if (!ingameId) {

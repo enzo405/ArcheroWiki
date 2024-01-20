@@ -1,49 +1,40 @@
-img {
+@font-face {
+	font-family: 'Rubik';
+	src: url("/static/fonts/rubik.otf");
+}
+
+:root {
+    --dt-wiki-content-a-color: #c58af9;
+    --lt-wiki-content-a-color: #ff5151;
+}
+
+/* Custom style for tag */
+.article-page{
+    margin: 0 15px;
+}
+.article-page img {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -ms-user-select: none;
 }
-.page-wrapper {
-    display: flex;
-    width: 100%;
+.article-page iframe {
+    max-width: 100%;
 }
-.index-sidebar {
-    width: 200px;
-}
-.dropdown-toggle {
-    display: none;
-}
-.dropdown-menu {
-    height: calc(100vh - 20px);
-    overflow: auto;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-}
-.dropdown-menu a {
-    display: block;
-    padding: 10px;
+.article-page a{
     text-decoration: none;
-    color: #333;
-    transition: background-color 0.3s;
+    color: var(--lt-wiki-content-a-color);
 }
-.dropdown-menu a:hover {
-    background-color: #f2f2f2;
-}
-.content-wrapper {
-    padding: 10px;
-}
-.article {
+
+.article-page .article {
     border-radius: 10px;
     margin-bottom: 20px;
     padding: 20px;
     display: flex;
     border: solid black 1px;
 }
-.dot {
+.article-page .dot {
     height: 35px;
     width: 35px;
     border-radius: 50%;
@@ -51,88 +42,15 @@ img {
     align-items: center;
     margin-left: 5px;
 }
-.dot img {
+.article-page .dot img {
     object-fit: contain;
 }
-.content-article h2 {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-.content-article p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 0;
-}
-.article.spoiler{
+
+.article-page .article.spoiler{
     background-color: aliceblue;
 }
 
-@media (min-width: 768px) {
-    .dropdown {
-        position: sticky;
-        top: 0px;
-    }
-}
-
-@media (max-width: 768px) {
-    .page-wrapper {
-        flex-direction: column;
-    }
-    .index-sidebar {
-        position: sticky;
-        top: 0px;
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    .content-wrapper {
-        margin-left: 0;
-        padding: 10px 0;
-    }
-    .article {
-        flex-direction: column;
-    }
-    .dropdown-toggle {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        padding: 10px;
-        border: none;
-        cursor: pointer;
-    }
-    .dropdown-toggle::before{
-        content: "Index";
-    }
-    .dropdown-menu {
-        position: absolute;
-        display: none;
-        min-width: 160px;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        background-color: #fff;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-    }
-    .dropdown-menu.show {
-        display: block;
-    }
-    .dropdown-menu a {
-        display: block;
-        padding: 10px;
-        text-decoration: none;
-        color: #333;
-        min-width: 30vw;
-        transition: background-color 0.3s;
-    }
-    .dropdown-menu a:hover {
-        background-color: #f2f2f2;
-    }
-}
-
-
-.article-new-box {
+.article-page .article-new-box {
 	max-width: 800px;
 	margin: 0 auto;
 	padding: 20px;
@@ -140,65 +58,69 @@ img {
 	border-radius: 5px;
 	margin-bottom: 40px;
 }
-.is-primary {
+.article-page .is-primary {
 	background-color: #336699;
 	color: #fff;
 	padding: 10px;
 	border-radius: 5px;
 	margin-bottom: 20px;
 }
-.article-news-container iframe{
-	max-width: 100%;
-}
-.article-new-body {
+.article-page .article-new-body {
 	text-align: center;
 }
-.article-new-title {
+.article-page .article-new-title {
 	font-size: 24px;
 	font-weight: bold;
 	margin-bottom: 10px;
 }
-.article-new-subtitle {
+.article-page .article-new-subtitle {
 	font-size: 14px;
 	margin-bottom: 20px;
 }
-.article-new-content {
+.article-page .article-new-content {
 	margin-bottom: 20px;
 }
-.article-new-content p {
+.article-page .article-new-content p {
 	margin-bottom: 10px;
 }
 
 /* Darkmode part */
-
-.body_dark_mode .dropdown-menu {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-    background: #444444;
-}
-.body_dark_mode .dropdown-menu a {
-    color: #e7e7e7;
-}
-.body_dark_mode .article {
+.body_dark_mode .article-page .article {
     background: #545454a8;
     border: solid black 1px;
 }
-.body_dark_mode .content-article h2 {
-    margin-bottom: 10px;
-}
-.body_dark_mode .article.spoiler{
+.body_dark_mode .article-page .article.spoiler{
     background-color: #565656;
 }
-.body_dark_mode article .content-article a{
-    color: #c58af9;
+.body_dark_mode .article-page a{
+    text-decoration: none;
+    color: var(--dt-wiki-content-a-color);
 }
-.body_dark_mode .dropdown-menu a:hover {
-    background-color: #333;
+/* ARTICLE NEW */
+.body_dark_mode .article-page .article-new-box {
+    background-color: #252525;
 }
-@media (max-width: 768px) {
-    .body_dark_mode .dropdown-toggle{
-        background-color: #838383;
-    }
-    .body_dark_mode .dropdown-menu{
-        background-color: #838383;
-    }
+.body_dark_mode .article-page .is-primary {
+    background-color: #474b50;
+    color: rgb(220, 221, 222);
+}
+.body_dark_mode .article-page .article-new-body {
+    text-align: center;
+    color: rgb(220, 221, 222);
+}
+.body_dark_mode .article-page .article-new-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.body_dark_mode .article-page .article-new-subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.body_dark_mode .article-page .article-new-content {
+    margin-bottom: 20px;
+    color: rgb(220, 221, 222);
+}
+.body_dark_mode .article-page .article-new-content p {
+    margin-bottom: 10px;
 }

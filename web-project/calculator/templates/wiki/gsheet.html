@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.1">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.4a">
 <title>{% blocktrans %}Archero - Google Sheets Community{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Google Sheet Archives">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/google-sheet/">
@@ -14,22 +14,18 @@
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
 <div class="grid-gsheet-archive" id="grid-gsheet-archive">
-	{% for key, sheet in GsheetData.items %}
-		<a class="linkSheetBox" href="{{ sheet.url }}" target="_blank">
+	{% for googleSheet in sheets %}
+		<a class="linkSheetBox" href="{{ googleSheet.urlLink }}" target="_blank">
 			<div class="gsheet">
-				<div class="gsheet-upper-content">
-					<div class="gsheet-title">
-						{{ key }}
-					</div>
-					<div class="gsheet-thumbnail">
-						<img alt="{{ key }}'s thumbnail" src="{{ sheet.thumbnail }}">
-					</div>
-				</div>
-				<div class="gsheet-lower-content">
-					<div class="gsheet-content">
-						{{ sheet.description }}
+                <div class="gsheet-upper-content">
+                    <div class="gsheet-title">
+                        <span class="small-gap">
+                            <i class="fa-solid fa-file-spreadsheet"></i>
+                            {{ googleSheet.title }}
+                        </span>
 					</div>
 				</div>
+                <img class="img-thumbnail-gsheet" alt="{{ googleSheet.title }}'s thumbnail" src="{{ googleSheet.thumbnailLink }}">
 			</div>
 		</a>
 	{% endfor %}
