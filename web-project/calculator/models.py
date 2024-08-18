@@ -2126,7 +2126,7 @@ class RelicsTable(models.Model,parentModel):
 
 
 class PromoCode(models.Model,parentModel):
-	code = models.CharField(max_length=30, blank=False)
+	code = models.CharField(max_length=30, blank=False, help_text="To add rewards, find the PromoCodeReward model and add the rewards for this code")
 	is_active = models.BooleanField(default=False)
 	expire = models.DateField(blank=True, default=datetime.datetime.now, null=True)
 
@@ -2235,14 +2235,13 @@ class WeaponSkinsTable(models.Model,parentModel):
 			print(f"\ngetWeaponSkinStats :{result}\n")
 		return result
 
-isImage = RegexValidator(r"([-\w]+\.(?:png))", "Your string need to be an image.")
 
 class ArticleMenu(models.Model):
 	title = models.CharField(max_length=300, help_text="Title that will be displayed at the top of the page and in the url")
-	intro = models.TextField(help_text="Introduction that will be displayed in the first part of the page")
+	intro = models.TextField(default=None, blank=True, null=True ,help_text="Introduction that will be displayed in the first part of the page")
 	body = models.TextField(help_text="This is the main body part (markdown is supported)")
 	small_description = models.CharField(max_length=80, default="", blank=True, null=True, help_text="Little label that will display on the main page under the tab")
-	image_label = models.CharField(max_length=300, default=None, validators=[isImage], blank=True, null=True, help_text="Put any link of an image (can be an icon from discord, or put '/static/image/etc... to relate on a wiki icon')")
+	image_label = models.CharField(max_length=300, default=None, blank=True, null=True, help_text="Put any link of an image (can be an icon from discord, or put '/static/image/etc... to relate on a wiki icon')")
 	last_change = models.CharField(max_length=55, default=f"Created on {datetime.datetime.now().strftime('%m/%d/%Y')}", help_text="This field will auto update, you don't need to touch this")
 	is_new = models.BooleanField(default=True, help_text="Will have the small icon 'new' on the right corner in the menu")
 	display = models.BooleanField(default=True, help_text="Is displayed on the main menu")
@@ -2277,10 +2276,11 @@ class GoogleSheet(models.Model):
 		return f"{self.title}"
 	
 class TheorycraftingArticle(models.Model):
-    articleTitle = models.CharField(max_length=255)
-    articleBody = models.TextField()
-    articleIcon = models.TextField(default=None, blank=True, null=True)
-    articleHref = models.TextField(default=None, blank=True, null=True)
+	articleTitle = models.CharField(max_length=255)
+	articleBody = models.TextField()
+	articleIcon = models.TextField(default=None, blank=True, null=True)
+	articleHref = models.TextField(default=None, blank=True, null=True)
+	index = models.IntegerField(null=True, blank=True)
 
-    def __str__(self):
-        return self.articleTitle
+	def __str__(self):
+		return self.articleTitle

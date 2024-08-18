@@ -63,6 +63,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = c_DATABASES
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -80,20 +81,31 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
 
-CSRF_FAILURE_VIEW = c_CSRF_FAILURE_VIEW
-CSRF_USE_SESSION = c_CSRF_USE_SESSION
-CSRF_COOKIE_SECURE = c_CSRF_COOKIE_SECURE
-CSRF_TRUSTED_ORIGINS = c_CSRF_TRUSTED_ORIGINS
-CSRF_COOKIE_SAMESITE = c_CSRF_COOKIE_SAMESITE
 
+##########
+# STATIC #
+##########
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "calculator/static/")
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATIC_VERSION = "2.0.0"
+
+
+########
+# TIME #
+########
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
-LANGUAGE_CODE = 'en'
+
+
+########
+# LANG #
+########
+LANGUAGE_CODE = 'en-us'
 LANGUAGES = (
     ('en', _('English')),
     ('fr', _('French')),
@@ -101,6 +113,25 @@ LANGUAGES = (
     ('ru', _('Russian')),
     ('br', _('Brazilian')),
 )
-LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'locale/'),
-)
+
+
+############
+# SESSIONS #
+############
+
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = "Lax"
+
+########
+# CSRF #
+########
+
+# Settings for CSRF cookie.
+CSRF_COOKIE_HTTPONLY = False
+CSRF_USE_SESSIONS = False
+CSRF_FAILURE_VIEW = c_CSRF_FAILURE_VIEW
+CSRF_USE_SESSION = c_CSRF_USE_SESSION
+CSRF_COOKIE_SECURE = c_CSRF_COOKIE_SECURE
+CSRF_TRUSTED_ORIGINS = c_CSRF_TRUSTED_ORIGINS
+CSRF_COOKIE_SAMESITE = c_CSRF_COOKIE_SAMESITE

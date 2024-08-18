@@ -3,8 +3,8 @@
 {% load i18n %}
 {% load custom_template_tag %}
 	{% block head %}
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.4a">
-		<link rel="stylesheet" type="text/css" href="{% static 'article.css' %}?version=1.9.4a">
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version={{ request.static_version }}quest.static_version }}">
+		<link rel="stylesheet" type="text/css" href="{% static 'article.css' %}?version={{ request.static_version }}quest.static_version }}">
 		<title>{% blocktrans %}Archero - {{ article_title }}{% endblocktrans %}</title>
 		{% if article.titre_description != None %}
 		<meta property="og:title" content="{{ article.titre_description }}">

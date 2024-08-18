@@ -13,10 +13,10 @@ MATOMO_INSTANCE = "https://analytics.matomo.com"   # <---- Change this to your M
 c_CSRF_FAILURE_VIEW = 'calculator.views_wiki.csrf_failure'
 c_CSRF_USE_SESSION = True
 c_CSRF_COOKIE_SECURE = True
-c_CSRF_COOKIE_DOMAIN = [""]
-c_CSRF_TRUSTED_ORIGINS = [""]
-c_ALLOWED_HOSTS = [""]
 
+c_CSRF_TRUSTED_ORIGINS = [""]
+c_CSRF_COOKIE_SAMESITE = 'Strict'
+c_ALLOWED_HOSTS = [""]
 # Follow the steps below to generate a Django secret key:
 
 # Access the Python Interactive Shell

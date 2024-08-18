@@ -1,4 +1,4 @@
-# Wiki Actual Version : v1.9.7b
+# Wiki Actual Version : v2
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -42,16 +42,6 @@ Once the application is up and running, you can access it by navigating to the a
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 
-____
-## Naming convention rule for calculation variables :
-- type : var (+x%) / flat (+x)
-- type2 : passiv / activ
-- boost : atk / hp
-- system : (jewel, altar, dragon etc...)
-- for which variable it serve : (coef1)
-- cumul for the total/global
-- `[cumul_]system_type_type2_boost_...`
-
 ___
 # Step change database :
 
@@ -66,11 +56,3 @@ ___
 <!-- Remind to fill up the database_dump.json -->
 ---
 
-
-```diff
-TODO LIST :
-- Update content for Theorycrafting page
-- Put new damage formula into the /damage/calc page
-```
-
-Update Januar 20, 2024 03:38 AM

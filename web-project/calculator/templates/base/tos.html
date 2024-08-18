@@ -11,7 +11,7 @@
 	<meta name="description" content="Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-    <script src="{% static 'app-core.js' %}?version=1.9.4a"></script>
+    <script src="{% static 'app-core.js' %}?version={{ request.static_version }}"></script>
 	<style>
 		@media screen and (max-width: 600px) {
 			h1 {

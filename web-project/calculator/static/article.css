@@ -1,8 +1,3 @@
-@font-face {
-	font-family: 'Rubik';
-	src: url("/static/fonts/rubik.otf");
-}
-
 :root {
     --dt-wiki-content-a-color: #c58af9;
     --lt-wiki-content-a-color: #ff5151;
@@ -25,6 +20,48 @@
 .article-page a{
     text-decoration: none;
     color: var(--lt-wiki-content-a-color);
+}
+.article-page .theorycft-img{
+    max-width: 700px;
+    width: 80dvw;
+}
+.article-page code{
+    font-family: math, 'Courier New', monospace;
+    font-size: 14px;
+    color: #333;
+    background-color: #f8f8f8;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: inline-block;
+}
+.article-page p {
+    margin-bottom: 1em;
+}
+.article-page ul, .article-page ol {
+    margin-bottom: 1em;
+}
+.article-page li {
+    margin-bottom: 0.5em;
+}
+.article-page blockquote {
+    margin: 0 0 1em;
+    padding: 0 1em;
+    border-left: 2px solid #ccc;
+}
+.article-page strong, .article-page b {
+    font-weight: bold;
+}
+.article-page em{
+    font-style: italic;
+}
+.article-page pre {
+    font-family: 'Courier New', monospace;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: auto;
 }
 
 .article-page .article {
@@ -123,4 +160,12 @@
 }
 .body_dark_mode .article-page .article-new-content p {
     margin-bottom: 10px;
+}
+.body_dark_mode .article-page code{
+    color: #ccc;
+    background-color: #545454;
+    border: 1px solid transparent;
+}
+.body_dark_mode .article-page pre {
+    background-color: #545454;
 }

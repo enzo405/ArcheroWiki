@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.4a">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version={{ request.static_version }}">
 <title>{% blocktrans %}Archero - Damage Calculator{% endblocktrans %}</title>
 <meta property="og:title" content="Archero Emulator Runes">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/damage-calculator">
@@ -15,6 +15,12 @@
 {% block content %}
 <div class="content_container need-small">
 	<div class="container_runes_input">
+        <div class="anchoredModalOutdated">
+            <span>
+                This is outdated, please use the Damage Calc google sheet instead
+                <i class="fa-solid fa-arrow-right"></i> <a class="styled_a" href="https://docs.google.com/spreadsheets/d/14KR0LT-g1VptikoPyob0YL7UxHytHd8hmnjhbAqoAIM" target="_blank">click here</a>
+            </span>
+        </div>
 		<form method="POST" action="">
 			{% csrf_token %}
 			<div class="runes-choice">

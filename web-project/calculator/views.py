@@ -462,7 +462,7 @@ def index_calc(request):
 
 	notuserlist = ['0-000001','0-000002','0-000003','0-000004']
 	notuserlist.extend(user.objects.filter(global_atk_save__lt=2800).values_list('ingame_id', flat=True))
-	user_liste = user.objects.filter(public_profile=True).exclude(ingame_id__in=notuserlist).order_by('-global_atk_save')[:100]
+	user_liste = user.objects.filter(public_profile=True).exclude(ingame_id__in=notuserlist).order_by('-global_atk_save')[:200]
 	
 	show_table = "no_profile"
 	self_ingame_hero = "unknown"
@@ -475,7 +475,8 @@ def index_calc(request):
 	avatar_src = "/static/image/hero_icon/icon_unknown.png"
 	if (ingame_id_cookie == "9-999999" and ingame_name_cookie == "unknown") or (profile and not profile[0] and user_stats):
 		show_table = "visitor"
-		messages.error(request, _(f'You attempted to access {self_ingame_name}<br>But your login username is "{ingame_name_cookie}".'))
+		if self_ingame_name != "":
+			messages.error(request, _(f'You attempted to access {self_ingame_name}<br>But your login username is "{ingame_name_cookie}".'))
 	elif profile and user_stats:
 		self_ingame_name = user_stats.ingame_name
 		self_ingame_hero = user_stats.choosen_hero

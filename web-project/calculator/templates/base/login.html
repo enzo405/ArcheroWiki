@@ -6,9 +6,9 @@
 	<title>{% blocktrans %}Login{% endblocktrans %}</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version=1.9.4a">
+	<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?version={{ request.static_version }}quest.static_version }}">
 	<link rel="icon" type="image/ong" href="{% static 'favicon.ico' %}">
-	<script src="{% static 'main.js' %}?version=1.9.4a"></script>
+	<script src="{% static 'main.js' %}?version={{ request.static_version }}quest.static_version }}"></script>
 </head>
 {% if darkmode == True %}
 <body class="body_dark_mode">

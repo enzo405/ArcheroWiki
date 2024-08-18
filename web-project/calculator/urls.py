@@ -22,7 +22,7 @@ urlpatterns = [
     path('calculator/duplicate/', views.duplicate_user, name='duplicate_user'),
     path('stats/calc/<int:pbid>/<int:redirectPath>/', views.views_calc_stats, name='stats_calc_api'),
     path('login/', views_wiki.login, name='login'),
-    path('logout/', views_wiki.delete_session),
+    path('logout/', views_wiki.logout_view),
     path('login/processing/<str:username_raw>/<str:id_raw>/', views_wiki.login_processing, name='login_process'),
     path('delete_cookie/<str:key>/<str:name_redirect>/', views_wiki.delete_cookie),
     path('wiki/maze/', views_wiki.maze, name='maze'),

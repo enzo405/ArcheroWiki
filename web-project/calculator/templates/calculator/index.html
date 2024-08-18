@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version=1.9.4a">
+<link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version={{ request.static_version }}">
 <title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero Stats Calculator">
 <meta property="og:url" content="https://stats.wiki-archero.com/calculator/index/">

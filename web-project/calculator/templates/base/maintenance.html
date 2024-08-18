@@ -7,13 +7,13 @@
 <html lang="{{ LANGUAGE_CODE }}">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.9.4a">
+		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version={{ request.static_version }}">
 		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-		<script src="{% static 'main.js' %}?version=1.9.4a"></script>
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.4a">
-		<script src="{% static 'app-core.js' %}?version=1.9.4a"></script>
+		<script src="{% static 'main.js' %}?version={{ request.static_version }}"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version={{ request.static_version }}">
+		<script src="{% static 'app-core.js' %}?version={{ request.static_version }}"></script>
         <title>{% blocktrans %}Database Maintenance{% endblocktrans %}</title>
 		<style>
 			#error-image {
@@ -82,9 +82,9 @@
 		<footer>
 			<div class="footer-content">
 				<div class="footer-about">
-					<img class="footer-img-icon" fetchpriority="high" src="{{ request.archero_icon_link }}" alt="Archero 5.1.0 game icon">
+					<img class="footer-img-icon" fetchpriority="high" src="{{ request.archero_icon_link }}" alt="{{ request.archero_version }} game icon">
 					<div class="about-content">
-						<h1>Archero 5.1.1</h1>
+						<h1>{{ request.archero_version }}</h1>
 						<div class="contact-me">
                             <span>{% blocktrans %}Contact{% endblocktrans %} 
                                 <span class="dontbrek"><a class="me-discord-link" href="https://discord.com/users/382930544385851392" target="_blank"><i class="fa-brands fa-discord"></i> LuhCaran</a></span> 
@@ -92,7 +92,7 @@
                             </span>						</div>
 						<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/Terms-of-Use/">{% blocktrans %}Terms of Use{% endblocktrans %}</a></div>
 						<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/changelog/">{% blocktrans %}ChangeLog{% endblocktrans %}</a></div>
-						<div class="f_content_info">Build v1.9.4a<div>
+						<div class="f_content_info">Build v{{ request.static_version }}<div>
 					</div>
 				</div>
 				<div class="discord_link">
@@ -110,7 +110,7 @@
 						<a href="https://www.facebook.com/archerogame/" target="_blank"><span class="link-icon"><i class="fab fa-facebook"></i></span>{% blocktrans %}FB Archero{% endblocktrans %}</a>
 					</div>
                     <div class="container-link">
-						<a href="https://archero.wiki/ステージ/イベント/ヒーローデュオ#装備" target="_blank"><span class="link-icon"><i class="fa-solid fa-earth-asia"></i></span>{% blocktrans %}Chinese Wiki Archero{% endblocktrans %}</a>
+						<a href="https://archero.wiki/" target="_blank"><span class="link-icon"><i class="fa-solid fa-earth-asia"></i></span>{% blocktrans %}Japanese Wiki Archero{% endblocktrans %}</a>
 					</div>
 				</div>
 				<div class="thanks">
