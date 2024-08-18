@@ -2,8 +2,8 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.4a">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.9.4a">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version={{ request.static_version }}quest.static_version }}">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version={{ request.static_version }}quest.static_version }}">
 <title>{% blocktrans %}Archero - Promo Codes{% endblocktrans %}</title>
 <meta name="description" content="Discover the latest promo codes and gift codes for Archero on our website. Unlock exclusive rewards, gems, and valuable items by redeeming these codes.">
 <meta property="og:title" content="Archero - Promo Codes">

@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 	{% block head %}
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.4a">
+		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version={{ request.static_version }}quest.static_version }}">
 		<title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 		<meta property="og:title" content="{% blocktrans %}Archero - Wiki{% endblocktrans %}">
 		<meta property="og:url" content="https://stats.wiki-archero.com/">
@@ -15,7 +15,7 @@
 	{% block content %}
         <div class="most-viewed-page-container need-small">
             <div class="most-viewed-page">
-                <h2>Suggested content:</h2>
+                <h2>Top Articles:</h2>
                 <div class="pages">
                     {% for title, url in suggestedContent.items %}
                         <span class="page-item"><i class="fa-solid fa-arrow-right"></i> <a class="styled_a dontbrek" href="{{ url }}">{{ title }}</a></span>
@@ -24,21 +24,25 @@
             </div>
         </div>
 		<div class="select-href">
+            <div class="menu-outdated-message">
+                <span>
+                    <p>{% blocktrans %}The wiki might have outdated information !!{% endblocktrans %}</p>
+                    <p>{% blocktrans %}Please join Archero Discord server and use Blazo bot for more up-to-date content{% endblocktrans %}</p>
+                    <a class="styled_a" href="https://discord.gg/AsGcUrT" target="_blank"><i class="fa-solid fa-arrow-right"></i> {% blocktrans %}click here to join{% endblocktrans %}</a>
+                </span>
+            </div>
 			{% for article in list_article %}
 			{% if article.index == 0 %}
 			<a href="/{{ LANGUAGE_CODE }}/wiki/{{ article.title }}" class="div-onclick-menu">
 				<div class="menu-onclick-img">
 					<span class="txt-onclick-span">{{ article.title }} </span>
 					{% if article.image_label != None %}
-					    <img src="{{ article.image_label }}" alt="article Archero Wiki {{ article.title }}">
+					    <img class="br-4" src="{{ article.image_label }}" alt="article Archero Wiki {{ article.title }}">
 					{% endif %}
 				</div>
                 {% if article.small_description != None %}
                     <span class="tab-description">{{ article.small_description }}</span>
                 {% endif %}
-				{% if article.is_new %}
-				<span class="new-label">{% blocktrans %}New{% endblocktrans %}</span>
-				{% endif %}
 			</a>
 			<hr style="margin-top: 10px; margin-bottom: 10px;">
 			{% else %}
@@ -46,15 +50,12 @@
 				<div class="menu-onclick-img">
 					<span class="txt-onclick-span">{{ article.title }} </span>
 					{% if article.image_label != None %}
-					    <img src="/{{ article.image_label }}" alt="article Archero Wiki {{ article.title }}">
+					    <img class="br-4" src="/{{ article.image_label }}" alt="article Archero Wiki {{ article.title }}">
 					{% endif %}
 				</div>
                 {% if article.small_description != None %}
                     <span class="tab-description">{{ article.small_description }}</span>
                 {% endif %}
-				{% if article.is_new %}
-				<span class="new-label">{% blocktrans %}New{% endblocktrans %}</span>
-				{% endif %}
 			</a>
 			{% endif %}
 			{% endfor %}
@@ -92,13 +93,6 @@
                     <img alt="Archero Skills link" src="/static/image/img-sidebar/skill.png">
                 </div>
                 <span class="tab-description uppercase">all skill/competence stats, hidden stats</span>
-            </a>
-			<a href="/{{ LANGUAGE_CODE }}/wiki/damage-calculator" class="div-onclick-menu wiki-skill">
-                <div class="menu-onclick-img">
-                    <span class="txt-onclick-span">{% blocktrans %}Damage Calculator{% endblocktrans %} </span>
-                    <img alt="Archero Calculator link" src="/static/image/img-sidebar/damage.png">
-                </div>
-                <span class="tab-description uppercase">runes emulator, damage emulator</span>
             </a>
 			<a href="/{{ LANGUAGE_CODE }}/wiki/upgrade" class="div-onclick-menu wiki-cost">
                 <div class="menu-onclick-img">

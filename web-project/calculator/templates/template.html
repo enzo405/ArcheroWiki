@@ -5,16 +5,17 @@
 {% get_language_info_list for LANGUAGES as languages %}
 {% load static %}
 {% load custom_template_tag %}
+{% is_small_screen request as small_screen %}
 <html lang="{{ LANGUAGE_CODE }}">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version=1.9.4a">
-		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}?version=1.9.4a">
+		<link rel="stylesheet" type="text/css" href="{% static 'template.css' %}?version={{ request.static_version }}">
+		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}?version={{ request.static_version }}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="apple-touch-icon" href="{% static 'image/favicon.png' %}?version=1.9.4a">
-		<script src="https://kit.fontawesome.com/0b193e89de.js" crossorigin="anonymous"></script>
-		<script src="{% static 'main.js' %}?version=1.9.4a"></script>
-		<script src="{% static 'app-core.js' %}?version=1.9.4a"></script>
+		<link rel="apple-touch-icon" href="{% static 'image/favicon.png' %}?version={{ request.static_version }}">
+		<link rel="stylesheet"type="text/css" href="{% static 'fontawesome-free-6.6.0-web/css/all.min.css' %}">
+		<script src="{% static 'main.js' %}?version={{ request.static_version }}"></script>
+		<script src="{% static 'app-core.js' %}?version={{ request.static_version }}"></script>
 		{% block head %}
 		{% endblock %}
 		<style>
@@ -27,7 +28,6 @@
 			.sidebar-open #Heroes-sidebar-image:hover::after{ content: "{% trans 'Heroes' %}";}
 			.sidebar-open #Stats-sidebar-image:hover::after{ content: "{% trans 'Stats' %}";}
 			.sidebar-open #Sheet-sidebar-image:hover::after{ content: "{% trans 'Sheets' %}";}
-			.sidebar-open #Damage-sidebar-image:hover::after{ content: "{% trans 'Damage' %}";}
 			.sidebar-open #Promos-sidebar-image:hover::after{ content: "{% trans 'Promotion Code' %}";}
 			.sidebar-open #Theorycraft-sidebar-image:hover::after{ content: "{% trans 'Theorycraft' %}";}
 		</style>
@@ -59,7 +59,7 @@
 				</div>
 				<div class="rightsidebarc traveling-right">
 					<div class="shcr">
-						<img alt="{{ key }} Archero" id="{{ value.childs_container.rightsidebar.child_content.image_id }}" src="{{ value.childs_container.rightsidebar.child_content.image_src }}?version=1.9.4a" width="{{ value.childs_container.rightsidebar.child_content.image_width }}" height="{{ value.childs_container.rightsidebar.child_content.image_height }}">
+						<img alt="{{ key }} Archero" id="{{ value.childs_container.rightsidebar.child_content.image_id }}" src="{{ value.childs_container.rightsidebar.child_content.image_src }}?version={{ request.static_version }}" width="{{ value.childs_container.rightsidebar.child_content.image_width }}" height="{{ value.childs_container.rightsidebar.child_content.image_height }}">
 					</div>
 				</div>
 			</a>
@@ -116,7 +116,7 @@
 						</div>
 						<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/Terms-of-Use/">{% blocktrans %}Terms of Use{% endblocktrans %}</a></div>
 						<div class="f_content_info"><a href="/{{ LANGUAGE_CODE }}/changelog/">{% blocktrans %}ChangeLog{% endblocktrans %}</a></div>
-						<div class="f_content_info">Build v1.9.4a</div>
+						<div class="f_content_info">Build v{{ request.static_version }}</div>
 					</div>
 				</div>
 				<div class="discord_link">
@@ -134,15 +134,15 @@
 						<a href="https://www.facebook.com/archerogame/" target="_blank"><span class="link-icon"><i class="fab fa-facebook"></i></span>{% blocktrans %}FB Archero{% endblocktrans %}</a>
 					</div>
 					<div class="container-link">
-						<a href="https://archero.wiki/ステージ/イベント/ヒーローデュオ#装備" target="_blank"><span class="link-icon"><i class="fa-solid fa-earth-asia"></i></span>{% blocktrans %}Chinese Wiki Archero{% endblocktrans %}</a>
+						<a href="https://archero.wiki/" target="_blank"><span class="link-icon"><i class="fa-solid fa-earth-asia"></i></span>{% blocktrans %}Japanese Wiki Archero{% endblocktrans %}</a>
 					</div>
 				</div>
 				<div class="thanks">
 					<div style="font-size: large;font-weight: bold;">{% blocktrans %}Shout-out :{% endblocktrans %}</div>
 					<div class="shout-out">{% blocktrans %}Special thanks{% endblocktrans %} : <b>Deth, TigerShark14, zkn</b></div>
-					<div class="shout-out">{% blocktrans %}Thanks to{% endblocktrans %} : Chaos, pew, Mahanaxar</div>
-					<div class="shout-out">Pelmens, Lorenz, RedsMeName, whatever</div>
-					<div class="shout-out">Kang Greenstrider, PNE241, Drunkie, zug</div>
+					<div class="shout-out">{% blocktrans %}Thanks to{% endblocktrans %} : Chaos, Pelmens, Koxik</div>
+					<div class="shout-out">and the rest of the Discord community</div>
+					<div class="shout-out"> for helping me with data gathering and research</div>
 				</div>
 			</div>
 		</footer>

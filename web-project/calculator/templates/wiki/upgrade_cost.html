@@ -2,8 +2,8 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.4a">
-	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.9.4a">
+	<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version={{ request.static_version }}">
+	<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version={{ request.static_version }}">
 	<title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 	<meta property="og:type" content="website">
 	<meta name="description" content="Welcome to the Archero wiki, your ultimate resource for the popular mobile game by HABBY. Explore upgrade costs for relics, dragons, talents, items, and heroes. Discover comprehensive guides and strategies to optimize your gameplay.">
@@ -33,6 +33,7 @@
 				<option value="talents">{% blocktrans %}Talents{% endblocktrans %}</option>
 				<option value="dragons">{% blocktrans %}Dragons{% endblocktrans %}</option>
 				<option value="relics">{% blocktrans %}Relics{% endblocktrans %}</option>
+				<option value="pets">{% blocktrans %}Pets{% endblocktrans %}</option>
 			</select>
 			<script>
 				var costType = "{{ cost_type }}"; // assuming "cost_type" is the header parameter name
@@ -61,15 +62,19 @@
 			<legend id="title_legend"></legend>
 			<div class="fieldset_container">
 				<input type="radio" id="a_rank" name="rank" value="a" style="display: none;">
-				<label class="label_fieldset" for="a_rank"><img src="" id="img_rank_input1" width="30" height="30" alt="form a rank dragon"></label>
+				<label class="label_fieldset" for="a_rank"><img src="" id="img_rank_input1" width="30" height="30" alt="form a rank"></label>
 			</div>
 			<div class="fieldset_container">
 				<input type="radio" id="s_rank" name="rank" value="s" style="display: none;">
-				<label class="label_fieldset" for="s_rank"><img src="" id="img_rank_input2" width="30" height="30" alt="form s rank dragon"></label>
+				<label class="label_fieldset" for="s_rank"><img src="" id="img_rank_input2" width="30" height="30" alt="form s rank"></label>
 			</div>
 			<div class="fieldset_container">
 				<input type="radio" id="ss_rank" name="rank" value="ss" style="display: none;">
-				<label class="label_fieldset" for="ss_rank"><img src="" id="img_rank_input3" width="30" height="30" alt="form ss rank dragon"></label>
+				<label class="label_fieldset" for="ss_rank"><img src="" id="img_rank_input3" width="30" height="30" alt="form ss rank"></label>
+			</div>
+            <div class="fieldset_container">
+				<input type="radio" id="mythic_rank" name="rank" value="mythic" style="display: none;">
+				<label class="label_fieldset" for="mythic_rank"><img src="" id="img_rank_input4" width="30" height="30" alt="form mythic rank"></label>
 			</div>
 		</fieldset>
 		<script>
@@ -138,7 +143,7 @@
 			var type = document.getElementById('cost_type').value ?? "items";
 			var level1 = document.getElementById('level1').value || "1";
 			var level2 = document.getElementById('level2').value || "2";
-			if (type == "dragons" || type === "relics"){
+			if (type == "dragons" || type === "relics" || type === "pets") {
 				var rankInput = document.querySelector('input[name="rank"]:checked').value.toUpperCase() || "A";
 				window.location.href = `/{{ LANGUAGE_CODE }}/wiki/upgrade/${type}/${level1}/${level2}/${rankInput}/`
 			}else{
@@ -155,18 +160,29 @@
 			const img_rank_input1 = document.getElementById('img_rank_input1');
 			const img_rank_input2 = document.getElementById('img_rank_input2');
 			const img_rank_input3 = document.getElementById('img_rank_input3');
+			const img_rank_input4 = document.getElementById('img_rank_input4');
 			if (type === "dragons") {
 				rank_container.style.display = "grid";
 				title_legend.innerHTML = "{% blocktrans %}Dragons Rank{% endblocktrans %}";
 				img_rank_input1.src = "/static/image/dragon/A.png";
 				img_rank_input2.src = "/static/image/dragon/S.png";
 				img_rank_input3.src = "/static/image/dragon/SS.png";
+                img_rank_input4.style.display = "none";
 			} else if (type === "relics") {
 				rank_container.style.display = "grid";
 				title_legend.innerHTML = "{% blocktrans %}Relics Rank{% endblocktrans %}";
 				img_rank_input1.src = "/static/image/rarity/great.png";
 				img_rank_input2.src = "/static/image/rarity/epic.png";
 				img_rank_input3.src = "/static/image/rarity/legendary.png";
+				img_rank_input4.src = "/static/image/rarity/mythic.png";
+                img_rank_input4.style.display = "block";
+			} else if (type === "pets") {
+				rank_container.style.display = "grid";
+				title_legend.innerHTML = "{% blocktrans %}Pets Rank{% endblocktrans %}";
+				img_rank_input1.src = "/static/image/dragon/A.png";
+				img_rank_input2.src = "/static/image/dragon/S.png";
+				img_rank_input3.src = "/static/image/dragon/SS.png";
+                img_rank_input4.style.display = "none";
 			}else{
 				rank_container.style.display = "none";
 			}

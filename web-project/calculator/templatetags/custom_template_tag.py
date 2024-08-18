@@ -19,3 +19,8 @@ def add_lang_code(url, lang_code):
         return f"{url.replace(f'/{url_map[1]}',f'/{lang_code}')}"
     else:
         return f"/{lang_code}{url}"
+
+@register.simple_tag
+def is_small_screen(request):
+    user_agent = request.META.get('HTTP_USER_AGENT', '').lower()
+    return 'mobile' in user_agent or 'android' in user_agent or 'iphone' in user_agent

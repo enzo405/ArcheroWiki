@@ -2,8 +2,8 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.4a">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.9.4a">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version={{ request.static_version }}quest.static_version }}">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version={{ request.static_version }}quest.static_version }}">
 <meta property="og:type" content="website">
 <meta name="description" content="Discover a comprehensive list of skills and abilities in Archero on our website. Explore detailed descriptions, effects, and strategies for each skill. Unleash the power of skills and abilities to dominate in the world of Archero.">
 {% if skill == "yes" %}
@@ -11,7 +11,7 @@
 <meta property="og:title" content="{{ name }}">
 <meta property="og:url" content="{{ url_cpy }}">
 <meta property="og:description" content="{{ skill_data.description }} {{ skill_data.stats }}">
-<meta property="og:image" content="{% static image_skill %}?version=1.9.4a">
+<meta property="og:image" content="{% static image_skill %}?version={{ request.static_version }}quest.static_version }}">
 {% else %}
 <title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Skill Description">

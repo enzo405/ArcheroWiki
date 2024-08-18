@@ -1,6 +1,9 @@
 @font-face {
-	font-family: 'Rubik';
-	src: url("/static/fonts/rubik.otf");
+    font-family: 'Rubik';
+    src: url('/static/fonts/rubik.ttf') format('truetype'), /* Fallback */
+         url('/static/fonts/rubik.otf') format('opentype'); /* Optional */
+    font-weight: normal;
+    font-style: normal;
 }
 *{
     margin: 0;
@@ -830,6 +833,9 @@ footer div, footer li{
     text-overflow: ellipsis;
 }
 /* MENU BASE*/
+.br-4 {
+    border-radius: 4px;
+}
 .most-viewed-page-container{
     width: auto;
     display: flex; 

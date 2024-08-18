@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.4a">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version={{ request.static_version }}quest.static_version }}">
 <title>{% blocktrans %}Archero - Google Sheets Community{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Google Sheet Archives">
 <meta property="og:url" content="https://stats.wiki-archero.com/wiki/google-sheet/">
@@ -20,7 +20,6 @@
                 <div class="gsheet-upper-content">
                     <div class="gsheet-title">
                         <span class="small-gap">
-                            <i class="fa-solid fa-file-spreadsheet"></i>
                             {{ googleSheet.title }}
                         </span>
 					</div>

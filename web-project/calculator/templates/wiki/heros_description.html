@@ -2,8 +2,8 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version=1.9.4a">
-<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version=1.9.4a">
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version={{ request.static_version }}quest.static_version }}">
+<link rel="stylesheet" type="text/css" href="{% static 'embed.css' %}?version={{ request.static_version }}quest.static_version }}">
 <meta property="og:type" content="website">
 <meta name="description" content="Discover the extensive collection of heroes in Archero, each with unique star boosts, base skills, and descriptions. Explore our comprehensive list to uncover the full potential of each character. Make strategic choices and harness the power of your heroes to overcome challenges and triumph in Archero.">
 {% if hero == "yes" %}
@@ -18,7 +18,7 @@
 • Base Hp: {{ hero_data.base_hp }}
 {{ hero_data.price }}">
 {% endblock %}
-<meta property="og:image" content="{% static hero_image %}?version=1.9.4a">
+<meta property="og:image" content="{% static hero_image %}?version={{ request.static_version }}quest.static_version }}">
 {% else %}
 <title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Heroes Description">
@@ -238,7 +238,7 @@
 							<div class="sc-3qrykn-3 hXMbfy" style="margin: 0;">
 								<div class="sc-27l7o2-0 heOpKb" style="color: rgb(243 243 243);">{% blocktrans %}Available assist heroes:{% endblocktrans %}</div>
 							</div>
-							<div class="sc-27l7o2-0 heOpKb center_content" style="margin-bottom: 0.6vh;margin-top: 0.4vh;overflow: auto;">
+							<div class="sc-27l7o2-0 heOpKb center_content" style="margin-bottom: 0.6vh;margin-top: 0.4vh; display: flex; flex-wrap: wrap;">
 								{% for h in hero_data.list_hero_assist %}
 									<a href='/{{ LANGUAGE_CODE }}/wiki/heroes/{{ h }}/' class="styled_a center_content"><img src="/static/image/hero_icon/icon_{{ h }}.png" width="27" height="27" alt="Hero Assist for {{ name_hero }}"></img></a>
 								{% endfor %}
@@ -262,7 +262,7 @@
 							<div class="rgqgux-0 dQAxvm">
 								<div class="rgqgux-2 jFcAhO">
 									<div class="content-embed-skin sc-27l7o2-0 heOpKb">
-										<img src="/static/image/hero_skin/{{ name_hero_initial }}_{{ skin.src }}.png?version=1.9.4a" alt="Archero {{ name_hero }}'s {{ skin.name }} skin thumbnail">
+										<img src="/static/image/hero_skin/{{ name_hero_initial }}_{{ skin.src }}.png?version={{ request.static_version }}quest.static_version }}" alt="Archero {{ name_hero }}'s {{ skin.name }} skin thumbnail">
 										<div>
 											<h3>{{ skin.name }}</h3>
 											<div>

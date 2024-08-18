@@ -10,16 +10,6 @@ from django.contrib import messages
 from django.utils.translation import get_language, gettext_lazy as _
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from .data.wiki_data import LocalDataContentWiki
-# :param url: your discord webhook url (type: str)
-# :keyword id: webhook id (type: str)
-# :keyword content: the message contents (type: str)
-# :keyword username: override the default username of the webhook
-# :keyword avatar_url: override the default avatar of the webhook
-# :keyword tts: true if this is a TTS message
-# :keyword file: to apply file(s) with message
-# :keyword filename: apply custom file name on attached file content(s)
-# :keyword embeds: list of embedded rich content
-# :keyword allowed_mentions: allowed mentions for the message
 import json, time, re, datetime, requests, os, http.cookies, hashlib, random, fuzzysearch
 
 APP_VERSION = os.environ.get('APP_VERSION')
@@ -74,15 +64,14 @@ def findFormError(valid_User, valid_StuffTable, valid_HeroTable, valid_TalentTab
 		else:
 			return
 
-def get_nested_item_by_prefix(data, prefix):
-	for k, v in data.items():
-		if k == prefix:
-			return v
-		else:
-			item = get_nested_item_by_prefix(v, prefix)
-			if item is not None:
-				return item
-	return None
+def get_nested_item_by_prefix(data:dict, prefix):
+	for i in range(0, len(data)):
+		item = list(data.values())[i]
+		if isinstance(item, dict):
+			for k, v in item.items():
+				if k == prefix:
+					return v
+
 
 ################################# FONCTION RESTE #######################################################
 
@@ -202,6 +191,12 @@ def send_embed(author_name:str,title_embed:str,description_embed:str,field_name:
 	webhook.add_embed(embed)
 	webhook.execute()
 
+def send_file_webhook(title_embed:str, filepath:str, **kwargs):
+	webhook = DiscordWebhook(url=WEBHOOK_URL, content=f"<@&{DISCORD_NOTIF_ROLE_ID}>\n{title_embed}", rate_limit_retry=True)
+	with open(filepath,'r', encoding='utf-8') as f:
+		webhook.add_file(file=f.read(), filename=filepath)
+	webhook.execute()
+
 
 def checkDarkMode(request:HttpResponse|WSGIRequest) -> bool:
 	"""
@@ -237,16 +232,28 @@ def calculatePrice(lvl1, lvl2, type, rank=None):
 			return [int(result[0])*1.5,int(result[1])*1.5]
 		elif rank == "SS":
 			return [int(result[0])*2,int(result[1])*2]
-	elif type == "relics":
-		relics_cost_gold = calculator_data["DataPrice"]['relics']['gold']
-		relics_cost_starlight = calculator_data["DataPrice"]['relics']['starlight']
-		result = [relics_cost_gold[lvl2] - relics_cost_gold[lvl1], relics_cost_starlight[lvl2] - relics_cost_starlight[lvl1]]
+	elif type == "pets":
+		pet_cost_gold = calculator_data["DataPrice"]['pet']['gold']
+		pet_cost_food = calculator_data["DataPrice"]['pet']['petfood']
+		result = [pet_cost_gold[lvl2] - pet_cost_gold[lvl1], pet_cost_food[lvl2] - pet_cost_food[lvl1]]
 		if rank == "A":
 			return [result[0],result[1]]
 		elif rank == "S":
 			return [int(result[0])*1.5,int(result[1])*1.5]
 		elif rank == "SS":
 			return [int(result[0])*2,int(result[1])*2]
+	elif type == "relics":
+		relics_cost_gold = calculator_data["DataPrice"]['relics']['gold']
+		relics_cost_starlight = calculator_data["DataPrice"]['relics']['starlight']
+		result = [relics_cost_gold[lvl2] - relics_cost_gold[lvl1], relics_cost_starlight[lvl2] - relics_cost_starlight[lvl1]]
+		if rank == "A":
+			return [result[0],result[1]] # A
+		elif rank == "S":
+			return [int(result[0])*1.5,int(result[1])*1.5] ## S
+		elif rank == "SS":
+			return [int(result[0])*2,int(result[1])*2] # SS
+		elif rank == "MYTHIC":
+			return [int(result[0])*6,int(result[1])*6] # Mythic
 
 def makeCookieheader(cookieResult: dict|None) -> str:
 	"""
@@ -405,13 +412,33 @@ def checkMessages(request):
 			
 # Matomo API Function
 
+def loadSuggestedFile():
+	current_date = datetime.datetime.now().strftime("%m-%Y")
+	suggestedTitleFilePath = "calculator/data/tempSuggestedTitle"
+	if os.path.exists(f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json"):
+		with open(f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json", 'r', encoding="utf-8") as f:
+			suggestedTitle = json.load(f)
+		return suggestedTitle
+
+	suggestedTitle = getSuggestedTitle()
+	with open(f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json", 'w', encoding="utf-8") as f:
+		json.dump(suggestedTitle, f, indent=4)
+
+	# Send the result file to the webhook
+	current_date = datetime.datetime.now().strftime("%m-%Y")
+	suggestedTitleFilePath = "calculator/data/tempSuggestedTitle"
+	path_file = f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json"
+	send_file_webhook("New Suggested Url Content", path_file)
+	return suggestedTitle
+
 def getSuggestedTitle() -> dict:
 	"""
-	Makes an API Call to the Matomo API to retrieve the most searched titles page.
+	Makes an API Call to the Matomo API to retrieve the most searched titles page over the last 30 days.
 	Return a dictionary containing the first 10 pages.
 	Each item of the dictionary is made of the label and the url of the page.
 	"""
-	url = f"{MATOMO_INSTANCE}/index.php?module=API&method=Actions.getPageTitles&idSite=1&period=range&date=2021-01-01,today&format=JSON&token_auth={MATOMO_TOKEN_VIEW_ACCESS}&filter_limit=10"
+	dateOneMonthAgo = (datetime.datetime.now() - datetime.timedelta(days=30)).strftime("%Y-%m-%d")
+	url = f"{MATOMO_INSTANCE}/index.php?module=API&method=Actions.getPageTitles&idSite=1&period=range&date={dateOneMonthAgo},today&format=JSON&token_auth={MATOMO_TOKEN_VIEW_ACCESS}&filter_limit=10"
 	response = requests.get(url)
 	data = response.json()
 	result = {}
@@ -432,7 +459,7 @@ def getURLForLabel(label: str) -> str:
 		allUrl = json.load(f)
 	for k,v in allUrl.items():
 		# use fuzzysearch to get the best match
-		if fuzzysearch.find_near_matches(label, k, max_l_dist=1):
+		if fuzzysearch.find_near_matches(label.lower(), k.lower().replace("_", " "), max_l_dist=1):
 			url = v
 			break
 	return url

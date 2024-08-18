@@ -1,4 +1,5 @@
 from calculator.models import ServerManagement
+from app.settings import STATIC_VERSION
 
 class CustomHeaderMiddleware:
     def __init__(self, get_response):
@@ -16,6 +17,7 @@ class CustomHeaderMiddleware:
         # Add data to the request context
         request.archero_version = archeroVersion
         request.archero_icon_link = archeroIconLink
+        request.static_version = STATIC_VERSION
 
         response = self.get_response(request)
         return response

@@ -1,10 +1,10 @@
 from .forms import DamageCalculatorForm
 from .models import ArticleMenu,user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable,DamageCalcTable,PromoCode,PromoCodeReward,GoogleSheet, TheorycraftingArticle
-from .function import checkDarkMode,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,calculatePrice,makeCookieheader, getProfileWithCookie, makeLog, loadContent, getSuggestedTitle, get_nested_item_by_prefix
+from .function import checkDarkMode,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,calculatePrice,makeCookieheader, getProfileWithCookie, makeLog, loadContent, loadSuggestedFile, get_nested_item_by_prefix
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.handlers.wsgi import WSGIRequest
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.urls import reverse
 from http.cookies import CookieError
 from math import *
@@ -15,6 +15,7 @@ import json, os, sys, traceback
 from app.settings import WEBHOOK_URL, c_hostname, DISCORD_NOTIF_ROLE_ID, DISCORD_ERROR_ROLE_ID, DEV_MODE
 from django.utils.translation import get_language, gettext as _, gettext_lazy
 from django.utils.text import format_lazy
+from django.contrib.sessions.models import Session
 from .data.wiki_data import LocalDataContentWiki
 from datetime import datetime
 
@@ -22,15 +23,7 @@ missing_data = []
 
 @loadContent(checkMessages=True, db_maintenance=True)
 def menu(request):
-	current_date = datetime.now().strftime("%m-%Y")
-	suggestedTitleFilePath = "calculator/data/tempSuggestedTitle"
-	if os.path.exists(f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json"):
-		with open(f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json", 'r', encoding="utf-8") as f:
-			suggestedTitle = json.load(f)
-	else:
-		suggestedTitle = getSuggestedTitle()
-		with open(f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json", 'w', encoding="utf-8") as f:
-			json.dump(suggestedTitle, f, indent=4)
+	suggestedContent = loadSuggestedFile()
 	makeLog(request)
 	ctx = {
 		"darkmode": checkDarkMode(request),
@@ -39,7 +32,7 @@ def menu(request):
 		"cookieUsername":makeCookieheader(checkCookie(request)),
 		"list_article":list(ArticleMenu.objects.all().filter(display=True).order_by('index')),
 		"dev_mode":DEV_MODE,
-		"suggestedContent": suggestedTitle
+		"suggestedContent": suggestedContent
 	}
 	return render(request, 'base/menu.html', ctx)
 
@@ -60,8 +53,11 @@ def maze(request):
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
 	makeLog(request)
-	with urlopen("https://config-archero.habby.mobi/data/config/MazeConfig.json") as url:
-		maze_data_api = json.load(url)
+	try:
+		with urlopen("https://config-archero.habby.mobi/data/config/MazeConfig.json") as url:
+			maze_data_api = json.load(url)
+	except:
+		maze_data_api = {}
 	return render(request, 'wiki/maze.html', {"data_json":maze_data_api, "darkmode": checkDarkMode(request), "header_msg":_("maze"), "sidebarContent":SidebarContent, "cookieUsername":makeCookieheader(cookie_result)})
 
 @loadContent()
@@ -161,7 +157,7 @@ def item_description(request, item=None):
 	
 	item_data = LocalDataContentWiki["ItemData"].get(str(item), None)
 	if item_data is None:
-		item = "Expedition_Fist"
+		item = "Celestial_Might"
 		item_data = LocalDataContentWiki["ItemData"][item]
 	
 	temp = list(LocalDataContentWiki["ItemData"])
@@ -228,7 +224,7 @@ def heros_description(request, hero=None):
 	
 	hero_data = LocalDataContentWiki["HeroData"].get(hero, None)
 	if hero_data is None:
-		hero = "Atreus"
+		hero = "DragonGirl"
 		hero_data = LocalDataContentWiki["HeroData"][hero]
 	
 	temp = list(LocalDataContentWiki["HeroData"])
@@ -263,7 +259,6 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 	SidebarContent = LocalDataContentWiki['SidebarContent']
 	cookie_result = checkCookie(request)
 	makeLog(request)
-	all_rank = ["A","S","SS"]
 	content = ""
 	ctx = {
 		"darkmode": checkDarkMode(request),
@@ -327,7 +322,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/")
 	elif cost_type == "dragons":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 119) and (1 <= lvl2 <= 120):
-			if rank in all_rank:
+			if rank in ["A","S","SS"]:
 				price = calculatePrice(lvl1,lvl2,cost_type,rank)
 				content = {
 					"eTitle": _("Dragon Upgrade Cost"),
@@ -346,7 +341,7 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/{rank}/")
 	elif cost_type == "relics":
 		if lvl1 <= lvl2 and (0 <= lvl1 <= 29) and (1 <= lvl2 <= 30):
-			if rank in all_rank:
+			if rank in ["A","S","SS","MYTHIC"]:
 				price = calculatePrice(lvl1,lvl2,cost_type,rank)
 				content = {
 					"eTitle": _("Relics Upgrade Cost"),
@@ -356,6 +351,25 @@ def upgrade_cost(request,cost_type:str="None",lvl1:int=1,lvl2:int=2,rank:str="No
 					"eField2": f'{int(price[1]):,}',
 					"currency1": [_('Gold :'),'gold'],
 					"currency2": [_('Starlight :'),'starlight'],
+				}
+			else:
+				messages.error(request,_("The rank need to be whether A, S or SS"))
+				return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/{lvl1}/{lvl2}/A/")
+		else:
+			messages.error(request,_("The levels need to be between 0 and 30"))
+			return HttpResponseRedirect(f"/{get_language()}/wiki/upgrade/{cost_type}/1/2/{rank}/")
+	elif cost_type == "pets":
+		if lvl1 <= lvl2 and (0 <= lvl1 <= 139) and (1 <= lvl2 <= 140):
+			if rank in ["A","S","SS"]:
+				price = calculatePrice(lvl1,lvl2,cost_type,rank)
+				content = {
+					"eTitle": _("Pets Upgrade Cost"),
+					"eDescription": format_lazy("{intro} {level1} {to} {level2}", intro=gettext_lazy("To upgrade pets from level "),level1=lvl1, to=gettext_lazy("to"), level2=lvl2),
+					"eImage": "/static/image/pets/" + str(rank).upper() + ".png",
+					"eField1": f'{int(price[0]):,}',
+					"eField2": f'{int(price[1]):,}',
+					"currency1": [_('Gold :'),'gold'],
+					"currency2": [_('Pet food :'),'pet_food'],
 				}
 			else:
 				messages.error(request,_("The rank need to be whether A, S or SS"))
@@ -374,7 +388,7 @@ def gsheetGrid(request):
 	ctx = {
 		'darkmode':checkDarkMode(request),
 		"header_msg":_("Google Sheet Wiki"),
-		"sheets":GoogleSheet.objects.all().filter(display=True).order_by('-index'),
+		"sheets":GoogleSheet.objects.all().filter(display=True).order_by('title'),
 		"sidebarContent":SidebarContent,
 		"cookieUsername":makeCookieheader(cookie_result)
 	}
@@ -879,11 +893,11 @@ def changelog(request):
 		commit_json = json.load(commit)
 	return render(request,'base/changelog.html',{"commit_json":commit_json,"darkmode": checkDarkMode(request), "header_msg":_("Change Log"),  "sidebarContent":SidebarContent,"cookieUsername":makeCookieheader(cookie_result)})
 
-@loadContent()
+@loadContent(db_maintenance=True)
 def theorycraft(request):
 	cookie_result = checkCookie(request)
 	makeLog(request)
-	articlesTheorycrafing = TheorycraftingArticle.objects.all()
+	articlesTheorycrafing = TheorycraftingArticle.objects.all().order_by('-index')
 	return render(request, "wiki/theorycraft.html", {"darkmode":checkDarkMode(request), "header_msg":_("Archero Calculation"),"sidebarContent":LocalDataContentWiki['SidebarContent'],"cookieUsername":makeCookieheader(cookie_result), "articles": articlesTheorycrafing})
 
 
@@ -902,14 +916,15 @@ def delete_cookie(request:HttpResponse,key,name_redirect):
 	)
 	return response
 
-def delete_session(request):
-	key_container = request.session.get("user_credential",None)
-	if key_container != None:
-		del request.session["user_credential"]
-		send_webhook(f'User Credentials Deleted: Session Key {"user_credential"}\n{"user_credential"} was containing {key_container}')
-	else:
-		send_webhook(f"{key_container} tried to logout.\nRedirected to menu\n__**Cookie**__: {request.COOKIES}\n__**Session**__: {str(request.session.items())}")
-	return redirect("menu")
+
+def logout_view(request):
+	response = redirect("/")
+	for cookieKey in request.COOKIES.keys():
+		response.delete_cookie(cookieKey)
+	
+	# Clearing the session
+	request.session.flush()
+	return response
 
 
 ## DEV MODE URL
