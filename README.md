@@ -1,4 +1,4 @@
-# Wiki Actual Version : v2
+# Wiki Version : v2
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -40,19 +40,3 @@ Once the application is up and running, you can access it by navigating to the a
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-
-___
-# Step change database :
-
-- `python -Xutf8 manage.py dumpdata > data.json`
-- `changing models.py`
-- `python manage.py makemigrations`
-- `python manage.py migrate`
-- `if migrate doesn't work, you need to delete the database through the psql command and DROP TABLE`
-- `python manage.py makemigrations`
-- `python manage.py migrate`
-- `python manage.py loaddata database_dump.json`
-<!-- Remind to fill up the database_dump.json -->
----
-

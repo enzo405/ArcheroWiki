@@ -91,7 +91,7 @@ LOCALE_PATHS = (
 ##########
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "calculator/static/")
-STATIC_VERSION = "2.0.0"
+STATIC_VERSION = "2.0.0a"
 
 
 ########
