@@ -6,15 +6,17 @@ Thank you for your interest in contributing to the Archero Wiki project! I appre
 
 ## How to Contribute
 
-### Pull Requests
+### Forking and Pull Requests
 
-1. **Feature Branches**: When working on a contribution, please create a new branch based on the `feature/*` branch model. Ensure your branch name clearly describes the work you are doing.
+1. **Fork the Repository**: Users can create a copy of this repository under their own GitHub account by clicking the "Fork" button at the top right of the repository page. This allows you to make changes in your forked repository.
 
-2. **Clear Descriptions**: When submitting a pull request, provide a clear and concise description (one or two sentences) of what you are adding or updating in the wiki. This helps maintainers quickly understand your contribution.
+2. **Create Branches**: After forking, create new branches in your forked repository to work on new features or changes. Use the `feature/*` branch model, and ensure your branch name clearly describes the work you are doing.
 
-3. **Content Contributions**: --> [./web-project/README.md](./web-project/README.md)
+3. **Submit Pull Requests**: Once your changes are ready, submit a pull request from your forked repository to this repository. When submitting a pull request, provide a clear and concise description (one or two sentences) of what you are adding or updating in the wiki. This helps maintainers quickly understand your contribution.
 
-4. **Branch Updates**: Before submitting your pull request, make sure your branch is up to date with the latest changes from the `main` branch.
+4. **Content Contributions**: Since this project is a wiki, most contributions will likely involve updating text assets, images, or other content such as tier lists and guides. Please ensure your contributions are accurate and relevant to the Archero game. For more details on content contributions, refer to [./web-project/README.md](./web-project/README.md).
+
+5. **Branch Updates**: Before submitting your pull request, make sure your branch is up to date with the latest changes from the `main` branch.
 
 ### Code Style
 
