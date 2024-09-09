@@ -25,6 +25,9 @@ The application is built using a range of technologies, including:
 It also uses Docker for deployment, with a PostgreSQL database.
 
 ## Getting Started
+
+> This is just for people who wants to run the project on their machine !!
+
 To run the application locally, you will need to have Docker installed on your system. Once you have Docker installed, simply clone the repository and run the docker-compose up command to start the application.
 Here are the step to run it : 
 - Once you've cloned this repository, you will need to change the services.db.volumes path from : path_local_db_data_store to what you want
