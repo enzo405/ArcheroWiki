@@ -1008,7 +1008,7 @@
 /* GSHEET PAGE */
 .grid-gsheet-archive{
 	display: grid;
-	grid-template-columns: repeat(auto-fill,minmax(140px, 375px));
+	grid-template-columns: repeat(auto-fill,minmax(30px, 140px));
     justify-content: center;
 	margin: 10px;
 	gap: 10px;
