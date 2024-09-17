@@ -15,6 +15,12 @@ urlpatterns += i18n_patterns (
     path('', include('calculator.urls')),
 )
 
+# Add rosetta urls
+if 'rosetta' in settings.INSTALLED_APPS:
+    urlpatterns += [
+        re_path(r'^deth/', include('rosetta.urls'))
+    ]
+
 # Add custom error handlers
 handler404 = 'calculator.views_wiki.handler404'
 handler500 = 'calculator.views_wiki.handler500'

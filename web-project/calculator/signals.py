@@ -46,3 +46,37 @@ def handle_new_log_entry(sender, instance, created, **kwargs):
 			webhook.execute()
 		except:
 			pass
+
+
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rosetta.signals import entry_changed
+from django.dispatch.dispatcher import Signal
+from django.utils.functional import SimpleLazyObject
+import time
+
+@receiver(entry_changed)
+def rosetta_translation_changed(sender, **kwargs):
+	isMaintenance = checkDbMaintenance()
+	if not isMaintenance and sender:
+		user : SimpleLazyObject = kwargs['user'] if kwargs['user'] else None
+		action_time_timestamp = int(time.time())
+		lang_code : str = kwargs['language_code']
+		
+		message = (
+			f"- Created at: <t:{action_time_timestamp}:f>\n"
+			f"- Language Code: :flag_{lang_code}: ({lang_code})\n"
+			f"```{sender}```"
+		)
+		
+		avatar_url = f"{c_hostname}/static/image/favicon.png"
+		webhook = DiscordWebhook(url=WEBHOOK_URL, content="", rate_limit_retry=True)
+		embed = DiscordEmbed(title="A new Translation Entry was created:", description="", color="F1C232")
+		embed.set_author(name=user.username,icon_url=avatar_url)
+		embed.add_embed_field(name=f"Content: ", value=message, inline=False)
+		webhook.add_embed(embed)
+		try:
+			webhook.execute()
+		except Exception as e:
+			print(e)
