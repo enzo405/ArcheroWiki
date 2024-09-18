@@ -11,3 +11,4 @@ __pycache__
 # Setting file 
 *_local.py
 *_local.json
+.env
