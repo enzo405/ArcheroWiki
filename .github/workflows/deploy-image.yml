@@ -38,8 +38,8 @@ jobs:
       - name: Build Docker image
         run: |
           cd web-project/
-          docker build -t ${{ secrets.DOCKER_REGISTRY }}/archero:v${{ github.event.inputs.image_version }} .
+          docker build -t ${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b .
 
       # Push Docker image to the custom registry
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_REGISTRY }}/archero:v${{ github.event.inputs.image_version }}"
+        run: docker push ${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b"
