@@ -9,9 +9,6 @@ on:
       static_version:
         description: 'Static version'
         required: true
-  push:
-    branches:
-      - feature/*
 
 jobs:
   deploy:
@@ -24,7 +21,7 @@ jobs:
       - name: Create .env file
         run: |
           echo "Creating .env file"
-          echo "STATIC_VERSION=\"2.0.0b\"" >> .env
+          echo "STATIC_VERSION=\"${{ github.event.inputs.static_version }}\"" >> .env
           echo "${{ secrets.ENV_FILE_CONTENT }}" >> .env
 
       - name: Move .env file in /web-project/.env
@@ -38,8 +35,8 @@ jobs:
       - name: Build Docker image
         run: |
           cd web-project/
-          docker build -t ${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b .
+          docker build -t ${{ secrets.DOCKER_REGISTRY }}/archero:v${{ github.event.inputs.image_version }} .
 
       # Push Docker image to the custom registry
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b
+        run: docker push ${{ secrets.DOCKER_REGISTRY }}/archero:v${{ github.event.inputs.image_version }}
