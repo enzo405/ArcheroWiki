@@ -25,20 +25,13 @@ jobs:
         run: |
           echo "Creating .env file"
           echo "STATIC_VERSION=\"2.0.0b\"" >> .env
-          echo "ENV_FILE_CONTENT=${{ secrets.ENV_FILE_CONTENT }}" >> .env
-          cat .env
-
-      - name: Debug current directory
-        run: ls -la
+          echo "${{ secrets.ENV_FILE_CONTENT }}" >> .env
 
       - name: Move .env file in /web-project/.env
         run: mv .env web-project/.env
 
-      - name: Debug web-project directory (if it exists)
-        run: ls -la web-project || echo "Directory web-project does not exist"
-
       - name: Log in to Docker registry
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login "${{ secrets.DOCKER_REGISTRY }}" -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Build Docker image
         run: docker build -t "${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b" .
