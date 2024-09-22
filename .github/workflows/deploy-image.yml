@@ -33,12 +33,13 @@ jobs:
       - name: Log in to Docker registry
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
+      - name: Login to Docker Private Registry
+        run: docker login reg.chaboisseau.net
+
       - name: Build Docker image
         run: |
             cd web-project/
             docker build -t "${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b" .
 
       - name: Push Docker image
-        run: |
-            cd web-project/
-            docker push "${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b"
+        run: docker push "${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b"
