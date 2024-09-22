@@ -16,21 +16,27 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Create .env file
         run: |
           echo "Creating .env file"
-          echo "ENV_FILE_CONTENT=${{ secrets.ENV_FILE_CONTENT }}" >> .env
+          echo "STATIC_VERSION=\"${{ github.event.inputs.static_version }}\"" >> .env
+          echo "${{ secrets.ENV_FILE_CONTENT }}" >> .env
 
-      - name: Move .env file
-        run: mv .env /web-project/.env
+      - name: Move .env file in /web-project/.env
+        run: mv .env web-project/.env
 
+      # Log in to your custom Docker registry
       - name: Log in to Docker registry
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login "${{ secrets.DOCKER_REGISTRY }}" -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login ${{ secrets.DOCKER_REGISTRY }} -u "${{ secrets.REGISTRY_USERNAME }}" --password-stdin
 
+      # Build Docker image inside the correct directory
       - name: Build Docker image
-        run: docker build -t "${{ secrets.DOCKER_REGISTRY }}/archero:v${{ github.event.inputs.image_version }}" .
+        run: |
+          cd web-project/
+          docker build -t ${{ secrets.DOCKER_REGISTRY }}/archero:v${{ github.event.inputs.image_version }} .
 
+      # Push Docker image to the custom registry
       - name: Push Docker image
-        run: docker push "${{ secrets.DOCKER_REGISTRY }}/archero:v${{ github.event.inputs.image_version }}"
+        run: docker push ${{ secrets.DOCKER_REGISTRY }}/archero:v${{ github.event.inputs.image_version }}
