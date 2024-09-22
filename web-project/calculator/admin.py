@@ -70,5 +70,7 @@ try:
 	group(PromoCodeReward)
 	group(GoogleSheet)
 	group(TheorycraftingArticle)
+	# Creates a "translator" groups for people that can access the Rosetta admin panel
+	translator_group, created = Group.objects.get_or_create(name='translators')
 except Exception as e:
 	send_webhook(f"Admin panel initialization failed : {e}", admin_log=True)
