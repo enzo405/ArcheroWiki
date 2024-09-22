@@ -16,7 +16,7 @@ jobs:
       - name: Create .env file
         run: |
           echo "Creating .env file"
-          echo "STATIC_VERSION=\"2.0.0test\"" >> .env
+          echo "STATIC_VERSION=\"2.0.0test1\"" >> .env
           echo "${{ secrets.ENV_FILE_CONTENT }}" >> .env
 
       - name: Move .env file in /web-project/.env
@@ -30,8 +30,8 @@ jobs:
       - name: Build Docker image
         run: |
           cd web-project/
-          docker build -t ${{ secrets.DOCKER_REGISTRY }}/archero:vtest .
+          docker build -t ${{ secrets.DOCKER_REGISTRY }}/archero:vtest1 .
 
       # Push Docker image to the custom registry
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_REGISTRY }}/archero:vtest
+        run: docker push ${{ secrets.DOCKER_REGISTRY }}/archero:vtest1
