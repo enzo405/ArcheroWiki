@@ -30,13 +30,16 @@ jobs:
       - name: Move .env file in /web-project/.env
         run: mv .env web-project/.env
 
+      # Log in to your custom Docker registry
       - name: Log in to Docker registry
-        run: echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login "${{ secrets.DOCKER_REGISTRY }}"" -u "${{ secrets.REGISTRY_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login ${{ secrets.DOCKER_REGISTRY }} -u "${{ secrets.REGISTRY_USERNAME }}" --password-stdin
 
+      # Build Docker image inside the correct directory
       - name: Build Docker image
         run: |
-            cd web-project/
-            docker build -t "${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b" .
+          cd web-project/
+          docker build -t ${{ secrets.DOCKER_REGISTRY }}/archero:v${{ github.event.inputs.image_version }} .
 
+      # Push Docker image to the custom registry
       - name: Push Docker image
-        run: docker push "${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b"
+        run: docker push ${{ secrets.DOCKER_REGISTRY }}/archero:v${{ github.event.inputs.image_version }}"
