@@ -42,4 +42,4 @@ jobs:
 
       # Push Docker image to the custom registry
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b"
+        run: docker push ${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b
