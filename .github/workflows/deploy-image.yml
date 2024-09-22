@@ -34,7 +34,11 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Build Docker image
-        run: docker build -t "${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b" .
+        run: |
+            cd web-project/
+            docker build -t "${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b" .
 
       - name: Push Docker image
-        run: docker push "${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b"
+        run: |
+            cd web-project/
+            docker push "${{ secrets.DOCKER_REGISTRY }}/archero:v2.0.0b"
