@@ -10,9 +10,9 @@ DISCORD_ERROR_ROLE_ID = os.getenv("DISCORD_ERROR_ROLE_ID")
 DISCORD_CLIENT_SECRET = os.getenv("DISCORD_CLIENT_SECRET")
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 ADMIN_LOG_WEBHOOK_URL = os.getenv("ADMIN_LOG_WEBHOOK_URL")
-DEV_MODE = os.getenv("DEV_MODE")
+DEV_MODE = os.getenv("DEV_MODE", False).lower() in ('true', '1', 't')
 ## if DEBUG_STATS=True : get the print() of all calculation function in models.py and be able to access update views for all users
-DEBUG_STATS = os.getenv("DEBUG_STATS")
+DEBUG_STATS = os.getenv("DEBUG_STATS", False).lower() in ('true', '1', 't')
 ADMIN_CREDENTIAL = {}
 
 # If you want to have analytics locally, you'll need to install Matomo on your server and change the following variables
@@ -27,7 +27,7 @@ c_CSRF_COOKIE_SECURE = os.getenv("c_CSRF_COOKIE_SECURE")
 c_CSRF_TRUSTED_ORIGINS = os.getenv("c_CSRF_TRUSTED_ORIGINS").split(",")
 c_CSRF_COOKIE_SAMESITE = os.getenv("c_CSRF_COOKIE_SAMESITE")
 c_ALLOWED_HOSTS = os.environ.get("c_ALLOWED_HOSTS").split(",")
-c_DEBUG = os.getenv("c_DEBUG")
+c_DEBUG = os.getenv("c_DEBUG", False).lower() in ('true', '1', 't')
 c_hostname = os.getenv("c_hostname")
 c_POSTGRES_DB = os.getenv("POSTGRES_DB")
 c_POSTGRES_USER = os.getenv("POSTGRES_USER")
