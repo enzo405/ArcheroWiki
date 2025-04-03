@@ -1,153 +1,153 @@
 {% extends "template.html" %}
 {% load static %}
 {% load i18n %}
-	{% block head %}
-		<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version={{ request.static_version }}quest.static_version }}">
-		<title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
-		<meta property="og:title" content="{% blocktrans %}Archero - Wiki{% endblocktrans %}">
-		<meta property="og:url" content="https://stats.wiki-archero.com/">
-		<meta property="og:type" content="website">
-		<meta property="og:description" content="{% blocktrans %}Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.{% endblocktrans %}">
-		<meta name="description" content="{% blocktrans %}Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.{% endblocktrans %}">
-		<meta property="og:image" content="{{ request.archero_icon_link }}">
-	{% endblock %}
-	{% block header_content %}{{ header_msg }}{% endblock %}
-	{% block content %}
-        <div class="most-viewed-page-container need-small">
-            <div class="most-viewed-page">
-                <h2>Top Articles:</h2>
-                <div class="pages">
-                    {% for title, url in suggestedContent.items %}
-                        <span class="page-item"><i class="fa-solid fa-arrow-right"></i> <a class="styled_a dontbrek" href="{{ url }}">{{ title }}</a></span>
-                    {% endfor %}
-                </div>
-            </div>
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version={{ request.static_version }}quest.static_version }}">
+<title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
+<meta property="og:title" content="{% blocktrans %}Archero - Wiki{% endblocktrans %}">
+<meta property="og:url" content="https://wiki-archero.luhcaran.fr/">
+<meta property="og:type" content="website">
+<meta property="og:description" content="{% blocktrans %}Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.{% endblocktrans %}">
+<meta name="description" content="{% blocktrans %}Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.{% endblocktrans %}">
+<meta property="og:image" content="{{ request.archero_icon_link }}">
+{% endblock %}
+{% block header_content %}{{ header_msg }}{% endblock %}
+{% block content %}
+<div class="most-viewed-page-container need-small">
+    <div class="most-viewed-page">
+        <h2>Top Articles:</h2>
+        <div class="pages">
+            {% for title, url in suggestedContent.items %}
+            <span class="page-item"><i class="fa-solid fa-arrow-right"></i> <a class="styled_a dontbrek" href="{{ url }}">{{ title }}</a></span>
+            {% endfor %}
         </div>
-		<div class="select-href">
-            <div class="menu-outdated-message">
-                <span>
-                    <p>{% blocktrans %}The wiki might have outdated information !!{% endblocktrans %}</p>
-                    <p>{% blocktrans %}Please join Archero Discord server and use Blazo bot for more up-to-date content{% endblocktrans %}</p>
-                    <a class="styled_a" href="https://discord.gg/AsGcUrT" target="_blank"><i class="fa-solid fa-arrow-right"></i> {% blocktrans %}click here to join{% endblocktrans %}</a>
-                </span>
-            </div>
-			{% for article in list_article %}
-			{% if article.index == 0 %}
-			<a href="/{{ LANGUAGE_CODE }}/wiki/{{ article.title }}" class="div-onclick-menu">
-				<div class="menu-onclick-img">
-					<span class="txt-onclick-span">{{ article.title }} </span>
-					{% if article.image_label != None %}
-					    <img class="br-4" src="{{ article.image_label }}" alt="article Archero Wiki {{ article.title }}">
-					{% endif %}
-				</div>
-                {% if article.small_description != None %}
-                    <span class="tab-description">{{ article.small_description }}</span>
-                {% endif %}
-			</a>
-			<hr style="margin-top: 10px; margin-bottom: 10px;">
-			{% else %}
-			<a href="/{{ LANGUAGE_CODE }}/wiki/{{ article.title }}" class="div-onclick-menu">
-				<div class="menu-onclick-img">
-					<span class="txt-onclick-span">{{ article.title }} </span>
-					{% if article.image_label != None %}
-					    <img class="br-4" src="/{{ article.image_label }}" alt="article Archero Wiki {{ article.title }}">
-					{% endif %}
-				</div>
-                {% if article.small_description != None %}
-                    <span class="tab-description">{{ article.small_description }}</span>
-                {% endif %}
-			</a>
-			{% endif %}
-			{% endfor %}
-			<a href="/{{ LANGUAGE_CODE }}/calculator/index" class="div-onclick-menu calc-index">
-                <div class="menu-onclick-img">
-                    <span class="txt-onclick-span">{% blocktrans %}Stats{% endblocktrans %} </span>
-                    <img alt="Archero Stats link" src="/static/image/img-sidebar/stats.png">
-                </div>
-                <span class="tab-description uppercase">archero stats, advanced profile stats</span>
-            </a>
-			<a href="/{{ LANGUAGE_CODE }}/wiki/menu" class="div-onclick-menu wiki-tc">
-                <div class="menu-onclick-img">
-                    <span class="txt-onclick-span">{% blocktrans %}Wiki{% endblocktrans %} </span>
-                    <img alt="Archero Wiki link" src="/static/image/img-sidebar/wiki.png">
-                </div>
-                <span class="tab-description uppercase">tierlists, quickraid, fusing, altar</span>
-            </a>
-			<a href="/{{ LANGUAGE_CODE }}/wiki/heroes" class="div-onclick-menu wiki-heros">
-                <div class="menu-onclick-img">
-                    <span class="txt-onclick-span">{% blocktrans %}Heroes{% endblocktrans %} </span>
-                    <img alt="Archero Heroes link" src="/static/image/img-sidebar/hero.png">
-                </div>
-                <span class="tab-description uppercase">stats, evolution, skins</span>
-            </a>
-			<a href="/{{ LANGUAGE_CODE }}/wiki/item" class="div-onclick-menu wiki-item">
-                <div class="menu-onclick-img">
-                    <span class="txt-onclick-span">{% blocktrans %}Items{% endblocktrans %} </span>
-                    <img alt="Archero Items link" src="/static/image/img-sidebar/icon_stuff.png">
-                </div>
-                <span class="tab-description uppercase">all item stats, Hidden Stats</span>
-            </a>
-			<a href="/{{ LANGUAGE_CODE }}/wiki/skill" class="div-onclick-menu wiki-skill">
-                <div class="menu-onclick-img">
-                    <span class="txt-onclick-span">{% blocktrans %}Skills{% endblocktrans %} </span>
-                    <img alt="Archero Skills link" src="/static/image/img-sidebar/skill.png">
-                </div>
-                <span class="tab-description uppercase">all skill/competence stats, hidden stats</span>
-            </a>
-			<a href="/{{ LANGUAGE_CODE }}/wiki/upgrade" class="div-onclick-menu wiki-cost">
-                <div class="menu-onclick-img">
-                    <span class="txt-onclick-span">{% blocktrans %}Upgrade Cost{% endblocktrans %} </span>
-                    <img alt="Archero Cost link" src="/static/image/img-sidebar/upgrade.png">
-                </div>
-                <span class="tab-description uppercase">item, hero, talent, dragon, relic</span>
-            </a>
-			<a href="/{{ LANGUAGE_CODE }}/wiki/promo-code" class="div-onclick-menu promo-code">
-                <div class="menu-onclick-img">
-                    <span class="txt-onclick-span">{% blocktrans %}Promo Codes{% endblocktrans %} </span>
-                    <img alt="Archero Promo Codes link" src="/static/image/img-sidebar/promotion_code.png">
-                </div>
-                <span class="tab-description uppercase">promocodes with expire date</span>
-            </a>
-			<a href="/{{ LANGUAGE_CODE }}/wiki/google-sheet" class="div-onclick-menu wiki-maze">
-                <div class="menu-onclick-img">
-                    <span class="txt-onclick-span">{% blocktrans %}Google Sheet{% endblocktrans %} </span>
-                    <img alt="Archero GSheet link" src="/static/image/img-sidebar/sheet.png">
-                </div>
-                <span class="tab-description uppercase">google sheet made by community</span>
-            </a>
-			<a href="/{{ LANGUAGE_CODE }}/wiki/maze" class="div-onclick-menu wiki-maze">
-                <div class="menu-onclick-img">
-                    <span class="txt-onclick-span">{% blocktrans %}Maze Map{% endblocktrans %} </span>
-                    <img alt="Archero Maze link" src="/static/image/img-sidebar/maze.png">
-                </div>
-                <span class="tab-description uppercase">maze event soluce</span>
-            </a>
-			<a href="/{{ LANGUAGE_CODE }}/wiki/theorycraft" class="div-onclick-menu theorycraft">
-                <div class="menu-onclick-img">
-                    <span class="txt-onclick-span">{% blocktrans %}Theorycraft{% endblocktrans %} </span>
-                    <img alt="Archero Theorycraft link" src="/static/image/img-sidebar/theorycraft.png">
-                </div>
-                <span class="tab-description uppercase">damage formula, theorycrafting content</span>
-            </a>
-			{% if dev_mode %}
-			<a href="/page_set" class="div-onclick-menu">Page Set</a>
-			{% endif %}
-		</div>
-		<div class="feedback">
-			<div class="feedback-title">
-				{% blocktrans %}Make a Feedback to help improve the wiki{% endblocktrans %}
-			</div>
-			<div class="feedback-container">
-				<div class="image-feedback-container">
-					<img src="/static/image/wiki-image/ButtonSmall_Green.png" class="image-feedback" alt="feedback button google form">
-				</div>
-				<a href="https://forms.gle/YcHNZsPjFRnh4GKZ6" target="_blank" class="feedback">{% blocktrans %}FeedBack{% endblocktrans %}</a>
-			</div>
-		</div>
-	{% endblock %}
-	{% block javascript %}
-		<script>
-			const self_inline_div_traveling = document.getElementById('Menu-sidebar-image')
-			self_inline_div_traveling.classList.add('bg-traveling') 
-		</script>
-	{% endblock %}
+    </div>
+</div>
+<div class="select-href">
+    <div class="menu-outdated-message">
+        <span>
+            <p>{% blocktrans %}The wiki might have outdated information !!{% endblocktrans %}</p>
+            <p>{% blocktrans %}Please join Archero Discord server and use Blazo bot for more up-to-date content{% endblocktrans %}</p>
+            <a class="styled_a" href="https://discord.gg/AsGcUrT" target="_blank"><i class="fa-solid fa-arrow-right"></i> {% blocktrans %}click here to join{% endblocktrans %}</a>
+        </span>
+    </div>
+    {% for article in list_article %}
+    {% if article.index == 0 %}
+    <a href="/{{ LANGUAGE_CODE }}/wiki/{{ article.title }}" class="div-onclick-menu">
+        <div class="menu-onclick-img">
+            <span class="txt-onclick-span">{{ article.title }} </span>
+            {% if article.image_label != None %}
+            <img class="br-4" src="{{ article.image_label }}" alt="article Archero Wiki {{ article.title }}">
+            {% endif %}
+        </div>
+        {% if article.small_description != None %}
+        <span class="tab-description">{{ article.small_description }}</span>
+        {% endif %}
+    </a>
+    <hr style="margin-top: 10px; margin-bottom: 10px;">
+    {% else %}
+    <a href="/{{ LANGUAGE_CODE }}/wiki/{{ article.title }}" class="div-onclick-menu">
+        <div class="menu-onclick-img">
+            <span class="txt-onclick-span">{{ article.title }} </span>
+            {% if article.image_label != None %}
+            <img class="br-4" src="/{{ article.image_label }}" alt="article Archero Wiki {{ article.title }}">
+            {% endif %}
+        </div>
+        {% if article.small_description != None %}
+        <span class="tab-description">{{ article.small_description }}</span>
+        {% endif %}
+    </a>
+    {% endif %}
+    {% endfor %}
+    <a href="/{{ LANGUAGE_CODE }}/calculator/index" class="div-onclick-menu calc-index">
+        <div class="menu-onclick-img">
+            <span class="txt-onclick-span">{% blocktrans %}Stats{% endblocktrans %} </span>
+            <img alt="Archero Stats link" src="/static/image/img-sidebar/stats.png">
+        </div>
+        <span class="tab-description uppercase">archero stats, advanced profile stats</span>
+    </a>
+    <a href="/{{ LANGUAGE_CODE }}/wiki/menu" class="div-onclick-menu wiki-tc">
+        <div class="menu-onclick-img">
+            <span class="txt-onclick-span">{% blocktrans %}Wiki{% endblocktrans %} </span>
+            <img alt="Archero Wiki link" src="/static/image/img-sidebar/wiki.png">
+        </div>
+        <span class="tab-description uppercase">tierlists, quickraid, fusing, altar</span>
+    </a>
+    <a href="/{{ LANGUAGE_CODE }}/wiki/heroes" class="div-onclick-menu wiki-heros">
+        <div class="menu-onclick-img">
+            <span class="txt-onclick-span">{% blocktrans %}Heroes{% endblocktrans %} </span>
+            <img alt="Archero Heroes link" src="/static/image/img-sidebar/hero.png">
+        </div>
+        <span class="tab-description uppercase">stats, evolution, skins</span>
+    </a>
+    <a href="/{{ LANGUAGE_CODE }}/wiki/item" class="div-onclick-menu wiki-item">
+        <div class="menu-onclick-img">
+            <span class="txt-onclick-span">{% blocktrans %}Items{% endblocktrans %} </span>
+            <img alt="Archero Items link" src="/static/image/img-sidebar/icon_stuff.png">
+        </div>
+        <span class="tab-description uppercase">all item stats, Hidden Stats</span>
+    </a>
+    <a href="/{{ LANGUAGE_CODE }}/wiki/skill" class="div-onclick-menu wiki-skill">
+        <div class="menu-onclick-img">
+            <span class="txt-onclick-span">{% blocktrans %}Skills{% endblocktrans %} </span>
+            <img alt="Archero Skills link" src="/static/image/img-sidebar/skill.png">
+        </div>
+        <span class="tab-description uppercase">all skill/competence stats, hidden stats</span>
+    </a>
+    <a href="/{{ LANGUAGE_CODE }}/wiki/upgrade" class="div-onclick-menu wiki-cost">
+        <div class="menu-onclick-img">
+            <span class="txt-onclick-span">{% blocktrans %}Upgrade Cost{% endblocktrans %} </span>
+            <img alt="Archero Cost link" src="/static/image/img-sidebar/upgrade.png">
+        </div>
+        <span class="tab-description uppercase">item, hero, talent, dragon, relic</span>
+    </a>
+    <a href="/{{ LANGUAGE_CODE }}/wiki/promo-code" class="div-onclick-menu promo-code">
+        <div class="menu-onclick-img">
+            <span class="txt-onclick-span">{% blocktrans %}Promo Codes{% endblocktrans %} </span>
+            <img alt="Archero Promo Codes link" src="/static/image/img-sidebar/promotion_code.png">
+        </div>
+        <span class="tab-description uppercase">promocodes with expire date</span>
+    </a>
+    <a href="/{{ LANGUAGE_CODE }}/wiki/google-sheet" class="div-onclick-menu wiki-maze">
+        <div class="menu-onclick-img">
+            <span class="txt-onclick-span">{% blocktrans %}Google Sheet{% endblocktrans %} </span>
+            <img alt="Archero GSheet link" src="/static/image/img-sidebar/sheet.png">
+        </div>
+        <span class="tab-description uppercase">google sheet made by community</span>
+    </a>
+    <a href="/{{ LANGUAGE_CODE }}/wiki/maze" class="div-onclick-menu wiki-maze">
+        <div class="menu-onclick-img">
+            <span class="txt-onclick-span">{% blocktrans %}Maze Map{% endblocktrans %} </span>
+            <img alt="Archero Maze link" src="/static/image/img-sidebar/maze.png">
+        </div>
+        <span class="tab-description uppercase">maze event soluce</span>
+    </a>
+    <a href="/{{ LANGUAGE_CODE }}/wiki/theorycraft" class="div-onclick-menu theorycraft">
+        <div class="menu-onclick-img">
+            <span class="txt-onclick-span">{% blocktrans %}Theorycraft{% endblocktrans %} </span>
+            <img alt="Archero Theorycraft link" src="/static/image/img-sidebar/theorycraft.png">
+        </div>
+        <span class="tab-description uppercase">damage formula, theorycrafting content</span>
+    </a>
+    {% if dev_mode %}
+    <a href="/page_set" class="div-onclick-menu">Page Set</a>
+    {% endif %}
+</div>
+<div class="feedback">
+    <div class="feedback-title">
+        {% blocktrans %}Make a Feedback to help improve the wiki{% endblocktrans %}
+    </div>
+    <div class="feedback-container">
+        <div class="image-feedback-container">
+            <img src="/static/image/wiki-image/ButtonSmall_Green.png" class="image-feedback" alt="feedback button google form">
+        </div>
+        <a href="https://forms.gle/YcHNZsPjFRnh4GKZ6" target="_blank" class="feedback">{% blocktrans %}FeedBack{% endblocktrans %}</a>
+    </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script>
+    const self_inline_div_traveling = document.getElementById('Menu-sidebar-image')
+    self_inline_div_traveling.classList.add('bg-traveling') 
+</script>
+{% endblock %}

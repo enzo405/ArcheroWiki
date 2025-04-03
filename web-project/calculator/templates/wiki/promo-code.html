@@ -7,7 +7,7 @@
 <title>{% blocktrans %}Archero - Promo Codes{% endblocktrans %}</title>
 <meta name="description" content="Discover the latest promo codes and gift codes for Archero on our website. Unlock exclusive rewards, gems, and valuable items by redeeming these codes.">
 <meta property="og:title" content="Archero - Promo Codes">
-<meta property="og:url" content="https://stats.wiki-archero.com/wiki/promo-code">
+<meta property="og:url" content="https://wiki-archero.luhcaran.fr/wiki/promo-code">
 <meta property="og:type" content="website">
 {% block meta_description %}
 <meta property="og:description" content="Discover the latest promo codes and gift codes for Archero on our website:
@@ -42,23 +42,23 @@ Rewards: {% for reward in rewards %} {{ reward.reward_type }} {{ reward.reward_a
 					<div class="sc-3qrykn-4 hQKgZF">
 						<div class="rgqgux-0 dQAxvm">
 							{% if len_promo != 0 %}
-								{% for promo,rewards in promo_code.items %}
-								<div class="rgqgux-1 dHYyKL code_field">
-									<div class="sc-27l7o2-0 heOpKb" style="color: white;">
-										<strong>• {{ promo.code }}</strong>
-									</div>
+							{% for promo,rewards in promo_code.items %}
+							<div class="rgqgux-1 dHYyKL code_field">
+								<div class="sc-27l7o2-0 heOpKb" style="color: white;">
+									<strong>• {{ promo.code }}</strong>
 								</div>
-								<div class="rgqgux-2 jFcAhO reward_field">
-									<div class="sc-27l7o2-0 heOpKb reward_text">
-										{% blocktrans %}Rewards: {% endblocktrans %}{% for reward in rewards %}
-											{{ reward.reward_amount }} <object type="image/png" data="/static/image/svg/{{ reward.reward_type }}.svg" height="18"> {{ reward.reward_type }}</object>
-										{% endfor %}
-									</div>
+							</div>
+							<div class="rgqgux-2 jFcAhO reward_field">
+								<div class="sc-27l7o2-0 heOpKb reward_text">
+									{% blocktrans %}Rewards: {% endblocktrans %}{% for reward in rewards %}
+									{{ reward.reward_amount }} <object type="image/png" data="/static/image/svg/{{ reward.reward_type }}.svg" height="18"> {{ reward.reward_type }}</object>
+									{% endfor %}
 								</div>
-								<div class="rgqgux-2 jFcAhO expire_field">
-									{% blocktrans %}Expires on: {% endblocktrans %}{{ promo.expire }}
-								</div>
-								{% endfor %}
+							</div>
+							<div class="rgqgux-2 jFcAhO expire_field">
+								{% blocktrans %}Expires on: {% endblocktrans %}{{ promo.expire }}
+							</div>
+							{% endfor %}
 							{% else %}
 							<div class="rgqgux-1 dHYyKL code_field">
 								<div class="sc-27l7o2-0 heOpKb" style="color: white;">
@@ -98,4 +98,4 @@ Rewards: {% for reward in rewards %} {{ reward.reward_type }} {{ reward.reward_a
 	const self_inline_div_traveling = document.getElementById('Promos-sidebar-image')
 	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
-{% endblock %} 
+{% endblock %}

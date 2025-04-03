@@ -3,31 +3,31 @@
 {% load i18n %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'calculator.css' %}?version={{ request.static_version }}">
-<title>{% blocktrans %}{{ name }} Stats - Wiki{% endblocktrans  %}</title>
+<title>{% blocktrans %}{{ name }} Stats - Wiki{% endblocktrans %}</title>
 <meta property="og:image" content="{{ request.archero_icon_link }}">
 <meta name="description" content="{{ name }} Stats - Wiki">
-<meta property="og:url" content="https://stats.wiki-archero.com/calculator/show/{{pbid}}/">
+<meta property="og:url" content="https://wiki-archero.luhcaran.fr/calculator/show/{{pbid}}/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ name }} Stats - Archero Wiki">
 <meta property="og:description" content="{{ name }} : {{global_stats_atk}} Attack / {{global_stats_hp}} Hp">
-<meta property="og:image" content="https://stats.wiki-archero.com/static/image/stuff_save/stuff_{{ name }}.png">
+<meta property="og:image" content="https://wiki-archero.luhcaran.fr/static/image/stuff_save/stuff_{{ name }}.png">
 {% endblock %}
 {% block header_content %}{{ header_msg }}{% endblock %}
 {% block content %}
 <main class="main-affiche">
 	{% if ValueError == "yes" %}
-		<div class="error_data_missing">
-			<i class="fa fa-exclamation-triangle" aria-hidden="true"> {% blocktrans %}Error{% endblocktrans %} </i>
-			<div class="id_error_msg">
-				{% blocktrans %}Missing Data : {{ missing_data }}⭐{% endblocktrans  %}
-			</div>
+	<div class="error_data_missing">
+		<i class="fa fa-exclamation-triangle" aria-hidden="true"> {% blocktrans %}Error{% endblocktrans %} </i>
+		<div class="id_error_msg">
+			{% blocktrans %}Missing Data : {{ missing_data }}⭐{% endblocktrans %}
 		</div>
+	</div>
 	{% endif %}
 	<script>
-		function toggleDetailStats(){
+		function toggleDetailStats() {
 			var contain_image_stuff = document.getElementById('contain-image-stuff')
 			var detail_stats = document.getElementById('detail-stats')
-			switch(contain_image_stuff.style.display){
+			switch (contain_image_stuff.style.display) {
 				case "none":
 					contain_image_stuff.style.display = "flex"
 					break
@@ -35,7 +35,7 @@
 					contain_image_stuff.style.display = "none"
 					break
 			}
-			switch(detail_stats.style.display){
+			switch (detail_stats.style.display) {
 				case "none":
 					detail_stats.style.display = "block"
 					break
@@ -107,7 +107,7 @@
 				</div>
 				<div class="stat-item">
 					<p title="{% blocktrans %}Damage to Mob{% endblocktrans %}">+{{ global_mobs_damage_var }}%</p>
-			  </div>
+				</div>
 			</div>
 		</div>
 		<div class="stats-box boss_damage">
@@ -236,4 +236,4 @@
 	const self_inline_div_traveling = document.getElementById('Stats-sidebar-image')
 	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
-{% endblock %} 
+{% endblock %}

@@ -18,7 +18,7 @@
 {% else %}
 <title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Item Description">
-<meta property="og:url" content="https://stats.wiki-archero.com/wiki/item">
+<meta property="og:url" content="https://wiki-archero.luhcaran.fr/wiki/item">
 <meta property="og:description" content="Explore a comprehensive list of items in Archero, including weapons, armor, rings, pets, lockets, bracelets, and spellbooks. Discover the stats, hidden stats, and descriptions for each item rarity. Unlock the full potential of your loadout with invaluable insights and make strategic choices to dominate your enemies in Archero.">
 <meta property="og:image" content="{{ request.archero_icon_link }}">
 {% endif %}
@@ -46,26 +46,26 @@
 			}
 		</script>
 		<a class="before_index arrow_searchbar" href="/{{ LANGUAGE_CODE }}/wiki/item/{{ index_before.0 }}/">
-            <img src="/static/{{ index_before.1.image }}" width="30" alt="Archero Item {{ index_before.1.displayName }}">
-            <i class="fas fa-arrow-up"></i>
-        </a>
-        <input type="text" id="myInput" onkeyup="filterList()" placeholder="{% blocktrans %}Search for items..{% endblocktrans %}" value="{{ name }}">
+			<img src="/static/{{ index_before.1.image }}" width="30" alt="Archero Item {{ index_before.1.displayName }}">
+			<i class="fas fa-arrow-up"></i>
+		</a>
+		<input type="text" id="myInput" onkeyup="filterList()" placeholder="{% blocktrans %}Search for items..{% endblocktrans %}" value="{{ name }}">
 		<ul id="myUL" class="searchbar-ul-hero" style="display: none;">
 			{% for k,v in ItemData.items %}
-                <li>
-                    <a class="toggle-display-list" href="/{{ LANGUAGE_CODE }}/wiki/item/{{ k }}/">
-                        <div class="item_name">{{ v.displayName }}</div>
-                        <div class="siimg">
-                            <img src="/static/{{ v.image }}" alt="Archero Item {{ k }}" width="26">
-                        </div>
-                    </a>
-                </li>
-            {% endfor %}
+			<li>
+				<a class="toggle-display-list" href="/{{ LANGUAGE_CODE }}/wiki/item/{{ k }}/">
+					<div class="item_name">{{ v.displayName }}</div>
+					<div class="siimg">
+						<img src="/static/{{ v.image }}" alt="Archero Item {{ k }}" width="26">
+					</div>
+				</a>
+			</li>
+			{% endfor %}
 		</ul>
 		<a class="after_index arrow_searchbar" href="/{{ LANGUAGE_CODE }}/wiki/item/{{ index_after.0 }}/">
-            <img src="/static/{{ index_after.1.image }}" width="30" alt="Archero Item {{ index_after.1.displayName }}">
-            <i class="fas fa-arrow-up"></i>
-        </a>
+			<img src="/static/{{ index_after.1.image }}" width="30" alt="Archero Item {{ index_after.1.displayName }}">
+			<i class="fas fa-arrow-up"></i>
+		</a>
 	</div>
 	<div class="embed-container">
 		<div class="kn3fae-0 ezpxFx">
@@ -108,7 +108,7 @@
 									<div class="sc-27l7o2-0 heOpKb container-rarity">
 										{% for k,v in item_data.rarity.items %}
 										{% if v != "" %}
-											<div class="rarity-desc" id="{{ k }}-rarity"><span class="span-rarity-item-desc"><img src="/static/image/rarity/{{ k }}.png" alt="Archero {{ name }} {{ k }} rarity icon"></span>{{ v|safe }}</div>
+										<div class="rarity-desc" id="{{ k }}-rarity"><span class="span-rarity-item-desc"><img src="/static/image/rarity/{{ k }}.png" alt="Archero {{ name }} {{ k }} rarity icon"></span>{{ v|safe }}</div>
 										{% endif %}
 										{% endfor %}
 									</div>
@@ -132,29 +132,29 @@
 	var ul_li = document.getElementById('myUL');
 	var item_li_a = document.querySelectorAll(".toggle-display-list");
 
-	search_bar.addEventListener('click', function(){
-		if(ul_li.style.display == "none"){
+	search_bar.addEventListener('click', function () {
+		if (ul_li.style.display == "none") {
 			ul_li.style.display = "block"
 			search_bar.value = ""
-		}else if(ul_li.style.display !== "none"){
+		} else if (ul_li.style.display !== "none") {
 			ul_li.style.display = "none"
 		}
 	})
 
-    window.addEventListener('click', ({target}) => {
-        if(target.id != "myInput"){
-            ul_li.style.display = "none"
-        }
+	window.addEventListener('click', ({ target }) => {
+		if (target.id != "myInput") {
+			ul_li.style.display = "none"
+		}
 	})
 
-	item_li_a.forEach(function(e) {
-	    e.addEventListener("click", function() {
-	    	setItemValues(e.textContent);
-        });
-    });
+	item_li_a.forEach(function (e) {
+		e.addEventListener("click", function () {
+			setItemValues(e.textContent);
+		});
+	});
 </script>
 <script>
 	const self_inline_div_traveling = document.getElementById('Items-sidebar-image')
 	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
-{% endblock %} 
+{% endblock %}

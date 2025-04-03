@@ -15,7 +15,7 @@
 {% else %}
 <title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Skill Description">
-<meta property="og:url" content="https://stats.wiki-archero.com/wiki/skill">
+<meta property="og:url" content="https://wiki-archero.luhcaran.fr/wiki/skill">
 <meta property="og:description" content="Discover a comprehensive list of skills and abilities in Archero on our website. Explore detailed descriptions, effects, and strategies for each skill. Unleash the power of skills and abilities to dominate in the world of Archero.">
 <meta property="og:image" content="{{ request.archero_icon_link }}">
 {% endif %}
@@ -43,9 +43,9 @@
 			}
 		</script>
 		<a class="before_index arrow_searchbar" href="/{{ LANGUAGE_CODE }}/wiki/skill/{{ index_before }}">
-            <img src="/static/image/skill/{{ index_before|lower }}.png" width="30" alt="Archero Skill Ability {{ index_before.value }}">
-            <i class="fas fa-arrow-up"></i>
-        </a>
+			<img src="/static/image/skill/{{ index_before|lower }}.png" width="30" alt="Archero Skill Ability {{ index_before.value }}">
+			<i class="fas fa-arrow-up"></i>
+		</a>
 		<input type="text" id="myInput" onkeyup="filterList()" placeholder="{% blocktrans %}Search for skill..{% endblocktrans %}" value="{{ name }}">
 		<ul id="myUL" class="searchbar-ul-skill" style="display: none;">
 			{% for k,v in SkillData.items %}
@@ -57,9 +57,9 @@
 			{% endfor %}
 		</ul>
 		<a class="after_index arrow_searchbar" href="/{{ LANGUAGE_CODE }}/wiki/skill/{{ index_after }}">
-            <img src="/static/image/skill/{{ index_after|lower }}.png" width="30" alt="Archero Skill Ability {{ index_after.value }}">
-            <i class="fas fa-arrow-up"></i>
-        </a>
+			<img src="/static/image/skill/{{ index_after|lower }}.png" width="30" alt="Archero Skill Ability {{ index_after.value }}">
+			<i class="fas fa-arrow-up"></i>
+		</a>
 	</div>
 	<div class="embed-container">
 		<div class="kn3fae-0 ezpxFx">
@@ -132,22 +132,22 @@
 	var search_bar = document.getElementById('myInput');
 	var ul_li = document.getElementById('myUL');
 
-	search_bar.addEventListener('click', function(){
-		if(ul_li.style.display == "none"){
+	search_bar.addEventListener('click', function () {
+		if (ul_li.style.display == "none") {
 			ul_li.style.display = "block"
 			search_bar.value = ""
-		}else if(ul_li.style.display !== "none"){
+		} else if (ul_li.style.display !== "none") {
 			ul_li.style.display = "none"
 		}
 	})
-    window.addEventListener('click', ({target}) => {
-        if(target.id != "myInput"){
-            ul_li.style.display = "none"
-        }
+	window.addEventListener('click', ({ target }) => {
+		if (target.id != "myInput") {
+			ul_li.style.display = "none"
+		}
 	})
 </script>
 <script>
 	const self_inline_div_traveling = document.getElementById('Skills-sidebar-image')
 	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
-{% endblock %} 
+{% endblock %}

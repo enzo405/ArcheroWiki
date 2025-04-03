@@ -671,7 +671,7 @@ def getSuggestedTitle() -> dict:
     for i in range(10):
         label = data[i]["label"].replace(" Archero - ", "")
         url = getURLForLabel(label)
-        result[label] = url.replace("https://stats.wiki-archero.com", "")
+        result[label] = url.replace("https://wiki-archero.luhcaran.fr", "")
     return result
 
 

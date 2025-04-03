@@ -22,7 +22,7 @@
 {% else %}
 <title>{% blocktrans %}Archero - Wiki{% endblocktrans %}</title>
 <meta property="og:title" content="Archero - Heroes Description">
-<meta property="og:url" content="https://stats.wiki-archero.com/wiki/heroes">
+<meta property="og:url" content="https://wiki-archero.luhcaran.fr/wiki/heroes">
 <meta property="og:description" content="Discover the extensive collection of heroes in Archero, each with unique star boosts, base skills, and descriptions. Explore our comprehensive list to uncover the full potential of each character. Make strategic choices and harness the power of your heroes to overcome challenges and triumph in Archero.">
 <meta property="og:image" content="{{ request.archero_icon_link }}">
 {% endif %}
@@ -56,7 +56,10 @@
 		<input type="text" id="myInput" onkeyup="filterList()" placeholder="{% blocktrans %}Search for hero..{% endblocktrans %}" value="{{ name_hero }}">
 		<ul id="myUL" class="searchbar-ul-hero" style="display: none;">
 			{% for k,v in HeroData.items %}
-			<li><a class="toggle-display-list" href="/{{ LANGUAGE_CODE }}/wiki/heroes/{{ k }}/"><div class="item_name">{{ v.displayName }}</div><div class="siimg"><img src="/static/image/hero_icon/icon_{{ k }}.png" width="26" alt="Archero Wiki Hero {{ k }}"></div></a></li>
+			<li><a class="toggle-display-list" href="/{{ LANGUAGE_CODE }}/wiki/heroes/{{ k }}/">
+					<div class="item_name">{{ v.displayName }}</div>
+					<div class="siimg"><img src="/static/image/hero_icon/icon_{{ k }}.png" width="26" alt="Archero Wiki Hero {{ k }}"></div>
+				</a></li>
 			{% endfor %}
 		</ul>
 		<a class="after_index arrow_searchbar" href="/{{ LANGUAGE_CODE }}/wiki/heroes/{{ index_after }}/">
@@ -156,13 +159,13 @@
 										</div>
 									</div>
 								</div>
-                                <br>
-                                <div class="rgqgux-2 jFcAhO">
+								<br>
+								<div class="rgqgux-2 jFcAhO">
 									<div class="sc-27l7o2-0 heOpKb">
 										<div id="skill_details">
-                                            <span class="center_content"><object type="image/png" data="/static/image/svg/icon-skill-{{ name_hero_initial }}.svg" width="22" height="22"></object>{{ hero_data.skill|safe }}</span>
-                                            {% if hero_data.skill_details != "" %}
-                                            <br>
+											<span class="center_content"><object type="image/png" data="/static/image/svg/icon-skill-{{ name_hero_initial }}.svg" width="22" height="22"></object>{{ hero_data.skill|safe }}</span>
+											{% if hero_data.skill_details != "" %}
+											<br>
 											<b>{% blocktrans %}Skill Details:{% endblocktrans %}</b><br>
 											{{ hero_data.skill_details|safe }}
 											<br><br>
@@ -203,7 +206,7 @@
 					</div>
 				</div>
 			</div>
-            {% if hero_data.hero_assist %}
+			{% if hero_data.hero_assist %}
 			<div class="kn3fae-2 eKjosW" id="Assist">
 				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
 					<div class="sc-3qrykn-0 bdFBtt">
@@ -240,14 +243,14 @@
 							</div>
 							<div class="sc-27l7o2-0 heOpKb center_content" style="margin-bottom: 0.6vh;margin-top: 0.4vh; display: flex; flex-wrap: wrap;">
 								{% for h in hero_data.list_hero_assist %}
-									<a href='/{{ LANGUAGE_CODE }}/wiki/heroes/{{ h }}/' class="styled_a center_content"><img src="/static/image/hero_icon/icon_{{ h }}.png" width="27" height="27" alt="Hero Assist for {{ name_hero }}"></img></a>
+								<a href='/{{ LANGUAGE_CODE }}/wiki/heroes/{{ h }}/' class="styled_a center_content"><img src="/static/image/hero_icon/icon_{{ h }}.png" width="27" height="27" alt="Hero Assist for {{ name_hero }}"></img></a>
 								{% endfor %}
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-            {% endif %}
+			{% endif %}
 			{% if hero_data.skins %}
 			<div class="kn3fae-2 eKjosW" id="Skins">
 				<div class="z4zgh4-0 jiJPTS" style="border-color: rgb(217, 0, 255);">
@@ -292,28 +295,28 @@
 	var ul_li = document.getElementById('myUL');
 	var hero_li_a = document.querySelectorAll(".toggle-display-list");
 
-	search_bar.addEventListener('click', function(){
-		if(ul_li.style.display == "none"){
+	search_bar.addEventListener('click', function () {
+		if (ul_li.style.display == "none") {
 			ul_li.style.display = "block"
 			search_bar.value = ""
-		}else if(ul_li.style.display !== "none"){
+		} else if (ul_li.style.display !== "none") {
 			ul_li.style.display = "none"
 		}
 	})
-    window.addEventListener('click', ({target}) => {
-        if(target.id != "myInput"){
-            ul_li.style.display = "none"
-        }
+	window.addEventListener('click', ({ target }) => {
+		if (target.id != "myInput") {
+			ul_li.style.display = "none"
+		}
 	})
-    hero_li_a.forEach(function(e) {
-        e.addEventListener("click", function() {
-            var hero = e.textContent;
-            setValues(hero);
-        });
-    });
+	hero_li_a.forEach(function (e) {
+		e.addEventListener("click", function () {
+			var hero = e.textContent;
+			setValues(hero);
+		});
+	});
 </script>
 <script>
 	const self_inline_div_traveling = document.getElementById('Heroes-sidebar-image')
 	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
-{% endblock %} 
+{% endblock %}

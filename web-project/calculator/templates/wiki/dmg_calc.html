@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'wiki.css' %}?version={{ request.static_version }}">
 <title>{% blocktrans %}Archero - Damage Calculator{% endblocktrans %}</title>
 <meta property="og:title" content="Archero Emulator Runes">
-<meta property="og:url" content="https://stats.wiki-archero.com/wiki/damage-calculator">
+<meta property="og:url" content="https://wiki-archero.luhcaran.fr/wiki/damage-calculator">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Welcome to the Archero wiki, optimize your damage output in Archero with our powerful damage calculator tool. Easily calculate and analyze your in-game damage based on various factors, including gear, abilities, and runes. Take control of your build by experimenting with different runes swapping strategies to maximize your potential.">
 <meta name="description" content="Welcome to the Archero wiki, optimize your damage output in Archero with our powerful damage calculator tool. Easily calculate and analyze your in-game damage based on various factors, including gear, abilities, and runes. Take control of your build by experimenting with different runes swapping strategies to maximize your potential.">
@@ -15,12 +15,12 @@
 {% block content %}
 <div class="content_container need-small">
 	<div class="container_runes_input">
-        <div class="anchoredModalOutdated">
-            <span>
-                This is outdated, please use the Damage Calc google sheet instead
-                <i class="fa-solid fa-arrow-right"></i> <a class="styled_a" href="https://docs.google.com/spreadsheets/d/14KR0LT-g1VptikoPyob0YL7UxHytHd8hmnjhbAqoAIM" target="_blank">click here</a>
-            </span>
-        </div>
+		<div class="anchoredModalOutdated">
+			<span>
+				This is outdated, please use the Damage Calc google sheet instead
+				<i class="fa-solid fa-arrow-right"></i> <a class="styled_a" href="https://docs.google.com/spreadsheets/d/14KR0LT-g1VptikoPyob0YL7UxHytHd8hmnjhbAqoAIM" target="_blank">click here</a>
+			</span>
+		</div>
 		<form method="POST" action="">
 			{% csrf_token %}
 			<div class="runes-choice">
@@ -34,7 +34,7 @@
 				</div>
 			</div>
 			<script>
-				document.cookie = " csrftoken= "+document.querySelector('[name=csrfmiddlewaretoken]').value + ";path=/";
+				document.cookie = " csrftoken= " + document.querySelector('[name=csrfmiddlewaretoken]').value + ";path=/";
 			</script>
 			<div class="runes_input">
 				<div class="select-runes">
@@ -71,10 +71,10 @@
 		<table class="table-damage-result">
 			<tr>
 				<th colspan="1" class="table-outrow popup-dmgcalc" onclick="damagePopupFunction()"><i class="fa fa-info-circle" aria-hidden="true"></i></th>
-					<span class="popup_container" id="damage_popup">
-						• {% blocktrans %}Generate Damage show damage with the runes input above{% endblocktrans %}<br>
-						• {% blocktrans %}Here you see a table with the damage in game{% endblocktrans %}<br>
-					</span>
+				<span class="popup_container" id="damage_popup">
+					• {% blocktrans %}Generate Damage show damage with the runes input above{% endblocktrans %}<br>
+					• {% blocktrans %}Here you see a table with the damage in game{% endblocktrans %}<br>
+				</span>
 				<th colspan="2" class="distance-type-th">{% blocktrans %}Melee{% endblocktrans %}</th>
 				<th colspan="2" class="distance-type-th">{% blocktrans %}Range{% endblocktrans %}</th>
 			</tr>
@@ -126,16 +126,16 @@
 {% block javascript %}
 <script>
 	var damage_popup = document.getElementById('damage_popup')
-	function damagePopupFunction(){
+	function damagePopupFunction() {
 		damage_popup.classList.toggle('show')
 	}
-	window.addEventListener('click', ({target}) => {
-		if(!target.closest('.popup-dmgcalc') && damage_popup.classList.contains('show')) damagePopupFunction()
+	window.addEventListener('click', ({ target }) => {
+		if (!target.closest('.popup-dmgcalc') && damage_popup.classList.contains('show')) damagePopupFunction()
 	})
 </script>
 <script>
-	var powerRunesLines = [["none", "{% trans 'None' %}"],["attack_flat", "{% trans 'Attack' %}"],["attack_var", "{% trans 'Attack' %}%"],["flat_dmg_airborne", "{% trans 'Damage to Airborne Units' %}"],["var_dmg_airborne", "{% trans 'Damage to Airborne Units' %} %"],["flat_dmg_ground", "{% trans 'Damage to Ground Units' %}"],["var_dmg_ground", "{% trans 'Damage to Ground Units' %} %"],["flat_dmg_melee", "{% trans 'Damage to Melee Units' %}"],["var_dmg_melee", "{% trans 'Damage to Melee Units' %} %"],["flat_dmg_ranged", "{% trans 'Damage to Ranged Units' %}"],["var_dmg_ranged", "{% trans 'Damage to Ranged Units' %} %"],["flat_dmg_boss", "{% trans 'Damage to Bosses Units' %}"],["var_dmg_boss", "{% trans 'Damage to Bosses Units' %} %"],["flat_dmg_mob", "{% trans 'Damage to Mobs Units' %}"],["var_dmg_mob", "{% trans 'Damage to Mobs Units' %} %"],["var_dmg_hero", "{% trans 'Damage to Heroes' %} %"],["var_all_dmg", "{% trans 'All Damage' %} %"],["var_elemental_dmg", "{% trans 'Elemental Damage' %} %"],["var_atk_speed", "{% trans 'Attack Speed' %} %"],["var_crit_rate", "{% trans 'Critic Chance' %} %"],["var_crit_dmg", "{% trans 'Critic Damage' %}%"]]
-	var courageRunesLines = [["none", "{% trans 'None' %}"],["attack_flat", "{% trans 'Attack' %}"],["attack_var", "{% trans 'Attack' %}%"],["courage_hero_attack_flat", "{% trans 'Hero base ATK' %}"],["courage_hero_attack_var", "{% trans 'Hero base ATK' %} %"],["other", "{% trans 'other ...' %}"]]
+	var powerRunesLines = [["none", "{% trans 'None' %}"], ["attack_flat", "{% trans 'Attack' %}"], ["attack_var", "{% trans 'Attack' %}%"], ["flat_dmg_airborne", "{% trans 'Damage to Airborne Units' %}"], ["var_dmg_airborne", "{% trans 'Damage to Airborne Units' %} %"], ["flat_dmg_ground", "{% trans 'Damage to Ground Units' %}"], ["var_dmg_ground", "{% trans 'Damage to Ground Units' %} %"], ["flat_dmg_melee", "{% trans 'Damage to Melee Units' %}"], ["var_dmg_melee", "{% trans 'Damage to Melee Units' %} %"], ["flat_dmg_ranged", "{% trans 'Damage to Ranged Units' %}"], ["var_dmg_ranged", "{% trans 'Damage to Ranged Units' %} %"], ["flat_dmg_boss", "{% trans 'Damage to Bosses Units' %}"], ["var_dmg_boss", "{% trans 'Damage to Bosses Units' %} %"], ["flat_dmg_mob", "{% trans 'Damage to Mobs Units' %}"], ["var_dmg_mob", "{% trans 'Damage to Mobs Units' %} %"], ["var_dmg_hero", "{% trans 'Damage to Heroes' %} %"], ["var_all_dmg", "{% trans 'All Damage' %} %"], ["var_elemental_dmg", "{% trans 'Elemental Damage' %} %"], ["var_atk_speed", "{% trans 'Attack Speed' %} %"], ["var_crit_rate", "{% trans 'Critic Chance' %} %"], ["var_crit_dmg", "{% trans 'Critic Damage' %}%"]]
+	var courageRunesLines = [["none", "{% trans 'None' %}"], ["attack_flat", "{% trans 'Attack' %}"], ["attack_var", "{% trans 'Attack' %}%"], ["courage_hero_attack_flat", "{% trans 'Hero base ATK' %}"], ["courage_hero_attack_var", "{% trans 'Hero base ATK' %} %"], ["other", "{% trans 'other ...' %}"]]
 	function runesClicked(runesType) {
 		var allSelect = document.getElementsByClassName('runes-line');
 		var inputRuneContainer = document.getElementsByClassName('runes_input');
@@ -155,19 +155,19 @@
 		thirdInput.value = '';
 		fourthInput.value = '';
 		fifthInput.value = '';
-		if(runesType === "power"){
+		if (runesType === "power") {
 			inputRuneContainer[0].id = 'power'
 			runesLine.forEach(select => {
 				while (select.hasChildNodes()) {
 					select.removeChild(select.firstChild);
 				}
-				if(select.childElementCount-1 === powerRunesLines.length ){
+				if (select.childElementCount - 1 === powerRunesLines.length) {
 					return
-				}else{
+				} else {
 					powerRunesLines.forEach(e => {
 						var newOption = document.createElement('option');
 						newOption.innerHTML = e[1]
-						newOption.setAttribute("value",e[0])
+						newOption.setAttribute("value", e[0])
 						select.appendChild(newOption)
 					});
 				}
@@ -182,19 +182,19 @@
 			fourthInput.value = parseFloat("{{ vars_dict.power_fourth_input }}".replace(',', '.'));
 			fifthSelect.value = "{{ vars_dict.power_fifth_select }}";
 			fifthInput.value = parseFloat("{{ vars_dict.power_fifth_input }}".replace(',', '.'));
-		} else if(runesType === "courage"){
+		} else if (runesType === "courage") {
 			inputRuneContainer[0].id = 'courage'
 			runesLine.forEach(select => {
 				while (select.hasChildNodes()) {
 					select.removeChild(select.firstChild);
 				}
-				if(select.childElementCount-1 === powerRunesLines.length){
+				if (select.childElementCount - 1 === powerRunesLines.length) {
 					return
-				}else{
+				} else {
 					courageRunesLines.forEach(e => {
 						var newOption = document.createElement('option');
 						newOption.innerHTML = e[1]
-						newOption.setAttribute("value",e[0])
+						newOption.setAttribute("value", e[0])
 						select.appendChild(newOption)
 					});
 				}
@@ -211,11 +211,11 @@
 			fifthInput.value = parseFloat("{{ vars_dict.courage_fifth_input }}".replace(',', '.'));
 		}
 	}
-	if("{{ method }}" === "POST"){
+	if ("{{ method }}" === "POST") {
 		runesClicked('{{ runes }}')
-		if('{{ runes }}' == "power"){
+		if ('{{ runes }}' == "power") {
 			document.getElementsByClassName('label_fieldset')[0].click()
-		}else if('{{ runes }}' == "courage"){
+		} else if ('{{ runes }}' == "courage") {
 			document.getElementsByClassName('label_fieldset')[1].click()
 		}
 	}
@@ -224,4 +224,4 @@
 	const self_inline_div_traveling = document.getElementById('Damage-sidebar-image')
 	self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
-{% endblock %} 
+{% endblock %}

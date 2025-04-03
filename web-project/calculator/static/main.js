@@ -1,18 +1,24 @@
-function createModale(element, urlNeedParentid, type){
+function createModale(element, urlNeedParentid, type) {
     var titremodals = "";
-    var url = window.location.href
-    if(element.nodeType === Node.ELEMENT_NODE){
+    var url = window.location.href;
+    if (element.nodeType === Node.ELEMENT_NODE) {
         titremodals = document.createElement("h3");
         titremodals.innerHTML = `<a href='${url}'>${element.parentElement.id}</a>`;
-        if(urlNeedParentid == true){
-            url = url.split('?')[0]
-            titremodals.innerHTML = `<a href='/wiki/menu/${element.parentElement.id}/' target="_blank">${(element.parentElement.id).replaceAll('_',' ').toUpperCase()}</a>`;
-            navigator.clipboard.writeText(`https://stats.wiki-archero.com/wiki/menu/${element.parentElement.id}/`)
-        }else{
+        if (urlNeedParentid == true) {
+            url = url.split("?")[0];
+            titremodals.innerHTML = `<a href='/wiki/menu/${
+                element.parentElement.id
+            }/' target="_blank">${element.parentElement.id
+                .replaceAll("_", " ")
+                .toUpperCase()}</a>`;
+            navigator.clipboard.writeText(
+                `https://wiki-archero.luhcaran.fr/wiki/menu/${element.parentElement.id}/`
+            );
+        } else {
             titremodals.innerHTML = `<a href='${url}'>${element.parentElement.id}</a>`;
-            navigator.clipboard.writeText(url)
+            navigator.clipboard.writeText(url);
         }
-    }else{
+    } else {
         titremodals = document.createElement("h4");
         titremodals.innerHTML = element;
     }
@@ -30,12 +36,12 @@ function createModale(element, urlNeedParentid, type){
     contenumodals.appendChild(boutonFermer);
     modals.appendChild(contenumodals);
     document.body.appendChild(modals);
-    setTimeout(function(){
+    setTimeout(function () {
         modals.style.opacity = 0;
-        setTimeout(function() {
-            try{
+        setTimeout(function () {
+            try {
                 document.body.removeChild(modals);
-            }catch{}
+            } catch {}
         }, 5000);
     }, 5000);
 }

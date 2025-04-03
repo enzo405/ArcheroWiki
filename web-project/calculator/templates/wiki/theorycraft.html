@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta name="description" content="{% blocktrans %}Welcome to the Archero wiki, your go-to resource for the popular mobile game by HABBY. Explore tier lists, comprehensive guides, hero breakdowns, and item stats to enhance your gameplay. Dive into the world of Archero, available for both Android and iOS players.{% endblocktrans %}">
 <meta property="og:title" content="Archero - Theorycrafting">
-<meta property="og:url" content="https://stats.wiki-archero.com/wiki/theorycraft">
+<meta property="og:url" content="https://wiki-archero.luhcaran.fr/wiki/theorycraft">
 <meta property="og:description" content="Welcome to Archero website! We offer advanced gameplay statistics, comprehensive guides to help you progress through the game. This site is constantly evolving and includes the latest updates.">
 <meta property="og:image" content="{{ request.archero_icon_link }}">
 {% endblock %}
@@ -44,7 +44,9 @@
                         <div>
                             <p>Theorycrafting is the process of using math and logic to determine the best possible outcome for a given situation. In Archero, this is usually done by calculating the damage output of a weapon or ability.</p>
                         </div>
-                        <span class="hr-cotainer"><hr></span>
+                        <span class="hr-cotainer">
+                            <hr>
+                        </span>
                         <div class="article-pages-container">
                             {% for a in articles %}
                             <div class="Theorycrafting__article" id="{{ a.articleHref }}">
@@ -61,7 +63,9 @@
                                         {{ a.articleBody | markdown | safe }}
                                     </div>
                                 </div>
-                                <span class="hr-cotainer"><hr></span>
+                                <span class="hr-cotainer">
+                                    <hr>
+                                </span>
                             </div>
                             {% endfor %}
                         </div>
@@ -77,7 +81,7 @@
 {% endblock %}
 {% block javascript %}
 <script>
-	const self_inline_div_traveling = document.getElementById('Theorycraft-sidebar-image')
-	self_inline_div_traveling.classList.add('bg-traveling') 
+    const self_inline_div_traveling = document.getElementById('Theorycraft-sidebar-image')
+    self_inline_div_traveling.classList.add('bg-traveling') 
 </script>
-{% endblock %} 
+{% endblock %}
