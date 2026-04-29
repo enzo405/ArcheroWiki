@@ -7,11 +7,9 @@ from app.settings import (
     ADMIN_LOG_WEBHOOK_URL,
     WEBHOOK_URL,
     DEV_MODE,
-    MATOMO_TOKEN_VIEW_ACCESS,
     c_hostname,
     ADMIN_CREDENTIAL,
     DISCORD_NOTIF_ROLE_ID,
-    MATOMO_INSTANCE,
 )
 from .models import ServerManagement, Contributor, user
 from difflib import SequenceMatcher
@@ -623,70 +621,10 @@ def checkMessages(request):
             message_function(request, message)
 
 
-# Matomo API Function
-
-
-def loadSuggestedFile():
-    current_date = datetime.datetime.now().strftime("%m-%Y")
-    suggestedTitleFilePath = "calculator/data/tempSuggestedTitle"
-    if os.path.exists(f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json"):
-        with open(
-            f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json",
-            "r",
-            encoding="utf-8",
-        ) as f:
-            suggestedTitle = json.load(f)
-        return suggestedTitle
-
-    suggestedTitle = getSuggestedTitle()
+def load_suggested_file():
     with open(
-        f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json",
-        "w",
+        "calculator/data/suggestedTitle.json",
+        "r",
         encoding="utf-8",
     ) as f:
-        json.dump(suggestedTitle, f, indent=4)
-
-    # Send the result file to the webhook
-    current_date = datetime.datetime.now().strftime("%m-%Y")
-    suggestedTitleFilePath = "calculator/data/tempSuggestedTitle"
-    path_file = f"{suggestedTitleFilePath}/{current_date}-suggestedTitle.json"
-    send_file_webhook("New Suggested Url Content", path_file)
-    return suggestedTitle
-
-
-def getSuggestedTitle() -> dict:
-    """
-    Makes an API Call to the Matomo API to retrieve the most searched titles page over the last 30 days.
-    Return a dictionary containing the first 10 pages.
-    Each item of the dictionary is made of the label and the url of the page.
-    """
-    dateOneMonthAgo = (datetime.datetime.now() - datetime.timedelta(days=30)).strftime(
-        "%Y-%m-%d"
-    )
-    url = f"{MATOMO_INSTANCE}/index.php?module=API&method=Actions.getPageTitles&idSite=1&period=range&date={dateOneMonthAgo},today&format=JSON&token_auth={MATOMO_TOKEN_VIEW_ACCESS}&filter_limit=10"
-    response = requests.get(url)
-    data = response.json()
-    result = {}
-
-    for i in range(10):
-        label = data[i]["label"].replace(" Archero - ", "")
-        url = getURLForLabel(label)
-        result[label] = url.replace("https://wiki-archero.luhcaran.fr", "")
-    return result
-
-
-def getURLForLabel(label: str) -> str:
-    """
-    Get the URL of the label passed in parameter.
-    """
-    url = ""
-    with open(f"calculator/data/label_url.json", "r", encoding="utf-8") as f:
-        allUrl = json.load(f)
-    for k, v in allUrl.items():
-        # use fuzzysearch to get the best match
-        if fuzzysearch.find_near_matches(
-            label.lower(), k.lower().replace("_", " "), max_l_dist=1
-        ):
-            url = v
-            break
-    return url
+        return json.load(f)
