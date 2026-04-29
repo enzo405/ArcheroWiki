@@ -1,6 +1,6 @@
 from .forms import DamageCalculatorForm
 from .models import ArticleMenu,user,StuffTable,HeroTable,TalentTable,SkinTable,AltarTable,JewelLevelTable,EggTable,EggEquippedTable,DragonTable,RunesTable,ReforgeTable,RefineTable,MedalsTable,RelicsTable,WeaponSkinsTable,DamageCalcTable,PromoCode,PromoCodeReward,GoogleSheet, TheorycraftingArticle
-from .function import checkDarkMode,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,calculatePrice,makeCookieheader, getProfileWithCookie, makeLog, loadContent, loadSuggestedFile, get_nested_item_by_prefix
+from .function import checkDarkMode,checkCookie,checkUsernameCredentials,checkIllegalKey,send_webhook,send_embed,calculatePrice,makeCookieheader, getProfileWithCookie, makeLog, loadContent, load_suggested_file, get_nested_item_by_prefix
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.handlers.wsgi import WSGIRequest
@@ -23,7 +23,7 @@ missing_data = []
 
 @loadContent(checkMessages=True, db_maintenance=True)
 def menu(request):
-	suggestedContent = loadSuggestedFile()
+	suggestedContent = load_suggested_file()
 	makeLog(request)
 	ctx = {
 		"darkmode": checkDarkMode(request),
